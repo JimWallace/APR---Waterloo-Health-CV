@@ -1,0 +1,63 @@
+\reversemarginpar
+
+\DeclareSourcemap{
+    \maps[datatype=bibtex]{
+        \map{
+            \step[fieldsource=icon, match=\regexp{.}, final]
+            \step[fieldset=usera, origfieldval]
+        }
+    }
+}
+
+\DeclareFieldFormat{usera}{%
+    \marginpar{\hspace{1.75em}\raisebox{-0.5\height}{\includegraphics[height=1.5em]{#1}}}%
+}
+
+\renewbibmacro*{begentry}{%
+    \printfield{usera}%
+    \setunit{\addspace}%
+}
+
+
+% Redefine the bibliography driver for the "inproceedings" type
+\DeclareBibliographyDriver{inproceedings}{%
+  \usebibmacro{bibindex}%
+  \usebibmacro{begentry}%
+  \usebibmacro{author/editor}%
+  \setunit{\labelnamepunct}\newblock
+  \usebibmacro{title}%
+  \newunit\newblock
+  \printfield{booktitle}%
+  \newunit\newblock
+  \printfield{volume}%
+  \printfield{number}%
+  \printfield{series}%
+  \newunit\newblock
+  \printfield{pages}%
+  \newunit\newblock
+  \printfield{organization}% Print organization here
+  \newunit\newblock
+  \printfield{publisher}% Print publisher here
+  \setunit{\addcomma\space}% Add comma before year
+  \printfield{location}% Print location here
+  \setunit{\addcomma\space}% Add comma before year
+  \printfield{year}% Print year here
+  \newunit\newblock
+  \printfield{note}% Print note here
+  \newunit\newblock
+  \usebibmacro{doi+eprint+url}% Print DOI, eprint, and URL here
+  \newunit\newblock
+  \usebibmacro{finentry}%
+}
+
+
+\setlength{\marginparsep}{-10pt} 
+
+
+
+
+
+
+
+
+
