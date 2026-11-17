@@ -31,7 +31,7 @@ jobs:
     steps:
       - if: env.HAS_TOKEN != 'true'
         run: echo "::notice::No CLAUDE_CODE_OAUTH_TOKEN secret, so @claude is off. The weekly job will handle cv-item issues."
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5.1.0
         if: env.HAS_TOKEN == 'true'
         with:
           fetch-depth: 0
