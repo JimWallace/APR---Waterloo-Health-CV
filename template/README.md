@@ -70,8 +70,8 @@ every CV that uses the template.
   `\sectionbreak`, `\usvardate`, `\monthyear`, `\extlink`.
 - Section markup: `\cvsection`, `\cvsubheading`, `cvlist` with `\cvitem`, `cvparts`
   with `\cvpart`, `\printcategory`. Documented in the `uwhealthcv.sty` header.
-- Records: `\cvowner`, `\printgrants`, `\printsupervision{degree}`, the entry types
-  `@grant` and `@supervision` with the fields in `uwhealthcv.dbx`, and `\me` inside a
+- Records: `\cvowner`, `\printgrants`, `\printsupervision{degree}`, `\printawards`, the
+  entry types `@grant`, `@supervision` and `@award` with the fields in `uwhealthcv.dbx`, and `\me` inside a
   grant's `investigators`. Documented in `cv-records.tex`.
 - For other record types: `\aprtypecategory{type}{colour}` and `\aprsetentrycolour`
   (`aprcv.sty`).

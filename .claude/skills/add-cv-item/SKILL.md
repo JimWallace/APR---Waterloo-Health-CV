@@ -15,8 +15,9 @@ awards, grants and students is the source; cite it as "issue #N".
    If found, build the bib entry from it. If not yet public, use what Jim wrote and add
    `note = {To appear}`. Mark trainees per `data/trainees.yaml`; if Jim names a new trainee,
    add them to `data/trainees.yaml` (he told you, so this one is allowed) and say so in the PR.
-3. **Grants and students:** add a `@grant` entry to `grants.bib` or a `@supervision` entry to
-   `supervision.bib` (fields in `template/uwhealthcv.dbx`, examples in each file). No
+3. **Grants, students and awards:** add a `@grant` entry to `grants.bib`, a `@supervision`
+   entry to `supervision.bib` or an `@award` entry to `awards.bib` (with `work = {key}` and
+   `icon = {award}` on that entry when it is for a paper or talk) (fields in `template/uwhealthcv.dbx`, examples in each file). No
    highlighting to add: it follows the dates. Amounts, agencies, roles, dates, titles and
    students' positions come only from Jim's message; ask in the PR if any is missing.
    **Other items:** add to the right list in `main.tex` with the matching `\hl…[years]` macro.

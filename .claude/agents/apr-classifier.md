@@ -8,7 +8,7 @@ You check where things land in Jim Wallace's CV and how the APR version colours 
 Read `CLAUDE.md` (Conventions) and the header comment of `template/aprcv.sty` first. You never edit files.
 
 ## Input
-The diff of the change (`git diff origin/main...HEAD -- main.tex scholar.bib grants.bib supervision.bib`) and the list
+The diff of the change (`git diff origin/main...HEAD -- main.tex scholar.bib grants.bib supervision.bib awards.bib`) and the list
 of bib keys it adds or changes.
 
 ## Checks
@@ -31,7 +31,7 @@ For edits to `main.tex` outside the category lists:
 6. It uses the right macro (`\hlaward`, `\hlservice`, `\hlteaching`, `\hlresearch`) with
    `[years]` that match the dates in the text.
 
-For entries in `grants.bib` / `supervision.bib`: the `date` (a grant's tenure, a student's
+For entries in `grants.bib` / `supervision.bib` / `awards.bib`: the `date` (a grant's tenure, a student's
 completion) or `status = {In progress}` is what decides the colour, so check it matches what
 Jim wrote; a student's `degree` must be one that `main.tex` prints with `\printsupervision`.
 7. Formatting matches the neighbouring lines (table columns, `\cvitem` / `\item`, `$\times$` counts).

@@ -87,15 +87,17 @@ Follow `CLAUDE.md` → Conventions. In short:
   in `data/trainees.yaml`, `doi` when there is one, `note = {To appear}` when not yet published.
   Add the key to exactly one heading, and to `apralsoteaching` if a trainee is an author and the
   entry is in the review period. Append next to similar entries; don't re-sort.
-- **Review recognitions** → ACADEMIC AWARDS: if the venue and year already has a line, update
-  its count (`2 $\times$ …`); otherwise add `\hlaward[YYYY]{Special recognition for VENUE YYYY
-  Papers (exceptional reviews)}` in date order.
+- **Review recognitions** → `awards.bib`: if the venue and year already has an `@award`, raise
+  its `count`; otherwise add one with `title = {Special recognition for VENUE YYYY Papers
+  (exceptional reviews)}` and `date = {YYYY}` (no count for a single one). Order within a year
+  follows the file.
 - **Reviewing / PC / editorial roles** → the matching list under SCHOLARLY AND PROFESSIONAL
   ACTIVITIES; extend an existing line's years rather than adding a duplicate line, and update
   its `\hlservice[years]`.
 - **Grants** → a `@grant` entry in `grants.bib`; **students** → a `@supervision` entry in
-  `supervision.bib` (see the comments at the top of each file). **Other awards** → the
-  relevant section of `main.tex`, copying the neighbouring format.
+  `supervision.bib` (see the comments at the top of each file). **Other awards** → an `@award` entry in
+  `awards.bib`; for a paper or talk, also `icon = {award}` on that entry (see the top of
+  `awards.bib`).
 - Commit additions and corrections to existing entries separately.
 
 ## 5. Verify
