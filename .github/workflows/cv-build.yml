@@ -65,7 +65,7 @@ jobs:
         run: python3 scripts/warning_ratchet.py main apr
       - name: PDF/A-2b (veraPDF)
         continue-on-error: ${{ github.ref == 'refs/heads/main' }}
-        run: scripts/check_pdfa.sh main.pdf apr.pdf
+        run: sh scripts/check_pdfa.sh main.pdf apr.pdf
       - name: Fonts embedded; what changed in the PDFs since main
         env:
           GH_TOKEN: ${{ github.token }}
@@ -93,7 +93,7 @@ jobs:
       - name: No warnings beyond the baseline (LaTeX and biber)
         run: python3 scripts/warning_ratchet.py example example-apr
       - name: PDF/A-2b (veraPDF)
-        run: scripts/check_pdfa.sh template/example/example.pdf template/example/example-apr.pdf
+        run: sh scripts/check_pdfa.sh template/example/example.pdf template/example/example-apr.pdf
 
   gate:
     # A PR labelled needs-review can't pass, so nothing merges it by accident.
