@@ -22,7 +22,14 @@
 %%   (also \hlteachingrow, ...)     whole row (use on every row of an entry)
 %%   \aprlegend                     colour key, printed in the APR version only
 %%   \ifAPR ... \fi                 material for the APR version only
+%%   \hlboth[years]{research}{teaching}{text}
+%%                                  two colours for work in two categories
+%%                                  (primary first); categories are teaching,
+%%                                  research, service, award
+%%   \aprsample{research}{teaching}{text}
+%%                                  inline example of a highlight, for notes
 %%   \sethighlightstrength{40}      softer highlights (100 = full Word colours)
+%%   \sethighlightstyle{split}      two-colour style: split, blend or bar
 %%
 %% Files
 %%   main.tex                content; compiles to the plain CV
@@ -34,7 +41,9 @@
 %% biblatex entries are highlighted automatically (research colour) when their
 %% year falls in the review period. To change one entry's colour, add its key
 %% to the category aprteaching, aprservice or apraward; to stop one entry
-%% from being highlighted, add it to aprnone.
+%% from being highlighted, add it to aprnone. To give an entry a second
+%% colour, add it to apralsoteaching, apralsoresearch, apralsoservice or
+%% apralsoaward.
 %%
 %% Highlights are drawn behind the text from positions recorded on the
 %% previous run, so the APR version needs one extra compile (Overleaf and
@@ -106,10 +115,9 @@
 
 %% ------------------------------------------------- position marks (APR only)
 % Each highlighted entry gets a start and an end mark. At shipout the marks
-% write their page positions to the .aux file; on the next run the regions
-% are painted in the page background, behind the text, so highlighting never
-% changes the layout. Highlights cover whole entries: from where the entry
-% starts to where it ends, full width on the lines in between.
+% write their page positions to the .aux file; on the next run the entry is
+% painted line by line in the page background, behind the text, so
+% highlighting never changes the layout.
 \ifdefined\pdfsavepos\else
   \ifdefined\savepos
     \let\pdfsavepos\savepos
@@ -117,11 +125,25 @@
     \let\pdflastypos\lastypos
   \fi
 \fi
+\ifAPR\RequirePackage{tikz}\fi % for the blend style's gradients
 
 \newcount\apr@id
 \newcount\apr@maxid
 \newcount\apr@i
+\newcount\apr@n
+\newcount\apr@k
 \newdimen\apr@bleed  \apr@bleed=1pt
+\newdimen\apr@barw   \apr@barw=3pt
+
+% two-colour style: halves (left half primary, right half secondary), split
+% (primary on top, secondary below), blend (primary fading into secondary
+% from left to right), or bar (primary fill, secondary bar in the margin)
+\def\apr@style@halves{halves}
+\def\apr@style@split{split}
+\def\apr@style@blend{blend}
+\def\apr@style@bar{bar}
+\newcommand\sethighlightstyle[1]{\edef\apr@style{#1}}
+\sethighlightstyle{bar}
 
 \def\aprS#1#2#3#4#5#6#7#8#9{%
   \expandafter\gdef\csname apr@S@#1\endcsname{{#2}{#3}{#4}{#5}{#6}{#7}{#8}{#9}}%
@@ -129,7 +151,8 @@
 \def\aprE#1#2#3#4{%
   \expandafter\gdef\csname apr@E@#1\endcsname{{#2}{#3}{#4}}}
 
-\newcommand\apr@mark@start[1]{%
+% \apr@mark@start{primary colour}{secondary colour or empty}
+\newcommand\apr@mark@start[2]{%
   \ifvmode\leavevmode\fi
   \interlinepenalty\@M % keep a highlighted entry on one page
   \global\advance\apr@id\@ne
@@ -137,7 +160,7 @@
   \pdfsavepos
   \edef\apr@tmp{\write\@auxout{%
     \string\aprS{\apr@cur}{\noexpand\the\ReadonlyShipoutCounter}%
-      {\noexpand\the\pdflastxpos}{\noexpand\the\pdflastypos}{#1}%
+      {\noexpand\the\pdflastxpos}{\noexpand\the\pdflastypos}{{#1}{#2}}%
       {\the\dimexpr 1in+\hoffset+\oddsidemargin+\@totalleftmargin\relax}%
       {\the\linewidth}{\the\ht\strutbox}{\the\dp\strutbox}}}%
   \apr@tmp}
@@ -149,16 +172,19 @@
       {\noexpand\the\pdflastxpos}{\noexpand\the\pdflastypos}}}%
   \apr@tmp}
 
-% painting, inside the shipout/background picture (origin top-left, 1pt units)
-\newdimen\apr@pageht
+%% painting (inside a picture with 1pt units; y measured up from \apr@oy)
+\newdimen\apr@pageht \newdimen\apr@oy
 \newdimen\apr@xs \newdimen\apr@ys \newdimen\apr@xe \newdimen\apr@ye
 \newdimen\apr@L  \newdimen\apr@R  \newdimen\apr@H  \newdimen\apr@D
+\newdimen\apr@HD \newdimen\apr@s  \newdimen\apr@Hs \newdimen\apr@Ds
+\newdimen\apr@yk \newdimen\apr@top \newdimen\apr@bot
+\newdimen\apr@gl \newdimen\apr@gr \newdimen\apr@mid \newdimen\apr@cut
 \newdimen\apr@ra \newdimen\apr@rb \newdimen\apr@rw \newdimen\apr@rh
 
-% \apr@rect{left}{bottom}{right}{top}{colour}, page coordinates from bottom-left
+% \apr@rect{left}{bottom}{right}{top}{colour}
 \def\apr@rect#1#2#3#4#5{%
   \apr@ra=\dimexpr#1\relax
-  \apr@rb=\dimexpr#2-\apr@pageht\relax
+  \apr@rb=\dimexpr#2-\apr@oy\relax
   \apr@rw=\dimexpr#3-(#1)\relax
   \apr@rh=\dimexpr#4-(#2)\relax
   \ifdim\apr@rw>\z@\ifdim\apr@rh>\z@
@@ -166,39 +192,96 @@
       \textcolor{#5}{\rule{\apr@rw}{\apr@rh}}}%
   \fi\fi}
 
+% \apr@shade{left}{bottom}{right}{top}: primary-to-secondary gradient running
+% from \apr@gl to \apr@gr, clipped to this rectangle
+\def\apr@shade#1#2#3#4{%
+  \apr@ra=\dimexpr#1\relax
+  \apr@rb=\dimexpr#2-\apr@oy\relax
+  \apr@rw=\dimexpr#3\relax
+  \apr@rh=\dimexpr#4-\apr@oy\relax
+  \put(0,0){\begin{tikzpicture}[overlay]
+    \clip (\the\apr@ra,\the\apr@rb) rectangle (\the\apr@rw,\the\apr@rh);
+    \shade[left color=\apr@pc,right color=\apr@sc]
+      (\the\apr@gl,\the\apr@rb) rectangle (\the\apr@gr,\the\apr@rh);
+  \end{tikzpicture}}}
+
+% one line's band: \apr@band{left}{right}{bottom}{top}
+\def\apr@band#1#2#3#4{%
+  \ifx\apr@sc\@empty
+    \apr@rect{#1}{#3}{#2}{#4}{\apr@pc}%
+  \else\ifx\apr@style\apr@style@halves
+    \apr@mid=\dimexpr(\apr@gl+\apr@gr)/2\relax
+    \apr@cut=\dimexpr#2\relax
+    \ifdim\apr@cut>\apr@mid \apr@cut=\apr@mid \fi
+    \apr@rect{#1}{#3}{\apr@cut}{#4}{\apr@pc}%
+    \apr@cut=\dimexpr#1\relax
+    \ifdim\apr@cut<\apr@mid \apr@cut=\apr@mid \fi
+    \apr@rect{\apr@cut}{#3}{#2}{#4}{\apr@sc}%
+  \else\ifx\apr@style\apr@style@split
+    \apr@rect{#1}{#3}{#2}{(#3+#4)/2}{\apr@sc}%
+    \apr@rect{#1}{(#3+#4)/2}{#2}{#4}{\apr@pc}%
+  \else\ifx\apr@style\apr@style@blend
+    \apr@shade{#1}{#3}{#2}{#4}%
+  \else
+    \apr@rect{#1}{#3}{#2}{#4}{\apr@pc}%
+  \fi\fi\fi\fi}
+
+% paint one entry from \apr@xs,\apr@ys (start) to \apr@xe,\apr@ye (end)
+\def\apr@paint{%
+  \ifdim\apr@L>\apr@xs \apr@L=\apr@xs \fi
+  \apr@HD=\dimexpr\apr@H+\apr@D\relax
+  \apr@n=\numexpr(\apr@ys-\apr@ye)/\apr@HD\relax
+  \ifnum\apr@n<\z@ \apr@n=\z@ \fi
+  \ifnum\apr@n=\z@
+    \apr@gl=\apr@xs \apr@gr=\apr@xe
+    \apr@band{\apr@xs-\apr@bleed}{\apr@xe+\apr@bleed}%
+             {\apr@ys-\apr@D}{\apr@ys+\apr@H}%
+    \apr@top=\dimexpr\apr@ys+\apr@H\relax
+    \apr@bot=\dimexpr\apr@ys-\apr@D\relax
+  \else
+    \apr@gl=\apr@L \apr@gr=\apr@R
+    % spread the lines evenly between the first and last baselines
+    \apr@s=\dimexpr(\apr@ys-\apr@ye)/\apr@n\relax
+    \apr@Hs=\dimexpr\apr@s*\numexpr\apr@H\relax/\numexpr\apr@HD\relax\relax
+    \apr@Ds=\dimexpr\apr@s-\apr@Hs\relax
+    \apr@top=\dimexpr\apr@ys+\apr@Hs\relax
+    \apr@bot=\dimexpr\apr@ye-\apr@Ds\relax
+    \apr@k=\z@
+    \begingroup
+    \loop
+      \apr@yk=\dimexpr\apr@ys-\apr@s*\apr@k\relax
+      \apr@band
+        {\ifnum\apr@k=\z@\apr@xs\else\apr@L\fi-\apr@bleed}%
+        {\ifnum\apr@k=\apr@n\apr@xe\else\apr@R\fi+\apr@bleed}%
+        {\apr@yk-\apr@Ds}{\apr@yk+\apr@Hs}%
+    \ifnum\apr@k<\apr@n \advance\apr@k\@ne \repeat
+    \endgroup
+  \fi
+  \ifx\apr@sc\@empty\else\ifx\apr@style\apr@style@bar
+    \apr@rect{\apr@L-\apr@bleed-\apr@barw-.5pt}{\apr@bot}%
+             {\apr@L-\apr@bleed-.5pt}{\apr@top}{\apr@sc Base!75!white}%
+  \fi\fi}
+
+\def\apr@setcols#1#2{\def\apr@pc{#1}\def\apr@sc{#2}}
+
 \def\apr@draw@one#1{%
   \ifcsname apr@S@#1\endcsname\ifcsname apr@E@#1\endcsname
     \expandafter\expandafter\expandafter\apr@draw@S
       \csname apr@S@#1\endcsname{#1}%
   \fi\fi}
-\def\apr@draw@S#1#2#3#4#5#6#7#8#9{% page,x,y,colour,L,W,H,D,id
+\def\apr@draw@S#1#2#3#4#5#6#7#8#9{% page,x,y,colours,L,W,H,D,id
   \ifnum#1=\ReadonlyShipoutCounter
     \apr@xs=#2sp\relax \apr@ys=#3sp\relax
     \apr@L=#5\relax \apr@R=\dimexpr#5+#6\relax
     \apr@H=#7\relax \apr@D=#8\relax
-    \def\apr@col{#4}%
+    \apr@setcols#4%
     \expandafter\expandafter\expandafter\apr@draw@E
       \csname apr@E@#9\endcsname
   \fi}
 \def\apr@draw@E#1#2#3{%
   \ifnum#1=\ReadonlyShipoutCounter
     \apr@xe=#2sp\relax \apr@ye=#3sp\relax
-    \ifdim\apr@L>\apr@xs \apr@L=\apr@xs \fi
-    \dimen@=\dimexpr\apr@ys-\apr@ye\relax
-    \ifdim\dimen@<\z@ \dimen@=-\dimen@ \fi
-    \ifdim\dimen@<.5\apr@H
-      % one line
-      \apr@rect{\apr@xs-\apr@bleed}{\apr@ys-\apr@D}%
-               {\apr@xe+\apr@bleed}{\apr@ys+\apr@H}{\apr@col}%
-    \else
-      % first line, lines in between, last line
-      \apr@rect{\apr@xs-\apr@bleed}{\apr@ys-\apr@D}%
-               {\apr@R+\apr@bleed}{\apr@ys+\apr@H}{\apr@col}%
-      \apr@rect{\apr@L-\apr@bleed}{\apr@ye+\apr@H}%
-               {\apr@R+\apr@bleed}{\apr@ys-\apr@D}{\apr@col}%
-      \apr@rect{\apr@L-\apr@bleed}{\apr@ye-\apr@D}%
-               {\apr@xe+\apr@bleed}{\apr@ye+\apr@H}{\apr@col}%
-    \fi
+    \apr@paint
   \fi}
 
 \def\apr@draw@page{%
@@ -209,6 +292,7 @@
     \else
       \apr@pageht=\paperheight
     \fi
+    \apr@oy=\apr@pageht
     \apr@i=\@ne
     \loop\ifnum\apr@i>\apr@maxid\else
       \expandafter\apr@draw@one\expandafter{\the\apr@i}%
@@ -221,16 +305,48 @@
 \fi
 
 %% ------------------------------------------------------- document commands
-\newcommand\apr@hl[3]{% colour, years, text
+% categories: teaching, research, service, award
+\def\apr@col#1{\if\relax\detokenize{#1}\relax\else APR#1\fi}
+
+% \apr@hl{primary colour}{secondary colour}{years}{text}
+\newcommand\apr@hl[4]{%
   \ifAPR
-    \apr@ifyears{#2}{\apr@mark@start{#1}#3\apr@mark@end}{#3}%
+    \apr@ifyears{#3}{\apr@mark@start{#1}{#2}#4\apr@mark@end}{#4}%
+  \else
+    #4%
+  \fi}
+\NewDocumentCommand\hlteaching{O{}+m}{\apr@hl{APRteaching}{}{#1}{#2}}
+\NewDocumentCommand\hlresearch{O{}+m}{\apr@hl{APRresearch}{}{#1}{#2}}
+\NewDocumentCommand\hlservice{O{}+m}{\apr@hl{APRservice}{}{#1}{#2}}
+\NewDocumentCommand\hlaward{O{}+m}{\apr@hl{APRaward}{}{#1}{#2}}
+% \hlboth[years]{primary}{secondary}{text}, e.g. \hlboth[2025]{teaching}{service}{...}
+\NewDocumentCommand\hlboth{O{}mm+m}{%
+  \edef\apr@tmp{\noexpand\apr@hl{\apr@col{#2}}{\apr@col{#3}}{\unexpanded{#1}}}%
+  \apr@tmp{#4}}
+
+% \aprsample{primary}{secondary}{text}: an inline example of a highlight,
+% for use in the notes; plain text in the plain CV
+\newsavebox\apr@box
+\NewDocumentCommand\aprsample{mm+m}{%
+  \ifAPR
+    \leavevmode
+    \begingroup
+      \sbox\apr@box{#3}%
+      \edef\apr@pc{\apr@col{#1}}\edef\apr@sc{\apr@col{#2}}%
+      \apr@oy=\z@ \apr@xs=\z@ \apr@xe=\wd\apr@box \apr@ys=\z@ \apr@ye=\z@
+      \apr@L=\z@ \apr@R=\wd\apr@box
+      \apr@H=\ht\strutbox \apr@D=\dp\strutbox
+      \unitlength=1pt
+      % in running text, make room for a margin bar so it doesn't overlap
+      % the preceding character
+      \ifx\apr@sc\@empty\else\ifx\apr@style\apr@style@bar
+        \kern\dimexpr\apr@barw+\apr@bleed\relax
+      \fi\fi
+      \hbox{\begin{picture}(0,0)\apr@paint\end{picture}\usebox\apr@box}%
+    \endgroup
   \else
     #3%
   \fi}
-\NewDocumentCommand\hlteaching{O{}+m}{\apr@hl{APRteaching}{#1}{#2}}
-\NewDocumentCommand\hlresearch{O{}+m}{\apr@hl{APRresearch}{#1}{#2}}
-\NewDocumentCommand\hlservice{O{}+m}{\apr@hl{APRservice}{#1}{#2}}
-\NewDocumentCommand\hlaward{O{}+m}{\apr@hl{APRaward}{#1}{#2}}
 
 % table rows: must stay expandable so \rowcolor ends up first in the row
 \newcommand\apr@row[2]{%
@@ -242,7 +358,6 @@
 \newcommand\hlawardrow{\apr@row{APRaward}}
 
 % colour key
-\def\apr@swatch#1#2{\colorbox{#1}{\strut#2}}
 \newcommand\aprlegend{%
   \ifAPR
     \par\smallskip\noindent
@@ -250,10 +365,13 @@
      \ifnum\apr@from=\apr@to \the\apr@from\else
        \the\apr@from--\the\apr@to\fi\
      review period are highlighted:
-     \apr@swatch{APRteaching}{teaching and supervision},
-     \apr@swatch{APRresearch}{research},
-     \apr@swatch{APRservice}{service},
-     \apr@swatch{APRaward}{awards}.\par}%
+     \aprsample{teaching}{}{teaching and supervision},
+     \aprsample{research}{}{research},
+     \aprsample{service}{}{service},
+     \aprsample{award}{}{awards}.
+     Work that serves two of these is shown in both colours,
+     for example \aprsample{research}{teaching}{research and supervision};
+     the note before each section explains how.\par}%
     \bigskip
   \fi}
 
@@ -263,6 +381,10 @@
   \DeclareBibliographyCategory{aprservice}%
   \DeclareBibliographyCategory{apraward}%
   \DeclareBibliographyCategory{aprnone}%
+  \DeclareBibliographyCategory{apralsoteaching}%
+  \DeclareBibliographyCategory{apralsoresearch}%
+  \DeclareBibliographyCategory{apralsoservice}%
+  \DeclareBibliographyCategory{apralsoaward}%
   \ifAPR
     % entries end at the next \item, outside the entry's group, so keep
     % bibliography entries from splitting across pages here
@@ -278,8 +400,14 @@
               \ifcategory{aprservice}{\def\apr@c{APRservice}}{%
                 \ifcategory{apraward}{\def\apr@c{APRaward}}%
                   {\def\apr@c{APRresearch}}}}%
+            \def\apr@c@two{}%
+            \ifcategory{apralsoteaching}{\def\apr@c@two{APRteaching}}{}%
+            \ifcategory{apralsoresearch}{\def\apr@c@two{APRresearch}}{}%
+            \ifcategory{apralsoservice}{\def\apr@c@two{APRservice}}{}%
+            \ifcategory{apralsoaward}{\def\apr@c@two{APRaward}}{}%
             \gdef\apr@bib@on{x}%
-            \expandafter\apr@mark@start\expandafter{\apr@c}}{}}{}}}%
+            \edef\apr@tmp{\noexpand\apr@mark@start{\apr@c}{\apr@c@two}}%
+            \apr@tmp}{}}{}}}%
     \def\apr@bib@end{%
       \ifx\apr@bib@on\@empty\else
         \apr@mark@end

@@ -27,9 +27,9 @@
 % for the APR version (evaluation notes + highlighting). See aprcv.sty.
 \usepackage{aprcv}
 \setreviewperiod{2025}{2026}
-% publications are highlighted as research; to use another colour for one
-% entry, add its key to aprteaching, aprservice or apraward, e.g.
-% \addtocategory{aprteaching}{wallace_chickadee}
+% Publications and presentations from the review period are highlighted as
+% research. To use another colour for one entry, add its key to aprteaching,
+% aprservice or apraward; to stop one being highlighted, add it to aprnone.
 
 
 
@@ -67,6 +67,11 @@
 \DeclareBibliographyCategory{invited}
 \addtocategory{invited}
 {hcischool2025,delpapa2025vibe}
+
+% APR version: entries that also count as teaching and supervision, shown in
+% both colours. Rule: a trainee I supervise is an author or presenter, plus
+% Chickadee (teaching software). Add new entries here as they appear.
+\addtocategory{apralsoteaching}{Sharma2025, Wong2025DIS, hcischool2025, homaeian2025, homaeian2025boundaries, homaeian2025community, homaeianCHIWS2025, kaur2025transformers, oji2025advancing, sharma2025thematic, wong2025SPHS, wong2025bold, wong2025boldsky, AttentionGo, Homaeian2026, Wong2026IPV, prasad2026pragmatica, sharma2026details, ugayamazza2026agency, wong2026ipvprevention, wallace_chickadee}
 
 
 \begin{document}
@@ -228,6 +233,8 @@ Human–Computer Interaction (HCI) research develops and evaluates interactive t
 Within the HCI research community, the primary archival venues for full scientific papers are selective conferences organized by the Association for Computing Machinery (ACM). These venues function equivalently to top journals in other fields: they publish complete, mature research studies and serve as the primary basis for hiring, promotion, and funding decisions. Many of these venues now publish journal-format papers in the ``Proceedings of the ACM in …'' (PACM) series, which formally classifies these publications as journal articles while retaining the conference review and dissemination model. Accordingly, when evaluating my performance, \textbf{equal weight should be given to peer-reviewed conference and journal papers}, particularly those published at leading ACM venues. The review process at these venues is exceptionally rigorous: full papers undergo anonymous peer review by multiple expert reviewers, oversight by associate chairs, and collective evaluation by an international program committee. Acceptance rates are typically near 20\%, reflecting high selectivity and strong emphasis on novelty, methodological rigour, and scientific contribution.
 \\ \\
 Because HCI research is interdisciplinary and system-focused, publications often involve multiple contributors with complementary expertise. \textbf{Typically, the first listed author is the primary researcher (e.g., a graduate student), and the last listed author is the supervising researcher or project leader}. This reflects intellectual leadership, mentorship, and responsibility for the overall research direction.
+\\ \\
+\textbf{Reading the highlighting.} Work from the review period is highlighted in the Faculty's colours, so a publication appears as \aprsample{research}{}{research}. Because so much HCI research is also graduate training, some items serve two functions. When a student I supervise is an author (marked *) or the presenter (marked \dag), the paper or talk is both a research output and a supervision outcome, and it is shown in both colours: \aprsample{research}{teaching}{research, with supervision}. The main colour gives the item's primary category; the second colour marks its other contribution. Chickadee, software I developed for undergraduate teaching, is marked the same way.
 \fi % end APR version only -------------------------------------
 % \\ \\
 % Finally, in-line with prioritizing publishing at ACM conferences and journals, I dedicate much of my service time to these venues. I actively serve on program committees and as a reviewer for the premiere conferences in HCI, particularly those published by the Association for Computing Machinery (ACM), to which I maintain a professional membership. For instance, I served as General Chair for ACM CHI PLAY 2023 in Stratford, and will be serving as General Chair for ACM CUI 2025 in Waterloo.
@@ -325,6 +332,8 @@ The NSERC Discovery Grant program is the primary and most important source of op
 \textbf{Even within NSERC, Discovery Grant funding levels vary significantly by discipline}. Fields such as biology, chemistry, and engineering often receive larger Discovery Grants due to higher infrastructure, laboratory, equipment, and personnel costs. In contrast, computer science research typically requires fewer physical resources and is correspondingly funded at lower absolute levels, consistent with NSERC’s mandate to support research appropriately according to disciplinary cost structures and needs \extlink{https://www.nserc-crsng.gc.ca/NSERC-CRSNG/Committees-Comites/EvaluationGroups-GroupesEvaluation_eng.asp}{(NSERC Evaluation Groups and Discipline Structure)}. These differences reflect structural and methodological characteristics of the research rather than differences in competitiveness, merit, or scholarly significance.
 \\ \\
 \textbf{Importantly, total funding amount is not a direct indicator of research competitiveness across disciplines.} NSERC Discovery Grants are highly competitive and are specifically structured to support individual investigator programs rather than large clinical or multi-site research teams. In computing disciplines, holding an NSERC Discovery Grant is widely recognized as the primary indicator of an independently funded and nationally competitive research program. Additional funding, including CIHR grants, industry partnerships, and interdisciplinary collaborations, typically builds upon the foundational support provided by Discovery Grants. \extlink{https://uwaterloo.ca/secretariat/policies-procedures-guidelines/policy-76}{University of Waterloo Policy 76} recognizes that research contributions and funding should be evaluated in the context of disciplinary norms and practices. This interpretation is also consistent with SPHS performance review guidelines, which specify that funding should be evaluated relative to what is appropriate for the faculty member’s discipline and research program, and that performance indicators must be interpreted in a manner consistent with disciplinary traditions.
+\\ \\
+Grants active during the review period are highlighted as \aprsample{research}{}{research}.
 \fi % end APR version only -------------------------------------
 
 
@@ -513,6 +522,8 @@ This interdisciplinary structure provides direct benefits to SPHS students and t
 \\ \\
 Interdisciplinary supervision and collaboration are also consistent with the University of Waterloo’s strategic emphasis on cross-disciplinary research and training, or ``One Waterloo'', which promotes integration across academic units to address complex societal and health challenges. Consistent with SPHS performance review guidelines, interdisciplinary scholarship and supervision should be interpreted in the context of the multidisciplinary nature of the field and the collaborative requirements of the research program.
 \\ \\
+Supervision during the review period is highlighted below as \aprsample{teaching}{}{teaching and supervision}. It also appears in the research sections: papers and presentations by students I supervise are shown as \aprsample{research}{teaching}{research, with supervision}, because in HCI these papers are a central product of graduate training. External examining is shown as \aprsample{teaching}{service}{supervision, with service}.
+\\ \\
 \fi % end APR version only -------------------------------------
 \textbf{GRADUATE STUDENT SUPERVISION}
 
@@ -604,7 +615,7 @@ Interdisciplinary supervision and collaboration are also consistent with the Uni
     \begin{enumerate}
     \setlength{\labelsep}{0em}
     \setlength{\itemsep}{-5pt}
-        \item[] \hlteaching[2025]{Sarah Dsane (University of Cape Town, 2025)}
+        \item[] \hlboth[2025]{teaching}{service}{Sarah Dsane (University of Cape Town, 2025)}
         \item[] Khalid Tearo (Dalhousie, 2021)
         \item[] Felwah Alqahtani (Dalhousie, 2022)
     \end{enumerate}
@@ -618,6 +629,8 @@ Professional service in Human–Computer Interaction (HCI) is closely integrated
 Leadership roles in conference organization represent significant professional service contributions. For example, I served as General Chair for ACM CHI PLAY 2023, held in Stratford, Ontario, and will serve as General Chair for ACM CUI 2025, to be held in Waterloo. These roles involve overseeing the conference organization, coordinating peer review and program development, and supporting participation from an international community of researchers. Such appointments reflect professional recognition and trust within the field and contribute to the visibility and reputation of the University of Waterloo and the School of Public Health Sciences within the global research community.
 \\ \\
 In addition to conference leadership, I regularly serve as a reviewer and program committee member for leading international conferences and journals in HCI and computing. These service activities contribute to the evaluation and advancement of new research and are a core component of scholarly citizenship in the field. Consistent with SPHS performance review guidelines, service to one’s profession—including peer review, conference organization, and leadership roles—is recognized as an important component of academic contribution and professional standing.
+\\ \\
+Service during the review period is highlighted as \aprsample{service}{}{service}. This includes peer review, program committees and conference organization for the discipline, as well as School and Faculty committees.
 \\ \\
 \fi % end APR version only -------------------------------------
 \textbf{SERVICE}
