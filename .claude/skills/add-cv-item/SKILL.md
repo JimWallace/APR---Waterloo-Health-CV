@@ -1,7 +1,7 @@
 ---
 name: add-cv-item
 description: Add one item Jim reports (paper, talk, award, reviewing/PC role, grant, supervision, service) to the CV from an issue or chat message, verify it, and open a labelled PR.
-allowed-tools: Read, Grep, Glob, Edit, Write, Agent, WebFetch, WebSearch, Skill, Bash(python3 scripts/check_cv.py:*), Bash(python3 scripts/fetch_candidates.py:*), Bash(git:*), Bash(gh pr:*), Bash(gh issue:*), Bash(gh label:*), Bash(curl:*), Bash(latexmk:*)
+allowed-tools: Read, Grep, Glob, Edit, Write, Agent, WebFetch, WebSearch, Skill, Bash(python3 scripts/check_cv.py:*), Bash(python3 scripts/fetch_candidates.py:*), Bash(git:*), Bash(gh pr:*), Bash(gh issue:*), Bash(gh label:*), Bash(gh api:*), Bash(curl:*), Bash(latexmk:*)
 ---
 
 # Add a CV item
@@ -20,4 +20,5 @@ awards, grants and students is the source; cite it as "issue #N".
    Amounts, agencies, roles and dates come only from Jim's message; ask in the PR if any is missing.
 4. Branch `cv/issue-<N>-<slug>`, commit, run the `cv-verify` skill, push, open the PR with
    "Closes #N" and the label `cv-verify` chose, and reply on the issue with the PR link and
-   any questions.
+   any questions. If `gh pr create` fails, use the REST API as in
+   `automation/weekly-update.md` step 7. The repo is public: no email text or private details.

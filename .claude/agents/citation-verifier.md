@@ -13,12 +13,20 @@ A list of bib keys (and sometimes the PR diff). Read each entry from `scholar.bi
 
 ## For each key
 1. Find the authoritative record, in this order:
-   - If there is a DOI: `curl -sL -H "Accept: application/vnd.citationstyles.csl+json" https://doi.org/<doi>`
-     (falls back to `https://api.crossref.org/works/<doi>`). A DOI that does not resolve is a FAIL.
-   - DBLP: `https://dblp.org/search/publ/api?q=<title words>&format=json` (computing venues).
-   - OpenAlex: `https://api.openalex.org/works?search=<title>` (health journals, preprints).
-   - The publisher page (ACM DL, JMIR, Elsevier, Springer) via WebFetch.
-   If `.cv-work/candidates.json` exists, its records are a starting point, not proof.
+   - **Records already retrieved** on the `cv-sources` branch (`git fetch origin cv-sources`,
+     then `git show origin/cv-sources:records/index.json`): Crossref metadata per DOI in
+     `records/crossref/`, and Jim's DBLP record list in `records/dblp-person.xml`. They were
+     fetched by a GitHub workflow; `index.json` says when. A DOI listed there with an `error`
+     had no Crossref record: check it on doi.org or the publisher page, and FAIL it only if
+     it doesn't resolve there either.
+   - If there is a DOI and no saved record:
+     `curl -sL -H "Accept: application/vnd.citationstyles.csl+json" https://doi.org/<doi>`
+     or `https://api.crossref.org/works/<doi>`.
+   - DBLP search: `https://dblp.org/search/publ/api?q=<title words>&format=json`.
+   - OpenAlex: `https://api.openalex.org/works?search=<title>`.
+   - The publisher page (ACM DL, JMIR, Elsevier, Springer). If direct fetches are refused in
+     your session, find the page with a web search and fetch the result link.
+   `candidates.json` on the same branch is a starting point, not proof.
 2. Compare field by field. Ignore case, LaTeX markup (`\textbf`, braces), `*`, `{\dag}` and
    en-dash vs hyphen in pages. Check:
    - **authors**: same people, same order, same count, names spelled as the record has them
@@ -42,4 +50,5 @@ VERDICT: PASS | FAIL | QUESTIONS
 - `UNVERIFIABLE` rows: say what you searched. Forthcoming work (`note = {To appear}`) with
   no record yet is `UNVERIFIABLE`, not FAIL.
 VERDICT is PASS only if every row is PASS. Any FIX → FAIL. Only UNVERIFIABLE → QUESTIONS.
-Every FIX and PASS must cite a URL you actually retrieved in this run.
+Every FIX and PASS must cite its source: a URL you retrieved in this run, or the
+`cv-sources` record file (with its fetch date).

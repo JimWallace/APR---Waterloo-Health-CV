@@ -6,8 +6,13 @@ Writes .cv-work/candidates.json with three lists:
   doi_backfill entries in scholar.bib without a DOI that a source has a DOI for
   source_errors sources that could not be reached this run
 
-The workflow runs this before Claude starts, so Claude works from saved records
-instead of searching from memory. Standard library only.
+With --records-dir it also saves the raw records Claude verifies against:
+  <dir>/dblp-person.xml          DBLP's record of all Jim's publications
+  <dir>/crossref/<doi>.json      Crossref metadata for every DOI in scholar.bib and in `new`
+  <dir>/index.json               DOI -> bib key, and when each record was fetched
+The "CV sources" workflow runs this on GitHub (which can reach these APIs) and
+publishes the output on the cv-sources branch, so Claude sessions that can't reach
+the APIs still verify against retrieved records. Standard library only.
 
 Sources (set in .github/workflows/cv-weekly-update.yml, all optional except DBLP):
   DBLP_PID            DBLP person id (computing venues)
@@ -22,7 +27,9 @@ import argparse
 import datetime as dt
 import json
 import os
+import re
 import sys
+import time
 import urllib.parse
 import urllib.request
 import xml.etree.ElementTree as ET
@@ -115,6 +122,18 @@ def from_crossref(js: dict) -> list[dict]:
     return out
 
 
+def crossref_record(doi: str, mailto: str) -> dict | None:
+    q = f"?mailto={urllib.parse.quote(mailto)}" if mailto else ""
+    js = json.loads(get(f"https://api.crossref.org/works/{urllib.parse.quote(doi)}{q}"))
+    msg = js.get("message") or {}
+    msg.pop("reference", None)  # long and not needed for checking an entry
+    return msg
+
+
+def safe_name(doi: str) -> str:
+    return re.sub(r"[^A-Za-z0-9._-]", "_", doi)
+
+
 def resolve_openalex_author(mailto: str) -> str | None:
     q = urllib.parse.urlencode({"search": "James R. Wallace", "per-page": 25, **({"mailto": mailto} if mailto else {})})
     js = json.loads(get(f"https://api.openalex.org/authors?{q}"))
@@ -160,6 +179,43 @@ def compare(records: list[dict], bib_path) -> tuple[list[dict], list[dict]]:
     return list(new.values()), list(backfill.values())
 
 
+def save_crossref(out_dir: str, new: list[dict], backfill: list[dict], mailto: str,
+                  errors: list[dict]) -> None:
+    bib = parse_bib(ROOT / "scholar.bib")
+    wanted: dict[str, list[str]] = {}
+    for e in bib.entries:
+        d = clean_doi(e.fields.get("doi"))
+        if d:
+            wanted.setdefault(d, []).append(e.key)
+    for r in new:
+        if r.get("doi"):
+            wanted.setdefault(r["doi"], [])
+    for b in backfill:
+        for c in b["candidates"]:
+            if c.get("doi"):
+                wanted.setdefault(c["doi"], []).append(b["key"])
+    os.makedirs(os.path.join(out_dir, "crossref"), exist_ok=True)
+    index = {}
+    for doi, keys in sorted(wanted.items()):
+        entry = {"keys": keys, "file": None}
+        try:
+            rec = crossref_record(doi, mailto)
+            fn = os.path.join("crossref", safe_name(doi) + ".json")
+            with open(os.path.join(out_dir, fn), "w", encoding="utf-8") as fh:
+                json.dump(rec, fh, indent=1, ensure_ascii=False)
+            entry["file"] = fn
+        except Exception as ex:  # noqa: BLE001  (a DOI that doesn't resolve is itself a finding)
+            entry["error"] = repr(ex)
+        index[doi] = entry
+        time.sleep(0.2)
+    with open(os.path.join(out_dir, "index.json"), "w", encoding="utf-8") as fh:
+        json.dump({"fetched": dt.datetime.now(dt.timezone.utc).isoformat(timespec="seconds"),
+                   "dois": index}, fh, indent=1)
+    bad = [d for d, v in index.items() if v.get("error")]
+    if bad:
+        errors.append({"source": "crossref", "error": f"{len(bad)} DOI(s) not found: {', '.join(bad[:10])}"})
+
+
 def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--since", type=int, default=dt.date.today().year - 1,
@@ -167,6 +223,7 @@ def main() -> int:
     ap.add_argument("--out", default=str(ROOT / ".cv-work" / "candidates.json"))
     ap.add_argument("--dblp-xml", help="read DBLP XML from a file instead of the web (tests)")
     ap.add_argument("--openalex-json", help="read OpenAlex works JSON from a file (tests)")
+    ap.add_argument("--records-dir", help="also save raw DBLP and Crossref records here")
     args = ap.parse_args()
 
     mailto = os.environ.get("CONTACT_EMAIL", "")
@@ -183,6 +240,10 @@ def main() -> int:
             xml_bytes = get(f"https://dblp.org/pid/{pid}.xml") if pid else b""
         if xml_bytes:
             records += from_dblp(xml_bytes, args.since)
+            if args.records_dir:
+                os.makedirs(args.records_dir, exist_ok=True)
+                with open(os.path.join(args.records_dir, "dblp-person.xml"), "wb") as fh:
+                    fh.write(xml_bytes)
     except Exception as ex:  # noqa: BLE001
         errors.append({"source": "dblp", "error": repr(ex)})
 
@@ -212,6 +273,9 @@ def main() -> int:
             errors.append({"source": "crossref", "error": repr(ex)})
 
     new, backfill = compare(records, ROOT / "scholar.bib")
+
+    if args.records_dir and not args.dblp_xml:
+        save_crossref(args.records_dir, new, backfill, mailto, errors)
     os.makedirs(os.path.dirname(args.out), exist_ok=True)
     result = {
         "generated": dt.datetime.now(dt.timezone.utc).isoformat(timespec="seconds"),

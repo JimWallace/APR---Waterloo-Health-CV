@@ -1,7 +1,7 @@
 ---
 name: cv-verify
 description: Verify CV changes with the deterministic checker and four independent verifier sub-agents, then decide the PR label. Use after any edit to scholar.bib or main.tex, or with "full" to audit every bib entry.
-allowed-tools: Read, Grep, Glob, Edit, Agent, Bash(python3 scripts/check_cv.py:*), Bash(git diff:*), Bash(git log:*), Bash(git status:*), Bash(curl:*)
+allowed-tools: Read, Grep, Glob, Edit, Agent, Bash(python3 scripts/check_cv.py:*), Bash(git diff:*), Bash(git log:*), Bash(git status:*), Bash(git fetch:*), Bash(git show:*), Bash(curl:*)
 ---
 
 # Verify CV changes
@@ -28,6 +28,11 @@ because they check from scratch.
 - `apr-classifier` — keys + diff (skip in `full` mode)
 - `diff-auditor` — your draft change table (skip in `full` mode)
 
+If those agent types aren't available in your session, start general-purpose sub-agents
+instead, each given the full text of `.claude/agents/<name>.md` (below the front matter) as
+its instructions, followed by its inputs. Tell `citation-verifier` that retrieved records are
+on the `cv-sources` branch (`git fetch origin cv-sources`).
+
 ## 4. Act on the verdicts
 - FIX rows that come with a retrieved source URL: apply exactly that fix, then re-run step 2
   and re-run only the verifier that raised it, on only those keys. At most two rounds.
@@ -36,15 +41,10 @@ because they check from scratch.
   "Corrections from full audit" and the PR is always `needs-review`.
 
 ## 5. Decide the label
-`auto-merge` only if all are true:
-- `check_cv.py` exits 0;
-- every verifier's final VERDICT is PASS;
-- no UNVERIFIABLE item is a new entry (a forthcoming paper Jim told you about in an issue,
-  marked `note = {To appear}`, is fine);
-- no change to existing entries other than DOI backfills confirmed by `citation-verifier`.
-
-Otherwise `needs-review`, with a **Questions for Jim** section listing each open item in one
-line he can answer yes/no.
+Use the rules in `automation/weekly-update.md`, section 6 ("Label"). In short: `auto-merge`
+only when `check_cv.py` exits 0, every verifier's final VERDICT is PASS, and every change is of
+a kind listed there; otherwise `needs-review`, with a **Questions for Jim** section listing each
+open item as a one-line yes/no question.
 
 ## 6. Report
 Put in the PR body: the change table (what / where / source), one line per verifier with its
