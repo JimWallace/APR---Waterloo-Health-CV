@@ -109,7 +109,11 @@ your change table — not your reasoning:
 If those agent types aren't available in your session, start general-purpose sub-agents
 instead, each with the full text of the matching `.claude/agents/<name>.md` (below its
 front matter) as its instructions, followed by the inputs.
-If `latexmk` is available, compile `main.tex` and `apr.tex`; CI compiles both regardless.
+If `latexmk` is available, compile `main.tex` and `apr.tex` and run
+`python3 scripts/warning_ratchet.py main apr`; CI does both regardless. A warning your change
+adds fails CI: fix it, or label the PR `needs-review` and ask. A warning your change fixes
+(e.g. a DOI you backfilled) must leave `scripts/warnings-baseline.txt`:
+`python3 scripts/check_cv.py --prune-baseline`, or delete the line CI names.
 
 ## 6. Label
 

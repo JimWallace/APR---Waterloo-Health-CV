@@ -5,6 +5,8 @@
 #     which the job adds only after its verifiers pass;
 #   - Overleaf sync PRs merge when labelled auto-merge.
 # To hold any PR: mark it draft or add the needs-review label.
+# CV build fails on a new warning, and its ratchet job fails on a PR that accepts
+# new warnings or changes the checks, so those are never merged here: merge by hand.
 #
 # Merges made with the workflow token don't trigger other workflows, so this one
 # starts the main-branch build (PDF release) and the Overleaf sync itself.
