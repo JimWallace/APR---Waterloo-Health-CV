@@ -1,7 +1,7 @@
 ---
 name: cv-verify
 description: Verify CV changes with the deterministic checker and four independent verifier sub-agents, then decide the PR label. Use after any edit to scholar.bib or main.tex, or with "full" to audit every bib entry.
-allowed-tools: Read, Grep, Glob, Edit, Agent, Bash(python3 scripts/check_cv.py:*), Bash(git diff:*), Bash(git log:*), Bash(git status:*), Bash(git fetch:*), Bash(git show:*), Bash(curl:*)
+allowed-tools: Read, Grep, Glob, Edit, Agent, Bash(python3 scripts/check_cv.py:*), Bash(python3 scripts/warning_ratchet.py:*), Bash(git diff:*), Bash(git log:*), Bash(git status:*), Bash(git fetch:*), Bash(git show:*), Bash(curl:*)
 ---
 
 # Verify CV changes

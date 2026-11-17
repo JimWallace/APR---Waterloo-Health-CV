@@ -3,6 +3,7 @@
   "permissions": {
     "allow": [
       "Bash(python3 scripts/check_cv.py:*)",
+      "Bash(python3 scripts/warning_ratchet.py:*)",
       "Bash(python3 scripts/fetch_candidates.py:*)",
       "Bash(latexmk:*)",
       "Bash(git diff:*)",
