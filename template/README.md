@@ -11,6 +11,7 @@ move to its own repository later.
 | File | Role |
 |---|---|
 | `uwhealthcv.sty` | The only package a CV loads. Reads the files below in the right order. |
+| `uwhealthcv-pdfa.tex` | Makes the PDF archival (PDF/A-2b). A CV inputs it before `\documentclass`; see below. |
 | `NSERC-formatting.tex` | Page, fonts, header and table setup. |
 | `biblatex-formatting.tex` | biblatex tweaks: badge icons in the margin, the `inproceedings` driver. |
 | `ACM-Reference-Format.{bbx,cbx,dbx,bst}` | ACM bibliography style (vendored). |
@@ -35,6 +36,7 @@ latexmk, Overleaf and the GitHub Actions LaTeX build all read that file.
 The CV's main file:
 
 ```latex
+\input{uwhealthcv-pdfa}
 \documentclass[12pt]{article}
 \usepackage{uwhealthcv}
 \addbibresource{mycv.bib}
@@ -45,6 +47,13 @@ The CV's main file:
 ...
 \end{document}
 ```
+
+The first line makes the PDF a PDF/A-2b file (archival: fonts embedded, an sRGB
+colour profile, XMP metadata with the title and author from `\cvowner`). The
+LaTeX kernel only accepts that before `\documentclass`, so it cannot live in
+`uwhealthcv.sty`. It needs LaTeX 2022-06 or newer (TeX Live 2022); leave the
+line out for a plain PDF. This repository's CI checks the result with veraPDF
+(`scripts/check_pdfa.sh`).
 
 The APR version is a two-line file next to it:
 
@@ -80,6 +89,7 @@ every CV that uses the template.
   `apralsoaward`.
 - Bib field: `icon` (an image path, or `award` for the rosette).
 - File the template reads from the CV: `apr-formatting.tex` (optional).
+- File a CV inputs before `\documentclass`: `uwhealthcv-pdfa.tex` (optional).
 
 ## Building the example
 

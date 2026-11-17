@@ -1,0 +1,19 @@
+%% uwhealthcv-pdfa.tex -- archival (PDF/A-2b) output for the CV.
+%%
+%% A CV inputs this file as its first line, before \documentclass, because
+%% the LaTeX kernel only accepts \DocumentMetadata there:
+%%
+%%   \input{uwhealthcv-pdfa}
+%%   \documentclass[12pt]{article}
+%%
+%% The kernel's PDF management then writes the XMP metadata (PDF/A
+%% identification, and the title and author \cvowner sets), an sRGB output
+%% intent for the xcolor RGB and grey colours, and the annotation flags
+%% PDF/A needs on hyperref's links. The page content does not change.
+%% Part 2 (not 1): PDF/A-1 forbids transparency and object streams; level b,
+%% because level u would fail on any symbol glyph without a Unicode mapping.
+%% CI checks the result with veraPDF.
+\ifdefined\DocumentMetadata
+  \DocumentMetadata{pdfstandard=a-2b, lang=en-CA}
+\fi
+\endinput

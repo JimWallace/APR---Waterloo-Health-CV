@@ -63,6 +63,9 @@ jobs:
         # On main the merge has happened; report, but still publish the PDFs.
         continue-on-error: ${{ github.ref == 'refs/heads/main' }}
         run: python3 scripts/warning_ratchet.py main apr
+      - name: PDF/A-2b (veraPDF)
+        continue-on-error: ${{ github.ref == 'refs/heads/main' }}
+        run: scripts/check_pdfa.sh main.pdf apr.pdf
       - name: Fonts embedded; what changed in the PDFs since main
         env:
           GH_TOKEN: ${{ github.token }}
@@ -89,6 +92,8 @@ jobs:
             example-apr.tex
       - name: No warnings beyond the baseline (LaTeX and biber)
         run: python3 scripts/warning_ratchet.py example example-apr
+      - name: PDF/A-2b (veraPDF)
+        run: scripts/check_pdfa.sh template/example/example.pdf template/example/example-apr.pdf
 
   gate:
     # A PR labelled needs-review can't pass, so nothing merges it by accident.
@@ -119,7 +124,7 @@ jobs:
           base=$(git merge-base origin/main HEAD)
           changed=$(git diff --name-only "$base" HEAD -- .github/workflows/cv-build.yml \
             .github/workflows/cv-merge.yml scripts/check_cv.py scripts/cvlib.py \
-            scripts/warning_ratchet.py scripts/pdf_report.py scripts/tests)
+            scripts/warning_ratchet.py scripts/pdf_report.py scripts/check_pdfa.sh scripts/tests)
           if [ -n "$changed" ]; then
             for f in $changed; do echo "::error file=$f::This PR changes the checks; merge it by hand."; done
             exit 1
