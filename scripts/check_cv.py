@@ -3,11 +3,14 @@
 and the category lists in main.tex.
 
 Errors change what the PDF says (a paper silently dropped or printed twice)
-and fail CI. Warnings are worth a look but do not block a merge.
+and fail CI. Warnings are worth a look; the ones accepted so far are listed in
+scripts/warnings-baseline.txt, and a warning not listed there also fails, as
+does a listed one that no longer occurs (see scripts/warning_ratchet.py).
 
     python3 scripts/check_cv.py            # human-readable report
     python3 scripts/check_cv.py --json     # machine-readable, for Claude
     python3 scripts/check_cv.py --keys k1,k2   # only report on these entries
+    python3 scripts/check_cv.py --prune-baseline   # drop baseline lines that no longer occur
 """
 from __future__ import annotations
 
@@ -23,6 +26,8 @@ from cvlib import (APR_CATEGORIES, KNOWN_TYPES, PRINTED_CATEGORIES, ROOT,  # noq
                    clean_name, is_marked_trainee, load_roster, mark_in_given_name,
                    name_parts, norm, parse_bib, parse_categories, review_period,
                    roster_index)
+from warning_ratchet import (BASELINE_REL, check_cv_line, compare, read_baseline,  # noqa: E402
+                             write_baseline)
 
 SELF = "wallace"  # family name of the CV owner, excluded from trainee checks
 
@@ -124,7 +129,8 @@ def run(only: set[str] | None = None) -> dict:
     for key, cs in printed_in.items():
         if key in by_key and set(cs) & {"journal", "conference"}:
             e = by_key[key][0]
-            if (e.year or 0) >= 2010 and "doi" not in e.fields:
+            if (e.year or 0) >= 2010 and "doi" not in e.fields \
+                    and "to appear" not in e.fields.get("note", "").lower():  # no DOI yet, by convention
                 warn("W-nodoi", f"'{key}' ({e.year}) has no DOI, so it cannot be checked automatically", key)
 
     # Trainee marks
@@ -253,9 +259,21 @@ def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--json", action="store_true")
     ap.add_argument("--keys", help="comma-separated keys to report on")
+    ap.add_argument("--prune-baseline", action="store_true",
+                    help=f"remove check_cv lines from {BASELINE_REL} that no longer occur")
     args = ap.parse_args()
     only = {k.strip() for k in args.keys.split(",")} if args.keys else None
     res = run(only)
+    current = Counter(check_cv_line(w) for w in res["warnings"])
+    baseline = read_baseline()
+    new, stale = compare(current, baseline, {"check_cv"})
+    if only is not None:
+        stale = []  # a partial run cannot tell which baseline lines are fixed
+    if args.prune_baseline and only is None:
+        write_baseline(baseline - Counter(stale))
+        print(f"Removed {len(stale)} stale line(s) from {BASELINE_REL}.")
+        stale = []
+    res["new_warnings"], res["stale_baseline"] = new, stale
     if args.json:
         print(json.dumps(res, indent=2))
     else:
@@ -269,13 +287,21 @@ def main() -> int:
                     lines.append(f"- **{codes}**")
                     lines += [f"  - {i['msg']}" for i in grp]
                 lines.append("")
+        if new:
+            lines += [f"### New warnings: not in {BASELINE_REL}, so CI fails",
+                      "Fix the cause. Adding a line to the baseline instead means Jim has to "
+                      "merge the PR by hand.", *[f"- `{n}`" for n in new], ""]
+        if stale:
+            lines += [f"### Fixed warnings still in {BASELINE_REL}, so CI fails",
+                      "Run `python3 scripts/check_cv.py --prune-baseline` to delete them.",
+                      *[f"- `{n}`" for n in stale], ""]
         out = "\n".join(lines)
         print(out)
         summary = os.environ.get("GITHUB_STEP_SUMMARY")
         if summary:
             with open(summary, "a", encoding="utf-8") as fh:
                 fh.write(out + "\n")
-    return 1 if res["errors"] else 0
+    return 1 if res["errors"] or new or stale else 0
 
 
 def _group(items):

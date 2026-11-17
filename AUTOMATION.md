@@ -4,7 +4,7 @@
 |---|---|---|
 | Sundays 18:07 (Toronto) | `CV sources` workflow | Fetches DBLP, OpenAlex and Crossref records and saves them on the `cv-sources` branch, so Claude can check entries even where it can't reach those sites. |
 | Weekly (your scheduled Claude task) | `automation/weekly-update.md` | Claude adds new papers and DOIs, open `cv-item` issues and items from your Outlook mail and calendar (acceptances, review recognitions, PC roles, talks…), has four sub-agents verify every change, and opens one PR on a `cv/` branch. It also follows up last week's PRs: answer its questions in a PR comment and the next run applies them. |
-| Every PR | `CV build` | Deterministic checks (`scripts/check_cv.py`), compiles both PDFs, blocks PRs labelled `needs-review`. |
+| Every PR | `CV build` | Deterministic checks (`scripts/check_cv.py`), compiles both PDFs, fails on any error and on any warning not in `scripts/warnings-baseline.txt` (see `scripts/warning_ratchet.py`), reports what changed in the PDF text, blocks PRs labelled `needs-review`. A PR that adds lines to the baseline or changes the checks fails the `ratchet` job, so you merge it by hand. |
 | `CV build` passes | `CV auto-merge` | Merges PRs you open (including ones Claude opens for you in a chat) automatically. Merges the weekly job's `cv/` PRs only if they're labelled `auto-merge`. Draft PRs and `needs-review` PRs never merge. |
 | Every push to `main` | `CV build` → release | Latest PDFs at Releases → `cv-latest` (Wallace-CV.pdf, Wallace-CV-APR.pdf). |
 | Push to `main`, and every 3 hours | `Overleaf sync` (optional) | Pushes `main` to Overleaf; edits made in Overleaf come back as an auto-merging PR. |
@@ -37,7 +37,8 @@ The task needs your GitHub connection (to push and open PRs) and the Microsoft 3
 4. **Optional variables** (Settings → Secrets and variables → Actions → Variables):
    `ORCID`, `OPENALEX_AUTHOR_ID` (the CV sources log shows the one it resolved), `CONTACT_EMAIL`.
 5. **Optional, once things work** — a ruleset on `main` requiring a pull request and the
-   status checks `lint` and `compile` (not `gate`; it only runs on some PRs). Don't require
+   status checks `lint` and `compile` (not `gate` or `ratchet`; they only run on some PRs, and
+   `ratchet` failing means "merge by hand", which a required check would forbid). Don't require
    approvals, or nothing can auto-merge. Skip this if you use Overleaf option A below:
    Overleaf's GitHub button pushes straight to `main`, which the ruleset would block.
 6. **Optional: instant `@claude`** — add a `CLAUDE_CODE_OAUTH_TOKEN` secret (from

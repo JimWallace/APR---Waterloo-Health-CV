@@ -1,6 +1,12 @@
 # Checks and compiles the CV on every PR and on main.
 # On main it also publishes the two PDFs to the "cv-latest" release:
 #   https://github.com/JimWallace/APR---Waterloo-Health-CV/releases/tag/cv-latest
+#
+# Errors fail the build, and so does any warning (check_cv.py, biber or LaTeX)
+# that is not in scripts/warnings-baseline.txt; see scripts/warning_ratchet.py.
+# TeX Live is pinned (texlive_version) so the warnings do not change under us;
+# to move to a newer one, change both builds and rerun
+# `python3 scripts/warning_ratchet.py --update <docs>` in the same PR.
 name: CV build
 
 on:
@@ -21,8 +27,10 @@ jobs:
   lint:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - name: Check scholar.bib and the category lists
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
+      - name: Test the checkers
+        run: python3 -m unittest discover -s scripts/tests
+      - name: Check scholar.bib and the category lists (errors, and warnings not in the baseline)
         run: python3 scripts/check_cv.py
       - name: Keep personal data out of the template
         run: |
@@ -34,10 +42,11 @@ jobs:
   compile:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
       - name: Compile main.tex and apr.tex (TeX Live, latexmk + biber)
-        uses: xu-cheng/latex-action@v3
+        uses: xu-cheng/latex-action@e2f99d4b3685b0da93f97e1b86ad8fab81105098 # v3
         with:
+          texlive_version: 2023
           root_file: |
             main.tex
             apr.tex
@@ -46,23 +55,40 @@ jobs:
           mkdir -p out
           cp main.pdf out/Wallace-CV.pdf
           cp apr.pdf  out/Wallace-CV-APR.pdf
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
         with:
           name: cv-pdfs
           path: out/*.pdf
+      - name: No warnings beyond the baseline (LaTeX and biber)
+        # On main the merge has happened; report, but still publish the PDFs.
+        continue-on-error: ${{ github.ref == 'refs/heads/main' }}
+        run: python3 scripts/warning_ratchet.py main apr
+      - name: Fonts embedded; what changed in the PDFs since main
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+        run: |
+          sudo apt-get update -qq && sudo apt-get install -y -qq poppler-utils >/dev/null
+          gh release download cv-latest --pattern 'Wallace-CV*.pdf' --dir ref 2>/dev/null \
+            || echo "No cv-latest release to compare with."
+          python3 scripts/pdf_report.py main.pdf apr.pdf \
+            --against ref/Wallace-CV.pdf ref/Wallace-CV-APR.pdf
 
   template:
     # The template on its own: its fictional example CV must build in both versions.
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
       - name: Compile the template example (plain and APR)
-        uses: xu-cheng/latex-action@v3
+        uses: xu-cheng/latex-action@e2f99d4b3685b0da93f97e1b86ad8fab81105098 # v3
         with:
+          texlive_version: 2023
           working_directory: template/example
           root_file: |
             example.tex
             example-apr.tex
+      - name: No warnings beyond the baseline (LaTeX and biber)
+        run: python3 scripts/warning_ratchet.py example example-apr
 
   gate:
     # A PR labelled needs-review can't pass, so nothing merges it by accident.
@@ -76,6 +102,30 @@ jobs:
           exit 1
       - run: echo "No blocking label."
 
+  ratchet:
+    # Claude writes, CI verifies, so a change that loosens the verification itself
+    # (accepts new warnings, or edits the checks) is not merged automatically.
+    # This job fails for such a PR; Jim merges it by hand. Not a required check.
+    if: github.ref != 'refs/heads/main'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
+        with:
+          fetch-depth: 0
+      - name: The warning baseline only shrinks
+        run: python3 scripts/warning_ratchet.py --growth "$(git merge-base origin/main HEAD)"
+      - name: The checks are unchanged
+        run: |
+          base=$(git merge-base origin/main HEAD)
+          changed=$(git diff --name-only "$base" HEAD -- .github/workflows/cv-build.yml \
+            .github/workflows/cv-merge.yml scripts/check_cv.py scripts/cvlib.py \
+            scripts/warning_ratchet.py scripts/pdf_report.py scripts/tests)
+          if [ -n "$changed" ]; then
+            for f in $changed; do echo "::error file=$f::This PR changes the checks; merge it by hand."; done
+            exit 1
+          fi
+          echo "The checks are unchanged."
+
   publish:
     if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
     needs: [lint, compile]
@@ -83,7 +133,7 @@ jobs:
     permissions:
       contents: write
     steps:
-      - uses: actions/download-artifact@v4
+      - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093 # v4.3.0
         with:
           name: cv-pdfs
           path: out

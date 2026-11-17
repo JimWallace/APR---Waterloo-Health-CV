@@ -1,7 +1,7 @@
 ---
 name: add-cv-item
 description: Add one item Jim reports (paper, talk, award, reviewing/PC role, grant, supervision, service) to the CV from an issue or chat message, verify it, and open a labelled PR.
-allowed-tools: Read, Grep, Glob, Edit, Write, Agent, WebFetch, WebSearch, Skill, Bash(python3 scripts/check_cv.py:*), Bash(python3 scripts/fetch_candidates.py:*), Bash(git:*), Bash(gh pr:*), Bash(gh issue:*), Bash(gh label:*), Bash(gh api:*), Bash(curl:*), Bash(latexmk:*)
+allowed-tools: Read, Grep, Glob, Edit, Write, Agent, WebFetch, WebSearch, Skill, Bash(python3 scripts/check_cv.py:*), Bash(python3 scripts/warning_ratchet.py:*), Bash(python3 scripts/fetch_candidates.py:*), Bash(git:*), Bash(gh pr:*), Bash(gh issue:*), Bash(gh label:*), Bash(gh api:*), Bash(curl:*), Bash(latexmk:*)
 ---
 
 # Add a CV item

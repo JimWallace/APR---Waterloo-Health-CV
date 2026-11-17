@@ -107,8 +107,13 @@ that is followed by a list; never use `\newpage` (use `\sectionbreak`).
 ## Checks
 
 - `python3 scripts/check_cv.py` — deterministic checks; errors fail CI. Run it after every edit.
+  Warnings fail too unless `scripts/warnings-baseline.txt` lists them, and a listed warning
+  that no longer occurs fails until its line is deleted (`--prune-baseline`). Fix a new warning
+  rather than adding it to the baseline: a PR that adds baseline lines cannot auto-merge.
 - `python3 scripts/check_cv.py --keys k1,k2` — the same, reporting only on the keys you touched.
 - `latexmk -pdf main.tex && latexmk -pdf apr.tex` — if TeX is installed; CI compiles both anyway.
+  Then `python3 scripts/warning_ratchet.py main apr` applies the same baseline to the LaTeX and
+  biber warnings (CI does this too, on TeX Live 2023, and reports what changed in the PDF text).
 - After a template change, also build `template/example/` (`example.tex`, `example-apr.tex`);
   CI does, and fails if `template/` mentions me.
 - Verifier sub-agents in `.claude/agents/` check changes independently. The `cv-verify` skill
