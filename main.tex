@@ -1,34 +1,13 @@
 \documentclass[12pt]{article}
 
-\usepackage{enumitem}
-\usepackage[table,xcdraw]{xcolor}
-\input{NSERC-formatting}
-
-
-
-
-\usepackage[utf8]{inputenc}
-%\usepackage[hybrid]{markdown}
-\usepackage[
-    style=ACM-Reference-Format,
-    backend=biber,
-    sorting=ydnt,
-    giveninits,
-    firstinits=true,
-    maxcitenames=99,
-    maxbibnames=99,
-    defernumbers=true,
-]{biblatex}
+% The Faculty of Health format, APR highlighting and page-break rules all
+% live in template/ (see template/README.md). This file holds content only.
+% Compile main.tex for the plain Faculty of Health CV, or apr.tex for the
+% APR version (evaluation notes + highlighting).
+\usepackage{uwhealthcv}
 
 \addbibresource{scholar.bib}
-\input{biblatex-formatting}
-
-% APR version: compile main.tex for the plain Faculty of Health CV, or apr.tex
-% for the APR version (evaluation notes + highlighting). See aprcv.sty.
-\usepackage{aprcv}
 \setreviewperiod{2025}{2026}
-% Page breaks for both versions: see cv-layout.tex.
-\input{cv-layout}
 % Publications and presentations from the review period are highlighted as
 % research. To use another colour for one entry, add its key to aprteaching,
 % aprservice or apraward; to stop one being highlighted, add it to aprnone.

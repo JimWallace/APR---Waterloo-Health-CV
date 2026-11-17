@@ -1,0 +1,58 @@
+%% uwhealthcv.sty -- the University of Waterloo Faculty of Health CV format.
+%%
+%% The template half of this repository. A CV loads this one package and
+%% supplies only its own content:
+%%
+%%   \documentclass[12pt]{article}
+%%   \usepackage{uwhealthcv}
+%%   \addbibresource{mycv.bib}
+%%   \setreviewperiod{2025}{2026}
+%%   ... \DeclareBibliographyCategory / \addtocategory lists ...
+%%   \begin{document} ... \end{document}
+%%
+%% For the APR version, a second file passes the "apr" option and inputs the
+%% first (see ../apr.tex):
+%%
+%%   \PassOptionsToPackage{apr}{aprcv}
+%%   \input{main}
+%%
+%% Files read here, in this order (the order matters):
+%%   NSERC-formatting.tex     page, fonts, headers, tables
+%%   biblatex (ACM style)     with biblatex-formatting.tex
+%%   aprcv.sty                APR highlighting; reads the CV's own
+%%                            apr-formatting.tex, if present
+%%   cv-layout.tex            page-break rules (\keepwithnext, \sectionbreak)
+%%
+%% The template directory must be on TeX's search path: latexmkrc in the CV's
+%% directory adds it (Overleaf and CI read that file too).
+
+\NeedsTeXFormat{LaTeX2e}[2020/10/01]
+\ProvidesPackage{uwhealthcv}[2026/11/17 v1.0 Faculty of Health CV format]
+
+\DeclareOption{apr}{\PassOptionsToPackage{apr}{aprcv}}
+\DeclareOption{plain}{\PassOptionsToPackage{plain}{aprcv}}
+\ProcessOptions\relax
+
+\RequirePackage{enumitem}
+\RequirePackage[table,xcdraw]{xcolor}
+\input{NSERC-formatting}
+
+\RequirePackage[utf8]{inputenc}
+\RequirePackage[
+    style=ACM-Reference-Format,
+    backend=biber,
+    sorting=ydnt,
+    giveninits,
+    firstinits=true,
+    maxcitenames=99,
+    maxbibnames=99,
+    defernumbers=true,
+]{biblatex}
+\input{biblatex-formatting}
+
+\RequirePackage{aprcv}
+
+% cv-layout.tex ends with \makeatother, so it goes last.
+\input{cv-layout}
+
+\endinput

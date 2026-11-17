@@ -24,6 +24,12 @@ jobs:
       - uses: actions/checkout@v4
       - name: Check scholar.bib and the category lists
         run: python3 scripts/check_cv.py
+      - name: Keep personal data out of the template
+        run: |
+          if grep -rIn -i 'wallace' template/; then
+            echo "::error::template/ must not contain CV data (see template/CLAUDE.md)."
+            exit 1
+          fi
 
   compile:
     runs-on: ubuntu-latest
@@ -44,6 +50,19 @@ jobs:
         with:
           name: cv-pdfs
           path: out/*.pdf
+
+  template:
+    # The template on its own: its fictional example CV must build in both versions.
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Compile the template example (plain and APR)
+        uses: xu-cheng/latex-action@v3
+        with:
+          working_directory: template/example
+          root_file: |
+            example.tex
+            example-apr.tex
 
   gate:
     # A PR labelled needs-review can't pass, so nothing merges it by accident.

@@ -1,0 +1,2 @@
+# Put the template (the parent directory) on TeX's search path.
+ensure_path('TEXINPUTS', '../');

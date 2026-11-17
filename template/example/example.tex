@@ -1,0 +1,173 @@
+% Example CV for the template, with fictional content. It exercises every
+% part of the template (each section style, the biblatex categories, the
+% \hl... macros, a grants row, an APR-only note) so the template can be
+% developed and checked without anyone's real CV.
+%
+% Compile example.tex for the plain CV, example-apr.tex for the APR version.
+\documentclass[12pt]{article}
+
+\usepackage{uwhealthcv}
+
+\addbibresource{example.bib}
+\setreviewperiod{2025}{2026}
+
+\DeclareBibliographyCategory{journal}
+\addtocategory{journal}{example2026journal, example2019journal}
+\DeclareBibliographyCategory{conference}
+\addtocategory{conference}{example2025conference}
+\DeclareBibliographyCategory{technicalreports}
+\addtocategory{technicalreports}{example2021report}
+\DeclareBibliographyCategory{software}
+\addtocategory{software}{example2026software}
+\DeclareBibliographyCategory{presentations}
+\addtocategory{presentations}{example2026talk}
+\DeclareBibliographyCategory{invited}
+\addtocategory{invited}{example2025invited}
+
+% APR colours: trainee work in two colours; software as teaching first.
+\addtocategory{apralsoteaching}{example2026journal, example2026talk}
+\addtocategory{aprteaching}{example2026software}
+\addtocategory{apralsoresearch}{example2026software}
+
+\begin{document}
+
+\noindent
+\thispagestyle{empty}
+\begin{center}
+\textbf{CURRICULUM VITA}
+\end{center}
+
+\textbf{NAME/DATE:} Alex Example, \usvardate\today
+\\ \\
+\textbf{CONTACT INFORMATION:} \\
+School of Public Health Sciences \\
+University of Waterloo
+\\ \\
+\textbf{DEGREES RECEIVED:}
+
+\begin{table}[h!]
+\centering
+\begin{tabular}{p{2.5cm} p{5cm} p{5cm}}
+\underline{Degree} & \underline{Institution}  & \underline{Years} \\
+PhD                & University of Waterloo   & 2010 -- 2015 \\
+\end{tabular}
+\end{table}
+
+\sectionbreak
+\textbf{ACADEMIC AWARDS AND DISTINCTIONS:}
+
+\begin{itemize}
+\setlength{\labelsep}{0em}
+\setlength{\itemsep}{-5pt}
+    \item[] \hlaward[2026]{An award inside the review period}
+    \item[] An award from before the review period, 2019
+\end{itemize}
+
+\sectionbreak
+\textbf{SCHOLARLY AND PROFESSIONAL ACTIVITIES:}
+
+\keepwithnext
+Conference Program Committee:
+\begin{itemize}
+\setlength{\labelsep}{0em}
+\setlength{\itemsep}{-5pt}
+    \item[] \hlservice[2021-]{An open-ended role, 2021 -- Present}
+    \item[] A past role, 2015 -- 2017
+\end{itemize}
+
+\ifAPR % APR version only ------------------------------------------
+\sectionbreak
+\textbf{A Note on Reading the Highlighting}
+\\ \\
+Work from the review period is shown as \aprsample{research}{}{research}.
+Trainee work is shown as \aprsample{research}{teaching}{research, with
+supervision}.
+\fi % end APR version only -------------------------------------
+
+\sectionbreak
+\textbf{PUBLICATIONS:}
+\begin{enumerate}
+
+    \nocite{*}
+
+    \item[a)] \textbf{Refereed Journals:}
+    \newrefcontext[labelprefix=J]
+    \printbibliography[category=journal,resetnumbers=true,heading=none]
+
+    \keepwithnext
+    \item[b)] \textbf{Refereed Conference Proceedings:}
+    \newrefcontext[labelprefix=C]
+    \printbibliography[category=conference,resetnumbers=true,heading=none]
+
+    \keepwithnext
+    \item[c)] \textbf{Technical and Consulting Reports:}
+    \newrefcontext[labelprefix=T]
+    \printbibliography[category=technicalreports,resetnumbers=true,heading=none]
+
+    \sloppy
+    \keepwithnext
+    \item[d)] \textbf{Software:}
+    \newrefcontext[labelprefix=S]
+    \printbibliography[category=software,resetnumbers=true,heading=none]
+
+\end{enumerate}
+
+\sectionbreak
+\textbf{PRESENTATION TO SCHOLARLY GROUPS}\\
+Speaker(s) denoted by \dag\\
+
+\begin{enumerate}
+
+    \item[a)]\textbf{Invited} \\
+    \newrefcontext
+    \printbibliography[category={invited},resetnumbers=true,heading=none]
+
+    \keepwithnext
+    \item[b)]\textbf{Self-initiated} \\
+    \newrefcontext
+    \printbibliography[category={presentations},resetnumbers=true,heading=none]
+
+\end{enumerate}
+
+\sectionbreak
+\textbf{RESEARCH GRANTS AND CONTRACTS:}
+
+\begin{longtable}[c]{p{4.5cm} l l l p{4.5cm}}
+\underline{Names of Researcher(s)} & \underline{Agency} & \underline{\$ Amount} & \underline{Tenure} & \underline{Short Title} \\
+\endhead
+
+\hlresearchrow{2024-2026}\textbf{Alex Example (PI)} & Example Agency & \$10,000 & 2024 -- 2026 & An Active Grant \\*
+\\
+
+\textbf{Alex Example (PI)} & Example Agency & \$5,000 & 2018 & A Past Grant \\*
+\\
+
+\end{longtable}
+
+\sectionbreak
+\keepwithnext[6]
+\textbf{GRADUATE STUDENT SUPERVISION}
+
+\begin{enumerate}
+    \item[a)] \textbf{As Supervisor}
+    \begin{enumerate}
+        \item[PhD]
+        \begin{enumerate}[label=\arabic*.]
+            \item \hlteaching{Sam Student, In progress}
+            \item Pat Graduate, 2020, A Completed Thesis
+        \end{enumerate}
+    \end{enumerate}
+\end{enumerate}
+
+\sectionbreak
+\keepwithnext
+\textbf{SERVICE}
+
+    \begin{enumerate}
+    \setlength{\labelsep}{0em}
+    \setlength{\itemsep}{-5pt}
+        \item[] \hlservice[2025-2027]{A Faculty committee, 2025 -- 2027}
+        \item[] A past committee, 2016
+    \end{enumerate}
+
+\end{document}

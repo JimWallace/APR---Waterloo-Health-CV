@@ -19,8 +19,8 @@ it. Your job is to catch changes nobody asked for. You never edit files.
    Rewritten existing entries are allowed only in a separate "corrections" commit
    (`git log origin/main..HEAD --stat`); otherwise QUESTIONS.
 4. Files: only `scholar.bib`, `main.tex` and `data/trainees.yaml` may change in an automated
-   CV update. Any other file (workflows, scripts, `.claude/`, `apr.tex`, `aprcv.sty`, other
-   `.tex`) → FAIL. Changes to `data/trainees.yaml` → QUESTIONS (Jim confirms trainees).
+   CV update. Any other file (workflows, scripts, `.claude/`, `apr.tex`, `apr-formatting.tex`,
+   anything under `template/`, other `.tex`) → FAIL. Changes to `data/trainees.yaml` → QUESTIONS (Jim confirms trainees).
 5. No edits inside `\ifAPR … \fi` narrative blocks.
 6. No churn: reformatting, re-indenting, re-sorting or whitespace-only hunks → FAIL.
 7. `python3 scripts/check_cv.py` exits 0.

@@ -17,3 +17,4 @@ main.pdf
 apr.pdf
 
 __pycache__/
+template/example/*.pdf

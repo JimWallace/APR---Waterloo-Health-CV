@@ -16,7 +16,7 @@ PRINTED_CATEGORIES = [
     "journal", "conference", "technicalreports", "other",
     "patent", "software", "invited", "presentations",
 ]
-# APR colour categories (see aprcv.sty). These do not print anything themselves.
+# APR colour categories (see template/aprcv.sty). These do not print anything themselves.
 APR_CATEGORIES = [
     "aprteaching", "aprservice", "apraward", "aprnone", "aprinclude",
     "apralsoteaching", "apralsoresearch", "apralsoservice", "apralsoaward",

@@ -1,12 +1,22 @@
 # Jim Wallace's CV
 
-LaTeX CV in the University of Waterloo Faculty of Health format. One source, two PDFs:
+LaTeX CV in the University of Waterloo Faculty of Health format. The repo has two halves:
+
+- **The template** (`template/`): the Faculty of Health format and the APR highlighting
+  (`uwhealthcv.sty`, `aprcv.sty`, the formatting and page-break files, the ACM biblatex style,
+  badge images) plus a fictional example CV. No personal data. It has its own `README.md` and
+  `CLAUDE.md`; read them before changing anything there.
+- **My CV** (everything else): content and my settings. `latexmkrc` puts `template/` on TeX's
+  search path, so `main.tex` just says `\usepackage{uwhealthcv}`.
+
+One source, two PDFs:
 
 - `main.tex` compiles to the plain Faculty of Health CV.
 - `apr.tex` compiles `main.tex` with the `apr` option: adds the "A Note on…" sections and colours
-  review-period items (see the header of `aprcv.sty`). Never put content in `apr.tex`.
+  review-period items (see the header of `template/aprcv.sty`). Never put content in `apr.tex`.
 - `scholar.bib` holds publications, talks and software. `main.tex` decides which heading each
   entry prints under with `\addtocategory{<category>}{key, key, …}` near the top.
+- `apr-formatting.tex` holds my settings for the APR version (highlight strength and style).
 - `data/trainees.yaml` lists my trainees (students/postdocs) and the spellings used for them.
 - `2pages.tex` / `8pages.tex` are older NSERC-format variants; leave them alone unless asked.
 
@@ -51,7 +61,7 @@ the source of truth; never force-push `main`.
 - `presentations`: self-initiated talks/posters without archival proceedings. `invited`: invited talks.
 - `technicalreports`, `other`, `patent`, `software` as named.
 
-**APR colours** (`main.tex`, block after the categories; rules in `aprcv.sty`)
+**APR colours** (`main.tex`, block after the categories; rules in `template/aprcv.sty`)
 - Bib entries in the review period (`\setreviewperiod`) are research-green automatically.
   `aprinclude` treats an entry as in the period (e.g. a 2027 paper accepted during it);
   `aprnone` turns highlighting off for one entry. Only I add keys to either.
@@ -68,14 +78,16 @@ the source of truth; never force-push `main`.
   with `\\`.
 - Supervision → GRADUATE STUDENT SUPERVISION. Service → SERVICE.
 
-**Page breaks** are set in `cv-layout.tex`. Put `\keepwithnext` before a new heading that is
-followed by a list; never use `\newpage` (use `\sectionbreak`).
+**Page breaks** are set in `template/cv-layout.tex`. Put `\keepwithnext` before a new heading
+that is followed by a list; never use `\newpage` (use `\sectionbreak`).
 
 ## Checks
 
 - `python3 scripts/check_cv.py` — deterministic checks; errors fail CI. Run it after every edit.
 - `python3 scripts/check_cv.py --keys k1,k2` — the same, reporting only on the keys you touched.
 - `latexmk -pdf main.tex && latexmk -pdf apr.tex` — if TeX is installed; CI compiles both anyway.
+- After a template change, also build `template/example/` (`example.tex`, `example-apr.tex`);
+  CI does, and fails if `template/` mentions me.
 - Verifier sub-agents in `.claude/agents/` check changes independently. The `cv-verify` skill
   says how to run them.
 

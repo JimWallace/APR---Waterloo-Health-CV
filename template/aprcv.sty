@@ -30,12 +30,13 @@
 %%   \sethighlightstrength{40}      softer highlights (100 = full Word colours)
 %%   \sethighlightstyle{split}      two-colour style: split, blend or bar
 %%
-%% Files
-%%   main.tex                content; compiles to the plain CV
-%%   apr.tex                 switch; compiles main.tex as the APR version
-%%   NSERC-formatting.tex,   formatting shared by both versions
+%% Files (the template lives in template/; the CV's own files sit beside it)
+%%   main.tex                the CV's content; compiles to the plain CV
+%%   apr.tex                 the CV's switch; compiles main.tex as the APR version
+%%   apr-formatting.tex      the CV's settings for the APR version only
+%%   uwhealthcv.sty          template: loads everything below in order
+%%   NSERC-formatting.tex,   template: formatting shared by both versions
 %%   biblatex-formatting.tex
-%%   apr-formatting.tex      formatting for the APR version only
 %%
 %% biblatex entries are highlighted automatically (research colour) when their
 %% year falls in the review period. To change one entry's colour, add its key
@@ -421,7 +422,7 @@
 }{}
 
 %% ------------------------------------------------ APR-only formatting file
-% In the APR version, apr-formatting.tex (if present) is read here, after
+% In the APR version, the CV's apr-formatting.tex (if present) is read here, after
 % NSERC-formatting.tex and biblatex-formatting.tex, so it can override them
 % for the APR version without touching the plain CV.
 \ifAPR
