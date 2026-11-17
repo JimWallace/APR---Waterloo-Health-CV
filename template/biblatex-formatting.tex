@@ -31,9 +31,10 @@
     \marginpar{\hspace{1.75em}\raisebox{-0.5\height}{\cvbadge{#1}}}%
 }
 
+% The badge sits in the margin and takes no room in the line, so no space
+% follows it: entries with and without a badge start at the same place.
 \renewbibmacro*{begentry}{%
     \printfield{usera}%
-    \setunit{\addspace}%
 }
 
 
