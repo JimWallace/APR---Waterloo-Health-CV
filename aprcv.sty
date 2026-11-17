@@ -1,0 +1,291 @@
+%% aprcv.sty -- one CV source, two outputs:
+%%
+%%   * the plain Faculty of Health CV (default), and
+%%   * the APR version (package option "apr"): adds the APR-only material
+%%     wrapped in \ifAPR ... \fi and highlights review-period items in the
+%%     colours the Faculty of Health asks for.
+%%
+%% Highlight colours (the Word highlighter colours named in the call):
+%%   teaching & supervision = yellow, research = bright green,
+%%   service = turquoise, awards = pink.
+%%
+%% Commands
+%%   \setreviewperiod{2025}{2026}   years under review
+%%   \hlteaching[years]{text}       highlight an entry (also \hlresearch,
+%%   \hlresearch[years]{text}       \hlservice, \hlaward). [years] is a year
+%%   \hlservice[years]{text}        (2025), a range (2024-2026), or an open
+%%   \hlaward[years]{text}          range (2021-, i.e. "to present"). The
+%%                                  entry is highlighted only when [years]
+%%                                  overlaps the review period; with no
+%%                                  [years] it is always highlighted.
+%%   \hlresearchrow{years}          at the start of a table row: colours the
+%%   (also \hlteachingrow, ...)     whole row (use on every row of an entry)
+%%   \aprlegend                     colour key, printed in the APR version only
+%%   \ifAPR ... \fi                 material for the APR version only
+%%
+%% biblatex entries are highlighted automatically (research colour) when their
+%% year falls in the review period. To change one entry's colour, add its key
+%% to the category aprteaching, aprservice or apraward; to stop one entry
+%% from being highlighted, add it to aprnone.
+%%
+%% Highlights are drawn behind the text from positions recorded on the
+%% previous run, so the APR version needs one extra compile (Overleaf and
+%% latexmk do this automatically).
+
+\NeedsTeXFormat{LaTeX2e}[2020/10/01]
+\ProvidesPackage{aprcv}[2026/11/17 v1.0 APR highlighting for Faculty of Health CVs]
+
+\newif\ifAPR
+\DeclareOption{apr}{\APRtrue}
+\DeclareOption{plain}{\APRfalse}
+\ProcessOptions\relax
+
+\@ifpackageloaded{xcolor}{}{\RequirePackage[table]{xcolor}}
+\@ifpackageloaded{colortbl}{}{\RequirePackage{colortbl}}
+
+%% ---------------------------------------------------------------- colours
+\definecolor{APRteaching}{RGB}{255,255,0}   % Word "Yellow"
+\definecolor{APRresearch}{RGB}{0,255,0}     % Word "Bright Green"
+\definecolor{APRservice}{RGB}{0,255,255}    % Word "Turquoise"
+\definecolor{APRaward}{RGB}{255,0,255}      % Word "Pink"
+
+%% ---------------------------------------------------------- review period
+\newcount\apr@from
+\newcount\apr@to
+\newcommand\setreviewperiod[2]{%
+  \global\apr@from=#1\relax
+  \global\apr@to=#2\relax}
+\setreviewperiod{2025}{2026}
+
+% \apr@ifyears{years}{true}{false} -- expandable, so it can sit at the start
+% of a table row. years: "", "2025", "2024-2026", "2024--2026" or "2021-".
+\def\apr@ifempty#1{%
+  \if\relax\detokenize{#1}\relax
+    \expandafter\@firstoftwo
+  \else
+    \expandafter\@secondoftwo
+  \fi}
+\def\apr@ifyears#1{%
+  \apr@ifempty{#1}%
+    {\@firstoftwo}%
+    {\expandafter\apr@ifyears@a\expanded{{\zap@space#1 \@empty}}}}
+\def\apr@ifyears@a#1{%
+  \apr@ifoverlap{\apr@first#1-\@nil}{\apr@last#1-\@nil}}
+\def\apr@first#1-#2\@nil{#1}
+\def\apr@last#1-#2\@nil{%
+  \apr@ifempty{#2}%
+    {\apr@ifempty{#1}{9999}{#1}}%
+    {\apr@last#2\@nil}}
+\def\apr@ifoverlap#1#2{%
+  \ifnum
+    \ifnum\numexpr#1\relax>\apr@to 1\else
+      \ifnum\numexpr#2\relax<\apr@from 1\else 0\fi
+    \fi
+    =\z@
+    \expandafter\@firstoftwo
+  \else
+    \expandafter\@secondoftwo
+  \fi}
+
+%% ------------------------------------------------- position marks (APR only)
+% Each highlighted entry gets a start and an end mark. At shipout the marks
+% write their page positions to the .aux file; on the next run the regions
+% are painted in the page background, behind the text, so highlighting never
+% changes the layout. Highlights cover whole entries: from where the entry
+% starts to where it ends, full width on the lines in between.
+\ifdefined\pdfsavepos\else
+  \ifdefined\savepos
+    \let\pdfsavepos\savepos
+    \let\pdflastxpos\lastxpos
+    \let\pdflastypos\lastypos
+  \fi
+\fi
+
+\newcount\apr@id
+\newcount\apr@maxid
+\newcount\apr@i
+\newdimen\apr@bleed  \apr@bleed=1pt
+
+\def\aprS#1#2#3#4#5#6#7#8#9{%
+  \expandafter\gdef\csname apr@S@#1\endcsname{{#2}{#3}{#4}{#5}{#6}{#7}{#8}{#9}}%
+  \ifnum#1>\apr@maxid \global\apr@maxid=#1\relax\fi}
+\def\aprE#1#2#3#4{%
+  \expandafter\gdef\csname apr@E@#1\endcsname{{#2}{#3}{#4}}}
+
+\newcommand\apr@mark@start[1]{%
+  \ifvmode\leavevmode\fi
+  \interlinepenalty\@M % keep a highlighted entry on one page
+  \global\advance\apr@id\@ne
+  \xdef\apr@cur{\the\apr@id}%
+  \pdfsavepos
+  \edef\apr@tmp{\write\@auxout{%
+    \string\aprS{\apr@cur}{\noexpand\the\ReadonlyShipoutCounter}%
+      {\noexpand\the\pdflastxpos}{\noexpand\the\pdflastypos}{#1}%
+      {\the\dimexpr 1in+\hoffset+\oddsidemargin+\@totalleftmargin\relax}%
+      {\the\linewidth}{\the\ht\strutbox}{\the\dp\strutbox}}}%
+  \apr@tmp}
+\newcommand\apr@mark@end{%
+  \unskip
+  \pdfsavepos
+  \edef\apr@tmp{\write\@auxout{%
+    \string\aprE{\apr@cur}{\noexpand\the\ReadonlyShipoutCounter}%
+      {\noexpand\the\pdflastxpos}{\noexpand\the\pdflastypos}}}%
+  \apr@tmp}
+
+% painting, inside the shipout/background picture (origin top-left, 1pt units)
+\newdimen\apr@pageht
+\newdimen\apr@xs \newdimen\apr@ys \newdimen\apr@xe \newdimen\apr@ye
+\newdimen\apr@L  \newdimen\apr@R  \newdimen\apr@H  \newdimen\apr@D
+\newdimen\apr@ra \newdimen\apr@rb \newdimen\apr@rw \newdimen\apr@rh
+
+% \apr@rect{left}{bottom}{right}{top}{colour}, page coordinates from bottom-left
+\def\apr@rect#1#2#3#4#5{%
+  \apr@ra=\dimexpr#1\relax
+  \apr@rb=\dimexpr#2-\apr@pageht\relax
+  \apr@rw=\dimexpr#3-(#1)\relax
+  \apr@rh=\dimexpr#4-(#2)\relax
+  \ifdim\apr@rw>\z@\ifdim\apr@rh>\z@
+    \put(\strip@pt\apr@ra,\strip@pt\apr@rb){%
+      \textcolor{#5}{\rule{\apr@rw}{\apr@rh}}}%
+  \fi\fi}
+
+\def\apr@draw@one#1{%
+  \ifcsname apr@S@#1\endcsname\ifcsname apr@E@#1\endcsname
+    \expandafter\expandafter\expandafter\apr@draw@S
+      \csname apr@S@#1\endcsname{#1}%
+  \fi\fi}
+\def\apr@draw@S#1#2#3#4#5#6#7#8#9{% page,x,y,colour,L,W,H,D,id
+  \ifnum#1=\ReadonlyShipoutCounter
+    \apr@xs=#2sp\relax \apr@ys=#3sp\relax
+    \apr@L=#5\relax \apr@R=\dimexpr#5+#6\relax
+    \apr@H=#7\relax \apr@D=#8\relax
+    \def\apr@col{#4}%
+    \expandafter\expandafter\expandafter\apr@draw@E
+      \csname apr@E@#9\endcsname
+  \fi}
+\def\apr@draw@E#1#2#3{%
+  \ifnum#1=\ReadonlyShipoutCounter
+    \apr@xe=#2sp\relax \apr@ye=#3sp\relax
+    \ifdim\apr@L>\apr@xs \apr@L=\apr@xs \fi
+    \dimen@=\dimexpr\apr@ys-\apr@ye\relax
+    \ifdim\dimen@<\z@ \dimen@=-\dimen@ \fi
+    \ifdim\dimen@<.5\apr@H
+      % one line
+      \apr@rect{\apr@xs-\apr@bleed}{\apr@ys-\apr@D}%
+               {\apr@xe+\apr@bleed}{\apr@ys+\apr@H}{\apr@col}%
+    \else
+      % first line, lines in between, last line
+      \apr@rect{\apr@xs-\apr@bleed}{\apr@ys-\apr@D}%
+               {\apr@R+\apr@bleed}{\apr@ys+\apr@H}{\apr@col}%
+      \apr@rect{\apr@L-\apr@bleed}{\apr@ye+\apr@H}%
+               {\apr@R+\apr@bleed}{\apr@ys-\apr@D}{\apr@col}%
+      \apr@rect{\apr@L-\apr@bleed}{\apr@ye-\apr@D}%
+               {\apr@xe+\apr@bleed}{\apr@ye+\apr@H}{\apr@col}%
+    \fi
+  \fi}
+
+\def\apr@draw@page{%
+  \ifnum\apr@maxid>\z@
+    \ifdefined\pdfpageheight
+      \apr@pageht=\pdfpageheight
+      \ifdim\apr@pageht=\z@ \apr@pageht=\paperheight \fi
+    \else
+      \apr@pageht=\paperheight
+    \fi
+    \apr@i=\@ne
+    \loop\ifnum\apr@i>\apr@maxid\else
+      \expandafter\apr@draw@one\expandafter{\the\apr@i}%
+      \advance\apr@i\@ne
+    \repeat
+  \fi}
+
+\ifAPR
+  \AddToHook{shipout/background}{\apr@draw@page}
+\fi
+
+%% ------------------------------------------------------- document commands
+\newcommand\apr@hl[3]{% colour, years, text
+  \ifAPR
+    \apr@ifyears{#2}{\apr@mark@start{#1}#3\apr@mark@end}{#3}%
+  \else
+    #3%
+  \fi}
+\NewDocumentCommand\hlteaching{O{}+m}{\apr@hl{APRteaching}{#1}{#2}}
+\NewDocumentCommand\hlresearch{O{}+m}{\apr@hl{APRresearch}{#1}{#2}}
+\NewDocumentCommand\hlservice{O{}+m}{\apr@hl{APRservice}{#1}{#2}}
+\NewDocumentCommand\hlaward{O{}+m}{\apr@hl{APRaward}{#1}{#2}}
+
+% table rows: must stay expandable so \rowcolor ends up first in the row
+\newcommand\apr@row[2]{%
+  \ifAPR\expandafter\@firstofone\else\expandafter\@gobble\fi
+  {\apr@ifyears{#2}{\rowcolor{#1}}{}}}
+\newcommand\hlteachingrow{\apr@row{APRteaching}}
+\newcommand\hlresearchrow{\apr@row{APRresearch}}
+\newcommand\hlservicerow{\apr@row{APRservice}}
+\newcommand\hlawardrow{\apr@row{APRaward}}
+
+% colour key
+\def\apr@swatch#1#2{\colorbox{#1}{\strut#2}}
+\newcommand\aprlegend{%
+  \ifAPR
+    \par\smallskip\noindent
+    {\small Items from the
+     \ifnum\apr@from=\apr@to \the\apr@from\else
+       \the\apr@from--\the\apr@to\fi\
+     review period are highlighted:
+     \apr@swatch{APRteaching}{teaching and supervision},
+     \apr@swatch{APRresearch}{research},
+     \apr@swatch{APRservice}{service},
+     \apr@swatch{APRaward}{awards}.\par}%
+    \bigskip
+  \fi}
+
+%% -------------------------------------------------------------- biblatex
+\@ifpackageloaded{biblatex}{%
+  \DeclareBibliographyCategory{aprteaching}%
+  \DeclareBibliographyCategory{aprservice}%
+  \DeclareBibliographyCategory{apraward}%
+  \DeclareBibliographyCategory{aprnone}%
+  \ifAPR
+    % entries end at the next \item, outside the entry's group, so keep
+    % bibliography entries from splitting across pages here
+    \AtBeginBibliography{\interlinepenalty=\@M\relax}%
+    \def\apr@bib@on{}%
+    \def\apr@bib@start{%
+      \global\let\apr@bib@on\@empty
+      \ifcategory{aprnone}{}{%
+        \iffieldint{year}{%
+          \edef\apr@y{\thefield{year}}%
+          \expandafter\apr@ifyears\expandafter{\apr@y}{%
+            \ifcategory{aprteaching}{\def\apr@c{APRteaching}}{%
+              \ifcategory{aprservice}{\def\apr@c{APRservice}}{%
+                \ifcategory{apraward}{\def\apr@c{APRaward}}%
+                  {\def\apr@c{APRresearch}}}}%
+            \gdef\apr@bib@on{x}%
+            \expandafter\apr@mark@start\expandafter{\apr@c}}{}}{}}}%
+    \def\apr@bib@end{%
+      \ifx\apr@bib@on\@empty\else
+        \apr@mark@end
+        \global\let\apr@bib@on\@empty
+      \fi}%
+    % wrap begentry/finentry as they stand after the style and any
+    % user redefinitions (e.g. biblatex-formatting.tex) have been loaded
+    \AtBeginDocument{%
+      \ifcsname abx@macro@begentry\endcsname
+        \csletcs{abx@macro@apr@orig@begentry}{abx@macro@begentry}%
+      \else
+        \newbibmacro*{apr@orig@begentry}{}%
+      \fi
+      \ifcsname abx@macro@finentry\endcsname
+        \csletcs{abx@macro@apr@orig@finentry}{abx@macro@finentry}%
+      \else
+        \newbibmacro*{apr@orig@finentry}{\finentry}%
+      \fi
+      \renewbibmacro*{begentry}{%
+        \apr@bib@start\usebibmacro{apr@orig@begentry}}%
+      \renewbibmacro*{finentry}{%
+        \usebibmacro{apr@orig@finentry}\apr@bib@end}}%
+  \fi
+}{}
+
+\endinput
