@@ -3,9 +3,6 @@
 # occurs, so this file only shrinks. Fix the cause rather than adding a line;
 # a PR that adds lines cannot auto-merge (Jim merges it by hand).
 # One line per occurrence: "<source>: <warning>".
-apr.blg: BibTeX subsystem: scholar.bib, at entry 'pietroszek2014smartcasting': characters of junk seen at toplevel
-apr.blg: legacy month field 'Mar' in entry 'mcmurray2018s' is not an integer - this will probably not sort properly.
-apr.blg: legacy month field 'October 21--23' in entry 'levy2019building' is not an integer - this will probably not sort properly.
 apr.log: Overfull \hbox in alignment: "(no text)"
 apr.log: Overfull \hbox in alignment: "(no text)"
 apr.log: Overfull \hbox in paragraph: "R. Preventing intimate partner violence through video games:"
@@ -19,30 +16,6 @@ apr.log: Package biblatex Warning: 'firstinits' option is deprecated. Please use
 apr.log: Package breakurl Warning: You are using breakurl while processing via pdflatex. \burl will be just a synonym of \url.
 apr.log: Package fancyhdr Warning: \headheight is too small #pt: Make it at least #pt, for example: \setlength{\headheight}{#pt}. You might also make \topmargin smaller to compensate: \addtolength{\topmargin}{#pt}.
 apr.log: Package todonotes Warning: The length marginparwidth is less than 2cm and will most likely cause issues with the appearance of inserted todonotes. The issue can be solved by adding a line like \setlength {\marginparwidth }{2cm} prior to loading the todonotes package.
-check_cv: W-nodoi 'BARDWELL2024116683' (2024) has no DOI, so it cannot be checked automatically
-check_cv: W-nodoi 'Kuzminykh2014' (2015) has no DOI, so it cannot be checked automatically
-check_cv: W-nodoi 'Wong2025DIS' (2025) has no DOI, so it cannot be checked automatically
-check_cv: W-nodoi 'aboueid2021latent' (2021) has no DOI, so it cannot be checked automatically
-check_cv: W-nodoi 'aboueid2021use' (2021) has no DOI, so it cannot be checked automatically
-check_cv: W-nodoi 'aboueid2021young' (2021) has no DOI, so it cannot be checked automatically
-check_cv: W-nodoi 'chan2018changingsymposium' (2018) has no DOI, so it cannot be checked automatically
-check_cv: W-nodoi 'homaeian2025' (2025) has no DOI, so it cannot be checked automatically
-check_cv: W-nodoi 'kaur2025transformers' (2025) has no DOI, so it cannot be checked automatically
-check_cv: W-nodoi 'prasad2026pragmatica' (2026) has no DOI, so it cannot be checked automatically
-check_cv: W-nodoi 'sharma2026details' (2026) has no DOI, so it cannot be checked automatically
-check_cv: W-nodoi 'ugayamazza2026agency' (2026) has no DOI, so it cannot be checked automatically
-check_cv: W-nodoi 'wallace2014effect' (2014) has no DOI, so it cannot be checked automatically
-check_cv: W-nodoi 'wei2023protocol' (2023) has no DOI, so it cannot be checked automatically
-check_cv: W-nodoi 'wong2025bold' (2025) has no DOI, so it cannot be checked automatically
-check_cv: W-nodoi 'wong2026ipvprevention' (2026) has no DOI, so it cannot be checked automatically
-check_cv: W-nokey \addtocategory{conference} lists 'pape2012tangibility', which is not in scholar.bib (stale key, or a missing entry)
-check_cv: W-nokey \addtocategory{conference} lists 'wallace2008towards', which is not in scholar.bib (stale key, or a missing entry)
-check_cv: W-nokey \addtocategory{journal} lists 'ng2019being', which is not in scholar.bib (stale key, or a missing entry)
-check_cv: W-unprinted 'chanfunder' is in scholar.bib but in no printed category, so it does not appear
-check_cv: W-unprinted 'homaeiangroup' is in scholar.bib but in no printed category, so it does not appear
-check_cv: W-unprinted 'klenke2016qualitative' is in scholar.bib but in no printed category, so it does not appear
-check_cv: W-unprinted 'ng2018smartphone' is in scholar.bib but in no printed category, so it does not appear
-check_cv: W-unprinted 'wong2012data' is in scholar.bib but in no printed category, so it does not appear
 example-apr.log: Overfull \hbox in alignment: "(no text)"
 example-apr.log: Overfull \hbox in alignment: "(no text)"
 example-apr.log: Package biblatex Warning: '\name' is deprecated in sorting specifications, please use '\field'.
@@ -57,9 +30,6 @@ example.log: Package biblatex Warning: 'firstinits' option is deprecated. Please
 example.log: Package breakurl Warning: You are using breakurl while processing via pdflatex. \burl will be just a synonym of \url.
 example.log: Package fancyhdr Warning: \headheight is too small #pt: Make it at least #pt, for example: \setlength{\headheight}{#pt}. You might also make \topmargin smaller to compensate: \addtolength{\topmargin}{#pt}.
 example.log: Package todonotes Warning: The length marginparwidth is less than 2cm and will most likely cause issues with the appearance of inserted todonotes. The issue can be solved by adding a line like \setlength {\marginparwidth }{2cm} prior to loading the todonotes package.
-main.blg: BibTeX subsystem: scholar.bib, at entry 'pietroszek2014smartcasting': characters of junk seen at toplevel
-main.blg: legacy month field 'Mar' in entry 'mcmurray2018s' is not an integer - this will probably not sort properly.
-main.blg: legacy month field 'October 21--23' in entry 'levy2019building' is not an integer - this will probably not sort properly.
 main.log: Overfull \hbox in alignment: "(no text)"
 main.log: Overfull \hbox in alignment: "(no text)"
 main.log: Overfull \hbox in paragraph: "R. Preventing intimate partner violence through video games:"
