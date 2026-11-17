@@ -18,7 +18,7 @@ move to its own repository later.
 | `cv-records.tex` | Grants and supervision as biblatex records: the table, the student lists, sorting and highlighting. |
 | `uwhealthcv.dbx` | The biblatex data model for `@grant` and `@supervision` (fields documented in its header). |
 | `cv-layout.tex` | Page-break rules: `\keepwithnext`, `\sectionbreak`, widow and club control. |
-| `images/` | Badge icons a bib entry can show with `icon = {images/hm.png}`. |
+| `images/` | Badge images a bib entry can show in the margin with `icon = {images/<file>}`. `icon = {award}` draws the award rosette instead (`biblatex-formatting.tex`); in the APR version it is filled with the award colour when the entry is in the review period. |
 | `example/` | A fictional CV that uses every feature. Build it to test a template change. |
 
 ## Using it
@@ -78,7 +78,7 @@ every CV that uses the template.
 - biblatex categories: `aprteaching`, `aprservice`, `apraward`, `aprnone`,
   `aprinclude`, `apralsoteaching`, `apralsoresearch`, `apralsoservice`,
   `apralsoaward`.
-- Bib field: `icon`.
+- Bib field: `icon` (an image path, or `award` for the rosette).
 - File the template reads from the CV: `apr-formatting.tex` (optional).
 
 ## Building the example
