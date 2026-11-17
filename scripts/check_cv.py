@@ -30,6 +30,7 @@ from warning_ratchet import (BASELINE_REL, check_cv_line, compare, read_baseline
                              write_baseline)
 
 SELF = "wallace"  # family name of the CV owner, excluded from trainee checks
+UNPRINTED = "unprinted"  # main.tex category for entries kept in scholar.bib on purpose but not printed
 
 
 def run(only: set[str] | None = None) -> dict:
@@ -105,14 +106,19 @@ def run(only: set[str] | None = None) -> dict:
         for k, n in Counter(ks).items():
             if n > 1:
                 warn("W-repeat", f"'{k}' is listed {n} times in \\addtocategory{{{c}}}", k)
-    unknown = set(cats) - set(PRINTED_CATEGORIES) - set(APR_CATEGORIES) - {"workshops", "thesis"}
+    unknown = set(cats) - set(PRINTED_CATEGORIES) - set(APR_CATEGORIES) - {"workshops", "thesis", UNPRINTED}
     for c in sorted(unknown):
         warn("W-cat", f"category '{c}' is not printed or used for APR colours")
 
-    # W: entries that never print
+    # W: entries that never print. Jim records a deliberate "keep in the .bib,
+    # don't print" decision by listing the key in \addtocategory{unprinted}.
+    kept_unprinted = set(cats.get(UNPRINTED, []))
     for key in by_key:
-        if key not in printed_in:
+        if key not in printed_in and key not in kept_unprinted:
             warn("W-unprinted", f"'{key}' is in scholar.bib but in no printed category, so it does not appear", key)
+    for key in sorted(kept_unprinted & set(printed_in)):
+        warn("W-unprinted", f"'{key}' is in \\addtocategory{{{UNPRINTED}}} but also in "
+             f"{', '.join(printed_in[key])}, so it prints; take it out of one", key)
 
     # W: entry type vs heading
     for key, cs in printed_in.items():
@@ -125,13 +131,20 @@ def run(only: set[str] | None = None) -> dict:
                 and "journaltitle" not in by_key[key][0].fields:
             pass  # @article with a journal field under conference is how PACM papers are often typed
 
-    # W: missing DOI on refereed work since 2010
+    # W: missing DOI on refereed work since 2010. `nodoi = {reason}` on an entry
+    # records that the work has no DOI (e.g. a poster with no proceedings).
     for key, cs in printed_in.items():
         if key in by_key and set(cs) & {"journal", "conference"}:
             e = by_key[key][0]
             if (e.year or 0) >= 2010 and "doi" not in e.fields \
+                    and "nodoi" not in e.fields \
                     and "to appear" not in e.fields.get("note", "").lower():  # no DOI yet, by convention
                 warn("W-nodoi", f"'{key}' ({e.year}) has no DOI, so it cannot be checked automatically", key)
+    for e in bib.entries:
+        if "nodoi" in e.fields and not e.fields["nodoi"].strip():
+            warn("W-nodoi", f"'{e.key}' has an empty nodoi field; give the reason it has no DOI", e.key)
+        elif "nodoi" in e.fields and "doi" in e.fields:
+            warn("W-nodoi", f"'{e.key}' has both doi and nodoi; remove nodoi", e.key)
 
     # Trainee marks
     for e in bib.entries:

@@ -81,6 +81,10 @@ def _read_balanced(text: str, i: int, open_ch: str, close_ch: str) -> int:
 
 def _parse_fields(body: str) -> dict[str, str]:
     fields: dict[str, str] = {}
+    # Whole-line % comments inside an entry (e.g. "% pages = {--},") are
+    # skipped by biber; without this the reader stopped at the first one and
+    # missed every field after it.
+    body = re.sub(r"(?m)^[ \t]*%.*$", "", body)
     i = 0
     n = len(body)
     while i < n:

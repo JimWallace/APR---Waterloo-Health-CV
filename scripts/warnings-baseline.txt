@@ -18,12 +18,8 @@ apr.log: Package fancyhdr Warning: \headheight is too small #pt: Make it at leas
 apr.log: Package todonotes Warning: The length marginparwidth is less than 2cm and will most likely cause issues with the appearance of inserted todonotes. The issue can be solved by adding a line like \setlength {\marginparwidth }{2cm} prior to loading the todonotes package.
 check_cv: W-nodoi 'Kuzminykh2014' (2015) has no DOI, so it cannot be checked automatically
 check_cv: W-nodoi 'chan2018changingsymposium' (2018) has no DOI, so it cannot be checked automatically
-check_cv: W-nodoi 'prasad2026pragmatica' (2026) has no DOI, so it cannot be checked automatically
-check_cv: W-nodoi 'sharma2026details' (2026) has no DOI, so it cannot be checked automatically
-check_cv: W-nodoi 'ugayamazza2026agency' (2026) has no DOI, so it cannot be checked automatically
 check_cv: W-nodoi 'wallace2014effect' (2014) has no DOI, so it cannot be checked automatically
 check_cv: W-nodoi 'wong2025bold' (2025) has no DOI, so it cannot be checked automatically
-check_cv: W-nodoi 'wong2026ipvprevention' (2026) has no DOI, so it cannot be checked automatically
 check_cv: W-nokey \addtocategory{conference} lists 'pape2012tangibility', which is not in scholar.bib (stale key, or a missing entry)
 check_cv: W-nokey \addtocategory{conference} lists 'wallace2008towards', which is not in scholar.bib (stale key, or a missing entry)
 check_cv: W-nokey \addtocategory{journal} lists 'ng2019being', which is not in scholar.bib (stale key, or a missing entry)

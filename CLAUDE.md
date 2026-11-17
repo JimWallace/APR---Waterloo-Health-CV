@@ -61,6 +61,9 @@ the source of truth; never force-push `main`.
   or `@article` (PACM / journals) as the ACM DL export does.
 - Accepted-but-unpublished work: add `note = {To appear}` and no DOI; the weekly run backfills
   the DOI when it appears.
+- Refereed work that has no DOI at all (a poster or abstract with no archival proceedings):
+  `nodoi = {<reason>}`. It does not print; it tells `check_cv.py` not to ask for a DOI. Only I
+  decide that a work has none.
 
 **Which heading** (`\addtocategory` in `main.tex`; each printed entry in exactly one of these)
 - `journal`: journal articles, including Proceedings of the ACM (PACM HCI, CSCW, CHI PLAY,
@@ -69,6 +72,8 @@ the source of truth; never force-push `main`.
   workshop papers published in proceedings).
 - `presentations`: self-initiated talks/posters without archival proceedings. `invited`: invited talks.
 - `technicalreports`, `other`, `patent`, `software` as named.
+- `unprinted`: entries I keep in `scholar.bib` but do not print. Listing a key here records
+  that decision, so `check_cv.py` stops warning that it does not appear. Only I add keys.
 
 **APR colours** (`main.tex`, block after the categories; rules in `template/aprcv.sty`)
 - Bib entries in the review period (`\setreviewperiod`) are research-green automatically.
