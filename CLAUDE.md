@@ -78,6 +78,12 @@ the source of truth; never force-push `main`.
   with `\\`.
 - Supervision → GRADUATE STUDENT SUPERVISION. Service → SERVICE.
 
+**Markup** comes from the template (`template/uwhealthcv.sty`): headings are `\cvsection{…}`,
+labels over a list `\cvsubheading{…:}`, list items `\cvitem …` inside `cvlist`, lettered parts
+`\cvpart{…}` inside `cvparts` (letters are automatic), students `\item …` inside
+`\begin{cvdegree}{PhD}`, bibliography headings `\printcategory[J]{journal}`. Copy the
+neighbouring entry; don't write raw `itemize`/`\setlength` blocks.
+
 **Page breaks** are set in `template/cv-layout.tex`. Put `\keepwithnext` before a new heading
 that is followed by a list; never use `\newpage` (use `\sectionbreak`).
 

@@ -65,6 +65,8 @@ every CV that uses the template.
   `\hlaward`, `\hlboth`, `\hl…row`, `\aprsample`, `\ifAPR`,
   `\sethighlightstrength`, `\sethighlightstyle`, `\keepwithnext`,
   `\sectionbreak`, `\usvardate`, `\monthyear`, `\extlink`.
+- Section markup: `\cvsection`, `\cvsubheading`, `cvlist` with `\cvitem`, `cvparts`
+  with `\cvpart`, `cvdegree`, `\printcategory`. Documented in the `uwhealthcv.sty` header.
 - biblatex categories: `aprteaching`, `aprservice`, `apraward`, `aprnone`,
   `aprinclude`, `apralsoteaching`, `apralsoresearch`, `apralsoservice`,
   `apralsoaward`.

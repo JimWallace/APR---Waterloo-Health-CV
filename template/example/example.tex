@@ -34,16 +34,16 @@
 \noindent
 \thispagestyle{empty}
 \begin{center}
-\textbf{CURRICULUM VITA}
+\cvsection{CURRICULUM VITA}
 \end{center}
 
-\textbf{NAME/DATE:} Alex Example, \usvardate\today
+\cvsection{NAME/DATE:} Alex Example, \usvardate\today
 \\ \\
-\textbf{CONTACT INFORMATION:} \\
+\cvsection{CONTACT INFORMATION:} \\
 School of Public Health Sciences \\
 University of Waterloo
 \\ \\
-\textbf{DEGREES RECEIVED:}
+\cvsection{DEGREES RECEIVED:}
 
 \begin{table}[h!]
 \centering
@@ -54,30 +54,25 @@ PhD                & University of Waterloo   & 2010 -- 2015 \\
 \end{table}
 
 \sectionbreak
-\textbf{ACADEMIC AWARDS AND DISTINCTIONS:}
+\cvsection{ACADEMIC AWARDS AND DISTINCTIONS:}
 
-\begin{itemize}
-\setlength{\labelsep}{0em}
-\setlength{\itemsep}{-5pt}
-    \item[] \hlaward[2026]{An award inside the review period}
-    \item[] An award from before the review period, 2019
-\end{itemize}
+\begin{cvlist}
+    \cvitem \hlaward[2026]{An award inside the review period}
+    \cvitem An award from before the review period, 2019
+\end{cvlist}
 
 \sectionbreak
-\textbf{SCHOLARLY AND PROFESSIONAL ACTIVITIES:}
+\cvsection{SCHOLARLY AND PROFESSIONAL ACTIVITIES:}
 
-\keepwithnext
-Conference Program Committee:
-\begin{itemize}
-\setlength{\labelsep}{0em}
-\setlength{\itemsep}{-5pt}
-    \item[] \hlservice[2021-]{An open-ended role, 2021 -- Present}
-    \item[] A past role, 2015 -- 2017
-\end{itemize}
+\cvsubheading{Conference Program Committee:}
+\begin{cvlist}
+    \cvitem \hlservice[2021-]{An open-ended role, 2021 -- Present}
+    \cvitem A past role, 2015 -- 2017
+\end{cvlist}
 
 \ifAPR % APR version only ------------------------------------------
 \sectionbreak
-\textbf{A Note on Reading the Highlighting}
+\cvsection{A Note on Reading the Highlighting}
 \\ \\
 Work from the review period is shown as \aprsample{research}{}{research}.
 Trainee work is shown as \aprsample{research}{teaching}{research, with
@@ -85,52 +80,46 @@ supervision}.
 \fi % end APR version only -------------------------------------
 
 \sectionbreak
-\textbf{PUBLICATIONS:}
-\begin{enumerate}
+\cvsection{PUBLICATIONS:}
+\begin{cvparts}
 
     \nocite{*}
 
-    \item[a)] \textbf{Refereed Journals:}
-    \newrefcontext[labelprefix=J]
-    \printbibliography[category=journal,resetnumbers=true,heading=none]
+    \cvpart{Refereed Journals:}
+    \printcategory[J]{journal}
 
     \keepwithnext
-    \item[b)] \textbf{Refereed Conference Proceedings:}
-    \newrefcontext[labelprefix=C]
-    \printbibliography[category=conference,resetnumbers=true,heading=none]
+    \cvpart{Refereed Conference Proceedings:}
+    \printcategory[C]{conference}
 
     \keepwithnext
-    \item[c)] \textbf{Technical and Consulting Reports:}
-    \newrefcontext[labelprefix=T]
-    \printbibliography[category=technicalreports,resetnumbers=true,heading=none]
+    \cvpart{Technical and Consulting Reports:}
+    \printcategory[T]{technicalreports}
 
     \sloppy
     \keepwithnext
-    \item[d)] \textbf{Software:}
-    \newrefcontext[labelprefix=S]
-    \printbibliography[category=software,resetnumbers=true,heading=none]
+    \cvpart{Software:}
+    \printcategory[S]{software}
 
-\end{enumerate}
+\end{cvparts}
 
 \sectionbreak
-\textbf{PRESENTATION TO SCHOLARLY GROUPS}\\
+\cvsection{PRESENTATION TO SCHOLARLY GROUPS}\\
 Speaker(s) denoted by \dag\\
 
-\begin{enumerate}
+\begin{cvparts}
 
-    \item[a)]\textbf{Invited} \\
-    \newrefcontext
-    \printbibliography[category={invited},resetnumbers=true,heading=none]
+    \cvpart{Invited} \\
+    \printcategory{invited}
 
     \keepwithnext
-    \item[b)]\textbf{Self-initiated} \\
-    \newrefcontext
-    \printbibliography[category={presentations},resetnumbers=true,heading=none]
+    \cvpart{Self-initiated} \\
+    \printcategory{presentations}
 
-\end{enumerate}
+\end{cvparts}
 
 \sectionbreak
-\textbf{RESEARCH GRANTS AND CONTRACTS:}
+\cvsection{RESEARCH GRANTS AND CONTRACTS:}
 
 \begin{longtable}[c]{p{4.5cm} l l l p{4.5cm}}
 \underline{Names of Researcher(s)} & \underline{Agency} & \underline{\$ Amount} & \underline{Tenure} & \underline{Short Title} \\
@@ -146,28 +135,23 @@ Speaker(s) denoted by \dag\\
 
 \sectionbreak
 \keepwithnext[6]
-\textbf{GRADUATE STUDENT SUPERVISION}
+\cvsection{GRADUATE STUDENT SUPERVISION}
 
-\begin{enumerate}
-    \item[a)] \textbf{As Supervisor}
-    \begin{enumerate}
-        \item[PhD]
-        \begin{enumerate}[label=\arabic*.]
+\begin{cvparts}
+    \cvpart{As Supervisor}
+    \begin{cvdegree}{PhD}
             \item \hlteaching{Sam Student, In progress}
             \item Pat Graduate, 2020, A Completed Thesis
-        \end{enumerate}
-    \end{enumerate}
-\end{enumerate}
+    \end{cvdegree}
+\end{cvparts}
 
 \sectionbreak
 \keepwithnext
-\textbf{SERVICE}
+\cvsection{SERVICE}
 
-    \begin{enumerate}
-    \setlength{\labelsep}{0em}
-    \setlength{\itemsep}{-5pt}
-        \item[] \hlservice[2025-2027]{A Faculty committee, 2025 -- 2027}
-        \item[] A past committee, 2016
-    \end{enumerate}
+    \begin{cvlist}
+        \cvitem \hlservice[2025-2027]{A Faculty committee, 2025 -- 2027}
+        \cvitem A past committee, 2016
+    \end{cvlist}
 
 \end{document}

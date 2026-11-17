@@ -10,8 +10,8 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 
-# Categories that main.tex actually prints with \printbibliography.
-# (workshops and thesis exist but their \printbibliography lines are commented out.)
+# Categories that main.tex actually prints with \printcategory.
+# (workshops and thesis exist but their \printcategory lines are commented out.)
 PRINTED_CATEGORIES = [
     "journal", "conference", "technicalreports", "other",
     "patent", "software", "invited", "presentations",

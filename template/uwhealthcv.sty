@@ -52,6 +52,41 @@
 
 \RequirePackage{aprcv}
 
+%% ------------------------------------------------------- section markup
+% The building blocks of the Faculty of Health layout, so a CV names its
+% structure instead of repeating the list settings. Spacing between sections
+% stays in the CV, with \sectionbreak and \keepwithnext (cv-layout.tex).
+%
+%   \cvsection{TITLE}           a section heading (bold)
+%   \cvsubheading{Label:}       a label over a list, kept with the list
+%   \begin{cvlist}[itemsep]     an unnumbered, unindented list of \cvitem
+%     \cvitem text              (itemsep defaults to -5pt)
+%   \end{cvlist}
+%   \begin{cvparts}             lettered parts a), b), c) ... of a section
+%     \cvpart{Title}            one part, with a bold title
+%   \end{cvparts}
+%   \printcategory[J]{journal}  print one bibliography category, numbered
+%                               J1, J2, ... (no prefix: 1, 2, ...)
+%   \begin{cvdegree}{PhD}       a numbered list of students under a degree
+%     \item ...
+%   \end{cvdegree}
+\newcommand\cvsection[1]{\textbf{#1}}
+\newcommand\cvsubheading[1]{\keepwithnext #1}
+\newenvironment{cvlist}[1][-5pt]
+  {\begin{itemize}\setlength{\labelsep}{0em}\setlength{\itemsep}{#1}}
+  {\end{itemize}}
+\newcommand\cvitem{\item[]}
+\newenvironment{cvparts}
+  {\begin{enumerate}[label=\alph*)]}
+  {\end{enumerate}}
+\newcommand\cvpart[1]{\item \textbf{#1}}
+\NewDocumentCommand\printcategory{om}{%
+  \IfNoValueTF{#1}{\newrefcontext}{\newrefcontext[labelprefix=#1]}%
+  \printbibliography[category={#2},resetnumbers=true,heading=none]}
+\newenvironment{cvdegree}[1]
+  {\begin{enumerate}\item[#1]\begin{enumerate}[label=\arabic*.]}
+  {\end{enumerate}\end{enumerate}}
+
 % cv-layout.tex ends with \makeatother, so it goes last.
 \input{cv-layout}
 

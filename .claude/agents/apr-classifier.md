@@ -30,7 +30,7 @@ For edits to `main.tex` outside the category lists:
 6. It uses the right macro (`\hlaward`, `\hlservice`, `\hlteaching`, `\hlresearch`, or the
    `\hl…row{years}` form on every row of a grant entry) with `[years]` that match the dates
    in the text.
-7. Formatting matches the neighbouring lines (table columns, `\item[]`, `$\times$` counts).
+7. Formatting matches the neighbouring lines (table columns, `\cvitem` / `\item`, `$\times$` counts).
 8. Nothing inside `\ifAPR … \fi` narrative was changed.
 
 ## Output (exactly this shape)
