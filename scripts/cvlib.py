@@ -10,13 +10,13 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 
-# Categories that main.tex actually prints with \printbibliography.
-# (workshops and thesis exist but their \printbibliography lines are commented out.)
+# Categories that main.tex actually prints with \printcategory.
+# (workshops and thesis exist but their \printcategory lines are commented out.)
 PRINTED_CATEGORIES = [
     "journal", "conference", "technicalreports", "other",
     "patent", "software", "invited", "presentations",
 ]
-# APR colour categories (see aprcv.sty). These do not print anything themselves.
+# APR colour categories (see template/aprcv.sty). These do not print anything themselves.
 APR_CATEGORIES = [
     "aprteaching", "aprservice", "apraward", "aprnone", "aprinclude",
     "apralsoteaching", "apralsoresearch", "apralsoservice", "apralsoaward",
@@ -132,12 +132,12 @@ def parse_bib(path: Path) -> Bib:
         line = text.count("\n", 0, m.start()) + 1
         end = _read_balanced(text, start, m.group(2), "}" if m.group(2) == "{" else ")")
         if end < 0:
-            bib.errors.append(f"scholar.bib:{line}: entry @{m.group(1)} has unbalanced braces")
+            bib.errors.append(f"{path.name}:{line}: entry @{m.group(1)} has unbalanced braces")
             continue
         inner = text[start + 1:end - 1]
         km = re.match(r"\s*([^,\s]+)\s*,", inner)
         if not km:
-            bib.errors.append(f"scholar.bib:{line}: entry @{m.group(1)} has no citation key")
+            bib.errors.append(f"{path.name}:{line}: entry @{m.group(1)} has no citation key")
             continue
         key = km.group(1)
         bib.entries.append(Entry(key, etype, _parse_fields(inner[km.end():]), line, text[m.start():end]))

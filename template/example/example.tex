@@ -1,0 +1,146 @@
+% Example CV for the template, with fictional content. It exercises every
+% part of the template (each section style, the biblatex categories, the
+% \hl... macros, grant and supervision records, an APR-only note) so the template can be
+% developed and checked without anyone's real CV.
+%
+% Compile example.tex for the plain CV, example-apr.tex for the APR version.
+\documentclass[12pt]{article}
+
+\usepackage{uwhealthcv}
+
+\addbibresource{example.bib}
+\setreviewperiod{2025}{2026}
+\cvowner{Alex Example}
+
+\DeclareBibliographyCategory{journal}
+\addtocategory{journal}{example2026journal, example2019journal}
+\DeclareBibliographyCategory{conference}
+\addtocategory{conference}{example2025conference}
+\DeclareBibliographyCategory{technicalreports}
+\addtocategory{technicalreports}{example2021report}
+\DeclareBibliographyCategory{software}
+\addtocategory{software}{example2026software}
+\DeclareBibliographyCategory{presentations}
+\addtocategory{presentations}{example2026talk}
+\DeclareBibliographyCategory{invited}
+\addtocategory{invited}{example2025invited}
+
+% APR colours: trainee work in two colours; software as teaching first.
+\addtocategory{apralsoteaching}{example2026journal, example2026talk}
+\addtocategory{aprteaching}{example2026software}
+\addtocategory{apralsoresearch}{example2026software}
+
+\begin{document}
+
+\noindent
+\thispagestyle{empty}
+\begin{center}
+\cvsection{CURRICULUM VITA}
+\end{center}
+
+\cvsection{NAME/DATE:} Alex Example, \usvardate\today
+\\ \\
+\cvsection{CONTACT INFORMATION:} \\
+School of Public Health Sciences \\
+University of Waterloo
+\\ \\
+\cvsection{DEGREES RECEIVED:}
+
+\begin{table}[h!]
+\centering
+\begin{tabular}{p{2.5cm} p{5cm} p{5cm}}
+\underline{Degree} & \underline{Institution}  & \underline{Years} \\
+PhD                & University of Waterloo   & 2010 -- 2015 \\
+\end{tabular}
+\end{table}
+
+\sectionbreak
+\cvsection{ACADEMIC AWARDS AND DISTINCTIONS:}
+
+\begin{cvlist}
+    \cvitem \hlaward[2026]{An award inside the review period}
+    \cvitem An award from before the review period, 2019
+\end{cvlist}
+
+\sectionbreak
+\cvsection{SCHOLARLY AND PROFESSIONAL ACTIVITIES:}
+
+\cvsubheading{Conference Program Committee:}
+\begin{cvlist}
+    \cvitem \hlservice[2021-]{An open-ended role, 2021 -- Present}
+    \cvitem A past role, 2015 -- 2017
+\end{cvlist}
+
+\ifAPR % APR version only ------------------------------------------
+\sectionbreak
+\cvsection{A Note on Reading the Highlighting}
+\\ \\
+Work from the review period is shown as \aprsample{research}{}{research}.
+Trainee work is shown as \aprsample{research}{teaching}{research, with
+supervision}.
+\fi % end APR version only -------------------------------------
+
+\sectionbreak
+\cvsection{PUBLICATIONS:}
+\begin{cvparts}
+
+    \nocite{*}
+
+    \cvpart{Refereed Journals:}
+    \printcategory[J]{journal}
+
+    \keepwithnext
+    \cvpart{Refereed Conference Proceedings:}
+    \printcategory[C]{conference}
+
+    \keepwithnext
+    \cvpart{Technical and Consulting Reports:}
+    \printcategory[T]{technicalreports}
+
+    \sloppy
+    \keepwithnext
+    \cvpart{Software:}
+    \printcategory[S]{software}
+
+\end{cvparts}
+
+\sectionbreak
+\cvsection{PRESENTATION TO SCHOLARLY GROUPS}\\
+Speaker(s) denoted by \dag\\
+
+\begin{cvparts}
+
+    \cvpart{Invited} \\
+    \printcategory{invited}
+
+    \keepwithnext
+    \cvpart{Self-initiated} \\
+    \printcategory{presentations}
+
+\end{cvparts}
+
+\sectionbreak
+\cvsection{RESEARCH GRANTS AND CONTRACTS:}
+
+\printgrants
+
+\sectionbreak
+\keepwithnext[6]
+\cvsection{GRADUATE STUDENT SUPERVISION}
+
+\begin{cvparts}
+    \cvpart{As Supervisor}
+    \printsupervision{PhD}
+    \printsupervision{MSc}
+\end{cvparts}
+
+\sectionbreak
+\keepwithnext
+\cvsection{SERVICE}
+
+    \begin{cvlist}
+        \cvitem \hlservice[2025-2027]{A Faculty committee, 2025 -- 2027}
+        \cvitem A past committee, 2016
+    \end{cvlist}
+
+\end{document}

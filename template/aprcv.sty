@@ -30,12 +30,13 @@
 %%   \sethighlightstrength{40}      softer highlights (100 = full Word colours)
 %%   \sethighlightstyle{split}      two-colour style: split, blend or bar
 %%
-%% Files
-%%   main.tex                content; compiles to the plain CV
-%%   apr.tex                 switch; compiles main.tex as the APR version
-%%   NSERC-formatting.tex,   formatting shared by both versions
+%% Files (the template lives in template/; the CV's own files sit beside it)
+%%   main.tex                the CV's content; compiles to the plain CV
+%%   apr.tex                 the CV's switch; compiles main.tex as the APR version
+%%   apr-formatting.tex      the CV's settings for the APR version only
+%%   uwhealthcv.sty          template: loads everything below in order
+%%   NSERC-formatting.tex,   template: formatting shared by both versions
 %%   biblatex-formatting.tex
-%%   apr-formatting.tex      formatting for the APR version only
 %%
 %% biblatex entries are highlighted automatically (research colour) when their
 %% year falls in the review period. To change one entry's colour, add its key
@@ -45,6 +46,13 @@
 %% apralsoaward. To highlight an entry whose year falls after the review
 %% period (e.g. accepted during the period, published the next year), add
 %% it to aprinclude.
+%%
+%% A dated range (date = {2022/2027}, e.g. a grant's tenure) is highlighted
+%% when it overlaps the review period. An undated entry with a status field
+%% (a student in progress) counts as ongoing, so it is highlighted.
+%% \aprtypecategory{supervision}{teaching} gives every entry of one type a
+%% default colour. A driver that sets an entry as a table row calls
+%% \aprsetentrycolour and colours the row with \aprentrycolour.
 %%
 %% Highlights are drawn behind the text from positions recorded on the
 %% previous run, so the APR version needs one extra compile (Overleaf and
@@ -369,32 +377,63 @@
   \DeclareBibliographyCategory{apralsoresearch}%
   \DeclareBibliographyCategory{apralsoservice}%
   \DeclareBibliographyCategory{apralsoaward}%
+  % \aprtypecategory{type}{teaching|research|service|award}: the colour
+  % entries of one biblatex type get by default (otherwise research)
+  \newcommand\aprtypecategory[2]{\csdef{apr@type@#1}{APR#2}}%
+  % \aprsetentrycolour: for a driver that does not print the entry as text
+  % (a table row). Sets \aprentrycolour to the current entry's colour in the
+  % APR version, or to empty when it is not highlighted (and always in the
+  % plain CV), for use with \rowcolor.
+  \def\aprentrycolour{}%
+  \newcommand\aprsetentrycolour{\def\aprentrycolour{}}%
   \ifAPR
     % entries end at the next \item, outside the entry's group, so keep
     % bibliography entries from splitting across pages here
     \AtBeginBibliography{\interlinepenalty=\@M\relax}%
     \def\apr@bib@on{}%
-    \def\apr@bib@start{%
-      \global\let\apr@bib@on\@empty
+    % \apr@bib@decide sets \apr@c to the entry's colour, or empty when it is
+    % not highlighted, and \apr@c@two to its second colour (or empty). An
+    % entry is in the review period when its year, or its range year to
+    % endyear (a grant's tenure), overlaps it; an undated entry with a
+    % status field (a student in progress) is ongoing, so it is in.
+    \def\apr@bib@decide{%
+      \def\apr@c{}\def\apr@c@two{}%
       \ifcategory{aprnone}{}{%
+        \def\apr@dated{}\def\apr@y{}%
         \iffieldint{year}{%
+          \def\apr@dated{x}%
           % aprinclude: treat the entry as dated in the review period
           \ifcategory{aprinclude}%
             {\edef\apr@y{\the\apr@to}}%
-            {\edef\apr@y{\thefield{year}}}%
-          \expandafter\apr@ifyears\expandafter{\apr@y}{%
-            \ifcategory{aprteaching}{\def\apr@c{APRteaching}}{%
-              \ifcategory{aprservice}{\def\apr@c{APRservice}}{%
-                \ifcategory{apraward}{\def\apr@c{APRaward}}%
-                  {\def\apr@c{APRresearch}}}}%
-            \def\apr@c@two{}%
-            \ifcategory{apralsoteaching}{\def\apr@c@two{APRteaching}}{}%
-            \ifcategory{apralsoresearch}{\def\apr@c@two{APRresearch}}{}%
-            \ifcategory{apralsoservice}{\def\apr@c@two{APRservice}}{}%
-            \ifcategory{apralsoaward}{\def\apr@c@two{APRaward}}{}%
-            \gdef\apr@bib@on{x}%
-            \edef\apr@tmp{\noexpand\apr@mark@start{\apr@c}{\apr@c@two}}%
-            \apr@tmp}{}}{}}}%
+            {\iffieldint{endyear}%
+               {\edef\apr@y{\thefield{year}-\thefield{endyear}}}%
+               {\edef\apr@y{\thefield{year}}}}}%
+          {\iffieldundef{status}{}{\def\apr@dated{x}}}%
+        \ifx\apr@dated\@empty\else
+          \expandafter\apr@ifyears\expandafter{\apr@y}{\apr@bib@colours}{}%
+        \fi}}%
+    \def\apr@bib@colours{%
+      \ifcategory{aprteaching}{\def\apr@c{APRteaching}}{%
+        \ifcategory{aprservice}{\def\apr@c{APRservice}}{%
+          \ifcategory{apraward}{\def\apr@c{APRaward}}{%
+            \ifcsdef{apr@type@\thefield{entrytype}}%
+              {\letcs\apr@c{apr@type@\thefield{entrytype}}}%
+              {\def\apr@c{APRresearch}}}}}%
+      \ifcategory{apralsoteaching}{\def\apr@c@two{APRteaching}}{}%
+      \ifcategory{apralsoresearch}{\def\apr@c@two{APRresearch}}{}%
+      \ifcategory{apralsoservice}{\def\apr@c@two{APRservice}}{}%
+      \ifcategory{apralsoaward}{\def\apr@c@two{APRaward}}{}}%
+    \def\apr@bib@start{%
+      \global\let\apr@bib@on\@empty
+      \apr@bib@decide
+      \ifx\apr@c\@empty\else
+        \gdef\apr@bib@on{x}%
+        \edef\apr@tmp{\noexpand\apr@mark@start{\apr@c}{\apr@c@two}}%
+        \apr@tmp
+      \fi}%
+    \renewcommand\aprsetentrycolour{%
+      \apr@bib@decide
+      \let\aprentrycolour\apr@c}%
     \def\apr@bib@end{%
       \ifx\apr@bib@on\@empty\else
         \apr@mark@end
@@ -421,7 +460,7 @@
 }{}
 
 %% ------------------------------------------------ APR-only formatting file
-% In the APR version, apr-formatting.tex (if present) is read here, after
+% In the APR version, the CV's apr-formatting.tex (if present) is read here, after
 % NSERC-formatting.tex and biblatex-formatting.tex, so it can override them
 % for the APR version without touching the plain CV.
 \ifAPR

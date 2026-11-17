@@ -13,7 +13,10 @@
 *.run.xml
 *.synctex.gz
 *.toc
+*.loc
+*.soc
 main.pdf
 apr.pdf
 
 __pycache__/
+template/example/*.pdf

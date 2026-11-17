@@ -93,7 +93,9 @@ Follow `CLAUDE.md` → Conventions. In short:
 - **Reviewing / PC / editorial roles** → the matching list under SCHOLARLY AND PROFESSIONAL
   ACTIVITIES; extend an existing line's years rather than adding a duplicate line, and update
   its `\hlservice[years]`.
-- **Grants, supervision, other awards** → the relevant section, copying the neighbouring format.
+- **Grants** → a `@grant` entry in `grants.bib`; **students** → a `@supervision` entry in
+  `supervision.bib` (see the comments at the top of each file). **Other awards** → the
+  relevant section of `main.tex`, copying the neighbouring format.
 - Commit additions and corrections to existing entries separately.
 
 ## 5. Verify

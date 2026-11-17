@@ -1,0 +1,164 @@
+% Grants and supervision as biblatex records (data model: uwhealthcv.dbx).
+% Part of the template, loaded by uwhealthcv.sty after aprcv.sty. The CV
+% keeps the records in .bib files and prints them with:
+%
+%   \cvowner{Name}               whose CV this is: \me in a grant prints it
+%   \printgrants                 the RESEARCH GRANTS AND CONTRACTS table,
+%                                newest first (by start, then end year)
+%   \printsupervision{PhD}       one numbered list of students under a
+%                                degree label: completed by date, then
+%                                those in progress, by family name
+%
+% In the APR version a grant whose tenure overlaps the review period is
+% highlighted as research (the whole table row); a student who completed in the
+% period, or is in progress, is highlighted as teaching.
+
+\RequirePackage{siunitx}
+
+\def\cv@owner{}
+\newcommand\cvowner[1]{\def\cv@owner{#1}}
+
+\DeclareFieldFormat{cvplain}{#1}
+\DeclareFieldFormat{cvcosupervisor}{\mkbibparens{co-supervised with #1}}
+
+%% ----------------------------------------------------------------- grants
+% The grants print as a longtable, like a hand-made table: headings repeat
+% on each page, and a grant never splits across pages. biblatex cannot print
+% entries into table cells, so the grant driver collects one table row per
+% grant into \cv@rows (printing nothing), and \printgrants then sets them.
+%
+% Column widths: names, agency and short title wrap; amount and tenure don't.
+\newlength\cvgrantnamewidth   \setlength\cvgrantnamewidth{4.5cm}
+\newlength\cvgrantagencywidth \setlength\cvgrantagencywidth{4.6cm}
+\newlength\cvgranttitlewidth  \setlength\cvgranttitlewidth{4.5cm}
+
+% every investigator, never truncated to "et al." (biblatex's default
+% truncates lists longer than three)
+\ExecuteBibliographyOptions[grant]{maxitems=999,minitems=999}
+
+% collect the investigators, one per line, into \cv@inv
+\DeclareListFormat{cvcollect}{%
+  \ifnumgreater{\value{listcount}}{1}{\gappto\cv@inv{\newline}}{}%
+  \gappto\cv@inv{#1}}
+
+% \cv@field{name}: a field's text, unexpanded (empty when it is not set)
+\newcommand\cv@field[1]{%
+  \ifcsundef{abx@field@#1}{}%
+    {\unexpanded\expandafter\expandafter\expandafter{%
+       \csname abx@field@#1\endcsname}}}
+
+\gdef\cv@rows{}
+\DeclareBibliographyDriver{grant}{%
+  \gdef\cv@inv{}%
+  \printlist[cvcollect]{investigators}%
+  \aprsetentrycolour
+  \ifdefempty\cv@rows{}{\gappto\cv@rows{\\}}% blank row between grants
+  \xappto\cv@rows{%
+    \noexpand\cv@grantline
+      {\expandonce\aprentrycolour}%
+      {\cv@field{role}}%
+      {\expandonce\cv@inv}%
+      {\cv@field{agency}}%
+      {\cv@field{amount}}%
+      {\cv@field{year}}%
+      {\cv@field{endyear}}%
+      {\cv@field{title}}}}
+
+% \cv@grantline{colour}{role}{names}{agency}{amount}{year}{endyear}{title}
+% \me is the CV's owner, in bold, with the role
+\newcommand\cv@grantline[8]{%
+  \ifx\relax#1\relax\else\rowcolor{#1}\fi
+  \def\me{\textbf{\cv@owner\ifx\relax#2\relax\else\space(#2)\fi}}#3 &
+  #4 &
+  \$\num[group-separator={,},group-minimum-digits=4]{#5} &
+  #6\ifx\relax#7\relax\else\ -- #7\fi &
+  #8 \\*}
+
+\DeclareSortingTemplate{cvgrants}{
+  \sort[direction=descending]{\field{year}}
+  \sort[direction=descending]{\field{endyear}\field{year}}
+  \sort{\field{title}}
+  \sort{\field{agency}}
+}
+
+\defbibenvironment{cvcollect}{}{}{}
+
+\newcommand\printgrants{%
+  \gdef\cv@rows{}%
+  \setbox\z@\vbox{% collect the rows; nothing is printed here
+    \begin{refcontext}[sorting=cvgrants]%
+      \printbibliography[type=grant,env=cvcollect,heading=none]%
+    \end{refcontext}}%
+  \begin{longtable}[c]{>{\raggedright\arraybackslash}p{\cvgrantnamewidth}
+                       >{\raggedright\arraybackslash}p{\cvgrantagencywidth}
+                       l l
+                       >{\raggedright\arraybackslash}p{\cvgranttitlewidth}}
+  \underline{Names of Researcher(s)} & \underline{Agency} & \underline{\$ Amount} &
+    \underline{Tenure} & \underline{Short Title} \\
+  \endhead
+  \cv@rows
+  \end{longtable}}
+
+%% ------------------------------------------------------------ supervision
+\aprtypecategory{supervision}{teaching}
+
+% full given names, whatever giveninits says for publications
+\DeclareNameFormat{cvfull}{%
+  \nameparts{#1}%
+  \ifdefvoid\namepartgiven{}{\namepartgiven\space}%
+  \ifdefvoid\namepartprefix{}{\namepartprefix\space}%
+  \namepartfamily
+  \ifdefvoid\namepartsuffix{}{\space\namepartsuffix}}
+
+\newcommand\cv@monthname[1]{%
+  \ifcase#1\or January\or February\or March\or April\or May\or June\or
+  July\or August\or September\or October\or November\or December\fi}
+
+% Name, date (or status), Title. Note (co-supervised with X) [Position]
+\DeclareBibliographyDriver{supervision}{%
+  \usebibmacro{begentry}%
+  \printnames[cvfull]{author}%
+  \setunit{\addcomma\space}%
+  \iffieldint{year}
+    {\printtext{%
+       \iffieldint{month}{\cv@monthname{\thefield{month}}\space}{}%
+       \thefield{year}}}
+    {\printfield[cvplain]{status}}%
+  \setunit{\addcomma\space}%
+  \printfield[cvplain]{title}%
+  \setunit{\addperiod\space}%
+  \printfield[cvplain]{note}%
+  \setunit{\space}%
+  \printfield[cvcosupervisor]{cosupervisor}%
+  \setunit{\space}%
+  \printfield[brackets]{position}%
+  \usebibmacro{finentry}}
+
+\DeclareSortingTemplate{cvsupervision}{
+  \sort{\field{year}\literal{9999}}
+  \sort{\field[padside=left,padwidth=2,padchar=0]{month}\literal{99}}
+  \sort{\name{author}}
+}
+
+% The list starts right after its degree label, so LaTeX treats the first
+% \item specially and then clears \if@noparitem. biblatex typesets each
+% entry in a group, which would undo that and treat every item as the
+% first (the labels pile up), so clear it globally.
+\newcommand\cv@degreeitem{\item\global\let\if@noparitem\iffalse}
+\defbibenvironment{cvdegree}
+  {\begin{enumerate}[label=\arabic*.]%
+   \renewcommand*{\finentrypunct}{}}
+  {\end{enumerate}}
+  {\cv@degreeitem}
+
+\def\cv@degree{}
+\defbibcheck{cvdegree}{\iffieldequals{degree}{\cv@degree}{}{\skipentry}}
+
+\newcommand\printsupervision[1]{%
+  \begin{enumerate}
+    \item[#1]%
+    \def\cv@degree{#1}%
+    \begin{refcontext}[sorting=cvsupervision]%
+      \printbibliography[type=supervision,check=cvdegree,env=cvdegree,heading=none]%
+    \end{refcontext}%
+  \end{enumerate}}

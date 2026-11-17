@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
-"""Deterministic checks on scholar.bib and the category lists in main.tex.
+"""Deterministic checks on scholar.bib, grants.bib, supervision.bib and the
+category lists in main.tex.
 
 Errors change what the PDF says (a paper silently dropped or printed twice)
 and fail CI. Warnings are worth a look but do not block a merge.
@@ -51,6 +52,21 @@ def run(only: set[str] | None = None) -> dict:
             f, g = name_parts(v)
             rparts[(norm(f), norm(g))] = t["name"]
     by_key = bib.by_key()
+
+    # Grants and supervision records (grants.bib, supervision.bib)
+    records = {}
+    for name in RECORD_FILES:
+        rb = parse_bib(ROOT / name)
+        for e in rb.errors:
+            err("E-syntax", e)
+        records[name] = rb
+    check_records(records, (ROOT / "main.tex").read_text(encoding="utf-8"), err, warn)
+    all_keys = Counter(e.key for e in bib.entries)
+    for rb in records.values():
+        all_keys.update(e.key for e in rb.entries)
+    for key, n in all_keys.items():
+        if n > 1 and len(by_key.get(key, [])) < 2:
+            err("E-dupkey", f"key '{key}' is used in more than one .bib file; biber keeps only the first", key)
 
     # E1 entry types
     for e in bib.entries:
@@ -153,6 +169,50 @@ def run(only: set[str] | None = None) -> dict:
         "errors": errors,
         "warnings": warnings,
     }
+
+
+RECORD_FILES = ["grants.bib", "supervision.bib"]
+GRANT_ROLES = {"PI", "Co-PI", "Co-I", "Co-A"}
+DATE_RE = re.compile(r"^\d{4}(-\d{2})?(/\d{4}(-\d{2})?)?$")
+
+
+def check_records(records: dict, main_tex: str, err, warn) -> None:
+    """Grants and supervision: fields the template needs, in the form it reads."""
+    for e in records["grants.bib"].entries:
+        f, where = e.fields, f"grants.bib:{e.line}"
+        if e.type != "grant":
+            err("E-record", f"{where}: '{e.key}' is @{e.type}; grants.bib holds @grant entries", e.key)
+            continue
+        for k in ("investigators", "agency", "amount", "date", "title"):
+            if not f.get(k):
+                err("E-record", f"{where}: grant '{e.key}' has no {k}", e.key)
+        inv = [x.strip() for x in re.split(r"\s+and\s+", f.get("investigators", ""))]
+        if inv.count("\\me") != 1:
+            err("E-record", f"{where}: grant '{e.key}' must list \\me exactly once in investigators", e.key)
+        if f.get("role") not in GRANT_ROLES:
+            warn("W-record", f"{where}: grant '{e.key}' has role '{f.get('role')}', not one of "
+                 f"{', '.join(sorted(GRANT_ROLES))}", e.key)
+        if f.get("amount") and not f["amount"].isdigit():
+            err("E-record", f"{where}: grant '{e.key}' amount '{f['amount']}' must be digits only "
+                "(no $ or commas)", e.key)
+        if f.get("date") and not DATE_RE.match(f["date"]):
+            err("E-record", f"{where}: grant '{e.key}' date '{f['date']}' should be YYYY or YYYY/YYYY", e.key)
+    printed = set(re.findall(r"^[^%\n]*\\printsupervision\{([^}]*)\}", main_tex, re.M))
+    for e in records["supervision.bib"].entries:
+        f, where = e.fields, f"supervision.bib:{e.line}"
+        if e.type != "supervision":
+            err("E-record", f"{where}: '{e.key}' is @{e.type}; supervision.bib holds @supervision entries", e.key)
+            continue
+        if not f.get("author"):
+            err("E-record", f"{where}: '{e.key}' has no author (the student)", e.key)
+        if f.get("degree") not in printed:
+            err("E-record", f"{where}: '{e.key}' has degree '{f.get('degree')}', which no "
+                "\\printsupervision in main.tex prints, so it does not appear", e.key)
+        if bool(f.get("date")) == bool(f.get("status")):
+            err("E-record", f"{where}: '{e.key}' needs exactly one of date (completed) or "
+                "status (e.g. In progress)", e.key)
+        if f.get("date") and not DATE_RE.match(f["date"]):
+            err("E-record", f"{where}: '{e.key}' date '{f['date']}' should be YYYY or YYYY-MM", e.key)
 
 
 def main() -> int:

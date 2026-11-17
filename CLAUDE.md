@@ -1,12 +1,25 @@
 # Jim Wallace's CV
 
-LaTeX CV in the University of Waterloo Faculty of Health format. One source, two PDFs:
+LaTeX CV in the University of Waterloo Faculty of Health format. The repo has two halves:
+
+- **The template** (`template/`): the Faculty of Health format and the APR highlighting
+  (`uwhealthcv.sty`, `aprcv.sty`, the formatting and page-break files, the ACM biblatex style,
+  badge images) plus a fictional example CV. No personal data. It has its own `README.md` and
+  `CLAUDE.md`; read them before changing anything there.
+- **My CV** (everything else): content and my settings. `latexmkrc` puts `template/` on TeX's
+  search path, so `main.tex` just says `\usepackage{uwhealthcv}`.
+
+One source, two PDFs:
 
 - `main.tex` compiles to the plain Faculty of Health CV.
 - `apr.tex` compiles `main.tex` with the `apr` option: adds the "A Note on…" sections and colours
-  review-period items (see the header of `aprcv.sty`). Never put content in `apr.tex`.
+  review-period items (see the header of `template/aprcv.sty`). Never put content in `apr.tex`.
 - `scholar.bib` holds publications, talks and software. `main.tex` decides which heading each
   entry prints under with `\addtocategory{<category>}{key, key, …}` near the top.
+- `grants.bib` holds grants (`@grant`) and `supervision.bib` my students (`@supervision`).
+  The fields are described in `template/uwhealthcv.dbx`. They print sorted, and the APR
+  colours come from their dates, so there are no years to keep in step by hand.
+- `apr-formatting.tex` holds my settings for the APR version (highlight strength and style).
 - `data/trainees.yaml` lists my trainees (students/postdocs) and the spellings used for them.
 - `2pages.tex` / `8pages.tex` are older NSERC-format variants; leave them alone unless asked.
 
@@ -51,31 +64,45 @@ the source of truth; never force-push `main`.
 - `presentations`: self-initiated talks/posters without archival proceedings. `invited`: invited talks.
 - `technicalreports`, `other`, `patent`, `software` as named.
 
-**APR colours** (`main.tex`, block after the categories; rules in `aprcv.sty`)
+**APR colours** (`main.tex`, block after the categories; rules in `template/aprcv.sty`)
 - Bib entries in the review period (`\setreviewperiod`) are research-green automatically.
   `aprinclude` treats an entry as in the period (e.g. a 2027 paper accepted during it);
   `aprnone` turns highlighting off for one entry. Only I add keys to either.
 - If any author is my trainee (`*`) or a trainee presented (`\dag`), also add the key to
   `apralsoteaching`.
-- Non-bib items use `\hlteaching[years]{…}`, `\hlresearch`, `\hlservice`, `\hlaward`, or the
-  `\hl…row{years}` forms at the start of each grant-table row. Always give `[years]`.
+- Grants are highlighted when their `date` range overlaps the period; students when they are
+  `status = {In progress}` or their `date` is in the period. Nothing to add by hand.
+- Other non-bib items use `\hlteaching[years]{…}`, `\hlresearch`, `\hlservice`, `\hlaward`.
+  Always give `[years]`.
 
-**Where non-publication items go** (all in `main.tex`)
+**Where non-publication items go**
 - Awards → ACADEMIC AWARDS AND DISTINCTIONS (newest first, `\hlaward[YYYY]{…}`).
 - Reviewing, PCs, editorial roles, organizing → SCHOLARLY AND PROFESSIONAL ACTIVITIES lists.
-- Grants → RESEARCH GRANTS AND CONTRACTS table: match the existing row format exactly. End
-  each row of a grant with `\\*` (keeps the grant on one page) and the blank row after it
-  with `\\`.
-- Supervision → GRADUATE STUDENT SUPERVISION. Service → SERVICE.
+- Awards, activities and service are in `main.tex`; service → SERVICE.
+- Grants → a `@grant` entry in `grants.bib`. List investigators in the order given, with
+  `\me` for me and `role` for my role; `amount` is digits only; `date = {2026/2028}` is the
+  tenure. Order in the file doesn't matter.
+- Supervision → a `@supervision` entry in `supervision.bib`: `author = {Family, Given}`,
+  `degree` (one of the `\printsupervision{…}` lists in `main.tex`), and `status = {In progress}`
+  until they finish, then `date`, `title` and, when I know it, `position`. Committee
+  membership and external examining stay as lines in `main.tex`.
 
-**Page breaks** are set in `cv-layout.tex`. Put `\keepwithnext` before a new heading that is
-followed by a list; never use `\newpage` (use `\sectionbreak`).
+**Markup** comes from the template (`template/uwhealthcv.sty`): headings are `\cvsection{…}`,
+labels over a list `\cvsubheading{…:}`, list items `\cvitem …` inside `cvlist`, lettered parts
+`\cvpart{…}` inside `cvparts` (letters are automatic), students `\item …` inside
+`\begin{cvdegree}{PhD}`, bibliography headings `\printcategory[J]{journal}`. Copy the
+neighbouring entry; don't write raw `itemize`/`\setlength` blocks.
+
+**Page breaks** are set in `template/cv-layout.tex`. Put `\keepwithnext` before a new heading
+that is followed by a list; never use `\newpage` (use `\sectionbreak`).
 
 ## Checks
 
 - `python3 scripts/check_cv.py` — deterministic checks; errors fail CI. Run it after every edit.
 - `python3 scripts/check_cv.py --keys k1,k2` — the same, reporting only on the keys you touched.
 - `latexmk -pdf main.tex && latexmk -pdf apr.tex` — if TeX is installed; CI compiles both anyway.
+- After a template change, also build `template/example/` (`example.tex`, `example-apr.tex`);
+  CI does, and fails if `template/` mentions me.
 - Verifier sub-agents in `.claude/agents/` check changes independently. The `cv-verify` skill
   says how to run them.
 

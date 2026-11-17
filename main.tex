@@ -1,34 +1,16 @@
 \documentclass[12pt]{article}
 
-\usepackage{enumitem}
-\usepackage[table,xcdraw]{xcolor}
-\input{NSERC-formatting}
-
-
-
-
-\usepackage[utf8]{inputenc}
-%\usepackage[hybrid]{markdown}
-\usepackage[
-    style=ACM-Reference-Format,
-    backend=biber,
-    sorting=ydnt,
-    giveninits,
-    firstinits=true,
-    maxcitenames=99,
-    maxbibnames=99,
-    defernumbers=true,
-]{biblatex}
+% The Faculty of Health format, APR highlighting and page-break rules all
+% live in template/ (see template/README.md). This file holds content only.
+% Compile main.tex for the plain Faculty of Health CV, or apr.tex for the
+% APR version (evaluation notes + highlighting).
+\usepackage{uwhealthcv}
 
 \addbibresource{scholar.bib}
-\input{biblatex-formatting}
-
-% APR version: compile main.tex for the plain Faculty of Health CV, or apr.tex
-% for the APR version (evaluation notes + highlighting). See aprcv.sty.
-\usepackage{aprcv}
+\addbibresource{grants.bib}
+\addbibresource{supervision.bib}
+\cvowner{James Wallace}
 \setreviewperiod{2025}{2026}
-% Page breaks for both versions: see cv-layout.tex.
-\input{cv-layout}
 % Publications and presentations from the review period are highlighted as
 % research. To use another colour for one entry, add its key to aprteaching,
 % aprservice or apraward; to stop one being highlighted, add it to aprnone.
@@ -89,17 +71,17 @@
 \thispagestyle{empty}
 \begin{center}
 %\textbf{\textit{FACULTY OF HEALTH VITAE FORMAT}} \\
-\textbf{CURRICULUM VITA}
+\cvsection{CURRICULUM VITA}
 \end{center}
 
-\textbf{NAME/DATE:} Jim Wallace, \usvardate\today
+\cvsection{NAME/DATE:} Jim Wallace, \usvardate\today
 \\ \\
-\textbf{CONTACT INFORMATION:} \\
+\cvsection{CONTACT INFORMATION:} \\
 School of Public Health Sciences \\
 University of Waterloo \\
 james.wallace@uwaterloo.ca
 \\ \\
-\textbf{DEGREES RECEIVED:} 
+\cvsection{DEGREES RECEIVED:} 
 
 \begin{table}[h!]
 \centering
@@ -111,7 +93,7 @@ BMath               & University of Waterloo   & 1999 – 2004  \\
 \end{tabular}
 \end{table}
 
-\textbf{EMPLOYMENT HISTORY:}
+\cvsection{EMPLOYMENT HISTORY:}
 \begin{table}[h!]
 \centering
 \begin{tabular}{p{3.5cm} l l}
@@ -127,120 +109,101 @@ BMath               & University of Waterloo   & 1999 – 2004  \\
 \end{table}
 
 \sectionbreak
-\textbf{ACADEMIC AWARDS AND DISTINCTIONS:}
+\cvsection{ACADEMIC AWARDS AND DISTINCTIONS:}
 
-\begin{itemize}
-\setlength{\labelsep}{0em}
-\setlength{\itemsep}{-5pt}
-    \item[] \hlaward[2026]{Special recognition for DIS 2026 Papers (exceptional reviews)}
-    \item[] \hlaward[2025]{3 $\times$ Special recognition for CHI 2025 Papers (exceptional reviews)}
-    \item[] Recognition of Service, CHI PLAY 2023 General Chair
-    \item[] 2 $\times$ Special recognition for CHI 2023 Papers (exceptional reviews)
-    \item[] 2 $\times$ Special recognition for CHI 2022 Papers (exceptional reviews)
-    \item[] CHI 2020 Best Paper Honorable Mention Award
-    \item[] 4 $\times$ Special recognition for CHI 2020 Papers (exceptional reviews)
-    \item[] CSCW 2018 Best Paper Honorable Mention Award
-    \item[] 2 $\times$ Special recognition for CHI 2017 Papers and Notes (exceptional reviews)
-    \item[] Special recognition for DIS 2016 Papers and Notes (exceptional review)
-    \item[] Special recognition for CHI 2015 Papers and Notes (exceptional review)
-    \item[] Graphics Interface 2015 Best Poster Award 
-    \item[] Special recognition for CHI PLAY 2014 Full Papers (exceptional review)
-\end{itemize}
+\begin{cvlist}
+    \cvitem \hlaward[2026]{Special recognition for DIS 2026 Papers (exceptional reviews)}
+    \cvitem \hlaward[2025]{3 $\times$ Special recognition for CHI 2025 Papers (exceptional reviews)}
+    \cvitem Recognition of Service, CHI PLAY 2023 General Chair
+    \cvitem 2 $\times$ Special recognition for CHI 2023 Papers (exceptional reviews)
+    \cvitem 2 $\times$ Special recognition for CHI 2022 Papers (exceptional reviews)
+    \cvitem CHI 2020 Best Paper Honorable Mention Award
+    \cvitem 4 $\times$ Special recognition for CHI 2020 Papers (exceptional reviews)
+    \cvitem CSCW 2018 Best Paper Honorable Mention Award
+    \cvitem 2 $\times$ Special recognition for CHI 2017 Papers and Notes (exceptional reviews)
+    \cvitem Special recognition for DIS 2016 Papers and Notes (exceptional review)
+    \cvitem Special recognition for CHI 2015 Papers and Notes (exceptional review)
+    \cvitem Graphics Interface 2015 Best Poster Award 
+    \cvitem Special recognition for CHI PLAY 2014 Full Papers (exceptional review)
+\end{cvlist}
 
 
 \sectionbreak
-\textbf{SCHOLARLY AND PROFESSIONAL ACTIVITIES:}
-\begin{itemize}
-\setlength{\labelsep}{0em}
-\setlength{\itemsep}{0pt}
-    \item[] ACM Professional Member 2008 -- Present
-\end{itemize}
+\cvsection{SCHOLARLY AND PROFESSIONAL ACTIVITIES:}
+\begin{cvlist}[0pt]
+    \cvitem ACM Professional Member 2008 -- Present
+\end{cvlist}
 
 
-\keepwithnext
-Grant Referee:
-\begin{itemize}
-\setlength{\labelsep}{0em}
-\setlength{\itemsep}{-5pt}
-    \item[] \hlservice[2026]{NFRF Exploration 2026 (Multidisciplinary Review Panel)}
-    \item[] \hlservice[2026]{NFRF International 2026 (Letter of Intent Review)}
-    \item[] \hlservice[2023-2025]{NSERC Discovery Grants 2015, 2018, 2019, 2023 -- 2025}
-    \item[] \hlservice[2025]{NSERC Alliance Grants 2025}
-    \item[] NSERC John C. Polyani Award 2019
-    \item[] NSERC CREATE Grants 2019
-    \item[] MITACS Elevate Postdoctoral Scholarship 2013
-\end{itemize}
+\cvsubheading{Grant Referee:}
+\begin{cvlist}
+    \cvitem \hlservice[2026]{NFRF Exploration 2026 (Multidisciplinary Review Panel)}
+    \cvitem \hlservice[2026]{NFRF International 2026 (Letter of Intent Review)}
+    \cvitem \hlservice[2023-2025]{NSERC Discovery Grants 2015, 2018, 2019, 2023 -- 2025}
+    \cvitem \hlservice[2025]{NSERC Alliance Grants 2025}
+    \cvitem NSERC John C. Polyani Award 2019
+    \cvitem NSERC CREATE Grants 2019
+    \cvitem MITACS Elevate Postdoctoral Scholarship 2013
+\end{cvlist}
 
-\keepwithnext
-Journal Referee:
-\begin{itemize}
-\setlength{\labelsep}{0em}
-\setlength{\itemsep}{-5pt}
-    \item[] \hlservice[2024-2027]{Proceedings of the ACM (GROUP) Associate Editor, 2024 -- 2027}
-    \item[] \hlservice[2025-2026]{ACM Transactions on Computing for Healthcare 2025 -- 2026}
-    \item[] ACM Transactions on the Web 2024
-    \item[] Proceedings of the ACM (ISS) Editor, 2022
-    \item[] Proceedings of the ACM (CHI Play) Associate Editor, 2020 -- 2021
-    \item[] Proceedings of the ACM (CSCW) Associate Editor, 2019 -- 2020
-    \item[] IEEE Pervasive Computing 2015
-    \item[] Computers in Human Behaviour 2015
-    \item[] IEEE Computer Graphics and Applications 2012
-    \item[] International Journal of Human-Computer Studies 2011
-\end{itemize}
+\cvsubheading{Journal Referee:}
+\begin{cvlist}
+    \cvitem \hlservice[2024-2027]{Proceedings of the ACM (GROUP) Associate Editor, 2024 -- 2027}
+    \cvitem \hlservice[2025-2026]{ACM Transactions on Computing for Healthcare 2025 -- 2026}
+    \cvitem ACM Transactions on the Web 2024
+    \cvitem Proceedings of the ACM (ISS) Editor, 2022
+    \cvitem Proceedings of the ACM (CHI Play) Associate Editor, 2020 -- 2021
+    \cvitem Proceedings of the ACM (CSCW) Associate Editor, 2019 -- 2020
+    \cvitem IEEE Pervasive Computing 2015
+    \cvitem Computers in Human Behaviour 2015
+    \cvitem IEEE Computer Graphics and Applications 2012
+    \cvitem International Journal of Human-Computer Studies 2011
+\end{cvlist}
 
-\keepwithnext
-Conference Organizing Committee:
-\begin{itemize}
-\setlength{\labelsep}{0em}
-\setlength{\itemsep}{-5pt}
-    \item[] \hlservice[2026-2027]{ACM Conference on Interactive Health 2027 Technical Program Chair}
-    \item[] \hlservice[2027]{ACM Conference on Interactive Surfaces and Spaces 2027 Demos Chair}
-    \item[] \hlservice[2026]{ACM Conference on Interactive Health 2026 Early Career Workshop Chair}
-    \item[] \hlservice[2026]{ACM Conference on Interactive Health 2026 Convener (Founding Member)}
-    \item[] \hlservice[2025]{ACM Conference on Conversational User Interfaces 2025 General Chair}
-    \item[] ACM Conference on Human-Computer Interaction and Play 2023 General Chair
-    \item[] ACM Conference on Interactive Surfaces and Spaces 2022 Program Chair 
-    \item[] ACM Conference on Interactive Surfaces and Spaces 2017 Publicity Chair
-    \item[] ACM Conference on Interactive Surfaces and Spaces 2016 Local Chair
-\end{itemize}
+\cvsubheading{Conference Organizing Committee:}
+\begin{cvlist}
+    \cvitem \hlservice[2026-2027]{ACM Conference on Interactive Health 2027 Technical Program Chair}
+    \cvitem \hlservice[2027]{ACM Conference on Interactive Surfaces and Spaces 2027 Demos Chair}
+    \cvitem \hlservice[2026]{ACM Conference on Interactive Health 2026 Early Career Workshop Chair}
+    \cvitem \hlservice[2026]{ACM Conference on Interactive Health 2026 Convener (Founding Member)}
+    \cvitem \hlservice[2025]{ACM Conference on Conversational User Interfaces 2025 General Chair}
+    \cvitem ACM Conference on Human-Computer Interaction and Play 2023 General Chair
+    \cvitem ACM Conference on Interactive Surfaces and Spaces 2022 Program Chair 
+    \cvitem ACM Conference on Interactive Surfaces and Spaces 2017 Publicity Chair
+    \cvitem ACM Conference on Interactive Surfaces and Spaces 2016 Local Chair
+\end{cvlist}
 
-\keepwithnext
-Conference Program Committee:
-\begin{itemize}
-\setlength{\labelsep}{0em}
-\setlength{\itemsep}{-5pt}    
-    \item[] \hlservice[2021-]{ACM Conference on Human Factors in Computing Systems (CHI) 2018, 2019, 2021 -- Present}
-    \item[] \hlservice[2025-2027]{ACM Conference on Supporting Group Work 2025 -- 2027}
-    \item[] ACM Conference on Computer Supported Cooperative Work 2019 -- 2021
-    \item[] \hlservice[2026]{Graphics Interface (GI) 2015, 2017, 2026}
-    \item[] ACM Conference on Pervasive Displays (PerDis) 2015 -- 2017
-    \item[] ACM Symposium on Computer-Human Interaction in Play (CHI PLAY) 2014 -- 2016, 2019 -- 2021
-    \item[] Workshop on Design Challenges of Coupled Display Visual Interfaces (PPD) 2012
-    \item[] Hypertext Poster Track 2010
-\end{itemize}
+\cvsubheading{Conference Program Committee:}
+\begin{cvlist}
+    \cvitem \hlservice[2021-]{ACM Conference on Human Factors in Computing Systems (CHI) 2018, 2019, 2021 -- Present}
+    \cvitem \hlservice[2025-2027]{ACM Conference on Supporting Group Work 2025 -- 2027}
+    \cvitem ACM Conference on Computer Supported Cooperative Work 2019 -- 2021
+    \cvitem \hlservice[2026]{Graphics Interface (GI) 2015, 2017, 2026}
+    \cvitem ACM Conference on Pervasive Displays (PerDis) 2015 -- 2017
+    \cvitem ACM Symposium on Computer-Human Interaction in Play (CHI PLAY) 2014 -- 2016, 2019 -- 2021
+    \cvitem Workshop on Design Challenges of Coupled Display Visual Interfaces (PPD) 2012
+    \cvitem Hypertext Poster Track 2010
+\end{cvlist}
 
-\keepwithnext
-Conference Referee: 
-\begin{itemize}
-\setlength{\labelsep}{0em}
-\setlength{\itemsep}{-5pt}
-    \item[] \hlservice[2021-]{ACM Conference on Human Factors in Computing Systems (CHI): 2009 -- 2019, 2021 -- Present}
-    \item[] \hlservice[2021-]{ACM Conference on Interactive Tabletops and Surfaces (ISS): 2009 -- 2015, 2018, 2019, 2021 -- Present}
-    \item[] ACM Conference on Computer Supported Cooperative Work \& Social Computing (CSCW): 2008, 2010, 2012 -- 2020
-    \item[] ACM Conference on User Interface and Software Technologies (UIST): 2016, 2018
-    \item[] ACM Conference on Mobile Human-Computer Interaction: 2012, 2013
-    \item[] ACM Conference on Symposium on Spatial User Interaction (SUI): 2013
-    \item[] ACM Conference on Intelligent User Interfaces (IUI): 2012, 2013
-    \item[] ACM Conference on Engineering Interactive Computing Systems (EICS): 2012, 2013
-    \item[] \hlservice[2026]{ACM Conference on Designing Interactive Systems (DIS): 2010, 2011, 2016, 2018, 2024, 2026}
-    \item[] ACM Symposium on Computer-Human Interaction in Play (CHI PLAY): 2014 -- 2016, 2019 -- 2021
-    \item[] \hlservice[2025]{ACM Conference on Supporting Group Work (GROUP) 2025}
-\end{itemize}
+\cvsubheading{Conference Referee:}
+\begin{cvlist}
+    \cvitem \hlservice[2021-]{ACM Conference on Human Factors in Computing Systems (CHI): 2009 -- 2019, 2021 -- Present}
+    \cvitem \hlservice[2021-]{ACM Conference on Interactive Tabletops and Surfaces (ISS): 2009 -- 2015, 2018, 2019, 2021 -- Present}
+    \cvitem ACM Conference on Computer Supported Cooperative Work \& Social Computing (CSCW): 2008, 2010, 2012 -- 2020
+    \cvitem ACM Conference on User Interface and Software Technologies (UIST): 2016, 2018
+    \cvitem ACM Conference on Mobile Human-Computer Interaction: 2012, 2013
+    \cvitem ACM Conference on Symposium on Spatial User Interaction (SUI): 2013
+    \cvitem ACM Conference on Intelligent User Interfaces (IUI): 2012, 2013
+    \cvitem ACM Conference on Engineering Interactive Computing Systems (EICS): 2012, 2013
+    \cvitem \hlservice[2026]{ACM Conference on Designing Interactive Systems (DIS): 2010, 2011, 2016, 2018, 2024, 2026}
+    \cvitem ACM Symposium on Computer-Human Interaction in Play (CHI PLAY): 2014 -- 2016, 2019 -- 2021
+    \cvitem \hlservice[2025]{ACM Conference on Supporting Group Work (GROUP) 2025}
+\end{cvlist}
 
 \ifAPR % APR version only ------------------------------------------
 %\newpage
 \sectionbreak
-\textbf{A Note on Evaluating Human-Computer Interaction Research}
+\cvsection{A Note on Evaluating Human-Computer Interaction Research}
 \\ \\
 Human–Computer Interaction (HCI) research develops and evaluates interactive technologies that improve human outcomes, including health, well-being, and access to care. This work typically produces three primary forms of scholarly contribution: (1) novel interactive systems and software tools, (2) empirical evidence about how people use and benefit from these systems, and (3) generalizable design knowledge that informs future technologies and interventions. These contributions are disseminated through peer-reviewed publications, software releases, and real-world deployments in applied settings. Impact in HCI is demonstrated not only through publications, but also through the development of systems, software tools, and methods that enable new forms of research and practice. My research regularly involves designing and implementing prototype systems, conducting empirical studies with users, and analyzing qualitative and quantitative data to generate actionable insights for technology design.
 \\ \\
@@ -275,76 +238,66 @@ Because HCI research is interdisciplinary and system-focused, publications often
 % Finally, in-line with prioritizing publishing at ACM conferences and journals, I dedicate much of my service time to these venues. I actively serve on program committees and as a reviewer for the premiere conferences in HCI, particularly those published by the Association for Computing Machinery (ACM), to which I maintain a professional membership. For instance, I served as General Chair for ACM CHI PLAY 2023 in Stratford, and will be serving as General Chair for ACM CUI 2025 in Waterloo.
 
 \sectionbreak
-\textbf{PUBLICATIONS:}
-\begin{enumerate}
+\cvsection{PUBLICATIONS:}
+\begin{cvparts}
 
     \nocite{*}
 
-    \item[a)] \textbf{Refereed Journals:}
-    \newrefcontext[labelprefix=J]
-    \printbibliography[category=journal,resetnumbers=true, heading=none]
+    \cvpart{Refereed Journals:}
+    \printcategory[J]{journal}
 
     \keepwithnext
-    \item[b)] \textbf{Refereed Conference Proceedings:}
-    \newrefcontext[labelprefix=C]
-    \printbibliography[category=conference,resetnumbers=true,heading=none]
+    \cvpart{Refereed Conference Proceedings:}
+    \printcategory[C]{conference}
 
-    % \item[c)] \textbf{Workshop Organization:}
-    % \newrefcontext[labelprefix=W]
-    % \printbibliography[category=workshops,resetnumbers=true,heading=none]
+    % \cvpart{Workshop Organization:}
+    % \printcategory[W]{workshops}
 
     \keepwithnext
-    \item[c)] \textbf{Technical and Consulting Reports:}
-    \newrefcontext[labelprefix=T]
-    \printbibliography[category=technicalreports,resetnumbers=true,heading=none]
+    \cvpart{Technical and Consulting Reports:}
+    \printcategory[T]{technicalreports}
 
     \keepwithnext
-    \item[d)] \textbf{Other Publications:}
-    \newrefcontext[labelprefix=O]
-    \printbibliography[category=other,resetnumbers=true,heading=none]
+    \cvpart{Other Publications:}
+    \printcategory[O]{other}
 
-    % \item[e)] \textbf{Theses and Dissertations:}
-    % \newrefcontext[labelprefix=D]
-    % \printbibliography[category=thesis,resetnumbers=true,heading=none]
+    % \cvpart{Theses and Dissertations:}
+    % \printcategory[D]{thesis}
 
     \keepwithnext
-    \item[e)] \textbf{Patents:}
-    \newrefcontext[labelprefix=P]
-    \printbibliography[category=patent,resetnumbers=true,heading=none]
+    \cvpart{Patents:}
+    \printcategory[P]{patent}
 
     \sloppy
     \keepwithnext
-    \item[f)] \textbf{Software:}
-    \newrefcontext[labelprefix=S]
-    \printbibliography[category=software,resetnumbers=true,heading=none]
+    \cvpart{Software:}
+    \printcategory[S]{software}
 
-\end{enumerate}
+\end{cvparts}
 
 
 \sectionbreak
-\textbf{PRESENTATION TO SCHOLARLY GROUPS}\\
+\cvsection{PRESENTATION TO SCHOLARLY GROUPS}\\
 Speaker(s) denoted by \dag\\
 
-\begin{enumerate}
+\begin{cvparts}
 
     \nocite{*}
 
-    \item[a)]\textbf{Invited} \\    
-    \newrefcontext
-    \printbibliography[category={invited},resetnumbers=true,heading=none]
+    \cvpart{Invited} \\    
+    \printcategory{invited}
 
 
     \keepwithnext
-    \item[b)]\textbf{Self-initiated} \\    
-    \newrefcontext
-    \printbibliography[category={presentations},resetnumbers=true,heading=none]
+    \cvpart{Self-initiated} \\    
+    \printcategory{presentations}
 
-\end{enumerate}
+\end{cvparts}
 
 
 \ifAPR % APR version only ------------------------------------------
 \sectionbreak
-\textbf{A Note on Research Funding in Human–Computer Interaction}
+\cvsection{A Note on Research Funding in Human–Computer Interaction}
 \\ \\
 Research funding in Human–Computer Interaction (HCI) is primarily supported by the Natural Sciences and Engineering Research Council of Canada (NSERC), whose mandate is to fund foundational advances in computing, software, and interactive technologies. In contrast, the Canadian Institutes of Health Research (CIHR) primarily supports biomedical, clinical, health systems, and population health research. These agencies serve complementary roles within Canada’s research ecosystem and employ distinct funding models aligned with the needs and cost structures of their respective disciplines. 
 \\ \\
@@ -368,176 +321,13 @@ Grants active during the review period are highlighted as \aprsample{research}{}
 
 
 \sectionbreak
-\textbf{RESEARCH GRANTS AND CONTRACTS:}
+\cvsection{RESEARCH GRANTS AND CONTRACTS:}
 
-\begin{longtable}[c]{p{4.5cm} l l l p{4.5cm}}
-\underline{Names of Researcher(s)}  &	\underline{Agency}		& \underline{\$ Amount}   &	\underline{Tenure}    &	\underline{Short Title} \\
-\endhead
-
-\hlresearchrow{2026-2027}\textbf{James Wallace (PI)}       & MITACS BSI   & \$10,000   & 2026 -- 2027 & Home-Based Training \\*
-\hlresearchrow{2026-2027}Leah Zhang-Kennedy & & & & for Children with ADHD \\*
-\\
-
-
-\hlresearchrow{2026-2027}\textbf{James Wallace (PI)}       & Graham Seed Fund   & \$35,000   & 2026 -- 2027 & AI Adoption for \\*
-\hlresearchrow{2026-2027}& & & & Community Mental Health \\*
-\\
-
-\hlresearchrow{2026-2028}Cosmin Munteanu, &   National Research Council & \$320,966 & 2026 -- 2028 & Aging in Place \\*
-\hlresearchrow{2026-2028}\textbf{James Wallace (Co- PI)}  & Canada \\* 
-\hlresearchrow{2026-2028}Kieko Katsuragawa, \\*
-\\
-
-\hlresearchrow{2026-2027}Karen Cochrane & UW Arts Antagonism and & \$10,000 & 2026 -- 2027 & Future of  \\*
-\hlresearchrow{2026-2027}\textbf{James Wallace (Co-PI)} & Intimidation in Academia & & & Community Health Care \\*
-\hlresearchrow{2026-2027}& Seed Grant \\*
-\\
-
-\hlresearchrow{2025-2026}Xiaolin Wei & CIHR  & \$100,000   & 2025 -- 2026   & GACD  \\*
-\hlresearchrow{2025-2026}(13 others) &   & & & Priority Announcement \\*
-\hlresearchrow{2025-2026}\textbf{James Wallace (Co-A)} \\*
-\\
-
-
-\hlresearchrow{2025}\textbf{James Wallace (PI)}       & Google Cloud Credits   & \$7,200   & 2025 & LLM Deductive Coding \\*
-\\
-
-
-\hlresearchrow{2024-2026}\textbf{James Wallace (PI)} & UW CIHR RIF & \$10,000 & 2024-2026 & eSports Injury Prevention \\*
-\\
-
-\hlresearchrow{2024-2025}Karen Cochrane      & NAR Catalyst              & \$10,000  & 2024-2025 & Independent Living \\*
-\hlresearchrow{2024-2025}\textbf{James Wallace (Co-PI)} \\*
-\\
-
-\textbf{James Wallace (PI)}       & Microsoft Azure Credits   & \$6,000   & 2024 & Interactive ML \\*
-\\
-
-\textbf{James Wallace (PI)}      & MITACS Globalink & \$6,000   & 2024 & Interactive ML \\*
-\\
-
-\hlresearchrow{2024-2026}Leah Zhang-Kennedy, & UW Trailblazer & \$53,000 & 2024-2026 & VR Therapy \\*
-\hlresearchrow{2024-2026}\textbf{James Wallace (Co-PI)} \\*
-\\
-
-\textbf{James Wallace (PI)}       &   UW Hallman URA    & \$12,000   & 2024 & eSports Injury Prevention \\*
-\\
-
-\textbf{James Wallace (PI)}       &   UW HSS SSHRC    & \$7,000   & 2024 & eSports Data Set \\*
-\\
-
-\hlresearchrow{2022-2027}\textbf{James Wallace (PI)}      &   NSERC   & \$205,000 &   2022 -- 2027 &   Discovery Grant \\*
-\\
-
-\hlresearchrow{2023-2026}Helene Fournier,   &   National Research Council & \$201,300 & 2023 -- 2026 & Aging in Place \\*
-\hlresearchrow{2023-2026}\textbf{James Wallace (PI)}, & Canada \\* 
-\hlresearchrow{2023-2026}Kieko Katsuragawa \\*
-\\
-
-Xiaolin Wei & CIHR  & \$1,710,000   & 2022 -- 2024   & COVID-19 Telemedicine \\*
-(13 others) \\*
-\textbf{James Wallace (Co-I)} \\*
-\\
-
-Cayley MacArthur & Games Institute & \$15,000 & 2022 -- 2023 & Marillac Place \\*
-\textbf{James Wallace (Co-PI)}  \\*
-\\
-
-Brian Laird & Global Water Futures & \$1,484,000 & 2017 -- 2022 & FiSHNET \\*
-Heidi Swanson \\*
-Kelly Skinner \\*
-Ken Stark \\*
-\textbf{James Wallace (Co-I)} \\*
-\\
-
-Samantha Meyer  & CIRN  &   \$104,866   & 2021 -- 2022   &   CTA Toolkit \\*
-Ève Dubé \\ (6 others) \\*
-\textbf{James Wallace (Co-I)} \\*
-\\
-
-Lennart Nacke & UW IRPG-EU & \$20,000 & 2017 -- 2018 & Medical Software \\*
-\textbf{James Wallace (Co-PI)} \\*
-\\
-
-Helen Chen,               & DynaCare    & \$150,000   & 2016-2021 & mECG                      \\*
-Ian McKillop,             & (Private)   &             &           &                           \\*
-Ning Jiang,               &             &             &           &                           \\*
-\textbf{James Wallace (Co-I)}             &             &             &           &                       \\*
-\\
-
-Regan Mandryk,            & NSERC       & \$2,450,000 & 2016-2022 & SWaGUR                    \\*
-Mark Hancock,             & CREATE      &             &           &                           \\*
-\textbf{James Wallace (Co-I)}   &             &             &           &                           \\*
-(30 others) & & & & \\*
-\\
-
-
-\textbf{James Wallace (PI)}             & NSERC       & \$90,000    & 2015-2022 & Discovery Grant           \\*
-\\
-
-
-Xiaolin Wei &   CIHR & \$231,473 & 2020-2021 & COVID-19 \\*
-(11 others) \\*
-\textbf{James Wallace (Co-I)} \\*
-\\
-
-\textbf{James Wallace (PI)},              & CFI-JELF    & \$70,000    & 2016-2021 & IDEA Lab                  \\*
-Paul Stolee, \\ Stacey Scott \\*
-\\
-
-\textbf{James Wallace (PI)}             & ORF-RI      & \$70,000    & 2016-2021 & IDEA Lab                  \\*
-Paul Stolee, \\ Stacey Scott \\*
-\\
-
-
-Ning Jiang  & NSERC CRD &   \$273,730   & 2017 -- 2019 & Mobile ECG \\*
-Helen Chen \\ \textbf{James Wallace (Co-I)} \\ Ian McKillop \\*
-\\
-
-Helen Chen & OCE MSc PoP & \$70,000 & 2017 -- 2018 & Mobile ECG \\*
-Ning Jiang\\*
-\textbf{James Wallace (Co-I)} \\*
-Ian McKillop \\*
-\\
-
-Scott Leatherdale   & CPHA  & \$20,000  & 2017 -- 2018 & Online Data Vis \\*
-\textbf{James Wallace (Co-PI)} \\*
-\\
-
-\textbf{James Wallace (PI)}   & PHAC  & \$9,186   & 2017 & Antimicrobial Resistance \\*
-\\
-
-Josephine McMurray,       & SSHRC-IDG   & \$62,939    & 2016-2018 & SmartSurveys              \\*
-\textbf{James Wallace (Co-I)},            &             &             &           &                           \\*
-Richard Booth,            &             &             &           &                           \\*
-Chatura Ranaweera         &             &             &           &                           \\*
-\\
-
-Lennart Nacke,            & MITACS     & \$260,000   & 2016-2018 & Stressless Gamification  \\*
-Mark Hancock,  \\*
-\textbf{James Wallace (Co-I)} \\*
-\\
-
-Pascal Poupart,           & Propel CDPI & \$10,000    & 2016-2017 & Recess                    \\*
-\textbf{James Wallace (Co-I)},            &             &             &           &                           \\*
-Lauara Middleton,         &             &             &           &                           \\*
-James Tang                &             &             &           &                           \\*
-\\
-
-
-\textbf{James Wallace (PI)},            & Propel CDPI & \$10,000    & 2015--2016 & GAME-HQ                   \\*
-Michael Barnett-Cowan,    &             &             &           &                           \\*
-Hardy Premsukh,           &             &             &           &                           \\*
-Deltcho Valchanov,        &             &             &           &                           \\*
-Diane Watson              &             &             &           &                           \\*
-\\
-
-\textbf{James Wallace (PI)}            & UW          & \$5,000     & 2015      & Hallman URF  \\*
-\end{longtable}
+\printgrants
 
 \sectionbreak
 \ifAPR % APR version only ------------------------------------------
-\textbf{A Note on Graduate Supervision in Human–Computer Interaction}
+\cvsection{A Note on Graduate Supervision in Human–Computer Interaction}
 \\ \\
 Human–Computer Interaction is inherently interdisciplinary and integrates methods and perspectives from computer science, health sciences, engineering, and the social sciences. As a result, my research program involves supervision and mentorship of graduate students across multiple departments and programs at the University of Waterloo. These students contribute complementary technical, methodological, and domain-specific expertise necessary to design, implement, and evaluate interactive health technologies.
 \\ \\
@@ -549,109 +339,56 @@ Supervision during the review period is highlighted below as \aprsample{teaching
 \\ \\
 \fi % end APR version only -------------------------------------
 \keepwithnext[6]
-\textbf{GRADUATE STUDENT SUPERVISION}
+\cvsection{GRADUATE STUDENT SUPERVISION}
 
-\begin{enumerate}
+\begin{cvparts}
 
-    \item[a)] \textbf{As Supervisor}
+    \cvpart{As Supervisor}
 
-    \begin{enumerate}
-        \item[PDF]
-        \begin{enumerate}[label=\arabic*.]
-            \item Sebastian Cmentowski, UWaterloo Provost's Program for Interdisciplinary Postdoctoral Scholars, Gameful Design of Exergames to Address Sedentary Behaviour. November 2024 [Assistant Professor, Eindhoven University of Technology]
-            \item \hlteaching{Leila Homaeian, Designing Gameful Communication Technologies to Support Aging in Place. In progress.}
-        \end{enumerate}
-    \end{enumerate}
+    \printsupervision{PDF}
     
 
 
-    \begin{enumerate}
-        \item[PhD]
-        \begin{enumerate}[label=\arabic*.]
-            \item Krzysztof Pietroszek, 3D Pointing with Everyday Devices: Speed, Occlusion, Fatigue. July 2015 [Associate Professor, American University, Washington D.C.]
-            \item Marcela C.C. Bomfim, 2022, A Recipe for Food Literacy: Designing and Evaluating Technologies for Informed Food Choices [User Experience Researcher \& Designer, OpenText, Waterloo, ON]
-            \item Leila Homaeian, 2022, Interaction Design for Mixed-Focus Collaboration in Cross-Device Environments [Postdoctoral Fellow, University of Waterloo, Waterloo, ON]
-            \item Robert Gauthier, 2022, Computational Thematic Analysis of Online Communities [Senior Data Analyst, Canadian Institute for Health Information (CIHI), Toronto, ON]
-            \item \hlteaching[2026]{Veen Wong, 2026, Reaching for a Bold Sky: Co-Designing Games to Shift Gender and Social Norms for Intimate Partner Violence Prevention (co-supervised with Cayley MacArthur)}
-            \item \hlteaching{Christina Li, In progress}
-            \item \hlteaching{Taha Liaqat, In progress}
-            \item \hlteaching{Saba Oji, In Progress}
-        \end{enumerate}
-    \end{enumerate}
+    \printsupervision{PhD}
 
-    \begin{enumerate}
-        \item[MSc]
-        \begin{enumerate}[label=\arabic*.]
-            \item Denise Ng, 2017,  "I would just want to know what's being used, and who's using it": Barriers to the Adoption of SmartSurveys [Research Coordinator, Centre for Digital Therapeutics \@ UHN, Toronto, ON]
-            \item Mila Tahai, 2018, Designing an Adaptive Video Game for Children with Attention Deficit Hyperactivity Disorder: Learning Proportional Reasoning through Play. [Assistant Director, Office of Human Research, George Washington University, Washington D.C.]
-            \item Tina Chan, 2019, Leveraging the Proteus Effect to Motivate Emotional Support in a Serious Game for Mental Health [Senior UX Research, Apex legends / Respawn Entertainment, Kitchener, ON]
-            \item Marina Wada, 2019, Exploring Rheumatoid Arthritis Patients' Needs in Shared Decision Making: A Qualitative User Needs Study [Strategic Research and Policy Advisor, City of Surrey, Surrey B.C.]
-            \item Rachel Woo, 2022, `I'm not alone in that battle': Designing Immersive Visualizations for Community Awareness and Connectedness [Research Analyst, North York General Hospital, Toronto, ON]
-            \item Luka Ugaya Mazza, 2023, The Shape of Agency: Fostering Agency in Qualitative Research through Data Visualization [Web Designer, Faction Networks, Toronto, ON]            
-        \end{enumerate}
-    \end{enumerate}
+    \printsupervision{MSc}
 
-    \begin{enumerate}
-        \item[MMath]
-        \begin{enumerate}[label=\arabic*.]
-            \item Amandeep Kaur, 2024, A Comparison of Unsupervised Topic Modelling techniques for Qualitative Data Analysis of Online Communities. [Applied Machine Learning Scientist, TD, Waterloo, ON]
-            \item \hlteaching[2026]{Ansh Sharma, 2026, DeTAILS: Deep Thematic Analysis with Iterative LLM Support. [AI Product Owner, Layer 6 (TD), Toronto, ON]}
-            \item \hlteaching[2026]{Karthik Prasad, 2026,  Pragmatica:  A VR Tool for Autonomous Practice During Language Therapy [Founding Engineer, Tessa AI, San Francisco, CA, USA]}
-            \item \hlteaching[2026]{Anna Zhelizniak, 2026, Human--AI Interaction Patterns in Iterative Thematic Analysis}
-            \item \hlteaching{An Chen, In progress}
-            \item \hlteaching{Matthew Bradbury, In progress}
-            \item \hlteaching{Brigitte Lee, In progress}
-        \end{enumerate}
-    \end{enumerate}
+    \printsupervision{MMath}
 
-    \begin{enumerate}
-        \item[MHI]
-        \begin{enumerate}[label=\arabic*.]
-            \item Melissa Mainville, Design and Development of Mobile, Tablet-based ECG Hardware and Software for Clinical use. MHI Practicum w/ Helen Chen Summer 2016 [Health Information and Systems Specialist, Grand River Hospital]
-        \end{enumerate}
-    \end{enumerate}
+    \printsupervision{MHI}
 
-    \begin{enumerate}
-        \item[MSW]
-        \begin{enumerate}[label=\arabic*.]
-            \item Chris McNab, Bold Sky: An Interdisciplinary Approach to Game Design for Intimate Partner Violence Prevention. Fall 2024 MSW Practicum.
-        \end{enumerate}
-    \end{enumerate}
+    \printsupervision{MSW}
 
     \keepwithnext[13]
-    \item[b)] \textbf{As Committee Member}
-    \begin{enumerate}
-    \setlength{\labelsep}{0em}
-    \setlength{\itemsep}{-5pt}
+    \cvpart{As Committee Member}
+    \begin{cvlist}
         % 2026 --- MSc: Hamin, Aakanksha, Kelly Huang (MASc), Junsong Li (MASc, defended May 14)
         %          PhD: Arielle, Mariam, Pedro, Ryan, Bobbi Rotolo, Mohammad Hasan Payandeh (CS, defence Dec 2)
-        \item[] \hlteaching[2026]{2026 --- 4 MSc, 6 PhD}
-        \item[] \hlteaching[2025]{2025 --- 2 MSc, 4 PhD}
-        \item[] 2024 --- 3 MSc, 8 PhD
-        \item[] 2023 --- 2 MSc, 7 Phd  
-        \item[] 2022 --- 4 MSc, 7 PhD
-        \item[] 2021 --- 2 MSc, 3 PhD
-        \item[] 2020 --- 3 MSc, 4 PhD
-        \item[] 2019 --- 4 MSc, 5 PhD 
-        \item[] 2018 --- 3 MSc, 3 PhD
-        \item[] 2017 --- 7 MSc, 3 PhD
-        \item[] 2016 --- 2 MSc, 3 PhD
-    \end{enumerate}
+        \cvitem \hlteaching[2026]{2026 --- 4 MSc, 6 PhD}
+        \cvitem \hlteaching[2025]{2025 --- 2 MSc, 4 PhD}
+        \cvitem 2024 --- 3 MSc, 8 PhD
+        \cvitem 2023 --- 2 MSc, 7 Phd  
+        \cvitem 2022 --- 4 MSc, 7 PhD
+        \cvitem 2021 --- 2 MSc, 3 PhD
+        \cvitem 2020 --- 3 MSc, 4 PhD
+        \cvitem 2019 --- 4 MSc, 5 PhD 
+        \cvitem 2018 --- 3 MSc, 3 PhD
+        \cvitem 2017 --- 7 MSc, 3 PhD
+        \cvitem 2016 --- 2 MSc, 3 PhD
+    \end{cvlist}
 
     \keepwithnext[5]
-    \item[c)] \textbf{External Examiner (3)}
-    \begin{enumerate}
-    \setlength{\labelsep}{0em}
-    \setlength{\itemsep}{-5pt}
-        \item[] \hlboth[2025]{teaching}{service}{Sarah Dsane (University of Cape Town, 2025)}
-        \item[] Khalid Tearo (Dalhousie, 2021)
-        \item[] Felwah Alqahtani (Dalhousie, 2022)
-    \end{enumerate}
-\end{enumerate}
+    \cvpart{External Examiner (3)}
+    \begin{cvlist}
+        \cvitem \hlboth[2025]{teaching}{service}{Sarah Dsane (University of Cape Town, 2025)}
+        \cvitem Khalid Tearo (Dalhousie, 2021)
+        \cvitem Felwah Alqahtani (Dalhousie, 2022)
+    \end{cvlist}
+\end{cvparts}
 
 \sectionbreak
 \ifAPR % APR version only ------------------------------------------
-\textbf{A Note on Service in Human–Computer Interaction}
+\cvsection{A Note on Service in Human–Computer Interaction}
 \\ \\
 Professional service in Human–Computer Interaction (HCI) is closely integrated with the peer review and dissemination processes that sustain the field. Major conferences organized by the Association for Computing Machinery (ACM), including CHI, CSCW, CHI PLAY, and CUI, serve as the primary archival publication venues and rely on extensive peer review conducted by international committees of expert researchers. Service roles such as reviewer, program committee member, and conference chair are essential for maintaining the scientific quality, integrity, and advancement of the discipline.
 \\ \\
@@ -663,55 +400,49 @@ Service during the review period is highlighted as \aprsample{service}{}{service
 \\ \\
 \fi % end APR version only -------------------------------------
 \keepwithnext
-\textbf{SERVICE}
+\cvsection{SERVICE}
     
-    \begin{enumerate}
-    \setlength{\labelsep}{0em}
-    \setlength{\itemsep}{-5pt}
-        \item[] \hlservice[2025-2026]{SPHS Undergraduate Programs Committee 2025 -- 2026}
-        \item[] \hlservice[2025-2027]{SPHS Professional Programs Admissions Committee 2025 -- 2027}
-        \item[] \hlservice[2026-2027]{SPHS Professional Graduate Programs Committee 2026 -- 2027}
-        \item[] SPHS Research Graduate Committee 2023 -- 2024
-        \item[] SPHS Research Committee 2023 -- 2024
-        \item[] SPHS Executive Committee 2020 -- 2023
-        \item[] SPHS Tenure \& Promotion Committee 2020 -- 2021
-        \item[] SPHS Graduate Admissions Task Group 2021 -- 2022
-        \item[] SPHS Anti-Racism Task Force 2021 -- 2022
-        \item[] SPHS Social Media 2021 -- 2022
-        \item[] SPHS Indigenous and Black Excellence SACAs 2021
-        \item[] SPHHS Space Committee 2017
-        \item[] SPHHS Research Graduate Committee 2017, 2019, 2020 
-        \item[] SPHHS MHI Admissions 2017
-        \item[] SPHHS Undergraduate Recruitment Committee 2017
-        \item[] SPHHS Public Health Informatics SACA 2019
-    \end{enumerate}
+    \begin{cvlist}
+        \cvitem \hlservice[2025-2026]{SPHS Undergraduate Programs Committee 2025 -- 2026}
+        \cvitem \hlservice[2025-2027]{SPHS Professional Programs Admissions Committee 2025 -- 2027}
+        \cvitem \hlservice[2026-2027]{SPHS Professional Graduate Programs Committee 2026 -- 2027}
+        \cvitem SPHS Research Graduate Committee 2023 -- 2024
+        \cvitem SPHS Research Committee 2023 -- 2024
+        \cvitem SPHS Executive Committee 2020 -- 2023
+        \cvitem SPHS Tenure \& Promotion Committee 2020 -- 2021
+        \cvitem SPHS Graduate Admissions Task Group 2021 -- 2022
+        \cvitem SPHS Anti-Racism Task Force 2021 -- 2022
+        \cvitem SPHS Social Media 2021 -- 2022
+        \cvitem SPHS Indigenous and Black Excellence SACAs 2021
+        \cvitem SPHHS Space Committee 2017
+        \cvitem SPHHS Research Graduate Committee 2017, 2019, 2020 
+        \cvitem SPHHS MHI Admissions 2017
+        \cvitem SPHHS Undergraduate Recruitment Committee 2017
+        \cvitem SPHHS Public Health Informatics SACA 2019
+    \end{cvlist}
 
-    \begin{enumerate}
-    \setlength{\labelsep}{0em}
-    \setlength{\itemsep}{-5pt}
-        \item[] \hlservice[2025-2027]{Health Faculty Council Chair Elect 2025 -- 2026; Chair 2026 -- 2027}
-        \item[] \hlservice[2025-2027]{Health Faculty Undergraduate Studies Committee (FUSC) 2025 -- 2027}
-        \item[] \hlservice[2025-2026]{Health Undergraduate Studies Committee on Student Appeals 2025 -- 2026}
-        \item[] \hlservice[2026-2027]{Health Faculty Graduate Student Appeals Committee 2026 -- 2027}
-        \item[] Health Graduate Mentorship Awards Commitee 2021
-        \item[] Health Strategic Planning Committee Priority A-4
-        \item[] Health Graduate Teaching Award Committee 2021
-        \item[] AHS \#HeForShe Faculty Advocate 2019 -- 2021
-        \item[] AHS Strategic Plan Committee 2019
-        \item[] AHS IT Committee 2015 -- 2016
-    \end{enumerate}
+    \begin{cvlist}
+        \cvitem \hlservice[2025-2027]{Health Faculty Council Chair Elect 2025 -- 2026; Chair 2026 -- 2027}
+        \cvitem \hlservice[2025-2027]{Health Faculty Undergraduate Studies Committee (FUSC) 2025 -- 2027}
+        \cvitem \hlservice[2025-2026]{Health Undergraduate Studies Committee on Student Appeals 2025 -- 2026}
+        \cvitem \hlservice[2026-2027]{Health Faculty Graduate Student Appeals Committee 2026 -- 2027}
+        \cvitem Health Graduate Mentorship Awards Commitee 2021
+        \cvitem Health Strategic Planning Committee Priority A-4
+        \cvitem Health Graduate Teaching Award Committee 2021
+        \cvitem AHS \#HeForShe Faculty Advocate 2019 -- 2021
+        \cvitem AHS Strategic Plan Committee 2019
+        \cvitem AHS IT Committee 2015 -- 2016
+    \end{cvlist}
 
-    \begin{enumerate}
-    \setlength{\labelsep}{0em}
-    \setlength{\itemsep}{-5pt}
-        \item[] University of Waterloo PhD Defense Chair 2019 -- 2022
-    \end{enumerate}
+    \begin{cvlist}
+        \cvitem University of Waterloo PhD Defense Chair 2019 -- 2022
+    \end{cvlist}
 
 \sectionbreak[6\baselineskip]
-\textbf{AREAS OF TEACHING EXPERTISE} \\
+\cvsection{AREAS OF TEACHING EXPERTISE} \\
 Human-Computer Interaction, Computational Social Science, Games, Computer-Supported Cooperative Work, Information Visualization, Machine Learning
 \\ \\
-\textbf{CURRENT RESEARCH INTERESTS} \\
+\cvsection{CURRENT RESEARCH INTERESTS} \\
 Human-Computer Interaction, Computational Social Science, Games, Computer-Supported Cooperative Work, Information Visualization, Machine Learning
 
 

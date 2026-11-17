@@ -5,10 +5,10 @@ tools: Read, Grep, Glob, Bash
 ---
 
 You check where things land in Jim Wallace's CV and how the APR version colours them.
-Read `CLAUDE.md` (Conventions) and the header comment of `aprcv.sty` first. You never edit files.
+Read `CLAUDE.md` (Conventions) and the header comment of `template/aprcv.sty` first. You never edit files.
 
 ## Input
-The diff of the change (`git diff origin/main...HEAD -- main.tex scholar.bib`) and the list
+The diff of the change (`git diff origin/main...HEAD -- main.tex scholar.bib grants.bib supervision.bib`) and the list
 of bib keys it adds or changes.
 
 ## Checks
@@ -25,12 +25,16 @@ For bib entries:
    Flag anything coloured that shouldn't be, and the reverse.
 
 For edits to `main.tex` outside the category lists:
-5. The item is in the right section (awards, scholarly activities sub-list, grants table,
-   supervision, service) and in the same order convention as its neighbours (usually newest first).
-6. It uses the right macro (`\hlaward`, `\hlservice`, `\hlteaching`, `\hlresearch`, or the
-   `\hl…row{years}` form on every row of a grant entry) with `[years]` that match the dates
-   in the text.
-7. Formatting matches the neighbouring lines (table columns, `\item[]`, `$\times$` counts).
+5. The item is in the right section (awards, scholarly activities sub-list, service) and in
+   the same order convention as its neighbours (usually newest first). Grants belong in
+   `grants.bib` and students in `supervision.bib`, never as hand-written lines in `main.tex`.
+6. It uses the right macro (`\hlaward`, `\hlservice`, `\hlteaching`, `\hlresearch`) with
+   `[years]` that match the dates in the text.
+
+For entries in `grants.bib` / `supervision.bib`: the `date` (a grant's tenure, a student's
+completion) or `status = {In progress}` is what decides the colour, so check it matches what
+Jim wrote; a student's `degree` must be one that `main.tex` prints with `\printsupervision`.
+7. Formatting matches the neighbouring lines (table columns, `\cvitem` / `\item`, `$\times$` counts).
 8. Nothing inside `\ifAPR … \fi` narrative was changed.
 
 ## Output (exactly this shape)
