@@ -1,5 +1,11 @@
 # Trainees (students and postdocs I supervise or have supervised).
 #
+# Everyone in supervision.bib counts as a trainee automatically, so a supervised
+# student needs a line here only for extra spellings (variants) or if their
+# name is spelled differently there (the checker flags that). This file adds
+# the other trainees: undergraduates, research assistants and co-authors I
+# mentored who are not formal supervision records.
+#
 # Used to check the * (trainee) marks in scholar.bib and the apralsoteaching
 # list in main.tex. A * on an author whose name is not here is reported, which
 # catches misspellings and flags new trainees for me to confirm.
@@ -22,7 +28,7 @@ trainees:
   - name: Tina Chan
     variants: ["Chan, Tina", "T. Chan"]
   - name: An Bella Chen
-    variants: ["Chen, An Bella"]
+    variants: ["Chen, An Bella", "Chen, An"]
   - name: Adrian Davila
   - name: Vanessa Duong
     variants: ["Duong, Vanessa", "Duong, V."]
@@ -81,7 +87,7 @@ trainees:
   - name: Ally Suarez
     variants: ["Suarez, Ally"]
   - name: Liudmila Tahai
-    variants: ["Tahai, Liudmila"]
+    variants: ["Tahai, Liudmila", "Tahai, Mila"]
   - name: Henry Tian
   - name: Luka Ugaya Mazza
     variants: ["Ugaya Mazza, Luka"]

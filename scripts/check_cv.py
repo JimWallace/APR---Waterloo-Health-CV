@@ -22,7 +22,7 @@ import sys
 from collections import Counter
 
 sys.path.insert(0, os.path.dirname(__file__))
-from cvlib import (APR_CATEGORIES, KNOWN_TYPES, PRINTED_CATEGORIES, ROOT,  # noqa: E402
+from cvlib import (APR_CATEGORIES, KNOWN_TYPES, PRINTED_CATEGORIES, ROOT, add_supervised,  # noqa: E402
                    clean_name, is_marked_trainee, load_roster, mark_in_given_name,
                    name_parts, norm, parse_bib, parse_categories, review_period,
                    roster_index)
@@ -50,7 +50,13 @@ def run(only: set[str] | None = None) -> dict:
         err("E-syntax", e)
     cats = parse_categories(ROOT / "main.tex")
     period = review_period(ROOT / "main.tex")
-    roster = load_roster(ROOT / "data" / "trainees.yaml")
+    # Trainees: data/trainees.yaml plus every student in supervision.bib.
+    roster, drift = add_supervised(load_roster(ROOT / "data" / "trainees.yaml"),
+                                   parse_bib(ROOT / "supervision.bib"))
+    for key, student, near in drift:
+        warn("W-trainee", f"supervision.bib: '{key}' is '{student}', but data/trainees.yaml has "
+             f"'{near}': the same person? Add the spelling to that entry's variants, or tell the "
+             "two apart", key)
     ridx = roster_index(roster)
     rparts = {}
     for t in roster:
@@ -160,7 +166,7 @@ def run(only: set[str] | None = None) -> dict:
                     near = sorted({c for (f, g), c in rparts.items()
                                    if f == norm(fam) and g[:1] == norm(giv)[:1]})
                     hint = f" (close to roster name '{near[0]}': typo, or add it as a variant)" if near else \
-                        " (not in data/trainees.yaml: a new trainee, or not a trainee?)"
+                        " (not in data/trainees.yaml or supervision.bib: a new trainee, or not a trainee?)"
                     warn("W-roster", f"'{e.key}': trainee '{clean_name(a)}'{hint}", e.key)
 
     # APR: review-period entries with trainees should also be teaching (apralsoteaching)

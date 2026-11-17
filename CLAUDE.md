@@ -21,7 +21,9 @@ One source, two PDFs:
   The fields are described in `template/uwhealthcv.dbx`. They print sorted, and the APR
   colours come from their dates, so there are no years to keep in step by hand.
 - `apr-formatting.tex` holds my settings for the APR version (highlight strength and style).
-- `data/trainees.yaml` lists my trainees (students/postdocs) and the spellings used for them.
+- My trainees are everyone in `supervision.bib` plus `data/trainees.yaml`, which adds the other
+  trainees (undergraduates, RAs) and extra spellings. The checker flags a supervised student
+  whose name is spelled differently in the two.
 - `2pages.tex` / `8pages.tex` are older NSERC-format variants; leave them alone unless asked.
 
 The repo is mirrored to Overleaf (see `.github/workflows/overleaf-sync.yml`). GitHub `main` is
@@ -38,8 +40,8 @@ the source of truth; never force-push `main`.
    by me. Corrections to existing entries always go in their own commit.
 3. **Do not edit the narrative sections** ("A Note on …", inside `\ifAPR … \fi`) in automated
    runs. Suggest changes in the PR description instead.
-4. **Trainee marks are my call.** Add `*` only for people in `data/trainees.yaml`. Never add a
-   person to `data/trainees.yaml` yourself; ask in the PR ("Is X your trainee?") and label it
+4. **Trainee marks are my call.** Add `*` only for my trainees (`supervision.bib` or
+   `data/trainees.yaml`). Never add a person to either file yourself; ask in the PR ("Is X your trainee?") and label it
    `needs-review`.
 5. Keep diffs minimal: no reformatting, re-sorting or whitespace churn in files you touch.
 
