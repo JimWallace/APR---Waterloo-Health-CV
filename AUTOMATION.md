@@ -3,7 +3,7 @@
 | When | What runs | Result |
 |---|---|---|
 | Sundays 18:07 (Toronto) | `CV sources` workflow | Fetches DBLP, OpenAlex and Crossref records and saves them on the `cv-sources` branch, so Claude can check entries even where it can't reach those sites. |
-| Weekly (your scheduled Claude task) | `automation/weekly-update.md` | Claude adds new papers and DOIs, open `cv-item` issues and items from your Outlook (acceptances, review recognitions, PC roles…), has four sub-agents verify every change, and opens one PR on a `cv/` branch. It also follows up last week's PRs: answer its questions in a PR comment and the next run applies them. |
+| Weekly (your scheduled Claude task) | `automation/weekly-update.md` | Claude adds new papers and DOIs, open `cv-item` issues and items from your Outlook mail and calendar (acceptances, review recognitions, PC roles, talks…), has four sub-agents verify every change, and opens one PR on a `cv/` branch. It also follows up last week's PRs: answer its questions in a PR comment and the next run applies them. |
 | Every PR | `CV build` | Deterministic checks (`scripts/check_cv.py`), compiles both PDFs, blocks PRs labelled `needs-review`. |
 | `CV build` passes | `CV auto-merge` | Merges PRs you open (including ones Claude opens for you in a chat) automatically. Merges the weekly job's `cv/` PRs only if they're labelled `auto-merge`. Draft PRs and `needs-review` PRs never merge. |
 | Every push to `main` | `CV build` → release | Latest PDFs at Releases → `cv-latest` (Wallace-CV.pdf, Wallace-CV-APR.pdf). |
@@ -23,7 +23,7 @@ with this prompt:
 
 > Update my CV. Attach the GitHub repo JimWallace/APR---Waterloo-Health-CV with push access,
 > clone it, and follow automation/weekly-update.md in it exactly. Use my Microsoft 365
-> (Outlook) connector for the email step.
+> connector for the mail and calendar steps. Don't merge the pull request yourself.
 
 The task needs your GitHub connection (to push and open PRs) and the Microsoft 365 connector.
 

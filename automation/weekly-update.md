@@ -51,6 +51,14 @@ c. **Outlook** — with the Microsoft 365 connector, search Jim's mail since the
    office, or Jim's own confirmation) states it outright. If the connector isn't available,
    skip this and say so in your final message.
 
+d. **Calendar** — with the same connector, list Jim's calendar events in the same window.
+   Look for talks he gave (invited talks, keynotes, seminars, panels), thesis defences and
+   examinations he sat on, and committee or program-committee meetings that show a role.
+   A calendar entry alone shows that something was scheduled, not that it happened or what
+   his role was: add an item only when a matching email or issue confirms it, or the event
+   itself names him as speaker/examiner and its date has passed. Otherwise make it a
+   question for Jim. Meeting content, attendees and private appointments stay private.
+
 ## 3. Triage
 
 For each item keep a one-line reason (it goes in the PR, or in your final message if private).
