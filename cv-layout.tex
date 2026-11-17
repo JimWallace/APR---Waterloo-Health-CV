@@ -4,16 +4,20 @@
 % \keepwithnext[n]  before a heading: start a new page unless n lines fit
 %                   below it, so a heading never sits alone at the foot of a
 %                   page (default 5 lines).
-% \sectionbreak     before a major section: start a new page only when less
-%                   than a quarter of the page is left. Replaces \newpage,
+% \sectionbreak     before a major section: a blank line of space, or a new
+%                   page when less than a quarter of the page is left (the
+%                   space is dropped at the top of a page). Replaces \newpage,
 %                   which left half-empty pages whenever the section before
-%                   ended early.
+%                   ended early. \sectionbreak[6\baselineskip] asks for less
+%                   room before breaking, for short sections.
 %
 % Both use \Needspace, which measures the space left and breaks at once. The
 % plain \needspace could break early (leaving half a page empty) and, just
 % before the grants table, printed a stray table header above the heading.
 \newcommand\keepwithnext[1][5]{\Needspace{#1\baselineskip}}
-\newcommand\sectionbreak{\Needspace{.25\textheight}}
+\newlength\sectionskip
+\setlength\sectionskip{1\baselineskip plus 2pt minus 2pt}
+\newcommand\sectionbreak[1][.25\textheight]{\par\addvspace{\sectionskip}\Needspace{#1}}
 
 % No single line of a paragraph left alone at the top or foot of a page.
 \widowpenalty=10000
