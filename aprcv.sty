@@ -20,7 +20,6 @@
 %%                                  [years] it is always highlighted.
 %%   \hlresearchrow{years}          at the start of a table row: colours the
 %%   (also \hlteachingrow, ...)     whole row (use on every row of an entry)
-%%   \aprlegend                     colour key, printed in the APR version only
 %%   \ifAPR ... \fi                 material for the APR version only
 %%   \hlboth[years]{research}{teaching}{text}
 %%                                  two colours for work in two categories
@@ -356,24 +355,6 @@
 \newcommand\hlresearchrow{\apr@row{APRresearch}}
 \newcommand\hlservicerow{\apr@row{APRservice}}
 \newcommand\hlawardrow{\apr@row{APRaward}}
-
-% colour key
-\newcommand\aprlegend{%
-  \ifAPR
-    \par\smallskip\noindent
-    {\small Items from the
-     \ifnum\apr@from=\apr@to \the\apr@from\else
-       \the\apr@from--\the\apr@to\fi\
-     review period are highlighted:
-     \aprsample{teaching}{}{teaching and supervision},
-     \aprsample{research}{}{research},
-     \aprsample{service}{}{service},
-     \aprsample{award}{}{awards}.
-     Work that serves two of these is shown in both colours,
-     for example \aprsample{research}{teaching}{research and supervision};
-     the note before each section explains how.\par}%
-    \bigskip
-  \fi}
 
 %% -------------------------------------------------------------- biblatex
 \@ifpackageloaded{biblatex}{%
