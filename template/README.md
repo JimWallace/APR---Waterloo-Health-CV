@@ -15,6 +15,8 @@ move to its own repository later.
 | `biblatex-formatting.tex` | biblatex tweaks: badge icons in the margin, the `inproceedings` driver. |
 | `ACM-Reference-Format.{bbx,cbx,dbx,bst}` | ACM bibliography style (vendored). |
 | `aprcv.sty` | APR highlighting. Its header documents every command. |
+| `cv-records.tex` | Grants and supervision as biblatex records: the table, the student lists, sorting and highlighting. |
+| `uwhealthcv.dbx` | The biblatex data model for `@grant` and `@supervision` (fields documented in its header). |
 | `cv-layout.tex` | Page-break rules: `\keepwithnext`, `\sectionbreak`, widow and club control. |
 | `images/` | Badge icons a bib entry can show with `icon = {images/hm.png}`. |
 | `example/` | A fictional CV that uses every feature. Build it to test a template change. |
@@ -37,6 +39,7 @@ The CV's main file:
 \usepackage{uwhealthcv}
 \addbibresource{mycv.bib}
 \setreviewperiod{2025}{2026}
+\cvowner{Your Name}
 % \DeclareBibliographyCategory and \addtocategory lists for each heading
 \begin{document}
 ...
@@ -66,7 +69,12 @@ every CV that uses the template.
   `\sethighlightstrength`, `\sethighlightstyle`, `\keepwithnext`,
   `\sectionbreak`, `\usvardate`, `\monthyear`, `\extlink`.
 - Section markup: `\cvsection`, `\cvsubheading`, `cvlist` with `\cvitem`, `cvparts`
-  with `\cvpart`, `cvdegree`, `\printcategory`. Documented in the `uwhealthcv.sty` header.
+  with `\cvpart`, `\printcategory`. Documented in the `uwhealthcv.sty` header.
+- Records: `\cvowner`, `\printgrants`, `\printsupervision{degree}`, the entry types
+  `@grant` and `@supervision` with the fields in `uwhealthcv.dbx`, and `\me` inside a
+  grant's `investigators`. Documented in `cv-records.tex`.
+- For other record types: `\aprtypecategory{type}{colour}` and `\aprsetentrycolour`
+  (`aprcv.sty`).
 - biblatex categories: `aprteaching`, `aprservice`, `apraward`, `aprnone`,
   `aprinclude`, `apralsoteaching`, `apralsoresearch`, `apralsoservice`,
   `apralsoaward`.

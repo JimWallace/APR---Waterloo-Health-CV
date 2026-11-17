@@ -13,6 +13,8 @@
 *.run.xml
 *.synctex.gz
 *.toc
+*.loc
+*.soc
 main.pdf
 apr.pdf
 

@@ -21,6 +21,8 @@
 %%   biblatex (ACM style)     with biblatex-formatting.tex
 %%   aprcv.sty                APR highlighting; reads the CV's own
 %%                            apr-formatting.tex, if present
+%%   cv-records.tex           grants and supervision as biblatex records
+%%                            (data model: uwhealthcv.dbx)
 %%   cv-layout.tex            page-break rules (\keepwithnext, \sectionbreak)
 %%
 %% The template directory must be on TeX's search path: latexmkrc in the CV's
@@ -47,10 +49,12 @@
     maxcitenames=99,
     maxbibnames=99,
     defernumbers=true,
+    datamodel=uwhealthcv,
 ]{biblatex}
 \input{biblatex-formatting}
 
 \RequirePackage{aprcv}
+\input{cv-records}
 
 %% ------------------------------------------------------- section markup
 % The building blocks of the Faculty of Health layout, so a CV names its
@@ -67,9 +71,8 @@
 %   \end{cvparts}
 %   \printcategory[J]{journal}  print one bibliography category, numbered
 %                               J1, J2, ... (no prefix: 1, 2, ...)
-%   \begin{cvdegree}{PhD}       a numbered list of students under a degree
-%     \item ...
-%   \end{cvdegree}
+%
+% Grants and supervision are biblatex records: see cv-records.tex.
 \newcommand\cvsection[1]{\textbf{#1}}
 \newcommand\cvsubheading[1]{\keepwithnext #1}
 \newenvironment{cvlist}[1][-5pt]
@@ -83,9 +86,6 @@
 \NewDocumentCommand\printcategory{om}{%
   \IfNoValueTF{#1}{\newrefcontext}{\newrefcontext[labelprefix=#1]}%
   \printbibliography[category={#2},resetnumbers=true,heading=none]}
-\newenvironment{cvdegree}[1]
-  {\begin{enumerate}\item[#1]\begin{enumerate}[label=\arabic*.]}
-  {\end{enumerate}\end{enumerate}}
 
 % cv-layout.tex ends with \makeatother, so it goes last.
 \input{cv-layout}

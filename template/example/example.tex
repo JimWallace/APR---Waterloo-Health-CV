@@ -1,6 +1,6 @@
 % Example CV for the template, with fictional content. It exercises every
 % part of the template (each section style, the biblatex categories, the
-% \hl... macros, a grants row, an APR-only note) so the template can be
+% \hl... macros, grant and supervision records, an APR-only note) so the template can be
 % developed and checked without anyone's real CV.
 %
 % Compile example.tex for the plain CV, example-apr.tex for the APR version.
@@ -10,6 +10,7 @@
 
 \addbibresource{example.bib}
 \setreviewperiod{2025}{2026}
+\cvowner{Alex Example}
 
 \DeclareBibliographyCategory{journal}
 \addtocategory{journal}{example2026journal, example2019journal}
@@ -121,17 +122,7 @@ Speaker(s) denoted by \dag\\
 \sectionbreak
 \cvsection{RESEARCH GRANTS AND CONTRACTS:}
 
-\begin{longtable}[c]{p{4.5cm} l l l p{4.5cm}}
-\underline{Names of Researcher(s)} & \underline{Agency} & \underline{\$ Amount} & \underline{Tenure} & \underline{Short Title} \\
-\endhead
-
-\hlresearchrow{2024-2026}\textbf{Alex Example (PI)} & Example Agency & \$10,000 & 2024 -- 2026 & An Active Grant \\*
-\\
-
-\textbf{Alex Example (PI)} & Example Agency & \$5,000 & 2018 & A Past Grant \\*
-\\
-
-\end{longtable}
+\printgrants
 
 \sectionbreak
 \keepwithnext[6]
@@ -139,10 +130,8 @@ Speaker(s) denoted by \dag\\
 
 \begin{cvparts}
     \cvpart{As Supervisor}
-    \begin{cvdegree}{PhD}
-            \item \hlteaching{Sam Student, In progress}
-            \item Pat Graduate, 2020, A Completed Thesis
-    \end{cvdegree}
+    \printsupervision{PhD}
+    \printsupervision{MSc}
 \end{cvparts}
 
 \sectionbreak
