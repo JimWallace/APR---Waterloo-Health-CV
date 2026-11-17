@@ -42,7 +42,9 @@
 %% to the category aprteaching, aprservice or apraward; to stop one entry
 %% from being highlighted, add it to aprnone. To give an entry a second
 %% colour, add it to apralsoteaching, apralsoresearch, apralsoservice or
-%% apralsoaward.
+%% apralsoaward. To highlight an entry whose year falls after the review
+%% period (e.g. accepted during the period, published the next year), add
+%% it to aprinclude.
 %%
 %% Highlights are drawn behind the text from positions recorded on the
 %% previous run, so the APR version needs one extra compile (Overleaf and
@@ -362,6 +364,7 @@
   \DeclareBibliographyCategory{aprservice}%
   \DeclareBibliographyCategory{apraward}%
   \DeclareBibliographyCategory{aprnone}%
+  \DeclareBibliographyCategory{aprinclude}%
   \DeclareBibliographyCategory{apralsoteaching}%
   \DeclareBibliographyCategory{apralsoresearch}%
   \DeclareBibliographyCategory{apralsoservice}%
@@ -375,7 +378,10 @@
       \global\let\apr@bib@on\@empty
       \ifcategory{aprnone}{}{%
         \iffieldint{year}{%
-          \edef\apr@y{\thefield{year}}%
+          % aprinclude: treat the entry as dated in the review period
+          \ifcategory{aprinclude}%
+            {\edef\apr@y{\the\apr@to}}%
+            {\edef\apr@y{\thefield{year}}}%
           \expandafter\apr@ifyears\expandafter{\apr@y}{%
             \ifcategory{aprteaching}{\def\apr@c{APRteaching}}{%
               \ifcategory{aprservice}{\def\apr@c{APRservice}}{%
