@@ -243,6 +243,32 @@ def _read_roster_plain(text: str) -> list[dict]:
     return out
 
 
+def add_supervised(roster: list[dict], supervision: "Bib") -> tuple[list[dict], list[tuple[str, str, str]]]:
+    """Everyone in supervision.bib is a trainee: add the students that the roster
+    does not already name. Returns (roster, drift); drift lists (key, student,
+    roster name) for a student whose family name is on the roster with a different
+    given name: probably the same person spelled two ways, so a variant is missing."""
+    idx = roster_index(roster)
+    by_family: dict[str, list[str]] = {}
+    for t in roster:
+        for v in [t["name"]] + list(t.get("variants", []) or []):
+            by_family.setdefault(norm(name_parts(v)[0]), []).append(t["name"])
+    out, drift = list(roster), []
+    for e in supervision.entries:
+        author = e.fields.get("author", "")
+        if not author:
+            continue
+        fam, giv = name_parts(author)
+        if norm(fam + giv) in idx:
+            continue
+        near = sorted(set(by_family.get(norm(fam), [])))
+        if near:
+            drift.append((e.key, clean_name(f"{giv} {fam}"), near[0]))
+            continue
+        out.append({"name": clean_name(f"{giv} {fam}"), "variants": [author], "source": e.key})
+    return out, drift
+
+
 def roster_index(roster: list[dict]) -> dict[str, str]:
     """normalised variant -> canonical name"""
     idx: dict[str, str] = {}

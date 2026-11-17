@@ -80,3 +80,38 @@ class Exemptions(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class SupervisedTrainees(unittest.TestCase):
+    """supervision.bib students count as trainees; a respelled one is flagged."""
+
+    ROSTER = [
+        {"name": "Liudmila Tahai", "variants": ["Tahai, Liudmila"]},
+        {"name": "Robert P. Gauthier", "variants": ["Robert Gauthier"]},
+    ]
+
+    def supervision(self, *authors):
+        d = Path(tempfile.mkdtemp())
+        p = d / "supervision.bib"
+        p.write_text("".join(f"@supervision{{s{i}, author = {{{a}}}, degree = {{PhD}}, status = {{In progress}}}}\n"
+                             for i, a in enumerate(authors)), encoding="utf-8")
+        return cvlib.parse_bib(p)
+
+    def test_a_new_student_joins_the_roster(self):
+        roster, drift = cvlib.add_supervised(self.ROSTER, self.supervision("Liaqat, Taha"))
+        self.assertEqual(drift, [])
+        self.assertIn("taha", {cvlib.norm(n) for n in [cvlib.name_parts(t["name"])[1] for t in roster]})
+        self.assertIn(cvlib.norm("liaqattaha"), cvlib.roster_index(roster))
+
+    def test_a_student_already_named_is_not_added_twice(self):
+        roster, drift = cvlib.add_supervised(self.ROSTER, self.supervision("Gauthier, Robert"))
+        self.assertEqual((len(roster), drift), (2, []))
+
+    def test_a_respelled_student_is_flagged(self):
+        _, drift = cvlib.add_supervised(self.ROSTER, self.supervision("Tahai, Mila"))
+        self.assertEqual(drift, [("s0", "Mila Tahai", "Liudmila Tahai")])
+
+    def test_the_real_files_are_consistent(self):
+        roster = cvlib.load_roster(cvlib.ROOT / "data" / "trainees.yaml")
+        _, drift = cvlib.add_supervised(roster, cvlib.parse_bib(cvlib.ROOT / "supervision.bib"))
+        self.assertEqual(drift, [])

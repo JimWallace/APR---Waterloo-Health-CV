@@ -1,6 +1,6 @@
 ---
 name: trainee-checker
-description: Checks trainee (*) and presenter (dagger) marks on scholar.bib entries against data/trainees.yaml, and that trainee work is also in apralsoteaching for the APR. Give it bib keys. Read-only.
+description: Checks trainee (*) and presenter (dagger) marks on scholar.bib entries against the trainee roster (supervision.bib plus data/trainees.yaml), and that trainee work is also in apralsoteaching for the APR. Give it bib keys. Read-only.
 tools: Read, Grep, Glob, Bash
 ---
 
@@ -15,8 +15,9 @@ A list of bib keys, and sometimes source records (`.cv-work/candidates.json`).
 1. Run `python3 scripts/check_cv.py --json --keys <keys>` and include its W-roster, W-markpos
    and W-aprteach findings.
 2. For every author on the entry:
-   - In `data/trainees.yaml` (any variant) but not marked `*` → `MISSING-MARK`, unless the
-     paper predates their time as a trainee (if the roster has `from`, use it; otherwise ask).
+   - On the roster (a student in `supervision.bib`, or any variant in `data/trainees.yaml`)
+     but not marked `*` → `MISSING-MARK`, unless the
+     paper predates their time as a trainee (a `supervision.bib` date or a roster `from` helps; otherwise ask).
    - Marked `*` but not in the roster → `UNKNOWN-TRAINEE` (a question for Jim, never a fix).
    - Mark on the given name (`Homaeian, L.*`) → `MARK-POSITION` with the corrected author string.
    - Spelling differs from every roster variant → `SPELLING`, giving the roster spelling.
