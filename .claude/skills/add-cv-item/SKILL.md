@@ -16,7 +16,8 @@ awards, grants and students is the source; cite it as "issue #N".
    `note = {To appear}`. Mark trainees per `data/trainees.yaml`; if Jim names a new trainee,
    add them to `data/trainees.yaml` (he told you, so this one is allowed) and say so in the PR.
 3. **Other items:** add to the right list in `main.tex` with the matching `\hl…[years]` macro.
-   Grants: one row per line of the existing table format, `\hl…row{years}` on each row.
+   Grants: one row per line of the existing table format, `\hl…row{years}` on each row,
+   `\\*` at the end of each row of the grant and `\\` on the blank row after it.
    Amounts, agencies, roles and dates come only from Jim's message; ask in the PR if any is missing.
 4. Branch `cv/issue-<N>-<slug>`, commit, run the `cv-verify` skill, push, open the PR with
    "Closes #N" and the label `cv-verify` chose, and reply on the issue with the PR link and

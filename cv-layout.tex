@@ -1,0 +1,29 @@
+% Page-break rules for both versions (main.tex and apr.tex). Layout only:
+% content lives in main.tex. Tune the numbers here, not in main.tex.
+
+% \keepwithnext[n]  before a heading: start a new page unless n lines fit
+%                   below it, so a heading never sits alone at the foot of a
+%                   page (default 5 lines).
+% \sectionbreak     before a major section: start a new page only when less
+%                   than a quarter of the page is left. Replaces \newpage,
+%                   which left half-empty pages whenever the section before
+%                   ended early.
+\newcommand\keepwithnext[1][5]{\par\needspace{#1\baselineskip}}
+\newcommand\sectionbreak{\par\needspace{.25\textheight}}
+
+% No single line of a paragraph left alone at the top or foot of a page.
+\widowpenalty=10000
+\clubpenalty=10000
+\displaywidowpenalty=10000
+
+% Keep each bibliography entry on one page.
+\AtBeginBibliography{\interlinepenalty=10000\relax}
+
+% Never break between a line and the list that follows it (a heading and its
+% first item). LaTeX's default slightly encourages a break there.
+\makeatletter
+\@beginparpenalty=\@M
+\makeatother
+
+% Grants table: end the rows of one grant with \\* (no page break) and the
+% blank row after each grant with \\ (a page break may go there).

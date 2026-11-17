@@ -27,6 +27,8 @@
 % for the APR version (evaluation notes + highlighting). See aprcv.sty.
 \usepackage{aprcv}
 \setreviewperiod{2025}{2026}
+% Page breaks for both versions: see cv-layout.tex.
+\input{cv-layout}
 % Publications and presentations from the review period are highlighted as
 % research. To use another colour for one entry, add its key to aprteaching,
 % aprservice or apraward; to stop one being highlighted, add it to aprnone.
@@ -124,6 +126,7 @@ BMath               & University of Waterloo   & 1999 – 2004  \\
 \end{tabular}
 \end{table}
 
+\keepwithnext
 \textbf{ACADEMIC AWARDS AND DISTINCTIONS:}
 
 \begin{itemize}
@@ -145,6 +148,7 @@ BMath               & University of Waterloo   & 1999 – 2004  \\
 \end{itemize}
 
 
+\keepwithnext
 \textbf{SCHOLARLY AND PROFESSIONAL ACTIVITIES:}
 \begin{itemize}
 \setlength{\labelsep}{0em}
@@ -153,6 +157,7 @@ BMath               & University of Waterloo   & 1999 – 2004  \\
 \end{itemize}
 
 
+\keepwithnext
 Grant Referee:
 \begin{itemize}
 \setlength{\labelsep}{0em}
@@ -166,6 +171,7 @@ Grant Referee:
     \item[] MITACS Elevate Postdoctoral Scholarship 2013
 \end{itemize}
 
+\keepwithnext
 Journal Referee:
 \begin{itemize}
 \setlength{\labelsep}{0em}
@@ -182,6 +188,7 @@ Journal Referee:
     \item[] International Journal of Human-Computer Studies 2011
 \end{itemize}
 
+\keepwithnext
 Conference Organizing Committee:
 \begin{itemize}
 \setlength{\labelsep}{0em}
@@ -197,6 +204,7 @@ Conference Organizing Committee:
     \item[] ACM Conference on Interactive Surfaces and Spaces 2016 Local Chair
 \end{itemize}
 
+\keepwithnext
 Conference Program Committee:
 \begin{itemize}
 \setlength{\labelsep}{0em}
@@ -211,6 +219,7 @@ Conference Program Committee:
     \item[] Hypertext Poster Track 2010
 \end{itemize}
 
+\keepwithnext
 Conference Referee: 
 \begin{itemize}
 \setlength{\labelsep}{0em}
@@ -230,6 +239,7 @@ Conference Referee:
 
 \ifAPR % APR version only ------------------------------------------
 %\newpage
+\keepwithnext[8]
 \textbf{A Note on Evaluating Human-Computer Interaction Research}
 \\ \\
 Human–Computer Interaction (HCI) research develops and evaluates interactive technologies that improve human outcomes, including health, well-being, and access to care. This work typically produces three primary forms of scholarly contribution: (1) novel interactive systems and software tools, (2) empirical evidence about how people use and benefit from these systems, and (3) generalizable design knowledge that informs future technologies and interventions. These contributions are disseminated through peer-reviewed publications, software releases, and real-world deployments in applied settings. Impact in HCI is demonstrated not only through publications, but also through the development of systems, software tools, and methods that enable new forms of research and practice. My research regularly involves designing and implementing prototype systems, conducting empirical studies with users, and analyzing qualitative and quantitative data to generate actionable insights for technology design.
@@ -264,7 +274,7 @@ Because HCI research is interdisciplinary and system-focused, publications often
 % \\ \\
 % Finally, in-line with prioritizing publishing at ACM conferences and journals, I dedicate much of my service time to these venues. I actively serve on program committees and as a reviewer for the premiere conferences in HCI, particularly those published by the Association for Computing Machinery (ACM), to which I maintain a professional membership. For instance, I served as General Chair for ACM CHI PLAY 2023 in Stratford, and will be serving as General Chair for ACM CUI 2025 in Waterloo.
 
-\newpage
+\sectionbreak
 \textbf{PUBLICATIONS:}
 \begin{enumerate}
 
@@ -274,6 +284,7 @@ Because HCI research is interdisciplinary and system-focused, publications often
     \newrefcontext[labelprefix=J]
     \printbibliography[category=journal,resetnumbers=true, heading=none]
 
+    \keepwithnext
     \item[b)] \textbf{Refereed Conference Proceedings:}
     \newrefcontext[labelprefix=C]
     \printbibliography[category=conference,resetnumbers=true,heading=none]
@@ -282,10 +293,12 @@ Because HCI research is interdisciplinary and system-focused, publications often
     % \newrefcontext[labelprefix=W]
     % \printbibliography[category=workshops,resetnumbers=true,heading=none]
 
+    \keepwithnext
     \item[c)] \textbf{Technical and Consulting Reports:}
     \newrefcontext[labelprefix=T]
     \printbibliography[category=technicalreports,resetnumbers=true,heading=none]
 
+    \keepwithnext
     \item[d)] \textbf{Other Publications:}
     \newrefcontext[labelprefix=O]
     \printbibliography[category=other,resetnumbers=true,heading=none]
@@ -294,11 +307,13 @@ Because HCI research is interdisciplinary and system-focused, publications often
     % \newrefcontext[labelprefix=D]
     % \printbibliography[category=thesis,resetnumbers=true,heading=none]
 
+    \keepwithnext
     \item[e)] \textbf{Patents:}
     \newrefcontext[labelprefix=P]
     \printbibliography[category=patent,resetnumbers=true,heading=none]
 
     \sloppy
+    \keepwithnext
     \item[f)] \textbf{Software:}
     \newrefcontext[labelprefix=S]
     \printbibliography[category=software,resetnumbers=true,heading=none]
@@ -306,6 +321,7 @@ Because HCI research is interdisciplinary and system-focused, publications often
 \end{enumerate}
 
 
+\keepwithnext[8]
 \textbf{PRESENTATION TO SCHOLARLY GROUPS}\\
 Speaker(s) denoted by \dag\\
 
@@ -318,6 +334,7 @@ Speaker(s) denoted by \dag\\
     \printbibliography[category={invited},resetnumbers=true,heading=none]
 
 
+    \keepwithnext
     \item[b)]\textbf{Self-initiated} \\    
     \newrefcontext
     \printbibliography[category={presentations},resetnumbers=true,heading=none]
@@ -326,7 +343,7 @@ Speaker(s) denoted by \dag\\
 
 
 \ifAPR % APR version only ------------------------------------------
-\newpage
+\sectionbreak
 \textbf{A Note on Research Funding in Human–Computer Interaction}
 \\ \\
 Research funding in Human–Computer Interaction (HCI) is primarily supported by the Natural Sciences and Engineering Research Council of Canada (NSERC), whose mandate is to fund foundational advances in computing, software, and interactive technologies. In contrast, the Canadian Institutes of Health Research (CIHR) primarily supports biomedical, clinical, health systems, and population health research. These agencies serve complementary roles within Canada’s research ecosystem and employ distinct funding models aligned with the needs and cost structures of their respective disciplines. 
@@ -350,175 +367,175 @@ Grants active during the review period are highlighted as \aprsample{research}{}
 
 
 
-\newpage
+\sectionbreak
 \textbf{RESEARCH GRANTS AND CONTRACTS:}
 
 \begin{longtable}[c]{p{4.5cm} l l l p{4.5cm}}
 \underline{Names of Researcher(s)}  &	\underline{Agency}		& \underline{\$ Amount}   &	\underline{Tenure}    &	\underline{Short Title} \\
 \endhead
 
-\hlresearchrow{2026-2027}\textbf{James Wallace (PI)}       & MITACS BSI   & \$10,000   & 2026 -- 2027 & Home-Based Training \\
-\hlresearchrow{2026-2027}Leah Zhang-Kennedy & & & & for Children with ADHD \\
-\\*
-
-
-\hlresearchrow{2026-2027}\textbf{James Wallace (PI)}       & Graham Seed Fund   & \$35,000   & 2026 -- 2027 & AI Adoption for \\
-\hlresearchrow{2026-2027}& & & & Community Mental Health \\
-\\*
-
-\hlresearchrow{2026-2028}Cosmin Munteanu, &   National Research Council & \$320,966 & 2026 -- 2028 & Aging in Place \\
-\hlresearchrow{2026-2028}\textbf{James Wallace (Co- PI)}  & Canada \\ 
-\hlresearchrow{2026-2028}Kieko Katsuragawa, \\
-\\*
-
-\hlresearchrow{2026-2027}Karen Cochrane & UW Arts Antagonism and & \$10,000 & 2026 -- 2027 & Future of  \\
-\hlresearchrow{2026-2027}\textbf{James Wallace (Co-PI)} & Intimidation in Academia & & & Community Health Care \\
-\hlresearchrow{2026-2027}& Seed Grant \\
+\hlresearchrow{2026-2027}\textbf{James Wallace (PI)}       & MITACS BSI   & \$10,000   & 2026 -- 2027 & Home-Based Training \\*
+\hlresearchrow{2026-2027}Leah Zhang-Kennedy & & & & for Children with ADHD \\*
 \\
 
-\hlresearchrow{2025-2026}Xiaolin Wei & CIHR  & \$100,000   & 2025 -- 2026   & GACD  \\
-\hlresearchrow{2025-2026}(13 others) &   & & & Priority Announcement \\
-\hlresearchrow{2025-2026}\textbf{James Wallace (Co-A)} \\
-\\*
+
+\hlresearchrow{2026-2027}\textbf{James Wallace (PI)}       & Graham Seed Fund   & \$35,000   & 2026 -- 2027 & AI Adoption for \\*
+\hlresearchrow{2026-2027}& & & & Community Mental Health \\*
+\\
+
+\hlresearchrow{2026-2028}Cosmin Munteanu, &   National Research Council & \$320,966 & 2026 -- 2028 & Aging in Place \\*
+\hlresearchrow{2026-2028}\textbf{James Wallace (Co- PI)}  & Canada \\* 
+\hlresearchrow{2026-2028}Kieko Katsuragawa, \\*
+\\
+
+\hlresearchrow{2026-2027}Karen Cochrane & UW Arts Antagonism and & \$10,000 & 2026 -- 2027 & Future of  \\*
+\hlresearchrow{2026-2027}\textbf{James Wallace (Co-PI)} & Intimidation in Academia & & & Community Health Care \\*
+\hlresearchrow{2026-2027}& Seed Grant \\*
+\\
+
+\hlresearchrow{2025-2026}Xiaolin Wei & CIHR  & \$100,000   & 2025 -- 2026   & GACD  \\*
+\hlresearchrow{2025-2026}(13 others) &   & & & Priority Announcement \\*
+\hlresearchrow{2025-2026}\textbf{James Wallace (Co-A)} \\*
+\\
 
 
-\hlresearchrow{2025}\textbf{James Wallace (PI)}       & Google Cloud Credits   & \$7,200   & 2025 & LLM Deductive Coding \\
-\\*
+\hlresearchrow{2025}\textbf{James Wallace (PI)}       & Google Cloud Credits   & \$7,200   & 2025 & LLM Deductive Coding \\*
+\\
 
 
-\hlresearchrow{2024-2026}\textbf{James Wallace (PI)} & UW CIHR RIF & \$10,000 & 2024-2026 & eSports Injury Prevention \\
-\\*
+\hlresearchrow{2024-2026}\textbf{James Wallace (PI)} & UW CIHR RIF & \$10,000 & 2024-2026 & eSports Injury Prevention \\*
+\\
 
-\hlresearchrow{2024-2025}Karen Cochrane      & NAR Catalyst              & \$10,000  & 2024-2025 & Independent Living \\
-\hlresearchrow{2024-2025}\textbf{James Wallace (Co-PI)} \\
-\\*
+\hlresearchrow{2024-2025}Karen Cochrane      & NAR Catalyst              & \$10,000  & 2024-2025 & Independent Living \\*
+\hlresearchrow{2024-2025}\textbf{James Wallace (Co-PI)} \\*
+\\
 
-\textbf{James Wallace (PI)}       & Microsoft Azure Credits   & \$6,000   & 2024 & Interactive ML \\
-\\*
+\textbf{James Wallace (PI)}       & Microsoft Azure Credits   & \$6,000   & 2024 & Interactive ML \\*
+\\
 
-\textbf{James Wallace (PI)}      & MITACS Globalink & \$6,000   & 2024 & Interactive ML \\
-\\*
+\textbf{James Wallace (PI)}      & MITACS Globalink & \$6,000   & 2024 & Interactive ML \\*
+\\
 
-\hlresearchrow{2024-2026}Leah Zhang-Kennedy, & UW Trailblazer & \$53,000 & 2024-2026 & VR Therapy \\
-\hlresearchrow{2024-2026}\textbf{James Wallace (Co-PI)} \\
-\\*
+\hlresearchrow{2024-2026}Leah Zhang-Kennedy, & UW Trailblazer & \$53,000 & 2024-2026 & VR Therapy \\*
+\hlresearchrow{2024-2026}\textbf{James Wallace (Co-PI)} \\*
+\\
 
-\textbf{James Wallace (PI)}       &   UW Hallman URA    & \$12,000   & 2024 & eSports Injury Prevention \\
-\\*
+\textbf{James Wallace (PI)}       &   UW Hallman URA    & \$12,000   & 2024 & eSports Injury Prevention \\*
+\\
 
-\textbf{James Wallace (PI)}       &   UW HSS SSHRC    & \$7,000   & 2024 & eSports Data Set \\
-\\*
+\textbf{James Wallace (PI)}       &   UW HSS SSHRC    & \$7,000   & 2024 & eSports Data Set \\*
+\\
 
-\hlresearchrow{2022-2027}\textbf{James Wallace (PI)}      &   NSERC   & \$205,000 &   2022 -- 2027 &   Discovery Grant \\
-\\*
+\hlresearchrow{2022-2027}\textbf{James Wallace (PI)}      &   NSERC   & \$205,000 &   2022 -- 2027 &   Discovery Grant \\*
+\\
 
-\hlresearchrow{2023-2026}Helene Fournier,   &   National Research Council & \$201,300 & 2023 -- 2026 & Aging in Place \\
-\hlresearchrow{2023-2026}\textbf{James Wallace (PI)}, & Canada \\ 
-\hlresearchrow{2023-2026}Kieko Katsuragawa \\
-\\*
+\hlresearchrow{2023-2026}Helene Fournier,   &   National Research Council & \$201,300 & 2023 -- 2026 & Aging in Place \\*
+\hlresearchrow{2023-2026}\textbf{James Wallace (PI)}, & Canada \\* 
+\hlresearchrow{2023-2026}Kieko Katsuragawa \\*
+\\
 
-Xiaolin Wei & CIHR  & \$1,710,000   & 2022 -- 2024   & COVID-19 Telemedicine \\
-(13 others) \\
-\textbf{James Wallace (Co-I)} \\
-\\*
+Xiaolin Wei & CIHR  & \$1,710,000   & 2022 -- 2024   & COVID-19 Telemedicine \\*
+(13 others) \\*
+\textbf{James Wallace (Co-I)} \\*
+\\
 
-Cayley MacArthur & Games Institute & \$15,000 & 2022 -- 2023 & Marillac Place \\
-\textbf{James Wallace (Co-PI)}  \\
-\\*
+Cayley MacArthur & Games Institute & \$15,000 & 2022 -- 2023 & Marillac Place \\*
+\textbf{James Wallace (Co-PI)}  \\*
+\\
 
-Brian Laird & Global Water Futures & \$1,484,000 & 2017 -- 2022 & FiSHNET \\
-Heidi Swanson \\
-Kelly Skinner \\
-Ken Stark \\
-\textbf{James Wallace (Co-I)} \\
-\\*
+Brian Laird & Global Water Futures & \$1,484,000 & 2017 -- 2022 & FiSHNET \\*
+Heidi Swanson \\*
+Kelly Skinner \\*
+Ken Stark \\*
+\textbf{James Wallace (Co-I)} \\*
+\\
 
-Samantha Meyer  & CIRN  &   \$104,866   & 2021 -- 2022   &   CTA Toolkit \\
-Ève Dubé \\ (6 others) \\
-\textbf{James Wallace (Co-I)} \\
-\\*
+Samantha Meyer  & CIRN  &   \$104,866   & 2021 -- 2022   &   CTA Toolkit \\*
+Ève Dubé \\ (6 others) \\*
+\textbf{James Wallace (Co-I)} \\*
+\\
 
-Lennart Nacke & UW IRPG-EU & \$20,000 & 2017 -- 2018 & Medical Software \\
-\textbf{James Wallace (Co-PI)} \\
-\\*
+Lennart Nacke & UW IRPG-EU & \$20,000 & 2017 -- 2018 & Medical Software \\*
+\textbf{James Wallace (Co-PI)} \\*
+\\
 
-Helen Chen,               & DynaCare    & \$150,000   & 2016-2021 & mECG                      \\
-Ian McKillop,             & (Private)   &             &           &                           \\
-Ning Jiang,               &             &             &           &                           \\
-\textbf{James Wallace (Co-I)}             &             &             &           &                       \\
-\\*
+Helen Chen,               & DynaCare    & \$150,000   & 2016-2021 & mECG                      \\*
+Ian McKillop,             & (Private)   &             &           &                           \\*
+Ning Jiang,               &             &             &           &                           \\*
+\textbf{James Wallace (Co-I)}             &             &             &           &                       \\*
+\\
 
-Regan Mandryk,            & NSERC       & \$2,450,000 & 2016-2022 & SWaGUR                    \\
-Mark Hancock,             & CREATE      &             &           &                           \\
-\textbf{James Wallace (Co-I)}   &             &             &           &                           \\
-(30 others) & & & & \\
-\\*
-
-
-\textbf{James Wallace (PI)}             & NSERC       & \$90,000    & 2015-2022 & Discovery Grant           \\
-\\*
+Regan Mandryk,            & NSERC       & \$2,450,000 & 2016-2022 & SWaGUR                    \\*
+Mark Hancock,             & CREATE      &             &           &                           \\*
+\textbf{James Wallace (Co-I)}   &             &             &           &                           \\*
+(30 others) & & & & \\*
+\\
 
 
-Xiaolin Wei &   CIHR & \$231,473 & 2020-2021 & COVID-19 \\
-(11 others) \\
-\textbf{James Wallace (Co-I)} \\
-\\*
-
-\textbf{James Wallace (PI)},              & CFI-JELF    & \$70,000    & 2016-2021 & IDEA Lab                  \\
-Paul Stolee, \\ Stacey Scott \\
-\\*
-
-\textbf{James Wallace (PI)}             & ORF-RI      & \$70,000    & 2016-2021 & IDEA Lab                  \\
-Paul Stolee, \\ Stacey Scott \\
-\\*
+\textbf{James Wallace (PI)}             & NSERC       & \$90,000    & 2015-2022 & Discovery Grant           \\*
+\\
 
 
-Ning Jiang  & NSERC CRD &   \$273,730   & 2017 -- 2019 & Mobile ECG \\
-Helen Chen \\ \textbf{James Wallace (Co-I)} \\ Ian McKillop \\
-\\*
+Xiaolin Wei &   CIHR & \$231,473 & 2020-2021 & COVID-19 \\*
+(11 others) \\*
+\textbf{James Wallace (Co-I)} \\*
+\\
 
-Helen Chen & OCE MSc PoP & \$70,000 & 2017 -- 2018 & Mobile ECG \\
-Ning Jiang\\
-\textbf{James Wallace (Co-I)} \\
-Ian McKillop \\
-\\*
+\textbf{James Wallace (PI)},              & CFI-JELF    & \$70,000    & 2016-2021 & IDEA Lab                  \\*
+Paul Stolee, \\ Stacey Scott \\*
+\\
 
-Scott Leatherdale   & CPHA  & \$20,000  & 2017 -- 2018 & Online Data Vis \\
-\textbf{James Wallace (Co-PI)} \\
-\\*
-
-\textbf{James Wallace (PI)}   & PHAC  & \$9,186   & 2017 & Antimicrobial Resistance \\
-\\*
-
-Josephine McMurray,       & SSHRC-IDG   & \$62,939    & 2016-2018 & SmartSurveys              \\
-\textbf{James Wallace (Co-I)},            &             &             &           &                           \\
-Richard Booth,            &             &             &           &                           \\
-Chatura Ranaweera         &             &             &           &                           \\
-\\*
-
-Lennart Nacke,            & MITACS     & \$260,000   & 2016-2018 & Stressless Gamification  \\
-Mark Hancock,  \\
-\textbf{James Wallace (Co-I)} \\
-\\*
-
-Pascal Poupart,           & Propel CDPI & \$10,000    & 2016-2017 & Recess                    \\
-\textbf{James Wallace (Co-I)},            &             &             &           &                           \\
-Lauara Middleton,         &             &             &           &                           \\
-James Tang                &             &             &           &                           \\
-\\*
+\textbf{James Wallace (PI)}             & ORF-RI      & \$70,000    & 2016-2021 & IDEA Lab                  \\*
+Paul Stolee, \\ Stacey Scott \\*
+\\
 
 
-\textbf{James Wallace (PI)},            & Propel CDPI & \$10,000    & 2015--2016 & GAME-HQ                   \\
-Michael Barnett-Cowan,    &             &             &           &                           \\
-Hardy Premsukh,           &             &             &           &                           \\
-Deltcho Valchanov,        &             &             &           &                           \\
-Diane Watson              &             &             &           &                           \\
-\\*
+Ning Jiang  & NSERC CRD &   \$273,730   & 2017 -- 2019 & Mobile ECG \\*
+Helen Chen \\ \textbf{James Wallace (Co-I)} \\ Ian McKillop \\*
+\\
 
-\textbf{James Wallace (PI)}            & UW          & \$5,000     & 2015      & Hallman URF  \\
+Helen Chen & OCE MSc PoP & \$70,000 & 2017 -- 2018 & Mobile ECG \\*
+Ning Jiang\\*
+\textbf{James Wallace (Co-I)} \\*
+Ian McKillop \\*
+\\
+
+Scott Leatherdale   & CPHA  & \$20,000  & 2017 -- 2018 & Online Data Vis \\*
+\textbf{James Wallace (Co-PI)} \\*
+\\
+
+\textbf{James Wallace (PI)}   & PHAC  & \$9,186   & 2017 & Antimicrobial Resistance \\*
+\\
+
+Josephine McMurray,       & SSHRC-IDG   & \$62,939    & 2016-2018 & SmartSurveys              \\*
+\textbf{James Wallace (Co-I)},            &             &             &           &                           \\*
+Richard Booth,            &             &             &           &                           \\*
+Chatura Ranaweera         &             &             &           &                           \\*
+\\
+
+Lennart Nacke,            & MITACS     & \$260,000   & 2016-2018 & Stressless Gamification  \\*
+Mark Hancock,  \\*
+\textbf{James Wallace (Co-I)} \\*
+\\
+
+Pascal Poupart,           & Propel CDPI & \$10,000    & 2016-2017 & Recess                    \\*
+\textbf{James Wallace (Co-I)},            &             &             &           &                           \\*
+Lauara Middleton,         &             &             &           &                           \\*
+James Tang                &             &             &           &                           \\*
+\\
+
+
+\textbf{James Wallace (PI)},            & Propel CDPI & \$10,000    & 2015--2016 & GAME-HQ                   \\*
+Michael Barnett-Cowan,    &             &             &           &                           \\*
+Hardy Premsukh,           &             &             &           &                           \\*
+Deltcho Valchanov,        &             &             &           &                           \\*
+Diane Watson              &             &             &           &                           \\*
+\\
+
+\textbf{James Wallace (PI)}            & UW          & \$5,000     & 2015      & Hallman URF  \\*
 \end{longtable}
 
-\newpage
+\sectionbreak
 \ifAPR % APR version only ------------------------------------------
 \textbf{A Note on Graduate Supervision in Human–Computer Interaction}
 \\ \\
@@ -531,6 +548,7 @@ Interdisciplinary supervision and collaboration are also consistent with the Uni
 Supervision during the review period is highlighted below as \aprsample{teaching}{}{teaching and supervision}. It also appears in the research sections: papers and presentations by students I supervise are shown as \aprsample{research}{teaching}{research, with supervision}, because in HCI these papers are a central product of graduate training. External examining is shown as \aprsample{teaching}{service}{supervision, with service}.
 \\ \\
 \fi % end APR version only -------------------------------------
+\keepwithnext[6]
 \textbf{GRADUATE STUDENT SUPERVISION}
 
 \begin{enumerate}
@@ -600,6 +618,7 @@ Supervision during the review period is highlighted below as \aprsample{teaching
         \end{enumerate}
     \end{enumerate}
 
+    \keepwithnext[13]
     \item[b)] \textbf{As Committee Member}
     \begin{enumerate}
     \setlength{\labelsep}{0em}
@@ -619,6 +638,7 @@ Supervision during the review period is highlighted below as \aprsample{teaching
         \item[] 2016 --- 2 MSc, 3 PhD
     \end{enumerate}
 
+    \keepwithnext[5]
     \item[c)] \textbf{External Examiner (3)}
     \begin{enumerate}
     \setlength{\labelsep}{0em}
@@ -630,6 +650,7 @@ Supervision during the review period is highlighted below as \aprsample{teaching
 \end{enumerate}
 
 \ifAPR % APR version only ------------------------------------------
+\keepwithnext[8]
 \textbf{A Note on Service in Human–Computer Interaction}
 \\ \\
 Professional service in Human–Computer Interaction (HCI) is closely integrated with the peer review and dissemination processes that sustain the field. Major conferences organized by the Association for Computing Machinery (ACM), including CHI, CSCW, CHI PLAY, and CUI, serve as the primary archival publication venues and rely on extensive peer review conducted by international committees of expert researchers. Service roles such as reviewer, program committee member, and conference chair are essential for maintaining the scientific quality, integrity, and advancement of the discipline.
@@ -641,6 +662,7 @@ In addition to conference leadership, I regularly serve as a reviewer and progra
 Service during the review period is highlighted as \aprsample{service}{}{service}. This includes peer review, program committees and conference organization for the discipline, as well as School and Faculty committees.
 \\ \\
 \fi % end APR version only -------------------------------------
+\keepwithnext
 \textbf{SERVICE}
     
     \begin{enumerate}
@@ -685,6 +707,7 @@ Service during the review period is highlighted as \aprsample{service}{}{service
         \item[] University of Waterloo PhD Defense Chair 2019 -- 2022
     \end{enumerate}
 
+\keepwithnext[6]
 \textbf{AREAS OF TEACHING EXPERTISE} \\
 Human-Computer Interaction, Computational Social Science, Games, Computer-Supported Cooperative Work, Information Visualization, Machine Learning
 \\ \\
