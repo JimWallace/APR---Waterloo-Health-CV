@@ -29,10 +29,20 @@
 %   count          for several of the same: 3 prints "3 x Special recognition ..."
 %   work           the key of the paper or talk it was for, if any (the
 %                  checker makes sure that entry carries icon = {award})
+%
+% @service: one line of a SERVICE list.
+%   title          the role or committee as printed: SPHS Research Committee
+%   level          which \printservice{<level>} list it prints in: school,
+%                  faculty, university, discipline ...
+%   date           the years served: 2023, or 2023/2025 (sorting and the APR
+%                  highlight use it)
+%   years          optional: the years as printed, when the date range would
+%                  not say it right (2017, 2019 -- 2021)
+%   role           optional: printed after the years (General Chair)
 
 \input{ACM-Reference-Format.dbx}
 
-\DeclareDatamodelEntrytypes{grant,supervision,award}
+\DeclareDatamodelEntrytypes{grant,supervision,award,service}
 
 \DeclareDatamodelFields[type=list,datatype=literal]{investigators}
 \DeclareDatamodelFields[type=field,datatype=literal]{
@@ -43,6 +53,8 @@
   position,
   cosupervisor,
   work,
+  level,
+  years,
 }
 \DeclareDatamodelFields[type=field,datatype=integer]{amount,count}
 
@@ -69,6 +81,12 @@
   count,
   work,
 }
+\DeclareDatamodelEntryfields[service]{
+  title,
+  level,
+  years,
+  role,
+}
 
 \DeclareDatamodelConstraints[grant]{
   \constraint[type=mandatory]{
@@ -88,6 +106,13 @@
 \DeclareDatamodelConstraints[award]{
   \constraint[type=mandatory]{
     \constraintfield{title}
+    \constraintfield{date}
+  }
+}
+\DeclareDatamodelConstraints[service]{
+  \constraint[type=mandatory]{
+    \constraintfield{title}
+    \constraintfield{level}
     \constraintfield{date}
   }
 }

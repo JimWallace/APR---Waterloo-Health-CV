@@ -11,11 +11,15 @@
 %                                those in progress, by family name
 %   \printawards                 ACADEMIC AWARDS AND DISTINCTIONS: newest
 %                                first, in file order within a year
+%   \printservice{school}        one SERVICE list: the @service records of
+%                                that level, most recent first (by end
+%                                year, then start), in file order otherwise
 %
 % In the APR version a grant whose tenure overlaps the review period is
 % highlighted as research (the whole table row); a student who completed in the
 % period, or is in progress, is highlighted as teaching; an award in the
-% period is highlighted as an award.
+% period is highlighted as an award; a service role whose years overlap the
+% period is highlighted as service.
 
 \RequirePackage{siunitx}
 
@@ -226,3 +230,39 @@
     \printbibliography[type=award,env=cvawards,heading=none]%
   \end{refcontext}}
 
+%% ---------------------------------------------------------------- service
+\aprtypecategory{service}{service}
+
+% Title Years Role: the years field as written, else the date as
+% 2023 -- 2025; the role, if any, after them
+\DeclareBibliographyDriver{service}{%
+  \usebibmacro{begentry}%
+  \printfield[cvplain]{title}%
+  \setunit{\space}%
+  \iffieldundef{years}
+    {\iffieldint{year}
+       {\printtext{%
+          \thefield{year}%
+          \iffieldint{endyear}
+            {\iffieldsequal{year}{endyear}{}{\ -- \thefield{endyear}}}
+            {}}}
+       {}}
+    {\printfield[cvplain]{years}}%
+  \setunit{\space}%
+  \printfield[cvplain]{role}%
+  \usebibmacro{finentry}}
+
+\DeclareSortingTemplate{cvservice}{
+  \sort[direction=descending]{\field{endyear}\field{year}}
+  \sort[direction=descending]{\field{year}}
+  \sort{\citeorder}
+}
+
+\def\cv@level{}
+\defbibcheck{cvlevel}{\iffieldequals{level}{\cv@level}{}{\skipentry}}
+
+\newcommand\printservice[1]{%
+  \def\cv@level{#1}%
+  \begin{refcontext}[sorting=cvservice]%
+    \printbibliography[type=service,check=cvlevel,env=cvawards,heading=none]%
+  \end{refcontext}}
