@@ -63,8 +63,13 @@ the source of truth; never force-push `main`.
 **Where non-publication items go** (all in `main.tex`)
 - Awards → ACADEMIC AWARDS AND DISTINCTIONS (newest first, `\hlaward[YYYY]{…}`).
 - Reviewing, PCs, editorial roles, organizing → SCHOLARLY AND PROFESSIONAL ACTIVITIES lists.
-- Grants → RESEARCH GRANTS AND CONTRACTS table: match the existing row format exactly.
+- Grants → RESEARCH GRANTS AND CONTRACTS table: match the existing row format exactly. End
+  each row of a grant with `\\*` (keeps the grant on one page) and the blank row after it
+  with `\\`.
 - Supervision → GRADUATE STUDENT SUPERVISION. Service → SERVICE.
+
+**Page breaks** are set in `cv-layout.tex`. Put `\keepwithnext` before a new heading that is
+followed by a list; never use `\newpage` (use `\sectionbreak`).
 
 ## Checks
 
