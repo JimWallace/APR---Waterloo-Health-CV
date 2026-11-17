@@ -16,6 +16,9 @@ One source, two PDFs:
   review-period items (see the header of `template/aprcv.sty`). Never put content in `apr.tex`.
 - `scholar.bib` holds publications, talks and software. `main.tex` decides which heading each
   entry prints under with `\addtocategory{<category>}{key, key, …}` near the top.
+- `grants.bib` holds grants (`@grant`) and `supervision.bib` my students (`@supervision`).
+  The fields are described in `template/uwhealthcv.dbx`. They print sorted, and the APR
+  colours come from their dates, so there are no years to keep in step by hand.
 - `apr-formatting.tex` holds my settings for the APR version (highlight strength and style).
 - `data/trainees.yaml` lists my trainees (students/postdocs) and the spellings used for them.
 - `2pages.tex` / `8pages.tex` are older NSERC-format variants; leave them alone unless asked.
@@ -67,16 +70,22 @@ the source of truth; never force-push `main`.
   `aprnone` turns highlighting off for one entry. Only I add keys to either.
 - If any author is my trainee (`*`) or a trainee presented (`\dag`), also add the key to
   `apralsoteaching`.
-- Non-bib items use `\hlteaching[years]{…}`, `\hlresearch`, `\hlservice`, `\hlaward`, or the
-  `\hl…row{years}` forms at the start of each grant-table row. Always give `[years]`.
+- Grants are highlighted when their `date` range overlaps the period; students when they are
+  `status = {In progress}` or their `date` is in the period. Nothing to add by hand.
+- Other non-bib items use `\hlteaching[years]{…}`, `\hlresearch`, `\hlservice`, `\hlaward`.
+  Always give `[years]`.
 
-**Where non-publication items go** (all in `main.tex`)
+**Where non-publication items go**
 - Awards → ACADEMIC AWARDS AND DISTINCTIONS (newest first, `\hlaward[YYYY]{…}`).
 - Reviewing, PCs, editorial roles, organizing → SCHOLARLY AND PROFESSIONAL ACTIVITIES lists.
-- Grants → RESEARCH GRANTS AND CONTRACTS table: match the existing row format exactly. End
-  each row of a grant with `\\*` (keeps the grant on one page) and the blank row after it
-  with `\\`.
-- Supervision → GRADUATE STUDENT SUPERVISION. Service → SERVICE.
+- Awards, activities and service are in `main.tex`; service → SERVICE.
+- Grants → a `@grant` entry in `grants.bib`. List investigators in the order given, with
+  `\me` for me and `role` for my role; `amount` is digits only; `date = {2026/2028}` is the
+  tenure. Order in the file doesn't matter.
+- Supervision → a `@supervision` entry in `supervision.bib`: `author = {Family, Given}`,
+  `degree` (one of the `\printsupervision{…}` lists in `main.tex`), and `status = {In progress}`
+  until they finish, then `date`, `title` and, when I know it, `position`. Committee
+  membership and external examining stay as lines in `main.tex`.
 
 **Markup** comes from the template (`template/uwhealthcv.sty`): headings are `\cvsection{…}`,
 labels over a list `\cvsubheading{…:}`, list items `\cvitem …` inside `cvlist`, lettered parts

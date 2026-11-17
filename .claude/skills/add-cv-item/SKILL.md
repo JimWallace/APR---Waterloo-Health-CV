@@ -15,10 +15,11 @@ awards, grants and students is the source; cite it as "issue #N".
    If found, build the bib entry from it. If not yet public, use what Jim wrote and add
    `note = {To appear}`. Mark trainees per `data/trainees.yaml`; if Jim names a new trainee,
    add them to `data/trainees.yaml` (he told you, so this one is allowed) and say so in the PR.
-3. **Other items:** add to the right list in `main.tex` with the matching `\hl…[years]` macro.
-   Grants: one row per line of the existing table format, `\hl…row{years}` on each row,
-   `\\*` at the end of each row of the grant and `\\` on the blank row after it.
-   Amounts, agencies, roles and dates come only from Jim's message; ask in the PR if any is missing.
+3. **Grants and students:** add a `@grant` entry to `grants.bib` or a `@supervision` entry to
+   `supervision.bib` (fields in `template/uwhealthcv.dbx`, examples in each file). No
+   highlighting to add: it follows the dates. Amounts, agencies, roles, dates, titles and
+   students' positions come only from Jim's message; ask in the PR if any is missing.
+   **Other items:** add to the right list in `main.tex` with the matching `\hl…[years]` macro.
 4. Branch `cv/issue-<N>-<slug>`, commit, run the `cv-verify` skill, push, open the PR with
    "Closes #N" and the label `cv-verify` chose, and reply on the issue with the PR link and
    any questions. If `gh pr create` fails, use the REST API as in
