@@ -33,9 +33,14 @@
 % grant into \cv@rows (printing nothing), and \printgrants then sets them.
 %
 % Column widths: names, agency and short title wrap; amount and tenure don't.
-\newlength\cvgrantnamewidth   \setlength\cvgrantnamewidth{4.5cm}
-\newlength\cvgrantagencywidth \setlength\cvgrantagencywidth{4.6cm}
-\newlength\cvgranttitlewidth  \setlength\cvgranttitlewidth{4.5cm}
+% The table is exactly \linewidth wide and lines up with the text margins: no
+% padding at the outer edges, 2\cvgrantcolsep between columns. Amount and
+% tenure take their widest entry, and the short title takes what is left
+% (\printgrants works it out), so a wide amount narrows the title column.
+\newlength\cvgrantnamewidth   \setlength\cvgrantnamewidth{4.15cm}
+\newlength\cvgrantagencywidth \setlength\cvgrantagencywidth{4.15cm}
+\newlength\cvgranttitlewidth
+\newlength\cvgrantcolsep      \setlength\cvgrantcolsep{4pt}
 
 % every investigator, never truncated to "et al." (biblatex's default
 % truncates lists longer than three)
@@ -75,9 +80,22 @@
   \ifx\relax#1\relax\else\rowcolor{#1}\fi
   \def\me{\textbf{\cv@owner\ifx\relax#2\relax\else\space(#2)\fi}}#3 &
   #4 &
-  \$\num[group-separator={,},group-minimum-digits=4]{#5} &
-  #6\ifx\relax#7\relax\else\ -- #7\fi &
+  \cv@amount{#5} &
+  \cv@tenure{#6}{#7} &
   #8 \\*}
+\newcommand\cv@amount[1]{\$\num[group-separator={,},group-minimum-digits=4]{#1}}
+\newcommand\cv@tenure[2]{#1\ifx\relax#2\relax\else\ -- #2\fi}
+
+% \cv@widest\len{text}: widen \len (globally) to fit text
+\newcommand\cv@widest[2]{%
+  \settowidth\@tempdima{#2}%
+  \ifdim\@tempdima>#1\global#1\@tempdima\fi}
+\newlength\cv@amountwd
+\newlength\cv@tenurewd
+% measure the amount and tenure columns over the collected rows
+\newcommand\cv@measureline[8]{%
+  \cv@widest\cv@amountwd{\cv@amount{#5}}%
+  \cv@widest\cv@tenurewd{\cv@tenure{#6}{#7}}}
 
 \DeclareSortingTemplate{cvgrants}{
   \sort[direction=descending]{\field{year}}
@@ -94,15 +112,25 @@
     \begin{refcontext}[sorting=cvgrants]%
       \printbibliography[type=grant,env=cvcollect,heading=none]%
     \end{refcontext}}%
-  \begin{longtable}[c]{>{\raggedright\arraybackslash}p{\cvgrantnamewidth}
+  \begingroup
+  \setlength\tabcolsep{\cvgrantcolsep}%
+  \global\cv@amountwd\z@
+  \global\cv@tenurewd\z@
+  \cv@widest\cv@amountwd{\underline{\$ Amount}}%
+  \cv@widest\cv@tenurewd{\underline{Tenure}}%
+  {\def\\{}\let\cv@grantline\cv@measureline\cv@rows}%
+  \setlength\cvgranttitlewidth{\dimexpr\linewidth-\cvgrantnamewidth
+    -\cvgrantagencywidth-\cv@amountwd-\cv@tenurewd-8\tabcolsep\relax}%
+  \begin{longtable}[c]{@{}>{\raggedright\arraybackslash}p{\cvgrantnamewidth}
                        >{\raggedright\arraybackslash}p{\cvgrantagencywidth}
                        l l
-                       >{\raggedright\arraybackslash}p{\cvgranttitlewidth}}
+                       >{\raggedright\arraybackslash}p{\cvgranttitlewidth}@{}}
   \underline{Names of Researcher(s)} & \underline{Agency} & \underline{\$ Amount} &
     \underline{Tenure} & \underline{Short Title} \\
   \endhead
   \cv@rows
-  \end{longtable}}
+  \end{longtable}%
+  \endgroup}
 
 %% ------------------------------------------------------------ supervision
 \aprtypecategory{supervision}{teaching}
@@ -142,7 +170,7 @@
 \DeclareSortingTemplate{cvsupervision}{
   \sort{\field{year}\literal{9999}}
   \sort{\field[padside=left,padwidth=2,padchar=0]{month}\literal{99}}
-  \sort{\name{author}}
+  \sort{\field{author}}
 }
 
 % The list starts right after its degree label, so LaTeX treats the first

@@ -341,6 +341,12 @@
 \NewDocumentCommand\aprsample{mm+m}{%
   \ifAPR
     \leavevmode
+    % the sample cannot break, so as a last resort (penalty 5000) let the
+    % line before it end ragged rather than push the sample into the margin;
+    % the two skips cancel when no break is taken there
+    \ifdim\lastskip>\z@
+      \hskip\z@\@plus10em\penalty5000\hskip\z@\@plus-10em\relax
+    \fi
     \begingroup
       \sbox\apr@box{#3}%
       \edef\apr@pc{\apr@col{#1}}\edef\apr@sc{\apr@col{#2}}%
