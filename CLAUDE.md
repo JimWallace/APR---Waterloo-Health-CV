@@ -16,7 +16,8 @@ One source, two PDFs:
   review-period items (see the header of `template/aprcv.sty`). Never put content in `apr.tex`.
 - `scholar.bib` holds publications, talks and software. `main.tex` decides which heading each
   entry prints under with `\addtocategory{<category>}{key, key, …}` near the top.
-- `grants.bib` holds grants (`@grant`) and `supervision.bib` my students (`@supervision`).
+- `grants.bib` holds grants (`@grant`), `supervision.bib` my students (`@supervision`) and
+  `awards.bib` the ACADEMIC AWARDS AND DISTINCTIONS list (`@award`).
   The fields are described in `template/uwhealthcv.dbx`. They print sorted, and the APR
   colours come from their dates, so there are no years to keep in step by hand.
 - `apr-formatting.tex` holds my settings for the APR version (highlight strength and style).
@@ -52,8 +53,10 @@ the source of truth; never force-push `main`.
   name (`Homaeian, L.*` loses the mark under `giveninits`).
 - Presenter of a talk or paper: `{\dag}` after the name (after `*` if both): `Gauthier*{\dag}, Robert P`.
 - A paper or talk that won an award: `icon = {award}` (the rosette in the margin; in the APR
-  version it is filled pink when the entry is in the review period) and the award in bold in
-  `note`, e.g. `note = {\textbf{Best Paper Honourable Mention Award}}`.
+  version it is filled pink when the entry is in the review period), the award in bold in
+  `note`, e.g. `note = {\textbf{Best Paper Honourable Mention Award}}`, and an `@award` in
+  `awards.bib` with `work = {<that key>}`. The checker fails if either half is missing. If a
+  trainee won it, add the award's key to `apralsoteaching` too.
 - Include `doi` whenever one exists; ACM entries use `@inproceedings` (conference proceedings)
   or `@article` (PACM / journals) as the ACM DL export does.
 - Accepted-but-unpublished work: add `note = {To appear}` and no DOI; the weekly run backfills
@@ -75,13 +78,15 @@ the source of truth; never force-push `main`.
   `apralsoteaching`.
 - Grants are highlighted when their `date` range overlaps the period; students when they are
   `status = {In progress}` or their `date` is in the period. Nothing to add by hand.
-- Other non-bib items use `\hlteaching[years]{…}`, `\hlresearch`, `\hlservice`, `\hlaward`.
+- Awards are highlighted when their year is in the period. Other non-bib items use `\hlteaching[years]{…}`, `\hlresearch`, `\hlservice`, `\hlaward`.
   Always give `[years]`.
 
 **Where non-publication items go**
 - Awards → ACADEMIC AWARDS AND DISTINCTIONS (newest first, `\hlaward[YYYY]{…}`).
 - Reviewing, PCs, editorial roles, organizing → SCHOLARLY AND PROFESSIONAL ACTIVITIES lists.
-- Awards, activities and service are in `main.tex`; service → SERVICE.
+- Awards → an `@award` in `awards.bib` (`title` as it should print, `date` = the year,
+  `count` for "3 ×" lines). Order within a year follows the file.
+- Activities and service are in `main.tex`; service → SERVICE.
 - Grants → a `@grant` entry in `grants.bib`. List investigators in the order given, with
   `\me` for me and `role` for my role; `amount` is digits only; `date = {2026/2028}` is the
   tenure. Order in the file doesn't matter.

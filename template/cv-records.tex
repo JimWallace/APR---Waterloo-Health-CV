@@ -8,10 +8,13 @@
 %   \printsupervision{PhD}       one numbered list of students under a
 %                                degree label: completed by date, then
 %                                those in progress, by family name
+%   \printawards                 ACADEMIC AWARDS AND DISTINCTIONS: newest
+%                                first, in file order within a year
 %
 % In the APR version a grant whose tenure overlaps the review period is
 % highlighted as research (the whole table row); a student who completed in the
-% period, or is in progress, is highlighted as teaching.
+% period, or is in progress, is highlighted as teaching; an award in the
+% period is highlighted as an award.
 
 \RequirePackage{siunitx}
 
@@ -162,3 +165,34 @@
       \printbibliography[type=supervision,check=cvdegree,env=cvdegree,heading=none]%
     \end{refcontext}%
   \end{enumerate}}
+
+%% ----------------------------------------------------------------- awards
+\aprtypecategory{award}{award}
+
+% [count x] Title
+\DeclareBibliographyDriver{award}{%
+  \usebibmacro{begentry}%
+  \iffieldint{count}
+    {\printtext{\thefield{count} $\times$}\setunit{\space}}
+    {}%
+  \printfield[cvplain]{title}%
+  \usebibmacro{finentry}}
+
+\DeclareSortingTemplate{cvawards}{
+  \sort[direction=descending]{\field{year}}
+  \sort{\citeorder}
+}
+
+% the same layout as cvlist (uwhealthcv.sty)
+\defbibenvironment{cvawards}
+  {\begin{itemize}%
+   \setlength{\labelsep}{0em}\setlength{\itemsep}{-5pt}%
+   \renewcommand*{\finentrypunct}{}}
+  {\end{itemize}}
+  {\item[]}
+
+\newcommand\printawards{%
+  \begin{refcontext}[sorting=cvawards]%
+    \printbibliography[type=award,env=cvawards,heading=none]%
+  \end{refcontext}}
+

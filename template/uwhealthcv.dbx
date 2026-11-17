@@ -22,10 +22,17 @@
 %   note           programme or practicum details
 %   cosupervisor   printed as "(co-supervised with ...)"
 %   position       where they went next, printed in brackets
+%
+% @award: one line of ACADEMIC AWARDS AND DISTINCTIONS.
+%   title          the award as printed: CHI 2020 Best Paper Honorable Mention Award
+%   date           the year: 2020
+%   count          for several of the same: 3 prints "3 x Special recognition ..."
+%   work           the key of the paper or talk it was for, if any (the
+%                  checker makes sure that entry carries icon = {award})
 
 \input{ACM-Reference-Format.dbx}
 
-\DeclareDatamodelEntrytypes{grant,supervision}
+\DeclareDatamodelEntrytypes{grant,supervision,award}
 
 \DeclareDatamodelFields[type=list,datatype=literal]{investigators}
 \DeclareDatamodelFields[type=field,datatype=literal]{
@@ -35,8 +42,9 @@
   status,
   position,
   cosupervisor,
+  work,
 }
-\DeclareDatamodelFields[type=field,datatype=integer]{amount}
+\DeclareDatamodelFields[type=field,datatype=integer]{amount,count}
 
 \DeclareDatamodelEntryfields[grant]{
   investigators,
@@ -56,6 +64,12 @@
   position,
 }
 
+\DeclareDatamodelEntryfields[award]{
+  title,
+  count,
+  work,
+}
+
 \DeclareDatamodelConstraints[grant]{
   \constraint[type=mandatory]{
     \constraintfield{investigators}
@@ -69,5 +83,11 @@
   \constraint[type=mandatory]{
     \constraintfield{author}
     \constraintfield{degree}
+  }
+}
+\DeclareDatamodelConstraints[award]{
+  \constraint[type=mandatory]{
+    \constraintfield{title}
+    \constraintfield{date}
   }
 }

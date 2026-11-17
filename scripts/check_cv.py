@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
-"""Deterministic checks on scholar.bib, grants.bib, supervision.bib and the
-category lists in main.tex.
+"""Deterministic checks on scholar.bib, grants.bib, supervision.bib, awards.bib
+and the category lists in main.tex.
 
 Errors change what the PDF says (a paper silently dropped or printed twice)
 and fail CI. Warnings are worth a look but do not block a merge.
@@ -61,6 +61,8 @@ def run(only: set[str] | None = None) -> dict:
             err("E-syntax", e)
         records[name] = rb
     check_records(records, (ROOT / "main.tex").read_text(encoding="utf-8"), err, warn)
+    check_awards(records["awards.bib"], bib, err)
+    record_keys = {e.key for rb in records.values() for e in rb.entries}
     all_keys = Counter(e.key for e in bib.entries)
     for rb in records.values():
         all_keys.update(e.key for e in rb.entries)
@@ -92,7 +94,7 @@ def run(only: set[str] | None = None) -> dict:
     # W: category keys with no bib entry; repeats inside one list
     for c, ks in cats.items():
         for k in ks:
-            if k not in by_key:
+            if k not in by_key and k not in record_keys:
                 warn("W-nokey", f"\\addtocategory{{{c}}} lists '{k}', which is not in scholar.bib "
                      "(stale key, or a missing entry)", k)
         for k, n in Counter(ks).items():
@@ -171,7 +173,7 @@ def run(only: set[str] | None = None) -> dict:
     }
 
 
-RECORD_FILES = ["grants.bib", "supervision.bib"]
+RECORD_FILES = ["grants.bib", "supervision.bib", "awards.bib"]
 GRANT_ROLES = {"PI", "Co-PI", "Co-I", "Co-A"}
 DATE_RE = re.compile(r"^\d{4}(-\d{2})?(/\d{4}(-\d{2})?)?$")
 
@@ -213,6 +215,38 @@ def check_records(records: dict, main_tex: str, err, warn) -> None:
                 "status (e.g. In progress)", e.key)
         if f.get("date") and not DATE_RE.match(f["date"]):
             err("E-record", f"{where}: '{e.key}' date '{f['date']}' should be YYYY or YYYY-MM", e.key)
+
+
+AWARD_ICONS = {"award", "images/hm.png"}
+
+
+def check_awards(awards, bib, err) -> None:
+    """awards.bib: well-formed, and in step with the award badges on entries."""
+    pubs = {e.key: e for e in bib.entries}
+    badged = {k for k, e in pubs.items() if e.fields.get("icon") in AWARD_ICONS}
+    named = {}
+    for e in awards.entries:
+        f, where = e.fields, f"awards.bib:{e.line}"
+        if e.type != "award":
+            err("E-record", f"{where}: '{e.key}' is @{e.type}; awards.bib holds @award entries", e.key)
+            continue
+        if not f.get("title"):
+            err("E-record", f"{where}: award '{e.key}' has no title", e.key)
+        if not re.fullmatch(r"\d{4}", f.get("date", "")):
+            err("E-record", f"{where}: award '{e.key}' date '{f.get('date', '')}' should be a year (YYYY)", e.key)
+        if f.get("count") and not f["count"].isdigit():
+            err("E-record", f"{where}: award '{e.key}' count '{f['count']}' must be a whole number", e.key)
+        w = f.get("work")
+        if w:
+            named[w] = e.key
+            if w not in pubs:
+                err("E-award", f"{where}: award '{e.key}' is for work '{w}', which is not in scholar.bib", e.key)
+            elif w not in badged:
+                err("E-award", f"{where}: award '{e.key}' is for '{w}', which has no icon = {{award}}, "
+                    "so the award badge is missing from that entry", e.key)
+    for k in sorted(badged - set(named)):
+        err("E-award", f"'{k}' carries the award badge but no @award in awards.bib names it "
+            "(work = {" + k + "}), so it is missing from ACADEMIC AWARDS AND DISTINCTIONS", k)
 
 
 def main() -> int:
