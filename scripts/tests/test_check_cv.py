@@ -78,6 +78,46 @@ class Exemptions(unittest.TestCase):
         self.assertIn("also in conference", msgs[0])
 
 
+
+class ServiceRecords(unittest.TestCase):
+    """service.bib: each role needs a title, a level some \\printservice prints, and YYYY[/YYYY]."""
+
+    def errors(self, service_bib):
+        records = {name: cvlib.parse_bib(self.write(name, "")) for name in check_cv.RECORD_FILES}
+        records["service.bib"] = cvlib.parse_bib(self.write("service.bib", service_bib))
+        found = []
+        check_cv.check_records(records, "\\printservice{school}\n% \\printservice{faculty}\n",
+                               lambda code, msg, key=None: found.append((key, msg)),
+                               lambda *a, **k: None)
+        return found
+
+    def write(self, name, text):
+        p = self.dir / name
+        p.write_text(text, encoding="utf-8")
+        return p
+
+    def setUp(self):
+        self.dir = Path(tempfile.mkdtemp())
+
+    def tearDown(self):
+        shutil.rmtree(self.dir)
+
+    def test_a_well_formed_role_passes(self):
+        self.assertEqual(self.errors("@service{ok, title = {A Committee}, level = {school}, "
+                                     "date = {2023/2025}, years = {2023, 2025}}\n"), [])
+
+    def test_an_unprinted_level_is_an_error(self):
+        # faculty is only in a comment, so nothing prints it
+        errs = self.errors("@service{lost, title = {A Committee}, level = {faculty}, date = {2023}}\n")
+        self.assertEqual([k for k, _ in errs], ["lost"])
+        self.assertIn("no \\printservice", errs[0][1])
+
+    def test_a_bad_date_is_an_error(self):
+        errs = self.errors("@service{when, title = {A Committee}, level = {school}, date = {2023 -- 2025}}\n")
+        self.assertEqual([k for k, _ in errs], ["when"])
+        self.assertIn("YYYY/YYYY", errs[0][1])
+
+
 if __name__ == "__main__":
     unittest.main()
 

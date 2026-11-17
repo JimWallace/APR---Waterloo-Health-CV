@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Deterministic checks on scholar.bib, grants.bib, supervision.bib, awards.bib
+"""Deterministic checks on scholar.bib, grants.bib, supervision.bib, awards.bib, service.bib
 and the category lists in main.tex.
 
 Errors change what the PDF says (a paper silently dropped or printed twice)
@@ -198,13 +198,13 @@ def run(only: set[str] | None = None) -> dict:
     }
 
 
-RECORD_FILES = ["grants.bib", "supervision.bib", "awards.bib"]
+RECORD_FILES = ["grants.bib", "supervision.bib", "awards.bib", "service.bib"]
 GRANT_ROLES = {"PI", "Co-PI", "Co-I", "Co-A"}
 DATE_RE = re.compile(r"^\d{4}(-\d{2})?(/\d{4}(-\d{2})?)?$")
 
 
 def check_records(records: dict, main_tex: str, err, warn) -> None:
-    """Grants and supervision: fields the template needs, in the form it reads."""
+    """Grants, supervision and service: fields the template needs, in the form it reads."""
     for e in records["grants.bib"].entries:
         f, where = e.fields, f"grants.bib:{e.line}"
         if e.type != "grant":
@@ -240,6 +240,20 @@ def check_records(records: dict, main_tex: str, err, warn) -> None:
                 "status (e.g. In progress)", e.key)
         if f.get("date") and not DATE_RE.match(f["date"]):
             err("E-record", f"{where}: '{e.key}' date '{f['date']}' should be YYYY or YYYY-MM", e.key)
+    levels = set(re.findall(r"^[^%\n]*\\printservice\{([^}]*)\}", main_tex, re.M))
+    for e in records["service.bib"].entries:
+        f, where = e.fields, f"service.bib:{e.line}"
+        if e.type != "service":
+            err("E-record", f"{where}: '{e.key}' is @{e.type}; service.bib holds @service entries", e.key)
+            continue
+        if not f.get("title"):
+            err("E-record", f"{where}: service '{e.key}' has no title", e.key)
+        if f.get("level") not in levels:
+            err("E-record", f"{where}: service '{e.key}' has level '{f.get('level')}', which no "
+                "\\printservice in main.tex prints, so it does not appear", e.key)
+        if not re.fullmatch(r"\d{4}(/\d{4})?", f.get("date", "")):
+            err("E-record", f"{where}: service '{e.key}' date '{f.get('date', '')}' should be YYYY or "
+                "YYYY/YYYY (the years served)", e.key)
 
 
 AWARD_ICONS = {"award", "images/hm.png"}

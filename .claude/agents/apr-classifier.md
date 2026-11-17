@@ -27,11 +27,12 @@ For bib entries:
 For edits to `main.tex` outside the category lists:
 5. The item is in the right section (awards, scholarly activities sub-list, service) and in
    the same order convention as its neighbours (usually newest first). Grants belong in
-   `grants.bib` and students in `supervision.bib`, never as hand-written lines in `main.tex`.
+   `grants.bib`, students in `supervision.bib` and service roles in `service.bib`, never as
+   hand-written lines in `main.tex`.
 6. It uses the right macro (`\hlaward`, `\hlservice`, `\hlteaching`, `\hlresearch`) with
    `[years]` that match the dates in the text.
 
-For entries in `grants.bib` / `supervision.bib` / `awards.bib`: the `date` (a grant's tenure, a student's
+For entries in `grants.bib` / `supervision.bib` / `awards.bib` / `service.bib`: the `date` (a grant's tenure, a student's
 completion) or `status = {In progress}` is what decides the colour, so check it matches what
 Jim wrote; a student's `degree` must be one that `main.tex` prints with `\printsupervision`.
 7. Formatting matches the neighbouring lines (table columns, `\cvitem` / `\item`, `$\times$` counts).
