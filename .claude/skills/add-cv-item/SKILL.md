@@ -20,6 +20,7 @@ awards, grants and students is the source; cite it as "issue #N".
    `icon = {award}` on that entry when it is for a paper or talk) (fields in `template/uwhealthcv.dbx`, examples in each file). No
    highlighting to add: it follows the dates. Amounts, agencies, roles, dates, titles and
    students' positions come only from Jim's message; ask in the PR if any is missing.
+   **Service:** add a `@service` entry to `service.bib` (`title`, `level`, `date`).
    **Other items:** add to the right list in `main.tex` with the matching `\hl…[years]` macro.
 4. Branch `cv/issue-<N>-<slug>`, commit, run the `cv-verify` skill, push, open the PR with
    "Closes #N" and the label `cv-verify` chose, and reply on the issue with the PR link and

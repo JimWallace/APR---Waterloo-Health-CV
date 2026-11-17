@@ -17,7 +17,8 @@ One source, two PDFs:
 - `scholar.bib` holds publications, talks and software. `main.tex` decides which heading each
   entry prints under with `\addtocategory{<category>}{key, key, …}` near the top.
 - `grants.bib` holds grants (`@grant`), `supervision.bib` my students (`@supervision`) and
-  `awards.bib` the ACADEMIC AWARDS AND DISTINCTIONS list (`@award`).
+  `awards.bib` the ACADEMIC AWARDS AND DISTINCTIONS list (`@award`) and
+  `service.bib` the SERVICE lists (`@service`).
   The fields are described in `template/uwhealthcv.dbx`. They print sorted, and the APR
   colours come from their dates, so there are no years to keep in step by hand.
 - `apr-formatting.tex` holds my settings for the APR version (highlight strength and style).
@@ -91,7 +92,13 @@ the source of truth; never force-push `main`.
 - Reviewing, PCs, editorial roles, organizing → SCHOLARLY AND PROFESSIONAL ACTIVITIES lists.
 - Awards → an `@award` in `awards.bib` (`title` as it should print, `date` = the year,
   `count` for "3 ×" lines). Order within a year follows the file.
-- Activities and service are in `main.tex`; service → SERVICE.
+- Activities are in `main.tex`.
+- Service → a `@service` entry in `service.bib`: `title` as it prints, `level` (one of the
+  `\printservice{…}` lists in `main.tex`: school, faculty, university, discipline) and
+  `date = {2023/2025}` for the years served. Optional `years` prints instead of the range
+  ("2017, 2019 -- 2021"); optional `role` prints after the years ("General Chair"). The lists
+  sort newest first and are highlighted from the dates; a leadership role that is also
+  scholarship goes in `apralsoresearch`.
 - Grants → a `@grant` entry in `grants.bib`. List investigators in the order given, with
   `\me` for me and `role` for my role; `amount` is digits only; `date = {2026/2028}` is the
   tenure. Order in the file doesn't matter.
