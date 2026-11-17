@@ -51,6 +51,9 @@ the source of truth; never force-push `main`.
 - Trainee: `*` straight after the family name — `Wong*, Veen` or `Veen Wong*`. Not on the given
   name (`Homaeian, L.*` loses the mark under `giveninits`).
 - Presenter of a talk or paper: `{\dag}` after the name (after `*` if both): `Gauthier*{\dag}, Robert P`.
+- A paper or talk that won an award: `icon = {award}` (the rosette in the margin; in the APR
+  version it is filled pink when the entry is in the review period) and the award in bold in
+  `note`, e.g. `note = {\textbf{Best Paper Honourable Mention Award}}`.
 - Include `doi` whenever one exists; ACM entries use `@inproceedings` (conference proceedings)
   or `@article` (PACM / journals) as the ACM DL export does.
 - Accepted-but-unpublished work: add `note = {To appear}` and no DOI; the weekly run backfills
