@@ -1,0 +1,92 @@
+# Weekly: Claude looks for new publications and DOIs, handles open cv-item issues,
+# verifies everything with independent sub-agents, and opens one labelled PR.
+# The first Monday of each month it also audits every entry (always needs-review).
+name: CV weekly update
+
+on:
+  schedule:
+    - cron: "17 11 * * 1" # Mondays 11:17 UTC = 06:17 Toronto (07:17 in summer)
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: "weekly = new items only; full = also re-check every entry"
+        type: choice
+        options: [weekly, full]
+        default: weekly
+
+permissions:
+  contents: write
+  pull-requests: write
+  issues: write
+  actions: write
+  id-token: write
+
+concurrency:
+  group: cv-weekly-update
+  cancel-in-progress: false
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    env:
+      DBLP_PID: "65/4889"
+      OPENALEX_AUTHOR_ID: ${{ vars.OPENALEX_AUTHOR_ID }} # optional; resolved by name if unset
+      ORCID: ${{ vars.ORCID }}                           # optional
+      CONTACT_EMAIL: ${{ vars.CONTACT_EMAIL }}           # optional; polite-pool contact for APIs
+      GH_TOKEN: ${{ github.token }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Choose mode
+        id: mode
+        run: |
+          mode="${{ inputs.mode }}"
+          if [ -z "$mode" ]; then
+            if [ "$(date -u +%-d)" -le 7 ]; then mode=full; else mode=weekly; fi
+          fi
+          echo "mode=$mode" >> "$GITHUB_OUTPUT"
+          echo "Mode: $mode"
+
+      - name: Install LaTeX so Claude can test-compile (CI compiles regardless)
+        continue-on-error: true
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq --no-install-recommends latexmk biber \
+            texlive-latex-extra texlive-bibtex-extra texlive-fonts-recommended \
+            texlive-fonts-extra texlive-pictures >/dev/null
+
+      - name: Fetch publication records (DBLP, OpenAlex, Crossref)
+        run: python3 scripts/fetch_candidates.py
+
+      - name: Claude updates and verifies the CV
+        uses: anthropics/claude-code-action@v1
+        with:
+          # Claude subscription token from `claude setup-token`. To bill the API instead,
+          # replace this line with: anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
+          claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+          prompt: "/weekly-cv-update ${{ steps.mode.outputs.mode == 'full' && 'full' || '' }}"
+          claude_args: |
+            --model claude-opus-5-5
+            --max-turns 200
+            --allowedTools "Read,Edit,Write,Glob,Grep,Agent,Skill,WebFetch,WebSearch,Bash(python3 scripts/check_cv.py:*),Bash(python3 scripts/fetch_candidates.py:*),Bash(git:*),Bash(gh pr create:*),Bash(gh pr edit:*),Bash(gh pr list:*),Bash(gh pr view:*),Bash(gh issue:*),Bash(gh label:*),Bash(curl:*),Bash(latexmk:*),Bash(date:*),Bash(jq:*)"
+
+      - name: Start CI on Claude's branch
+        if: always()
+        run: |
+          if [ -s .cv-work/branch ]; then
+            gh workflow run cv-build.yml --ref "$(cat .cv-work/branch)"
+          else
+            echo "No PR this week."
+          fi
+
+      - name: Keep the run's records
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: cv-work
+          path: .cv-work/
+          include-hidden-files: true
+          if-no-files-found: ignore

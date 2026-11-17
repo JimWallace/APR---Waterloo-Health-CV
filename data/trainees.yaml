@@ -1,0 +1,105 @@
+# Trainees (students and postdocs I supervise or have supervised).
+#
+# Used to check the * (trainee) marks in scholar.bib and the apralsoteaching
+# list in main.tex. A * on an author whose name is not here is reported, which
+# catches misspellings and flags new trainees for me to confirm.
+#
+# Seeded on 2026-11-17 from the names already marked * in scholar.bib. Each
+# `variants` list holds the spellings that appear in the .bib. Optional fields
+# you can add per person (the checks ignore them for now):
+#   level: PhD | MSc | MA | postdoc | undergrad
+#   from: 2021
+#   to: 2026
+#
+# Only Claude's automated runs and I edit this file; automated runs never add a
+# person here without asking me in the PR.
+
+trainees:
+  - name: Marcela C. C. Bomfim
+    variants: ["Bomfim, Marcela", "Bomfim, Marcela CC", "Marcela Costa C. Bomfim"]
+  - name: Long Ting Chan
+    variants: ["Chan, Long Ting"]
+  - name: Tina Chan
+    variants: ["Chan, Tina", "T. Chan"]
+  - name: An Bella Chen
+    variants: ["Chen, An Bella"]
+  - name: Adrian Davila
+  - name: Vanessa Duong
+    variants: ["Duong, Vanessa", "Duong, V."]
+  - name: Robert P. Gauthier
+    variants: ["Gauthier, Robert P", "Robert Gauthier"]
+  - name: Mojgan Ghare
+    variants: ["Ghare, Mojgan"]
+  - name: Esraa Hamdy Hamada
+    variants: ["Hamdy Hamada, Esraa"]
+  - name: Leila Homaeian
+    variants: ["Homaeian, Leila", "Homaeian, L.", "L. Homaeian"]
+  - name: Thomas Huijbregts
+    variants: ["Huijbregts, Thomas", "Huijbregts"]
+  - name: Nancy Iskander
+    variants: ["Iskander, Nancy"]
+  - name: Abhinav Jain
+  - name: Laura Wallace Jarvis
+    variants: ["Wallace Jarvis, Laura"]
+  - name: Maham Kamal
+    variants: ["Kamal, Maham"]
+  - name: Amandeep Kaur
+    variants: ["Kaur, Amandeep"]
+  - name: Anastasia Kuzminykh
+    variants: ["Kuzminykh, Anastasia"]
+  - name: Christina Li
+    variants: ["Li, Zixi Christina"]
+  - name: Peter Li
+  - name: Paige Liang
+    variants: ["Liang, Paige"]
+  - name: Zhe Liu
+    variants: ["Liu, Zhe"]
+  - name: Michelle Ma
+    variants: ["Ma, Michelle"]
+  - name: Nicole Mathis
+  - name: Chris McNab
+    variants: ["McNab, Chris"]
+  - name: Denise Ng
+    variants: ["Ng, Denise"]
+  - name: Jean Nordmann
+  - name: Saba Oji
+    variants: ["Oji, Saba"]
+  - name: Krzysztof Pietroszek
+    variants: ["Pietroszek, Krzysztof"]
+  - name: Karthik Prasad
+    variants: ["Prasad, Karthik"]
+  - name: Gabriella Ramirez
+  - name: Evan Ribey
+    variants: ["Ribey, Evan"]
+  - name: Ansh Sharma
+    variants: ["Sharma, Ansh"]
+  - name: Ash Sharma   # same person as Ansh Sharma? If so, merge into one entry.
+  - name: Nicholas F. Sia
+    variants: ["Sia, Nicholas F"]
+  - name: Alaaddin Sidahmed
+    variants: ["Sidahmed, Alaaddin"]
+  - name: Ally Suarez
+    variants: ["Suarez, Ally"]
+  - name: Liudmila Tahai
+    variants: ["Tahai, Liudmila"]
+  - name: Henry Tian
+  - name: Luka Ugaya Mazza
+    variants: ["Ugaya Mazza, Luka"]
+  - name: Marina Wada
+  - name: George Wang
+  - name: Ariel Weingarten
+    variants: ["Weingarten, Ariel"]
+  - name: Pearl Wiafe
+    variants: ["Wiafe, Pearl"]
+  - name: Erin Wong
+    variants: ["Wong, Erin"]
+  - name: Veen Wong
+    variants: ["Wong, Veen"]
+  - name: Rachel Woo
+  - name: Mingchung Xia
+  - name: Yifei Zhang
+  - name: Jason Zhao
+  - name: Brigitte Lee
+    variants: ["Lee, Brigitte"]
+  - name: Anna Zhelizniak
+    variants: ["Zhelizniak, Anna"]
