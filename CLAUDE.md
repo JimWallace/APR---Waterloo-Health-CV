@@ -76,17 +76,24 @@ the source of truth; never force-push `main`.
 
 ## Pull requests
 
-Automated work goes on a branch `cv/<what>-<YYYY-MM-DD>` and a PR into `main` with:
-- a table of every change (what, where, source link);
-- the verifier reports, summarised;
-- exactly one label: `auto-merge` when every check and verifier passed with no open
-  questions, otherwise `needs-review` plus a "Questions for Jim" section.
-
-`auto-merge` PRs merge themselves once CI passes. When unsure, choose `needs-review`.
+- The weekly scheduled job follows `automation/weekly-update.md`, works on a branch
+  `cv/weekly-YYYY-MM-DD`, and labels its PR either `auto-merge` (every check and verifier
+  passed, no open questions) or `needs-review` (plus a "Questions for Jim" section).
+  `cv/` PRs merge only with the `auto-merge` label. When unsure, choose `needs-review`.
+- Any other PR opened under Jim's GitHub account — including one you open for him in a
+  chat — merges automatically once CI passes. Open it as a draft, or label it
+  `needs-review`, if he should look first.
+- Every PR body has a table of the changes (what, where, source).
+- `gh pr create` and other GraphQL-based `gh` commands can be blocked in Claude sessions;
+  use the REST API (`gh api repos/JimWallace/APR---Waterloo-Health-CV/pulls …`).
+- The repo is public: never put email text, rejections, or private details in commits,
+  PRs or issues.
 
 ## Sources I use
 
 - DBLP person id: `65/4889`
-- OpenAlex author id: resolved automatically each run (pin it in the weekly workflow once known)
+- OpenAlex author id: resolved by name each run; pin it as the repo variable `OPENALEX_AUTHOR_ID`
 - ORCID: not set yet
 - Google Scholar can't be queried automatically; don't try.
+- The "CV sources" workflow saves DBLP/Crossref records on the `cv-sources` branch weekly
+  (`git fetch origin cv-sources`); use them when your session can't reach those sites.

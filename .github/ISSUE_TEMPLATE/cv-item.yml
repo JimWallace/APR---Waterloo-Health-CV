@@ -1,5 +1,5 @@
 name: Add to my CV
-description: Tell Claude about something new for the CV (paper, talk, award, reviewing, grant, student…). Claude opens a verified PR.
+description: Tell Claude about something new for the CV (paper, talk, award, reviewing, grant, student…). The weekly update adds it in a verified PR.
 title: "CV: "
 labels: [cv-item]
 body:
@@ -29,8 +29,3 @@ body:
         Name any new trainees so Claude can mark them.
     validations:
       required: true
-  - type: textarea
-    id: instruction
-    attributes:
-      label: Instruction to Claude (leave as is)
-      value: "@claude please add this to my CV using the add-cv-item skill."

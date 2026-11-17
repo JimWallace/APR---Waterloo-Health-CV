@@ -17,7 +17,7 @@ set -euo pipefail
 OL_URL="${OVERLEAF_URL:-https://git:${OVERLEAF_TOKEN:?}@git.overleaf.com/${OVERLEAF_PROJECT_ID:?}}"
 MAIN_REF="${MAIN_REF:-origin/main}"
 LINK_MODE="${LINK_MODE:-safe}"
-PROTECTED=(.github .claude scripts data CLAUDE.md .gitignore)
+PROTECTED=(.github .claude scripts data automation CLAUDE.md AUTOMATION.md .gitignore)
 EXCLUDES=()
 for p in "${PROTECTED[@]}"; do EXCLUDES+=(":(exclude)$p"); done
 

@@ -2,42 +2,54 @@
 
 | When | What runs | Result |
 |---|---|---|
-| Mondays 06:17 (Toronto) | `CV weekly update` | Claude checks DBLP/OpenAlex/Crossref for new papers and DOIs and handles open `cv-item` issues, has four sub-agents verify every change, and opens one PR. First Monday of the month it also re-checks every entry. |
-| You open an "Add to my CV" issue, or write `@claude …` on an issue/PR | `Claude` | Claude adds the item, verifies it, opens a PR. |
+| Sundays 18:07 (Toronto) | `CV sources` workflow | Fetches DBLP, OpenAlex and Crossref records and saves them on the `cv-sources` branch, so Claude can check entries even where it can't reach those sites. |
+| Weekly (your scheduled Claude task) | `automation/weekly-update.md` | Claude adds new papers and DOIs, open `cv-item` issues and items from your Outlook (acceptances, review recognitions, PC roles…), has four sub-agents verify every change, and opens one PR on a `cv/` branch. It also follows up last week's PRs: answer its questions in a PR comment and the next run applies them. |
 | Every PR | `CV build` | Deterministic checks (`scripts/check_cv.py`), compiles both PDFs, blocks PRs labelled `needs-review`. |
-| `CV build` passes on a PR labelled `auto-merge` | `CV auto-merge` | Merges it. Claude never merges anything itself. |
+| `CV build` passes | `CV auto-merge` | Merges PRs you open (including ones Claude opens for you in a chat) automatically. Merges the weekly job's `cv/` PRs only if they're labelled `auto-merge`. Draft PRs and `needs-review` PRs never merge. |
 | Every push to `main` | `CV build` → release | Latest PDFs at Releases → `cv-latest` (Wallace-CV.pdf, Wallace-CV-APR.pdf). |
 | Push to `main`, and every 3 hours | `Overleaf sync` (optional) | Pushes `main` to Overleaf; edits made in Overleaf come back as an auto-merging PR. |
 
-Claude labels a PR `auto-merge` only when the checker passes and all four verifiers
-(`.claude/agents/`) pass with nothing unverifiable. Anything else gets `needs-review` and a
-"Questions for Jim" list. Corrections to existing entries and full audits are always `needs-review`.
+The weekly job labels a PR `auto-merge` only when the checker passes, all four verifiers
+(`.claude/agents/`) pass, and every change is a verified publication, a DOI, a review
+recognition or a reviewing/PC role. Grants, supervision, other awards, corrections, possible
+new trainees and anything unverifiable get `needs-review` and a "Questions for Jim" list.
+Private things it finds in email (rejections, conditional acceptances, invitations) go only in
+its final message to you, never in the public repo.
+
+## The scheduled task
+
+Create a weekly scheduled task in Claude (Monday morning, after the Sunday `CV sources` run)
+with this prompt:
+
+> Update my CV. Attach the GitHub repo JimWallace/APR---Waterloo-Health-CV with push access,
+> clone it, and follow automation/weekly-update.md in it exactly. Use my Microsoft 365
+> (Outlook) connector for the email step.
+
+The task needs your GitHub connection (to push and open PRs) and the Microsoft 365 connector.
 
 ## One-time setup
 
-1. **Claude GitHub App** — install it on this repo: https://github.com/apps/claude
-   (or run `/install-github-app` in Claude Code, which also does step 2).
-2. **Secret `CLAUDE_CODE_OAUTH_TOKEN`** — run `claude setup-token` on your computer (uses your
-   Claude subscription) and add the token under Settings → Secrets and variables → Actions.
-   To use an API key instead, add `ANTHROPIC_API_KEY` and change the `claude_code_oauth_token`
-   line in `cv-weekly-update.yml` and `claude.yml` to `anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}`.
-3. **Actions permissions** — Settings → Actions → General → Workflow permissions: choose
+1. **Actions permissions** — Settings → Actions → General → Workflow permissions: choose
    "Read and write permissions" and tick "Allow GitHub Actions to create and approve pull requests".
-4. **Labels** —
-   `gh label create auto-merge -c 0E8A16; gh label create needs-review -c D93F0B; gh label create cv-item -c 1D76DB`
-5. **Optional, recommended once things work** — a ruleset on `main` requiring a pull request
-   and the status checks `lint` and `compile` (not `gate`; it only runs on some PRs). Don't
-   require approvals, or nothing can auto-merge.
-6. **Optional variables** (Settings → Secrets and variables → Actions → Variables):
-   `ORCID`, `OPENALEX_AUTHOR_ID` (the weekly run log shows the one it resolved), `CONTACT_EMAIL`.
-7. **Try it** — Actions → CV weekly update → Run workflow.
+2. **Labels** — `auto-merge`, `needs-review`, `cv-item`
+   (`gh label create auto-merge -c 0E8A16; gh label create needs-review -c D93F0B; gh label create cv-item -c 1D76DB`).
+3. **First records** — Actions → CV sources → Run workflow, so the first weekly run has data.
+4. **Optional variables** (Settings → Secrets and variables → Actions → Variables):
+   `ORCID`, `OPENALEX_AUTHOR_ID` (the CV sources log shows the one it resolved), `CONTACT_EMAIL`.
+5. **Optional, once things work** — a ruleset on `main` requiring a pull request and the
+   status checks `lint` and `compile` (not `gate`; it only runs on some PRs). Don't require
+   approvals, or nothing can auto-merge. Skip this if you use Overleaf option A below:
+   Overleaf's GitHub button pushes straight to `main`, which the ruleset would block.
+6. **Optional: instant `@claude`** — add a `CLAUDE_CODE_OAUTH_TOKEN` secret (from
+   `claude setup-token`, uses a Claude subscription) and install https://github.com/apps/claude.
+   Without it the `Claude` workflow does nothing and `cv-item` issues wait for the weekly run.
 
 ## Overleaf: pick one
 
 **A. Keep Overleaf's GitHub button (no setup).** After PRs merge, open Overleaf and use
 Menu → GitHub → *Pull GitHub changes into Overleaf* before editing, and *Push Overleaf changes
-to GitHub* when done. If both sides changed, Overleaf pushes to a dated branch; open a PR from
-it (or ask `@claude` to merge it).
+to GitHub* when done. Your pushes go straight to `main`. If both sides changed, Overleaf pushes
+to a dated branch; open a PR from it and it auto-merges once CI passes (if it merges cleanly).
 
 **B. Automatic mirror (Overleaf's Git integration).**
 1. Overleaf → Account Settings → Git integration → create a token. Add it as the repo secret
@@ -48,6 +60,6 @@ it (or ask `@claude` to merge it).
    histories (it changes no files); once it merges, `main` mirrors to Overleaf from then on.
    If the LaTeX differs between the two at that moment, the run stops and says how to proceed.
 
-Edit tooling (`.github/`, `.claude/`, `scripts/`, `data/`, `CLAUDE.md`) on GitHub, not Overleaf:
-the sync always keeps the GitHub copies of those. Overleaf comments and tracked changes can be
-lost when files change underneath them through Git, so resolve them before a sync.
+Edit tooling (`.github/`, `.claude/`, `automation/`, `scripts/`, `data/`, `CLAUDE.md`) on
+GitHub, not Overleaf: the sync keeps the GitHub copies of those. Overleaf comments and tracked
+changes can be lost when files change underneath them through Git, so resolve them before a sync.
