@@ -1,0 +1,52 @@
+# Merges a CV pull request once "CV build" passes, if the PR is labelled auto-merge
+# and not needs-review. Claude never merges; this workflow does, only on green CI.
+#
+# Merges made with the workflow token don't trigger other workflows, so this one
+# starts the main-branch build (PDF release) and the Overleaf sync itself.
+name: CV auto-merge
+
+on:
+  workflow_run:
+    workflows: ["CV build"]
+    types: [completed]
+
+permissions:
+  contents: write
+  pull-requests: write
+  actions: write
+
+jobs:
+  merge:
+    if: >-
+      github.event.workflow_run.conclusion == 'success' &&
+      github.event.workflow_run.head_branch != 'main' &&
+      github.event.workflow_run.head_repository.full_name == github.repository
+    runs-on: ubuntu-latest
+    env:
+      GH_TOKEN: ${{ github.token }}
+      GH_REPO: ${{ github.repository }}
+      BRANCH: ${{ github.event.workflow_run.head_branch }}
+      SHA: ${{ github.event.workflow_run.head_sha }}
+    steps:
+      - name: Merge if labelled auto-merge
+        run: |
+          pr=$(gh pr list --head "$BRANCH" --state open \
+                 --json number,labels,headRefOid,isDraft,headRepositoryOwner --jq '.[0] // empty')
+          if [ -z "$pr" ]; then echo "No open PR for $BRANCH."; exit 0; fi
+          num=$(jq -r .number <<<"$pr")
+          labels=$(jq -r '[.labels[].name] | join(",")' <<<"$pr")
+          owner=$(jq -r .headRepositoryOwner.login <<<"$pr")
+          if [ "$owner" != "${GITHUB_REPOSITORY%%/*}" ]; then echo "PR #$num is from a fork; not merging."; exit 0; fi
+          if [ "$(jq -r .isDraft <<<"$pr")" = "true" ]; then echo "PR #$num is a draft."; exit 0; fi
+          if [ "$(jq -r .headRefOid <<<"$pr")" != "$SHA" ]; then echo "PR #$num has newer commits; their build decides."; exit 0; fi
+          case ",$labels," in *,needs-review,*) echo "PR #$num needs review."; exit 0;; esac
+          case ",$labels," in *,auto-merge,*) ;; *) echo "PR #$num isn't labelled auto-merge."; exit 0;; esac
+
+          # Overleaf branches must keep their history so Overleaf can be fast-forwarded.
+          method=--squash
+          case "$BRANCH" in overleaf-*) method=--merge ;; esac
+          gh pr merge "$num" $method --delete-branch
+          echo "Merged PR #$num ($method)."
+
+          gh workflow run cv-build.yml --ref main
+          gh workflow run overleaf-sync.yml --ref main || true

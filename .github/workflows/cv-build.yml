@@ -1,0 +1,82 @@
+# Checks and compiles the CV on every PR and on main.
+# On main it also publishes the two PDFs to the "cv-latest" release:
+#   https://github.com/JimWallace/APR---Waterloo-Health-CV/releases/tag/cv-latest
+name: CV build
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened, labeled, unlabeled, ready_for_review]
+  push:
+    branches: [main]
+  workflow_dispatch: # cv-merge, overleaf-sync and the weekly update start this for bot-made branches
+
+permissions:
+  contents: read
+
+concurrency:
+  group: cv-build-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check scholar.bib and the category lists
+        run: python3 scripts/check_cv.py
+
+  compile:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Compile main.tex and apr.tex (TeX Live, latexmk + biber)
+        uses: xu-cheng/latex-action@v3
+        with:
+          root_file: |
+            main.tex
+            apr.tex
+      - name: Name the PDFs
+        run: |
+          mkdir -p out
+          cp main.pdf out/Wallace-CV.pdf
+          cp apr.pdf  out/Wallace-CV-APR.pdf
+      - uses: actions/upload-artifact@v4
+        with:
+          name: cv-pdfs
+          path: out/*.pdf
+
+  gate:
+    # A PR labelled needs-review can't pass, so nothing merges it by accident.
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Block PRs labelled needs-review
+        if: contains(github.event.pull_request.labels.*.name, 'needs-review')
+        run: |
+          echo "::error::This PR is labelled needs-review. Remove the label when you're happy with it."
+          exit 1
+      - run: echo "No blocking label."
+
+  publish:
+    if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
+    needs: [lint, compile]
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          name: cv-pdfs
+          path: out
+      - name: Update the cv-latest release
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+        run: |
+          notes="Built from ${GITHUB_SHA::7} on $(date -u +%Y-%m-%d)."
+          if gh release view cv-latest >/dev/null 2>&1; then
+            gh release edit cv-latest --notes "$notes"
+          else
+            gh release create cv-latest --title "Latest CV" --notes "$notes" --target "$GITHUB_SHA"
+          fi
+          gh release upload cv-latest out/Wallace-CV.pdf out/Wallace-CV-APR.pdf --clobber
