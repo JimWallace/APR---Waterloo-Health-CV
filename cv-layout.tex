@@ -8,8 +8,12 @@
 %                   than a quarter of the page is left. Replaces \newpage,
 %                   which left half-empty pages whenever the section before
 %                   ended early.
-\newcommand\keepwithnext[1][5]{\par\needspace{#1\baselineskip}}
-\newcommand\sectionbreak{\par\needspace{.25\textheight}}
+%
+% Both use \Needspace, which measures the space left and breaks at once. The
+% plain \needspace could break early (leaving half a page empty) and, just
+% before the grants table, printed a stray table header above the heading.
+\newcommand\keepwithnext[1][5]{\Needspace{#1\baselineskip}}
+\newcommand\sectionbreak{\Needspace{.25\textheight}}
 
 % No single line of a paragraph left alone at the top or foot of a page.
 \widowpenalty=10000
