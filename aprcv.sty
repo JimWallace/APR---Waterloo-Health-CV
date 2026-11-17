@@ -22,6 +22,14 @@
 %%   (also \hlteachingrow, ...)     whole row (use on every row of an entry)
 %%   \aprlegend                     colour key, printed in the APR version only
 %%   \ifAPR ... \fi                 material for the APR version only
+%%   \sethighlightstrength{40}      softer highlights (100 = full Word colours)
+%%
+%% Files
+%%   main.tex                content; compiles to the plain CV
+%%   apr.tex                 switch; compiles main.tex as the APR version
+%%   NSERC-formatting.tex,   formatting shared by both versions
+%%   biblatex-formatting.tex
+%%   apr-formatting.tex      formatting for the APR version only
 %%
 %% biblatex entries are highlighted automatically (research colour) when their
 %% year falls in the review period. To change one entry's colour, add its key
@@ -44,10 +52,19 @@
 \@ifpackageloaded{colortbl}{}{\RequirePackage{colortbl}}
 
 %% ---------------------------------------------------------------- colours
-\definecolor{APRteaching}{RGB}{255,255,0}   % Word "Yellow"
-\definecolor{APRresearch}{RGB}{0,255,0}     % Word "Bright Green"
-\definecolor{APRservice}{RGB}{0,255,255}    % Word "Turquoise"
-\definecolor{APRaward}{RGB}{255,0,255}      % Word "Pink"
+% Base hues are the Word highlighter colours. The colours actually used
+% (APRteaching, ...) are tints of these: \sethighlightstrength{40} mixes 40%
+% colour with 60% white. 100 gives the full Word colours.
+\definecolor{APRteachingBase}{RGB}{255,255,0}   % Word "Yellow"
+\definecolor{APRresearchBase}{RGB}{0,255,0}     % Word "Bright Green"
+\definecolor{APRserviceBase}{RGB}{0,255,255}    % Word "Turquoise"
+\definecolor{APRawardBase}{RGB}{255,0,255}      % Word "Pink"
+\newcommand\sethighlightstrength[1]{%
+  \colorlet{APRteaching}{APRteachingBase!#1!white}%
+  \colorlet{APRresearch}{APRresearchBase!#1!white}%
+  \colorlet{APRservice}{APRserviceBase!#1!white}%
+  \colorlet{APRaward}{APRawardBase!#1!white}}
+\sethighlightstrength{100}
 
 %% ---------------------------------------------------------- review period
 \newcount\apr@from
@@ -287,5 +304,13 @@
         \usebibmacro{apr@orig@finentry}\apr@bib@end}}%
   \fi
 }{}
+
+%% ------------------------------------------------ APR-only formatting file
+% In the APR version, apr-formatting.tex (if present) is read here, after
+% NSERC-formatting.tex and biblatex-formatting.tex, so it can override them
+% for the APR version without touching the plain CV.
+\ifAPR
+  \InputIfFileExists{apr-formatting.tex}{}{}
+\fi
 
 \endinput
