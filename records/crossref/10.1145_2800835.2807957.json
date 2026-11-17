@@ -1,0 +1,209 @@
+{
+ "indexed": {
+  "date-parts": [
+   [
+    2025,
+    6,
+    19
+   ]
+  ],
+  "date-time": "2025-06-19T04:14:06Z",
+  "timestamp": 1750306446147,
+  "version": "3.41.0"
+ },
+ "publisher-location": "New York, New York, USA",
+ "reference-count": 5,
+ "publisher": "ACM Press",
+ "license": [
+  {
+   "start": {
+    "date-parts": [
+     [
+      2015,
+      1,
+      1
+     ]
+    ],
+    "date-time": "2015-01-01T00:00:00Z",
+    "timestamp": 1420070400000
+   },
+   "content-version": "vor",
+   "delay-in-days": 0,
+   "URL": "https://www.acm.org/publications/policies/copyright_policy#Background"
+  }
+ ],
+ "content-domain": {
+  "domain": [],
+  "crossmark-restriction": false
+ },
+ "short-container-title": [],
+ "published-print": {
+  "date-parts": [
+   [
+    2015
+   ]
+  ]
+ },
+ "DOI": "10.1145/2800835.2807957",
+ "type": "proceedings-article",
+ "created": {
+  "date-parts": [
+   [
+    2015,
+    10,
+    6
+   ]
+  ],
+  "date-time": "2015-10-06T15:22:12Z",
+  "timestamp": 1444144932000
+ },
+ "page": "787-788",
+ "source": "Crossref",
+ "is-referenced-by-count": 0,
+ "title": [
+  "3D interaction with networked public displays using mobile and wearable devices"
+ ],
+ "prefix": "10.1145",
+ "author": [
+  {
+   "given": "Krzysztof",
+   "family": "Pietroszek",
+   "sequence": "first",
+   "affiliation": [],
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ]
+  },
+  {
+   "given": "Liudmila",
+   "family": "Tahai",
+   "sequence": "additional",
+   "affiliation": [],
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ]
+  },
+  {
+   "given": "James R.",
+   "family": "Wallace",
+   "sequence": "additional",
+   "affiliation": [],
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ]
+  },
+  {
+   "given": "Edward",
+   "family": "Lank",
+   "sequence": "additional",
+   "affiliation": [],
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ]
+  }
+ ],
+ "member": "320",
+ "event": {
+  "number": "2015",
+  "sponsor": [
+   "Google Inc.",
+   "Telefónica",
+   "SIGCHI, ACM Special Interest Group on Computer-Human Interaction",
+   "SIGMOBILE, ACM Special Interest Group on Mobility of Systems, Users, Data and Computing",
+   "FX Palo Alto Laboratory, Inc.",
+   "ISTC-PC, Intel Science and Technology Center for Pervasive Computing",
+   "Panasonic, Panasonic Corporation",
+   "Microsoft",
+   "Rakuten Institute of Technology"
+  ],
+  "acronym": "UbiComp '15",
+  "name": "the 2015 ACM International Joint Conference",
+  "start": {
+   "date-parts": [
+    [
+     2015,
+     9,
+     7
+    ]
+   ]
+  },
+  "location": "Osaka, Japan",
+  "end": {
+   "date-parts": [
+    [
+     2015,
+     9,
+     11
+    ]
+   ]
+  }
+ },
+ "container-title": [
+  "Proceedings of the 2015 ACM International Joint Conference on Pervasive and Ubiquitous Computing and Proceedings of the 2015 ACM International Symposium on Wearable Computers - UbiComp '15"
+ ],
+ "original-title": [],
+ "link": [
+  {
+   "URL": "https://dl.acm.org/doi/10.1145/2800835.2807957",
+   "content-type": "unspecified",
+   "content-version": "vor",
+   "intended-application": "text-mining"
+  },
+  {
+   "URL": "http://dl.acm.org/ft_gateway.cfm?id=2807957&amp;ftid=1628922&amp;dwn=1",
+   "content-type": "unspecified",
+   "content-version": "vor",
+   "intended-application": "similarity-checking"
+  }
+ ],
+ "deposited": {
+  "date-parts": [
+   [
+    2025,
+    6,
+    18
+   ]
+  ],
+  "date-time": "2025-06-18T05:42:57Z",
+  "timestamp": 1750225377000
+ },
+ "score": 1,
+ "resource": {
+  "primary": {
+   "URL": "http://dl.acm.org/citation.cfm?doid=2800835.2807957"
+  }
+ },
+ "subtitle": [],
+ "proceedings-subject": "Pervasive and Ubiquitous Computing and Proceedings of the 2015 ACM International Symposium on Wearable Computers",
+ "short-title": [],
+ "issued": {
+  "date-parts": [
+   [
+    2015
+   ]
+  ]
+ },
+ "references-count": 5,
+ "URL": "https://doi.org/10.1145/2800835.2807957",
+ "relation": {},
+ "subject": [],
+ "published": {
+  "date-parts": [
+   [
+    2015
+   ]
+  ]
+ }
+}

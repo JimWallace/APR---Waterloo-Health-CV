@@ -1,0 +1,232 @@
+{
+ "indexed": {
+  "date-parts": [
+   [
+    2026,
+    9,
+    24
+   ]
+  ],
+  "date-time": "2026-09-24T10:50:11Z",
+  "timestamp": 1790247011442,
+  "version": "4.1.0"
+ },
+ "publisher-location": "New York, NY, USA",
+ "reference-count": 93,
+ "publisher": "ACM",
+ "license": [
+  {
+   "start": {
+    "date-parts": [
+     [
+      2024,
+      7,
+      1
+     ]
+    ],
+    "date-time": "2024-07-01T00:00:00Z",
+    "timestamp": 1719792000000
+   },
+   "content-version": "vor",
+   "delay-in-days": 0,
+   "URL": "https://www.acm.org/publications/policies/copyright_policy#Background"
+  }
+ ],
+ "funder": [
+  {
+   "name": "NSERC Discovery Grant",
+   "award": [
+    "2022-03268"
+   ],
+   "award-info": [
+    {
+     "award-number": [
+      "2022-03268"
+     ]
+    }
+   ]
+  }
+ ],
+ "content-domain": {
+  "domain": [
+   "dl.acm.org"
+  ],
+  "crossmark-restriction": true
+ },
+ "short-container-title": [],
+ "published-print": {
+  "date-parts": [
+   [
+    2024,
+    7
+   ]
+  ]
+ },
+ "DOI": "10.1145/3643834.3661626",
+ "type": "proceedings-article",
+ "created": {
+  "date-parts": [
+   [
+    2024,
+    6,
+    29
+   ]
+  ],
+  "date-time": "2024-06-29T18:48:34Z",
+  "timestamp": 1719686914000
+ },
+ "page": "328-342",
+ "update-policy": "https://doi.org/10.1145/crossmark-policy",
+ "source": "Crossref",
+ "is-referenced-by-count": 7,
+ "title": [
+  "\"I'm not alone in that battle\": Designing Mobile AR for Mental Health Communication and Community Connectedness"
+ ],
+ "prefix": "10.1145",
+ "author": [
+  {
+   "ORCID": "https://orcid.org/0000-0002-1387-487X",
+   "authenticated-orcid": false,
+   "given": "Rachel",
+   "family": "Woo",
+   "sequence": "first",
+   "affiliation": [
+    {
+     "name": "School of Public Health Sciences, University of Waterloo, Canada"
+    }
+   ],
+   "role": [
+    {
+     "vocabulary": "crossref",
+     "role": "author"
+    }
+   ]
+  },
+  {
+   "ORCID": "https://orcid.org/0000-0003-4309-584X",
+   "authenticated-orcid": false,
+   "given": "Daniel",
+   "family": "Harley",
+   "sequence": "additional",
+   "affiliation": [
+    {
+     "name": "Stratford School of Interaction Design and Business, University of Waterloo, Canada"
+    }
+   ],
+   "role": [
+    {
+     "vocabulary": "crossref",
+     "role": "author"
+    }
+   ]
+  },
+  {
+   "ORCID": "https://orcid.org/0000-0002-5162-0256",
+   "authenticated-orcid": false,
+   "given": "James R",
+   "family": "Wallace",
+   "sequence": "additional",
+   "affiliation": [
+    {
+     "name": "School of Public Health Sciences, University of Waterloo, Canada"
+    }
+   ],
+   "role": [
+    {
+     "vocabulary": "crossref",
+     "role": "author"
+    }
+   ]
+  }
+ ],
+ "member": "320",
+ "published-online": {
+  "date-parts": [
+   [
+    2024,
+    7
+   ]
+  ]
+ },
+ "event": {
+  "name": "DIS '24: Designing Interactive Systems Conference",
+  "location": "Copenhagen Denmark",
+  "acronym": "DIS '24",
+  "sponsor": [
+   "SIGCHI ACM Special Interest Group on Computer-Human Interaction"
+  ]
+ },
+ "container-title": [
+  "Designing Interactive Systems Conference"
+ ],
+ "original-title": [],
+ "link": [
+  {
+   "URL": "https://dl.acm.org/doi/10.1145/3643834.3661626",
+   "content-type": "unspecified",
+   "content-version": "vor",
+   "intended-application": "text-mining"
+  },
+  {
+   "URL": "https://dl.acm.org/doi/pdf/10.1145/3643834.3661626",
+   "content-type": "unspecified",
+   "content-version": "vor",
+   "intended-application": "similarity-checking"
+  }
+ ],
+ "deposited": {
+  "date-parts": [
+   [
+    2025,
+    8,
+    22
+   ]
+  ],
+  "date-time": "2025-08-22T19:18:41Z",
+  "timestamp": 1755890321000
+ },
+ "score": 1,
+ "resource": {
+  "primary": {
+   "URL": "https://dl.acm.org/doi/10.1145/3643834.3661626"
+  }
+ },
+ "subtitle": [],
+ "short-title": [],
+ "issued": {
+  "date-parts": [
+   [
+    2024,
+    7
+   ]
+  ]
+ },
+ "references-count": 93,
+ "alternative-id": [
+  "10.1145/3643834.3661626",
+  "10.1145/3643834"
+ ],
+ "URL": "https://doi.org/10.1145/3643834.3661626",
+ "relation": {},
+ "subject": [],
+ "published": {
+  "date-parts": [
+   [
+    2024,
+    7
+   ]
+  ]
+ },
+ "assertion": [
+  {
+   "value": "2024-07-01",
+   "order": 3,
+   "name": "published",
+   "label": "Published",
+   "group": {
+    "name": "publication_history",
+    "label": "Publication History"
+   }
+  }
+ ]
+}

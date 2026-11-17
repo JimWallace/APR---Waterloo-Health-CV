@@ -1,0 +1,215 @@
+{
+ "indexed": {
+  "date-parts": [
+   [
+    2026,
+    7,
+    13
+   ]
+  ],
+  "date-time": "2026-07-13T02:05:09Z",
+  "timestamp": 1783908309918,
+  "version": "3.55.0"
+ },
+ "publisher-location": "New York, NY, USA",
+ "reference-count": 19,
+ "publisher": "ACM",
+ "license": [
+  {
+   "start": {
+    "date-parts": [
+     [
+      2026,
+      6,
+      12
+     ]
+    ],
+    "date-time": "2026-06-12T00:00:00Z",
+    "timestamp": 1781222400000
+   },
+   "content-version": "vor",
+   "delay-in-days": 0,
+   "URL": "https://creativecommons.org/licenses/by/4.0/legalcode"
+  }
+ ],
+ "content-domain": {
+  "domain": [
+   "dl.acm.org"
+  ],
+  "crossmark-restriction": true
+ },
+ "short-container-title": [],
+ "published-print": {
+  "date-parts": [
+   [
+    2026,
+    6,
+    13
+   ]
+  ]
+ },
+ "DOI": "10.1145/3802974.3809411",
+ "type": "proceedings-article",
+ "created": {
+  "date-parts": [
+   [
+    2026,
+    6,
+    13
+   ]
+  ],
+  "date-time": "2026-06-13T02:25:06Z",
+  "timestamp": 1781317506000
+ },
+ "page": "176-180",
+ "update-policy": "https://doi.org/10.1145/crossmark-policy",
+ "source": "Crossref",
+ "is-referenced-by-count": 0,
+ "title": [
+  "AttentionGo: Designing Tangible Neurofeedback Tools for Children with ADHD through a Holistic Well-being Lens"
+ ],
+ "prefix": "10.1145",
+ "author": [
+  {
+   "ORCID": "https://orcid.org/0000-0002-9370-2436",
+   "authenticated-orcid": false,
+   "given": "An Bella",
+   "family": "Chen",
+   "sequence": "first",
+   "affiliation": [
+    {
+     "name": "Cheriton School of Computer Science, University of Waterloo, Waterloo, Ontario, Canada"
+    }
+   ],
+   "role": [
+    {
+     "vocabulary": "crossref",
+     "role": "author"
+    }
+   ]
+  },
+  {
+   "ORCID": "https://orcid.org/0000-0002-5162-0256",
+   "authenticated-orcid": false,
+   "given": "James R",
+   "family": "Wallace",
+   "sequence": "additional",
+   "affiliation": [
+    {
+     "name": "School of Public Health Sciences, University of Waterloo, Waterloo, Ontario, Canada"
+    }
+   ],
+   "role": [
+    {
+     "vocabulary": "crossref",
+     "role": "author"
+    }
+   ]
+  },
+  {
+   "ORCID": "https://orcid.org/0000-0002-0756-0022",
+   "authenticated-orcid": false,
+   "given": "Leah",
+   "family": "Zhang-Kennedy",
+   "sequence": "additional",
+   "affiliation": [
+    {
+     "name": "Stratford School of Interaction Design and Business, University of Waterloo, Waterloo, Ontario, Canada"
+    }
+   ],
+   "role": [
+    {
+     "vocabulary": "crossref",
+     "role": "author"
+    }
+   ]
+  }
+ ],
+ "member": "320",
+ "published-online": {
+  "date-parts": [
+   [
+    2026,
+    6,
+    12
+   ]
+  ]
+ },
+ "event": {
+  "name": "DIS '26: Designing Interactive Systems Conference",
+  "location": "Singapore Singapore",
+  "acronym": "DIS '26 Companion",
+  "sponsor": [
+   "SIGCHI ACM Special Interest Group on Computer-Human Interaction"
+  ]
+ },
+ "container-title": [
+  "Companion Publication of the 2026 ACM Designing Interactive Systems Conference"
+ ],
+ "original-title": [],
+ "link": [
+  {
+   "URL": "https://dl.acm.org/doi/pdf/10.1145/3802974.3809411",
+   "content-type": "unspecified",
+   "content-version": "vor",
+   "intended-application": "similarity-checking"
+  }
+ ],
+ "deposited": {
+  "date-parts": [
+   [
+    2026,
+    7,
+    13
+   ]
+  ],
+  "date-time": "2026-07-13T01:07:04Z",
+  "timestamp": 1783904824000
+ },
+ "score": 1,
+ "resource": {
+  "primary": {
+   "URL": "https://dl.acm.org/doi/10.1145/3802974.3809411"
+  }
+ },
+ "subtitle": [],
+ "short-title": [],
+ "issued": {
+  "date-parts": [
+   [
+    2026,
+    6,
+    12
+   ]
+  ]
+ },
+ "references-count": 19,
+ "alternative-id": [
+  "10.1145/3802974.3809411",
+  "10.1145/3802974"
+ ],
+ "URL": "https://doi.org/10.1145/3802974.3809411",
+ "relation": {},
+ "subject": [],
+ "published": {
+  "date-parts": [
+   [
+    2026,
+    6,
+    12
+   ]
+  ]
+ },
+ "assertion": [
+  {
+   "value": "2026-06-12",
+   "order": 3,
+   "name": "published",
+   "label": "Published",
+   "group": {
+    "name": "publication_history",
+    "label": "Publication History"
+   }
+  }
+ ]
+}

@@ -1,0 +1,234 @@
+{
+ "indexed": {
+  "date-parts": [
+   [
+    2026,
+    11,
+    11
+   ]
+  ],
+  "date-time": "2026-11-11T20:25:20Z",
+  "timestamp": 1794428720730,
+  "version": "4.9.1"
+ },
+ "publisher-location": "New York, NY, USA",
+ "reference-count": 68,
+ "publisher": "ACM",
+ "license": [
+  {
+   "start": {
+    "date-parts": [
+     [
+      2026,
+      6,
+      9
+     ]
+    ],
+    "date-time": "2026-06-09T00:00:00Z",
+    "timestamp": 1780963200000
+   },
+   "content-version": "vor",
+   "delay-in-days": 0,
+   "URL": "https://creativecommons.org/licenses/by/4.0/legalcode"
+  }
+ ],
+ "funder": [
+  {
+   "name": "NSERC",
+   "award": [
+    "RGPIN-2022-03268"
+   ],
+   "award-info": [
+    {
+     "award-number": [
+      "RGPIN-2022-03268"
+     ]
+    }
+   ],
+   "id": [
+    {
+     "id": "https://ror.org/01h531d29",
+     "id-type": "ROR",
+     "asserted-by": "crossref"
+    }
+   ]
+  }
+ ],
+ "content-domain": {
+  "domain": [
+   "dl.acm.org"
+  ],
+  "crossmark-restriction": true
+ },
+ "short-container-title": [],
+ "published-print": {
+  "date-parts": [
+   [
+    2026,
+    6,
+    9
+   ]
+  ]
+ },
+ "DOI": "10.1145/3831423.3831435",
+ "type": "proceedings-article",
+ "created": {
+  "date-parts": [
+   [
+    2026,
+    10,
+    16
+   ]
+  ],
+  "date-time": "2026-10-16T18:05:43Z",
+  "timestamp": 1792173943000
+ },
+ "page": "1-12",
+ "update-policy": "https://doi.org/10.1145/crossmark-policy",
+ "source": "Crossref",
+ "is-referenced-by-count": 0,
+ "title": [
+  "The Shape of Agency: Designing for Personal Agency in Qualitative Data Analysis"
+ ],
+ "prefix": "10.1145",
+ "author": [
+  {
+   "ORCID": "https://orcid.org/0000-0002-2096-3539",
+   "authenticated-orcid": false,
+   "given": "Luka",
+   "family": "Ugaya Mazza",
+   "sequence": "first",
+   "affiliation": [
+    {
+     "name": "School of Public Health Sciences, University of Waterloo, Waterloo, Ontario, Canada"
+    }
+   ],
+   "role": [
+    {
+     "vocabulary": "crossref",
+     "role": "author"
+    }
+   ]
+  },
+  {
+   "ORCID": "https://orcid.org/0000-0001-9515-6478",
+   "authenticated-orcid": false,
+   "given": "Plinio Pelegrini",
+   "family": "Morita",
+   "sequence": "additional",
+   "affiliation": [
+    {
+     "name": "School of Public Health Sciences, University of Waterloo, Waterloo, Ontario, Canada"
+    }
+   ],
+   "role": [
+    {
+     "vocabulary": "crossref",
+     "role": "author"
+    }
+   ]
+  },
+  {
+   "ORCID": "https://orcid.org/0000-0002-5162-0256",
+   "authenticated-orcid": false,
+   "given": "James",
+   "family": "R Wallace",
+   "sequence": "additional",
+   "affiliation": [
+    {
+     "name": "School of Public Health Sciences, University of Waterloo, Waterloo, Ontario, Canada"
+    }
+   ],
+   "role": [
+    {
+     "vocabulary": "crossref",
+     "role": "author"
+    }
+   ]
+  }
+ ],
+ "member": "320",
+ "published-online": {
+  "date-parts": [
+   [
+    2026,
+    10,
+    16
+   ]
+  ]
+ },
+ "event": {
+  "name": "GI 2026: Graphics Interface 2026",
+  "location": "Waterloo Canada",
+  "acronym": "GI 2026"
+ },
+ "container-title": [
+  "Proceedings of the 52nd Graphics Interface Conference"
+ ],
+ "original-title": [],
+ "link": [
+  {
+   "URL": "https://dl.acm.org/doi/pdf/10.1145/3831423.3831435",
+   "content-type": "unspecified",
+   "content-version": "vor",
+   "intended-application": "similarity-checking"
+  }
+ ],
+ "deposited": {
+  "date-parts": [
+   [
+    2026,
+    11,
+    11
+   ]
+  ],
+  "date-time": "2026-11-11T20:12:16Z",
+  "timestamp": 1794427936000
+ },
+ "score": 1,
+ "resource": {
+  "primary": {
+   "URL": "https://dl.acm.org/doi/10.1145/3831423.3831435"
+  }
+ },
+ "subtitle": [],
+ "short-title": [],
+ "issued": {
+  "date-parts": [
+   [
+    2026,
+    6,
+    9
+   ]
+  ]
+ },
+ "references-count": 68,
+ "alternative-id": [
+  "10.1145/3831423.3831435",
+  "10.1145/3831423"
+ ],
+ "URL": "https://doi.org/10.1145/3831423.3831435",
+ "relation": {},
+ "subject": [],
+ "published": {
+  "date-parts": [
+   [
+    2026,
+    6,
+    9
+   ]
+  ]
+ },
+ "assertion": [
+  {
+   "value": "2026-10-16",
+   "order": 3,
+   "name": "published",
+   "label": "Published",
+   "group": {
+    "name": "publication_history",
+    "label": "Publication History"
+   }
+  }
+ ]
+}

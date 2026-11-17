@@ -1,0 +1,178 @@
+{
+ "indexed": {
+  "date-parts": [
+   [
+    2024,
+    9,
+    21
+   ]
+  ],
+  "date-time": "2024-09-21T17:10:02Z",
+  "timestamp": 1726938602854
+ },
+ "reference-count": 0,
+ "publisher": "EAI",
+ "content-domain": {
+  "domain": [],
+  "crossmark-restriction": false
+ },
+ "short-container-title": [],
+ "published-print": {
+  "date-parts": [
+   [
+    2019
+   ]
+  ]
+ },
+ "DOI": "10.4108/eai.20-5-2019.2283463",
+ "type": "proceedings-article",
+ "created": {
+  "date-parts": [
+   [
+    2019,
+    6,
+    13
+   ]
+  ],
+  "date-time": "2019-06-13T08:00:23Z",
+  "timestamp": 1560412823000
+ },
+ "source": "Crossref",
+ "is-referenced-by-count": 0,
+ "title": [
+  "Design and Development of Mobile, Tablet-based ECG Hardware and Software for Clinical Use"
+ ],
+ "prefix": "10.4108",
+ "author": [
+  {
+   "given": "Helen",
+   "family": "Chen",
+   "sequence": "first",
+   "affiliation": [],
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ]
+  },
+  {
+   "given": "Yang",
+   "family": "Yang",
+   "sequence": "additional",
+   "affiliation": [],
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ]
+  },
+  {
+   "given": "James",
+   "family": "Wallace",
+   "sequence": "additional",
+   "affiliation": [],
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ]
+  },
+  {
+   "given": "Ning",
+   "family": "Jiang",
+   "sequence": "additional",
+   "affiliation": [],
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ]
+  },
+  {
+   "given": "Melissa",
+   "family": "Mainville",
+   "sequence": "additional",
+   "affiliation": [],
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ]
+  }
+ ],
+ "member": "2587",
+ "event": {
+  "number": "13",
+  "sponsor": [
+   "ICST"
+  ],
+  "acronym": "PervasiveHealthEAI",
+  "name": "13th EAI International Conference on Pervasive Computing Technologies for Healthcare - Demos and Posters",
+  "start": {
+   "date-parts": [
+    [
+     2019,
+     5,
+     20
+    ]
+   ]
+  },
+  "location": "Trento, Italy",
+  "end": {
+   "date-parts": [
+    [
+     2019,
+     5,
+     23
+    ]
+   ]
+  }
+ },
+ "container-title": [
+  "Proceedings of the 13th EAI International Conference on Pervasive Computing Technologies for Healthcare - Demos and Posters"
+ ],
+ "original-title": [],
+ "deposited": {
+  "date-parts": [
+   [
+    2024,
+    9,
+    21
+   ]
+  ],
+  "date-time": "2024-09-21T16:55:56Z",
+  "timestamp": 1726937756000
+ },
+ "score": 1,
+ "resource": {
+  "primary": {
+   "URL": "http://eudl.eu/doi/10.4108/eai.20-5-2019.2283463"
+  }
+ },
+ "subtitle": [],
+ "proceedings-subject": "PervasiveHealth",
+ "short-title": [],
+ "issued": {
+  "date-parts": [
+   [
+    2019
+   ]
+  ]
+ },
+ "references-count": 0,
+ "URL": "https://doi.org/10.4108/eai.20-5-2019.2283463",
+ "relation": {},
+ "subject": [],
+ "published": {
+  "date-parts": [
+   [
+    2019
+   ]
+  ]
+ }
+}

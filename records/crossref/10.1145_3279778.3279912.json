@@ -1,0 +1,251 @@
+{
+ "indexed": {
+  "date-parts": [
+   [
+    2025,
+    6,
+    18
+   ]
+  ],
+  "date-time": "2025-06-18T04:31:44Z",
+  "timestamp": 1750221104270,
+  "version": "3.41.0"
+ },
+ "publisher-location": "New York, NY, USA",
+ "reference-count": 8,
+ "publisher": "ACM",
+ "license": [
+  {
+   "start": {
+    "date-parts": [
+     [
+      2018,
+      11,
+      19
+     ]
+    ],
+    "date-time": "2018-11-19T00:00:00Z",
+    "timestamp": 1542585600000
+   },
+   "content-version": "vor",
+   "delay-in-days": 0,
+   "URL": "https://www.acm.org/publications/policies/copyright_policy#Background"
+  }
+ ],
+ "funder": [
+  {
+   "name": "Social Sciences and Humanities Research",
+   "award": [
+    "#430-2016-00858"
+   ],
+   "award-info": [
+    {
+     "award-number": [
+      "#430-2016-00858"
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Natural Sciences and Engineering Research"
+  }
+ ],
+ "content-domain": {
+  "domain": [
+   "dl.acm.org"
+  ],
+  "crossmark-restriction": true
+ },
+ "short-container-title": [],
+ "published-print": {
+  "date-parts": [
+   [
+    2018,
+    11,
+    19
+   ]
+  ]
+ },
+ "DOI": "10.1145/3279778.3279912",
+ "type": "proceedings-article",
+ "created": {
+  "date-parts": [
+   [
+    2018,
+    11,
+    21
+   ]
+  ],
+  "date-time": "2018-11-21T13:51:49Z",
+  "timestamp": 1542808309000
+ },
+ "page": "381-385",
+ "update-policy": "https://doi.org/10.1145/crossmark-policy",
+ "source": "Crossref",
+ "is-referenced-by-count": 0,
+ "title": [
+  "SmartSurveys"
+ ],
+ "prefix": "10.1145",
+ "author": [
+  {
+   "given": "Tina",
+   "family": "Chan",
+   "sequence": "first",
+   "affiliation": [
+    {
+     "name": "University of Waterloo, Waterloo, ON, Canada"
+    }
+   ],
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ]
+  },
+  {
+   "given": "Josephine",
+   "family": "McMurray",
+   "sequence": "additional",
+   "affiliation": [
+    {
+     "name": "Wilfrid Laurier University, Brantford, ON, Canada"
+    }
+   ],
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ]
+  },
+  {
+   "given": "Alaaddin",
+   "family": "Sidahmed",
+   "sequence": "additional",
+   "affiliation": [
+    {
+     "name": "University of Waterloo, Waterloo, ON, Canada"
+    }
+   ],
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ]
+  },
+  {
+   "given": "James R.",
+   "family": "Wallace",
+   "sequence": "additional",
+   "affiliation": [
+    {
+     "name": "University of Waterloo, Waterloo, ON, Canada"
+    }
+   ],
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ]
+  }
+ ],
+ "member": "320",
+ "published-online": {
+  "date-parts": [
+   [
+    2018,
+    11,
+    19
+   ]
+  ]
+ },
+ "event": {
+  "name": "ISS '18: 2018 ACM International Conference on Interactive Surfaces and Spaces",
+  "sponsor": [
+   "SIGCHI ACM Special Interest Group on Computer-Human Interaction"
+  ],
+  "location": "Tokyo Japan",
+  "acronym": "ISS '18"
+ },
+ "container-title": [
+  "Proceedings of the 2018 ACM International Conference on Interactive Surfaces and Spaces"
+ ],
+ "original-title": [],
+ "link": [
+  {
+   "URL": "https://dl.acm.org/doi/10.1145/3279778.3279912",
+   "content-type": "unspecified",
+   "content-version": "vor",
+   "intended-application": "text-mining"
+  },
+  {
+   "URL": "https://dl.acm.org/doi/pdf/10.1145/3279778.3279912",
+   "content-type": "unspecified",
+   "content-version": "vor",
+   "intended-application": "similarity-checking"
+  }
+ ],
+ "deposited": {
+  "date-parts": [
+   [
+    2025,
+    6,
+    18
+   ]
+  ],
+  "date-time": "2025-06-18T01:01:49Z",
+  "timestamp": 1750208509000
+ },
+ "score": 1,
+ "resource": {
+  "primary": {
+   "URL": "https://dl.acm.org/doi/10.1145/3279778.3279912"
+  }
+ },
+ "subtitle": [
+  "Does Context Influence Whether We'll Share Healthcare Experience Data with our Smartphone?"
+ ],
+ "short-title": [],
+ "issued": {
+  "date-parts": [
+   [
+    2018,
+    11,
+    19
+   ]
+  ]
+ },
+ "references-count": 8,
+ "alternative-id": [
+  "10.1145/3279778.3279912",
+  "10.1145/3279778"
+ ],
+ "URL": "https://doi.org/10.1145/3279778.3279912",
+ "relation": {},
+ "subject": [],
+ "published": {
+  "date-parts": [
+   [
+    2018,
+    11,
+    19
+   ]
+  ]
+ },
+ "assertion": [
+  {
+   "value": "2018-11-19",
+   "order": 2,
+   "name": "published",
+   "label": "Published",
+   "group": {
+    "name": "publication_history",
+    "label": "Publication History"
+   }
+  }
+ ]
+}

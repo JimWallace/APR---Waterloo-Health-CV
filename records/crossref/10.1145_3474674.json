@@ -1,0 +1,266 @@
+{
+ "indexed": {
+  "date-parts": [
+   [
+    2026,
+    11,
+    4
+   ]
+  ],
+  "date-time": "2026-11-04T07:31:14Z",
+  "timestamp": 1793777474496,
+  "version": "4.6.1"
+ },
+ "reference-count": 19,
+ "publisher": "Association for Computing Machinery (ACM)",
+ "issue": "CHI PLAY",
+ "license": [
+  {
+   "start": {
+    "date-parts": [
+     [
+      2021,
+      10,
+      5
+     ]
+    ],
+    "date-time": "2021-10-05T00:00:00Z",
+    "timestamp": 1633392000000
+   },
+   "content-version": "vor",
+   "delay-in-days": 0,
+   "URL": "https://www.acm.org/publications/policies/copyright_policy#Background"
+  }
+ ],
+ "content-domain": {
+  "domain": [
+   "dl.acm.org"
+  ],
+  "crossmark-restriction": true
+ },
+ "short-container-title": [
+  "Proc. ACM Hum.-Comput. Interact."
+ ],
+ "published-print": {
+  "date-parts": [
+   [
+    2021,
+    10,
+    5
+   ]
+  ]
+ },
+ "abstract": "<jats:p>Games hold the potential to help many address health-related issues such as chronic stress. We investigated the use of biophilia, an affective response to nature grounded in the psychology literature, as indirect physiological input for biofeedback games. We designed and developed a non-violent exploration game, and conducted an empirical study that examined affective and physiological responses to gameplay in virtual nature and urban settings. Our results did not identify a difference in stress levels experienced by players between these two settings, but point to improved attention when playing in nature settings. We discuss implications of these findings, and discuss both difficulties in and potential future strategies for applying biophilia to the design of biofeedback games.</jats:p>",
+ "DOI": "10.1145/3474674",
+ "type": "journal-article",
+ "created": {
+  "date-parts": [
+   [
+    2021,
+    10,
+    6
+   ]
+  ],
+  "date-time": "2021-10-06T22:59:48Z",
+  "timestamp": 1633561188000
+ },
+ "page": "1-13",
+ "update-policy": "https://doi.org/10.1145/crossmark-policy",
+ "source": "Crossref",
+ "is-referenced-by-count": 14,
+ "title": [
+  "Nature vs. Stress"
+ ],
+ "prefix": "10.1145",
+ "volume": "5",
+ "author": [
+  {
+   "given": "Adrian",
+   "family": "Reetz",
+   "sequence": "first",
+   "affiliation": [
+    {
+     "name": "University of Waterloo, Waterloo, ON, Canada"
+    }
+   ],
+   "role": [
+    {
+     "vocabulary": "crossref",
+     "role": "author"
+    }
+   ]
+  },
+  {
+   "given": "Deltcho",
+   "family": "Valtchanov",
+   "sequence": "additional",
+   "affiliation": [
+    {
+     "name": "University of Waterloo, Waterloo, ON, Canada"
+    }
+   ],
+   "role": [
+    {
+     "vocabulary": "crossref",
+     "role": "author"
+    }
+   ]
+  },
+  {
+   "given": "Michael",
+   "family": "Barnett-Cowan",
+   "sequence": "additional",
+   "affiliation": [
+    {
+     "name": "University of Waterloo, Waterloo, ON, Canada"
+    }
+   ],
+   "role": [
+    {
+     "vocabulary": "crossref",
+     "role": "author"
+    }
+   ]
+  },
+  {
+   "given": "Mark",
+   "family": "Hancock",
+   "sequence": "additional",
+   "affiliation": [
+    {
+     "name": "University of Waterloo, Waterloo, ON, Canada"
+    }
+   ],
+   "role": [
+    {
+     "vocabulary": "crossref",
+     "role": "author"
+    }
+   ]
+  },
+  {
+   "given": "James R.",
+   "family": "Wallace",
+   "sequence": "additional",
+   "affiliation": [
+    {
+     "name": "University of Waterloo, Waterloo, ON, Canada"
+    }
+   ],
+   "role": [
+    {
+     "vocabulary": "crossref",
+     "role": "author"
+    }
+   ]
+  }
+ ],
+ "member": "320",
+ "published-online": {
+  "date-parts": [
+   [
+    2021,
+    10,
+    6
+   ]
+  ]
+ },
+ "container-title": [
+  "Proceedings of the ACM on Human-Computer Interaction"
+ ],
+ "original-title": [],
+ "language": "en",
+ "link": [
+  {
+   "URL": "https://dl.acm.org/doi/10.1145/3474674",
+   "content-type": "unspecified",
+   "content-version": "vor",
+   "intended-application": "text-mining"
+  },
+  {
+   "URL": "https://dl.acm.org/doi/pdf/10.1145/3474674",
+   "content-type": "unspecified",
+   "content-version": "vor",
+   "intended-application": "similarity-checking"
+  }
+ ],
+ "deposited": {
+  "date-parts": [
+   [
+    2025,
+    6,
+    17
+   ]
+  ],
+  "date-time": "2025-06-17T20:18:42Z",
+  "timestamp": 1750191522000
+ },
+ "score": 1,
+ "resource": {
+  "primary": {
+   "URL": "https://dl.acm.org/doi/10.1145/3474674"
+  }
+ },
+ "subtitle": [
+  "Investigating the Use of Biophilia in Non-Violent Exploration Games to Reduce Stress"
+ ],
+ "short-title": [],
+ "issued": {
+  "date-parts": [
+   [
+    2021,
+    10,
+    5
+   ]
+  ]
+ },
+ "references-count": 19,
+ "journal-issue": {
+  "issue": "CHI PLAY",
+  "published-print": {
+   "date-parts": [
+    [
+     2021,
+     10,
+     5
+    ]
+   ]
+  }
+ },
+ "alternative-id": [
+  "10.1145/3474674"
+ ],
+ "URL": "https://doi.org/10.1145/3474674",
+ "relation": {},
+ "ISSN": [
+  "2573-0142"
+ ],
+ "issn-type": [
+  {
+   "value": "2573-0142",
+   "type": "electronic"
+  }
+ ],
+ "subject": [],
+ "published": {
+  "date-parts": [
+   [
+    2021,
+    10,
+    5
+   ]
+  ]
+ },
+ "assertion": [
+  {
+   "value": "2021-10-06",
+   "order": 2,
+   "name": "published",
+   "label": "Published",
+   "group": {
+    "name": "publication_history",
+    "label": "Publication History"
+   }
+  }
+ ]
+}

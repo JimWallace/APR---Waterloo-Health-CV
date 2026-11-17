@@ -1,0 +1,231 @@
+{
+ "indexed": {
+  "date-parts": [
+   [
+    2026,
+    10,
+    23
+   ]
+  ],
+  "date-time": "2026-10-23T20:30:02Z",
+  "timestamp": 1792787402687,
+  "version": "4.5.0"
+ },
+ "reference-count": 63,
+ "publisher": "Association for Computing Machinery (ACM)",
+ "issue": "GROUP",
+ "license": [
+  {
+   "start": {
+    "date-parts": [
+     [
+      2022,
+      1,
+      14
+     ]
+    ],
+    "date-time": "2022-01-14T00:00:00Z",
+    "timestamp": 1642118400000
+   },
+   "content-version": "vor",
+   "delay-in-days": 0,
+   "URL": "https://www.acm.org/publications/policies/copyright_policy#Background"
+  }
+ ],
+ "funder": [
+  {
+   "name": "NSERC Discovery Grant",
+   "award": [
+    "2015-06585"
+   ],
+   "award-info": [
+    {
+     "award-number": [
+      "2015-06585"
+     ]
+    }
+   ]
+  }
+ ],
+ "content-domain": {
+  "domain": [
+   "dl.acm.org"
+  ],
+  "crossmark-restriction": true
+ },
+ "short-container-title": [
+  "Proc. ACM Hum.-Comput. Interact."
+ ],
+ "published-print": {
+  "date-parts": [
+   [
+    2022,
+    1,
+    14
+   ]
+  ]
+ },
+ "abstract": "<jats:p>As online communities have grown, Computational Social Science has rapidly developed new techniques to study them. However, these techniques require researchers to become experts in a wide variety of tools in addition to qualitative and computational research methods. Studying online communities also requires researchers to constantly navigate highly contextual ethical and transparency considerations when engaging with data, such as respecting their members' privacy when discussing sensitive or stigmatized topics. To overcome these challenges, we developed the Computational Thematic Analysis Toolkit, a modular software package that supports analysis of online communities by combining aspects of reflexive thematic analysis with computational techniques. Our toolkit demonstrates how common analysis tasks like data collection, cleaning and filtering, modelling and sampling, and coding can be implemented within a single visual interface, and how that interface can encourage researchers to manage ethical and transparency considerations throughout their research process.</jats:p>",
+ "DOI": "10.1145/3492844",
+ "type": "journal-article",
+ "created": {
+  "date-parts": [
+   [
+    2022,
+    1,
+    14
+   ]
+  ],
+  "date-time": "2022-01-14T16:26:16Z",
+  "timestamp": 1642177576000
+ },
+ "page": "1-15",
+ "update-policy": "https://doi.org/10.1145/crossmark-policy",
+ "source": "Crossref",
+ "is-referenced-by-count": 23,
+ "title": [
+  "The Computational Thematic Analysis Toolkit"
+ ],
+ "prefix": "10.1145",
+ "volume": "6",
+ "author": [
+  {
+   "given": "Robert P.",
+   "family": "Gauthier",
+   "sequence": "first",
+   "affiliation": [
+    {
+     "name": "University of Waterloo, Waterloo, ON, Canada"
+    }
+   ],
+   "role": [
+    {
+     "vocabulary": "crossref",
+     "role": "author"
+    }
+   ]
+  },
+  {
+   "given": "James R.",
+   "family": "Wallace",
+   "sequence": "additional",
+   "affiliation": [
+    {
+     "name": "University of Waterloo, Waterloo, ON, Canada"
+    }
+   ],
+   "role": [
+    {
+     "vocabulary": "crossref",
+     "role": "author"
+    }
+   ]
+  }
+ ],
+ "member": "320",
+ "published-online": {
+  "date-parts": [
+   [
+    2022,
+    1,
+    14
+   ]
+  ]
+ },
+ "container-title": [
+  "Proceedings of the ACM on Human-Computer Interaction"
+ ],
+ "original-title": [],
+ "language": "en",
+ "link": [
+  {
+   "URL": "https://dl.acm.org/doi/10.1145/3492844",
+   "content-type": "unspecified",
+   "content-version": "vor",
+   "intended-application": "text-mining"
+  },
+  {
+   "URL": "https://dl.acm.org/doi/pdf/10.1145/3492844",
+   "content-type": "unspecified",
+   "content-version": "vor",
+   "intended-application": "similarity-checking"
+  }
+ ],
+ "deposited": {
+  "date-parts": [
+   [
+    2025,
+    6,
+    17
+   ]
+  ],
+  "date-time": "2025-06-17T16:48:27Z",
+  "timestamp": 1750178907000
+ },
+ "score": 1,
+ "resource": {
+  "primary": {
+   "URL": "https://dl.acm.org/doi/10.1145/3492844"
+  }
+ },
+ "subtitle": [],
+ "short-title": [],
+ "issued": {
+  "date-parts": [
+   [
+    2022,
+    1,
+    14
+   ]
+  ]
+ },
+ "references-count": 63,
+ "journal-issue": {
+  "issue": "GROUP",
+  "published-print": {
+   "date-parts": [
+    [
+     2022,
+     1,
+     14
+    ]
+   ]
+  }
+ },
+ "alternative-id": [
+  "10.1145/3492844"
+ ],
+ "URL": "https://doi.org/10.1145/3492844",
+ "relation": {},
+ "ISSN": [
+  "2573-0142"
+ ],
+ "issn-type": [
+  {
+   "value": "2573-0142",
+   "type": "electronic"
+  }
+ ],
+ "subject": [],
+ "published": {
+  "date-parts": [
+   [
+    2022,
+    1,
+    14
+   ]
+  ]
+ },
+ "assertion": [
+  {
+   "value": "2022-01-14",
+   "order": 2,
+   "name": "published",
+   "label": "Published",
+   "group": {
+    "name": "publication_history",
+    "label": "Publication History"
+   }
+  }
+ ]
+}

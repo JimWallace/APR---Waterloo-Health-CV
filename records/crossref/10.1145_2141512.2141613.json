@@ -1,0 +1,183 @@
+{
+ "indexed": {
+  "date-parts": [
+   [
+    2025,
+    6,
+    19
+   ]
+  ],
+  "date-time": "2025-06-19T04:28:48Z",
+  "timestamp": 1750307328757,
+  "version": "3.41.0"
+ },
+ "publisher-location": "New York, NY, USA",
+ "reference-count": 6,
+ "publisher": "ACM",
+ "license": [
+  {
+   "start": {
+    "date-parts": [
+     [
+      2012,
+      2,
+      11
+     ]
+    ],
+    "date-time": "2012-02-11T00:00:00Z",
+    "timestamp": 1328918400000
+   },
+   "content-version": "vor",
+   "delay-in-days": 0,
+   "URL": "https://www.acm.org/publications/policies/copyright_policy#Background"
+  }
+ ],
+ "content-domain": {
+  "domain": [
+   "dl.acm.org"
+  ],
+  "crossmark-restriction": true
+ },
+ "short-container-title": [],
+ "published-print": {
+  "date-parts": [
+   [
+    2012,
+    2,
+    11
+   ]
+  ]
+ },
+ "DOI": "10.1145/2141512.2141613",
+ "type": "proceedings-article",
+ "created": {
+  "date-parts": [
+   [
+    2012,
+    2,
+    22
+   ]
+  ],
+  "date-time": "2012-02-22T18:42:35Z",
+  "timestamp": 1329936155000
+ },
+ "page": "331-334",
+ "update-policy": "https://doi.org/10.1145/crossmark-policy",
+ "source": "Crossref",
+ "is-referenced-by-count": 0,
+ "title": [
+  "Using teamwork and taskwork to study mixed-focus collaboration"
+ ],
+ "prefix": "10.1145",
+ "author": [
+  {
+   "given": "James R.",
+   "family": "Wallace",
+   "sequence": "first",
+   "affiliation": [
+    {
+     "name": "University of Waterloo, Waterloo, ON, Canada"
+    }
+   ],
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ]
+  }
+ ],
+ "member": "320",
+ "published-online": {
+  "date-parts": [
+   [
+    2012,
+    2,
+    11
+   ]
+  ]
+ },
+ "event": {
+  "name": "CSCW '12: Computer Supported Cooperative Work",
+  "sponsor": [
+   "SIGCHI ACM Special Interest Group on Computer-Human Interaction"
+  ],
+  "location": "Seattle Washington USA",
+  "acronym": "CSCW '12"
+ },
+ "container-title": [
+  "Proceedings of the ACM 2012 conference on Computer Supported Cooperative Work Companion"
+ ],
+ "original-title": [],
+ "link": [
+  {
+   "URL": "https://dl.acm.org/doi/10.1145/2141512.2141613",
+   "content-type": "unspecified",
+   "content-version": "vor",
+   "intended-application": "text-mining"
+  },
+  {
+   "URL": "https://dl.acm.org/doi/pdf/10.1145/2141512.2141613",
+   "content-type": "unspecified",
+   "content-version": "vor",
+   "intended-application": "similarity-checking"
+  }
+ ],
+ "deposited": {
+  "date-parts": [
+   [
+    2025,
+    6,
+    18
+   ]
+  ],
+  "date-time": "2025-06-18T11:06:04Z",
+  "timestamp": 1750244764000
+ },
+ "score": 1,
+ "resource": {
+  "primary": {
+   "URL": "https://dl.acm.org/doi/10.1145/2141512.2141613"
+  }
+ },
+ "subtitle": [],
+ "short-title": [],
+ "issued": {
+  "date-parts": [
+   [
+    2012,
+    2,
+    11
+   ]
+  ]
+ },
+ "references-count": 6,
+ "alternative-id": [
+  "10.1145/2141512.2141613",
+  "10.1145/2141512"
+ ],
+ "URL": "https://doi.org/10.1145/2141512.2141613",
+ "relation": {},
+ "subject": [],
+ "published": {
+  "date-parts": [
+   [
+    2012,
+    2,
+    11
+   ]
+  ]
+ },
+ "assertion": [
+  {
+   "value": "2012-02-11",
+   "order": 2,
+   "name": "published",
+   "label": "Published",
+   "group": {
+    "name": "publication_history",
+    "label": "Publication History"
+   }
+  }
+ ]
+}

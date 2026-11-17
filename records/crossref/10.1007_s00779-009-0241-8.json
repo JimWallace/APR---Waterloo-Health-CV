@@ -1,0 +1,237 @@
+{
+ "indexed": {
+  "date-parts": [
+   [
+    2026,
+    10,
+    3
+   ]
+  ],
+  "date-time": "2026-10-03T21:21:40Z",
+  "timestamp": 1791062500727,
+  "version": "4.1.0"
+ },
+ "reference-count": 59,
+ "publisher": "Springer Science and Business Media LLC",
+ "issue": "8",
+ "license": [
+  {
+   "start": {
+    "date-parts": [
+     [
+      2009,
+      6,
+      25
+     ]
+    ],
+    "date-time": "2009-06-25T00:00:00Z",
+    "timestamp": 1245888000000
+   },
+   "content-version": "tdm",
+   "delay-in-days": 0,
+   "URL": "http://www.springer.com/tdm"
+  }
+ ],
+ "content-domain": {
+  "domain": [],
+  "crossmark-restriction": false
+ },
+ "short-container-title": [
+  "Pers Ubiquit Comput"
+ ],
+ "published-print": {
+  "date-parts": [
+   [
+    2009,
+    11
+   ]
+  ]
+ },
+ "DOI": "10.1007/s00779-009-0241-8",
+ "type": "journal-article",
+ "created": {
+  "date-parts": [
+   [
+    2009,
+    6,
+    24
+   ]
+  ],
+  "date-time": "2009-06-24T14:08:18Z",
+  "timestamp": 1245852498000
+ },
+ "page": "569-581",
+ "source": "Crossref",
+ "is-referenced-by-count": 63,
+ "title": [
+  "Investigating teamwork and taskwork in single- and multi-display groupware systems"
+ ],
+ "prefix": "10.1007",
+ "volume": "13",
+ "author": [
+  {
+   "given": "James R.",
+   "family": "Wallace",
+   "sequence": "first",
+   "affiliation": [],
+   "role": [
+    {
+     "vocabulary": "crossref",
+     "role": "author"
+    }
+   ]
+  },
+  {
+   "given": "Stacey D.",
+   "family": "Scott",
+   "sequence": "additional",
+   "affiliation": [],
+   "role": [
+    {
+     "vocabulary": "crossref",
+     "role": "author"
+    }
+   ]
+  },
+  {
+   "given": "Taryn",
+   "family": "Stutz",
+   "sequence": "additional",
+   "affiliation": [],
+   "role": [
+    {
+     "vocabulary": "crossref",
+     "role": "author"
+    }
+   ]
+  },
+  {
+   "given": "Tricia",
+   "family": "Enns",
+   "sequence": "additional",
+   "affiliation": [],
+   "role": [
+    {
+     "vocabulary": "crossref",
+     "role": "author"
+    }
+   ]
+  },
+  {
+   "given": "Kori",
+   "family": "Inkpen",
+   "sequence": "additional",
+   "affiliation": [],
+   "role": [
+    {
+     "vocabulary": "crossref",
+     "role": "author"
+    }
+   ]
+  }
+ ],
+ "member": "297",
+ "published-online": {
+  "date-parts": [
+   [
+    2009,
+    6,
+    25
+   ]
+  ]
+ },
+ "container-title": [
+  "Personal and Ubiquitous Computing"
+ ],
+ "original-title": [],
+ "language": "en",
+ "link": [
+  {
+   "URL": "http://link.springer.com/content/pdf/10.1007/s00779-009-0241-8.pdf",
+   "content-type": "application/pdf",
+   "content-version": "vor",
+   "intended-application": "text-mining"
+  },
+  {
+   "URL": "http://link.springer.com/article/10.1007/s00779-009-0241-8/fulltext.html",
+   "content-type": "text/html",
+   "content-version": "vor",
+   "intended-application": "text-mining"
+  },
+  {
+   "URL": "http://link.springer.com/content/pdf/10.1007/s00779-009-0241-8",
+   "content-type": "unspecified",
+   "content-version": "vor",
+   "intended-application": "similarity-checking"
+  }
+ ],
+ "deposited": {
+  "date-parts": [
+   [
+    2019,
+    5,
+    29
+   ]
+  ],
+  "date-time": "2019-05-29T02:28:53Z",
+  "timestamp": 1559096933000
+ },
+ "score": 1,
+ "resource": {
+  "primary": {
+   "URL": "http://link.springer.com/10.1007/s00779-009-0241-8"
+  }
+ },
+ "subtitle": [],
+ "short-title": [],
+ "issued": {
+  "date-parts": [
+   [
+    2009,
+    6,
+    25
+   ]
+  ]
+ },
+ "references-count": 59,
+ "journal-issue": {
+  "issue": "8",
+  "published-print": {
+   "date-parts": [
+    [
+     2009,
+     11
+    ]
+   ]
+  }
+ },
+ "alternative-id": [
+  "241"
+ ],
+ "URL": "https://doi.org/10.1007/s00779-009-0241-8",
+ "relation": {},
+ "ISSN": [
+  "1617-4909",
+  "1617-4917"
+ ],
+ "issn-type": [
+  {
+   "value": "1617-4909",
+   "type": "print"
+  },
+  {
+   "value": "1617-4917",
+   "type": "electronic"
+  }
+ ],
+ "subject": [],
+ "published": {
+  "date-parts": [
+   [
+    2009,
+    6,
+    25
+   ]
+  ]
+ }
+}

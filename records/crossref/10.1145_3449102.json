@@ -1,0 +1,248 @@
+{
+ "indexed": {
+  "date-parts": [
+   [
+    2026,
+    8,
+    3
+   ]
+  ],
+  "date-time": "2026-08-03T11:29:41Z",
+  "timestamp": 1785756581954,
+  "version": "3.56.0"
+ },
+ "reference-count": 46,
+ "publisher": "Association for Computing Machinery (ACM)",
+ "issue": "CSCW1",
+ "license": [
+  {
+   "start": {
+    "date-parts": [
+     [
+      2021,
+      4,
+      13
+     ]
+    ],
+    "date-time": "2021-04-13T00:00:00Z",
+    "timestamp": 1618272000000
+   },
+   "content-version": "vor",
+   "delay-in-days": 0,
+   "URL": "https://www.acm.org/publications/policies/copyright_policy#Background"
+  }
+ ],
+ "funder": [
+  {
+   "DOI": "10.13039/501100000038",
+   "name": "Natural Sciences and Engineering Research Council of Canada",
+   "doi-asserted-by": "crossref",
+   "id": [
+    {
+     "id": "10.13039/501100000038",
+     "id-type": "DOI",
+     "asserted-by": "crossref"
+    }
+   ]
+  }
+ ],
+ "content-domain": {
+  "domain": [
+   "dl.acm.org"
+  ],
+  "crossmark-restriction": true
+ },
+ "short-container-title": [
+  "Proc. ACM Hum.-Comput. Interact."
+ ],
+ "published-print": {
+  "date-parts": [
+   [
+    2021,
+    4,
+    13
+   ]
+  ]
+ },
+ "abstract": "<jats:p>Building and maintaining common ground is vital for effective collaboration in CSCW. Moreover, subtle changes in a CSCW user interface can significantly impact grounding and collaborative processes. Yet, researchers and technology designers lack tools to understand how specific user interface designs may hinder or facilitate communication grounding. In this work, we leverage the well-established theory of communication grounding to develop a visual framework, called Joint Action Storyboards (JASs), to analyze and articulate how interaction minutiae impact the costs of communication grounding. JASs can depict an integrated view of mental actions of collaborators, their physical interactions with each other and the CSCW environment, and the corresponding grounding costs incurred. We present the development of JASs and discuss its various benefits for HCI and CSCW research. Through a series of case studies, we demonstrate how JASs provide an analysis tool for researchers and technology designers and serve as a tool to articulate the impact of interaction minutiae on communication grounding.</jats:p>",
+ "DOI": "10.1145/3449102",
+ "type": "journal-article",
+ "created": {
+  "date-parts": [
+   [
+    2021,
+    4,
+    22
+   ]
+  ],
+  "date-time": "2021-04-22T17:49:24Z",
+  "timestamp": 1619113764000
+ },
+ "page": "1-27",
+ "update-policy": "https://doi.org/10.1145/crossmark-policy",
+ "source": "Crossref",
+ "is-referenced-by-count": 9,
+ "title": [
+  "Joint Action Storyboards"
+ ],
+ "prefix": "10.1145",
+ "volume": "5",
+ "author": [
+  {
+   "given": "Leila",
+   "family": "Homaeian",
+   "sequence": "first",
+   "affiliation": [
+    {
+     "name": "University of Waterloo, Waterloo, ON, Canada"
+    }
+   ],
+   "role": [
+    {
+     "vocabulary": "crossref",
+     "role": "author"
+    }
+   ]
+  },
+  {
+   "given": "James R.",
+   "family": "Wallace",
+   "sequence": "additional",
+   "affiliation": [
+    {
+     "name": "University of Waterloo, Waterloo, ON, Canada"
+    }
+   ],
+   "role": [
+    {
+     "vocabulary": "crossref",
+     "role": "author"
+    }
+   ]
+  },
+  {
+   "given": "Stacey D.",
+   "family": "Scott",
+   "sequence": "additional",
+   "affiliation": [
+    {
+     "name": "University of Guelph, Guelph, ON, Canada"
+    }
+   ],
+   "role": [
+    {
+     "vocabulary": "crossref",
+     "role": "author"
+    }
+   ]
+  }
+ ],
+ "member": "320",
+ "published-online": {
+  "date-parts": [
+   [
+    2021,
+    4,
+    22
+   ]
+  ]
+ },
+ "container-title": [
+  "Proceedings of the ACM on Human-Computer Interaction"
+ ],
+ "original-title": [],
+ "language": "en",
+ "link": [
+  {
+   "URL": "https://dl.acm.org/doi/10.1145/3449102",
+   "content-type": "unspecified",
+   "content-version": "vor",
+   "intended-application": "text-mining"
+  },
+  {
+   "URL": "https://dl.acm.org/doi/pdf/10.1145/3449102",
+   "content-type": "unspecified",
+   "content-version": "vor",
+   "intended-application": "similarity-checking"
+  }
+ ],
+ "deposited": {
+  "date-parts": [
+   [
+    2025,
+    6,
+    17
+   ]
+  ],
+  "date-time": "2025-06-17T20:17:46Z",
+  "timestamp": 1750191466000
+ },
+ "score": 1,
+ "resource": {
+  "primary": {
+   "URL": "https://dl.acm.org/doi/10.1145/3449102"
+  }
+ },
+ "subtitle": [
+  "A Framework for Visualizing Communication Grounding Costs"
+ ],
+ "short-title": [],
+ "issued": {
+  "date-parts": [
+   [
+    2021,
+    4,
+    13
+   ]
+  ]
+ },
+ "references-count": 46,
+ "journal-issue": {
+  "issue": "CSCW1",
+  "published-print": {
+   "date-parts": [
+    [
+     2021,
+     4,
+     13
+    ]
+   ]
+  }
+ },
+ "alternative-id": [
+  "10.1145/3449102"
+ ],
+ "URL": "https://doi.org/10.1145/3449102",
+ "relation": {},
+ "ISSN": [
+  "2573-0142"
+ ],
+ "issn-type": [
+  {
+   "value": "2573-0142",
+   "type": "electronic"
+  }
+ ],
+ "subject": [],
+ "published": {
+  "date-parts": [
+   [
+    2021,
+    4,
+    13
+   ]
+  ]
+ },
+ "assertion": [
+  {
+   "value": "2021-04-22",
+   "order": 2,
+   "name": "published",
+   "label": "Published",
+   "group": {
+    "name": "publication_history",
+    "label": "Publication History"
+   }
+  }
+ ]
+}

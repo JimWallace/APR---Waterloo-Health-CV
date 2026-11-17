@@ -1,0 +1,218 @@
+{
+ "indexed": {
+  "date-parts": [
+   [
+    2025,
+    6,
+    19
+   ]
+  ],
+  "date-time": "2025-06-19T04:09:41Z",
+  "timestamp": 1750306181413,
+  "version": "3.41.0"
+ },
+ "publisher-location": "New York, NY, USA",
+ "reference-count": 3,
+ "publisher": "ACM",
+ "license": [
+  {
+   "start": {
+    "date-parts": [
+     [
+      2016,
+      11,
+      6
+     ]
+    ],
+    "date-time": "2016-11-06T00:00:00Z",
+    "timestamp": 1478390400000
+   },
+   "content-version": "vor",
+   "delay-in-days": 0,
+   "URL": "https://www.acm.org/publications/policies/copyright_policy#Background"
+  }
+ ],
+ "funder": [
+  {
+   "DOI": "10.13039/501100000155",
+   "name": "Social Sciences and Humanities Research Council of Canada",
+   "doi-asserted-by": "publisher",
+   "id": [
+    {
+     "id": "10.13039/501100000155",
+     "id-type": "DOI",
+     "asserted-by": "publisher"
+    }
+   ]
+  },
+  {
+   "name": "The Mike and Ophelia Lazaridis Institiute for Quantum Computing"
+  }
+ ],
+ "content-domain": {
+  "domain": [
+   "dl.acm.org"
+  ],
+  "crossmark-restriction": true
+ },
+ "short-container-title": [],
+ "published-print": {
+  "date-parts": [
+   [
+    2016,
+    11,
+    6
+   ]
+  ]
+ },
+ "DOI": "10.1145/2992154.2996869",
+ "type": "proceedings-article",
+ "created": {
+  "date-parts": [
+   [
+    2016,
+    11,
+    29
+   ]
+  ],
+  "date-time": "2016-11-29T16:28:42Z",
+  "timestamp": 1480436922000
+ },
+ "page": "445-448",
+ "update-policy": "https://doi.org/10.1145/crossmark-policy",
+ "source": "Crossref",
+ "is-referenced-by-count": 0,
+ "title": [
+  "Quantum Cats"
+ ],
+ "prefix": "10.1145",
+ "author": [
+  {
+   "given": "Victor",
+   "family": "Cheung",
+   "sequence": "first",
+   "affiliation": [
+    {
+     "name": "University of Waterloo, Waterloo, ON, Canada"
+    }
+   ],
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ]
+  },
+  {
+   "given": "James",
+   "family": "Wallace",
+   "sequence": "additional",
+   "affiliation": [
+    {
+     "name": "University of Waterloo, Waterloo, ON, Canada"
+    }
+   ],
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ]
+  }
+ ],
+ "member": "320",
+ "published-online": {
+  "date-parts": [
+   [
+    2016,
+    11,
+    6
+   ]
+  ]
+ },
+ "event": {
+  "name": "ISS '16: 2016 ACM International Conference on Interactive Surfaces and Spaces",
+  "sponsor": [
+   "SIGCHI ACM Special Interest Group on Computer-Human Interaction"
+  ],
+  "location": "Niagara Falls Ontario Canada",
+  "acronym": "ISS '16"
+ },
+ "container-title": [
+  "Proceedings of the 2016 ACM International Conference on Interactive Surfaces and Spaces"
+ ],
+ "original-title": [],
+ "link": [
+  {
+   "URL": "https://dl.acm.org/doi/10.1145/2992154.2996869",
+   "content-type": "unspecified",
+   "content-version": "vor",
+   "intended-application": "text-mining"
+  },
+  {
+   "URL": "https://dl.acm.org/doi/pdf/10.1145/2992154.2996869",
+   "content-type": "unspecified",
+   "content-version": "vor",
+   "intended-application": "similarity-checking"
+  }
+ ],
+ "deposited": {
+  "date-parts": [
+   [
+    2025,
+    6,
+    18
+   ]
+  ],
+  "date-time": "2025-06-18T03:50:01Z",
+  "timestamp": 1750218601000
+ },
+ "score": 1,
+ "resource": {
+  "primary": {
+   "URL": "https://dl.acm.org/doi/10.1145/2992154.2996869"
+  }
+ },
+ "subtitle": [
+  "The Demo"
+ ],
+ "short-title": [],
+ "issued": {
+  "date-parts": [
+   [
+    2016,
+    11,
+    6
+   ]
+  ]
+ },
+ "references-count": 3,
+ "alternative-id": [
+  "10.1145/2992154.2996869",
+  "10.1145/2992154"
+ ],
+ "URL": "https://doi.org/10.1145/2992154.2996869",
+ "relation": {},
+ "subject": [],
+ "published": {
+  "date-parts": [
+   [
+    2016,
+    11,
+    6
+   ]
+  ]
+ },
+ "assertion": [
+  {
+   "value": "2016-11-06",
+   "order": 2,
+   "name": "published",
+   "label": "Published",
+   "group": {
+    "name": "publication_history",
+    "label": "Publication History"
+   }
+  }
+ ]
+}

@@ -1,0 +1,334 @@
+{
+  "generated": "2026-11-17T18:04:18+00:00",
+  "since": 2025,
+  "resolved": {
+    "openalex_author_id": "A5083325500"
+  },
+  "records_seen": 16,
+  "new": [
+    {
+      "source": "openalex",
+      "source_id": "https://openalex.org/W4409720762",
+      "type": "conference-paper",
+      "title": "Praise with a Raise: Community-based Gameful Research for Supporting Women and Children Experiencing Homelessness",
+      "authors": [
+        "Veen Wong",
+        "T. D. Pawar",
+        "Greta James",
+        "James R. Wallace",
+        "Cayley MacArthur"
+      ],
+      "venue": "CHI Conference Extended Abstracts on Human Factors in Computing Systems (CHI EA)",
+      "year": 2025,
+      "doi": "10.1145/3706599.3720051",
+      "urls": [
+        "https://doi.org/10.1145/3706599.3720051",
+        "https://doi.org/10.1145/3706599.3720051"
+      ],
+      "also_in": []
+    },
+    {
+      "source": "openalex",
+      "source_id": "https://openalex.org/W7117255551",
+      "type": "article",
+      "title": "Investigating attributes of stigma towards individuals who did not receive a COVID-19 vaccine: An analysis of user comment threads on Reddit conducted by the Canadian Immunization Research Network (CIRN)",
+      "authors": [
+        "Bobbi Rotolo",
+        "Natasha Janak Sanghadia",
+        "Ève Dubé",
+        "James R. Wallace",
+        "Janice Graham",
+        "Christine Huel",
+        "Shannon E. MacDonald",
+        "Terra Manca",
+        "Samantha B. Meyer"
+      ],
+      "venue": "Social Science & Medicine",
+      "year": 2025,
+      "doi": "10.1016/j.socscimed.2025.118911",
+      "urls": [
+        "https://doi.org/10.1016/j.socscimed.2025.118911",
+        "https://doi.org/10.1016/j.socscimed.2025.118911"
+      ],
+      "also_in": []
+    },
+    {
+      "source": "openalex",
+      "source_id": "https://openalex.org/W7153887524",
+      "type": "conference-paper",
+      "title": "Meetup: Mentorship in HCI × Health Research",
+      "authors": [
+        "Ignacio Avellino",
+        "James R. Wallace",
+        "Francisco Nunes",
+        "Jason Wiese",
+        "Helena M. Mentis",
+        "Sean A. Munson",
+        "Aneesha Singh",
+        "Chia-Fang Chung",
+        "Pin Sym Foong"
+      ],
+      "venue": "CHI Conference Extended Abstracts on Human Factors in Computing Systems (CHI EA)",
+      "year": 2026,
+      "doi": "10.1145/3772363.3778795",
+      "urls": [
+        "https://doi.org/10.1145/3772363.3778795",
+        "https://doi.org/10.1145/3772363.3778795"
+      ],
+      "also_in": []
+    },
+    {
+      "source": "openalex",
+      "source_id": "https://openalex.org/W4409527642",
+      "type": "conference-abstract",
+      "title": "Abstract P3151: Association Between Life’s Essential 8 and Cardiovascular Disease by Depression Status",
+      "authors": [
+        "Khalid S. Al Khairy",
+        "James R. Wallace",
+        "Jee Won Park"
+      ],
+      "venue": "Circulation",
+      "year": 2025,
+      "doi": "10.1161/cir.151.suppl_1.p3151",
+      "urls": [
+        "https://doi.org/10.1161/cir.151.suppl_1.p3151",
+        "https://doi.org/10.1161/cir.151.suppl_1.p3151"
+      ],
+      "also_in": []
+    }
+  ],
+  "doi_backfill": [
+    {
+      "key": "homaeian2025",
+      "title": "Community Support for Aging in Place: A Computational Thematic Analysis of Discussions about Informal Care on Reddit",
+      "candidates": [
+        {
+          "source": "openalex",
+          "source_id": "https://openalex.org/W4406258467",
+          "type": "article",
+          "title": "Community Support for Aging in Place: A Computational Thematic Analysis of Discussions about Informal Care on Reddit",
+          "authors": [
+            "Leila Homaeian",
+            "Vanessa Duong",
+            "Keiko Katsuragawa",
+            "James R. Wallace"
+          ],
+          "venue": "Proceedings of the ACM on Human-Computer Interaction",
+          "year": 2025,
+          "doi": "10.1145/3701187",
+          "urls": [
+            "https://doi.org/10.1145/3701187",
+            "https://doi.org/10.1145/3701187"
+          ]
+        }
+      ]
+    },
+    {
+      "key": "homaeian2025community",
+      "title": "Community Support for Aging in Place: A Computational Thematic Analysis of Discussions about Informal Care on Reddit",
+      "candidates": [
+        {
+          "source": "openalex",
+          "source_id": "https://openalex.org/W4406258467",
+          "type": "article",
+          "title": "Community Support for Aging in Place: A Computational Thematic Analysis of Discussions about Informal Care on Reddit",
+          "authors": [
+            "Leila Homaeian",
+            "Vanessa Duong",
+            "Keiko Katsuragawa",
+            "James R. Wallace"
+          ],
+          "venue": "Proceedings of the ACM on Human-Computer Interaction",
+          "year": 2025,
+          "doi": "10.1145/3701187",
+          "urls": [
+            "https://doi.org/10.1145/3701187",
+            "https://doi.org/10.1145/3701187"
+          ]
+        }
+      ]
+    },
+    {
+      "key": "hcischool2025",
+      "title": "Community Support for Aging in Place: A Computational Thematic Analysis of Discussions about Informal Care on Reddit",
+      "candidates": [
+        {
+          "source": "openalex",
+          "source_id": "https://openalex.org/W4406258467",
+          "type": "article",
+          "title": "Community Support for Aging in Place: A Computational Thematic Analysis of Discussions about Informal Care on Reddit",
+          "authors": [
+            "Leila Homaeian",
+            "Vanessa Duong",
+            "Keiko Katsuragawa",
+            "James R. Wallace"
+          ],
+          "venue": "Proceedings of the ACM on Human-Computer Interaction",
+          "year": 2025,
+          "doi": "10.1145/3701187",
+          "urls": [
+            "https://doi.org/10.1145/3701187",
+            "https://doi.org/10.1145/3701187"
+          ]
+        }
+      ]
+    },
+    {
+      "key": "Wong2025DIS",
+      "title": "Bold Sky: Co-Designing an Intimate Partner Violence Prevention Game",
+      "candidates": [
+        {
+          "source": "openalex",
+          "source_id": "https://openalex.org/W4412045136",
+          "type": "conference-paper",
+          "title": "Bold Sky: Co-Designing an Intimate Partner Violence Prevention Game",
+          "authors": [
+            "Veen Wong",
+            "Chris McNab",
+            "Laurie E. Jarvis",
+            "Cayley MacArthur",
+            "James R. Wallace"
+          ],
+          "venue": "Designing Interactive Systems Conference",
+          "year": 2025,
+          "doi": "10.1145/3715668.3736374",
+          "urls": [
+            "https://doi.org/10.1145/3715668.3736374",
+            "https://doi.org/10.1145/3715668.3736374"
+          ]
+        }
+      ]
+    },
+    {
+      "key": "sharma2026details",
+      "title": "DeTAILS: Deep Thematic Analysis with Iterative {LLM} Support",
+      "candidates": [
+        {
+          "source": "openalex",
+          "source_id": "https://openalex.org/W7222412087",
+          "type": "conference-paper",
+          "title": "DeTAILS: Deep Thematic Analysis with Iterative LLM Support",
+          "authors": [
+            "Ansh Sharma",
+            "Karen Anne Cochrane",
+            "James R. Wallace"
+          ],
+          "venue": "Graphics Interface",
+          "year": 2026,
+          "doi": "10.1145/3831423.3831451",
+          "urls": [
+            "https://doi.org/10.1145/3831423.3831451",
+            "https://doi.org/10.1145/3831423.3831451"
+          ]
+        }
+      ]
+    },
+    {
+      "key": "ugayamazza2026agency",
+      "title": "The Shape of Agency: Designing for Personal Agency in Qualitative Data Analysis",
+      "candidates": [
+        {
+          "source": "openalex",
+          "source_id": "https://openalex.org/W4405627579",
+          "type": "conference-paper",
+          "title": "The Shape of Agency: Designing for Personal Agency in Qualitative Data Analysis",
+          "authors": [
+            "Luka Mazza",
+            "Plinio Pelegrini Morita",
+            "James R. Wallace"
+          ],
+          "venue": "Graphics Interface",
+          "year": 2026,
+          "doi": "10.1145/3831423.3831435",
+          "urls": [
+            "https://doi.org/10.1145/3831423.3831435",
+            "https://doi.org/10.1145/3831423.3831435"
+          ]
+        }
+      ]
+    },
+    {
+      "key": "li2026glimpse",
+      "title": "``{A} Glimpse, Not a Gaze'': Using Generative {AI} to Balance Privacy and Awareness in Inter-generational Caregiving",
+      "candidates": [
+        {
+          "source": "openalex",
+          "source_id": "https://openalex.org/W7163529311",
+          "type": "preprint",
+          "title": "\"A Glimpse, Not a Gaze\": Using Generative AI to Balance Privacy and Awareness in Inter-generational Caregiving",
+          "authors": [
+            "Zixi Christina Li",
+            "Keiko Katsuragawa",
+            "James R. Wallace"
+          ],
+          "venue": "arXiv (Cornell University)",
+          "year": 2026,
+          "doi": "10.48550/arxiv.2606.05055",
+          "urls": [
+            "https://doi.org/10.48550/arxiv.2606.05055",
+            "https://arxiv.org/abs/2606.05055"
+          ]
+        }
+      ]
+    },
+    {
+      "key": "wong2026ipvprevention",
+      "title": "Technology-Based Prevention of Intimate Partner Violence: A Scoping Review",
+      "candidates": [
+        {
+          "source": "openalex",
+          "source_id": "https://openalex.org/W7222454716",
+          "type": "conference-paper",
+          "title": "Technology-Based Prevention of Intimate Partner Violence: A Scoping Review",
+          "authors": [
+            "Veen Wong",
+            "Jieun Lee",
+            "Cayley MacArthur",
+            "James R. Wallace"
+          ],
+          "venue": "Graphics Interface",
+          "year": 2026,
+          "doi": "10.1145/3831423.3831448",
+          "urls": [
+            "https://doi.org/10.1145/3831423.3831448",
+            "https://doi.org/10.1145/3831423.3831448"
+          ]
+        }
+      ]
+    },
+    {
+      "key": "prasad2026pragmatica",
+      "title": "Pragmatica: A {VR} Tool for Autonomous Practice During Language Therapy",
+      "candidates": [
+        {
+          "source": "openalex",
+          "source_id": "https://openalex.org/W7222641996",
+          "type": "conference-paper",
+          "title": "Pragmatica: A VR Tool for Autonomous Practice During Language Therapy",
+          "authors": [
+            "Karthik Prasad",
+            "Oliver Schneider",
+            "James R. Wallace"
+          ],
+          "venue": "Graphics Interface",
+          "year": 2026,
+          "doi": "10.1145/3831423.3831432",
+          "urls": [
+            "https://doi.org/10.1145/3831423.3831432",
+            "https://doi.org/10.1145/3831423.3831432"
+          ]
+        }
+      ]
+    }
+  ],
+  "source_errors": [
+    {
+      "source": "dblp",
+      "error": "ParseError('syntax error: line 1, column 0')"
+    },
+    {
+      "source": "crossref",
+      "error": "1 DOI(s) not found: 10.48550/arxiv.2606.05055"
+    }
+  ]
+}

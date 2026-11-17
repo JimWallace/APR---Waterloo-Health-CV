@@ -1,0 +1,196 @@
+{
+ "indexed": {
+  "date-parts": [
+   [
+    2025,
+    7,
+    30
+   ]
+  ],
+  "date-time": "2025-07-30T13:20:32Z",
+  "timestamp": 1753881632283,
+  "version": "3.41.2"
+ },
+ "reference-count": 0,
+ "publisher": "Ovid Technologies (Wolters Kluwer Health)",
+ "issue": "Suppl_1",
+ "content-domain": {
+  "domain": [
+   "www.ahajournals.org"
+  ],
+  "crossmark-restriction": true
+ },
+ "short-container-title": [
+  "Circulation"
+ ],
+ "published-print": {
+  "date-parts": [
+   [
+    2025,
+    3,
+    11
+   ]
+  ]
+ },
+ "abstract": "<jats:p>Cardiovascular health (CVH), as measured by the American Heart Association's Life’s Essential 8 (LE8) metrics, plays a vital role in determining cardiovascular disease (CVD) risk. Depression is also known to have adverse effects on CVD outcomes and may further complicate this relationship. Thus, this study assesses the relationship between LE8 and CVD overall, and by depression status. We hypothesize that higher LE8 scores are associated with lower odds of CVD, and that depression status may modify this relationship.</jats:p>\n          <jats:p>This cross-sectional study employed secondary data analysis using National Health and Nutrition Examination Survey (NHANES) data from 2011 to 2018, with an analytic sample size of 14,848 participants (age ≥ 20 years). Multivariable logistic regression analyses, incorporating survey weights, for CVD outcome (i.e., stroke, heart attack, angina, coronary heart disease, heart failure) were performed as a function of LE8 scores (high/moderate/low CVH) while adjusting for potential confounders. We also assessed for effect measure modification (EMM) by depression status using the PHQ-9 scores by including product terms between LE8 scores and depression in the adjusted model.</jats:p>\n          <jats:p>The adjusted odds ratios (OR) for CVD among participants with high and moderate compared to low LE8 scores were 0.38 (95% CI: 0.19-0.75) and 0.52 (95% CI: 0.42-0.63), respectively. EMM assessment by depression status indicated strong negative associations between higher LE8 scores and CVD in both groups. Specifically, the adjusted ORs were 0.42 (95% CI: 0.21-0.83) for those reporting no depression and 0.06 (95% CI: 0.01-0.60) for those with depression.</jats:p>\n          <jats:p>We found a clear negative relationship between LE8 scores and CVD, with higher LE8 scores associated with lower odds of CVD compared to the lower LE8 scores group. This protective relationship was particularly profound among individuals with higher levels of depressive symptoms. These findings highlight the importance of promoting CVH to mitigate the adverse effects of depression on CVD outcomes. Additional prospective studies should be conducted to establish the temporality of these associations between LE8 scores and CVD outcomes among individuals with depression.</jats:p>",
+ "DOI": "10.1161/cir.151.suppl_1.p3151",
+ "type": "journal-article",
+ "created": {
+  "date-parts": [
+   [
+    2025,
+    4,
+    17
+   ]
+  ],
+  "date-time": "2025-04-17T14:01:06Z",
+  "timestamp": 1744898466000
+ },
+ "update-policy": "https://doi.org/10.1161/crossmarkpolicy",
+ "source": "Crossref",
+ "is-referenced-by-count": 0,
+ "title": [
+  "Abstract P3151: Association Between Life’s Essential 8 and Cardiovascular Disease by Depression Status"
+ ],
+ "prefix": "10.1161",
+ "volume": "151",
+ "author": [
+  {
+   "given": "Kareem",
+   "family": "Khairy",
+   "sequence": "first",
+   "affiliation": [
+    {
+     "name": "University of Delaware, Newark, Delaware, United States"
+    }
+   ],
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ]
+  },
+  {
+   "given": "James",
+   "family": "Wallace",
+   "sequence": "additional",
+   "affiliation": [
+    {
+     "name": "University of Delaware, Newark, Delaware, United States"
+    }
+   ],
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ]
+  },
+  {
+   "given": "Jee Won",
+   "family": "Park",
+   "sequence": "additional",
+   "affiliation": [
+    {
+     "name": "University of Delaware, Newark, Delaware, United States"
+    }
+   ],
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ]
+  }
+ ],
+ "member": "276",
+ "container-title": [
+  "Circulation"
+ ],
+ "original-title": [],
+ "language": "en",
+ "deposited": {
+  "date-parts": [
+   [
+    2025,
+    4,
+    17
+   ]
+  ],
+  "date-time": "2025-04-17T14:01:30Z",
+  "timestamp": 1744898490000
+ },
+ "score": 1,
+ "resource": {
+  "primary": {
+   "URL": "https://www.ahajournals.org/doi/10.1161/cir.151.suppl_1.P3151"
+  }
+ },
+ "subtitle": [],
+ "short-title": [],
+ "issued": {
+  "date-parts": [
+   [
+    2025,
+    3,
+    11
+   ]
+  ]
+ },
+ "references-count": 0,
+ "journal-issue": {
+  "issue": "Suppl_1",
+  "published-print": {
+   "date-parts": [
+    [
+     2025,
+     3,
+     11
+    ]
+   ]
+  }
+ },
+ "alternative-id": [
+  "10.1161/cir.151.suppl_1.P3151"
+ ],
+ "URL": "https://doi.org/10.1161/cir.151.suppl_1.p3151",
+ "relation": {},
+ "ISSN": [
+  "0009-7322",
+  "1524-4539"
+ ],
+ "issn-type": [
+  {
+   "type": "print",
+   "value": "0009-7322"
+  },
+  {
+   "type": "electronic",
+   "value": "1524-4539"
+  }
+ ],
+ "subject": [],
+ "published": {
+  "date-parts": [
+   [
+    2025,
+    3,
+    11
+   ]
+  ]
+ },
+ "assertion": [
+  {
+   "value": "2025-04-17",
+   "order": 3,
+   "name": "published",
+   "label": "Published",
+   "group": {
+    "name": "publication_history",
+    "label": "Publication History"
+   }
+  }
+ ],
+ "article-number": "cir.151.suppl_1.P3151"
+}

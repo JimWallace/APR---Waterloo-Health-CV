@@ -1,0 +1,231 @@
+{
+ "indexed": {
+  "date-parts": [
+   [
+    2026,
+    9,
+    22
+   ]
+  ],
+  "date-time": "2026-09-22T01:51:29Z",
+  "timestamp": 1790041889083,
+  "version": "4.0.1"
+ },
+ "publisher-location": "New York, NY, USA",
+ "reference-count": 8,
+ "publisher": "ACM",
+ "license": [
+  {
+   "start": {
+    "date-parts": [
+     [
+      2017,
+      10,
+      17
+     ]
+    ],
+    "date-time": "2017-10-17T00:00:00Z",
+    "timestamp": 1508198400000
+   },
+   "content-version": "vor",
+   "delay-in-days": 0,
+   "URL": "https://www.acm.org/publications/policies/copyright_policy#Background"
+  }
+ ],
+ "content-domain": {
+  "domain": [
+   "dl.acm.org"
+  ],
+  "crossmark-restriction": true
+ },
+ "short-container-title": [],
+ "published-print": {
+  "date-parts": [
+   [
+    2017,
+    10,
+    17
+   ]
+  ]
+ },
+ "DOI": "10.1145/3132272.3132282",
+ "type": "proceedings-article",
+ "created": {
+  "date-parts": [
+   [
+    2017,
+    10,
+    10
+   ]
+  ],
+  "date-time": "2017-10-10T12:20:22Z",
+  "timestamp": 1507638022000
+ },
+ "page": "348-353",
+ "update-policy": "https://doi.org/10.1145/crossmark-policy",
+ "source": "Crossref",
+ "is-referenced-by-count": 1,
+ "title": [
+  "Investigating Communication Grounding in Cross-Surface Interaction"
+ ],
+ "prefix": "10.1145",
+ "author": [
+  {
+   "given": "Leila",
+   "family": "Homaeian",
+   "sequence": "first",
+   "affiliation": [
+    {
+     "name": "Systems Design Engineering, University of Waterloo, Waterloo, ON, Canada"
+    }
+   ],
+   "role": [
+    {
+     "vocabulary": "crossref",
+     "role": "author"
+    }
+   ]
+  },
+  {
+   "given": "Nippun",
+   "family": "Goyal",
+   "sequence": "additional",
+   "affiliation": [
+    {
+     "name": "Systems Design Engineering, University of Waterloo, Waterloo, ON, Canada"
+    }
+   ],
+   "role": [
+    {
+     "vocabulary": "crossref",
+     "role": "author"
+    }
+   ]
+  },
+  {
+   "given": "James R.",
+   "family": "Wallace",
+   "sequence": "additional",
+   "affiliation": [
+    {
+     "name": "School of Public Health and Health Systems, University of Waterloo, Waterloo, ON, Canada"
+    }
+   ],
+   "role": [
+    {
+     "vocabulary": "crossref",
+     "role": "author"
+    }
+   ]
+  },
+  {
+   "given": "Stacey D.",
+   "family": "Scott",
+   "sequence": "additional",
+   "affiliation": [
+    {
+     "name": "School of Computer Science, University of Guelph, Guelph, ON, Canada; Systems Design Engineering, University of Waterloo, Waterloo, ON, Canada"
+    }
+   ],
+   "role": [
+    {
+     "vocabulary": "crossref",
+     "role": "author"
+    }
+   ]
+  }
+ ],
+ "member": "320",
+ "published-online": {
+  "date-parts": [
+   [
+    2017,
+    10,
+    17
+   ]
+  ]
+ },
+ "event": {
+  "name": "ISS '17: Interactive Surfaces and Spaces",
+  "location": "Brighton United Kingdom",
+  "acronym": "ISS '17",
+  "sponsor": [
+   "SIGCHI ACM Special Interest Group on Computer-Human Interaction"
+  ]
+ },
+ "container-title": [
+  "Proceedings of the 2017 ACM International Conference on Interactive Surfaces and Spaces"
+ ],
+ "original-title": [],
+ "link": [
+  {
+   "URL": "https://dl.acm.org/doi/10.1145/3132272.3132282",
+   "content-type": "unspecified",
+   "content-version": "vor",
+   "intended-application": "text-mining"
+  },
+  {
+   "URL": "https://dl.acm.org/doi/pdf/10.1145/3132272.3132282",
+   "content-type": "unspecified",
+   "content-version": "vor",
+   "intended-application": "similarity-checking"
+  }
+ ],
+ "deposited": {
+  "date-parts": [
+   [
+    2025,
+    6,
+    18
+   ]
+  ],
+  "date-time": "2025-06-18T03:37:10Z",
+  "timestamp": 1750217830000
+ },
+ "score": 1,
+ "resource": {
+  "primary": {
+   "URL": "https://dl.acm.org/doi/10.1145/3132272.3132282"
+  }
+ },
+ "subtitle": [],
+ "short-title": [],
+ "issued": {
+  "date-parts": [
+   [
+    2017,
+    10,
+    17
+   ]
+  ]
+ },
+ "references-count": 8,
+ "alternative-id": [
+  "10.1145/3132272.3132282",
+  "10.1145/3132272"
+ ],
+ "URL": "https://doi.org/10.1145/3132272.3132282",
+ "relation": {},
+ "subject": [],
+ "published": {
+  "date-parts": [
+   [
+    2017,
+    10,
+    17
+   ]
+  ]
+ },
+ "assertion": [
+  {
+   "value": "2017-10-17",
+   "order": 2,
+   "name": "published",
+   "label": "Published",
+   "group": {
+    "name": "publication_history",
+    "label": "Publication History"
+   }
+  }
+ ]
+}

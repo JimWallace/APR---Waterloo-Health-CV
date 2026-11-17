@@ -1,0 +1,193 @@
+{
+ "indexed": {
+  "date-parts": [
+   [
+    2026,
+    11,
+    12
+   ]
+  ],
+  "date-time": "2026-11-12T11:59:03Z",
+  "timestamp": 1794484743690,
+  "version": "4.9.1"
+ },
+ "publisher-location": "New York, NY, USA",
+ "reference-count": 45,
+ "publisher": "ACM",
+ "funder": [
+  {
+   "name": "National Sciences and Engineering Reseach Council",
+   "award": [
+    "2022-03268"
+   ],
+   "award-info": [
+    {
+     "award-number": [
+      "2022-03268"
+     ]
+    }
+   ],
+   "id": [
+    {
+     "id": "https://ror.org/00zgdb249",
+     "id-type": "ROR",
+     "asserted-by": "crossref"
+    }
+   ]
+  }
+ ],
+ "content-domain": {
+  "domain": [
+   "dl.acm.org"
+  ],
+  "crossmark-restriction": true
+ },
+ "short-container-title": [],
+ "published-print": {
+  "date-parts": [
+   [
+    2025,
+    7,
+    8
+   ]
+  ]
+ },
+ "DOI": "10.1145/3719160.3735657",
+ "type": "proceedings-article",
+ "created": {
+  "date-parts": [
+   [
+    2025,
+    7,
+    5
+   ]
+  ],
+  "date-time": "2025-07-05T06:27:39Z",
+  "timestamp": 1751696859000
+ },
+ "page": "1-7",
+ "update-policy": "https://doi.org/10.1145/crossmark-policy",
+ "source": "Crossref",
+ "is-referenced-by-count": 10,
+ "title": [
+  "DeTAILS: Deep Thematic Analysis with Iterative LLM Support"
+ ],
+ "prefix": "10.1145",
+ "author": [
+  {
+   "ORCID": "https://orcid.org/0000-0003-1892-0668",
+   "authenticated-orcid": false,
+   "given": "Ansh",
+   "family": "Sharma",
+   "sequence": "first",
+   "affiliation": [
+    {
+     "name": "David R. Cheriton School of Computer Science, University of Waterloo, Waterloo, Ontario, Canada"
+    }
+   ],
+   "role": [
+    {
+     "vocabulary": "crossref",
+     "role": "author"
+    }
+   ]
+  },
+  {
+   "ORCID": "https://orcid.org/0000-0002-5162-0256",
+   "authenticated-orcid": false,
+   "given": "James R",
+   "family": "Wallace",
+   "sequence": "additional",
+   "affiliation": [
+    {
+     "name": "School of Public Health Sciences, University of Waterloo, Waterloo, Ontario, Canada"
+    }
+   ],
+   "role": [
+    {
+     "vocabulary": "crossref",
+     "role": "author"
+    }
+   ]
+  }
+ ],
+ "member": "320",
+ "published-online": {
+  "date-parts": [
+   [
+    2025,
+    7,
+    7
+   ]
+  ]
+ },
+ "event": {
+  "name": "CUI '25: Proceedings of the 7th ACM Conference on Conversational User Interfaces",
+  "location": "Waterloo ON Canada",
+  "acronym": "CUI '25",
+  "sponsor": [
+   "SIGCHI ACM Special Interest Group on Computer-Human Interaction"
+  ]
+ },
+ "container-title": [
+  "Proceedings of the 7th ACM Conference on Conversational User Interfaces"
+ ],
+ "original-title": [],
+ "deposited": {
+  "date-parts": [
+   [
+    2025,
+    7,
+    5
+   ]
+  ],
+  "date-time": "2025-07-05T06:33:28Z",
+  "timestamp": 1751697208000
+ },
+ "score": 1,
+ "resource": {
+  "primary": {
+   "URL": "https://dl.acm.org/doi/10.1145/3719160.3735657"
+  }
+ },
+ "subtitle": [],
+ "short-title": [],
+ "issued": {
+  "date-parts": [
+   [
+    2025,
+    7,
+    7
+   ]
+  ]
+ },
+ "references-count": 45,
+ "alternative-id": [
+  "10.1145/3719160.3735657",
+  "10.1145/3719160"
+ ],
+ "URL": "https://doi.org/10.1145/3719160.3735657",
+ "relation": {},
+ "subject": [],
+ "published": {
+  "date-parts": [
+   [
+    2025,
+    7,
+    7
+   ]
+  ]
+ },
+ "assertion": [
+  {
+   "value": "2025-07-07",
+   "order": 3,
+   "name": "published",
+   "label": "Published",
+   "group": {
+    "name": "publication_history",
+    "label": "Publication History"
+   }
+  }
+ ]
+}

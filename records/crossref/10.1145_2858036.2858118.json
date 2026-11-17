@@ -1,0 +1,222 @@
+{
+ "indexed": {
+  "date-parts": [
+   [
+    2026,
+    9,
+    27
+   ]
+  ],
+  "date-time": "2026-09-27T13:50:28Z",
+  "timestamp": 1790517028810,
+  "version": "4.1.0"
+ },
+ "publisher-location": "New York, NY, USA",
+ "reference-count": 30,
+ "publisher": "ACM",
+ "license": [
+  {
+   "start": {
+    "date-parts": [
+     [
+      2016,
+      5,
+      7
+     ]
+    ],
+    "date-time": "2016-05-07T00:00:00Z",
+    "timestamp": 1462579200000
+   },
+   "content-version": "vor",
+   "delay-in-days": 0,
+   "URL": "https://www.acm.org/publications/policies/copyright_policy#Background"
+  }
+ ],
+ "funder": [
+  {
+   "name": "NSERC"
+  }
+ ],
+ "content-domain": {
+  "domain": [
+   "dl.acm.org"
+  ],
+  "crossmark-restriction": true
+ },
+ "short-container-title": [],
+ "published-print": {
+  "date-parts": [
+   [
+    2016,
+    5,
+    7
+   ]
+  ]
+ },
+ "DOI": "10.1145/2858036.2858118",
+ "type": "proceedings-article",
+ "created": {
+  "date-parts": [
+   [
+    2016,
+    5,
+    5
+   ]
+  ],
+  "date-time": "2016-05-05T14:08:22Z",
+  "timestamp": 1462457302000
+ },
+ "page": "2087-2092",
+ "update-policy": "https://doi.org/10.1145/crossmark-policy",
+ "source": "Crossref",
+ "is-referenced-by-count": 25,
+ "title": [
+  "Creating Your Bubble"
+ ],
+ "prefix": "10.1145",
+ "author": [
+  {
+   "given": "James R.",
+   "family": "Wallace",
+   "sequence": "first",
+   "affiliation": [
+    {
+     "name": "University of Waterloo, Waterloo, ON, Canada"
+    }
+   ],
+   "role": [
+    {
+     "vocabulary": "crossref",
+     "role": "author"
+    }
+   ]
+  },
+  {
+   "given": "Nancy",
+   "family": "Iskander",
+   "sequence": "additional",
+   "affiliation": [
+    {
+     "name": "University of Waterloo, Waterloo, Canada"
+    }
+   ],
+   "role": [
+    {
+     "vocabulary": "crossref",
+     "role": "author"
+    }
+   ]
+  },
+  {
+   "given": "Edward",
+   "family": "Lank",
+   "sequence": "additional",
+   "affiliation": [
+    {
+     "name": "University of Waterloo, Waterloo, Canada"
+    }
+   ],
+   "role": [
+    {
+     "vocabulary": "crossref",
+     "role": "author"
+    }
+   ]
+  }
+ ],
+ "member": "320",
+ "published-online": {
+  "date-parts": [
+   [
+    2016,
+    5,
+    7
+   ]
+  ]
+ },
+ "event": {
+  "name": "CHI'16: CHI Conference on Human Factors in Computing Systems",
+  "location": "San Jose California USA",
+  "acronym": "CHI'16",
+  "sponsor": [
+   "SIGCHI ACM Special Interest Group on Computer-Human Interaction"
+  ]
+ },
+ "container-title": [
+  "Proceedings of the 2016 CHI Conference on Human Factors in Computing Systems"
+ ],
+ "original-title": [],
+ "link": [
+  {
+   "URL": "https://dl.acm.org/doi/10.1145/2858036.2858118",
+   "content-type": "unspecified",
+   "content-version": "vor",
+   "intended-application": "text-mining"
+  },
+  {
+   "URL": "https://dl.acm.org/doi/pdf/10.1145/2858036.2858118",
+   "content-type": "unspecified",
+   "content-version": "vor",
+   "intended-application": "similarity-checking"
+  }
+ ],
+ "deposited": {
+  "date-parts": [
+   [
+    2025,
+    6,
+    18
+   ]
+  ],
+  "date-time": "2025-06-18T04:54:10Z",
+  "timestamp": 1750222450000
+ },
+ "score": 1,
+ "resource": {
+  "primary": {
+   "URL": "https://dl.acm.org/doi/10.1145/2858036.2858118"
+  }
+ },
+ "subtitle": [
+  "Personal Space On and Around Large Public Displays"
+ ],
+ "short-title": [],
+ "issued": {
+  "date-parts": [
+   [
+    2016,
+    5,
+    7
+   ]
+  ]
+ },
+ "references-count": 30,
+ "alternative-id": [
+  "10.1145/2858036.2858118",
+  "10.1145/2858036"
+ ],
+ "URL": "https://doi.org/10.1145/2858036.2858118",
+ "relation": {},
+ "subject": [],
+ "published": {
+  "date-parts": [
+   [
+    2016,
+    5,
+    7
+   ]
+  ]
+ },
+ "assertion": [
+  {
+   "value": "2016-05-07",
+   "order": 2,
+   "name": "published",
+   "label": "Published",
+   "group": {
+    "name": "publication_history",
+    "label": "Publication History"
+   }
+  }
+ ]
+}

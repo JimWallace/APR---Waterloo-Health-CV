@@ -1,0 +1,249 @@
+{
+ "indexed": {
+  "date-parts": [
+   [
+    2026,
+    9,
+    21
+   ]
+  ],
+  "date-time": "2026-09-21T16:57:50Z",
+  "timestamp": 1790009870666,
+  "version": "4.0.1"
+ },
+ "publisher-location": "New York, NY, USA",
+ "reference-count": 15,
+ "publisher": "ACM",
+ "license": [
+  {
+   "start": {
+    "date-parts": [
+     [
+      2015,
+      2,
+      28
+     ]
+    ],
+    "date-time": "2015-02-28T00:00:00Z",
+    "timestamp": 1425081600000
+   },
+   "content-version": "vor",
+   "delay-in-days": 0,
+   "URL": "https://www.acm.org/publications/policies/copyright_policy#Background"
+  }
+ ],
+ "content-domain": {
+  "domain": [
+   "dl.acm.org"
+  ],
+  "crossmark-restriction": true
+ },
+ "short-container-title": [],
+ "published-print": {
+  "date-parts": [
+   [
+    2015,
+    2,
+    28
+   ]
+  ]
+ },
+ "DOI": "10.1145/2685553.2685564",
+ "type": "proceedings-article",
+ "created": {
+  "date-parts": [
+   [
+    2015,
+    2,
+    24
+   ]
+  ],
+  "date-time": "2015-02-24T14:09:31Z",
+  "timestamp": 1424786971000
+ },
+ "page": "319-324",
+ "update-policy": "https://doi.org/10.1145/crossmark-policy",
+ "source": "Crossref",
+ "is-referenced-by-count": 15,
+ "title": [
+  "\"Local Remote\" Collaboration"
+ ],
+ "prefix": "10.1145",
+ "author": [
+  {
+   "given": "Stacey D.",
+   "family": "Scott",
+   "sequence": "first",
+   "affiliation": [
+    {
+     "name": "University of Waterloo, Waterloo, ON, Canada"
+    }
+   ],
+   "role": [
+    {
+     "vocabulary": "crossref",
+     "role": "author"
+    }
+   ]
+  },
+  {
+   "given": "T.C. Nicholas",
+   "family": "Graham",
+   "sequence": "additional",
+   "affiliation": [
+    {
+     "name": "Queen's University, Kingston, ON, Canada"
+    }
+   ],
+   "role": [
+    {
+     "vocabulary": "crossref",
+     "role": "author"
+    }
+   ]
+  },
+  {
+   "given": "James R.",
+   "family": "Wallace",
+   "sequence": "additional",
+   "affiliation": [
+    {
+     "name": "University of Waterloo, Waterloo, ON, Canada"
+    }
+   ],
+   "role": [
+    {
+     "vocabulary": "crossref",
+     "role": "author"
+    }
+   ]
+  },
+  {
+   "given": "Mark",
+   "family": "Hancock",
+   "sequence": "additional",
+   "affiliation": [
+    {
+     "name": "University of Waterloo, Waterloo, ON, Canada"
+    }
+   ],
+   "role": [
+    {
+     "vocabulary": "crossref",
+     "role": "author"
+    }
+   ]
+  },
+  {
+   "given": "Miguel",
+   "family": "Nacenta",
+   "sequence": "additional",
+   "affiliation": [
+    {
+     "name": "University of St. Andrews, Fife, Scotland Uk"
+    }
+   ],
+   "role": [
+    {
+     "vocabulary": "crossref",
+     "role": "author"
+    }
+   ]
+  }
+ ],
+ "member": "320",
+ "published-online": {
+  "date-parts": [
+   [
+    2015,
+    2,
+    28
+   ]
+  ]
+ },
+ "event": {
+  "name": "CSCW '15: Computer Supported Cooperative Work and Social Computing",
+  "location": "Vancouver BC Canada",
+  "acronym": "CSCW '15",
+  "sponsor": [
+   "SIGCHI ACM Special Interest Group on Computer-Human Interaction"
+  ]
+ },
+ "container-title": [
+  "Proceedings of the 18th ACM Conference Companion on Computer Supported Cooperative Work &amp; Social Computing"
+ ],
+ "original-title": [],
+ "link": [
+  {
+   "URL": "https://dl.acm.org/doi/10.1145/2685553.2685564",
+   "content-type": "unspecified",
+   "content-version": "vor",
+   "intended-application": "text-mining"
+  },
+  {
+   "URL": "https://dl.acm.org/doi/pdf/10.1145/2685553.2685564",
+   "content-type": "unspecified",
+   "content-version": "vor",
+   "intended-application": "similarity-checking"
+  }
+ ],
+ "deposited": {
+  "date-parts": [
+   [
+    2025,
+    6,
+    18
+   ]
+  ],
+  "date-time": "2025-06-18T06:13:44Z",
+  "timestamp": 1750227224000
+ },
+ "score": 1,
+ "resource": {
+  "primary": {
+   "URL": "https://dl.acm.org/doi/10.1145/2685553.2685564"
+  }
+ },
+ "subtitle": [
+  "Applying Remote Group AwarenessTechniques to Co-located Settings"
+ ],
+ "short-title": [],
+ "issued": {
+  "date-parts": [
+   [
+    2015,
+    2,
+    28
+   ]
+  ]
+ },
+ "references-count": 15,
+ "alternative-id": [
+  "10.1145/2685553.2685564",
+  "10.1145/2685553"
+ ],
+ "URL": "https://doi.org/10.1145/2685553.2685564",
+ "relation": {},
+ "subject": [],
+ "published": {
+  "date-parts": [
+   [
+    2015,
+    2,
+    28
+   ]
+  ]
+ },
+ "assertion": [
+  {
+   "value": "2015-02-28",
+   "order": 2,
+   "name": "published",
+   "label": "Published",
+   "group": {
+    "name": "publication_history",
+    "label": "Publication History"
+   }
+  }
+ ]
+}

@@ -1,0 +1,267 @@
+{
+ "indexed": {
+  "date-parts": [
+   [
+    2026,
+    10,
+    23
+   ]
+  ],
+  "date-time": "2026-10-23T23:46:03Z",
+  "timestamp": 1792799163728,
+  "version": "4.5.0"
+ },
+ "publisher-location": "New York, NY, USA",
+ "reference-count": 53,
+ "publisher": "ACM",
+ "license": [
+  {
+   "start": {
+    "date-parts": [
+     [
+      2014,
+      12,
+      2
+     ]
+    ],
+    "date-time": "2014-12-02T00:00:00Z",
+    "timestamp": 1417478400000
+   },
+   "content-version": "vor",
+   "delay-in-days": 0,
+   "URL": "https://www.acm.org/publications/policies/copyright_policy#Background"
+  }
+ ],
+ "funder": [
+  {
+   "name": "Government of Canada (NSERC Discovery Grants Program, NCE-GRAND)",
+   "id": [
+    {
+     "id": "https://ror.org/010q4q527",
+     "id-type": "ROR",
+     "asserted-by": "crossref"
+    }
+   ]
+  },
+  {
+   "name": "Ontario (ORF-RE Program)"
+  },
+  {
+   "name": "Google Research (Faculty Fellowship Program)",
+   "id": [
+    {
+     "id": "https://ror.org/00njsd438",
+     "id-type": "ROR",
+     "asserted-by": "crossref"
+    }
+   ]
+  }
+ ],
+ "content-domain": {
+  "domain": [
+   "dl.acm.org"
+  ],
+  "crossmark-restriction": true
+ },
+ "short-container-title": [],
+ "published-print": {
+  "date-parts": [
+   [
+    2014,
+    12,
+    2
+   ]
+  ]
+ },
+ "DOI": "10.1145/2686612.2686629",
+ "type": "proceedings-article",
+ "created": {
+  "date-parts": [
+   [
+    2015,
+    1,
+    20
+   ]
+  ],
+  "date-time": "2015-01-20T08:34:29Z",
+  "timestamp": 1421742869000
+ },
+ "page": "119-128",
+ "update-policy": "https://doi.org/10.1145/crossmark-policy",
+ "source": "Crossref",
+ "is-referenced-by-count": 25,
+ "title": [
+  "Smartcasting"
+ ],
+ "prefix": "10.1145",
+ "author": [
+  {
+   "given": "Krzysztof",
+   "family": "Pietroszek",
+   "sequence": "first",
+   "affiliation": [
+    {
+     "name": "University of Waterloo, Waterloo, ON, Canada"
+    }
+   ],
+   "role": [
+    {
+     "vocabulary": "crossref",
+     "role": "author"
+    }
+   ]
+  },
+  {
+   "given": "Anastasia",
+   "family": "Kuzminykh",
+   "sequence": "additional",
+   "affiliation": [
+    {
+     "name": "University of Waterloo, Waterloo, ON, Canada"
+    }
+   ],
+   "role": [
+    {
+     "vocabulary": "crossref",
+     "role": "author"
+    }
+   ]
+  },
+  {
+   "given": "James R.",
+   "family": "Wallace",
+   "sequence": "additional",
+   "affiliation": [
+    {
+     "name": "University of Waterloo, Waterloo, ON, Canada"
+    }
+   ],
+   "role": [
+    {
+     "vocabulary": "crossref",
+     "role": "author"
+    }
+   ]
+  },
+  {
+   "given": "Edward",
+   "family": "Lank",
+   "sequence": "additional",
+   "affiliation": [
+    {
+     "name": "University of Waterloo, Waterloo, ON, Canada"
+    }
+   ],
+   "role": [
+    {
+     "vocabulary": "crossref",
+     "role": "author"
+    }
+   ]
+  }
+ ],
+ "member": "320",
+ "published-online": {
+  "date-parts": [
+   [
+    2014,
+    12,
+    2
+   ]
+  ]
+ },
+ "event": {
+  "name": "OzCHI '14: the Future of Design",
+  "location": "Sydney New South Wales Australia",
+  "acronym": "OzCHI '14",
+  "sponsor": [
+   "U1 U1 PTY LTD",
+   "IDHuP Interaction Design and Human Practice Lab",
+   "UTS-HCTDRS The UTS Human Centred Technology Design Research Strength",
+   "CSIRO",
+   "QUT",
+   "HFESA Human Factors and Ergonomics Society of Australia Inc.",
+   "University of Technology Sydney",
+   "IDF The Interaction Design Foundation",
+   "CHISIG Computer-Human Interaction Special Interest Group, Human Factors & Ergonomics Society of Australia",
+   "SIGCHI ACM Special Interest Group on Computer-Human Interaction"
+  ]
+ },
+ "container-title": [
+  "Proceedings of the 26th Australian Computer-Human Interaction Conference on Designing Futures: the Future of Design"
+ ],
+ "original-title": [],
+ "link": [
+  {
+   "URL": "https://dl.acm.org/doi/10.1145/2686612.2686629",
+   "content-type": "unspecified",
+   "content-version": "vor",
+   "intended-application": "text-mining"
+  },
+  {
+   "URL": "https://dl.acm.org/doi/pdf/10.1145/2686612.2686629",
+   "content-type": "unspecified",
+   "content-version": "vor",
+   "intended-application": "similarity-checking"
+  }
+ ],
+ "deposited": {
+  "date-parts": [
+   [
+    2025,
+    6,
+    18
+   ]
+  ],
+  "date-time": "2025-06-18T02:13:22Z",
+  "timestamp": 1750212802000
+ },
+ "score": 1,
+ "resource": {
+  "primary": {
+   "URL": "https://dl.acm.org/doi/10.1145/2686612.2686629"
+  }
+ },
+ "subtitle": [
+  "a discount 3D interaction technique for public displays"
+ ],
+ "short-title": [],
+ "issued": {
+  "date-parts": [
+   [
+    2014,
+    12,
+    2
+   ]
+  ]
+ },
+ "references-count": 53,
+ "alternative-id": [
+  "10.1145/2686612.2686629",
+  "10.1145/2686612"
+ ],
+ "URL": "https://doi.org/10.1145/2686612.2686629",
+ "relation": {},
+ "subject": [],
+ "published": {
+  "date-parts": [
+   [
+    2014,
+    12,
+    2
+   ]
+  ]
+ },
+ "assertion": [
+  {
+   "value": "2014-12-02",
+   "order": 2,
+   "name": "published",
+   "label": "Published",
+   "group": {
+    "name": "publication_history",
+    "label": "Publication History"
+   }
+  }
+ ]
+}

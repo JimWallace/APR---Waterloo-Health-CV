@@ -1,0 +1,311 @@
+{
+ "indexed": {
+  "date-parts": [
+   [
+    2026,
+    10,
+    31
+   ]
+  ],
+  "date-time": "2026-10-31T08:10:54Z",
+  "timestamp": 1793434254317,
+  "version": "4.5.0"
+ },
+ "reference-count": 111,
+ "publisher": "Association for Computing Machinery (ACM)",
+ "issue": "4",
+ "license": [
+  {
+   "start": {
+    "date-parts": [
+     [
+      2023,
+      8,
+      31
+     ]
+    ],
+    "date-time": "2023-08-31T00:00:00Z",
+    "timestamp": 1693440000000
+   },
+   "content-version": "vor",
+   "delay-in-days": 0,
+   "URL": "https://www.acm.org/publications/policies/copyright_policy#Background"
+  }
+ ],
+ "funder": [
+  {
+   "DOI": "10.13039/501100000038",
+   "name": "Natural Sciences and Engineering Research Council of Canada",
+   "doi-asserted-by": "crossref",
+   "id": [
+    {
+     "id": "10.13039/501100000038",
+     "id-type": "DOI",
+     "asserted-by": "crossref"
+    }
+   ]
+  },
+  {
+   "name": "NSERC Discovery",
+   "award": [
+    "2015-06585"
+   ],
+   "award-info": [
+    {
+     "award-number": [
+      "2015-06585"
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Saskatchewan-Waterloo Games User Research (SWaGUR) CREATE"
+  }
+ ],
+ "content-domain": {
+  "domain": [
+   "dl.acm.org"
+  ],
+  "crossmark-restriction": true
+ },
+ "short-container-title": [
+  "ACM Trans. Comput.-Hum. Interact."
+ ],
+ "published-print": {
+  "date-parts": [
+   [
+    2023,
+    8,
+    31
+   ]
+  ]
+ },
+ "abstract": "<jats:p>Technology increasingly mediates our everyday interactions with food, ranging from its production and handling to the experience of preparing and eating it with friends and family. However, it is unclear whether these technologies support decisions conducive to a healthy diet. In this work, we devised the first heuristics for evaluating a technology’s support for food literacy: the interconnected combination of awareness, knowledge, and skills to empower individuals to make informed food choices. We applied an iterative, expert-driven process to derive and refine our heuristics, starting with an established food literacy framework. We then conducted evaluations with Nutrition and HCI experts to show how the heuristics support the summative and formative design and evaluations of food-related technologies. We show that the heuristics are valuable design tools and that they help participants reflect on food literacy challenges. We also discuss tensions between nutrition and HCI best practices.</jats:p>",
+ "DOI": "10.1145/3565482",
+ "type": "journal-article",
+ "created": {
+  "date-parts": [
+   [
+    2022,
+    10,
+    4
+   ]
+  ],
+  "date-time": "2022-10-04T11:04:26Z",
+  "timestamp": 1664881466000
+ },
+ "page": "1-46",
+ "update-policy": "https://doi.org/10.1145/crossmark-policy",
+ "source": "Crossref",
+ "is-referenced-by-count": 9,
+ "title": [
+  "Design and Evaluation of Technologies for Informed Food Choices"
+ ],
+ "prefix": "10.1145",
+ "volume": "30",
+ "author": [
+  {
+   "ORCID": "https://orcid.org/0000-0002-1770-0922",
+   "authenticated-orcid": false,
+   "given": "Marcela",
+   "family": "Bomfim",
+   "sequence": "first",
+   "affiliation": [
+    {
+     "name": "University of Waterloo"
+    }
+   ],
+   "role": [
+    {
+     "vocabulary": "crossref",
+     "role": "author"
+    }
+   ]
+  },
+  {
+   "ORCID": "https://orcid.org/0000-0002-5977-5586",
+   "authenticated-orcid": false,
+   "given": "Erin",
+   "family": "Wong",
+   "sequence": "additional",
+   "affiliation": [
+    {
+     "name": "University of Waterloo"
+    }
+   ],
+   "role": [
+    {
+     "vocabulary": "crossref",
+     "role": "author"
+    }
+   ]
+  },
+  {
+   "ORCID": "https://orcid.org/0000-0001-8187-0371",
+   "authenticated-orcid": false,
+   "given": "Paige",
+   "family": "Liang",
+   "sequence": "additional",
+   "affiliation": [
+    {
+     "name": "University of Waterloo"
+    }
+   ],
+   "role": [
+    {
+     "vocabulary": "crossref",
+     "role": "author"
+    }
+   ]
+  },
+  {
+   "ORCID": "https://orcid.org/0000-0002-5162-0256",
+   "authenticated-orcid": false,
+   "given": "James",
+   "family": "Wallace",
+   "sequence": "additional",
+   "affiliation": [
+    {
+     "name": "University of Waterloo"
+    }
+   ],
+   "role": [
+    {
+     "vocabulary": "crossref",
+     "role": "author"
+    }
+   ]
+  }
+ ],
+ "member": "320",
+ "published-online": {
+  "date-parts": [
+   [
+    2023,
+    9,
+    11
+   ]
+  ]
+ },
+ "container-title": [
+  "ACM Transactions on Computer-Human Interaction"
+ ],
+ "original-title": [],
+ "language": "en",
+ "link": [
+  {
+   "URL": "https://dl.acm.org/doi/10.1145/3565482",
+   "content-type": "unspecified",
+   "content-version": "vor",
+   "intended-application": "text-mining"
+  },
+  {
+   "URL": "https://dl.acm.org/doi/pdf/10.1145/3565482",
+   "content-type": "unspecified",
+   "content-version": "vor",
+   "intended-application": "similarity-checking"
+  }
+ ],
+ "deposited": {
+  "date-parts": [
+   [
+    2025,
+    6,
+    17
+   ]
+  ],
+  "date-time": "2025-06-17T17:48:50Z",
+  "timestamp": 1750182530000
+ },
+ "score": 1,
+ "resource": {
+  "primary": {
+   "URL": "https://dl.acm.org/doi/10.1145/3565482"
+  }
+ },
+ "subtitle": [],
+ "short-title": [],
+ "issued": {
+  "date-parts": [
+   [
+    2023,
+    8,
+    31
+   ]
+  ]
+ },
+ "references-count": 111,
+ "journal-issue": {
+  "issue": "4",
+  "published-print": {
+   "date-parts": [
+    [
+     2023,
+     8,
+     31
+    ]
+   ]
+  }
+ },
+ "alternative-id": [
+  "10.1145/3565482"
+ ],
+ "URL": "https://doi.org/10.1145/3565482",
+ "relation": {},
+ "ISSN": [
+  "1073-0516",
+  "1557-7325"
+ ],
+ "issn-type": [
+  {
+   "value": "1073-0516",
+   "type": "print"
+  },
+  {
+   "value": "1557-7325",
+   "type": "electronic"
+  }
+ ],
+ "subject": [],
+ "published": {
+  "date-parts": [
+   [
+    2023,
+    8,
+    31
+   ]
+  ]
+ },
+ "assertion": [
+  {
+   "value": "2022-02-25",
+   "order": 0,
+   "name": "received",
+   "label": "Received",
+   "group": {
+    "name": "publication_history",
+    "label": "Publication History"
+   }
+  },
+  {
+   "value": "2022-09-07",
+   "order": 1,
+   "name": "accepted",
+   "label": "Accepted",
+   "group": {
+    "name": "publication_history",
+    "label": "Publication History"
+   }
+  },
+  {
+   "value": "2023-09-11",
+   "order": 2,
+   "name": "published",
+   "label": "Published",
+   "group": {
+    "name": "publication_history",
+    "label": "Publication History"
+   }
+  }
+ ]
+}

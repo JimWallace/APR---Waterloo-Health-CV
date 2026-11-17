@@ -1,0 +1,284 @@
+{
+ "indexed": {
+  "date-parts": [
+   [
+    2026,
+    10,
+    23
+   ]
+  ],
+  "date-time": "2026-10-23T20:31:00Z",
+  "timestamp": 1792787460695,
+  "version": "4.5.0"
+ },
+ "reference-count": 81,
+ "publisher": "Association for Computing Machinery (ACM)",
+ "issue": "1",
+ "license": [
+  {
+   "start": {
+    "date-parts": [
+     [
+      2025,
+      1,
+      10
+     ]
+    ],
+    "date-time": "2025-01-10T00:00:00Z",
+    "timestamp": 1736467200000
+   },
+   "content-version": "vor",
+   "delay-in-days": 0,
+   "URL": "https://www.acm.org/publications/policies/copyright_policy#Background"
+  }
+ ],
+ "funder": [
+  {
+   "name": "NSERC Discovery Grants",
+   "award": [
+    "RGPIN-2018-05269 and RGPIN-2022-03268"
+   ],
+   "award-info": [
+    {
+     "award-number": [
+      "RGPIN-2018-05269 and RGPIN-2022-03268"
+     ]
+    }
+   ]
+  },
+  {
+   "name": "National Research Council Aging In Place Challenge Program",
+   "award": [
+    "Grant AiP-033-4"
+   ],
+   "award-info": [
+    {
+     "award-number": [
+      "Grant AiP-033-4"
+     ]
+    }
+   ]
+  }
+ ],
+ "content-domain": {
+  "domain": [
+   "dl.acm.org"
+  ],
+  "crossmark-restriction": true
+ },
+ "short-container-title": [
+  "Proc. ACM Hum.-Comput. Interact."
+ ],
+ "published-print": {
+  "date-parts": [
+   [
+    2025,
+    1,
+    10
+   ]
+  ]
+ },
+ "abstract": "<jats:p>Adult children often help their older parents maintain independence at home, and this informal caregiving can be overwhelming and challenging to balance with other aspects of life. Yet, adult children's requirements tend to be overlooked when designing technologies to foster aging in place. In this work, we use reflexive thematic analysis to study Reddit content to understand the experiences of adult caregivers and the issues that they face in supporting their parents. The pseudonymous data allowed us to explore three research questions: 1) What are the experiences of adult children as informal helpers for elderly parents? 2) How do adult children currently manage their role as informal helpers? and 3) How might digital technology facilitate communication between aging parents and adult children as informal helpers? Our findings lead to a number of design considerations for technologies that support adult children caring for parents who are aging in place, including: building common ground, establishing boundaries, addressing guilt, encouraging in-person communication, community support for adult children, and adapting to changes in role reciprocity.</jats:p>",
+ "DOI": "10.1145/3701187",
+ "type": "journal-article",
+ "created": {
+  "date-parts": [
+   [
+    2025,
+    1,
+    10
+   ]
+  ],
+  "date-time": "2025-01-10T16:06:46Z",
+  "timestamp": 1736525206000
+ },
+ "page": "1-25",
+ "update-policy": "https://doi.org/10.1145/crossmark-policy",
+ "source": "Crossref",
+ "is-referenced-by-count": 13,
+ "title": [
+  "Community Support for Aging in Place: A Computational Thematic Analysis of Discussions about Informal Care on Reddit"
+ ],
+ "prefix": "10.1145",
+ "volume": "9",
+ "author": [
+  {
+   "ORCID": "https://orcid.org/0000-0001-8190-0067",
+   "authenticated-orcid": false,
+   "given": "Leila",
+   "family": "Homaeian",
+   "sequence": "first",
+   "affiliation": [
+    {
+     "name": "University of Waterloo, Waterloo, ON, Canada"
+    }
+   ],
+   "role": [
+    {
+     "vocabulary": "crossref",
+     "role": "author"
+    }
+   ]
+  },
+  {
+   "ORCID": "https://orcid.org/0009-0008-3064-9536",
+   "authenticated-orcid": false,
+   "given": "Vanessa",
+   "family": "Duong",
+   "sequence": "additional",
+   "affiliation": [
+    {
+     "name": "University of Waterloo, Waterloo, ON, Canada"
+    }
+   ],
+   "role": [
+    {
+     "vocabulary": "crossref",
+     "role": "author"
+    }
+   ]
+  },
+  {
+   "ORCID": "https://orcid.org/0000-0002-9642-9666",
+   "authenticated-orcid": false,
+   "given": "Keiko",
+   "family": "Katsuragawa",
+   "sequence": "additional",
+   "affiliation": [
+    {
+     "name": "National Research Council Canada &amp; University of Waterloo, Waterloo, ON, Canada"
+    }
+   ],
+   "role": [
+    {
+     "vocabulary": "crossref",
+     "role": "author"
+    }
+   ]
+  },
+  {
+   "ORCID": "https://orcid.org/0000-0002-5162-0256",
+   "authenticated-orcid": false,
+   "given": "James R.",
+   "family": "Wallace",
+   "sequence": "additional",
+   "affiliation": [
+    {
+     "name": "University of Waterloo, Waterloo, ON, Canada"
+    }
+   ],
+   "role": [
+    {
+     "vocabulary": "crossref",
+     "role": "author"
+    }
+   ]
+  }
+ ],
+ "member": "320",
+ "published-online": {
+  "date-parts": [
+   [
+    2025,
+    1,
+    10
+   ]
+  ]
+ },
+ "container-title": [
+  "Proceedings of the ACM on Human-Computer Interaction"
+ ],
+ "original-title": [],
+ "language": "en",
+ "link": [
+  {
+   "URL": "https://dl.acm.org/doi/10.1145/3701187",
+   "content-type": "unspecified",
+   "content-version": "vor",
+   "intended-application": "text-mining"
+  },
+  {
+   "URL": "https://dl.acm.org/doi/pdf/10.1145/3701187",
+   "content-type": "unspecified",
+   "content-version": "vor",
+   "intended-application": "similarity-checking"
+  }
+ ],
+ "deposited": {
+  "date-parts": [
+   [
+    2025,
+    8,
+    22
+   ]
+  ],
+  "date-time": "2025-08-22T14:24:04Z",
+  "timestamp": 1755872644000
+ },
+ "score": 1,
+ "resource": {
+  "primary": {
+   "URL": "https://dl.acm.org/doi/10.1145/3701187"
+  }
+ },
+ "subtitle": [],
+ "short-title": [],
+ "issued": {
+  "date-parts": [
+   [
+    2025,
+    1,
+    10
+   ]
+  ]
+ },
+ "references-count": 81,
+ "journal-issue": {
+  "issue": "1",
+  "published-print": {
+   "date-parts": [
+    [
+     2025,
+     1,
+     10
+    ]
+   ]
+  }
+ },
+ "alternative-id": [
+  "10.1145/3701187"
+ ],
+ "URL": "https://doi.org/10.1145/3701187",
+ "relation": {},
+ "ISSN": [
+  "2573-0142"
+ ],
+ "issn-type": [
+  {
+   "value": "2573-0142",
+   "type": "electronic"
+  }
+ ],
+ "subject": [],
+ "published": {
+  "date-parts": [
+   [
+    2025,
+    1,
+    10
+   ]
+  ]
+ },
+ "assertion": [
+  {
+   "value": "2025-01-10",
+   "order": 3,
+   "name": "published",
+   "label": "Published",
+   "group": {
+    "name": "publication_history",
+    "label": "Publication History"
+   }
+  }
+ ]
+}

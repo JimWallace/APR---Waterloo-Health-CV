@@ -1,0 +1,265 @@
+{
+ "indexed": {
+  "date-parts": [
+   [
+    2026,
+    4,
+    25
+   ]
+  ],
+  "date-time": "2026-04-25T14:41:59Z",
+  "timestamp": 1777128119992,
+  "version": "3.51.4"
+ },
+ "reference-count": 72,
+ "publisher": "Association for Computing Machinery (ACM)",
+ "content-domain": {
+  "domain": [
+   "dl.acm.org"
+  ],
+  "crossmark-restriction": true
+ },
+ "short-container-title": [
+  "ACM Trans. Comput. Healthcare"
+ ],
+ "abstract": "<jats:p>\n                    Intimate Partner Violence (IPV) prevention efforts have traditionally focused on reactive responses and survivor support, often neglecting proactive strategies that address the gendered root causes of violence. This paper presents the design process of\n                    <jats:italic toggle=\"yes\">Bold Sky</jats:italic>\n                    , a gender-transformative interactive narrative game designed to engage young men (ages 18–25) in reflecting on healthy relationships and the social and gender norms that contribute to IPV.to foster healthier relationships and disrupt harmful masculinities Working with an interdisciplinary Advisory Committee of stakeholders, we explored how gender-transformative principles can inform narrative design and game mechanics. Through this design process, we identified five core design strategies including narrative complexity, perspective-shifting mechanics, emotion-driven feedback, and alignment with young men’s lived realities. These findings contribute to broader HCI efforts that explore games as tools for behaviour change, health equity, and critical reflection. Our work demonstrates how digital games can act as engaging gender-transformative environments, offering new avenues for engaging young men in IPV prevention.\n                  </jats:p>",
+ "DOI": "10.1145/3810242",
+ "type": "journal-article",
+ "created": {
+  "date-parts": [
+   [
+    2026,
+    4,
+    25
+   ]
+  ],
+  "date-time": "2026-04-25T13:54:44Z",
+  "timestamp": 1777125284000
+ },
+ "update-policy": "https://doi.org/10.1145/crossmark-policy",
+ "source": "Crossref",
+ "is-referenced-by-count": 0,
+ "title": [
+  "Preventing Intimate Partner Violence through Video Games: Designing a Gender-Transformative Health Intervention for Young Men"
+ ],
+ "prefix": "10.1145",
+ "author": [
+  {
+   "ORCID": "https://orcid.org/0000-0003-2036-535X",
+   "authenticated-orcid": false,
+   "given": "Veen",
+   "family": "Wong",
+   "sequence": "first",
+   "affiliation": [
+    {
+     "name": "University of Waterloo, Canada"
+    }
+   ],
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ]
+  },
+  {
+   "ORCID": "https://orcid.org/0009-0002-2138-1888",
+   "authenticated-orcid": false,
+   "given": "Laura",
+   "family": "Wallace Jarvis",
+   "sequence": "additional",
+   "affiliation": [
+    {
+     "name": "Renison University College, University of Waterloo, Canada"
+    }
+   ],
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ]
+  },
+  {
+   "ORCID": "https://orcid.org/0009-0001-7660-9459",
+   "authenticated-orcid": false,
+   "given": "Maham",
+   "family": "Kamal",
+   "sequence": "additional",
+   "affiliation": [
+    {
+     "name": "University of Waterloo, Canada"
+    }
+   ],
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ]
+  },
+  {
+   "ORCID": "https://orcid.org/0009-0007-8872-1839",
+   "authenticated-orcid": false,
+   "given": "Chris",
+   "family": "McNab",
+   "sequence": "additional",
+   "affiliation": [
+    {
+     "name": "Renison University College, University of Waterloo, Canada"
+    }
+   ],
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ]
+  },
+  {
+   "ORCID": "https://orcid.org/0000-0003-4374-3237",
+   "authenticated-orcid": false,
+   "given": "Cayley",
+   "family": "MacArthur",
+   "sequence": "additional",
+   "affiliation": [
+    {
+     "name": "University of Waterloo, Canada"
+    }
+   ],
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ]
+  },
+  {
+   "ORCID": "https://orcid.org/0000-0002-5162-0256",
+   "authenticated-orcid": false,
+   "given": "James R.",
+   "family": "Wallace",
+   "sequence": "additional",
+   "affiliation": [
+    {
+     "name": "University of Waterloo, Canada"
+    }
+   ],
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ]
+  }
+ ],
+ "member": "320",
+ "published-online": {
+  "date-parts": [
+   [
+    2026,
+    4,
+    25
+   ]
+  ]
+ },
+ "container-title": [
+  "ACM Transactions on Computing for Healthcare"
+ ],
+ "original-title": [],
+ "language": "en",
+ "link": [
+  {
+   "URL": "https://dl.acm.org/doi/pdf/10.1145/3810242",
+   "content-type": "unspecified",
+   "content-version": "vor",
+   "intended-application": "similarity-checking"
+  }
+ ],
+ "deposited": {
+  "date-parts": [
+   [
+    2026,
+    4,
+    25
+   ]
+  ],
+  "date-time": "2026-04-25T13:54:58Z",
+  "timestamp": 1777125298000
+ },
+ "score": 1,
+ "resource": {
+  "primary": {
+   "URL": "https://dl.acm.org/doi/10.1145/3810242"
+  }
+ },
+ "subtitle": [],
+ "short-title": [],
+ "issued": {
+  "date-parts": [
+   [
+    2026,
+    4,
+    25
+   ]
+  ]
+ },
+ "references-count": 72,
+ "alternative-id": [
+  "10.1145/3810242"
+ ],
+ "URL": "https://doi.org/10.1145/3810242",
+ "relation": {},
+ "ISSN": [
+  "2637-8051"
+ ],
+ "issn-type": [
+  {
+   "value": "2637-8051",
+   "type": "electronic"
+  }
+ ],
+ "subject": [],
+ "published": {
+  "date-parts": [
+   [
+    2026,
+    4,
+    25
+   ]
+  ]
+ },
+ "assertion": [
+  {
+   "value": "2025-06-08",
+   "order": 0,
+   "name": "received",
+   "label": "Received",
+   "group": {
+    "name": "publication_history",
+    "label": "Publication History"
+   }
+  },
+  {
+   "value": "2026-04-13",
+   "order": 2,
+   "name": "accepted",
+   "label": "Accepted",
+   "group": {
+    "name": "publication_history",
+    "label": "Publication History"
+   }
+  },
+  {
+   "value": "2026-04-25",
+   "order": 3,
+   "name": "published",
+   "label": "Published",
+   "group": {
+    "name": "publication_history",
+    "label": "Publication History"
+   }
+  }
+ ],
+ "article-number": "3810242"
+}

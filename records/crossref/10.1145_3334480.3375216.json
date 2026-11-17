@@ -1,0 +1,259 @@
+{
+ "indexed": {
+  "date-parts": [
+   [
+    2026,
+    10,
+    23
+   ]
+  ],
+  "date-time": "2026-10-23T20:29:47Z",
+  "timestamp": 1792787387811,
+  "version": "4.5.0"
+ },
+ "publisher-location": "New York, NY, USA",
+ "reference-count": 27,
+ "publisher": "ACM",
+ "license": [
+  {
+   "start": {
+    "date-parts": [
+     [
+      2020,
+      4,
+      25
+     ]
+    ],
+    "date-time": "2020-04-25T00:00:00Z",
+    "timestamp": 1587772800000
+   },
+   "content-version": "vor",
+   "delay-in-days": 0,
+   "URL": "https://www.acm.org/publications/policies/copyright_policy#Background"
+  }
+ ],
+ "funder": [
+  {
+   "name": "AGE-WELL NCE Inc., a member of the Networks of Centres of Excellence",
+   "id": [
+    {
+     "id": "https://ror.org/02edexj13",
+     "id-type": "ROR",
+     "asserted-by": "crossref"
+    }
+   ]
+  }
+ ],
+ "content-domain": {
+  "domain": [
+   "dl.acm.org"
+  ],
+  "crossmark-restriction": true
+ },
+ "short-container-title": [],
+ "published-print": {
+  "date-parts": [
+   [
+    2020,
+    4,
+    25
+   ]
+  ]
+ },
+ "DOI": "10.1145/3334480.3375216",
+ "type": "proceedings-article",
+ "created": {
+  "date-parts": [
+   [
+    2020,
+    5,
+    28
+   ]
+  ],
+  "date-time": "2020-05-28T06:15:46Z",
+  "timestamp": 1590646546000
+ },
+ "page": "1-8",
+ "update-policy": "https://doi.org/10.1145/crossmark-policy",
+ "source": "Crossref",
+ "is-referenced-by-count": 3,
+ "title": [
+  "Post-Hackathon Learning Circles: Supporting Lean Startup Development"
+ ],
+ "prefix": "10.1145",
+ "author": [
+  {
+   "given": "Tina",
+   "family": "Chan",
+   "sequence": "first",
+   "affiliation": [
+    {
+     "name": "University of Waterloo, Waterloo, ON, Canada"
+    }
+   ],
+   "role": [
+    {
+     "vocabulary": "crossref",
+     "role": "author"
+    }
+   ]
+  },
+  {
+   "given": "Josephine",
+   "family": "McMurray",
+   "sequence": "additional",
+   "affiliation": [
+    {
+     "name": "Wilfrid Laurier University, Brantford, ON, Canada"
+    }
+   ],
+   "role": [
+    {
+     "vocabulary": "crossref",
+     "role": "author"
+    }
+   ]
+  },
+  {
+   "given": "AnneMarie",
+   "family": "Levy",
+   "sequence": "additional",
+   "affiliation": [
+    {
+     "name": "Wilfrid Laurier University, Waterloo, ON, Canada"
+    }
+   ],
+   "role": [
+    {
+     "vocabulary": "crossref",
+     "role": "author"
+    }
+   ]
+  },
+  {
+   "given": "Heidi",
+   "family": "Sveistrup",
+   "sequence": "additional",
+   "affiliation": [
+    {
+     "name": "Bruyère Research Institute, Ottawa, ON, Canada"
+    }
+   ],
+   "role": [
+    {
+     "vocabulary": "crossref",
+     "role": "author"
+    }
+   ]
+  },
+  {
+   "given": "James",
+   "family": "Wallace",
+   "sequence": "additional",
+   "affiliation": [
+    {
+     "name": "University of Waterloo, Waterloo, ON, Canada"
+    }
+   ],
+   "role": [
+    {
+     "vocabulary": "crossref",
+     "role": "author"
+    }
+   ]
+  }
+ ],
+ "member": "320",
+ "published-online": {
+  "date-parts": [
+   [
+    2020,
+    4,
+    25
+   ]
+  ]
+ },
+ "event": {
+  "name": "CHI '20: CHI Conference on Human Factors in Computing Systems",
+  "location": "Honolulu HI USA",
+  "acronym": "CHI '20",
+  "sponsor": [
+   "SIGCHI ACM Special Interest Group on Computer-Human Interaction"
+  ]
+ },
+ "container-title": [
+  "Extended Abstracts of the 2020 CHI Conference on Human Factors in Computing Systems"
+ ],
+ "original-title": [],
+ "link": [
+  {
+   "URL": "https://dl.acm.org/doi/10.1145/3334480.3375216",
+   "content-type": "unspecified",
+   "content-version": "vor",
+   "intended-application": "text-mining"
+  },
+  {
+   "URL": "https://dl.acm.org/doi/pdf/10.1145/3334480.3375216",
+   "content-type": "unspecified",
+   "content-version": "vor",
+   "intended-application": "similarity-checking"
+  }
+ ],
+ "deposited": {
+  "date-parts": [
+   [
+    2026,
+    9,
+    21
+   ]
+  ],
+  "date-time": "2026-09-21T13:33:03Z",
+  "timestamp": 1789997583000
+ },
+ "score": 1,
+ "resource": {
+  "primary": {
+   "URL": "https://dl.acm.org/doi/10.1145/3334480.3375216"
+  }
+ },
+ "subtitle": [],
+ "short-title": [],
+ "issued": {
+  "date-parts": [
+   [
+    2020,
+    4,
+    25
+   ]
+  ]
+ },
+ "references-count": 27,
+ "alternative-id": [
+  "10.1145/3334480.3375216",
+  "10.1145/3334480"
+ ],
+ "URL": "https://doi.org/10.1145/3334480.3375216",
+ "relation": {},
+ "subject": [],
+ "published": {
+  "date-parts": [
+   [
+    2020,
+    4,
+    25
+   ]
+  ]
+ },
+ "assertion": [
+  {
+   "value": "2020-04-25",
+   "order": 3,
+   "name": "published",
+   "label": "Published",
+   "group": {
+    "name": "publication_history",
+    "label": "Publication History"
+   }
+  }
+ ]
+}
