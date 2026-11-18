@@ -285,14 +285,16 @@
   \fi\fi\fi\fi}
 
 % paint one entry from \apr@xs,\apr@ys (start) to \apr@xe,\apr@ye (end)
+% (only the marker for an entry with no fill colour, or for a table row,
+% whose fill is its \rowcolor)
 \def\apr@paint{%
-  \ifx\apr@markonly\@empty\else
-    \ifx\apr@style\apr@style@dots \apr@marker \fi
-  \else\ifx\apr@pc\@empty
-    \ifx\apr@style\apr@style@dots \apr@marker \fi
-  \else
+  \let\apr@tmp\apr@markonly
+  \ifx\apr@pc\@empty \def\apr@tmp{x}\fi
+  \ifx\apr@tmp\@empty
     \apr@paint@fill
-  \fi\fi}
+  \else
+    \ifx\apr@style\apr@style@dots \apr@marker \fi
+  \fi}
 \def\apr@paint@fill{%
   \ifdim\apr@L>\apr@xs \apr@L=\apr@xs \fi
   \apr@HD=\dimexpr\apr@H+\apr@D\relax
@@ -360,12 +362,20 @@
     \else\ifx\apr@pc\@empty \def\apr@tmpc{white}%
     \else \def\apr@tmpc{APRaward}\fi\fi}}
 \newdimen\apr@edge  \apr@edge=.45in % the marker stays this far from the paper edge
+\newdimen\apr@rowedge \apr@rowedge=.25in % a table row's marker: the row
+                     % starts at the text block, so its marker has no award
+                     % slot and may come closer to the edge
 \newif\ifapr@onpage % painting the page (true) or an inline sample (false)
 \def\apr@marker{%
   % on the page (not in a sample), keep the whole marker clear of the
   % paper edge, where printers may not print
   \ifapr@onpage
-    \apr@cut=\dimexpr\apr@edge+\apr@slot+4\apr@dotg+6\apr@dotr+\apr@dotm\relax
+    \ifx\apr@markonly\@empty
+      \apr@cut=\dimexpr\apr@edge+\apr@slot+4\apr@dotg+6\apr@dotr+\apr@dotm\relax
+    \else
+      \apr@slot=\z@
+      \apr@cut=\dimexpr\apr@rowedge+2\apr@dotg+6\apr@dotr+\apr@dotm\relax
+    \fi
     \ifdim\apr@dotx<\apr@cut \apr@dotx=\apr@cut \fi
   \fi
   \apr@rosettefill
