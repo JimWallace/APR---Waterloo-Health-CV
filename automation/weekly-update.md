@@ -46,7 +46,7 @@ c. **Outlook** — with the Microsoft 365 connector, search Jim's mail since the
    `special recognition`, `outstanding review`, `best paper`, `honourable mention`,
    `program committee`, `associate chair`, `associate editor`, `thank you for reviewing`,
    `agreed to review`, `notice of award`, `funding decision`, `invited talk`, `keynote`,
-   `thesis defence`, `examination committee`.
+   `thesis defence`, `examination committee`, `comprehensive exam`.
    Take an item only when an official message (from the venue, journal, agency or university
    office, or Jim's own confirmation) states it outright. If the connector isn't available,
    skip this and say so in your final message.

@@ -136,6 +136,40 @@ joined with ". ")
   `scp = {Implementation=4.5, Design=4.6}` with the SPHS averages in `scpaverage`. The scores
   print only in the APR version. Copy numbers from the SCP report itself; never estimate.
 
+**Teaching, research or service** (the APR colour) follows the Faculty of Health Performance
+Review Guidelines and the SPHS addendum to them (the SPHS guidelines for APRs). Jim has both
+documents; neither is in this public repo.
+- The review window: tenured members are reviewed every two years, in odd years, on the two
+  calendar years before (the 2027 review covers 2025–2026: `\setreviewperiod{2025}{2026}`).
+  Teaching and service are judged on those years, scholarship on a two-year window; two
+  earlier years are context. Files are due the last working day of December.
+- Thesis and comprehensive-exam committees for students I don't supervise are teaching
+  ("Teaching and mentorship includes … committees of students (thesis committees,
+  comprehensive exams)"), whatever the student's department: `\hlteaching`, counted in the
+  "As Committee Member" year line and named in "Committees in the review period".
+- Chairing a student's exam (oral comprehensive or defence) is a committee role *and* service
+  (the guidelines list the university pool of defence chairs as service). Count it in the
+  year line like any committee, and name it under the degree with
+  `\hlboth[YYYY]{teaching}{service}{Name (PhD, Program; chair, oral comprehensive examination, YYYY)}`.
+- External examining is teaching and service (`\hlboth`), under External Examiner. (The
+  Faculty lists "project and oral and thesis examinations/supervision" as teaching.)
+- Supervision (graduate, undergraduate thesis, practicum, postdoc) is teaching, but papers and
+  grants with trainees are research (with the key in `apralsoteaching` as above).
+- Reviewing manuscripts and grants, PCs, societies and organizing are service to the
+  profession (`activities.bib`). The Faculty also counts refereeing for journals and granting
+  councils, keynotes, society awards and government or professional committees as evidence
+  of scholarship, and says a service role such as chairing a curriculum committee or editing
+  a journal "may also provide indirect evidence for scholarship or teaching". Jim's standing
+  decision: every `activities.bib` entry with level grantreferee, journal, programcommittee or
+  referee also goes in `apralsoresearch` (the second list in `main.tex`); add new ones there
+  in the same commit. Other second colours are Jim's call.
+- Community service related to my scholarship is service to the University; the Faculty also
+  counts training such as student mental health training as voluntary service.
+- Don't count a work twice across review periods (the guidelines' "reporting integrity"
+  rule): a paper counted early through `aprinclude` would be highlighted again by its year in
+  the next APR. When the review period moves, list such keys in the PR for Jim to move to
+  `aprnone`. Grants may move from "in submission" to "funded".
+
 **Markup** comes from the template (`template/uwhealthcv.sty`): headings are `\cvsection{…}`,
 labels over a list `\cvsubheading{…:}`, list items `\cvitem …` inside `cvlist`, lettered parts
 `\cvpart{…}` inside `cvparts` (letters are automatic), students `\item …` inside
