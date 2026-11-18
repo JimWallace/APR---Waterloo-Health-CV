@@ -41,10 +41,25 @@
 %   years          optional: the years as printed, when the date range would
 %                  not say it right (2017, 2019 -- 2021)
 %   role           optional: printed after the years (General Chair)
+%
+% @course: one course offering (one row of the COURSES TAUGHT table).
+%   course         the course number(s) as printed: HLTH 454/629
+%   title          optional: the course title: Information Visualization
+%   date           the term, as the month it starts: 2024-01 (Winter),
+%                  2024-05 (Spring), 2024-09 (Fall)
+%   level          optional: Undergraduate, Graduate, Graduate \& Undergraduate
+%   enrolment      optional: the number of students, digits only
+%   scp            optional: course evaluation scores out of 5, as
+%                  Item=score pairs separated by commas, no spaces around =:
+%                  {Implementation=4.5, Design=4.6}
+%   responses      optional: how many students answered the survey, printed
+%                  under the scores as (n = 11)
+%   scpaverage     optional: the comparison averages, in the same form
+%   note           optional: printed under the course, in italics
 
 \input{ACM-Reference-Format.dbx}
 
-\DeclareDatamodelEntrytypes{grant,supervision,award,service}
+\DeclareDatamodelEntrytypes{grant,supervision,award,service,course}
 
 \DeclareDatamodelFields[type=list,datatype=literal]{investigators}
 \DeclareDatamodelFields[type=field,datatype=literal]{
@@ -57,8 +72,11 @@
   work,
   level,
   years,
+  course,
+  scp,
+  scpaverage,
 }
-\DeclareDatamodelFields[type=field,datatype=integer]{amount,count}
+\DeclareDatamodelFields[type=field,datatype=integer]{amount,count,enrolment,responses}
 
 \DeclareDatamodelEntryfields[grant]{
   investigators,
@@ -89,6 +107,16 @@
   years,
   role,
 }
+\DeclareDatamodelEntryfields[course]{
+  course,
+  title,
+  level,
+  enrolment,
+  responses,
+  scp,
+  scpaverage,
+  note,
+}
 
 \DeclareDatamodelConstraints[grant]{
   \constraint[type=mandatory]{
@@ -115,6 +143,12 @@
   \constraint[type=mandatory]{
     \constraintfield{title}
     \constraintfield{level}
+    \constraintfield{date}
+  }
+}
+\DeclareDatamodelConstraints[course]{
+  \constraint[type=mandatory]{
+    \constraintfield{course}
     \constraintfield{date}
   }
 }

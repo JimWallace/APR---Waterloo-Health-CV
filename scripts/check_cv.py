@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """Deterministic checks on scholar.bib, grants.bib, supervision.bib, awards.bib, service.bib,
-activities.bib and the category lists in main.tex.
+activities.bib, courses.bib and the category lists in main.tex.
 
 Errors change what the PDF says (a paper silently dropped or printed twice)
 and fail CI. Warnings are worth a look; the ones accepted so far are listed in
@@ -198,13 +198,15 @@ def run(only: set[str] | None = None) -> dict:
     }
 
 
-RECORD_FILES = ["grants.bib", "supervision.bib", "awards.bib", "service.bib", "activities.bib"]
+RECORD_FILES = ["grants.bib", "supervision.bib", "awards.bib", "service.bib", "activities.bib", "courses.bib"]
 GRANT_ROLES = {"PI", "Co-PI", "Co-I", "Co-A"}
 DATE_RE = re.compile(r"^\d{4}(-\d{2})?(/\d{4}(-\d{2})?)?$")
+# Course evaluation scores: Item=score pairs, comma-separated, scores out of 5
+SCORES_RE = re.compile(r"^[^=,]*[^=,\s]=[0-5](\.\d+)?(\s*,\s*[^=,]*[^=,\s]=[0-5](\.\d+)?)*$")
 
 
 def check_records(records: dict, main_tex: str, err, warn) -> None:
-    """Grants, supervision and service: fields the template needs, in the form it reads."""
+    """Grants, supervision, service and courses: fields the template needs, in the form it reads."""
     for e in records["grants.bib"].entries:
         f, where = e.fields, f"grants.bib:{e.line}"
         if e.type != "grant":
@@ -260,6 +262,23 @@ def check_records(records: dict, main_tex: str, err, warn) -> None:
                 err("E-record", f"{where}: service '{e.key}' date '{f.get('date', '')}' should be YYYY, "
                     "YYYY/YYYY, or YYYY/ for an ongoing role", e.key)
 
+    for e in records["courses.bib"].entries:
+        f, where = e.fields, f"courses.bib:{e.line}"
+        if e.type != "course":
+            err("E-record", f"{where}: '{e.key}' is @{e.type}; courses.bib holds @course entries", e.key)
+            continue
+        if not f.get("course"):
+            err("E-record", f"{where}: course '{e.key}' has no course number", e.key)
+        if not re.fullmatch(r"\d{4}-(01|05|09)", f.get("date", "")):
+            err("E-record", f"{where}: course '{e.key}' date '{f.get('date', '')}' should be the month "
+                "the term starts: YYYY-01 (Winter), YYYY-05 (Spring) or YYYY-09 (Fall)", e.key)
+        for k in ("enrolment", "responses"):
+            if f.get(k) and not f[k].isdigit():
+                err("E-record", f"{where}: course '{e.key}' {k} '{f[k]}' must be digits only", e.key)
+        for k in ("scp", "scpaverage"):
+            if f.get(k) and not SCORES_RE.match(f[k]):
+                err("E-record", f"{where}: course '{e.key}' {k} '{f[k]}' should be Item=score pairs "
+                    "out of 5, comma-separated, no spaces around = (Implementation=4.5, Design=4.6)", e.key)
 
 AWARD_ICONS = {"award", "images/hm.png"}
 

@@ -51,6 +51,7 @@
     maxcitenames=99,
     maxbibnames=99,
     defernumbers=true,
+    locallabelwidth=true,
     datamodel=uwhealthcv,
 ]{biblatex}
 \input{biblatex-formatting}
@@ -103,9 +104,18 @@
   {\begin{enumerate}[label=\alph*)]}
   {\end{enumerate}}
 \newcommand\cvpart[1]{\item \textbf{#1}}
+% The prefix is printed as part of the label, not set with biblatex's
+% labelprefix: each labelprefix is a separate refcontext, and biber writes a
+% full copy of every entry into the .bbl for each one, which can exhaust
+% TeX's memory. locallabelwidth (biblatex option above) sizes the label
+% column for each heading, prefix included.
+\def\cv@labelprefix{}
+\DeclareFieldFormat{labelnumberwidth}{\mkbibbrackets{\cv@labelprefix#1}}
 \NewDocumentCommand\printcategory{om}{%
-  \IfNoValueTF{#1}{\newrefcontext}{\newrefcontext[labelprefix=#1]}%
-  \printbibliography[category={#2},resetnumbers=true,heading=none]}
+  \begingroup
+  \IfNoValueTF{#1}{}{\def\cv@labelprefix{#1}}%
+  \printbibliography[category={#2},resetnumbers=true,heading=none]%
+  \endgroup}
 
 % cv-layout.tex ends with \makeatother, so it goes last.
 \input{cv-layout}

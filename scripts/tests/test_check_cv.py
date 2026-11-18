@@ -128,6 +128,46 @@ class ServiceRecords(unittest.TestCase):
         self.assertIn("YYYY/YYYY", errs[0][1])
 
 
+class CourseRecords(unittest.TestCase):
+    """courses.bib: course, title, a term-start date, digits for enrolment, Item=score pairs."""
+
+    def errors(self, courses_bib):
+        records = {name: cvlib.parse_bib(self.write(name, "")) for name in check_cv.RECORD_FILES}
+        records["courses.bib"] = cvlib.parse_bib(self.write("courses.bib", courses_bib))
+        found = []
+        check_cv.check_records(records, "", lambda code, msg, key=None: found.append((key, msg)),
+                               lambda *a, **k: None)
+        return found
+
+    def write(self, name, text):
+        p = self.dir / name
+        p.write_text(text, encoding="utf-8")
+        return p
+
+    def setUp(self):
+        self.dir = Path(tempfile.mkdtemp())
+
+    def tearDown(self):
+        shutil.rmtree(self.dir)
+
+    def test_a_well_formed_course_passes(self):
+        self.assertEqual(self.errors("@course{ok, course = {HLTH 101}, title = {A Course}, date = {2024-09}, "
+                                     "enrolment = {40}, scp = {Implementation=4.5, Design=4.0}, "
+                                     "scpaverage = {Course Overall=4.1}}\n"), [])
+
+    def test_a_date_that_is_not_a_term_start_is_an_error(self):
+        errs = self.errors("@course{when, course = {HLTH 101}, title = {A Course}, date = {2024-10}}\n")
+        self.assertEqual([k for k, _ in errs], ["when"])
+        self.assertIn("Fall", errs[0][1])
+
+    def test_malformed_scores_are_an_error(self):
+        errs = self.errors("@course{bad, course = {HLTH 101}, title = {A Course}, date = {2024-01}, "
+                           "scp = {Implementation = 4.5/5}, enrolment = {~40}}\n")
+        self.assertEqual(len(errs), 2)
+        self.assertTrue(any("enrolment" in m for _, m in errs))
+        self.assertTrue(any("scp 'Implementation = 4.5/5'" in m for _, m in errs))
+
+
 if __name__ == "__main__":
     unittest.main()
 
