@@ -428,6 +428,23 @@ Service during the review period is highlighted as \aprsample{service}{}{service
 \cvsubheading{Professional Community (Conference Leadership):}
     \printservice{discipline}
 
+\ifAPR % APR version only ------------------------------------------
+\sectionbreak
+\cvsection{A Note on Teaching Innovation: Chickadee}
+\\ \\
+\textbf{What Chickadee is.} In programming courses, students learn by writing code, running it, and finding out whether it works. Chickadee is a course platform that I designed and built in 2026 to give students that feedback within seconds. Students write and submit their work in a web browser, in Python, R or five other programming languages. Chickadee runs a set of tests written by the instructor on each submission and returns the results immediately, so students can find and fix mistakes while the material is fresh and resubmit as often as they need. It replaces Marmoset, an ageing automated grading system originally developed at the University of Maryland. Chickadee is hosted by IST at chickadee.uwaterloo.ca, uses the University's single sign-on, sends grades directly to LEARN, and is released as open-source software \extlink{https://github.com/JimWallace/Chickadee}{(github.com/JimWallace/Chickadee)}.
+\\ \\
+\textbf{How students have benefited.} After a pilot alongside Marmoset in Winter 2026, Chickadee ran HLTH 230 (Introduction to Health Informatics) in Spring 2026. Its 157 students made 8,904 submissions across 17 assignments, and the median wait for results was 7.5 seconds. Students used the immediate feedback: 62\% of students' assignments were resubmitted at least once after the first results, rather than submitted once and left to wait for a grade.
+% TODO(Jim): add the Spring 2026 HLTH 230 SCP results here (response rate, the
+% relevant item means, and comparison with earlier offerings); no SCP report was
+% found in the inbox or OneDrive.
+Colleagues in SPHS plan to adopt Chickadee in their own courses, and a Teaching Innovation Incubator proposal now in preparation would extend it to seven courses and more than 1,300 students in Health and Engineering in 2027--28.
+\\ \\
+\textbf{The work involved.} Software that a whole class depends on for its grades takes far more than writing code. In 2026 I engineered the platform itself: roughly 200,000 lines of code, checked by more than 7,000 automated tests, with grading that runs in isolated, secured environments and lab notebooks that run in the student's browser. I worked with IST to set up and secure servers on the campus network, connect the University's single sign-on, and link grades to LEARN. I took Chickadee through the University's Information Risk Assessment and Privacy Impact Assessment under Policy 46, with IST Information Security and the Privacy Office, including independent security testing, and obtained the Dean's approval for the LEARN integration. Through launch week and the rest of the term, I supported the students and teaching assistants: training the TAs, answering support requests, and fixing problems as they arose. I did this alongside my regular teaching, research and service, with help from colleagues in IST, the Privacy Office and the Faculty of Health. I will present the project at WatITis 2026, the University's IT conference.
+\\ \\
+Chickadee and the WatITis talk appear under PUBLICATIONS and PRESENTATION TO SCHOLARLY GROUPS, shown as \aprsample{teaching}{research}{teaching, with research}.
+\fi % end APR version only -------------------------------------
+
 \sectionbreak[6\baselineskip]
 \cvsection{AREAS OF TEACHING EXPERTISE} \\
 Human-Computer Interaction, Computational Social Science, Games, Computer-Supported Cooperative Work, Information Visualization, Machine Learning
