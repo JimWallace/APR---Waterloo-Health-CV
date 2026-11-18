@@ -30,9 +30,9 @@
 %%   \sethighlightstrength{40}      softer highlights (100 = full Word colours)
 %%   \sethighlightstyle{split}      two-colour style: split, blend, bar or
 %%                                  dots (one marker per entry in the margin:
-%%                                  research, teaching and service dots,
-%%                                  filled for the categories that apply,
-%%                                  then the award rosette)
+%%                                  the award rosette, then research,
+%%                                  teaching and service dots, filled for
+%%                                  the categories that apply)
 %%
 %% Files (the template lives in template/; the CV's own files sit beside it)
 %%   main.tex                the CV's content; compiles to the plain CV
@@ -161,9 +161,9 @@
 % two-colour style: halves (left half primary, right half secondary), split
 % (primary on top, secondary below), blend (primary fading into secondary
 % from left to right), bar (primary fill, secondary bar in the margin), or
-% dots (primary fill; in the margin, one marker per entry: three dots --
-% research, teaching, service -- filled for the entry's categories, then
-% the award rosette when the entry is an award or has an award badge)
+% dots (primary fill; in the margin, one marker per entry: the award
+% rosette when the entry is an award or has an award badge, then three
+% dots -- research, teaching, service -- filled for the entry's categories)
 \def\apr@style@halves{halves}
 \def\apr@style@split{split}
 \def\apr@style@blend{blend}
@@ -308,9 +308,10 @@
   \ifx\apr@style\apr@style@dots \apr@marker \fi}
 
 % dots style: one marker left of the entry's first line, right-aligned
-% against the text block: three dots (research, teaching, service), each
-% filled when the entry's primary or secondary colour is that category, then
-% an award slot holding the rosette -- filled when the entry is an award or
+% against the text block: an award slot, then three dots (research,
+% teaching, service) nearest the entry, each filled in full colour when the
+% entry's primary or secondary colour is that category. The award slot holds
+% the rosette -- filled when the entry is an award or
 % is highlighted and has an award badge, white for a badge outside the
 % review period, empty otherwise. The dots appear on highlighted entries
 % only.
@@ -320,15 +321,13 @@
   \else\ifx\apr@sc\apr@tmpa \expandafter\expandafter\expandafter\@firstoftwo
   \else \expandafter\expandafter\expandafter\@secondoftwo \fi\fi}
 \def\apr@dot#1#2{% #1: category, #2: index from the right (0, 1, 2)
-  \apr@ra=\dimexpr\apr@dotx-\apr@dotm-\apr@slot
-                   \ifdim\apr@slot>\z@-2\apr@dotg\fi
-                   -\apr@dotr-(2\apr@dotr+\apr@dotg)*#2\relax
+  \apr@ra=\dimexpr\apr@dotx-\apr@dotm-\apr@dotr-(2\apr@dotr+\apr@dotg)*#2\relax
   \apr@rb=\dimexpr\apr@ys+(\apr@H-\apr@D)/2-\apr@oy\relax
   \apr@ifcat{#1}%
-    {\def\apr@tmpb{APR#1Base!80!white}}%
+    {\def\apr@tmpb{APR#1Base}}%
     {\def\apr@tmpb{white}}%
   \put(0,0){\begin{tikzpicture}[overlay]
-    \filldraw[fill=\apr@tmpb,draw=APR#1Base!55!black,line width=.45pt]
+    \filldraw[fill=\apr@tmpb,draw=APR#1Base!45!black,line width=.5pt]
       (\the\apr@ra,\the\apr@rb) circle[radius=\the\apr@dotr];
   \end{tikzpicture}}}
 % \apr@rosettefill: sets \apr@tmpc to the rosette's fill, or empty for none
@@ -340,7 +339,7 @@
 \def\apr@marker{%
   \apr@rosettefill
   \ifx\apr@tmpc\@empty\else\ifdefined\cvawardbadgepaths
-    \apr@ra=\dimexpr\apr@dotx-\apr@dotm-\apr@slot/2\relax
+    \apr@ra=\dimexpr\apr@dotx-\apr@dotm-6\apr@dotr-4\apr@dotg-\apr@slot/2\relax
     \apr@rb=\dimexpr\apr@ys+(\apr@H-\apr@D)/2-\apr@oy\relax
     % medallion (10,15.5) centred on the first line, ribbons hanging below
     \put(0,0){\begin{tikzpicture}[overlay,line join=round,
