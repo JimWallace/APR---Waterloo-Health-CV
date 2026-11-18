@@ -115,7 +115,7 @@ the source of truth; never force-push `main`.
   membership and external examining stay as lines in `main.tex`.
 - Courses → a `@course` entry in `courses.bib`, one per offering: `course` (HLTH 454/629),
   `title`, `date` = the month the term starts (`2026-01` Winter, `-05` Spring, `-09` Fall),
-  optional `level`, `enrolment` (digits), `note`, and Student Course Perceptions scores as
+  optional `level`, `enrolment` and `responses` (digits), `note`, and Student Course Perceptions scores as
   `scp = {Implementation=4.5, Design=4.6}` with the SPHS averages in `scpaverage`. The scores
   print only in the APR version. Copy numbers from the SCP report itself; never estimate.
 
