@@ -27,7 +27,7 @@ jobs:
     env:
       DBLP_PID: "65/4889"
       OPENALEX_AUTHOR_ID: ${{ vars.OPENALEX_AUTHOR_ID }} # optional; resolved by name if unset
-      ORCID: ${{ vars.ORCID }}                           # optional
+      ORCID: ${{ vars.ORCID || '0000-0002-5162-0256' }}  # Crossref lookup by ORCID; a repo variable overrides
       CONTACT_EMAIL: ${{ vars.CONTACT_EMAIL }}           # optional; polite-pool contact for APIs
     steps:
       - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5.1.0
