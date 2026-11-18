@@ -6,7 +6,7 @@
 # that is not in scripts/warnings-baseline.txt; see scripts/warning_ratchet.py.
 # TeX Live is pinned to one dated image (docker_image, by digest) so the
 # warnings do not change under us. It is TeX Live 2026, the version Overleaf
-# compiles new projects with. To move on, change the image in both builds (tags:
+# compiles new projects with (set its compiler to LuaLaTeX). To move on, change the image in both builds (tags:
 # ghcr.io/xu-cheng/texlive-debian, e.g. 20271001) and rerun
 # `python3 scripts/warning_ratchet.py --update <docs>` in the same PR.
 name: CV build
@@ -49,6 +49,7 @@ jobs:
         uses: xu-cheng/latex-action@6549dc21effb2730855a1281407ecfcececc6c1b # v4.1.0
         with:
           docker_image: ghcr.io/xu-cheng/texlive-debian:20261001@sha256:78ac2204b8df113aca0561e8f173ad5b89ee51e90795173d2fe9bcf0fbce162e # TeX Live 2026, 2026-10-01 snapshot
+          latexmk_use_lualatex: true # the engine latexmkrc names; the action's -pdf would override it
           root_file: |
             main.tex
             apr.tex
@@ -89,6 +90,7 @@ jobs:
         with:
           docker_image: ghcr.io/xu-cheng/texlive-debian:20261001@sha256:78ac2204b8df113aca0561e8f173ad5b89ee51e90795173d2fe9bcf0fbce162e # TeX Live 2026, 2026-10-01 snapshot
           working_directory: template/example
+          latexmk_use_lualatex: true # the engine latexmkrc names; the action's -pdf would override it
           root_file: |
             example.tex
             example-apr.tex

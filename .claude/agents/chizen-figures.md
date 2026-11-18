@@ -118,7 +118,7 @@ change, or `all` for every figure in the CV.
   file. Don't ask for `\input{CHIZen/...}`: the CV doesn't load it.
 - pgfplots costs TeX memory (5M words in CI's TeX Live 2026). If CI reports
   `TeX capacity exceeded`, say so. Don't work around it.
-- If TeX is installed, you may build the PDF (`latexmk -pdf apr.tex`) and render the page
+- If TeX is installed, you may build the PDF (`latexmk apr.tex`) and render the page
   at print size (`pdftoppm -r 100 -f N -l N -png apr.pdf <scratch>/page`). Otherwise the
   CI artifact `cv-pdfs` has both PDFs. Keep scratch files outside the repository.
 - Colours: don't flag the APR highlight colours (`APRresearch`, `APRteaching`,
