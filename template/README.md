@@ -77,7 +77,7 @@ every CV that uses the template.
   `\hlaward`, `\hlboth`, `\hl…row`, `\aprsample`, `\ifAPR`,
   `\sethighlightstrength`, `\sethighlightstyle`, `\keepwithnext`,
   `\sectionbreak`, `\usvardate`, `\monthyear`, `\extlink`.
-- Section markup: `\cvsection`, `\cvsubheading`, `cvlist` with `\cvitem`, `cvparts`
+- Section markup: `\cvsection`, `\cvsubheading`, `cvlist` and `cvbulletlist` with `\cvitem`, `cvgroup`, `cvparts`
   with `\cvpart`, `\printcategory`. Documented in the `uwhealthcv.sty` header.
 - Records: `\cvowner`, `\printgrants`, `\printsupervision{degree}`, `\printawards`,
   `\printservice{level}`, the entry types `@grant`, `@supervision`, `@award` and `@service` with the

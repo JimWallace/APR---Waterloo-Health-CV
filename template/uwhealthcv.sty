@@ -68,6 +68,12 @@
 %   \begin{cvlist}[itemsep]     an unnumbered, unindented list of \cvitem
 %     \cvitem text              (itemsep defaults to -5pt)
 %   \end{cvlist}
+%   \begin{cvbulletlist}[itemsep] the same, with a bullet hanging to the left
+%     \cvitem text              of each item, for entries that run to two lines
+%   \end{cvbulletlist}          (itemsep defaults to 0pt)
+%   \begin{cvgroup}{PhD}        a label in the left column with a list beside
+%     \begin{cvbulletlist}...   it, like the degree labels of
+%   \end{cvgroup}               \printsupervision
 %   \begin{cvparts}             lettered parts a), b), c) ... of a section
 %     \cvpart{Title}            one part, with a bold title
 %   \end{cvparts}
@@ -85,6 +91,14 @@
   {\cv@nobullets\begin{itemize}\setlength{\labelsep}{0em}\setlength{\itemsep}{#1}}
   {\end{itemize}}
 \newcommand\cvitem{\item[]}
+% text starts where cvlist's does; the bullet sits in the margin before it.
+% Ragged right, so long titles in a narrower (nested) list wrap cleanly.
+\newenvironment{cvbulletlist}[1][0pt]
+  {\begin{itemize}[label=\textbullet, labelsep=0.5em, itemsep=#1]\raggedright\let\cvitem\item}
+  {\end{itemize}}
+\newenvironment{cvgroup}[1]
+  {\begin{enumerate}\item[#1]}
+  {\end{enumerate}}
 \newenvironment{cvparts}
   {\begin{enumerate}[label=\alph*)]}
   {\end{enumerate}}
