@@ -276,10 +276,14 @@
   }
 }
 
+% \printcourses uses this sorting too (newest term first: courses have a
+% month, service roles do not). biber writes a full copy of every entry for
+% each sorting in use, so a new template costs TeX a lot of memory.
 \DeclareSortingTemplate{cvservice}{
   \sort[direction=descending]{\field{userf}}
   \sort[direction=descending]{\field{endyear}\field{year}}
   \sort[direction=descending]{\field{year}}
+  \sort[direction=descending]{\field[padside=left,padwidth=2,padchar=0]{month}}
   \sort{\citeorder}
 }
 
@@ -376,16 +380,10 @@
 \def\cv@measurescores#1\cv@scores#2{\forcsvlist{\cv@widestscore#1}{#2}}
 \let\cv@measureresponses\@gobble
 
-\DeclareSortingTemplate{cvcourses}{
-  \sort[direction=descending]{\field{year}}
-  \sort[direction=descending]{\field[padside=left,padwidth=2,padchar=0]{month}}
-  \sort{\field{course}}
-}
-
 \NewDocumentCommand\printcourses{o}{%
   \gdef\cv@courserows{}%
   \setbox\z@\vbox{% collect the rows; nothing is printed here
-    \begin{refcontext}[sorting=cvcourses]%
+    \begin{refcontext}[sorting=cvservice]% newest term first
       \printbibliography[type=course,env=cvcollect,heading=none]%
     \end{refcontext}}%
   \begingroup
