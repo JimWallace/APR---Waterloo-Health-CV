@@ -1,6 +1,5 @@
 \usepackage[margin=0.75in]{geometry}
 \usepackage{mathptmx}
-\usepackage{titlesec}
 \usepackage{wasysym}
 \usepackage{pifont}
 \usepackage{url}
@@ -24,28 +23,11 @@
 \newdateformat{monthyear}{\monthname[\THEMONTH] \THEYEAR}
 
 
-%
-%. FORMAT SECTION HEADINGS
-%
-% The full \titleformat form, not the "easy" \titleformat*: in TeX Live 2026,
-% \DocumentMetadata (PDF/A, uwhealthcv-pdfa.tex) loads the kernel's new
-% sectioning code, and titlesec then stops at \titleformat* with "Not allowed
-% in `easy' settings". These give the same result: bold, label, 1em gap.
-\titleformat{\section}{\normalfont\bfseries}{\thesection}{1em}{}
-\titleformat{\subsection}{\normalfont\bfseries}{\thesubsection}{1em}{}
-\titleformat{\subsubsection}{\normalfont\bfseries}{\thesubsubsection}{1em}{}
-
-\titlespacing\section{0pt}{12pt plus 4pt minus 2pt}{0pt plus 2pt minus 2pt}
-\titlespacing\subsection{0pt}{12pt plus 4pt minus 2pt}{0pt plus 2pt minus 2pt}
-\titlespacing\subsubsection{0pt}{12pt plus 4pt minus 2pt}{0pt plus 2pt minus 2pt}
-
-% Keep a heading with the lines after it. This wraps the titlesec headings, so
-% it comes after \titleformat and \titlespacing.
+% Headings are \cvsection (uwhealthcv.sty), not \section, so there is no
+% titlesec set-up here: with \DocumentMetadata (PDF/A), TeX Live 2026's
+% sectioning code is one titlesec cannot format, and it warns about every
+% heading level. \Needspace (cv-layout.tex) keeps headings with what follows.
 \usepackage{needspace}
-\let\oldsection\section
-\let\oldsubsection\subsection
-\renewcommand{\section}{\needspace{3\baselineskip}\oldsection}
-\renewcommand{\subsection}{\needspace{2\baselineskip}\oldsubsection}
 
 % Fancy external links
 \usepackage{fontawesome5}
