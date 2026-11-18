@@ -27,8 +27,11 @@
          {\cvawardbadge{white}}%
          {\cvawardbadge{APRaward}}}%
       {\includegraphics[height=1.5em]{#1}}}
+% \cvbadgeindent: the badge's indent within the margin (the APR dots style
+% moves it left to make room for its dots)
+\newcommand\cvbadgeindent{1.75em}
 \DeclareFieldFormat{usera}{%
-    \marginpar{\hspace{1.75em}\raisebox{-0.5\height}{\cvbadge{#1}}}%
+    \marginpar{\hspace{\cvbadgeindent}\raisebox{-0.5\height}{\cvbadge{#1}}}%
 }
 
 % The badge sits in the margin and takes no room in the line, so no space

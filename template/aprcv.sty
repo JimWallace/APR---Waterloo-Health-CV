@@ -148,9 +148,11 @@
 \newcount\apr@k
 \newdimen\apr@bleed  \apr@bleed=1pt
 \newdimen\apr@barw   \apr@barw=3pt
-\newdimen\apr@dotr  \apr@dotr=2.1pt  % dot radius
+\newdimen\apr@dotr  \apr@dotr=2.3pt  % dot radius
 \newdimen\apr@dotg  \apr@dotg=1.6pt  % gap between dots
-\newdimen\apr@dotm  \apr@dotm=5pt    % gap between the dots and the entry
+\newdimen\apr@dotm  \apr@dotm=6pt    % gap between the dots and the text block
+\newdimen\apr@dotx  % right edge of the dots: left of the text block (labels
+                     % such as [J1] sit left of the entry), or of a sample
 
 % two-colour style: halves (left half primary, right half secondary), split
 % (primary on top, secondary below), blend (primary fading into secondary
@@ -162,7 +164,12 @@
 \def\apr@style@blend{blend}
 \def\apr@style@bar{bar}
 \def\apr@style@dots{dots}
-\newcommand\sethighlightstyle[1]{\edef\apr@style{#1}}
+\newcommand\sethighlightstyle[1]{%
+  \edef\apr@style{#1}%
+  % dots: move a margin badge (award rosette) left of the dots
+  \ifx\apr@style\apr@style@dots
+    \def\cvbadgeindent{\dimexpr1.75em-6\apr@dotr-2\apr@dotg-\apr@dotm-2pt\relax}%
+  \fi}
 \sethighlightstyle{bar}
 
 \def\aprS#1#2#3#4#5#6#7#8#9{%
@@ -293,7 +300,7 @@
   \else\ifx\apr@sc\apr@tmpa \expandafter\expandafter\expandafter\@firstoftwo
   \else \expandafter\expandafter\expandafter\@secondoftwo \fi\fi}
 \def\apr@dot#1#2{% #1: category, #2: index from the right (0, 1, 2)
-  \apr@ra=\dimexpr\apr@L-\apr@bleed-\apr@dotm-\apr@dotr
+  \apr@ra=\dimexpr\apr@dotx-\apr@dotm-\apr@dotr
                    -(2\apr@dotr+\apr@dotg)*#2\relax
   \apr@rb=\dimexpr\apr@ys+(\apr@H-\apr@D)/2-\apr@oy\relax
   \apr@ifcat{#1}%
@@ -322,6 +329,7 @@
   \ifnum#1=\ReadonlyShipoutCounter
     \apr@xs=#2sp\relax \apr@ys=#3sp\relax
     \apr@L=#5\relax \apr@R=\dimexpr#5+#6\relax
+    \apr@dotx=\dimexpr1in+\hoffset+\oddsidemargin\relax
     \apr@H=#7\relax \apr@D=#8\relax
     \apr@setcols#4%
     \expandafter\expandafter\expandafter\apr@draw@E
@@ -389,7 +397,7 @@
       \sbox\apr@box{#3}%
       \edef\apr@pc{\apr@col{#1}}\edef\apr@sc{\apr@col{#2}}%
       \apr@oy=\z@ \apr@xs=\z@ \apr@xe=\wd\apr@box \apr@ys=\z@ \apr@ye=\z@
-      \apr@L=\z@ \apr@R=\wd\apr@box
+      \apr@L=\z@ \apr@R=\wd\apr@box \apr@dotx=-\apr@bleed
       \apr@H=\ht\strutbox \apr@D=\dp\strutbox
       \unitlength=1pt
       % in running text, make room for a margin bar so it doesn't overlap
