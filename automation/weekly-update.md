@@ -121,9 +121,10 @@ Follow `CLAUDE.md` → Conventions. In short:
 ## 5. Verify
 
 Follow `.claude/skills/cv-verify/SKILL.md` (read it as a file if the skill isn't loaded).
-Launch the four verifiers in parallel in one message, giving them only the keys, the diff and
+Launch the verifiers in parallel in one message, giving them only the keys, the diff and
 your change table — not your reasoning:
-`citation-verifier`, `trainee-checker`, `apr-classifier`, `diff-auditor`.
+`citation-verifier`, `trainee-checker`, `apr-classifier`, `diff-auditor`, and
+`chizen-figures` (with the changed files) when the diff touches `figures/`, `data/*.csv`, a `tabular` in `main.tex`, or the table and figure code in `template/` (`cv-records.tex`, `*.sty`).
 If those agent types aren't available in your session, start general-purpose sub-agents
 instead, each with the full text of the matching `.claude/agents/<name>.md` (below its
 front matter) as its instructions, followed by the inputs.
@@ -135,7 +136,7 @@ adds fails CI: fix it, or label the PR `needs-review` and ask. A warning your ch
 
 ## 6. Label
 
-`auto-merge` only when `scripts/check_cv.py` passes, all four verifiers return PASS, and every
+`auto-merge` only when `scripts/check_cv.py` passes, every verifier that ran returns PASS, and every
 change is one of:
 - a new publication confirmed against a retrieved record (Crossref/DBLP/publisher page), or
   one Jim reported in an issue, marked `To appear`;

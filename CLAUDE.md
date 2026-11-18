@@ -195,8 +195,10 @@ that is followed by a list; never use `\newpage` (use `\sectionbreak`).
 - Verifier sub-agents in `.claude/agents/` check changes independently. The `cv-verify` skill
   says how to run them.
 - `chizen-figures` (`.claude/agents/`) reviews figures and tables against my CHI-Zen
-  visualization templates (github.com/JimWallace/CHI-Zen). Run it after adding or changing a
-  figure, a generator script in `scripts/`, or a table.
+  visualization templates (github.com/JimWallace/CHI-Zen). It is one of the verifiers: run it
+  whenever a change touches a figure, its data, or a table. Tables use booktabs rules
+  (`\toprule`, `\midrule`, `\bottomrule`), not underlined headings; data figures are pgfplots
+  reading `data/*.csv`.
 
 ## Pull requests
 
