@@ -4,13 +4,14 @@
 % Perceptions scores out of 5, as Item=score pairs: Instructor Overall and
 % Course Overall on the old Faculty survey (to Fall 2021), SCP Implementation
 % and Design on the SCP core survey (from Winter 2022). responses is the
-% number of surveys returned. scpaverage is the SPHS average for the same items.
-% Order in the file doesn't matter.
+% number of surveys returned. Order in the file doesn't matter.
 %
 % Sources: enrolment, responses and scp from Jim's export of
-% perceptions.uwaterloo.ca (Nov 2026); scpaverage, level, titles, notes and the
-% Winter 2024 HLTH 454/629 offering (no SCP record: class too small) from the
-% List of Courses Taught in his 2024 teaching statement.
+% perceptions.uwaterloo.ca (Nov 2026); level, titles, notes and the Winter 2024
+% HLTH 454/629 offering (no SCP record: class too small) from the List of
+% Courses Taught in his 2024 teaching statement; HLTH 173 and 473 titles from
+% Jim. SPHS averages are left out for now (only some terms have them). HLTH 230
+% Winter 2020 scores were unofficial (COVID-19) and are not reported.
 
 @course{hlth230s2026,
   course    = {HLTH 230},
@@ -48,7 +49,6 @@
   level      = {Graduate \& Undergraduate},
   date       = {2024-01},
   enrolment  = {5},
-  scpaverage = {Implementation=4.2, Design=4.2},
   note       = {All students completed an evaluation, but they are not available due to class size.},
 }
 
@@ -60,7 +60,6 @@
   enrolment  = {33},
   responses  = {5},
   scp        = {Implementation=3.5, Design=3.5},
-  scpaverage = {Implementation=4.2, Design=4.2},
   note       = {First time teaching the course.},
 }
 
@@ -72,7 +71,6 @@
   enrolment  = {47},
   responses  = {11},
   scp        = {Implementation=4.5, Design=4.6},
-  scpaverage = {Implementation=4.1, Design=4.0},
 }
 
 @course{hlth454w2022,
@@ -83,7 +81,6 @@
   enrolment  = {14},
   responses  = {8},
   scp        = {Implementation=4.7, Design=4.4},
-  scpaverage = {Implementation=4.3, Design=4.2},
 }
 
 @course{hlth453f2021,
@@ -104,7 +101,6 @@
   enrolment  = {29},
   responses  = {11},
   scp        = {Instructor=3.5, Course=3.6},
-  scpaverage = {Instructor=4.3, Course=4.1},
   note       = {A pre-recorded extended learning course.},
 }
 
@@ -116,7 +112,6 @@
   enrolment  = {10},
   responses  = {10},
   scp        = {Instructor=4.6, Course=4.1},
-  scpaverage = {Instructor=4.3, Course=4.2},
 }
 
 @course{hlth454f2020,
@@ -127,7 +122,6 @@
   enrolment  = {22},
   responses  = {13},
   scp        = {Instructor=4.8, Course=4.8},
-  scpaverage = {Instructor=4.2, Course=4.1},
 }
 
 @course{hlth615f2020,
@@ -136,7 +130,6 @@
   level      = {Graduate},
   date       = {2020-09},
   enrolment  = {24},
-  scpaverage = {Instructor=4.2, Course=4.1},
   note       = {No students completed a course evaluation.},
 }
 
@@ -155,8 +148,6 @@
   level     = {Undergraduate},
   date      = {2020-01},
   enrolment = {113},
-  responses = {20},
-  scp       = {Instructor=3.8, Course=3.2},
   note      = {The term was interrupted by an abrupt shift to online teaching due to COVID-19.},
 }
 
@@ -168,7 +159,6 @@
   enrolment  = {26},
   responses  = {11},
   scp        = {Instructor=3.8, Course=3.8},
-  scpaverage = {Instructor=4.3, Course=4.1},
   note       = {A pre-recorded extended learning course.},
 }
 
@@ -184,6 +174,7 @@
 
 @course{hlth173w2018,
   course    = {HLTH 173},
+  title     = {Introduction to Human-Computer Interaction},
   level     = {Undergraduate},
   date      = {2018-01},
   enrolment = {15},
@@ -193,6 +184,7 @@
 
 @course{hlth173w2017,
   course    = {HLTH 173},
+  title     = {Introduction to Human-Computer Interaction},
   level     = {Undergraduate},
   date      = {2017-01},
   enrolment = {22},
@@ -202,6 +194,7 @@
 
 @course{hlth473f2016,
   course    = {HLTH 473/620},
+  title     = {Special Topics},
   level     = {Graduate \& Undergraduate},
   date      = {2016-09},
   enrolment = {13},
@@ -220,6 +213,7 @@
 
 @course{hlth173w2016,
   course    = {HLTH 173},
+  title     = {Introduction to Human-Computer Interaction},
   level     = {Undergraduate},
   date      = {2016-01},
   enrolment = {28},
@@ -229,6 +223,7 @@
 
 @course{hlth473f2015,
   course    = {HLTH 473/HSG 620},
+  title     = {Special Topics},
   level     = {Graduate \& Undergraduate},
   date      = {2015-09},
   enrolment = {14},
