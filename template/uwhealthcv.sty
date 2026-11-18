@@ -77,8 +77,12 @@
 % Grants and supervision are biblatex records: see cv-records.tex.
 \newcommand\cvsection[1]{\textbf{#1}}
 \newcommand\cvsubheading[1]{\keepwithnext #1}
+% \cvitem's label is empty. With \DocumentMetadata, TeX Live 2026's list code
+% reads \item[] as no label and would print the default bullet, so that is
+% emptied too (before \begin{itemize}, which reads it).
+\newcommand\cv@nobullets{\def\labelitemi{}\def\labelitemii{}}
 \newenvironment{cvlist}[1][-5pt]
-  {\begin{itemize}\setlength{\labelsep}{0em}\setlength{\itemsep}{#1}}
+  {\cv@nobullets\begin{itemize}\setlength{\labelsep}{0em}\setlength{\itemsep}{#1}}
   {\end{itemize}}
 \newcommand\cvitem{\item[]}
 \newenvironment{cvparts}
