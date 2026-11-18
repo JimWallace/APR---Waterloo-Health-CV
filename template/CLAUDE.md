@@ -16,7 +16,7 @@ that uses it so the two can be worked on separately (see `README.md`).
   narrative sections) govern `main.tex` and `scholar.bib`, not this directory.
   The weekly automated update never changes files here.
 - **Watch TeX's memory.** biber writes a full copy of every entry into the
-  `.bbl` for each sorting/refcontext in use, and TeX (5M words, also on
-  Overleaf) must hold them all. Reuse an existing sorting template where the
+  `.bbl` for each sorting/refcontext in use, and TeX (5M words of main
+  memory in CI's TeX Live) must hold them all. Reuse an existing sorting template where the
   order allows, and don't use `labelprefix` or a new refcontext per heading.
   `grep "words of memory" main.log` shows the usage.
