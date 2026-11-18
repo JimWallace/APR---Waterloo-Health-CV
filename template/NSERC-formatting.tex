@@ -27,17 +27,20 @@
 %
 %. FORMAT SECTION HEADINGS
 %
-\titleformat*{\section}{\normalfont\bfseries}
-\titleformat*{\subsection}{\normalfont\bfseries}
-\titleformat*{\subsubsection}{\normalfont\bfseries}
+% The full \titleformat form, not the "easy" \titleformat*: in TeX Live 2026,
+% \DocumentMetadata (PDF/A, uwhealthcv-pdfa.tex) loads the kernel's new
+% sectioning code, and titlesec then stops at \titleformat* with "Not allowed
+% in `easy' settings". These give the same result: bold, label, 1em gap.
+\titleformat{\section}{\normalfont\bfseries}{\thesection}{1em}{}
+\titleformat{\subsection}{\normalfont\bfseries}{\thesubsection}{1em}{}
+\titleformat{\subsubsection}{\normalfont\bfseries}{\thesubsubsection}{1em}{}
 
 \titlespacing\section{0pt}{12pt plus 4pt minus 2pt}{0pt plus 2pt minus 2pt}
 \titlespacing\subsection{0pt}{12pt plus 4pt minus 2pt}{0pt plus 2pt minus 2pt}
 \titlespacing\subsubsection{0pt}{12pt plus 4pt minus 2pt}{0pt plus 2pt minus 2pt}
 
 % Keep a heading with the lines after it. This wraps the titlesec headings, so
-% it must come after \titleformat and \titlespacing: titlesec in TeX Live 2026
-% refuses its "easy" \titleformat* on a \section it no longer recognises.
+% it comes after \titleformat and \titlespacing.
 \usepackage{needspace}
 \let\oldsection\section
 \let\oldsubsection\subsection
