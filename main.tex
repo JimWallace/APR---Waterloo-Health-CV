@@ -6,6 +6,8 @@
 % Compile main.tex for the plain Faculty of Health CV, or apr.tex for the
 % APR version (evaluation notes + highlighting).
 \usepackage{uwhealthcv}
+\usepackage{pgfplots}% the HLTH 230 grades figure (APR version)
+\pgfplotsset{compat=1.18}
 
 \addbibresource{scholar.bib}
 \addbibresource{grants.bib}
@@ -438,12 +440,21 @@ Service during the review period is highlighted as \aprsample{service}{}{service
 \\ \\
 \textbf{How students have benefited.} After a pilot alongside Marmoset in Winter 2026, Chickadee ran HLTH 230 (Introduction to Health Informatics) in Spring 2026. Its 143 students made 8,904 submissions across 17 assignments, and the median wait for results was 7.5 seconds. Students used the immediate feedback: 62\% of students' assignments were resubmitted at least once after the first results, rather than submitted once and left to wait for a grade.
 In the Student Course Perceptions survey for the term (32 of 143 registered students responded), the course scored 4.2 out of 5 overall and 4.5 for creating a supportive environment for learning. Students' comments on what helped them learn named what Chickadee provides: ``being able to get immediate feedback on assessments,'' ``unlimited attempts to complete the assignments/labs,'' and assignments that ``you can try doing \ldots\ multiple times.'' Two named it directly: ``The Chickadee platform is amazing'' and ``The chickadee website was super helpful.''
-The same term reversed a long rise in the course's grades. The mean final grade had climbed from about 80\% in 2017 to about 97\% in Spring 2024 (and was about 92\% in Spring 2025), leaving little room to tell levels of mastery apart. In Spring 2026 it was 82.9\% (median 84.9\%), back near the course's range before 2020, in the same term in which students rated the course 4.2 out of 5.
+The same term brought the course's grades back into line with its earlier offerings (see the next note).
 Colleagues in SPHS plan to adopt Chickadee in their own courses, and a Teaching Innovation Incubator proposal now in preparation would extend it to seven courses and more than 1,300 students in Health and Engineering in 2027--28.
 \\ \\
 \textbf{The work involved.} Software that a whole class depends on for its grades takes far more than writing code. In 2026 I engineered the platform itself: roughly 200,000 lines of code, checked by more than 7,000 automated tests, with grading that runs in isolated, secured environments and lab notebooks that run in the student's browser. I worked with IST to set up and secure servers on the campus network, connect the University's single sign-on, and link grades to LEARN. I took Chickadee through the University's Information Risk Assessment and Privacy Impact Assessment under Policy 46, with IST Information Security and the Privacy Office, including independent security testing, and obtained the Dean's approval for the LEARN integration. Through launch week and the rest of the term, I supported the students and teaching assistants: training the TAs, answering support requests, and fixing problems as they arose. I did this alongside my regular teaching, research and service, with help from colleagues in IST, the Privacy Office and the Faculty of Health. I will present the project at WatITis 2026, the University's IT conference.
 \\ \\
 Chickadee and the WatITis talk appear under PUBLICATIONS and PRESENTATION TO SCHOLARLY GROUPS, shown as \aprsample{teaching}{research}{teaching, with research}.
+
+\sectionbreak
+\cvsection{A Note on Teaching: Grades in HLTH 230}
+\\ \\
+Final grades in HLTH 230 (Introduction to Health Informatics) rose for several years while the course was taught by a number of instructors. The mean course grade climbed from 80.4\% in Winter 2017 to 97.3\% in Spring 2024, when both the median and the most common grade were 100\%. Grades that high can no longer tell students who have mastered the material from those who have not.
+\\ \\
+When I taught the course again in 2026, its grades came back into line with earlier offerings. The mean was 84.4\% in Winter 2026 and 82.9\% in Spring 2026 (medians 85.1\% and 84.9\%), close to my previous offering in Winter 2020 (84.6\%) and to the course's level before 2020. In Spring 2026, students rated the course 4.2 out of 5 overall and 4.5 for its supportive learning environment. Chickadee supported this balance: students received immediate feedback and could resubmit their work until it was right, so a higher standard came with more opportunities to learn rather than fewer.
+\\ \\
+\input{figures/hlth230-grades}
 \fi % end APR version only -------------------------------------
 
 \sectionbreak[6\baselineskip]

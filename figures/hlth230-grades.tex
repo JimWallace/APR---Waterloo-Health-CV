@@ -1,0 +1,33 @@
+% HLTH 230 final course grades by term (APR version only), drawn from
+% data/hlth230-grades.csv (see data/hlth230-grades.md). Shaded: terms Jim taught.
+\begin{center}
+\begin{tikzpicture}
+\begin{axis}[
+    width=\linewidth, height=6.2cm,
+    ymin=60, ymax=104, ytick={60,70,80,90,100},
+    ylabel={Final grade (\%)}, ylabel style={font=\small},
+    xmin=-0.6, xmax=17.6,
+    xtick=data, xticklabels from table={data/hlth230-grades.csv}{term},
+    xticklabel style={font=\scriptsize, rotate=60, anchor=east},
+    yticklabel style={font=\scriptsize},
+    ymajorgrids, grid style={black!12},
+    unbounded coords=jump,
+    legend style={font=\scriptsize, draw=none, fill=none, at={(0.5,1.02)}, anchor=south},
+    legend columns=3,
+    table/col sep=comma,
+  ]
+  % terms I taught: Winter 2020 (4), Winter 2026 (16), Spring 2026 (17)
+  \fill[black!8] (axis cs:3.5,60) rectangle (axis cs:4.5,104);
+  \fill[black!8] (axis cs:15.5,60) rectangle (axis cs:17.5,104);
+  \addplot[blue!70!black, thick, mark=*, mark size=1.4pt]
+    table[x expr=\coordindex, y=mean] {data/hlth230-grades.csv};
+  \addplot[green!50!black, thick, mark=*, mark size=1.4pt]
+    table[x expr=\coordindex, y=median] {data/hlth230-grades.csv};
+  \addplot[orange!85!black, thick, dashed, mark=*, mark size=1.4pt]
+    table[x expr=\coordindex, y=mode] {data/hlth230-grades.csv};
+  \legend{Mean, Median, Mode}
+\end{axis}
+\end{tikzpicture}
+
+\parbox{\linewidth}{\footnotesize HLTH 230 final course grades by term, Winter 2017 -- Spring 2026. Shaded: terms I taught. Winter 2017 -- Spring 2025 from the University's Institutional Analysis and Planning count-date data (Quest); Winter and Spring 2026 from LEARN final grades, where the mode is not comparable and is not shown.}
+\end{center}
