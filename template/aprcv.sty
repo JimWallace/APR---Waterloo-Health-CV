@@ -28,7 +28,10 @@
 %%   \aprsample{research}{teaching}{text}
 %%                                  inline example of a highlight, for notes
 %%   \sethighlightstrength{40}      softer highlights (100 = full Word colours)
-%%   \sethighlightstyle{split}      two-colour style: split, blend or bar
+%%   \sethighlightstyle{split}      two-colour style: split, blend, bar or
+%%                                  dots (three dots in the margin, one each
+%%                                  for research, teaching and service,
+%%                                  filled for the categories that apply)
 %%
 %% Files (the template lives in template/; the CV's own files sit beside it)
 %%   main.tex                the CV's content; compiles to the plain CV
@@ -145,14 +148,20 @@
 \newcount\apr@k
 \newdimen\apr@bleed  \apr@bleed=1pt
 \newdimen\apr@barw   \apr@barw=3pt
+\newdimen\apr@dotr  \apr@dotr=2.1pt  % dot radius
+\newdimen\apr@dotg  \apr@dotg=1.6pt  % gap between dots
+\newdimen\apr@dotm  \apr@dotm=5pt    % gap between the dots and the entry
 
 % two-colour style: halves (left half primary, right half secondary), split
 % (primary on top, secondary below), blend (primary fading into secondary
-% from left to right), or bar (primary fill, secondary bar in the margin)
+% from left to right), bar (primary fill, secondary bar in the margin), or
+% dots (primary fill; in the margin, three dots -- research, teaching,
+% service -- filled for the entry's categories, on every highlighted entry)
 \def\apr@style@halves{halves}
 \def\apr@style@split{split}
 \def\apr@style@blend{blend}
 \def\apr@style@bar{bar}
+\def\apr@style@dots{dots}
 \newcommand\sethighlightstyle[1]{\edef\apr@style{#1}}
 \sethighlightstyle{bar}
 
@@ -271,7 +280,36 @@
   \ifx\apr@sc\@empty\else\ifx\apr@style\apr@style@bar
     \apr@rect{\apr@L-\apr@bleed-\apr@barw-.5pt}{\apr@bot}%
              {\apr@L-\apr@bleed-.5pt}{\apr@top}{\apr@sc Base!75!white}%
-  \fi\fi}
+  \fi\fi
+  \ifx\apr@style\apr@style@dots \apr@dots \fi}
+
+% dots style: three dots left of the entry's first line, research, teaching,
+% service from left to right; a dot is filled when the entry's primary or
+% secondary colour is that category. Entries in neither (an award alone)
+% get no dots.
+\def\apr@ifcat#1{%
+  \edef\apr@tmpa{APR#1}%
+  \ifx\apr@pc\apr@tmpa \expandafter\@firstoftwo
+  \else\ifx\apr@sc\apr@tmpa \expandafter\expandafter\expandafter\@firstoftwo
+  \else \expandafter\expandafter\expandafter\@secondoftwo \fi\fi}
+\def\apr@dot#1#2{% #1: category, #2: index from the right (0, 1, 2)
+  \apr@ra=\dimexpr\apr@L-\apr@bleed-\apr@dotm-\apr@dotr
+                   -(2\apr@dotr+\apr@dotg)*#2\relax
+  \apr@rb=\dimexpr\apr@ys+(\apr@H-\apr@D)/2-\apr@oy\relax
+  \apr@ifcat{#1}%
+    {\def\apr@tmpb{APR#1Base!80!white}}%
+    {\def\apr@tmpb{white}}%
+  \put(0,0){\begin{tikzpicture}[overlay]
+    \filldraw[fill=\apr@tmpb,draw=APR#1Base!55!black,line width=.45pt]
+      (\the\apr@ra,\the\apr@rb) circle[radius=\the\apr@dotr];
+  \end{tikzpicture}}}
+\def\apr@dots{%
+  \apr@ifcat{research}{\@tempswatrue}{%
+    \apr@ifcat{teaching}{\@tempswatrue}{%
+      \apr@ifcat{service}{\@tempswatrue}{\@tempswafalse}}}%
+  \if@tempswa
+    \apr@dot{research}{2}\apr@dot{teaching}{1}\apr@dot{service}{0}%
+  \fi}
 
 \def\apr@setcols#1#2{\def\apr@pc{#1}\def\apr@sc{#2}}
 
@@ -359,6 +397,9 @@
       \ifx\apr@sc\@empty\else\ifx\apr@style\apr@style@bar
         \kern\dimexpr\apr@barw+\apr@bleed\relax
       \fi\fi
+      \ifx\apr@style\apr@style@dots
+        \kern\dimexpr6\apr@dotr+2\apr@dotg+\apr@dotm+\apr@bleed\relax
+      \fi
       \hbox{\begin{picture}(0,0)\apr@paint\end{picture}\usebox\apr@box}%
     \endgroup
   \else
