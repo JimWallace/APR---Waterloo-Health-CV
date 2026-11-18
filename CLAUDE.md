@@ -159,8 +159,10 @@ documents; neither is in this public repo.
   profession (`activities.bib`). The Faculty also counts refereeing for journals and granting
   councils, keynotes, society awards and government or professional committees as evidence
   of scholarship, and says a service role such as chairing a curriculum committee or editing
-  a journal "may also provide indirect evidence for scholarship or teaching". Such roles get
-  the second colour through `apralsoresearch` / `apralsoteaching`; only Jim adds keys there.
+  a journal "may also provide indirect evidence for scholarship or teaching". Jim's standing
+  decision: every `activities.bib` entry with level grantreferee, journal, programcommittee or
+  referee also goes in `apralsoresearch` (the second list in `main.tex`); add new ones there
+  in the same commit. Other second colours are Jim's call.
 - Community service related to my scholarship is service to the University; the Faculty also
   counts training such as student mental health training as voluntary service.
 - Don't count a work twice across review periods (the guidelines' "reporting integrity"
