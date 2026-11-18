@@ -87,13 +87,15 @@
       {\cv@field{amount}}%
       {\cv@field{year}}%
       {\cv@field{endyear}}%
-      {\cv@field{title}}}}
+      {\cv@field{title}}%
+      {\expandonce\aprentrymark}}}
 
-% \cv@grantline{colour}{role}{names}{agency}{amount}{year}{endyear}{title}
-% \me is the CV's owner, in bold, with the role
-\newcommand\cv@grantline[8]{%
+% \cv@grantline{colour}{role}{names}{agency}{amount}{year}{endyear}{title}{mark}
+% \me is the CV's owner, in bold, with the role; mark is the APR dots
+% style's marker (\aprentrymark)
+\newcommand\cv@grantline[9]{%
   \ifx\relax#1\relax\else\rowcolor{#1}\fi
-  \def\me{\textbf{\cv@owner\ifx\relax#2\relax\else\space(#2)\fi}}#3 &
+  #9\def\me{\textbf{\cv@owner\ifx\relax#2\relax\else\space(#2)\fi}}#3 &
   #4 &
   \cv@amount{#5} &
   \cv@tenure{#6}{#7} &
@@ -108,7 +110,7 @@
 \newlength\cv@amountwd
 \newlength\cv@tenurewd
 % measure the amount and tenure columns over the collected rows
-\newcommand\cv@measureline[8]{%
+\newcommand\cv@measureline[9]{%
   \cv@widest\cv@amountwd{\cv@amount{#5}}%
   \cv@widest\cv@tenurewd{\cv@tenure{#6}{#7}}}
 
@@ -205,6 +207,7 @@
 \newcommand\printsupervision[1]{%
   \begin{enumerate}
     \item[#1]%
+    \aprmarkleftof{#1}% APR dots style: markers left of the degree label
     \def\cv@degree{#1}%
     \begin{refcontext}[sorting=cvsupervision]%
       \printbibliography[type=supervision,check=cvdegree,env=cvdegree,heading=none]%
@@ -345,13 +348,15 @@
       {\noexpand\cv@coursecell{\cv@field{course}}{\cv@field{title}}{\cv@field{level}}{\cv@field{note}}}%
       {\cv@field{enrolment}}%
       {\noexpand\cv@scores{\cv@field{scp}}}%
-      {\noexpand\cv@scores{\cv@field{scpaverage}}}}}
+      {\noexpand\cv@scores{\cv@field{scpaverage}}}%
+      {\expandonce\aprentrymark}}}
 
-% \cv@courseline{colour}{term}{course}{enrolment}{scp}{average}
+% \cv@courseline{colour}{term}{course}{enrolment}{scp}{average}{mark}
 % Rows end in \\, so the table can break between courses but not inside one.
-\newcommand\cv@courseline[6]{%
+% mark is the APR dots style's marker (\aprentrymark).
+\newcommand\cv@courseline[7]{%
   \ifx\relax#1\relax\else\rowcolor{#1}\fi
-  #2 & #3 & #4\cv@coursescores{#5}{#6}\\[0.4\baselineskip]}
+  #7#2 & #3 & #4\cv@coursescores{#5}{#6}\\[0.4\baselineskip]}
 \newcommand\cv@coursescores[2]{}
 \newcommand\cv@coursescores@on[2]{& #1 & #2}
 \newcommand\cv@coursescores@scp[2]{& #1}
@@ -363,7 +368,7 @@
 \newlength\cv@avgwd
 % \cv@widestscore\len{item}: widen \len to fit one "Item score/5" line
 \newcommand\cv@widestscore[2]{\cv@widest#1{\cv@scoresplit#2==\@nil}}
-\newcommand\cv@measurecourse[6]{%
+\newcommand\cv@measurecourse[7]{%
   \cv@widest\cv@termwd{#2}%
   \cv@widest\cv@enrolwd{#4}%
   \cv@measurescores\cv@scpwd#5%

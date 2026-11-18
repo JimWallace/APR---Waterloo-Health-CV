@@ -84,7 +84,8 @@ every CV that uses the template.
   `\cvcourseaveragelabel` for its score headings), the entry types `@grant`, `@supervision`,
   `@award`, `@service` and `@course` with the fields in `uwhealthcv.dbx`, and `\me` inside a
   grant's `investigators`. Documented in `cv-records.tex`.
-- For other record types: `\aprtypecategory{type}{colour}` and `\aprsetentrycolour`
+- For other record types: `\aprtypecategory{type}{colour}`, `\aprsetentrycolour`, `\aprentrymark`
+  and `\aprmarkleftof{label}`
   (`aprcv.sty`).
 - biblatex categories: `aprteaching`, `aprservice`, `apraward`, `aprnone`,
   `aprinclude`, `apralsoteaching`, `apralsoresearch`, `apralsoservice`,
