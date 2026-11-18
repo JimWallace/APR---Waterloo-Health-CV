@@ -82,8 +82,64 @@
 %                               J1, J2, ... (no prefix: 1, 2, ...)
 %
 % Grants and supervision are biblatex records: see cv-records.tex.
-\newcommand\cvsection[1]{\textbf{#1}}
-\newcommand\cvsubheading[1]{\keepwithnext #1}
+\newcommand\cvsection[1]{\cv@heading{H1}{\textbf{#1}}}
+\newcommand\cvsubheading[1]{\keepwithnext\cv@heading{H2}{#1}}
+% Tagged PDF (uwhealthcv-pdfa.tex): \ifcv@tagged is true when the kernel tags
+% the document. \cv@heading{H1}{text} tags its text as a heading. Headings
+% here often share a paragraph with what follows ("NAME/DATE: Name", or a
+% heading, \\ and text), so the heading becomes its own structure element and
+% the rest of the paragraph a P after it. Nothing changes on the page.
+% TikZ keys that work with or without tagging: [cv/decorative] makes a
+% picture an artifact (skipped by screen readers), [cv/alt={text}] gives a
+% figure its alternative text.
+\newif\ifcv@tagged
+\ifdefined\GetDocumentProperties
+  \edef\cv@tmp{\GetDocumentProperties{document/tagging}}%
+  \def\cv@tmpb{active}%
+  \ifx\cv@tmp\cv@tmpb \cv@taggedtrue \fi
+\fi
+\ifcv@tagged
+  \tagpdfsetup{
+    table/header-rows=1,% every table's first row is its headings
+    math/mathml/luamml/load=false}% maths (a few symbols) is tagged with its LaTeX source
+  % in the tagging family, so tikzpicture reads them before it starts
+  \tikzset{cv/decorative/.style={artifact}, cv/alt/.style={alt={#1}},
+    cv/decorative/.belongs to family=/tikz/tagging-setup,
+    cv/alt/.belongs to family=/tikz/tagging-setup}
+\else
+  \tikzset{cv/decorative/.style={}, cv/alt/.style={}}
+\fi
+\ExplSyntaxOn
+\cs_new_protected:Npn \cv@heading #1#2
+  {
+    \legacy_if:nTF { cv@tagged }
+      {
+        \mode_if_vertical:TF
+          { \group_begin: \tagpdfsetup { para/tag = #1 } \leavevmode \group_end: }
+          { \tagmcend \tagstructend \tagstructbegin { tag = #1 } \tagmcbegin { } }
+        #2
+        \peek_meaning:NTF \c_space_token
+          { \peek_remove_spaces:n { \peek_after:Nw \__cv_heading_after_space: } }
+          { \peek_after:Nw \__cv_heading_after: }
+      }
+      { #2 }
+  }
+% text or \\ after the heading: close the heading, open a P for the rest;
+% #1 puts back the space the peek removed
+\cs_new_protected:Npn \__cv_heading_after:n #1
+  {
+    \bool_lazy_any:nT
+      {
+        { \token_if_eq_meaning_p:NN \l_peek_token \\ }
+        { \token_if_letter_p:N \l_peek_token }
+        { \token_if_other_p:N \l_peek_token }
+      }
+      { \tagmcend \tagstructend \tagstructbegin { tag = P } \tagmcbegin { } }
+    #1
+  }
+\cs_new_protected:Npn \__cv_heading_after: { \__cv_heading_after:n { } }
+\cs_new_protected:Npn \__cv_heading_after_space: { \__cv_heading_after:n { ~ } }
+\ExplSyntaxOff
 % \cvitem's label is empty. With \DocumentMetadata, TeX Live 2026's list code
 % reads \item[] as no label and would print the default bullet, so that is
 % emptied too (before \begin{itemize}, which reads it).

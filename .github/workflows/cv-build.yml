@@ -66,7 +66,7 @@ jobs:
         # On main the merge has happened; report, but still publish the PDFs.
         continue-on-error: ${{ github.ref == 'refs/heads/main' }}
         run: python3 scripts/warning_ratchet.py main apr
-      - name: PDF/A-2b (veraPDF)
+      - name: PDF/UA-2 and PDF/A-4f (veraPDF)
         continue-on-error: ${{ github.ref == 'refs/heads/main' }}
         run: sh scripts/check_pdfa.sh main.pdf apr.pdf
       - name: Fonts embedded; what changed in the PDFs since main
@@ -96,7 +96,7 @@ jobs:
             example-apr.tex
       - name: No warnings beyond the baseline (LaTeX and biber)
         run: python3 scripts/warning_ratchet.py example example-apr
-      - name: PDF/A-2b (veraPDF)
+      - name: PDF/UA-2 and PDF/A-4f (veraPDF)
         run: sh scripts/check_pdfa.sh template/example/example.pdf template/example/example-apr.pdf
 
   gate:
