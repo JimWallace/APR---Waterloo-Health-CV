@@ -154,14 +154,14 @@
 \newcount\apr@k
 \newdimen\apr@bleed  \apr@bleed=1pt
 \newdimen\apr@barw   \apr@barw=3pt
-\newdimen\apr@dotr  \apr@dotr=2.3pt  % dot radius
-\newdimen\apr@dotg  \apr@dotg=1.6pt  % gap between dots
+\newdimen\apr@dotr  \apr@dotr=3.85pt % dot radius: the rosette's medallion
+\newdimen\apr@dotg  \apr@dotg=1.8pt  % gap between dots
 \newdimen\apr@dotm  \apr@dotm=6pt    % gap between the marker and the label or text
 \newdimen\apr@badgew \apr@badgew=11pt % width of the marker's award slot
 \newdimen\apr@slot  % award slot width actually reserved (0 in a sample
                      % without a rosette)
-\newdimen\apr@dotx  % right edge of the marker: the left of a list item's
-                     % label (such as [J1]), the text block, or a sample
+\newdimen\apr@dotx  % right edge of the marker: the left of a numbered
+                     % entry's label (such as [J1]), the text block, or a sample
 
 % two-colour style: halves (left half primary, right half secondary), split
 % (primary on top, secondary below), blend (primary fading into secondary
@@ -194,6 +194,10 @@
 % badge outside the review period). \apr@markbadge: the entry's badge
 % ("award" or empty).
 \def\apr@markbadge{}
+% \apr@markatlabel: non-empty for a numbered bibliography entry, whose
+% marker sits just left of its label ([J1]); other markers sit left of the
+% text block, clear of side headings such as a degree column
+\def\apr@markatlabel{}
 \newcommand\apr@mark@start[2]{%
   \ifvmode\leavevmode\fi
   \interlinepenalty\@M % keep a highlighted entry on one page
@@ -203,8 +207,9 @@
   \edef\apr@tmp{\write\@auxout{%
     \string\aprM{\apr@cur}{\noexpand\the\ReadonlyShipoutCounter}%
       {\noexpand\the\pdflastxpos}{\noexpand\the\pdflastypos}%
-      {{#1}{#2}{\apr@markbadge}{\the\dimexpr 1in+\hoffset+\oddsidemargin
-        \ifdim\@totalleftmargin>\z@+\@totalleftmargin-\labelsep-\labelwidth\fi\relax}}%
+      {{#1}{#2}{\apr@markbadge}{\ifx\apr@markatlabel\@empty\else
+        \the\dimexpr 1in+\hoffset+\oddsidemargin
+          +\@totalleftmargin-\labelsep-\labelwidth\relax\fi}}%
       {\the\dimexpr 1in+\hoffset+\oddsidemargin+\@totalleftmargin\relax}%
       {\the\linewidth}{\the\ht\strutbox}{\the\dp\strutbox}}}%
   \apr@tmp}
@@ -331,8 +336,8 @@
   \apr@rb=\dimexpr\apr@ys+(\apr@H-\apr@D)/2-\apr@oy\relax
   % filled: the category colour, black outline; empty: white, grey outline
   \apr@ifcat{#1}%
-    {\def\apr@tmpb{fill=APR#1Dot,draw=black,line width=.5pt}}%
-    {\def\apr@tmpb{fill=white,draw=black!50,line width=.4pt}}%
+    {\def\apr@tmpb{fill=APR#1Dot,draw=black,line width=.7pt}}%
+    {\def\apr@tmpb{fill=white,draw=black!50,line width=.6pt}}%
   \put(0,0){\begin{tikzpicture}[overlay]
     \expandafter\filldraw\expandafter[\apr@tmpb]
       (\the\apr@ra,\the\apr@rb) circle[radius=\the\apr@dotr];
@@ -343,7 +348,15 @@
     \ifx\apr@badge\@empty \def\apr@tmpc{}%
     \else\ifx\apr@pc\@empty \def\apr@tmpc{white}%
     \else \def\apr@tmpc{APRaward}\fi\fi}}
+\newdimen\apr@edge  \apr@edge=.45in % the marker stays this far from the paper edge
+\newif\ifapr@onpage % painting the page (true) or an inline sample (false)
 \def\apr@marker{%
+  % on the page (not in a sample), keep the whole marker clear of the
+  % paper edge, where printers may not print
+  \ifapr@onpage
+    \apr@cut=\dimexpr\apr@edge+\apr@slot+4\apr@dotg+6\apr@dotr+\apr@dotm\relax
+    \ifdim\apr@dotx<\apr@cut \apr@dotx=\apr@cut \fi
+  \fi
   \apr@rosettefill
   \ifx\apr@tmpc\@empty\else\ifdefined\cvawardbadgepaths
     \apr@ra=\dimexpr\apr@dotx-\apr@dotm-6\apr@dotr-4\apr@dotg-\apr@slot/2\relax
@@ -374,7 +387,7 @@
   \ifnum#1=\ReadonlyShipoutCounter
     \apr@xs=#2sp\relax \apr@ys=#3sp\relax
     \apr@L=#5\relax \apr@R=\dimexpr#5+#6\relax
-    \apr@slot=\apr@badgew
+    \apr@slot=\apr@badgew \apr@onpagetrue
     \apr@H=#7\relax \apr@D=#8\relax
     \apr@setcols#4{}{}{}{}\@nil
     \expandafter\expandafter\expandafter\apr@draw@E
@@ -442,7 +455,7 @@
       \sbox\apr@box{#3}%
       \edef\apr@pc{\apr@col{#1}}\edef\apr@sc{\apr@col{#2}}\def\apr@badge{}%
       \apr@oy=\z@ \apr@xs=\z@ \apr@xe=\wd\apr@box \apr@ys=\z@ \apr@ye=\z@
-      \apr@L=\z@ \apr@R=\wd\apr@box \apr@dotx=-\apr@bleed
+      \apr@L=\z@ \apr@R=\wd\apr@box \apr@dotx=-\apr@bleed \apr@onpagefalse
       \apr@H=\ht\strutbox \apr@D=\dp\strutbox
       \unitlength=1pt
       \let\apr@lead\relax
@@ -538,8 +551,9 @@
       \apr@bib@decide
       % dots style: an award badge (icon = {award}) is part of the marker,
       % so an entry with one gets a mark even when it is not highlighted
-      \def\apr@markbadge{}%
+      \def\apr@markbadge{}\def\apr@markatlabel{}%
       \ifx\apr@style\apr@style@dots
+        \iffieldundef{labelnumber}{}{\def\apr@markatlabel{x}}%
         \iffieldequalstr{usera}{award}{\def\apr@markbadge{award}}{%
           \iffieldequalstr{usera}{images/hm.png}{\def\apr@markbadge{award}}{}}%
       \fi
@@ -551,7 +565,7 @@
         \edef\apr@tmp{\noexpand\apr@mark@start{\apr@c}{\apr@c@two}}%
         \apr@tmp
       \fi
-      \def\apr@markbadge{}}%
+      \def\apr@markbadge{}\def\apr@markatlabel{}}%
     \renewcommand\aprsetentrycolour{%
       \apr@bib@decide
       \let\aprentrycolour\apr@c}%
