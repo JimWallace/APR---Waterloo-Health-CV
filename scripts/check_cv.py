@@ -267,14 +267,14 @@ def check_records(records: dict, main_tex: str, err, warn) -> None:
         if e.type != "course":
             err("E-record", f"{where}: '{e.key}' is @{e.type}; courses.bib holds @course entries", e.key)
             continue
-        for k in ("course", "title"):
-            if not f.get(k):
-                err("E-record", f"{where}: course '{e.key}' has no {k}", e.key)
+        if not f.get("course"):
+            err("E-record", f"{where}: course '{e.key}' has no course number", e.key)
         if not re.fullmatch(r"\d{4}-(01|05|09)", f.get("date", "")):
             err("E-record", f"{where}: course '{e.key}' date '{f.get('date', '')}' should be the month "
                 "the term starts: YYYY-01 (Winter), YYYY-05 (Spring) or YYYY-09 (Fall)", e.key)
-        if f.get("enrolment") and not f["enrolment"].isdigit():
-            err("E-record", f"{where}: course '{e.key}' enrolment '{f['enrolment']}' must be digits only", e.key)
+        for k in ("enrolment", "responses"):
+            if f.get(k) and not f[k].isdigit():
+                err("E-record", f"{where}: course '{e.key}' {k} '{f[k]}' must be digits only", e.key)
         for k in ("scp", "scpaverage"):
             if f.get(k) and not SCORES_RE.match(f[k]):
                 err("E-record", f"{where}: course '{e.key}' {k} '{f[k]}' should be Item=score pairs "

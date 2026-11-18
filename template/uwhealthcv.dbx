@@ -44,7 +44,7 @@
 %
 % @course: one course offering (one row of the COURSES TAUGHT table).
 %   course         the course number(s) as printed: HLTH 454/629
-%   title          the course title: Information Visualization
+%   title          optional: the course title: Information Visualization
 %   date           the term, as the month it starts: 2024-01 (Winter),
 %                  2024-05 (Spring), 2024-09 (Fall)
 %   level          optional: Undergraduate, Graduate, Graduate \& Undergraduate
@@ -52,6 +52,8 @@
 %   scp            optional: course evaluation scores out of 5, as
 %                  Item=score pairs separated by commas, no spaces around =:
 %                  {Implementation=4.5, Design=4.6}
+%   responses      optional: how many students answered the survey, printed
+%                  under the scores as (n = 11)
 %   scpaverage     optional: the comparison averages, in the same form
 %   note           optional: printed in the Notes column
 
@@ -74,7 +76,7 @@
   scp,
   scpaverage,
 }
-\DeclareDatamodelFields[type=field,datatype=integer]{amount,count,enrolment}
+\DeclareDatamodelFields[type=field,datatype=integer]{amount,count,enrolment,responses}
 
 \DeclareDatamodelEntryfields[grant]{
   investigators,
@@ -110,6 +112,7 @@
   title,
   level,
   enrolment,
+  responses,
   scp,
   scpaverage,
   note,
@@ -146,7 +149,6 @@
 \DeclareDatamodelConstraints[course]{
   \constraint[type=mandatory]{
     \constraintfield{course}
-    \constraintfield{title}
     \constraintfield{date}
   }
 }
