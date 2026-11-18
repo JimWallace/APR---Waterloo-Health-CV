@@ -214,7 +214,8 @@ that is followed by a list; never use `\newpage` (use `\sectionbreak`).
 
 - DBLP person id: `65/4889`
 - OpenAlex author id: resolved by name each run; pin it as the repo variable `OPENALEX_AUTHOR_ID`
-- ORCID: not set yet
+- ORCID: `0000-0002-5162-0256` (on my Crossref records; the "CV sources" workflow searches Crossref by it,
+  which matters when DBLP blocks automated access)
 - Google Scholar can't be queried automatically; don't try.
 - The "CV sources" workflow saves DBLP/Crossref records on the `cv-sources` branch weekly
   (`git fetch origin cv-sources`); use them when your session can't reach those sites.
