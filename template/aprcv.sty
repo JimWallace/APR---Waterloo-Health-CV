@@ -434,20 +434,23 @@
       \apr@L=\z@ \apr@R=\wd\apr@box \apr@dotx=-\apr@bleed
       \apr@H=\ht\strutbox \apr@D=\dp\strutbox
       \unitlength=1pt
+      \let\apr@lead\relax
       % in running text, make room for a margin bar so it doesn't overlap
       % the preceding character
       \ifx\apr@sc\@empty\else\ifx\apr@style\apr@style@bar
-        \kern\dimexpr\apr@barw+\apr@bleed\relax
+        \def\apr@lead{\kern\dimexpr\apr@barw+\apr@bleed\relax}%
       \fi\fi
       \ifx\apr@style\apr@style@dots
         % reserve the award slot only when the sample shows a rosette
         \apr@rosettefill
         \ifx\apr@tmpc\@empty \apr@slot=\z@
         \else \apr@slot=\dimexpr\apr@badgew+2\apr@dotg\relax \fi
-        \kern\dimexpr6\apr@dotr+2\apr@dotg+\apr@slot+\apr@dotm+\apr@bleed\relax
+        \edef\apr@lead{\kern\the\dimexpr6\apr@dotr+2\apr@dotg+\apr@slot+\apr@dotm+\apr@bleed\relax}%
         \ifdim\apr@slot>\z@ \advance\apr@slot-2\apr@dotg \fi
       \fi
-      \hbox{\begin{picture}(0,0)\apr@paint\end{picture}\usebox\apr@box}%
+      % the room for the marker goes inside the box: a kern before it would
+      % be dropped when the sample starts a line
+      \hbox{\apr@lead\begin{picture}(0,0)\apr@paint\end{picture}\usebox\apr@box}%
     \endgroup
   \else
     #3%
