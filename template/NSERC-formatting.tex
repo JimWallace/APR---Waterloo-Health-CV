@@ -24,16 +24,6 @@
 \newdateformat{monthyear}{\monthname[\THEMONTH] \THEYEAR}
 
 
-\usepackage{needspace}
-\renewcommand{\section}{\needspace{3\baselineskip}\oldsection}
-\renewcommand{\subsection}{\needspace{2\baselineskip}\oldsubsection}
-
-% Fancy external links
-\usepackage{fontawesome5}
-\newcommand{\extarrow}{\textsuperscript{\scalebox{0.6}{\faExternalLink*}}}
-\newcommand{\extlink}[2]{\href{#1}{#2\extarrow}}
-
-%\usepackage{bbding}
 %
 %. FORMAT SECTION HEADINGS
 %
@@ -44,6 +34,22 @@
 \titlespacing\section{0pt}{12pt plus 4pt minus 2pt}{0pt plus 2pt minus 2pt}
 \titlespacing\subsection{0pt}{12pt plus 4pt minus 2pt}{0pt plus 2pt minus 2pt}
 \titlespacing\subsubsection{0pt}{12pt plus 4pt minus 2pt}{0pt plus 2pt minus 2pt}
+
+% Keep a heading with the lines after it. This wraps the titlesec headings, so
+% it must come after \titleformat and \titlespacing: titlesec in TeX Live 2026
+% refuses its "easy" \titleformat* on a \section it no longer recognises.
+\usepackage{needspace}
+\let\oldsection\section
+\let\oldsubsection\subsection
+\renewcommand{\section}{\needspace{3\baselineskip}\oldsection}
+\renewcommand{\subsection}{\needspace{2\baselineskip}\oldsubsection}
+
+% Fancy external links
+\usepackage{fontawesome5}
+\newcommand{\extarrow}{\textsuperscript{\scalebox{0.6}{\faExternalLink*}}}
+\newcommand{\extlink}[2]{\href{#1}{#2\extarrow}}
+
+%\usepackage{bbding}
 
 %
 % FORMAT Paragraph / main text
