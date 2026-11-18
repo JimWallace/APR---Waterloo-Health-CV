@@ -19,7 +19,7 @@ One source, two PDFs:
 - `grants.bib` holds grants (`@grant`), `supervision.bib` my students (`@supervision`) and
   `awards.bib` the ACADEMIC AWARDS AND DISTINCTIONS list (`@award`) and
   `service.bib` the SERVICE lists and `activities.bib` the SCHOLARLY AND PROFESSIONAL
-  ACTIVITIES lists (both `@service`).
+  ACTIVITIES lists (both `@service`) and `courses.bib` the COURSES TAUGHT table (`@course`).
   The fields are described in `template/uwhealthcv.dbx`. They print sorted, and the APR
   colours come from their dates, so there are no years to keep in step by hand.
 - `apr-formatting.tex` holds my settings for the APR version (highlight strength and style).
@@ -113,6 +113,11 @@ the source of truth; never force-push `main`.
   `degree` (one of the `\printsupervision{…}` lists in `main.tex`), and `status = {In progress}`
   until they finish, then `date`, `title` and, when I know it, `position`. Committee
   membership and external examining stay as lines in `main.tex`.
+- Courses → a `@course` entry in `courses.bib`, one per offering: `course` (HLTH 454/629),
+  `title`, `date` = the month the term starts (`2026-01` Winter, `-05` Spring, `-09` Fall),
+  optional `level`, `enrolment` (digits), `note`, and Student Course Perceptions scores as
+  `scp = {Implementation=4.5, Design=4.6}` with the SPHS averages in `scpaverage`. The scores
+  print only in the APR version. Copy numbers from the SCP report itself; never estimate.
 
 **Markup** comes from the template (`template/uwhealthcv.sty`): headings are `\cvsection{…}`,
 labels over a list `\cvsubheading{…:}`, list items `\cvitem …` inside `cvlist`, lettered parts

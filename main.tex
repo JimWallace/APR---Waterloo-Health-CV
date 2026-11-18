@@ -13,6 +13,7 @@
 \addbibresource{awards.bib}
 \addbibresource{service.bib}
 \addbibresource{activities.bib}
+\addbibresource{courses.bib}
 \cvowner{James Wallace}
 \setreviewperiod{2025}{2026}
 % Publications and presentations from the review period are highlighted as
@@ -407,6 +408,15 @@ This standard came with more opportunities to learn, not fewer. Chickadee gave s
 \\ \\
 \input{figures/hlth230-grades}
 \fi % end APR version only -------------------------------------
+
+\sectionbreak
+\keepwithnext[6]
+\cvsection{COURSES TAUGHT}
+
+% courses.bib; Student Course Perceptions scores in the APR version only
+\renewcommand\cvcoursescplabel{SCP}
+\renewcommand\cvcourseaveragelabel{SPHS Average}
+\ifAPR\printcourses[scp]\else\printcourses\fi
 
 \sectionbreak[6\baselineskip]
 \cvsection{AREAS OF TEACHING EXPERTISE} \\
