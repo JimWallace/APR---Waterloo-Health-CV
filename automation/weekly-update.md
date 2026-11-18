@@ -59,6 +59,17 @@ d. **Calendar** — with the same connector, list Jim's calendar events in the s
    itself names him as speaker/examiner and its date has passed. Otherwise make it a
    question for Jim. Meeting content, attendees and private appointments stay private.
 
+e. **Missing metrics** — run `python3 scripts/missing_metrics.py`. Take every entry under
+   "Missing" (usually papers added since the last run) and the three oldest "Unresolved" ones,
+   and look up the acceptance rate or impact factor as `CLAUDE.md` → "Acceptance rates and
+   impact factors" says. Check the decision letter in Outlook first (search the venue and year
+   with `acceptance rate`, `submissions`, `accepted`), then the front matter, editorial or
+   publisher page. Entries the script lists as "Now in scholar.bib" lose their
+   `data/metrics.yaml` line.
+   **Each July–September** (after Clarivate's June JCR release), also refresh every
+   `Journal Impact Factor (YYYY)` note whose year is older than the newest release, from the
+   journal's publisher page.
+
 ## 3. Triage
 
 For each item keep a one-line reason (it goes in the PR, or in your final message if private).
@@ -87,6 +98,13 @@ Follow `CLAUDE.md` → Conventions. In short:
   in `data/trainees.yaml`, `doi` when there is one, `note = {To appear}` when not yet published.
   Add the key to exactly one heading, and to `apralsoteaching` if a trainee is an author and the
   entry is in the review period. Append next to similar entries; don't re-sort.
+  A new paper is added with its full information when it is available: DOI, pages, award,
+  and its acceptance rate (conference/PACM) or impact factor (journal), usually from the
+  acceptance email you found in step 2c. If none can be found yet, add its
+  `data/metrics.yaml` line (`none` or `unresolved`).
+- **Metrics** (step 2e) → the entry's `note`, as `CLAUDE.md` describes; the `data/metrics.yaml`
+  line for each entry you looked up: delete it when you add a figure, otherwise add or
+  re-date it. Commit metrics separately from new entries.
 - **Review recognitions** → `awards.bib`: if the venue and year already has an `@award`, raise
   its `count`; otherwise add one with `title = {Special recognition for VENUE YYYY Papers
   (exceptional reviews)}` and `date = {YYYY}` (no count for a single one). Order within a year
@@ -122,7 +140,13 @@ change is one of:
 - a new publication confirmed against a retrieved record (Crossref/DBLP/publisher page), or
   one Jim reported in an issue, marked `To appear`;
 - a DOI backfill confirmed by `citation-verifier`;
-- a review recognition, or a reviewing/PC/editorial role, stated in an official email or by Jim.
+- a review recognition, or a reviewing/PC/editorial role, stated in an official email or by Jim;
+- an acceptance rate for the paper's own track, stated in its decision letter, the program
+  chairs' email, the front matter or the venue's site; a journal impact factor (new or
+  refreshed) stated on the publisher's or Clarivate's page; a `data/metrics.yaml` line.
+
+A rate or impact factor from a third-party compilation or aggregator site, or from a track
+you inferred, is `needs-review`.
 
 Everything else is `needs-review`, with a **Questions for Jim** section of one-line yes/no
 questions: corrections to existing entries, grants, supervision changes, awards other than
