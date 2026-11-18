@@ -4,8 +4,10 @@
 #
 # Errors fail the build, and so does any warning (check_cv.py, biber or LaTeX)
 # that is not in scripts/warnings-baseline.txt; see scripts/warning_ratchet.py.
-# TeX Live is pinned (texlive_version) so the warnings do not change under us;
-# to move to a newer one, change both builds and rerun
+# TeX Live is pinned to one dated image (docker_image, by digest) so the
+# warnings do not change under us. It is TeX Live 2026, the version Overleaf
+# compiles new projects with. To move on, change the image in both builds (tags:
+# ghcr.io/xu-cheng/texlive-debian, e.g. 20271001) and rerun
 # `python3 scripts/warning_ratchet.py --update <docs>` in the same PR.
 name: CV build
 
@@ -44,9 +46,9 @@ jobs:
     steps:
       - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5.1.0
       - name: Compile main.tex and apr.tex (TeX Live, latexmk + biber)
-        uses: xu-cheng/latex-action@e2f99d4b3685b0da93f97e1b86ad8fab81105098 # v3
+        uses: xu-cheng/latex-action@6549dc21effb2730855a1281407ecfcececc6c1b # v4.1.0
         with:
-          texlive_version: 2023
+          docker_image: ghcr.io/xu-cheng/texlive-debian:20261001@sha256:78ac2204b8df113aca0561e8f173ad5b89ee51e90795173d2fe9bcf0fbce162e # TeX Live 2026, 2026-10-01 snapshot
           root_file: |
             main.tex
             apr.tex
@@ -83,9 +85,9 @@ jobs:
     steps:
       - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5.1.0
       - name: Compile the template example (plain and APR)
-        uses: xu-cheng/latex-action@e2f99d4b3685b0da93f97e1b86ad8fab81105098 # v3
+        uses: xu-cheng/latex-action@6549dc21effb2730855a1281407ecfcececc6c1b # v4.1.0
         with:
-          texlive_version: 2023
+          docker_image: ghcr.io/xu-cheng/texlive-debian:20261001@sha256:78ac2204b8df113aca0561e8f173ad5b89ee51e90795173d2fe9bcf0fbce162e # TeX Live 2026, 2026-10-01 snapshot
           working_directory: template/example
           root_file: |
             example.tex
