@@ -1,6 +1,5 @@
 \usepackage[margin=0.75in]{geometry}
 \usepackage{mathptmx}
-\usepackage{titlesec}
 \usepackage{wasysym}
 \usepackage{pifont}
 \usepackage{url}
@@ -24,9 +23,11 @@
 \newdateformat{monthyear}{\monthname[\THEMONTH] \THEYEAR}
 
 
+% Headings are \cvsection (uwhealthcv.sty), not \section, so there is no
+% titlesec set-up here: with \DocumentMetadata (PDF/A), TeX Live 2026's
+% sectioning code is one titlesec cannot format, and it warns about every
+% heading level. \Needspace (cv-layout.tex) keeps headings with what follows.
 \usepackage{needspace}
-\renewcommand{\section}{\needspace{3\baselineskip}\oldsection}
-\renewcommand{\subsection}{\needspace{2\baselineskip}\oldsubsection}
 
 % Fancy external links
 \usepackage{fontawesome5}
@@ -34,16 +35,6 @@
 \newcommand{\extlink}[2]{\href{#1}{#2\extarrow}}
 
 %\usepackage{bbding}
-%
-%. FORMAT SECTION HEADINGS
-%
-\titleformat*{\section}{\normalfont\bfseries}
-\titleformat*{\subsection}{\normalfont\bfseries}
-\titleformat*{\subsubsection}{\normalfont\bfseries}
-
-\titlespacing\section{0pt}{12pt plus 4pt minus 2pt}{0pt plus 2pt minus 2pt}
-\titlespacing\subsection{0pt}{12pt plus 4pt minus 2pt}{0pt plus 2pt minus 2pt}
-\titlespacing\subsubsection{0pt}{12pt plus 4pt minus 2pt}{0pt plus 2pt minus 2pt}
 
 %
 % FORMAT Paragraph / main text
