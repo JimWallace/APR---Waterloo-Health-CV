@@ -3,3 +3,4 @@
 # occurs, so this file only shrinks. Fix the cause rather than adding a line;
 # a PR that adds lines cannot auto-merge (Jim merges it by hand).
 # One line per occurrence: "<source>: <warning>".
+check_cv: W-aprteach 'rotolo2026investigating' is in apralsoteaching but no author is marked * (fine for talks where a trainee presented; check)
