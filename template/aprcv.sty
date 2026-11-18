@@ -83,6 +83,11 @@
 \definecolor{APRresearchBase}{RGB}{0,255,0}     % Word "Bright Green"
 \definecolor{APRserviceBase}{RGB}{0,255,255}    % Word "Turquoise"
 \definecolor{APRawardBase}{RGB}{255,0,255}      % Word "Pink"
+% dots style: dot colours. Yellow is darkened for the dot only, so a filled
+% teaching dot stays distinct from an empty one in greyscale.
+\colorlet{APRresearchDot}{APRresearchBase}
+\definecolor{APRteachingDot}{HTML}{E6C800}
+\colorlet{APRserviceDot}{APRserviceBase}
 \newcommand\sethighlightstrength[1]{%
   \colorlet{APRteaching}{APRteachingBase!#1!white}%
   \colorlet{APRresearch}{APRresearchBase!#1!white}%
@@ -151,12 +156,12 @@
 \newdimen\apr@barw   \apr@barw=3pt
 \newdimen\apr@dotr  \apr@dotr=2.3pt  % dot radius
 \newdimen\apr@dotg  \apr@dotg=1.6pt  % gap between dots
-\newdimen\apr@dotm  \apr@dotm=6pt    % gap between the marker and the text block
+\newdimen\apr@dotm  \apr@dotm=6pt    % gap between the marker and the label or text
 \newdimen\apr@badgew \apr@badgew=11pt % width of the marker's award slot
 \newdimen\apr@slot  % award slot width actually reserved (0 in a sample
                      % without a rosette)
-\newdimen\apr@dotx  % right edge of the marker: left of the text block (labels
-                     % such as [J1] sit left of the entry), or of a sample
+\newdimen\apr@dotx  % right edge of the marker: the left of a list item's
+                     % label (such as [J1]), the text block, or a sample
 
 % two-colour style: halves (left half primary, right half secondary), split
 % (primary on top, secondary below), blend (primary fading into secondary
@@ -198,7 +203,8 @@
   \edef\apr@tmp{\write\@auxout{%
     \string\aprM{\apr@cur}{\noexpand\the\ReadonlyShipoutCounter}%
       {\noexpand\the\pdflastxpos}{\noexpand\the\pdflastypos}%
-      {{#1}{#2}{\apr@markbadge}}%
+      {{#1}{#2}{\apr@markbadge}{\the\dimexpr 1in+\hoffset+\oddsidemargin
+        \ifdim\@totalleftmargin>\z@+\@totalleftmargin-\labelsep-\labelwidth\fi\relax}}%
       {\the\dimexpr 1in+\hoffset+\oddsidemargin+\@totalleftmargin\relax}%
       {\the\linewidth}{\the\ht\strutbox}{\the\dp\strutbox}}}%
   \apr@tmp}
@@ -323,11 +329,12 @@
 \def\apr@dot#1#2{% #1: category, #2: index from the right (0, 1, 2)
   \apr@ra=\dimexpr\apr@dotx-\apr@dotm-\apr@dotr-(2\apr@dotr+\apr@dotg)*#2\relax
   \apr@rb=\dimexpr\apr@ys+(\apr@H-\apr@D)/2-\apr@oy\relax
+  % filled: the category colour, black outline; empty: white, grey outline
   \apr@ifcat{#1}%
-    {\def\apr@tmpb{APR#1Base}}%
-    {\def\apr@tmpb{white}}%
+    {\def\apr@tmpb{fill=APR#1Dot,draw=black,line width=.5pt}}%
+    {\def\apr@tmpb{fill=white,draw=black!50,line width=.4pt}}%
   \put(0,0){\begin{tikzpicture}[overlay]
-    \filldraw[fill=\apr@tmpb,draw=APR#1Base!45!black,line width=.5pt]
+    \expandafter\filldraw\expandafter[\apr@tmpb]
       (\the\apr@ra,\the\apr@rb) circle[radius=\the\apr@dotr];
   \end{tikzpicture}}}
 % \apr@rosettefill: sets \apr@tmpc to the rosette's fill, or empty for none
@@ -351,7 +358,12 @@
     \apr@dot{research}{2}\apr@dot{teaching}{1}\apr@dot{service}{0}%
   \fi}
 
-\def\apr@setcols#1#2#3{\def\apr@pc{#1}\def\apr@sc{#2}\def\apr@badge{#3}}
+% #4: the marker's right edge (left of a list item's label, or the text
+% block); records from an earlier run may lack #3 and #4
+\def\apr@setcols#1#2#3#4#5\@nil{%
+  \def\apr@pc{#1}\def\apr@sc{#2}\def\apr@badge{#3}%
+  \apr@dotx=\dimexpr1in+\hoffset+\oddsidemargin\relax
+  \if\relax\detokenize{#4}\relax\else\apr@dotx=#4\relax\fi}
 
 \def\apr@draw@one#1{%
   \ifcsname apr@S@#1\endcsname\ifcsname apr@E@#1\endcsname
@@ -362,10 +374,9 @@
   \ifnum#1=\ReadonlyShipoutCounter
     \apr@xs=#2sp\relax \apr@ys=#3sp\relax
     \apr@L=#5\relax \apr@R=\dimexpr#5+#6\relax
-    \apr@dotx=\dimexpr1in+\hoffset+\oddsidemargin\relax
     \apr@slot=\apr@badgew
     \apr@H=#7\relax \apr@D=#8\relax
-    \apr@setcols#4%
+    \apr@setcols#4{}{}{}{}\@nil
     \expandafter\expandafter\expandafter\apr@draw@E
       \csname apr@E@#9\endcsname
   \fi}
