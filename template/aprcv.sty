@@ -202,6 +202,20 @@
 % \apr@markonly: non-empty for a table row, whose fill is its \rowcolor, so
 % only the dots style's marker is drawn
 \def\apr@markonly{}
+% \apr@markat: the marker's right edge when set (\aprmarkleftof), for
+% entries that sit beside a side label (a degree); such a marker and a
+% table row's are compact: no award slot unless the entry has a badge, and
+% they may come within \apr@compactedge of the paper edge
+\def\apr@markat{}
+\def\apr@markcompact{}
+% \aprmarkleftof{label}: inside a list, after \item[label], put the
+% markers of the entries that follow just left of that label
+\newcommand\aprmarkleftof[1]{%
+  \settowidth\@tempdima{#1}%
+  \ifdim\@tempdima<\labelwidth \@tempdima=\labelwidth \fi
+  \edef\apr@markat{\the\dimexpr 1in+\hoffset+\oddsidemargin
+    +\@totalleftmargin-\labelsep-\@tempdima\relax}%
+  \def\apr@markcompact{x}}
 \newcommand\apr@mark@start[2]{%
   \ifvmode\leavevmode\fi
   \interlinepenalty\@M % keep a highlighted entry on one page
@@ -211,9 +225,11 @@
   \edef\apr@tmp{\write\@auxout{%
     \string\aprM{\apr@cur}{\noexpand\the\ReadonlyShipoutCounter}%
       {\noexpand\the\pdflastxpos}{\noexpand\the\pdflastypos}%
-      {{#1}{#2}{\apr@markbadge}{\ifx\apr@markatlabel\@empty\else
+      {{#1}{#2}{\apr@markbadge}{\ifx\apr@markat\@empty
+        \ifx\apr@markatlabel\@empty\else
         \the\dimexpr 1in+\hoffset+\oddsidemargin
-          +\@totalleftmargin-\labelsep-\labelwidth\relax\fi}{\apr@markonly}}%
+          +\@totalleftmargin-\labelsep-\labelwidth\relax\fi
+        \else\apr@markat\fi}{\apr@markonly}{\apr@markcompact}}%
       {\the\dimexpr 1in+\hoffset+\oddsidemargin+\@totalleftmargin\relax}%
       {\the\linewidth}{\the\ht\strutbox}{\the\dp\strutbox}}}%
   \apr@tmp}
@@ -228,7 +244,7 @@
 % \apr@rowmark{primary}{secondary}: the dots style's marker for a table row,
 % at the start of its first cell (\aprentrymark)
 \newcommand\apr@rowmark[2]{%
-  \begingroup\def\apr@markonly{x}\apr@mark@start{#1}{#2}\apr@mark@end\endgroup}
+  \begingroup\def\apr@markonly{x}\def\apr@markcompact{x}\apr@mark@start{#1}{#2}\apr@mark@end\endgroup}
 
 %% painting (inside a picture with 1pt units; y measured up from \apr@oy)
 \newdimen\apr@pageht \newdimen\apr@oy
@@ -362,19 +378,19 @@
     \else\ifx\apr@pc\@empty \def\apr@tmpc{white}%
     \else \def\apr@tmpc{APRaward}\fi\fi}}
 \newdimen\apr@edge  \apr@edge=.45in % the marker stays this far from the paper edge
-\newdimen\apr@rowedge \apr@rowedge=.25in % a table row's marker: the row
-                     % starts at the text block, so its marker has no award
-                     % slot and may come closer to the edge
+\newdimen\apr@compactedge \apr@compactedge=.25in % a compact marker (a table
+                     % row, or beside a degree label) stays this far
 \newif\ifapr@onpage % painting the page (true) or an inline sample (false)
 \def\apr@marker{%
   % on the page (not in a sample), keep the whole marker clear of the
   % paper edge, where printers may not print
   \ifapr@onpage
-    \ifx\apr@markonly\@empty
+    \ifx\apr@markcompact\@empty
       \apr@cut=\dimexpr\apr@edge+\apr@slot+4\apr@dotg+6\apr@dotr+\apr@dotm\relax
     \else
-      \apr@slot=\z@
-      \apr@cut=\dimexpr\apr@rowedge+2\apr@dotg+6\apr@dotr+\apr@dotm\relax
+      \ifx\apr@badge\@empty \apr@slot=\z@ \fi
+      \apr@cut=\dimexpr\apr@compactedge+\apr@slot+2\apr@dotg
+        \ifdim\apr@slot>\z@ +2\apr@dotg\fi+6\apr@dotr+\apr@dotm\relax
     \fi
     \ifdim\apr@dotx<\apr@cut \apr@dotx=\apr@cut \fi
   \fi
@@ -393,10 +409,11 @@
   \fi}
 
 % #4: the marker's right edge (left of a list item's label, or the text
-% block); #5: marker only (a table row); records from an earlier run may
-% lack #3 to #5
-\def\apr@setcols#1#2#3#4#5#6\@nil{%
+% block, or \apr@markat); #5: marker only (a table row); #6: compact
+% marker; records from an earlier run may lack #3 to #6
+\def\apr@setcols#1#2#3#4#5#6#7\@nil{%
   \def\apr@pc{#1}\def\apr@sc{#2}\def\apr@badge{#3}\def\apr@markonly{#5}%
+  \def\apr@markcompact{#6}%
   \apr@dotx=\dimexpr1in+\hoffset+\oddsidemargin\relax
   \if\relax\detokenize{#4}\relax\else\apr@dotx=#4\relax\fi}
 
@@ -411,7 +428,7 @@
     \apr@L=#5\relax \apr@R=\dimexpr#5+#6\relax
     \apr@slot=\apr@badgew \apr@onpagetrue
     \apr@H=#7\relax \apr@D=#8\relax
-    \apr@setcols#4{}{}{}{}{}\@nil
+    \apr@setcols#4{}{}{}{}{}{}\@nil
     \expandafter\expandafter\expandafter\apr@draw@E
       \csname apr@E@#9\endcsname
   \fi}
@@ -476,7 +493,7 @@
     \begingroup
       \sbox\apr@box{#3}%
       \edef\apr@pc{\apr@col{#1}}\edef\apr@sc{\apr@col{#2}}\def\apr@badge{}%
-      \def\apr@markonly{}%
+      \def\apr@markonly{}\def\apr@markcompact{}%
       \apr@oy=\z@ \apr@xs=\z@ \apr@xe=\wd\apr@box \apr@ys=\z@ \apr@ye=\z@
       \apr@L=\z@ \apr@R=\wd\apr@box \apr@dotx=-\apr@bleed \apr@onpagefalse
       \apr@H=\ht\strutbox \apr@D=\dp\strutbox
