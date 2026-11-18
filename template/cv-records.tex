@@ -15,12 +15,20 @@
 %                                level names it (a record may name several),
 %                                most recent first (open-ended first, then by
 %                                end year, then start), in file order otherwise
+%   \printcourses                COURSES TAUGHT: a table of @course records,
+%                                newest term first (term, course, level,
+%                                enrolment, notes)
+%   \printcourses[scp]           the same with two more columns: the course
+%                                evaluation scores and their comparison
+%                                averages, headed \cvcoursescplabel and
+%                                \cvcourseaveragelabel (\renewcommand them)
 %
 % In the APR version a grant whose tenure overlaps the review period is
 % highlighted as research (the whole table row); a student who completed in the
 % period, or is in progress, is highlighted as teaching; an award in the
 % period is highlighted as an award; a service role whose years overlap the
-% period is highlighted as service.
+% period is highlighted as service; a course taught in the period is
+% highlighted as teaching (the whole table row).
 
 \RequirePackage{siunitx}
 
@@ -290,3 +298,120 @@
   \begin{refcontext}[sorting=cvservice]%
     \printbibliography[type=service,check=cvlevel,env=cvawards,heading=none]%
   \end{refcontext}}
+
+%% ---------------------------------------------------------------- courses
+% Like the grants: the driver collects one table row per course into
+% \cv@courserows and \printcourses sets them as a longtable. The course
+% cell holds the number, title and level; a note prints on its own line
+% under the row. Term, enrolment and the score columns take their natural
+% width and the course column takes what is left of \linewidth.
+\aprtypecategory{course}{teaching}
+
+\newcommand\cvcoursescplabel{Evaluation}
+\newcommand\cvcourseaveragelabel{Average}
+\newlength\cvcoursewidth
+
+% the term from the month it starts: 1-4 Winter, 5-8 Spring, 9-12 Fall
+\newcommand\cv@term[2]{%
+  \ifx\relax#2\relax\else
+    \ifnum#2<5 Winter\else\ifnum#2<9 Spring\else Fall\fi\fi\space
+  \fi#1}
+
+% scores: {Implementation=4.5, Design=4.6} prints one "Item score/5" per line
+\newcommand\cv@scores[1]{%
+  \begingroup\def\cv@scoresep{}%
+  \forcsvlist\cv@scoreitem{#1}%
+  \endgroup}
+\newcommand\cv@scoreitem[1]{\cv@scoresep\def\cv@scoresep{\newline}%
+  \cv@scoresplit#1==\@nil}
+\def\cv@scoresplit#1=#2=#3\@nil{#1\ifx\relax#2\relax\else\space#2/5\fi}
+
+% the course cell: number and title, then the level in italics
+\newcommand\cv@coursecell[3]{#1 #2\ifx\relax#3\relax\else\newline\textit{#3}\fi}
+
+\gdef\cv@courserows{}
+\DeclareBibliographyDriver{course}{%
+  \aprsetentrycolour
+  \xappto\cv@courserows{%
+    \noexpand\cv@courseline
+      {\expandonce\aprentrycolour}%
+      {\noexpand\cv@term{\cv@field{year}}{\cv@field{month}}}%
+      {\noexpand\cv@coursecell{\cv@field{course}}{\cv@field{title}}{\cv@field{level}}}%
+      {\cv@field{enrolment}}%
+      {\noexpand\cv@scores{\cv@field{scp}}}%
+      {\noexpand\cv@scores{\cv@field{scpaverage}}}%
+      {\cv@field{note}}}}
+
+% \cv@courseline{colour}{term}{course}{enrolment}{scp}{average}{note}
+% \cv@ncols is the number of columns; a note spans all but the term column.
+% Rows end in \\, so the table can break between courses but not inside one.
+\newcommand\cv@courseline[7]{%
+  \ifx\relax#1\relax\else\rowcolor{#1}\fi
+  #2 & #3 & #4\cv@coursescores{#5}{#6}%
+  \ifx\relax#7\relax \\[0.4\baselineskip]\else \\*
+    \ifx\relax#1\relax\else\rowcolor{#1}\fi
+    & \multicolumn{\numexpr\cv@ncols-1\relax}{>{\raggedright\arraybackslash}p{\cv@notewd}@{}}{\textit{#7}}%
+    \\[0.4\baselineskip]\fi}
+\newcommand\cv@coursescores[2]{}
+\newcommand\cv@coursescores@on[2]{& #1 & #2}
+\def\cv@ncols{3}
+\newlength\cv@notewd
+
+% measure the natural-width columns over the collected rows
+\newlength\cv@termwd
+\newlength\cv@enrolwd
+\newlength\cv@scpwd
+\newlength\cv@avgwd
+% \cv@widestscore\len{item}: widen \len to fit one "Item score/5" line
+\newcommand\cv@widestscore[2]{\cv@widest#1{\cv@scoresplit#2==\@nil}}
+\newcommand\cv@measurecourse[7]{%
+  \cv@widest\cv@termwd{#2}%
+  \cv@widest\cv@enrolwd{#4}%
+  \cv@measurescores\cv@scpwd#5%
+  \cv@measurescores\cv@avgwd#6}
+% in the rows, #5 and #6 are \cv@scores{list}: measure each item of the list
+\def\cv@measurescores#1\cv@scores#2{\forcsvlist{\cv@widestscore#1}{#2}}
+
+\DeclareSortingTemplate{cvcourses}{
+  \sort[direction=descending]{\field{year}}
+  \sort[direction=descending]{\field[padside=left,padwidth=2,padchar=0]{month}}
+  \sort{\field{course}}
+}
+
+\NewDocumentCommand\printcourses{o}{%
+  \gdef\cv@courserows{}%
+  \setbox\z@\vbox{% collect the rows; nothing is printed here
+    \begin{refcontext}[sorting=cvcourses]%
+      \printbibliography[type=course,env=cvcollect,heading=none]%
+    \end{refcontext}}%
+  \begingroup
+  \setlength\tabcolsep{\cvgrantcolsep}%
+  \global\cv@termwd\z@ \global\cv@enrolwd\z@
+  \global\cv@scpwd\z@  \global\cv@avgwd\z@
+  \cv@widest\cv@termwd{\underline{Term}}%
+  \cv@widest\cv@enrolwd{\underline{Enrolment}}%
+  {\let\cv@courseline\cv@measurecourse\cv@courserows}%
+  \IfValueTF{#1}%
+    {\cv@widest\cv@scpwd{\underline{\cvcoursescplabel}}%
+     \cv@widest\cv@avgwd{\underline{\cvcourseaveragelabel}}%
+     \def\cv@ncols{5}\let\cv@coursescores\cv@coursescores@on
+     \setlength\cvcoursewidth{\dimexpr\linewidth-\cv@termwd-\cv@enrolwd
+       -\cv@scpwd-\cv@avgwd-8\tabcolsep\relax}%
+     \def\cv@colspec{@{}l>{\raggedright\arraybackslash}p{\cvcoursewidth}r
+       >{\raggedright\arraybackslash}p{\cv@scpwd}
+       >{\raggedright\arraybackslash}p{\cv@avgwd}@{}}%
+     \def\cv@head{\underline{Term} & \underline{Course} & \underline{Enrolment} &
+       \underline{\cvcoursescplabel} & \underline{\cvcourseaveragelabel}}}%
+    {\setlength\cvcoursewidth{\dimexpr\linewidth-\cv@termwd-\cv@enrolwd
+       -4\tabcolsep\relax}%
+     \def\cv@colspec{@{}l>{\raggedright\arraybackslash}p{\cvcoursewidth}r@{}}%
+     \def\cv@head{\underline{Term} & \underline{Course} & \underline{Enrolment}}}%
+  \setlength\cv@notewd{\dimexpr\linewidth-\cv@termwd-2\tabcolsep\relax}%
+  \expandafter\cv@coursetable\expandafter{\cv@colspec}%
+  \endgroup}
+\newcommand\cv@coursetable[1]{%
+  \begin{longtable}[c]{#1}
+  \cv@head \\
+  \endhead
+  \cv@courserows
+  \end{longtable}}

@@ -158,4 +158,13 @@ Speaker(s) denoted by \dag\\
 
     \printservice{discipline}
 
+\sectionbreak
+\keepwithnext[6]
+\cvsection{COURSES TAUGHT}
+
+% @course records in example.bib, newest term first. The APR version adds
+% the course evaluation scores; the 2026 offering is in the review period.
+\renewcommand\cvcourseaveragelabel{School Average}
+\ifAPR\printcourses[scp]\else\printcourses\fi
+
 \end{document}
