@@ -28,7 +28,11 @@
 %%   \aprsample{research}{teaching}{text}
 %%                                  inline example of a highlight, for notes
 %%   \sethighlightstrength{40}      softer highlights (100 = full Word colours)
-%%   \sethighlightstyle{split}      two-colour style: split, blend or bar
+%%   \sethighlightstyle{split}      two-colour style: split, blend, bar or
+%%                                  dots (one marker per entry in the margin:
+%%                                  the award rosette, then research,
+%%                                  teaching and service dots, filled for
+%%                                  the categories that apply)
 %%
 %% Files (the template lives in template/; the CV's own files sit beside it)
 %%   main.tex                the CV's content; compiles to the plain CV
@@ -79,6 +83,11 @@
 \definecolor{APRresearchBase}{RGB}{0,255,0}     % Word "Bright Green"
 \definecolor{APRserviceBase}{RGB}{0,255,255}    % Word "Turquoise"
 \definecolor{APRawardBase}{RGB}{255,0,255}      % Word "Pink"
+% dots style: dot colours. Yellow is darkened for the dot only, so a filled
+% teaching dot stays distinct from an empty one in greyscale.
+\colorlet{APRresearchDot}{APRresearchBase}
+\definecolor{APRteachingDot}{HTML}{E6C800}
+\colorlet{APRserviceDot}{APRserviceBase}
 \newcommand\sethighlightstrength[1]{%
   \colorlet{APRteaching}{APRteachingBase!#1!white}%
   \colorlet{APRresearch}{APRresearchBase!#1!white}%
@@ -145,24 +154,50 @@
 \newcount\apr@k
 \newdimen\apr@bleed  \apr@bleed=1pt
 \newdimen\apr@barw   \apr@barw=3pt
+\newdimen\apr@dotr  \apr@dotr=3.85pt % dot radius: the rosette's medallion
+\newdimen\apr@dotg  \apr@dotg=1.8pt  % gap between dots
+\newdimen\apr@dotm  \apr@dotm=6pt    % gap between the marker and the label or text
+\newdimen\apr@badgew \apr@badgew=11pt % width of the marker's award slot
+\newdimen\apr@slot  % award slot width actually reserved (0 in a sample
+                     % without a rosette)
+\newdimen\apr@dotx  % right edge of the marker: the left of a numbered
+                     % entry's label (such as [J1]), the text block, or a sample
 
 % two-colour style: halves (left half primary, right half secondary), split
 % (primary on top, secondary below), blend (primary fading into secondary
-% from left to right), or bar (primary fill, secondary bar in the margin)
+% from left to right), bar (primary fill, secondary bar in the margin), or
+% dots (primary fill; in the margin, one marker per entry: the award
+% rosette when the entry is an award or has an award badge, then three
+% dots -- research, teaching, service -- filled for the entry's categories)
 \def\apr@style@halves{halves}
 \def\apr@style@split{split}
 \def\apr@style@blend{blend}
 \def\apr@style@bar{bar}
-\newcommand\sethighlightstyle[1]{\edef\apr@style{#1}}
+\def\apr@style@dots{dots}
+\newcommand\sethighlightstyle[1]{%
+  \edef\apr@style{#1}%
+  % dots: the award badge is drawn as part of the marker, not in the margin
+  \ifdefined\cvawardinlinetrue
+    \ifx\apr@style\apr@style@dots \cvawardinlinetrue \else \cvawardinlinefalse \fi
+  \fi}
 \sethighlightstyle{bar}
 
-\def\aprS#1#2#3#4#5#6#7#8#9{%
+\def\aprS#1#2#3#4#5#6#7#8#9{}% records from an older version: ignored
+\def\aprM#1#2#3#4#5#6#7#8#9{%
   \expandafter\gdef\csname apr@S@#1\endcsname{{#2}{#3}{#4}{#5}{#6}{#7}{#8}{#9}}%
   \ifnum#1>\apr@maxid \global\apr@maxid=#1\relax\fi}
 \def\aprE#1#2#3#4{%
   \expandafter\gdef\csname apr@E@#1\endcsname{{#2}{#3}{#4}}}
 
-% \apr@mark@start{primary colour}{secondary colour or empty}
+% \apr@mark@start{primary colour}{secondary colour or empty}; primary may be
+% empty for an entry that is not highlighted but has a marker (an award
+% badge outside the review period). \apr@markbadge: the entry's badge
+% ("award" or empty).
+\def\apr@markbadge{}
+% \apr@markatlabel: non-empty for a numbered bibliography entry, whose
+% marker sits just left of its label ([J1]); other markers sit left of the
+% text block, clear of side headings such as a degree column
+\def\apr@markatlabel{}
 \newcommand\apr@mark@start[2]{%
   \ifvmode\leavevmode\fi
   \interlinepenalty\@M % keep a highlighted entry on one page
@@ -170,8 +205,11 @@
   \xdef\apr@cur{\the\apr@id}%
   \pdfsavepos
   \edef\apr@tmp{\write\@auxout{%
-    \string\aprS{\apr@cur}{\noexpand\the\ReadonlyShipoutCounter}%
-      {\noexpand\the\pdflastxpos}{\noexpand\the\pdflastypos}{{#1}{#2}}%
+    \string\aprM{\apr@cur}{\noexpand\the\ReadonlyShipoutCounter}%
+      {\noexpand\the\pdflastxpos}{\noexpand\the\pdflastypos}%
+      {{#1}{#2}{\apr@markbadge}{\ifx\apr@markatlabel\@empty\else
+        \the\dimexpr 1in+\hoffset+\oddsidemargin
+          +\@totalleftmargin-\labelsep-\labelwidth\relax\fi}}%
       {\the\dimexpr 1in+\hoffset+\oddsidemargin+\@totalleftmargin\relax}%
       {\the\linewidth}{\the\ht\strutbox}{\the\dp\strutbox}}}%
   \apr@tmp}
@@ -239,6 +277,12 @@
 
 % paint one entry from \apr@xs,\apr@ys (start) to \apr@xe,\apr@ye (end)
 \def\apr@paint{%
+  \ifx\apr@pc\@empty
+    \ifx\apr@style\apr@style@dots \apr@marker \fi
+  \else
+    \apr@paint@fill
+  \fi}
+\def\apr@paint@fill{%
   \ifdim\apr@L>\apr@xs \apr@L=\apr@xs \fi
   \apr@HD=\dimexpr\apr@H+\apr@D\relax
   \apr@n=\numexpr(\apr@ys-\apr@ye)/\apr@HD\relax
@@ -271,9 +315,68 @@
   \ifx\apr@sc\@empty\else\ifx\apr@style\apr@style@bar
     \apr@rect{\apr@L-\apr@bleed-\apr@barw-.5pt}{\apr@bot}%
              {\apr@L-\apr@bleed-.5pt}{\apr@top}{\apr@sc Base!75!white}%
-  \fi\fi}
+  \fi\fi
+  \ifx\apr@style\apr@style@dots \apr@marker \fi}
 
-\def\apr@setcols#1#2{\def\apr@pc{#1}\def\apr@sc{#2}}
+% dots style: one marker left of the entry's first line, right-aligned
+% against the text block: an award slot, then three dots (research,
+% teaching, service) nearest the entry, each filled in full colour when the
+% entry's primary or secondary colour is that category. The award slot holds
+% the rosette -- filled when the entry is an award or
+% is highlighted and has an award badge, white for a badge outside the
+% review period, empty otherwise. The dots appear on highlighted entries
+% only.
+\def\apr@ifcat#1{%
+  \edef\apr@tmpa{APR#1}%
+  \ifx\apr@pc\apr@tmpa \expandafter\@firstoftwo
+  \else\ifx\apr@sc\apr@tmpa \expandafter\expandafter\expandafter\@firstoftwo
+  \else \expandafter\expandafter\expandafter\@secondoftwo \fi\fi}
+\def\apr@dot#1#2{% #1: category, #2: index from the right (0, 1, 2)
+  \apr@ra=\dimexpr\apr@dotx-\apr@dotm-\apr@dotr-(2\apr@dotr+\apr@dotg)*#2\relax
+  \apr@rb=\dimexpr\apr@ys+(\apr@H-\apr@D)/2-\apr@oy\relax
+  % filled: the category colour, black outline; empty: white, grey outline
+  \apr@ifcat{#1}%
+    {\def\apr@tmpb{fill=APR#1Dot,draw=black,line width=.7pt}}%
+    {\def\apr@tmpb{fill=white,draw=black!50,line width=.6pt}}%
+  \put(0,0){\begin{tikzpicture}[overlay]
+    \expandafter\filldraw\expandafter[\apr@tmpb]
+      (\the\apr@ra,\the\apr@rb) circle[radius=\the\apr@dotr];
+  \end{tikzpicture}}}
+% \apr@rosettefill: sets \apr@tmpc to the rosette's fill, or empty for none
+\def\apr@rosettefill{%
+  \apr@ifcat{award}{\def\apr@tmpc{APRaward}}{%
+    \ifx\apr@badge\@empty \def\apr@tmpc{}%
+    \else\ifx\apr@pc\@empty \def\apr@tmpc{white}%
+    \else \def\apr@tmpc{APRaward}\fi\fi}}
+\newdimen\apr@edge  \apr@edge=.45in % the marker stays this far from the paper edge
+\newif\ifapr@onpage % painting the page (true) or an inline sample (false)
+\def\apr@marker{%
+  % on the page (not in a sample), keep the whole marker clear of the
+  % paper edge, where printers may not print
+  \ifapr@onpage
+    \apr@cut=\dimexpr\apr@edge+\apr@slot+4\apr@dotg+6\apr@dotr+\apr@dotm\relax
+    \ifdim\apr@dotx<\apr@cut \apr@dotx=\apr@cut \fi
+  \fi
+  \apr@rosettefill
+  \ifx\apr@tmpc\@empty\else\ifdefined\cvawardbadgepaths
+    \apr@ra=\dimexpr\apr@dotx-\apr@dotm-6\apr@dotr-4\apr@dotg-\apr@slot/2\relax
+    \apr@rb=\dimexpr\apr@ys+(\apr@H-\apr@D)/2-\apr@oy\relax
+    % medallion (10,15.5) centred on the first line, ribbons hanging below
+    \put(0,0){\begin{tikzpicture}[overlay,line join=round,
+        shift={(\the\apr@ra,\the\apr@rb)},x=.55pt,y=.55pt,shift={(-10,-15.5)}]
+      \cvawardbadgepaths{\apr@tmpc}{.8pt}
+    \end{tikzpicture}}%
+  \fi\fi
+  \ifx\apr@pc\@empty\else
+    \apr@dot{research}{2}\apr@dot{teaching}{1}\apr@dot{service}{0}%
+  \fi}
+
+% #4: the marker's right edge (left of a list item's label, or the text
+% block); records from an earlier run may lack #3 and #4
+\def\apr@setcols#1#2#3#4#5\@nil{%
+  \def\apr@pc{#1}\def\apr@sc{#2}\def\apr@badge{#3}%
+  \apr@dotx=\dimexpr1in+\hoffset+\oddsidemargin\relax
+  \if\relax\detokenize{#4}\relax\else\apr@dotx=#4\relax\fi}
 
 \def\apr@draw@one#1{%
   \ifcsname apr@S@#1\endcsname\ifcsname apr@E@#1\endcsname
@@ -284,8 +387,9 @@
   \ifnum#1=\ReadonlyShipoutCounter
     \apr@xs=#2sp\relax \apr@ys=#3sp\relax
     \apr@L=#5\relax \apr@R=\dimexpr#5+#6\relax
+    \apr@slot=\apr@badgew \apr@onpagetrue
     \apr@H=#7\relax \apr@D=#8\relax
-    \apr@setcols#4%
+    \apr@setcols#4{}{}{}{}\@nil
     \expandafter\expandafter\expandafter\apr@draw@E
       \csname apr@E@#9\endcsname
   \fi}
@@ -349,17 +453,28 @@
     \fi
     \begingroup
       \sbox\apr@box{#3}%
-      \edef\apr@pc{\apr@col{#1}}\edef\apr@sc{\apr@col{#2}}%
+      \edef\apr@pc{\apr@col{#1}}\edef\apr@sc{\apr@col{#2}}\def\apr@badge{}%
       \apr@oy=\z@ \apr@xs=\z@ \apr@xe=\wd\apr@box \apr@ys=\z@ \apr@ye=\z@
-      \apr@L=\z@ \apr@R=\wd\apr@box
+      \apr@L=\z@ \apr@R=\wd\apr@box \apr@dotx=-\apr@bleed \apr@onpagefalse
       \apr@H=\ht\strutbox \apr@D=\dp\strutbox
       \unitlength=1pt
+      \let\apr@lead\relax
       % in running text, make room for a margin bar so it doesn't overlap
       % the preceding character
       \ifx\apr@sc\@empty\else\ifx\apr@style\apr@style@bar
-        \kern\dimexpr\apr@barw+\apr@bleed\relax
+        \def\apr@lead{\kern\dimexpr\apr@barw+\apr@bleed\relax}%
       \fi\fi
-      \hbox{\begin{picture}(0,0)\apr@paint\end{picture}\usebox\apr@box}%
+      \ifx\apr@style\apr@style@dots
+        % reserve the award slot only when the sample shows a rosette
+        \apr@rosettefill
+        \ifx\apr@tmpc\@empty \apr@slot=\z@
+        \else \apr@slot=\dimexpr\apr@badgew+2\apr@dotg\relax \fi
+        \edef\apr@lead{\kern\the\dimexpr6\apr@dotr+2\apr@dotg+\apr@slot+\apr@dotm+\apr@bleed\relax}%
+        \ifdim\apr@slot>\z@ \advance\apr@slot-2\apr@dotg \fi
+      \fi
+      % the room for the marker goes inside the box: a kern before it would
+      % be dropped when the sample starts a line
+      \hbox{\apr@lead\begin{picture}(0,0)\apr@paint\end{picture}\usebox\apr@box}%
     \endgroup
   \else
     #3%
@@ -434,11 +549,23 @@
     \def\apr@bib@start{%
       \global\let\apr@bib@on\@empty
       \apr@bib@decide
-      \ifx\apr@c\@empty\else
+      % dots style: an award badge (icon = {award}) is part of the marker,
+      % so an entry with one gets a mark even when it is not highlighted
+      \def\apr@markbadge{}\def\apr@markatlabel{}%
+      \ifx\apr@style\apr@style@dots
+        \iffieldundef{labelnumber}{}{\def\apr@markatlabel{x}}%
+        \iffieldequalstr{usera}{award}{\def\apr@markbadge{award}}{%
+          \iffieldequalstr{usera}{images/hm.png}{\def\apr@markbadge{award}}{}}%
+      \fi
+      \@tempswafalse
+      \ifx\apr@c\@empty\ifx\apr@markbadge\@empty\else\@tempswatrue\fi
+      \else\@tempswatrue\fi
+      \if@tempswa
         \gdef\apr@bib@on{x}%
         \edef\apr@tmp{\noexpand\apr@mark@start{\apr@c}{\apr@c@two}}%
         \apr@tmp
-      \fi}%
+      \fi
+      \def\apr@markbadge{}\def\apr@markatlabel{}}%
     \renewcommand\aprsetentrycolour{%
       \apr@bib@decide
       \let\aprentrycolour\apr@c}%
