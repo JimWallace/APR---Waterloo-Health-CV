@@ -72,9 +72,9 @@
 %   \begin{cvbulletlist}[itemsep] the same, with a bullet hanging to the left
 %     \cvitem text              of each item, for entries that run to two lines
 %   \end{cvbulletlist}          (itemsep defaults to 0pt)
-%   \begin{cvgroup}{PhD}        a label in the left column with a list beside
-%     \begin{cvbulletlist}...   it, like the degree labels of
-%   \end{cvgroup}               \printsupervision
+%   \begin{cvgroup}{PhD}        a label in the left column, with the list
+%     \begin{cvbulletlist}...   starting on the line below it
+%   \end{cvgroup}
 %   \begin{cvparts}             lettered parts a), b), c) ... of a section
 %     \cvpart{Title}            one part, with a bold title
 %   \end{cvparts}
@@ -98,7 +98,7 @@
   {\begin{itemize}[label=\textbullet, labelsep=0.5em, itemsep=#1]\raggedright\let\cvitem\item}
   {\end{itemize}}
 \newenvironment{cvgroup}[1]
-  {\begin{enumerate}\item[#1]}
+  {\begin{enumerate}\item[#1]\leavevmode}
   {\end{enumerate}}
 \newenvironment{cvparts}
   {\begin{enumerate}[label=\alph*)]}
