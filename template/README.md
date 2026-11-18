@@ -11,7 +11,7 @@ move to its own repository later.
 | File | Role |
 |---|---|
 | `uwhealthcv.sty` | The only package a CV loads. Reads the files below in the right order. |
-| `uwhealthcv-pdfa.tex` | Makes the PDF archival (PDF/A-2b). A CV inputs it before `\documentclass`; see below. |
+| `uwhealthcv-pdfa.tex` | Makes the PDF accessible (tagged, PDF/UA-2) and archival (PDF/A-4f). A CV inputs it before `\documentclass`; see below. |
 | `NSERC-formatting.tex` | Page, fonts, header and table setup. |
 | `biblatex-formatting.tex` | biblatex tweaks: badge icons in the margin, the `inproceedings` driver. |
 | `ACM-Reference-Format.{bbx,cbx,dbx,bst}` | ACM bibliography style (vendored). |
@@ -50,12 +50,22 @@ The CV's main file:
 \end{document}
 ```
 
-The first line makes the PDF a PDF/A-2b file (archival: fonts embedded, an sRGB
-colour profile, XMP metadata with the title and author from `\cvowner`). The
-LaTeX kernel only accepts that before `\documentclass`, so it cannot live in
-`uwhealthcv.sty`. It needs LaTeX 2022-06 or newer (TeX Live 2022); leave the
-line out for a plain PDF. This repository's CI checks the result with veraPDF
-(`scripts/check_pdfa.sh`).
+The first line makes the PDF accessible and archival: a tagged PDF/UA-2 file
+(screen readers get headings, lists, tables, links and alternative text) that
+is also PDF/A-4f (fonts embedded, an sRGB colour profile, XMP metadata with the
+title and author from `\cvowner`). The LaTeX kernel only accepts that before
+`\documentclass`, so it cannot live in `uwhealthcv.sty`. Tagging needs
+LuaLaTeX and TeX Live 2025 or newer (this repository uses TeX Live 2026); leave
+the line out for a plain, untagged PDF. This repository's CI checks the result
+with veraPDF (`scripts/check_pdfa.sh`), which tests what a machine can; it
+cannot tell whether alternative text is good.
+
+In the tagged PDF, `\cvsection` is a level-1 heading and `\cvsubheading` a
+level-2 heading, even when text follows on the same line; every table's first
+row is its column headings; the APR markers and award badges are decorative
+artifacts. A figure drawn with TikZ or pgfplots needs alternative text: give
+the picture `[cv/alt={…}]`. `[cv/decorative]` marks a picture as decoration.
+Both keys do nothing in an untagged build.
 
 The APR version is a two-line file next to it:
 
@@ -95,6 +105,7 @@ every CV that uses the template.
 - Bib field: `icon` (an image path, or `award` for the rosette).
 - File the template reads from the CV: `apr-formatting.tex` (optional).
 - File a CV inputs before `\documentclass`: `uwhealthcv-pdfa.tex` (optional).
+- TikZ keys: `cv/alt={text}`, `cv/decorative` (`uwhealthcv.sty`).
 
 ## Building the example
 

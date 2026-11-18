@@ -514,7 +514,8 @@
       \fi
       % the room for the marker goes inside the box: a kern before it would
       % be dropped when the sample starts a line
-      \hbox{\apr@lead\begin{picture}(0,0)\apr@paint\end{picture}\usebox\apr@box}%
+      \hbox{\apr@lead\ifcv@tagged\begin{picture}[artifact](0,0)\else\begin{picture}(0,0)\fi
+        \apr@paint\end{picture}\usebox\apr@box}%
     \endgroup
   \else
     #3%

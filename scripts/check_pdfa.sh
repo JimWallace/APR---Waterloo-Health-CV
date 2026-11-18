@@ -1,12 +1,14 @@
 #!/bin/sh
-# Check that PDFs are valid PDF/A-2b, with veraPDF (the PDF Association's
-# reference validator). The template makes them so (template/uwhealthcv-pdfa.tex).
+# Check that PDFs are valid PDF/UA-2 (accessible) and PDF/A-4f (archival), with
+# veraPDF (the PDF Association's reference validator). The template makes them
+# so (template/uwhealthcv-pdfa.tex). veraPDF checks what a machine can: tags,
+# alt text, fonts, metadata; not whether the reading order makes sense.
 #
 #     scripts/check_pdfa.sh main.pdf apr.pdf
 #
 # Installs the pinned veraPDF release (needs Java 11 or newer) under the
 # temporary directory on first use. Exits 1 if a file is not compliant and
-# lists the failed rules (clause-test of ISO 19005-2) for each file.
+# lists the failed rules (clause-test of ISO 14289-2 or ISO 19005-4) for each file.
 set -eu
 
 VERSION=1.30.4
@@ -41,4 +43,8 @@ EOF
   rm -rf "$work"
 fi
 
-"$HOME_DIR/verapdf" --flavour 2b --format text --verbose "$@"
+status=0
+for flavour in ua2 4f; do
+  "$HOME_DIR/verapdf" --flavour "$flavour" --format text --verbose "$@" || status=1
+done
+exit $status

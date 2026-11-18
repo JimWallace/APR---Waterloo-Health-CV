@@ -21,7 +21,8 @@
       \fill (14,13) -- (17.5,1) -- (14.5,3) -- (12,0) -- (9.5,10) -- cycle;
       \filldraw[fill=#1,line width=#2] (10,15.5) circle[radius=7];}
 \newcommand\cvawardbadge[1]{% #1: fill colour of the medallion
-    \begin{tikzpicture}[x=0.0625em,y=0.0625em,line join=round]
+    \begin{tikzpicture}[x=0.0625em,y=0.0625em,line join=round,
+                        cv/decorative]% the award is in the entry's note
       \cvawardbadgepaths{#1}{0.14em}
     \end{tikzpicture}}
 \newcommand\cvbadge[1]{%
@@ -30,7 +31,8 @@
       {\ifdefempty\aprentrycolour
          {\cvawardbadge{white}}%
          {\cvawardbadge{APRaward}}}%
-      {\includegraphics[height=1.5em]{#1}}}
+      {\ifcv@tagged\includegraphics[height=1.5em,artifact]{#1}%
+       \else\includegraphics[height=1.5em]{#1}\fi}}
 % cvawardinline: set by the APR dots style, which draws the award badge as
 % part of its marker; other badges stay in the margin
 \newif\ifcvawardinline
