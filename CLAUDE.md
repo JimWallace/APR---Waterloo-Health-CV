@@ -119,6 +119,26 @@ the source of truth; never force-push `main`.
   `scp = {Implementation=4.5, Design=4.6}` with the SPHS averages in `scpaverage`. The scores
   print only in the APR version. Copy numbers from the SCP report itself; never estimate.
 
+**Teaching, research or service** (the APR colour) follows the SPHS guidelines for APRs
+(2025–2026; Jim has the document, it is not in this public repo):
+- Thesis and comprehensive-exam committees for students I don't supervise are teaching
+  ("Teaching and mentorship includes … committees of students (thesis committees,
+  comprehensive exams)"), whatever the student's department: `\hlteaching`, counted in the
+  "As Committee Member" year line and named in "Committees in the review period".
+- Chairing a student's exam (oral comprehensive or defence) is a committee role *and* service
+  (the guidelines list the university pool of defence chairs as service). Count it in the
+  year line like any committee, and name it under the degree with
+  `\hlboth[YYYY]{teaching}{service}{Name (PhD, Program; chair, oral comprehensive examination, YYYY)}`.
+- External examining is teaching and service (`\hlboth`), under External Examiner.
+- Supervision (graduate, undergraduate thesis, practicum, postdoc) is teaching, but papers and
+  grants with trainees are research (with the key in `apralsoteaching` as above).
+- Reviewing manuscripts and grants, PCs, societies and organizing are service to the
+  profession (`activities.bib`).
+- Don't count a work twice across review periods (the guidelines' "reporting integrity"
+  rule): a paper counted early through `aprinclude` would be highlighted again by its year in
+  the next APR. When the review period moves, list such keys in the PR for Jim to move to
+  `aprnone`. Grants may move from "in submission" to "funded".
+
 **Markup** comes from the template (`template/uwhealthcv.sty`): headings are `\cvsection{…}`,
 labels over a list `\cvsubheading{…:}`, list items `\cvitem …` inside `cvlist`, lettered parts
 `\cvpart{…}` inside `cvparts` (letters are automatic), students `\item …` inside
