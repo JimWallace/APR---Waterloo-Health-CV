@@ -52,8 +52,8 @@
 %   scp            optional: course evaluation scores out of 5, as
 %                  Item=score pairs separated by commas, no spaces around =:
 %                  {Implementation=4.5, Design=4.6}
-%   responses      optional: how many students answered the survey, printed
-%                  under the scores as (n = 11)
+%   responses      optional: how many students answered the survey (kept
+%                  with the record; not printed)
 %   scpaverage     optional: the comparison averages, in the same form
 %   note           optional: printed under the course, in italics
 

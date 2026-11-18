@@ -328,8 +328,6 @@
 \newcommand\cv@scoreitem[1]{\cv@scoresep\def\cv@scoresep{\newline}%
   \cv@scoresplit#1==\@nil}
 \def\cv@scoresplit#1=#2=#3\@nil{#1\ifx\relax#2\relax\else\space#2/5\fi}
-% the number of survey responses, under the scores
-\newcommand\cv@responses[1]{\ifx\relax#1\relax\else\newline(n = #1)\fi}
 
 % the course cell: number and title (optional), then the level and the note
 % in italics, each on its own line
@@ -346,7 +344,7 @@
       {\noexpand\cv@term{\cv@field{year}}{\cv@field{month}}}%
       {\noexpand\cv@coursecell{\cv@field{course}}{\cv@field{title}}{\cv@field{level}}{\cv@field{note}}}%
       {\cv@field{enrolment}}%
-      {\noexpand\cv@scores{\cv@field{scp}}\noexpand\cv@responses{\cv@field{responses}}}%
+      {\noexpand\cv@scores{\cv@field{scp}}}%
       {\noexpand\cv@scores{\cv@field{scpaverage}}}}}
 
 % \cv@courseline{colour}{term}{course}{enrolment}{scp}{average}
@@ -368,12 +366,10 @@
 \newcommand\cv@measurecourse[6]{%
   \cv@widest\cv@termwd{#2}%
   \cv@widest\cv@enrolwd{#4}%
-  {\let\cv@responses\cv@measureresponses\cv@measurescores\cv@scpwd#5}%
+  \cv@measurescores\cv@scpwd#5%
   \cv@measurescores\cv@avgwd#6}
-% in the rows, #5 and #6 are \cv@scores{list}, #5 followed by
-% \cv@responses{n}: measure each item of the list
+% in the rows, #5 and #6 are \cv@scores{list}: measure each item of the list
 \def\cv@measurescores#1\cv@scores#2{\forcsvlist{\cv@widestscore#1}{#2}}
-\let\cv@measureresponses\@gobble
 
 \NewDocumentCommand\printcourses{o}{%
   \gdef\cv@courserows{}%
