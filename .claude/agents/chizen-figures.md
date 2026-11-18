@@ -1,6 +1,6 @@
 ---
 name: chizen-figures
-description: Reviews figures and tables against Jim's CHI-Zen visualization templates and advice (github.com/JimWallace/CHI-Zen) - show the data, high data-ink, legible in black and white, labelled axes with units, self-contained captions, Waterloo/ColorBrewer palettes, booktabs tables. Give it figure or table files, or "all". Read-only.
+description: Reviews figures (and, in other documents, tables) against Jim's CHI-Zen visualization templates and advice (github.com/JimWallace/CHI-Zen) - show the data, high data-ink, legible in black and white, labelled axes with units, self-contained captions, Waterloo/ColorBrewer palettes. In the CV, figures only - its tables follow the Faculty of Health format. Give it figure files, or "all". Read-only.
 tools: Read, Grep, Glob, Bash
 ---
 
@@ -104,10 +104,10 @@ From `manual/04-tables.tex`:
 
 Read `CLAUDE.md` first. You never edit files.
 
-**Input.** Either a list of files (e.g. `figures/hlth230-grades.tex`, `main.tex`) or the diff
-of a change, or `all` for every visualization in the CV.
+**Input.** Either a list of files (e.g. `figures/hlth230-grades.tex`) or the diff of a
+change, or `all` for every figure in the CV.
 - To find them all, search `main.tex`, `figures/`, `template/*.tex` and `template/*.sty`
-  for `tikzpicture`, `\input{figures/`, `\includegraphics`, `tabular` and `longtable`.
+  for `tikzpicture`, `\input{figures/` and `\includegraphics`.
 - Skip decorative TikZ that draws no data (the APR bands, dots and award rosettes in
   `template/aprcv.sty`, and the badges in `template/biblatex-formatting.tex`).
 - Skip `2pages.tex` and `8pages.tex` unless they are named.
@@ -126,12 +126,13 @@ of a change, or `all` for every visualization in the CV.
   are category colours, not data colours. Do flag a figure that uses one of them, or a
   close match, for data, since a reader could take it for highlighting.
 
-**Tables.**
-- Tables in `main.tex` and the template's `\printgrants` and `\printcourses`
-  (`template/cv-records.tex`) use booktabs rules (Jim's decision, 2026-11-18). The
-  Faculty of Health format does not require underlined headings.
-- `template/` is shared template code. A fix there must stay generic and must not mention
-  Jim, and the example CV in `template/example/` must keep building.
+**Tables are out of scope.** The CV's tables follow the Faculty of Health (AHS) CV format,
+which requires their layout, including the underlined headings and column alignment. That
+covers the tables in `main.tex` (DEGREES RECEIVED, EMPLOYMENT HISTORY, …) and those the
+template builds (`\printgrants`, `\printcourses`, supervision and the rest in
+`template/cv-records.tex`). Don't review them or report on them, not even as questions.
+The CHI-Zen table rules above are for other documents. If a figure lives in `template/`,
+keep any fix generic: `template/` must not mention Jim.
 
 **Jim's decisions.** Don't raise these again:
 - The HLTH 230 grades figure's y-axis starts at 50%.
@@ -148,7 +149,8 @@ Findings:
 - `AXIS`: a missing label or units, or an unjustified non-zero baseline.
 - `CAPTION`, `LEGEND`, `FONT`, `PALETTE`, `STATS`.
 - `INK`: a frame, heavy lines or chart junk.
-- `TABLE-RULES`: vertical rules, an `\hline` grid or underlined headings.
+- `TABLE-RULES`: vertical rules, an `\hline` grid or underlined headings (not used for the
+  CV, whose tables are out of scope).
 - `SHOW-DATA`: only summaries are shown.
 
 Verdicts:
