@@ -12,7 +12,7 @@ Arguments: none (verify the current branch against `origin/main`), or `full` (au
 - Normal: keys = bib keys added or changed in `git diff origin/main...HEAD -- scholar.bib`,
   plus keys whose `\addtocategory` membership changed in `main.tex`. Also note any other
   `main.tex` hunks (activities…) and any changed entries in `grants.bib`, `supervision.bib`,
-  `awards.bib` and `service.bib`. Those come from Jim, not from a public record, so the citation verifier
+  `awards.bib`, `service.bib` and `activities.bib`. Those come from Jim, not from a public record, so the citation verifier
   skips them; the checker validates their fields.
 - `full`: every key in `scholar.bib`, in batches of about 15.
 
