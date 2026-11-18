@@ -32,10 +32,12 @@
 %
 % @service: one line of a SERVICE list.
 %   title          the role or committee as printed: SPHS Research Committee
-%   level          which \printservice{<level>} list it prints in: school,
-%                  faculty, university, discipline ...
-%   date           the years served: 2023, or 2023/2025 (sorting and the APR
-%                  highlight use it)
+%   level          which \printservice{<level>} list(s) it prints in: school,
+%                  faculty, university, discipline ... several comma-separated
+%                  ({discipline, organizing}) print it in each
+%   date           the years served: 2023, 2023/2025, or 2021/ for an ongoing
+%                  role (prints 2021 -- Present); sorting and the APR highlight
+%                  use it
 %   years          optional: the years as printed, when the date range would
 %                  not say it right (2017, 2019 -- 2021)
 %   role           optional: printed after the years (General Chair)

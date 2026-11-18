@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
-"""Deterministic checks on scholar.bib, grants.bib, supervision.bib, awards.bib, service.bib
-and the category lists in main.tex.
+"""Deterministic checks on scholar.bib, grants.bib, supervision.bib, awards.bib, service.bib,
+activities.bib and the category lists in main.tex.
 
 Errors change what the PDF says (a paper silently dropped or printed twice)
 and fail CI. Warnings are worth a look; the ones accepted so far are listed in
@@ -198,7 +198,7 @@ def run(only: set[str] | None = None) -> dict:
     }
 
 
-RECORD_FILES = ["grants.bib", "supervision.bib", "awards.bib", "service.bib"]
+RECORD_FILES = ["grants.bib", "supervision.bib", "awards.bib", "service.bib", "activities.bib"]
 GRANT_ROLES = {"PI", "Co-PI", "Co-I", "Co-A"}
 DATE_RE = re.compile(r"^\d{4}(-\d{2})?(/\d{4}(-\d{2})?)?$")
 
@@ -241,19 +241,24 @@ def check_records(records: dict, main_tex: str, err, warn) -> None:
         if f.get("date") and not DATE_RE.match(f["date"]):
             err("E-record", f"{where}: '{e.key}' date '{f['date']}' should be YYYY or YYYY-MM", e.key)
     levels = set(re.findall(r"^[^%\n]*\\printservice\{([^}]*)\}", main_tex, re.M))
-    for e in records["service.bib"].entries:
-        f, where = e.fields, f"service.bib:{e.line}"
-        if e.type != "service":
-            err("E-record", f"{where}: '{e.key}' is @{e.type}; service.bib holds @service entries", e.key)
-            continue
-        if not f.get("title"):
-            err("E-record", f"{where}: service '{e.key}' has no title", e.key)
-        if f.get("level") not in levels:
-            err("E-record", f"{where}: service '{e.key}' has level '{f.get('level')}', which no "
-                "\\printservice in main.tex prints, so it does not appear", e.key)
-        if not re.fullmatch(r"\d{4}(/\d{4})?", f.get("date", "")):
-            err("E-record", f"{where}: service '{e.key}' date '{f.get('date', '')}' should be YYYY or "
-                "YYYY/YYYY (the years served)", e.key)
+    for name in ("service.bib", "activities.bib"):
+        for e in records[name].entries:
+            f, where = e.fields, f"{name}:{e.line}"
+            if e.type != "service":
+                err("E-record", f"{where}: '{e.key}' is @{e.type}; {name} holds @service entries", e.key)
+                continue
+            if not f.get("title"):
+                err("E-record", f"{where}: service '{e.key}' has no title", e.key)
+            named = [x.strip() for x in f.get("level", "").split(",") if x.strip()]
+            if not named:
+                err("E-record", f"{where}: service '{e.key}' has no level", e.key)
+            for lv in named:
+                if lv not in levels:
+                    err("E-record", f"{where}: service '{e.key}' has level '{lv}', which no "
+                        "\\printservice in main.tex prints, so it does not appear there", e.key)
+            if not re.fullmatch(r"\d{4}(/(\d{4})?)?", f.get("date", "")):
+                err("E-record", f"{where}: service '{e.key}' date '{f.get('date', '')}' should be YYYY, "
+                    "YYYY/YYYY, or YYYY/ for an ongoing role", e.key)
 
 
 AWARD_ICONS = {"award", "images/hm.png"}

@@ -18,7 +18,8 @@ One source, two PDFs:
   entry prints under with `\addtocategory{<category>}{key, key, …}` near the top.
 - `grants.bib` holds grants (`@grant`), `supervision.bib` my students (`@supervision`) and
   `awards.bib` the ACADEMIC AWARDS AND DISTINCTIONS list (`@award`) and
-  `service.bib` the SERVICE lists (`@service`).
+  `service.bib` the SERVICE lists and `activities.bib` the SCHOLARLY AND PROFESSIONAL
+  ACTIVITIES lists (both `@service`).
   The fields are described in `template/uwhealthcv.dbx`. They print sorted, and the APR
   colours come from their dates, so there are no years to keep in step by hand.
 - `apr-formatting.tex` holds my settings for the APR version (highlight strength and style).
@@ -91,13 +92,17 @@ the source of truth; never force-push `main`.
 
 **Where non-publication items go**
 - Awards → ACADEMIC AWARDS AND DISTINCTIONS (newest first, `\hlaward[YYYY]{…}`).
-- Reviewing, PCs, editorial roles, organizing → SCHOLARLY AND PROFESSIONAL ACTIVITIES lists.
+- Reviewing, PCs, editorial roles, organizing → a `@service` entry in `activities.bib` with `level`
+  grantreferee, journal, organizing, programcommittee or referee (the SCHOLARLY AND PROFESSIONAL
+  ACTIVITIES lists). A chair role that is also scholarship stays in `service.bib` with
+  `level = {discipline, organizing}`, so it prints in both sections. Only the ACM membership
+  line of that section is still hand-written in `main.tex`.
 - Awards → an `@award` in `awards.bib` (`title` as it should print, `date` = the year,
   `count` for "3 ×" lines). Order within a year follows the file.
-- Activities are in `main.tex`.
 - Service → a `@service` entry in `service.bib`: `title` as it prints, `level` (one of the
   `\printservice{…}` lists in `main.tex`: school, faculty, university, discipline) and
-  `date = {2023/2025}` for the years served. Optional `years` prints instead of the range
+  `date = {2023/2025}` for the years served (`2021/` for an ongoing role: "2021 -- Present",
+  sorted first). A `level` may name several lists, comma-separated. Optional `years` prints instead of the range
   ("2017, 2019 -- 2021"); optional `role` prints after the years ("General Chair"). The lists
   sort newest first and are highlighted from the dates; a leadership role that is also
   scholarship goes in `apralsoresearch`.

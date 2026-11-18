@@ -112,6 +112,16 @@ class ServiceRecords(unittest.TestCase):
         self.assertEqual([k for k, _ in errs], ["lost"])
         self.assertIn("no \\printservice", errs[0][1])
 
+    def test_an_ongoing_role_and_several_levels_pass(self):
+        self.assertEqual(self.errors("@service{ongoing, title = {A Committee}, level = {school}, date = {2021/}}\n"
+                                     "@service{both, title = {A Chair}, level = {school, school}, date = {2024}}\n"), [])
+
+    def test_each_named_level_must_be_printed(self):
+        # school is printed, faculty is only in a comment
+        errs = self.errors("@service{half, title = {A Chair}, level = {school, faculty}, date = {2024}}\n")
+        self.assertEqual([k for k, _ in errs], ["half"])
+        self.assertIn("'faculty'", errs[0][1])
+
     def test_a_bad_date_is_an_error(self):
         errs = self.errors("@service{when, title = {A Committee}, level = {school}, date = {2023 -- 2025}}\n")
         self.assertEqual([k for k, _ in errs], ["when"])
