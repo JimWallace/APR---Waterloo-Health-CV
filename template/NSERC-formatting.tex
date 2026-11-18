@@ -1,5 +1,9 @@
 \usepackage[margin=0.75in]{geometry}
-\usepackage{mathptmx}
+\usepackage{mathptmx}% Times for maths (and for text under pdfLaTeX)
+% LuaLaTeX (the template's engine) has no Times text font from mathptmx;
+% TeX Gyre Termes is the same design as an OpenType font.
+\usepackage{iftex}
+\ifLuaTeX\usepackage{fontspec}\setmainfont{TeX Gyre Termes}\fi
 \usepackage{wasysym}
 \usepackage{pifont}
 \usepackage{url}

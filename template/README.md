@@ -31,7 +31,9 @@ with a `latexmkrc`:
 ensure_path('TEXINPUTS', './template//');
 ```
 
-latexmk, Overleaf and the GitHub Actions LaTeX build all read that file.
+latexmk, Overleaf and the GitHub Actions LaTeX build all read that file. Its
+`$pdf_mode = 4;` line selects LuaLaTeX, the engine the template is built
+with; on Overleaf, also set Menu → Compiler → LuaLaTeX.
 
 The CV's main file:
 
@@ -98,8 +100,8 @@ every CV that uses the template.
 
 ```bash
 cd template/example
-latexmk -pdf example.tex
-latexmk -pdf example-apr.tex
+latexmk example.tex
+latexmk example-apr.tex
 ```
 
 CI builds both on every pull request.

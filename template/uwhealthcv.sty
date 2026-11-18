@@ -42,7 +42,7 @@
 \RequirePackage{tikz}
 \input{NSERC-formatting}
 
-\RequirePackage[utf8]{inputenc}
+\ifdefined\directlua\else\RequirePackage[utf8]{inputenc}\fi% UTF-8 is native in LuaLaTeX
 \RequirePackage[
     style=ACM-Reference-Format,
     backend=biber,
