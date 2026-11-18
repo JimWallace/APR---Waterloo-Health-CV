@@ -131,8 +131,8 @@
   \setlength\tabcolsep{\cvgrantcolsep}%
   \global\cv@amountwd\z@
   \global\cv@tenurewd\z@
-  \cv@widest\cv@amountwd{\underline{\$ Amount}}%
-  \cv@widest\cv@tenurewd{\underline{Tenure}}%
+  \cv@widest\cv@amountwd{\$ Amount}%
+  \cv@widest\cv@tenurewd{Tenure}%
   {\def\\{}\let\cv@grantline\cv@measureline\cv@rows}%
   \setlength\cvgranttitlewidth{\dimexpr\linewidth-\cvgrantnamewidth
     -\cvgrantagencywidth-\cv@amountwd-\cv@tenurewd-8\tabcolsep\relax}%
@@ -140,10 +140,13 @@
                        >{\raggedright\arraybackslash}p{\cvgrantagencywidth}
                        r l
                        >{\raggedright\arraybackslash}p{\cvgranttitlewidth}@{}}
-  \underline{Names of Researcher(s)} & \underline{Agency} & \underline{\$ Amount} &
-    \underline{Tenure} & \underline{Short Title} \\
+  \toprule
+  Names of Researcher(s) & Agency & \$ Amount &
+    Tenure & Short Title \\
+  \midrule
   \endhead
   \cv@rows
+  \bottomrule
   \end{longtable}%
   \endgroup}
 
@@ -381,39 +384,42 @@
   \setlength\tabcolsep{\cvgrantcolsep}%
   \global\cv@termwd\z@ \global\cv@enrolwd\z@
   \global\cv@scpwd\z@  \global\cv@avgwd\z@
-  \cv@widest\cv@termwd{\underline{Term}}%
-  \cv@widest\cv@enrolwd{\underline{Enrolment}}%
+  \cv@widest\cv@termwd{Term}%
+  \cv@widest\cv@enrolwd{Enrolment}%
   {\let\cv@courseline\cv@measurecourse\cv@courserows}%
   \IfValueTF{#1}%
-    {\cv@widest\cv@scpwd{\underline{\cvcoursescplabel}}%
+    {\cv@widest\cv@scpwd{\cvcoursescplabel}%
      \ifdim\cv@avgwd=\z@ % no course has averages: leave out their column
        \let\cv@coursescores\cv@coursescores@scp
        \setlength\cvcoursewidth{\dimexpr\linewidth-\cv@termwd-\cv@enrolwd
          -\cv@scpwd-6\tabcolsep\relax}%
        \def\cv@colspec{@{}l>{\raggedright\arraybackslash}p{\cvcoursewidth}r
          >{\raggedright\arraybackslash}p{\cv@scpwd}@{}}%
-       \def\cv@head{\underline{Term} & \underline{Course} & \underline{Enrolment} &
-         \underline{\cvcoursescplabel}}%
+       \def\cv@head{Term & Course & Enrolment &
+         \cvcoursescplabel}%
      \else
-       \cv@widest\cv@avgwd{\underline{\cvcourseaveragelabel}}%
+       \cv@widest\cv@avgwd{\cvcourseaveragelabel}%
        \let\cv@coursescores\cv@coursescores@on
        \setlength\cvcoursewidth{\dimexpr\linewidth-\cv@termwd-\cv@enrolwd
          -\cv@scpwd-\cv@avgwd-8\tabcolsep\relax}%
        \def\cv@colspec{@{}l>{\raggedright\arraybackslash}p{\cvcoursewidth}r
          >{\raggedright\arraybackslash}p{\cv@scpwd}
          >{\raggedright\arraybackslash}p{\cv@avgwd}@{}}%
-       \def\cv@head{\underline{Term} & \underline{Course} & \underline{Enrolment} &
-         \underline{\cvcoursescplabel} & \underline{\cvcourseaveragelabel}}%
+       \def\cv@head{Term & Course & Enrolment &
+         \cvcoursescplabel & \cvcourseaveragelabel}%
      \fi}%
     {\setlength\cvcoursewidth{\dimexpr\linewidth-\cv@termwd-\cv@enrolwd
        -4\tabcolsep\relax}%
      \def\cv@colspec{@{}l>{\raggedright\arraybackslash}p{\cvcoursewidth}r@{}}%
-     \def\cv@head{\underline{Term} & \underline{Course} & \underline{Enrolment}}}%
+     \def\cv@head{Term & Course & Enrolment}}%
   \expandafter\cv@coursetable\expandafter{\cv@colspec}%
   \endgroup}
 \newcommand\cv@coursetable[1]{%
   \begin{longtable}[c]{#1}
+  \toprule
   \cv@head \\
+  \midrule
   \endhead
   \cv@courserows
+  \bottomrule
   \end{longtable}}
