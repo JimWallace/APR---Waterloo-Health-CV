@@ -11,9 +11,10 @@
 %                                those in progress, by family name
 %   \printawards                 ACADEMIC AWARDS AND DISTINCTIONS: newest
 %                                first, in file order within a year
-%   \printservice{school}        one SERVICE list: the @service records of
-%                                that level, most recent first (by end
-%                                year, then start), in file order otherwise
+%   \printservice{school}        one list of @service records: those whose
+%                                level names it (a record may name several),
+%                                most recent first (open-ended first, then by
+%                                end year, then start), in file order otherwise
 %
 % In the APR version a grant whose tenure overlaps the review period is
 % highlighted as research (the whole table row); a student who completed in the
@@ -234,7 +235,8 @@
 \aprtypecategory{service}{service}
 
 % Title Years Role: the years field as written, else the date as
-% 2023 -- 2025; the role, if any, after them
+% 2023 -- 2025 (an open-ended date, 2021/, prints 2021 -- Present); the role,
+% if any, after them
 \DeclareBibliographyDriver{service}{%
   \usebibmacro{begentry}%
   \printfield[cvplain]{title}%
@@ -244,7 +246,9 @@
        {\printtext{%
           \thefield{year}%
           \iffieldint{endyear}
-            {\iffieldsequal{year}{endyear}{}{\ -- \thefield{endyear}}}
+            {\iffieldequalstr{endyear}{}
+               {\ -- Present}%
+               {\iffieldsequal{year}{endyear}{}{\ -- \thefield{endyear}}}}
             {}}}
        {}}
     {\printfield[cvplain]{years}}%
@@ -252,14 +256,34 @@
   \printfield[cvplain]{role}%
   \usebibmacro{finentry}}
 
+% An open-ended date (2021/) has an empty end year, which biber would sort as
+% if the role had ended in its start year; flag those so they sort first.
+\DeclareSourcemap{
+  \maps[datatype=bibtex]{
+    \map{
+      \pertype{service}
+      \step[fieldsource=date, match=\regexp{/\s*\Z}, final]
+      \step[fieldset=userf, fieldvalue={open}]
+    }
+  }
+}
+
 \DeclareSortingTemplate{cvservice}{
+  \sort[direction=descending]{\field{userf}}
   \sort[direction=descending]{\field{endyear}\field{year}}
   \sort[direction=descending]{\field{year}}
   \sort{\citeorder}
 }
 
+% level may name several lists, comma-separated: {discipline, organizing}
 \def\cv@level{}
-\defbibcheck{cvlevel}{\iffieldequals{level}{\cv@level}{}{\skipentry}}
+\newcommand\cv@checklevel[1]{\ifdefstring\cv@level{#1}{\def\cv@inlevel{x}\listbreak}{}}
+\defbibcheck{cvlevel}{%
+  \def\cv@inlevel{}%
+  \iffieldundef{level}{}{%
+    \edef\cv@levels{\thefield{level}}%
+    \expandafter\forcsvlist\expandafter\cv@checklevel\expandafter{\cv@levels}}%
+  \ifdefempty\cv@inlevel{\skipentry}{}}
 
 \newcommand\printservice[1]{%
   \def\cv@level{#1}%

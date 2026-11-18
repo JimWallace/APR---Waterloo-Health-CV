@@ -64,11 +64,13 @@ PhD                & University of Waterloo   & 2010 -- 2015 \\
 \sectionbreak
 \cvsection{SCHOLARLY AND PROFESSIONAL ACTIVITIES:}
 
+% @service records in example.bib: an ongoing role has date = {2021/}
 \cvsubheading{Conference Program Committee:}
-\begin{cvlist}
-    \cvitem \hlservice[2021-]{An open-ended role, 2021 -- Present}
-    \cvitem A past role, 2015 -- 2017
-\end{cvlist}
+    \printservice{programcommittee}
+
+% a record can print in several lists: level = {discipline, organizing}
+\cvsubheading{Conference Organizing Committee:}
+    \printservice{organizing}
 
 % cvbulletlist: the same layout with bullets, for entries that run to two
 % lines; cvgroup puts a label (here the degree) in the left column
