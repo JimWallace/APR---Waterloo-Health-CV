@@ -69,6 +69,23 @@ the source of truth; never force-push `main`.
   `nodoi = {<reason>}`. It does not print; it tells `check_cv.py` not to ask for a DOI. Only I
   decide that a work has none.
 
+**Acceptance rates and impact factors** (in the entry's `note`, after any text already there,
+joined with ". ")
+- Conference papers and PACM articles (CSCW, CHI PLAY, GROUP, ISS):
+  `Acceptance rate: 25.6\% (64/250)`. Give the counts when the source states them, otherwise
+  just the percentage. Use the rate for the paper's own track (full papers, notes, Late-Breaking
+  Work, Provocations & WiP…), never the main-track rate for another track.
+- Journal articles: `Journal Impact Factor (2025): 4.4`, the latest JCR year. A journal that
+  publishes a journal-wide acceptance rate (PLOS ONE) may have both.
+- Sources, best first: the decision letter or program chairs' email; the proceedings front
+  matter or issue editorial; the conference or publisher site (JMIR, Springer, Elsevier, ACM
+  journal pages for JIFs); then my own CVs. Third-party compilations and JIF aggregator sites
+  only when nothing better exists and two of them agree; say so in the PR.
+- Extended abstracts, posters, demos, workshop papers and companion items usually have no
+  rate: record that in `data/metrics.yaml` (`none`) instead of borrowing a rate. When a rate
+  or JIF probably exists but can't be found, record it there as `unresolved` with the date.
+  `python3 scripts/missing_metrics.py` lists entries with neither (reporting only, not CI).
+
 **Which heading** (`\addtocategory` in `main.tex`; each printed entry in exactly one of these)
 - `journal`: journal articles, including Proceedings of the ACM (PACM HCI, CSCW, CHI PLAY,
   GROUP, ISS) and JMIR etc.
