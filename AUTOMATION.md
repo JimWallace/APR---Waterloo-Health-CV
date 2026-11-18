@@ -3,14 +3,14 @@
 | When | What runs | Result |
 |---|---|---|
 | Sundays 18:07 (Toronto) | `CV sources` workflow | Fetches DBLP, OpenAlex and Crossref records and saves them on the `cv-sources` branch, so Claude can check entries even where it can't reach those sites. |
-| Weekly (your scheduled Claude task) | `automation/weekly-update.md` | Claude adds new papers and DOIs, open `cv-item` issues and items from your Outlook mail and calendar (acceptances, review recognitions, PC roles, talks…), fills in missing acceptance rates and journal impact factors (`scripts/missing_metrics.py`, refreshing impact factors each summer), has four sub-agents verify every change, and opens one PR on a `cv/` branch. It also follows up last week's PRs: answer its questions in a PR comment and the next run applies them. |
+| Weekly (your scheduled Claude task) | `automation/weekly-update.md` | Claude adds new papers and DOIs, open `cv-item` issues and items from your Outlook mail and calendar (acceptances, review recognitions, PC roles, talks…), fills in missing acceptance rates and journal impact factors (`scripts/missing_metrics.py`, refreshing impact factors each summer), has sub-agents verify every change (plus `chizen-figures` for figures), and opens one PR on a `cv/` branch. It also follows up last week's PRs: answer its questions in a PR comment and the next run applies them. |
 | Every PR | `CV build` | Deterministic checks (`scripts/check_cv.py`), compiles both PDFs, fails on any error and on any warning not in `scripts/warnings-baseline.txt` (see `scripts/warning_ratchet.py`), reports what changed in the PDF text, blocks PRs labelled `needs-review`. A PR that adds lines to the baseline or changes the checks fails the `ratchet` job, so you merge it by hand. |
 | `CV build` passes | `CV auto-merge` | Merges PRs you open (including ones Claude opens for you in a chat) automatically. Merges the weekly job's `cv/` PRs only if they're labelled `auto-merge`. Draft PRs and `needs-review` PRs never merge. |
 | Every push to `main` | `CV build` → release | Latest PDFs at Releases → `cv-latest` (Wallace-CV.pdf, Wallace-CV-APR.pdf). |
 | Push to `main`, and every 3 hours | `Overleaf sync` (optional) | Pushes `main` to Overleaf; edits made in Overleaf come back as an auto-merging PR. |
 
-The weekly job labels a PR `auto-merge` only when the checker passes, all four verifiers
-(`.claude/agents/`) pass, and every change is a verified publication, a DOI, a review
+The weekly job labels a PR `auto-merge` only when the checker passes, every verifier it ran
+(`.claude/agents/`) passes, and every change is a verified publication, a DOI, a review
 recognition or a reviewing/PC role. Grants, supervision, other awards, corrections, possible
 new trainees and anything unverifiable get `needs-review` and a "Questions for Jim" list.
 Private things it finds in email (rejections, conditional acceptances, invitations) go only in

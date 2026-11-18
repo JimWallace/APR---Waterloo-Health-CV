@@ -1,6 +1,6 @@
 ---
 name: cv-verify
-description: Verify CV changes with the deterministic checker and four independent verifier sub-agents, then decide the PR label. Use after any edit to scholar.bib or main.tex, or with "full" to audit every bib entry.
+description: Verify CV changes with the deterministic checker and independent verifier sub-agents (four, plus `chizen-figures` when figures change), then decide the PR label. Use after any edit to scholar.bib or main.tex, or with "full" to audit every bib entry.
 allowed-tools: Read, Grep, Glob, Edit, Agent, Bash(python3 scripts/check_cv.py:*), Bash(python3 scripts/warning_ratchet.py:*), Bash(git diff:*), Bash(git log:*), Bash(git status:*), Bash(git fetch:*), Bash(git show:*), Bash(curl:*)
 ---
 
@@ -29,6 +29,7 @@ because they check from scratch.
 - `trainee-checker` — keys
 - `apr-classifier` — keys + diff (skip in `full` mode)
 - `diff-auditor` — your draft change table (skip in `full` mode)
+- `chizen-figures` — the changed figure files, when the diff touches `figures/` or `data/*.csv`, or adds a figure anywhere else. In `full` mode, give it `all`.
 
 If those agent types aren't available in your session, start general-purpose sub-agents
 instead, each given the full text of `.claude/agents/<name>.md` (below the front matter) as

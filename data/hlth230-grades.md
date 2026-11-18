@@ -1,7 +1,7 @@
 # HLTH 230 final course grades by term
 
 `hlth230-grades.csv` feeds the figure in `figures/hlth230-grades.tex` (APR version only), which
-`python3 scripts/hlth230_figure.py` regenerates: re-run it after editing the CSV.
+reads it directly with pgfplots: edit the CSV and recompile.
 Term-level summaries only; no student data.
 
 - `term`: W = Winter, S = Spring, then the two-digit year.

@@ -194,6 +194,11 @@ that is followed by a list; never use `\newpage` (use `\sectionbreak`).
   CI does, and fails if `template/` mentions me.
 - Verifier sub-agents in `.claude/agents/` check changes independently. The `cv-verify` skill
   says how to run them.
+- `chizen-figures` (`.claude/agents/`) reviews figures against my CHI-Zen visualization
+  templates (github.com/JimWallace/CHI-Zen). It is one of the verifiers: run it whenever a
+  change touches a figure or its data. Data figures are pgfplots reading `data/*.csv`. Tables
+  are not reviewed: their layout (underlined headings, alignment) is required by the Faculty of
+  Health (AHS) format.
 
 ## Pull requests
 
