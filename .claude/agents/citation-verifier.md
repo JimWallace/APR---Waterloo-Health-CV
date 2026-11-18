@@ -35,6 +35,10 @@ A list of bib keys (and sometimes the PR diff). Read each entry from `scholar.bi
    - **venue**: booktitle/journal names the right venue and year;
    - **year**; **pages / article number**; **DOI** (add if the record has one and the entry
      doesn't); **entry type** (`@article` vs `@inproceedings` as the publisher classes it).
+   - **metrics** in `note` (`Acceptance rate: …`, `Journal Impact Factor (YYYY): …`): the
+     figure matches the source named in the change table, is for the paper's own track (or the
+     journal and JCR year stated), and the source is the kind `CLAUDE.md` accepts. A source
+     you can't reach (an email) is UNVERIFIABLE, not FIX.
 3. Watch for: a preprint (arXiv/OSF/medRxiv) record standing in for the published version;
    the extended-abstract and full-paper versions of the same work being confused; another
    person named J. Wallace.

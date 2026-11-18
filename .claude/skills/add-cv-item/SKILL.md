@@ -16,6 +16,11 @@ awards, grants and students is the source; cite it as "issue #N".
    `note = {To appear}`. Mark trainees per `supervision.bib` and `data/trainees.yaml`; if Jim names a new
    trainee, add them (a supervised student to `supervision.bib`, anyone else to
    `data/trainees.yaml`; he told you, so this one is allowed) and say so in the PR.
+   Add the full information available now: DOI, pages, award, and the acceptance rate
+   (conference/PACM) or journal impact factor, as `CLAUDE.md` → "Acceptance rates and impact
+   factors" says. The acceptance email usually states the rate; search Outlook for it if the
+   connector is available. If no figure exists or can be found, add a `data/metrics.yaml` line
+   so `scripts/missing_metrics.py` retries it later.
 3. **Grants, students and awards:** add a `@grant` entry to `grants.bib`, a `@supervision`
    entry to `supervision.bib` or an `@award` entry to `awards.bib` (with `work = {key}` and
    `icon = {award}` on that entry when it is for a paper or talk) (fields in `template/uwhealthcv.dbx`, examples in each file). No

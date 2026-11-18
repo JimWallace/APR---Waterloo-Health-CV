@@ -1,0 +1,55 @@
+# Publication metrics: acceptance rates and journal impact factors.
+#
+# The figures themselves live in the `note` of each scholar.bib entry
+# ("Acceptance rate: 25.6\% (64/250)", "Journal Impact Factor (2025): 4.4"; see
+# CLAUDE.md -> Conventions). This file records only the journal and conference
+# entries whose note has no figure, so scripts/missing_metrics.py does not keep
+# reporting them:
+#
+#   none        nothing to find: the track publishes no rate (extended abstracts,
+#               posters, demos, workshop papers, companion items) or the journal
+#               has no impact factor. Not searched again.
+#   unresolved  a figure probably exists but was not found. Automated runs retry
+#               these (automation/weekly-update.md, step 2e) and update the date.
+#
+# One line per key:   key: status | reason | YYYY-MM-DD (last checked)
+# Remove a key's line when its figure is added to scholar.bib.
+
+# Conference tracks without a published acceptance rate
+hawant: none | CHI 2005 Extended Abstracts | 2026-11-18
+wallacelightweight: none | CHI 2005 Extended Abstracts | 2026-11-18
+ha2006my: none | CHI 2006 Extended Abstracts | 2026-11-18
+wallace2006swordfishchiea: none | CHI 2006 Extended Abstracts | 2026-11-18
+wallace2006edit: none | CSCW 2006 Extended Abstracts | 2026-11-18
+wallaceexploring: none | Tabletop 2007 Extended Abstracts | 2026-11-18
+wallace2012exploring: none | CSCW 2012 Companion | 2026-11-18
+wallace2012using: none | CSCW 2012 Companion | 2026-11-18
+scott2015local: none | CSCW 2015 Companion workshop | 2026-11-18
+pietroszek20153d: none | UbiComp/ISWC 2015 Adjunct | 2026-11-18
+cheung2016quantum: none | ISS 2016 demo | 2026-11-18
+anslow2016collaboration: none | ISS 2016 workshop proposal | 2026-11-18
+homaeian2017investigating: none | ISS 2017 poster | 2026-11-18
+wallace2017disappearing: none | ISS 2017 workshop proposal | 2026-11-18
+chan2018smartsurveys: none | ISS 2018 poster | 2026-11-18
+chen2019design: none | PervasiveHealth 2019 demos and posters | 2026-11-18
+wong2025bold: none | ICGaN 2025 extended abstract | 2026-11-18
+
+# Acceptance rate not found
+wallace2008contextual: unresolved | Tabletop 2008 full paper; IEEE front matter not reachable | 2026-11-18
+kelly2010solar: unresolved | SIGDOC 2010; ACM DL acceptance panel not reachable | 2026-11-18
+pietroszek2017watchcasting: unresolved | 3DUI 2017 tech note | 2026-11-18
+tahai2019scalebridge: unresolved | VS-Games 2019 short paper | 2026-11-18
+Sharma2025: unresolved | CUI 2025 Interactivity & Creativity track | 2026-11-18
+prasad2026pragmatica: unresolved | GI 2026; no accepted count published | 2026-11-18
+wong2026ipvprevention: unresolved | GI 2026; no accepted count published | 2026-11-18
+ugayamazza2026agency: unresolved | GI 2026; no accepted count published | 2026-11-18
+sharma2026details: unresolved | GI 2026; no accepted count published | 2026-11-18
+homaeian2021joint: unresolved | PACM HCI CSCW Apr 2021; editorial gives no rate | 2026-11-18
+homaeian2022handoff: unresolved | PACM HCI CSCW Nov 2022; editorial gives no rate | 2026-11-18
+gauthier2023agency: unresolved | PACM HCI GROUP 2023; editorial and letter give no rate | 2026-11-18
+
+# Journal impact factor not found (or only on aggregator sites)
+wallace2009investigating: unresolved | Personal and Ubiquitous Computing; no JIF after 2020 found | 2026-11-18
+aboueid2021use: unresolved | BMJ Innovations; 1.6 seen, year not stated | 2026-11-18
+bomfim2022design: unresolved | ACM TOCHI; 2025 JIF 9.6 only on aggregators (2024: 6.6 per ACM) | 2026-11-18
+wada2022designing: unresolved | Human Factors in Healthcare; 2025 JIF 1.6 from one aggregator only | 2026-11-18
