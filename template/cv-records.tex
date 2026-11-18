@@ -223,10 +223,7 @@
   \printfield[cvplain]{title}%
   \usebibmacro{finentry}}
 
-\DeclareSortingTemplate{cvawards}{
-  \sort[direction=descending]{\field{year}}
-  \sort{\citeorder}
-}
+% sorted with cvservice (below): newest year first, then file order
 
 % the same layout as cvlist (uwhealthcv.sty)
 \defbibenvironment{cvawards}
@@ -237,7 +234,7 @@
   {\item[]}
 
 \newcommand\printawards{%
-  \begin{refcontext}[sorting=cvawards]%
+  \begin{refcontext}[sorting=cvservice]%
     \printbibliography[type=award,env=cvawards,heading=none]%
   \end{refcontext}}
 
@@ -278,9 +275,10 @@
   }
 }
 
-% \printcourses uses this sorting too (newest term first: courses have a
-% month, service roles do not). biber writes a full copy of every entry for
-% each sorting in use, so a new template costs TeX a lot of memory.
+% \printawards and \printcourses use this sorting too: awards have only a
+% year, courses also a month (newest term first). biber writes a full copy
+% of every entry into the .bbl for each sorting in use, so each new sorting
+% template costs TeX a lot of memory; reuse one where the order allows.
 \DeclareSortingTemplate{cvservice}{
   \sort[direction=descending]{\field{userf}}
   \sort[direction=descending]{\field{endyear}\field{year}}
