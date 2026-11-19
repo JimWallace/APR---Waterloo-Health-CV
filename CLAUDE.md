@@ -128,7 +128,8 @@ joined with ". ")
   tenure. Order in the file doesn't matter.
 - Supervision → a `@supervision` entry in `supervision.bib`: `author = {Family, Given}`,
   `degree` (one of the `\printsupervision{…}` lists in `main.tex`), and `status = {In progress}`
-  until they finish, then `date`, `title` and, when I know it, `position`. Committee
+  until they finish, then `date`, `title` and, when I know it, `position`. `program` is
+  the student's graduate program (Computer Science), printed after the name. Committee
   membership and external examining stay as lines in `main.tex`.
 - Courses → a `@course` entry in `courses.bib`, one per offering: `course` (HLTH 454/629),
   `title`, `date` = the month the term starts (`2026-01` Winter, `-05` Spring, `-09` Fall),
