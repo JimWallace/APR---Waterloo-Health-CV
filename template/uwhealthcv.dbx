@@ -19,7 +19,9 @@
 %   date           completion: 2022, or 2024-11 to print the month
 %   status         instead of a date while ongoing: In progress
 %   title          thesis, project or practicum title
-%   note           programme or practicum details
+%   program        optional: the student's graduate program, printed in
+%                  parentheses after the name (Computer Science)
+%   note           practicum or other details
 %   cosupervisor   printed as "(co-supervised with ...)"
 %   position       where they went next, printed in brackets
 %
@@ -69,6 +71,7 @@
   status,
   position,
   cosupervisor,
+  program,
   work,
   level,
   years,
@@ -92,6 +95,7 @@
   status,
   title,
   note,
+  program,
   cosupervisor,
   position,
 }
