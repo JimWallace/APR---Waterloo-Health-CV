@@ -79,6 +79,13 @@ e. **Missing metrics** — run `python3 scripts/missing_metrics.py`. Take every 
    `Journal Impact Factor (YYYY)` note whose year is older than the newest release, from the
    journal's publisher page.
 
+f. **Software stats** — run `python3 scripts/software_stats.py`. It clones the repositories in
+   `data/software.yaml` (public GitHub; no token needed) and regenerates
+   `data/software-stats.tex` (the line under each software entry). Commit the result on its own
+   ("Software stats YYYY-MM-DD"); the numbers come from the repositories, so list it in the
+   change table with the repositories as the source. If a clone fails, leave the file as it
+   is and say so in the PR.
+
 ## 3. Triage
 
 For each item keep a one-line reason (it goes in the PR, or in your final message if private).
