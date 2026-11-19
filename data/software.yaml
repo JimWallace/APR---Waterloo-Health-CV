@@ -13,6 +13,7 @@
 #   exclude_authors  commit authors not counted (bots, outside contributors)
 #   exclude_paths    git pathspecs left out of the line counts (vendored or generated code)
 #   test_paths       regex on the path: matching code files count as tests, not code
+#   extra_extensions more file types that count as code for this entry (e.g. .sty)
 # Counted as code: non-blank lines in tracked files with these extensions:
 #   .swift .py .js .mjs .ts .tsx .jsx .go .rs .java .kt .c .h .cpp .hpp .cs .rb .r .R
 #   .sh .html .css .scss .sql
@@ -31,4 +32,11 @@ cta2022:
   repo: https://github.com/rpgauthier/ComputationalThematicAnalysisToolkit
   exclude_authors:
     - TrellixVulnTeam                 # one outside security patch
+  test_paths: '(^|/)tests?(/|$)|test_'
+
+wallace2026waterloo:
+  repo: https://github.com/JimWallace/waterloo-health-cv-template
+  extra_extensions: [.sty, .tex, .dbx, .bbx, .cbx]   # the template is LaTeX
+  exclude_paths:
+    - ACM-Reference-Format.*          # vendored ACM biblatex style
   test_paths: '(^|/)tests?(/|$)|test_'

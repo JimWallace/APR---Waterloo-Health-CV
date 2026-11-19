@@ -12,8 +12,8 @@ entry, printed under the entry in both PDFs.
 What is counted, so the numbers can be explained to a reader:
   releases  tags matching the entry's release_tags (default: every tag)
   commits   commits on the default branch, less those by exclude_authors
-  code      non-blank lines in tracked source files (CODE_EXTENSIONS) in the
-            latest commit, less exclude_paths; files matching test_paths count
+  code      non-blank lines in tracked source files (CODE_EXTENSIONS, plus the
+            entry's extra_extensions) in the latest commit, less exclude_paths; files matching test_paths count
             as automated tests instead
   period    month of the first and the latest counted commit
 """
@@ -91,9 +91,10 @@ def measure(repo: Path, cfg: dict) -> dict:
 
     excludes = [f":(exclude){p}" for p in cfg.get("exclude_paths") or []]
     test_re = re.compile(cfg["test_paths"]) if cfg.get("test_paths") else None
+    extensions = CODE_EXTENSIONS | set(cfg.get("extra_extensions") or [])
     code = tests = 0
     for path in git(repo, "ls-files", "-z", "--", ".", *excludes).split("\0"):
-        if not path or Path(path).suffix not in CODE_EXTENSIONS:
+        if not path or Path(path).suffix not in extensions:
             continue
         f = repo / path
         if f.is_symlink() or not f.is_file():
