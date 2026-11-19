@@ -13,7 +13,7 @@ awards, grants and students is the source; cite it as "issue #N".
    go" and "Which heading"). Read the neighbouring lines and copy their format exactly.
 2. **Publications and talks:** look for a public record (DOI, DBLP, publisher, program page).
    If found, build the bib entry from it. If not yet public, use what Jim wrote and add
-   `note = {To appear}`. Mark trainees per `supervision.bib` and `data/trainees.yaml`; if Jim names a new
+   `note = {In press}`. Mark trainees per `supervision.bib` and `data/trainees.yaml`; if Jim names a new
    trainee, add them (a supervised student to `supervision.bib`, anyone else to
    `data/trainees.yaml`; he told you, so this one is allowed) and say so in the PR.
    Add the full information available now: DOI, pages, award, and the acceptance rate

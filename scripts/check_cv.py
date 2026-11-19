@@ -145,7 +145,7 @@ def run(only: set[str] | None = None) -> dict:
             e = by_key[key][0]
             if (e.year or 0) >= 2010 and "doi" not in e.fields \
                     and "nodoi" not in e.fields \
-                    and "to appear" not in e.fields.get("note", "").lower():  # no DOI yet, by convention
+                    and not any(s in e.fields.get("note", "").lower() for s in ("in press", "to appear")):  # no DOI yet, by convention
                 warn("W-nodoi", f"'{key}' ({e.year}) has no DOI, so it cannot be checked automatically", key)
     for e in bib.entries:
         if "nodoi" in e.fields and not e.fields["nodoi"].strip():

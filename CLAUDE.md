@@ -68,7 +68,7 @@ the source of truth; never force-push `main`.
   trainee won it, add the award's key to `apralsoteaching` too.
 - Include `doi` whenever one exists; ACM entries use `@inproceedings` (conference proceedings)
   or `@article` (PACM / journals) as the ACM DL export does.
-- Accepted-but-unpublished work: add `note = {To appear}` and no DOI; the weekly run backfills
+- Accepted-but-unpublished work: add `note = {In press}` (the Faculty of Health format's term) and no DOI; the weekly run backfills
   the DOI when it appears.
 - Refereed work that has no DOI at all (a poster or abstract with no archival proceedings):
   `nodoi = {<reason>}`. It does not print; it tells `check_cv.py` not to ask for a DOI. Only I
