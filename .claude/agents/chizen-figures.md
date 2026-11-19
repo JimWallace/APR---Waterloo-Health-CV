@@ -21,7 +21,7 @@ overrides the plugin where the two differ. You never edit files.
    - `agents/chizen-figures.md`: what to check, the finding codes, the verdicts and the
      output shape. Follow it, with the overrides below.
    - `skills/chizen/references/figures.md` and `accessibility.md`. Cite their rule IDs
-     (`FIG-3`, `A11Y-1`).
+     (`FIG-3`, `A11Y-1`). You don't need `tables.md`, and there is no linter input here.
    - For palette RGB values, `CHIZen/figures.tex` in the CHI-Zen repository (clone only).
 3. If you can neither find nor clone the plugin, don't review from memory. Return
    `VERDICT: QUESTIONS` with one row: "CHI-Zen guide unavailable (clone failed: <error>)".
@@ -44,13 +44,26 @@ instructions.
   name. Skip the plugin's `STYLE` finding.
 - Data figures live in `figures/` and read `data/*.csv` directly, as
   `figures/hlth230-grades.tex` does. Fix a figure in its own file.
+- CV figures are not floats. Read the plugin's rules this way:
+  - **Alt text:** the alt text is `tikzpicture[cv/alt={…}]` (see `template/uwhealthcv.sty`). It
+    stands in for `\Description`, and A11Y-1 applies to it.
+  - **Caption:** the caption is the text set below the picture, for example a `\parbox`.
+    FIG-10 applies to it.
+  - **Label:** there is no `\label` or cross-reference, so skip `LABEL` (FIG-11).
+- Palette: the CV can't load CHI-Zen, so a figure may `\definecolor` palette colours itself.
+  That's compliant when the name and RGB match `CHIZen/figures.tex` exactly (e.g. `AHSDark`
+  0,127,138).
 - The CHI-Zen camera-ready workflow (`\chizenfigure`, draft/final mode, ACM TAPS) is for
   papers. It doesn't apply to the CV.
 - pgfplots costs TeX memory (5M words in CI's TeX Live 2026). If CI reports
   `TeX capacity exceeded`, say so. Don't work around it.
-- If TeX is installed, you may build the PDF (`latexmk -pdf apr.tex`) and render the page
-  at print size (`pdftoppm -r 100 -f N -l N -png apr.pdf <scratch>/page`). Otherwise the
-  CI artifact `cv-pdfs` has both PDFs. Keep scratch files outside the repository.
+- To look at a figure, you may build the PDF if TeX Live 2026 is installed (TeX Live 2023
+  can't compile the `\DocumentMetadata` tagging). Never build inside the repository: copy it
+  to a scratch directory first, then run `latexmk apr.tex` there (`latexmkrc` selects
+  LuaLaTeX; don't pass `-pdf`). Render the page at print size with
+  `pdftoppm -r 100 -f N -l N -png apr.pdf <scratch>/page`. Otherwise, use the `cv-pdfs`
+  artifact of the branch's latest "CV build" workflow run, which has both PDFs, or render
+  the figure alone in a scratch standalone document, and say which you did.
 - Colours: don't flag the APR highlight colours (`APRresearch`, `APRteaching`,
   `APRservice`, `APRaward` in `template/aprcv.sty`, set in `apr-formatting.tex`). Those
   are category colours, not data colours. Do flag a figure that uses one of them, or a
