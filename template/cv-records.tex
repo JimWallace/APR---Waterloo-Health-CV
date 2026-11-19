@@ -164,10 +164,12 @@
   \ifcase#1\or January\or February\or March\or April\or May\or June\or
   July\or August\or September\or October\or November\or December\fi}
 
-% Name, date (or status), Title. Note (co-supervised with X) [Position]
+% Name (Program), date (or status), Title. Note (co-supervised with X) [Position]
 \DeclareBibliographyDriver{supervision}{%
   \usebibmacro{begentry}%
   \printnames[cvfull]{author}%
+  \setunit{\space}%
+  \printfield[parens]{program}%
   \setunit{\addcomma\space}%
   \iffieldint{year}
     {\printtext{%
