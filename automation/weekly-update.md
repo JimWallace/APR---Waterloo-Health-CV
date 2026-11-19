@@ -51,6 +51,15 @@ c. **Outlook** — with the Microsoft 365 connector, search Jim's mail since the
    office, or Jim's own confirmation) states it outright. If the connector isn't available,
    skip this and say so in your final message.
 
+   **PCS reviewing.** Also search `precisionconference.com` in the same window. Links in PCS
+   mail contain `/<venue code>/committee/` when Jim holds a committee role (associate chair,
+   associate editor, program committee) and `/<venue code>/reviewer/` when he reviews as an
+   external referee. Count the distinct submissions per venue and role, and compare with
+   `activities.bib`: a venue and year missing from the referee or program committee lines is a
+   new item (extend the line's years); a committee load that the entry's `note` doesn't give
+   yet goes in the PR as a question for Jim. Record counts only, never submission numbers,
+   titles or other people's names (see "Private" under step 3).
+
 d. **Calendar** — with the same connector, list Jim's calendar events in the same window.
    Look for talks he gave (invited talks, keynotes, seminars, panels), thesis defences and
    examinations he sat on, and committee or program-committee meetings that show a role.
