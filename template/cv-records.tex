@@ -265,6 +265,7 @@
     {\printfield[cvplain]{years}}%
   \setunit{\space}%
   \printfield[cvplain]{role}%
+  \iffieldundef{note}{}{\aprlinemark}%
   \setunit{\newline}%
   \printfield[cvservicenote]{note}%
   \usebibmacro{finentry}}
