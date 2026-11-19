@@ -94,7 +94,7 @@ For each item keep a one-line reason (it goes in the PR, or in your final messag
   record needs a University of Waterloo affiliation or a coauthor already on his CV.
 - **Already on the CV in another form?** Preprint vs published version, extended abstract vs
   full paper, a changed title: compare authors, venue and year, not just the title. The
-  published version of an entry marked "To appear" updates that entry (DOI, pages) instead of
+  published version of an entry marked "In press" updates that entry (DOI, pages) instead of
   adding a new one.
 - **Final?** Add papers only on final acceptance. Conditional acceptances and revise-and-resubmit
   are not CV items yet: mention them only in your final message.
@@ -111,7 +111,7 @@ For each item keep a one-line reason (it goes in the PR, or in your final messag
 Follow `CLAUDE.md` → Conventions. In short:
 - **Bib entries** from the retrieved record (Crossref record from `cv-sources` first, then the
   publisher page): key `familyYYYYfirstword`, `\textbf{James R. Wallace}`, `*` only for people
-  in `data/trainees.yaml`, `doi` when there is one, `note = {To appear}` when not yet published.
+  in `data/trainees.yaml`, `doi` when there is one, `note = {In press}` when not yet published.
   Add the key to exactly one heading, and to `apralsoteaching` if a trainee is an author and the
   entry is in the review period. Append next to similar entries; don't re-sort.
   A new paper is added with its full information when it is available: DOI, pages, award,
@@ -155,7 +155,7 @@ adds fails CI: fix it, or label the PR `needs-review` and ask. A warning your ch
 `auto-merge` only when `scripts/check_cv.py` passes, every verifier that ran returns PASS, and every
 change is one of:
 - a new publication confirmed against a retrieved record (Crossref/DBLP/publisher page), or
-  one Jim reported in an issue, marked `To appear`;
+  one Jim reported in an issue, marked `In press`;
 - a DOI backfill confirmed by `citation-verifier`;
 - a review recognition, or a reviewing/PC/editorial role, stated in an official email or by Jim;
 - an acceptance rate for the paper's own track, stated in its decision letter, the program

@@ -51,7 +51,7 @@ VERDICT: PASS | FAIL | QUESTIONS
 ```
 - `PASS` rows: one row per key, field `-`.
 - `FIX` rows: one row per wrong or missing field, with the exact corrected value to paste.
-- `UNVERIFIABLE` rows: say what you searched. Forthcoming work (`note = {To appear}`) with
+- `UNVERIFIABLE` rows: say what you searched. Forthcoming work (`note = {In press}`) with
   no record yet is `UNVERIFIABLE`, not FAIL.
 VERDICT is PASS only if every row is PASS. Any FIX → FAIL. Only UNVERIFIABLE → QUESTIONS.
 Every FIX and PASS must cite its source: a URL you retrieved in this run, or the
