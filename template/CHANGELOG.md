@@ -5,6 +5,32 @@ fixes, major for anything renamed or removed (with what a CV must change).
 
 ## Unreleased
 
+## v0.4.1 — 2026-11-19
+
+Nothing for a CV to change: the dots style is now the example's and the
+starter's default, and the README shows it.
+
+- README: the screenshots show the APR version in the dots style, and the text
+  and alt text describe the dots.
+- The example and the starter use the dots style (`\sethighlightstyle{dots}`
+  in `apr-formatting.tex`) instead of the bar. An existing CV keeps its own
+  setting.
+
+## v0.4.0 — 2026-11-19
+
+Additions only: nothing for a CV to change.
+
+- `@committee` records for thesis and examination committees, with
+  `\printcommitteecounts{MSc, PhD}` (one line per year: "2026 --- 4 MSc,
+  6 PhD", counted from the records' dates) and `\printcommittees[period]{PhD}`
+  (the named committees as a bulleted list). `\cvcommitteegroup{MSc}{MSc,
+  MASc}` counts several degrees together. Count-only records (`count`, no
+  author) give a year's number where the committees aren't listed by name.
+  Shown in the example; the starter keeps them in `committees.bib`.
+- Starter: the Template update workflow opens an issue with a one-click PR link
+  when the repository doesn't allow workflows to open pull requests, instead
+  of failing.
+
 ## v0.3.0 — 2026-11-19
 
 One addition: nothing for a CV to change.
