@@ -5,6 +5,24 @@ fixes, major for anything renamed or removed (with what a CV must change).
 
 ## Unreleased
 
+## v0.3.0 — 2026-11-19
+
+One addition: nothing for a CV to change.
+
+- Release workflow: check CI through the commit's check runs (the run-search
+  query missed a passing run).
+- `\setentrydetail{key}{text}`: a line of small text under one bibliography
+  entry (e.g. a software entry's releases, commits and lines of code), kept
+  outside the .bib so a script can regenerate it. Shown in the example.
+
+## v0.2.1 — 2026-11-19
+
+Documentation only: nothing for a CV to change.
+
+- README: what the template and the APR version do, with screenshots from the
+  starter CV (`docs/images/`, not copied into a CV's `template/`), and the
+  agentic workflow in `starter/`.
+
 ## v0.2.0 — 2026-11-19
 
 Changes made in a CV's own copy of the template while v0.1.0 was being split
