@@ -16,6 +16,9 @@
 \addbibresource{service.bib}
 \addbibresource{activities.bib}
 \addbibresource{courses.bib}
+\addbibresource{committees.bib}
+% MASc and MMath committees count and list with MSc
+\cvcommitteegroup{MSc}{MSc, MASc, MMath}
 \cvowner{James Wallace}
 \setreviewperiod{2025}{2026}
 % Publications and presentations from the review period are highlighted as
@@ -85,6 +88,8 @@
 \addtocategory{apralsoresearch}{nfrf2026exploration, nfrf2026international, nserc2015discoveryreview, nserc2025alliance, nserc2019polyani, nserc2019create, mitacs2013elevate, pacmgroup2024ae, tch2025, tweb2024, pacmiss2022editor, pacmchiplay2020ae, pacmcscw2019ae, pervasive2015, chb2015, cga2012, ijhcs2011, chi2018pc, cscw2019pc, gi2015pc, iss2024pc, perdis2015pc, chiplay2014pc, ppd2012pc, hypertext2010pc, chi2009referee, iss2009referee, cscw2008referee, uist2016referee, mobilehci2012referee, sui2013referee, mum2013referee, gi2016referee, iui2012referee, eics2012referee, dis2010referee, chiplay2014referee}
 % Special recognitions for exceptional reviews, and the CHI PLAY 2023 recognition
 % of service, are awards for service work.
+% Chairing a student's examination: a committee role and service (committees.bib).
+\addtocategory{apralsoservice}{hassan2026chair}
 \addtocategory{apralsoservice}{dis2026reviews, chi2025reviews, chi2023reviews, chi2022reviews, chi2020reviews, chi2017reviews, dis2016review, chi2015review, chiplay2014review, chiplay2023service}
 
 
@@ -317,47 +322,16 @@ Supervision during the review period is highlighted below as \aprsample{teaching
 
     \keepwithnext[13]
     \cvpart{As Committee Member}
-    \begin{cvlist}
-        % 2026 --- MSc: Hamin, Aakanksha, Kelly Huang (MASc), Junsong Li (MASc, defended May 14)
-        %          PhD: Arielle, Pedro, Ryan, Bobbi Rotolo, Mohammad Hasan Payandeh (CS, defence Dec 2)
-        %          Mariam Hassan (chaired her oral comprehensive; counted, see CLAUDE.md)
-        \cvitem \hlteaching[2026]{2026 --- 4 MSc, 6 PhD}
-        \cvitem \hlteaching[2025]{2025 --- 2 MSc, 4 PhD}
-        \cvitem 2024 --- 3 MSc, 8 PhD
-        \cvitem 2023 --- 2 MSc, 7 PhD  
-        \cvitem 2022 --- 4 MSc, 7 PhD
-        \cvitem 2021 --- 2 MSc, 3 PhD
-        \cvitem 2020 --- 3 MSc, 4 PhD
-        \cvitem 2019 --- 4 MSc, 5 PhD 
-        \cvitem 2018 --- 3 MSc, 3 PhD
-        \cvitem 2017 --- 7 MSc, 3 PhD
-        \cvitem 2016 --- 2 MSc, 3 PhD
-    \end{cvlist}
+    % committees.bib: each committee counts in every year of its date
+    \printcommitteecounts{MSc, PhD}
 
     \ifAPR % APR version only: the named committees ----------------
     \cvsubheading{Committees in the review period:}
     \begin{cvgroup}{PhD}
-    \begin{cvbulletlist}
-            \cvitem \hlteaching[2026]{Bobbi Rotolo (PhD, Public Health Sciences; defence scheduled December 2026). \textit{Stigma and Related Impacts on Vaccine Acceptance: Strategies to (Re)Open the Door for Communication}}
-            \cvitem \hlteaching[2026]{Mohammad Hasan Payandeh (PhD, Computer Science; defence scheduled December 2026). \textit{The Role of Context in Human--LLM Communication}}
-            \cvitem \hlteaching[2025-2026]{Arielle Grinberg (PhD, Management Science \& Engineering; defended 2026). \textit{Technology-Mediated Complex Problem-Solving}}
-            \cvitem \hlteaching[2025-2026]{Ryan Tennant (PhD, Systems Design Engineering; defended 2026). \textit{An Ecologically Inspired Constraint-Based Approach to AI System Design: Re-Shaping Clinical Uncertainty in Paediatric Sepsis}}
-            \cvitem \hlteaching[2024-2026]{Pedro Augusto Da Silva E Souza Miranda (PhD, Public Health Sciences; defended 2026). \textit{Modernizing Informed Consent for Ubiquitous Personal Health Information Collection: A Blockchain Dynamic Informed Consent Platform for Public Health Research}}
-            \cvitem \hlboth[2026]{teaching}{service}{Mariam Hassan (PhD, Public Health Sciences; chair, oral comprehensive examination, 2026)}
-            \cvitem \hlteaching[2025]{Bibhushan Raj Joshi (PhD, Management Science \& Engineering; defended 2025). \textit{Building Haptic Systems with 3C's: Communication, Collaboration, and Confirmation}}
-            \cvitem \hlteaching[2025]{Nabil Bin Hannan (PhD, Computer Science; defended 2025). \textit{Using a Capability Sensitive Design Approach to Support Newcomers Well-being}}
-            \cvitem \hlteaching[2025]{Krizia Francisco (PhD, Systems Design Engineering; defended 2025). \textit{A User-Centered Design Approach to an Artificial Intelligence-Enabled Electronic Medical Record Encounter in Canadian Primary Care}}
-            \cvitem \hlteaching[2023-2026]{Yue Lyu (PhD, Computer Science; in progress)}
-            \cvitem \hlteaching[2026]{Sheida Marashi (PhD, Systems Design Engineering; in progress)}
-    \end{cvbulletlist}
+        \printcommittees[period]{PhD}
     \end{cvgroup}
     \begin{cvgroup}{Master's}
-    \begin{cvbulletlist}
-            \cvitem \hlteaching[2026]{Kelly Huang (MASc, Systems Design Engineering; in progress)}
-            \cvitem \hlteaching[2026]{Aakanksha Khandwaha (MMath, Computer Science; 2026). \textit{The Design and Development of a Virtual Patient System for Medical Education}}
-            \cvitem \hlteaching[2026]{Hamin Jo (MSc, Public Health Sciences; defended 2026)}
-            \cvitem \hlteaching[2026]{Junsong Li (MASc, Engineering; defended 2026). \textit{Advancing ITR as a standard metric for real-time BCI performance assessment}}
-    \end{cvbulletlist}
+        \printcommittees[period]{MSc}
     \end{cvgroup}
     \fi % end APR version only -----------------------------------
 
