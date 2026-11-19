@@ -28,6 +28,57 @@ SCHOLAR_BIB = r"""
 """
 
 
+
+class Software(unittest.TestCase):
+    """data/software.yaml and the generated data/software-stats.tex (check_software)."""
+    def setUp(self):
+        self.root = Path(tempfile.mkdtemp())
+        (self.root / "data").mkdir()
+        shutil.copy(cvlib.ROOT / "data" / "trainees.yaml", self.root / "data" / "trainees.yaml")
+        for name in check_cv.RECORD_FILES:
+            (self.root / name).write_text("", encoding="utf-8")
+        (self.root / "main.tex").write_text(
+            "\\DeclareBibliographyCategory{software}\n\\addtocategory{software}{tool2020}\n",
+            encoding="utf-8")
+        (self.root / "scholar.bib").write_text("@misc{tool2020, title = {T}, year = {2020}}\n",
+                                               encoding="utf-8")
+        self.saved = check_cv.ROOT
+        check_cv.ROOT = self.root
+
+    def tearDown(self):
+        check_cv.ROOT = self.saved
+        shutil.rmtree(self.root)
+
+    def write(self, yaml_text, stats_keys):
+        (self.root / "data" / "software.yaml").write_text(yaml_text, encoding="utf-8")
+        (self.root / "data" / "software-stats.tex").write_text(
+            "".join(f"\\setentrydetail{{{k}}}{{x}}\n" for k in stats_keys), encoding="utf-8")
+        r = check_cv.run()
+        return ({e["code"] for e in r["errors"]}, {w["code"] for w in r["warnings"]})
+
+    def test_matching_files_pass(self):
+        errors, warnings = self.write("# c\ntool2020:\n  repo: https://example.org/x  # c\n", ["tool2020"])
+        self.assertNotIn("E-software", errors)
+        self.assertNotIn("W-software", warnings)
+
+    def test_unknown_key_is_an_error(self):
+        errors, _ = self.write("nosuch2020:\n  repo: x\n", ["nosuch2020"])
+        self.assertIn("E-software", errors)
+
+    def test_stale_stats_warn(self):
+        _, warnings = self.write("tool2020:\n  repo: x\n", [])
+        self.assertIn("W-software", warnings)
+
+
+class SoftwareSentence(unittest.TestCase):
+    def test_sentence(self):
+        import software_stats
+        s = {"releases": 1, "commits": 1234, "code": 238456, "tests": 0,
+             "first": "2025-11", "last": "2026-02"}
+        self.assertEqual(software_stats.sentence(s),
+                         "Developed November 2025 -- February 2026: 1 release, 1,234 commits "
+                         "and 238,000 lines of code.")
+
 class FieldReader(unittest.TestCase):
     def test_fields_after_a_commented_line_are_read(self):
         d = Path(tempfile.mkdtemp())

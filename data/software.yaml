@@ -1,0 +1,34 @@
+# Software whose development stats print under its entry in PUBLICATIONS > Software.
+#
+# scripts/software_stats.py clones each repository, counts its history and code,
+# and writes data/software-stats.tex (the line under each entry, both PDFs). The
+# weekly job reruns it; don't edit that file by hand.
+#
+# List only software the lab started. Forks (Termite, ToModAPI) are left out:
+# most of their history is the original authors' work, not ours.
+#
+# One entry per scholar.bib key:
+#   repo             public git URL to clone
+#   release_tags     regex a tag must match to count as a release (default: any tag)
+#   exclude_authors  commit authors not counted (bots, outside contributors)
+#   exclude_paths    git pathspecs left out of the line counts (vendored or generated code)
+#   test_paths       regex on the path: matching code files count as tests, not code
+# Counted as code: non-blank lines in tracked files with these extensions:
+#   .swift .py .js .mjs .ts .tsx .jsx .go .rs .java .kt .c .h .cpp .hpp .cs .rb .r .R
+#   .sh .html .css .scss .sql
+
+wallace_chickadee:
+  repo: https://github.com/JimWallace/Chickadee
+  release_tags: '^v\d+\.\d+\.\d+$'   # releases; v0.6.0-rc.N pre-releases are not counted
+  exclude_authors:
+    - chickadee-release[bot]          # the release bot's version-bump commits
+  exclude_paths:
+    - Public/jupyterlite              # vendored JupyterLite build
+    - Tools/jupyterlite
+  test_paths: '(^|/)(Tests?|tests?)(/|$)|(^|/)test-|Tests?\.|_test\.|\.test\.|-smoke-test'
+
+cta2022:
+  repo: https://github.com/rpgauthier/ComputationalThematicAnalysisToolkit
+  exclude_authors:
+    - TrellixVulnTeam                 # one outside security patch
+  test_paths: '(^|/)tests?(/|$)|test_'
