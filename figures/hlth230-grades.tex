@@ -10,11 +10,13 @@
 \begin{center}
 \begin{tikzpicture}[cv/alt={Line chart of HLTH 230 final course grades (mean, median
     and mode, y-axis 50 to 100\%) for 18 Winter and Spring terms from Winter 2017 to
-    Spring 2026. Mean grades rise from about 77 to 81\% in 2017 to 2019 to a peak of 97\%
-    in Spring 2024. The terms I taught are shaded: Winter 2020 (mean 85\%), Winter 2026
+    Spring 2026. Mean grades are between about 77 and 81\% from 2017 to 2019, jump to 94\% in
+    Spring 2020 and peak at 97\% in Spring 2024. The terms I taught are shaded: Winter 2020 (mean 85\%), Winter 2026
     (84\%) and Spring 2026 (83\%). The mode is not shown for 2026.}]% read aloud in the tagged PDF
 \begin{axis}[
     font=\sffamily\scriptsize,
+    % tick numbers in the text font (sans-serif), not the serif math font
+    /pgf/number format/assume math mode=true,
     width=\linewidth, height=6.2cm,
     table/col sep=comma,
     unbounded coords=jump,
@@ -34,7 +36,8 @@
     ylabel style={font=\sffamily\small},
     % legend under the x label, borderless
     legend style={at={(xlabel.south)}, anchor=north, yshift=-0.5ex,
-      draw=none, fill=none, legend columns=3, column sep=0.4cm,
+      draw=none, fill=none, legend columns=3,
+      /tikz/every even column/.append style={column sep=0.4cm},
       font=\sffamily\scriptsize},
   ]
   % terms I taught: full-height shading where mine = 1
@@ -52,5 +55,5 @@
 \end{axis}
 \end{tikzpicture}
 
-\parbox{\linewidth}{\footnotesize HLTH 230 final course grades by term, Winter 2017 -- Spring 2026. Shaded: terms I taught. Winter 2017 -- Spring 2025 from the University's Institutional Analysis and Planning count-date data (Quest); Winter and Spring 2026 from LEARN final grades, where the mode is not comparable and is not shown.}
+\parbox{\linewidth}{\footnotesize HLTH 230 final course grades by term, Winter 2017 -- Spring 2026. Lines: mean, median and mode final grade (\%). Shaded: terms I taught; grades in 2026 (means 84.4\% and 82.9\%) are close to Winter 2020 (84.6\%). Winter 2017 -- Spring 2025 from the University's Institutional Analysis and Planning count-date data (Quest); Winter and Spring 2026 from LEARN final grades, where the mode is not comparable and is not shown.}
 \end{center}
