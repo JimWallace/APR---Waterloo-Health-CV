@@ -41,6 +41,8 @@
 %   years          optional: the years as printed, when the date range would
 %                  not say it right (2017, 2019 -- 2021)
 %   role           optional: printed after the years (General Chair)
+%   note           optional: printed under the line, in italics (what the role
+%                  involved, or a load such as 12 submissions)
 %
 % @course: one course offering (one row of the COURSES TAUGHT table).
 %   course         the course number(s) as printed: HLTH 454/629
@@ -106,6 +108,7 @@
   level,
   years,
   role,
+  note,
 }
 \DeclareDatamodelEntryfields[course]{
   course,
