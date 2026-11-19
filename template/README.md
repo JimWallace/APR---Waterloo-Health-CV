@@ -1,10 +1,34 @@
-# Faculty of Health CV template (with APR highlighting)
+# Waterloo Faculty of Health CV template (with APR highlighting)
 
-A LaTeX template for the University of Waterloo Faculty of Health CV format. It
-also produces an APR (Annual Performance Review) version that colours
-review-period items in the colours the Faculty asks for. The directory holds no
-one's CV. It is kept separate so it can change on its own schedule and could
-move to its own repository later.
+A LaTeX template for the University of Waterloo Faculty of Health CV format. One
+source compiles to the plain CV and to an APR (Annual Performance Review)
+version that colours review-period items as teaching, research, service or
+awards. Grants, students, awards, service and courses are biblatex records, so
+they print sorted and are highlighted from their dates. The PDFs are tagged
+(PDF/UA-2) and archival (PDF/A-4f).
+
+The repository has two parts:
+
+- **The template** (this directory): the LaTeX package `uwhealthcv` and
+  `example/`, a fictional CV that uses every feature. No one's personal data.
+- **[`starter/`](starter/)**: a complete CV repository to start from: a fictional
+  CV split into `.bib` files, a checker for the CV's conventions, Claude Code
+  agents and skills that add and verify CV items, and GitHub Actions that build
+  both PDFs, publish them as a release, pull in new template releases, and
+  optionally mirror to Overleaf. See [`starter/README.md`](starter/README.md).
+
+## Quick start
+
+```bash
+git clone https://github.com/JimWallace/waterloo-health-cv-template
+sh waterloo-health-cv-template/new-cv.sh my-cv
+```
+
+`my-cv/` is then a git repository holding the starter and the latest template
+release in `my-cv/template/`. Put your details in `cv.toml`, replace the
+fictional content, and push it to a new GitHub repository (or upload it to
+Overleaf, compiler LuaLaTeX). Without git, copy `starter/` and put this
+directory's files (all but `starter/`) in its `template/`.
 
 ## What is here
 
@@ -24,8 +48,8 @@ move to its own repository later.
 
 ## Using it
 
-A CV directory holds the content and puts this directory on TeX's search path
-with a `latexmkrc`:
+A CV directory holds the content, keeps this template in `template/`, and puts
+it on TeX's search path with a `latexmkrc`:
 
 ```perl
 ensure_path('TEXINPUTS', './template//');
@@ -56,8 +80,8 @@ is also PDF/A-4f (fonts embedded, an sRGB colour profile, XMP metadata with the
 title and author from `\cvowner`). The LaTeX kernel only accepts that before
 `\documentclass`, so it cannot live in `uwhealthcv.sty`. Tagging needs
 LuaLaTeX and TeX Live 2025 or newer (this repository uses TeX Live 2026); leave
-the line out for a plain, untagged PDF. This repository's CI checks the result
-with veraPDF (`scripts/check_pdfa.sh`), which tests what a machine can; it
+the line out for a plain, untagged PDF. CI checks the result
+with veraPDF (`starter/scripts/check_pdfa.sh`), which tests what a machine can; it
 cannot tell whether alternative text is good.
 
 In the tagged PDF, `\cvsection` is a level-1 heading and `\cvsubheading` a
@@ -86,7 +110,7 @@ every CV that uses the template.
 
 - Package: `uwhealthcv` (options `apr`, `plain`), `aprcv` (options `apr`, `plain`).
 - Commands: `\setreviewperiod`, `\hlteaching`, `\hlresearch`, `\hlservice`,
-  `\hlaward`, `\hlboth`, `\hl…row`, `\aprsample`, `\ifAPR`,
+  `\hlaward`, `\hlboth`, `\hl…row`, `\aprsample`, `\aprlinemark`, `\ifAPR`,
   `\sethighlightstrength`, `\sethighlightstyle`, `\keepwithnext`,
   `\sectionbreak`, `\usvardate`, `\monthyear`, `\extlink`.
 - Section markup: `\cvsection`, `\cvsubheading`, `cvlist` and `cvbulletlist` with `\cvitem`, `cvgroup`, `cvparts`
@@ -102,7 +126,6 @@ every CV that uses the template.
 - biblatex categories: `aprteaching`, `aprservice`, `apraward`, `aprnone`,
   `aprinclude`, `apralsoteaching`, `apralsoresearch`, `apralsoservice`,
   `apralsoaward`.
-- Per-entry detail line: `\setentrydetail{key}{text}` (`biblatex-formatting.tex`).
 - Bib field: `icon` (an image path, or `award` for the rosette).
 - File the template reads from the CV: `apr-formatting.tex` (optional).
 - File a CV inputs before `\documentclass`: `uwhealthcv-pdfa.tex` (optional).
@@ -111,22 +134,40 @@ every CV that uses the template.
 ## Building the example
 
 ```bash
-cd template/example
+cd example
 latexmk example.tex
 latexmk example-apr.tex
 ```
 
 CI builds both on every pull request.
 
-## Moving to its own repository
+## Versions and updates
 
-Everything the template needs is inside this directory, so it can be split out
-with its history:
+Releases are git tags (`v0.1.0`) with notes in [`CHANGELOG.md`](CHANGELOG.md).
+The version follows the interface above: a new command or option is a minor
+release, a fix a patch, and renaming or removing anything in the interface a new
+major version. Before 1.0 the interface is still settling, so a minor release
+(0.1 → 0.2) may rename or remove something; its CHANGELOG entry says what a CV
+must change. `\ProvidesPackage` in `uwhealthcv.sty` and `aprcv.sty` carries
+the same version.
 
-```bash
-git subtree split --prefix=template -b template-only
-```
+A CV keeps a copy of a release in `template/`, because Overleaf cannot use git
+submodules. `sh scripts/update_template.sh latest` in the starter replaces it
+with the newest release and records the version in `cv.toml`; the starter's
+"Template update" workflow does that weekly and opens a pull request, which the
+CV's build checks before it merges.
 
-Overleaf does not support git submodules, so a CV that syncs with Overleaf
-should keep a copy of the template in its `template/` directory (for example
-with `git subtree pull`) rather than a submodule.
+The package may go to CTAN once the interface is stable. A local `template/`
+copy will still take precedence over an installed version, so a CV can stay on
+any release it likes.
+
+## Licence
+
+LaTeX Project Public License 1.3c ([`LICENSE`](LICENSE)), except the vendored
+ACM bibliography style: `ACM-Reference-Format.{bbx,cbx,dbx}` come from ACM's
+`acmart` package (LPPL 1.3c) and `ACM-Reference-Format.bst` is public domain, as
+its header says.
+
+## Citing
+
+GitHub's "Cite this repository" button reads [`CITATION.cff`](CITATION.cff).
