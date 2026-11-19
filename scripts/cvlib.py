@@ -10,6 +10,25 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 
+
+def config() -> dict:
+    """Settings from cv.toml (the template release). Empty dict if absent."""
+    path = ROOT / "cv.toml"
+    if not path.exists():
+        return {}
+    import tomllib
+    with path.open("rb") as f:
+        return tomllib.load(f)
+
+
+def config_value(dotted: str, default: str = "") -> str:
+    node = config()
+    for part in dotted.split("."):
+        if not isinstance(node, dict) or part not in node:
+            return default
+        node = node[part]
+    return str(node)
+
 # Categories that main.tex actually prints with \printcategory.
 # (workshops and thesis exist but their \printcategory lines are commented out.)
 PRINTED_CATEGORIES = [
@@ -279,3 +298,9 @@ def roster_index(roster: list[dict]) -> dict[str, str]:
             idx[norm(fam + giv)] = canon
             idx[norm(clean_name(v))] = canon
     return idx
+
+
+if __name__ == "__main__":
+    # For workflows: python3 scripts/cvlib.py template.version  -> prints the value ("" if unset)
+    import sys
+    print(config_value(sys.argv[1]) if len(sys.argv) > 1 else "")

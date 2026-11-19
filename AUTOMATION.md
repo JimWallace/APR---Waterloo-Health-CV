@@ -7,6 +7,7 @@
 | Every PR | `CV build` | Deterministic checks (`scripts/check_cv.py`), compiles both PDFs, fails on any error and on any warning not in `scripts/warnings-baseline.txt` (see `scripts/warning_ratchet.py`), reports what changed in the PDF text, blocks PRs labelled `needs-review`. A PR that adds lines to the baseline or changes the checks fails the `ratchet` job, so you merge it by hand. |
 | `CV build` passes | `CV auto-merge` | Merges PRs you open (including ones Claude opens for you in a chat) automatically. Merges the weekly job's `cv/` PRs only if they're labelled `auto-merge`. Draft PRs and `needs-review` PRs never merge. |
 | Every push to `main` | `CV build` → release | Latest PDFs at Releases → `cv-latest` (Wallace-CV.pdf, Wallace-CV-APR.pdf). |
+| Tuesdays | `Template update` | If the template repository (`cv.toml` [template]) has a newer release, opens a PR updating `template/` to it: `auto-merge` for a patch release (or a minor release from 1.0 on), `needs-review` when the release can change the interface (see `template/CHANGELOG.md`). |
 | Push to `main`, and every 3 hours | `Overleaf sync` (optional) | Pushes `main` to Overleaf; edits made in Overleaf come back as an auto-merging PR. |
 
 The weekly job labels a PR `auto-merge` only when the checker passes, every verifier it ran

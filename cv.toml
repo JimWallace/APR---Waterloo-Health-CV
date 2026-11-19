@@ -1,0 +1,10 @@
+# Settings read by scripts/cvlib.py (python3 scripts/cvlib.py <key>) and the workflows.
+
+[template]
+# template/ is a copy of a release of the template repository, which is where the
+# Faculty of Health format now lives. Don't edit template/ here: change the template
+# repository, release it, and update this CV with
+#   sh scripts/update_template.sh <tag>      (or latest)
+# The "Template update" workflow does that weekly and opens a PR.
+repo = "JimWallace/waterloo-health-cv-template"
+version = "v0.1.0"            # the release in template/ now; the workflow updates it

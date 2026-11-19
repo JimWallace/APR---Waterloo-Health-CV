@@ -4,8 +4,13 @@ LaTeX CV in the University of Waterloo Faculty of Health format. The repo has tw
 
 - **The template** (`template/`): the Faculty of Health format and the APR highlighting
   (`uwhealthcv.sty`, `aprcv.sty`, the formatting and page-break files, the ACM biblatex style,
-  badge images) plus a fictional example CV. No personal data. It has its own `README.md` and
-  `CLAUDE.md`; read them before changing anything there.
+  badge images) plus a fictional example CV. No personal data. It is a copy of a release of
+  its own repository, github.com/JimWallace/waterloo-health-cv-template (`cv.toml`
+  [template] names the release). **Never edit `template/` here.** Format changes and
+  features go to the template repository (its `CLAUDE.md` says how; attach it with push
+  access), get released as a tag, and come back here with
+  `sh scripts/update_template.sh <tag>` or the weekly "Template update" workflow's PR. Its
+  `README.md` documents the interface `main.tex` relies on.
 - **My CV** (everything else): content and my settings. `latexmkrc` puts `template/` on TeX's
   search path, so `main.tex` just says `\usepackage{uwhealthcv}`.
 
@@ -190,8 +195,8 @@ that is followed by a list; never use `\newpage` (use `\sectionbreak`).
   Then `python3 scripts/warning_ratchet.py main apr` applies the same baseline to the LaTeX and
   biber warnings (CI does this too, on TeX Live 2026 like Overleaf, and reports what changed in
   the PDF text). A local TeX Live 2023 (Debian) can differ slightly; CI is the reference.
-- After a template change, also build `template/example/` (`example.tex`, `example-apr.tex`);
-  CI does, and fails if `template/` mentions me.
+- CI also builds `template/example/` (`example.tex`, `example-apr.tex`), and fails if
+  `template/` mentions me (other than the template repository's own URL and `CITATION.cff`).
 - Verifier sub-agents in `.claude/agents/` check changes independently. The `cv-verify` skill
   says how to run them.
 - `chizen-figures` (`.claude/agents/`) reviews figures with the CHI-Zen plugin's figure
