@@ -86,6 +86,17 @@ f. **Software stats** — run `python3 scripts/software_stats.py`. It clones the
    change table with the repositories as the source. If a clone fails, leave the file as it
    is and say so in the PR.
 
+g. **Software DOIs** — Jim's repositories get a Zenodo DOI when a release is archived. For
+   each software entry under `\addtocategory{software}` in `main.tex` that has a GitHub URL
+   and no `doi`, look the repository up on Zenodo
+   (`https://zenodo.org/api/records?q="<owner>/<repo>"&all_versions=true`) and DataCite
+   (`https://api.datacite.org/dois?query=relatedIdentifiers.relatedIdentifier:*<owner>/<repo>*`).
+   A record whose related identifier is that repository is a match: replace the entry's
+   `howpublished`/`url` with `doi = {<conceptdoi>}` (the concept DOI, which resolves to the
+   latest version, not one release's DOI), as was done for `wallace_chickadee`. It is a
+   correction to an existing entry, so it gets its own commit. Leave other entries that cite
+   the same repository (e.g. the `wallace2026interdisciplinary` report) for Jim to decide.
+
 ## 3. Triage
 
 For each item keep a one-line reason (it goes in the PR, or in your final message if private).
@@ -157,6 +168,7 @@ change is one of:
 - a new publication confirmed against a retrieved record (Crossref/DBLP/publisher page), or
   one Jim reported in an issue, marked `In press`;
 - a DOI backfill confirmed by `citation-verifier`;
+- a software entry's URL replaced by the concept DOI of the Zenodo record for that repository;
 - a review recognition, or a reviewing/PC/editorial role, stated in an official email or by Jim;
 - an acceptance rate for the paper's own track, stated in its decision letter, the program
   chairs' email, the front matter or the venue's site; a journal impact factor (new or
