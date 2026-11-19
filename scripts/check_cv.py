@@ -300,7 +300,13 @@ def check_software(cats: dict, by_key: dict, err, warn) -> None:
     stats = ROOT / "data" / "software-stats.tex"
     have = re.findall(r"^\\setentrydetail\{([^}]*)\}", stats.read_text(encoding="utf-8"), re.M) \
         if stats.exists() else []
-    if set(have) != set(keys):
+    # An entry with token_env (a repository that needs a login) may have no line yet:
+    # the script can only measure it where that token is set.
+    text = cfg.read_text(encoding="utf-8")
+    login = {k for k in keys
+             if re.search(rf"^{re.escape(k)}:\s*(?:#.*)?\n(?:[ \t]+.*\n|\s*\n)*?[ \t]+token_env:",
+                          text, re.M)}
+    if set(have) - set(keys) or set(keys) - set(have) - login:
         warn("W-software", "data/software-stats.tex does not match data/software.yaml; "
              "run python3 scripts/software_stats.py")
 

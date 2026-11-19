@@ -13,6 +13,8 @@
 #   exclude_authors  commit authors not counted (bots, outside contributors)
 #   exclude_paths    git pathspecs left out of the line counts (vendored or generated code)
 #   test_paths       regex on the path: matching code files count as tests, not code
+#   token_env        environment variable holding a read token, for a repository
+#                    that needs a login (missing: the last line is kept)
 #   extra_extensions more file types that count as code for this entry (e.g. .sty)
 # Counted as code: non-blank lines in tracked files with these extensions:
 #   .swift .py .js .mjs .ts .tsx .jsx .go .rs .java .kt .c .h .cpp .hpp .cs .rb .r .R
@@ -46,3 +48,16 @@ wallace2026sphssalary:
   exclude_paths:
     - '* 2.*'                         # accidental duplicate copies ("name 2.py")
   test_paths: '(^|/)tests?(/|$)|test_'
+
+# On git.uwaterloo.ca, which needs a login: a read-only GitLab token in the
+# environment variable UWATERLOO_GITLAB_TOKEN (scope read_repository). Without it
+# the script keeps the last line for these entries (or prints none yet).
+curio:
+  repo: https://git.uwaterloo.ca/jrwallace/curio.git
+  token_env: UWATERLOO_GITLAB_TOKEN
+  test_paths: '(^|/)(Tests?|tests?)(/|$)|Tests?\.|_test\.|\.test\.|test_'
+
+pass:
+  repo: https://git.uwaterloo.ca/jrwallace/PASS.git
+  token_env: UWATERLOO_GITLAB_TOKEN
+  test_paths: '(^|/)(Tests?|tests?)(/|$)|Tests?\.'

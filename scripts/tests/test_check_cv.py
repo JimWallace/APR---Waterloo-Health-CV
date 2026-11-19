@@ -65,6 +65,14 @@ class Software(unittest.TestCase):
         errors, _ = self.write("nosuch2020:\n  repo: x\n", ["nosuch2020"])
         self.assertIn("E-software", errors)
 
+    def test_an_entry_needing_a_login_may_have_no_line(self):
+        _, warnings = self.write("tool2020:\n  repo: x\n  token_env: T\n", [])
+        self.assertNotIn("W-software", warnings)
+
+    def test_a_line_for_an_unlisted_entry_warns(self):
+        _, warnings = self.write("tool2020:\n  repo: x\n  token_env: T\n", ["tool2020", "gone2020"])
+        self.assertIn("W-software", warnings)
+
     def test_stale_stats_warn(self):
         _, warnings = self.write("tool2020:\n  repo: x\n", [])
         self.assertIn("W-software", warnings)

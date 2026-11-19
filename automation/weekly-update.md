@@ -83,8 +83,8 @@ f. **Software stats** — run `python3 scripts/software_stats.py`. It clones the
    `data/software.yaml` (public GitHub; no token needed) and regenerates
    `data/software-stats.tex` (the line under each software entry). Commit the result on its own
    ("Software stats YYYY-MM-DD"); the numbers come from the repositories, so list it in the
-   change table with the repositories as the source. If a clone fails, leave the file as it
-   is and say so in the PR.
+   change table with the repositories as the source. A repository it can't reach keeps its
+   last line (Curio and PASS need `UWATERLOO_GITLAB_TOKEN`); say so in the PR.
 
 ## 3. Triage
 
