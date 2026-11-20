@@ -200,6 +200,12 @@ documents; neither is in this public repo.
   workshop proposal is scholarship with service second (its key in `apralsoservice`); a
   meetup is service, with teaching (mentorship) and research (its key in `aprservice`,
   `apralsoteaching` and `apralsoresearch`). Add new ones to those lists in `main.tex` in the same commit.
+  Mark them in the entry's `note`, which `check_cv.py` uses to check the colours (W-organized):
+  it starts `Workshop proposal.` or `Meetup.`, then the acceptance rate for that track
+  (`note = {Meetup. Acceptance rate: 53.3\%}`). In a CHI EA record, a meetup's title starts
+  "Meetup:" and a workshop's abstract describes "this workshop" (goals, participants,
+  activities); Jim co-organizes both with others. When a CHI EA record could be either, or
+  a paper, ask in the PR and label it `needs-review`.
   An entry in two `apralso…` lists has three colours (template v0.5.0): the dots style
   fills all three dots; the other styles show only the main colour and the later list.
 - Community service related to my scholarship is service to the University; the Faculty also

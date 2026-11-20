@@ -20,6 +20,9 @@ MAIN_TEX = r"""
 \addtocategory{conference}{meetup2020, also2020}
 \addtocategory{aprservice}{meetup2020}
 \addtocategory{apralsoteaching}{meetup2020, also2020}
+\addtocategory{apralsoresearch}{meetup2020}
+\addtocategory{conference}{ws2020, ws2021, mu2021}
+\addtocategory{apralsoservice}{ws2020}
 """
 
 SCHOLAR_BIB = r"""
@@ -29,7 +32,10 @@ SCHOLAR_BIB = r"""
 @inproceedings{both2020, title = {D}, year = {2020}, doi = {10.1/x}}
 @misc{kept2020, title = {E}, year = {2020}}
 @misc{stray2020, title = {F}, year = {2020}}
-@inproceedings{meetup2020, title = {G}, year = {2020}, doi = {10.1/g}}
+@inproceedings{meetup2020, title = {G}, year = {2020}, doi = {10.1/g}, note = {Meetup. Acceptance rate: 50\%}}
+@inproceedings{ws2020, title = {I}, year = {2020}, doi = {10.1/i}, note = {Workshop proposal}}
+@inproceedings{ws2021, title = {J}, year = {2021}, doi = {10.1/j}, note = {Workshop proposal. Acceptance rate: 20\%}}
+@inproceedings{mu2021, title = {K}, year = {2021}, doi = {10.1/k}, note = {Meetup.}}
 @inproceedings{also2020, title = {H}, year = {2020}, doi = {10.1/h}}
 """
 
@@ -133,6 +139,12 @@ class Exemptions(unittest.TestCase):
         keys = {k for k, _ in self.warnings("W-aprteach")}
         self.assertIn("also2020", keys)
         self.assertNotIn("meetup2020", keys)
+
+    def test_workshops_and_meetups_need_their_colours(self):
+        found = {k: m for k, m in self.warnings("W-organized")}
+        self.assertEqual(set(found), {"ws2021", "mu2021"})
+        self.assertIn("apralsoservice", found["ws2021"])
+        self.assertIn("aprservice, apralsoteaching, apralsoresearch", found["mu2021"])
 
     def test_a_key_both_printed_and_unprinted_warns(self):
         msgs = [m for k, m in self.warnings("W-unprinted") if k == "both2020"]
