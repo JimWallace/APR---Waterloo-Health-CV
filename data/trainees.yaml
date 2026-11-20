@@ -23,10 +23,8 @@
 trainees:
   - name: Marcela C. C. Bomfim
     variants: ["Bomfim, Marcela", "Bomfim, Marcela CC", "Marcela Costa C. Bomfim"]
-  - name: Long Ting Chan
-    variants: ["Chan, Long Ting"]
   - name: Tina Chan
-    variants: ["Chan, Tina", "T. Chan"]
+    variants: ["Chan, Tina", "T. Chan", "Chan, Long Ting", "Long Ting Chan"]
   - name: An Bella Chen
     variants: ["Chen, An Bella", "Chen, An"]
   - name: Adrian Davila
