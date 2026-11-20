@@ -30,6 +30,39 @@ from warning_ratchet import (BASELINE_REL, check_cv_line, compare, read_baseline
                              write_baseline)
 
 SELF = "wallace"  # family name of the CV owner, excluded from trainee checks
+OWNER = "James R. Wallace"  # how the owner's name is written, always inside \textbf
+
+
+def unbraced_capitalised_words(title: str) -> list[str]:
+    """Words outside braces with a capital after their first letter (LLM, AttentionGo, 3D).
+
+    Sentence casing lowers them when the title prints. LaTeX commands are skipped; hyphenated
+    words are split, so Co-Located is fine but COVID-19 is caught.
+    """
+    words, word, depth, i = [], "", 0, 0
+    while i < len(title):
+        c = title[i]
+        if c == "\\":
+            m = re.match(r"\\[A-Za-z]+|\\.", title[i:])
+            i += len(m.group(0)) if m else 1
+            if word:
+                words.append(word)
+                word = ""
+            continue
+        if c == "{":
+            depth += 1
+        elif c == "}":
+            depth -= 1
+        if depth == 0 and c.isalnum():
+            word += c
+        else:
+            if word:
+                words.append(word)
+            word = ""
+        i += 1
+    if word:
+        words.append(word)
+    return [w for w in words if any(ch.isupper() for ch in w[1:])]
 UNPRINTED = "unprinted"  # main.tex category for entries kept in scholar.bib on purpose but not printed
 
 
@@ -169,6 +202,25 @@ def run(only: set[str] | None = None) -> dict:
                     hint = f" (close to roster name '{near[0]}': typo, or add it as a variant)" if near else \
                         " (not in data/trainees.yaml or supervision.bib: a new trainee, or not a trainee?)"
                     warn("W-roster", f"'{e.key}': trainee '{clean_name(a)}'{hint}", e.key)
+
+    # My name: always \textbf{James R. Wallace}. Inside \textbf the whole name is one literal,
+    # so a surname-first form ("Wallace, James R.") prints surname-first.
+    for e in bib.entries:
+        for m in re.finditer(r"\\textbf\{([^{}]*)\}", e.fields.get("author", "")):
+            if SELF in m.group(1).lower() and m.group(1).strip() != OWNER:
+                err("E-myname", f"'{e.key}': author written \\textbf{{{m.group(1)}}}; "
+                    f"use \\textbf{{{OWNER}}}", e.key)
+
+    # Titles are sentence-cased when printed, so a word with a capital after its first letter
+    # (an acronym or a name like AttentionGo) prints in lower case unless it is braced.
+    for key, cs in printed_in.items():
+        if key not in by_key:
+            continue
+        words = unbraced_capitalised_words(by_key[key][0].fields.get("title", ""))
+        if words:
+            warn("W-titlecase", f"'{key}': title word(s) {', '.join(sorted(set(words)))} will print in "
+                 "lower case; brace them, e.g. {LLM}. (Names with one capital, like Reddit, "
+                 "need braces too but can't be detected.)", key)
 
     # APR: review-period entries with trainees should also be teaching (apralsoteaching)
     if period:
