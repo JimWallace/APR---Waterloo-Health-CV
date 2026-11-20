@@ -194,6 +194,14 @@ documents; neither is in this public repo.
   decision: every `activities.bib` entry with level grantreferee, journal, programcommittee or
   referee also goes in `apralsoresearch` (the second list in `main.tex`); add new ones there
   in the same commit. Other second colours are Jim's call.
+- Workshops and meetups I co-organize at a conference (CHI EA proposals with a DOI) print
+  under `conference` like any paper; don't also add an `activities.bib` organizing entry,
+  which would list the same work twice. Jim's standing decision on their colours: a
+  workshop proposal is scholarship with service second (its key in `apralsoservice`); a
+  meetup is service with teaching (mentorship) second (its key in `aprservice` and
+  `apralsoteaching`). Add new ones to those lists in `main.tex` in the same commit.
+  An entry shows at most two colours (its main one and one `apralso…`; with two
+  `apralso…` lists, one silently replaces the other), so never give one a third.
 - Community service related to my scholarship is service to the University; the Faculty also
   counts training such as student mental health training as voluntary service.
 - Don't count a work twice across review periods (the guidelines' "reporting integrity"

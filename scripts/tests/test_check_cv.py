@@ -16,6 +16,10 @@ MAIN_TEX = r"""
 \addtocategory{conference}{plain2020, exempt2020, emptyreason2020, both2020}
 \DeclareBibliographyCategory{unprinted}
 \addtocategory{unprinted}{kept2020, both2020}
+\setreviewperiod{2020}{2021}
+\addtocategory{conference}{meetup2020, also2020}
+\addtocategory{aprservice}{meetup2020}
+\addtocategory{apralsoteaching}{meetup2020, also2020}
 """
 
 SCHOLAR_BIB = r"""
@@ -25,6 +29,8 @@ SCHOLAR_BIB = r"""
 @inproceedings{both2020, title = {D}, year = {2020}, doi = {10.1/x}}
 @misc{kept2020, title = {E}, year = {2020}}
 @misc{stray2020, title = {F}, year = {2020}}
+@inproceedings{meetup2020, title = {G}, year = {2020}, doi = {10.1/g}}
+@inproceedings{also2020, title = {H}, year = {2020}, doi = {10.1/h}}
 """
 
 
@@ -122,6 +128,11 @@ class Exemptions(unittest.TestCase):
         self.assertIn("stray2020", keys)
         self.assertNotIn("kept2020", keys)
         self.assertFalse(self.warnings("W-cat"))
+
+    def test_apralsoteaching_without_a_trainee_warns_unless_service_first(self):
+        keys = {k for k, _ in self.warnings("W-aprteach")}
+        self.assertIn("also2020", keys)
+        self.assertNotIn("meetup2020", keys)
 
     def test_a_key_both_printed_and_unprinted_warns(self):
         msgs = [m for k, m in self.warnings("W-unprinted") if k == "both2020"]
