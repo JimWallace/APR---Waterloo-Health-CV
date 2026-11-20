@@ -256,3 +256,48 @@ class SupervisedTrainees(unittest.TestCase):
         roster = cvlib.load_roster(cvlib.ROOT / "data" / "trainees.yaml")
         _, drift = cvlib.add_supervised(roster, cvlib.parse_bib(cvlib.ROOT / "supervision.bib"))
         self.assertEqual(drift, [])
+
+
+class TitlesAndNames(unittest.TestCase):
+    """E-myname (one written form of my name) and W-titlecase (unbraced capitalised title words)."""
+    BIB = r"""
+@inproceedings{surname2020, title = {A}, year = {2020}, doi = {10.1/a},
+  author = {Smith, Ann and \textbf{Wallace, James R.}}}
+@inproceedings{good2020, title = {{LLM} Support for Co-Located {AttentionGo} and Edit{B}lind}, year = {2020},
+  doi = {10.1/b}, author = {Wallace Jarvis*, Laura and \textbf{James R. Wallace}{\dag}}}
+@inproceedings{caps2020, title = {Using LLMs for COVID-19 in {HCI} {\texttimes} Health}, year = {2020},
+  doi = {10.1/c}, author = {\textbf{James R. Wallace}}}
+"""
+
+    def setUp(self):
+        self.root = Path(tempfile.mkdtemp())
+        (self.root / "data").mkdir()
+        shutil.copy(cvlib.ROOT / "data" / "trainees.yaml", self.root / "data" / "trainees.yaml")
+        for name in check_cv.RECORD_FILES:
+            (self.root / name).write_text("", encoding="utf-8")
+        (self.root / "main.tex").write_text(
+            "\\DeclareBibliographyCategory{conference}\n"
+            "\\addtocategory{conference}{surname2020, good2020, caps2020}\n", encoding="utf-8")
+        (self.root / "scholar.bib").write_text(self.BIB, encoding="utf-8")
+        self.saved = check_cv.ROOT
+        check_cv.ROOT = self.root
+
+    def tearDown(self):
+        check_cv.ROOT = self.saved
+        shutil.rmtree(self.root)
+
+    def keys(self, code):
+        r = check_cv.run()
+        return {x["key"] for x in r["errors"] + r["warnings"] if x["code"] == code}
+
+    def test_surname_first_name_is_an_error(self):
+        self.assertEqual(self.keys("E-myname"), {"surname2020"})
+
+    def test_unbraced_acronyms_warn_and_braced_ones_do_not(self):
+        self.assertEqual(self.keys("W-titlecase"), {"caps2020"})
+
+    def test_word_finder(self):
+        self.assertEqual(check_cv.unbraced_capitalised_words(r"Using LLMs for COVID-19 in {HCI} {\texttimes} Health"),
+                         ["LLMs", "COVID"])
+        self.assertEqual(check_cv.unbraced_capitalised_words(r"{LLM} Co-Located Edit{B}lind 3d"), [])
+        self.assertEqual(check_cv.unbraced_capitalised_words("Freehand 3D Interaction"), ["3D"])
