@@ -5,6 +5,25 @@ fixes, major for anything renamed or removed (with what a CV must change).
 
 ## Unreleased
 
+## v0.5.0 — 2026-11-20
+
+An addition: nothing for a CV to change.
+
+- An entry can have three colours: put it in two `apralso…` categories (for
+  example `aprservice` plus `apralsoteaching` and `apralsoresearch`). The dots
+  style fills all three dots; the other styles show the primary colour and
+  the later of the two in the order teaching, research, service, award, which
+  is the colour they showed before. Table rows (`\aprentrymark`) carry the
+  third colour too. The example's meetup shows it. Nothing for a CV to change.
+
+## v0.4.3 — 2026-11-20
+
+A fix: nothing for a CV to change.
+
+- `CITATION.cff` gives the current version and release date (it still said
+  0.1.0), so a citation of the template, or an archived copy of a release,
+  names the right version.
+
 ## v0.4.2 — 2026-11-19
 
 A fix: nothing for a CV to change.
