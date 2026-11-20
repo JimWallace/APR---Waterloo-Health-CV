@@ -198,11 +198,10 @@ documents; neither is in this public repo.
   under `conference` like any paper; don't also add an `activities.bib` organizing entry,
   which would list the same work twice. Jim's standing decision on their colours: a
   workshop proposal is scholarship with service second (its key in `apralsoservice`); a
-  meetup is service with teaching (mentorship) second (its key in `aprservice` and
-  `apralsoteaching`). Add new ones to those lists in `main.tex` in the same commit.
-  The dots style has a dot for each of research, teaching and service, but the template
-  passes only an entry's main colour and one `apralso…` colour to it; with two `apralso…`
-  lists, one silently replaces the other. A third colour needs a template release first.
+  meetup is service, with teaching (mentorship) and research (its key in `aprservice`,
+  `apralsoteaching` and `apralsoresearch`). Add new ones to those lists in `main.tex` in the same commit.
+  An entry in two `apralso…` lists has three colours (template v0.5.0): the dots style
+  fills all three dots; the other styles show only the main colour and the later list.
 - Community service related to my scholarship is service to the University; the Faculty also
   counts training such as student mental health training as voluntary service.
 - Don't count a work twice across review periods (the guidelines' "reporting integrity"
