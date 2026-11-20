@@ -86,7 +86,7 @@ field-weighted citations (SciVal's "Field-Weighted Outputs in Top Citation Perce
 published before the export's year (as in "A Note on Research Contributions"), get a line
 under the entry ("**Top 3% most cited in its field** (field-weighted citation impact 5.93;
 SciVal, November 2026)"). `python3 scripts/citation_impact.py <SciVal export.csv>` imports a
-new export (matched to `scholar.bib` by DOI) and writes `data/citation-impact.tex`; never edit
+new export (matched to `scholar.bib` by DOI, else title and year) and writes `data/citation-impact.tex`; never edit
 either file by hand, and don't commit the raw export. It is a citation metric, not an award: no
 `icon`, no `awards.bib` entry, no extra APR colour. Only I supply exports or change the threshold.
 

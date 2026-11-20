@@ -5,7 +5,7 @@
     python3 scripts/citation_impact.py              # regenerate from data/citation-impact.yaml
 
 Importing reads SciVal's "Publications of ..." CSV export, matches each output
-to a scholar.bib entry by DOI, and rewrites data/citation-impact.yaml with the
+to a scholar.bib entry by DOI (else by title and year), and rewrites data/citation-impact.yaml with the
 few figures the CV uses (the raw export, with abstracts and Scopus ids, is not
 kept in this public repository). Outputs it cannot match are listed on stdout.
 
@@ -29,7 +29,7 @@ import sys
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-from cvlib import parse_bib  # noqa: E402
+from cvlib import norm_title, parse_bib  # noqa: E402
 
 ROOT = Path(__file__).resolve().parent.parent
 DATA = ROOT / "data" / "citation-impact.yaml"
@@ -65,16 +65,21 @@ def import_export(path: Path) -> None:
     meta, rows = read_export(path)
     exported = dt.datetime.strptime(meta["Date exported"], "%d %B %Y").date()
     updated = meta.get("Date last updated", "")
-    by_doi = {}
+    by_doi, by_title = {}, {}
     for e in parse_bib(ROOT / "scholar.bib").entries:
         d = norm_doi(e.fields.get("doi", ""))
         if d:
             by_doi.setdefault(d, e.key)
+        t = norm_title(e.fields.get("title", ""))
+        if t:
+            by_title.setdefault((t, e.year), e.key)
     threshold = load()[1] if DATA.exists() else DEFAULT_THRESHOLD
     out, unmatched = [], []
     for r in rows:
         doi = norm_doi(r.get("DOI", ""))
         key = by_doi.get(doi) if doi not in ("", "-") else None
+        if not key:  # no DOI, or another DOI for the same work: same title and year
+            key = by_title.get((norm_title(r["Title"]), int(r["Year"])))
         if not key:
             unmatched.append(f"  {r['Year']}  {doi or '(no DOI)'}  {r['Title'][:70]}")
             continue
@@ -92,7 +97,7 @@ def import_export(path: Path) -> None:
                 f"threshold: {threshold}\n")
         for top, _, key, fwci, cites, year in out:
             f.write(f"{key}: {top} | {fwci} | {cites} | {year}\n")
-    print(f"{len(out)} outputs matched; {len(unmatched)} not in scholar.bib by DOI:")
+    print(f"{len(out)} outputs matched; {len(unmatched)} not in scholar.bib:")
     print("\n".join(unmatched))
 
 
