@@ -14,7 +14,7 @@ What is counted, so the numbers can be explained to a reader:
   commits   commits on the default branch, less those by exclude_authors
   code      non-blank lines in tracked source files (CODE_EXTENSIONS, plus the
             entry's extra_extensions) in the latest commit, less exclude_paths; files matching test_paths count
-            as automated tests instead
+            as tests instead
   period    month of the first and the latest counted commit
 """
 from __future__ import annotations
@@ -134,7 +134,7 @@ def sentence(s: dict) -> str:
     parts.append(plural(s["commits"], "commit"))
     parts.append(f"{round_lines(s['code']):,} lines of code")
     if s["tests"]:
-        parts.append(f"{round_lines(s['tests']):,} lines of automated tests")
+        parts.append(f"{round_lines(s['tests']):,} lines of tests")
     listed = parts[0] if len(parts) == 1 else ", ".join(parts[:-1]) + " and " + parts[-1]
     return f"Developed {period(s['first'], s['last'])}: {listed}."
 
