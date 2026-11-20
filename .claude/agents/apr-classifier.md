@@ -22,6 +22,11 @@ For bib entries:
    conference papers).
 4. APR colour: review-period entries (and keys in `aprinclude`) are research automatically; teaching/service/award
    entries need `aprteaching`/`aprservice`/`apraward`; trainee work also needs `apralsoteaching`.
+   Workshops and meetups Jim co-organized follow `CLAUDE.md` → "Teaching, research or
+   service": a note starting `Workshop proposal.` needs `apralsoservice`; one starting
+   `Meetup.` needs `aprservice`, `apralsoteaching` and `apralsoresearch`. A CHI EA entry that
+   looks like a workshop or meetup (a "Meetup:" title, a workshop abstract) but lacks that
+   note is a FAIL; if it's unclear which it is, QUESTIONS.
    Flag anything coloured that shouldn't be, and the reverse.
 
 For edits to `main.tex` outside the category lists:

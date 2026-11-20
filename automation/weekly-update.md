@@ -124,7 +124,10 @@ Follow `CLAUDE.md` → Conventions. In short:
   publisher page): key `familyYYYYfirstword`, `\textbf{James R. Wallace}`, `*` only for people
   in `data/trainees.yaml`, `doi` when there is one, `note = {In press}` when not yet published.
   Add the key to exactly one heading, and to `apralsoteaching` if a trainee is an author and the
-  entry is in the review period. Append next to similar entries; don't re-sort.
+  entry is in the review period. A workshop proposal or meetup Jim co-organized
+  (a CHI EA record: `CLAUDE.md` → "Teaching, research or service" says how to recognise one)
+  starts its `note` with `Workshop proposal.` or `Meetup.` and goes in that bullet's APR lists;
+  when a record could be either, or a paper, label the PR `needs-review` and ask. Append next to similar entries; don't re-sort.
   A new paper is added with its full information when it is available: DOI, pages, award,
   and its acceptance rate (conference/PACM) or impact factor (journal), usually from the
   acceptance email you found in step 2c. If none can be found yet, add its

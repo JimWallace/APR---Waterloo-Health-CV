@@ -246,6 +246,21 @@ def run(only: set[str] | None = None) -> dict:
                 warn("W-aprteach", f"'{key}' is in apralsoteaching but no author is marked * "
                      "(fine for talks where a trainee presented; check)", key)
 
+    # Workshops and meetups co-organized at a conference (CLAUDE.md): the note starts
+    # "Workshop proposal." or "Meetup.", and that decides the APR colours.
+    organized = {
+        "Workshop proposal.": ["apralsoservice"],
+        "Meetup.": ["aprservice", "apralsoteaching", "apralsoresearch"],
+    }
+    for e in bib.entries:
+        note = (e.fields.get("note") or "").strip()
+        for prefix, needed in organized.items():
+            if note.startswith(prefix):
+                missing = [c for c in needed if e.key not in cats.get(c, [])]
+                if missing:
+                    warn("W-organized", f"'{e.key}' is a {prefix[:-1].lower()} (note starts "
+                         f"'{prefix}') but is not in {', '.join(missing)}", e.key)
+
     return {
         "entries": len(bib.entries),
         "review_period": period,
