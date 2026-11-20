@@ -238,8 +238,11 @@ def run(only: set[str] | None = None) -> dict:
             has_trainee = any(is_marked_trainee(a) for a in e.authors)
             if has_trainee and key not in also:
                 warn("W-aprteach", f"'{key}' ({e.year}) has a trainee author but is not in apralsoteaching", key)
+        # An entry whose main colour is service or award (a meetup: service, with
+        # mentorship as teaching) is teaching by Jim's decision, not by a trainee.
+        chosen = set(cats.get("aprservice", [])) | set(cats.get("apraward", []))
         for key in cats.get("apralsoteaching", []):
-            if key in by_key and not any(is_marked_trainee(a) for a in by_key[key][0].authors):
+            if key in by_key and key not in chosen and not any(is_marked_trainee(a) for a in by_key[key][0].authors):
                 warn("W-aprteach", f"'{key}' is in apralsoteaching but no author is marked * "
                      "(fine for talks where a trainee presented; check)", key)
 
