@@ -211,7 +211,13 @@ every CV that uses the template.
   `\sethighlightstrength`, `\sethighlightstyle`, `\keepwithnext`,
   `\sectionbreak`, `\usvardate`, `\monthyear`, `\extlink`.
 - Section markup: `\cvsection`, `\cvsubheading`, `cvlist` and `cvbulletlist` with `\cvitem`, `cvgroup`, `cvparts`
-  with `\cvpart`, `\printcategory`. Documented in the `uwhealthcv.sty` header.
+  with `\cvpart` (bold title) and `\cvpart*` (plain title), `\printcategory`. Documented in the `uwhealthcv.sty` header.
+  The indents and blank lines follow the Faculty of Health's vitae format (the
+  `.doc` linked from uwaterloo.ca/health/faculty-staff/curriculum-vitae): a
+  part's letter at 0.25in, its title and all list content at 0.5in, one blank
+  line after a section heading and between parts, none between a part's title
+  and its content. The lengths `\cvletterindent`, `\cvcontentindent` and
+  `\cvdegreelabelwidth` set the grid.
 - Records: `\cvowner`, `\printgrants`, `\printsupervision{degree}`,
   `\printcommitteecounts{groups}`, `\printcommittees[period]{group}`,
   `\cvcommitteegroup{group}{degrees}`, `\printawards`,
@@ -220,8 +226,8 @@ every CV that uses the template.
   `@committee`, `@award`, `@service` and `@course` with the fields in `uwhealthcv.dbx`, and `\me` inside a
   grant's `investigators`. Documented in `cv-records.tex`.
 - For other record types: `\aprtypecategory{type}{colour}`, `\aprsetentrycolour`, `\aprentrymark`
-  and `\aprmarkleftof{label}`
-  (`aprcv.sty`).
+  (`aprcv.sty`). `\aprmarkleftof{label}` is still accepted but does nothing
+  since v0.5.1: every marker sits in one column left of the text block.
 - biblatex categories: `aprteaching`, `aprservice`, `apraward`, `aprnone`,
   `aprinclude`, `apralsoteaching`, `apralsoresearch`, `apralsoservice`,
   `apralsoaward`.

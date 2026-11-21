@@ -5,6 +5,47 @@ fixes, major for anything renamed or removed (with what a CV must change).
 
 ## Unreleased
 
+## v0.6.0 — 2026-11-21
+
+An addition and fixes: nothing for a CV to change, though a CV can drop the
+`\\` and blank lines it used for spacing (see below), and can use `\cvpart*`
+for the format's plain part titles.
+
+- Indents follow the Faculty of Health's vitae format (the `.doc` linked from
+  its CV page): a part's letter (a), b) ...) at 0.25in, its title and every
+  list's content at 0.5in. Before, lists sat at about 0.41in and part titles
+  at 0.39in. A list inside a part starts at the part's title instead of being
+  indented again.
+- Supervision degree labels (PhD, MSc, MMath ...) are left-aligned in the
+  content column, in a label column as wide as "MMath"
+  (`\cvdegreelabelwidth`), so every degree's students start at the same place.
+  `cvgroup` uses the same column.
+- Vertical spacing follows the format too: one blank line after a section
+  heading and between parts, labelled lists and degree groups; a part's title
+  or a `\cvsubheading` label is followed directly by its content. Lists no
+  longer add their own top spacing, which had made the gaps vary from section
+  to section. A `\\` straight after `\cvpart{...}` is dropped, so
+  `\cvpart{Invited} \\` no longer leaves an empty line.
+- `\cvpart*{Title}` gives a part a plain title, as the format sets the parts of
+  PRESENTATION TO SCHOLARLY GROUPS and SERVICE.
+- Example and starter: PRESENTATION TO SCHOLARLY GROUPS has its colon and plain
+  part titles; SERVICE is in lettered parts; the committee counts are under
+  GRADUATE STUDENT SUPERVISION as b) As Committee Member, as in the format; the
+  DEGREES RECEIVED table starts at 0.5in, directly under its heading.
+- A URL in a bibliography entry no longer spreads out on a justified line
+  ("https : / / example . org"): its break points don't stretch
+  (`\biburlbigskip`), so the line's word spaces take up the slack.
+- Dots style: every entry's marker now sits in one column, right-aligned
+  against the left edge of the text block. Before, numbered publications put
+  theirs left of the [J1] label, supervision lists left of each degree label
+  (so PhD, MSc and MMath each had their own column), plain lists 0.45in from
+  the paper edge, and table rows at the text block, so a page could show four
+  or five columns. The rule that keeps the marker off the paper edge now keeps
+  only the dots 0.25in clear, so a rosette doesn't push its dots out of the
+  column; at the Faculty's 0.75in margins the rosette sits about 0.1in from
+  the edge. `\aprmarkleftof` does nothing now (kept so a CV that calls it
+  still compiles). The README screenshots show the new column.
+
 ## v0.5.0 — 2026-11-20
 
 An addition: nothing for a CV to change.
