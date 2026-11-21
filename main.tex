@@ -402,17 +402,20 @@ Service during the review period is highlighted as \aprsample{service}{}{service
 \keepwithnext
 \cvsection{SERVICE}
 
-\cvsubheading{School of Public Health Sciences:}
-    \printservice{school}
-
-\cvsubheading{Faculty of Health:}
-    \printservice{faculty}
-
-\cvsubheading{University of Waterloo:}
+% the Faculty of Health's parts, in its order, with plain titles
+\begin{cvparts}
+    \cvpart*{University}
     \printservice{university}
 
-\cvsubheading{Professional Community (Conference Leadership):}
+    \cvpart*{Faculty}
+    \printservice{faculty}
+
+    \cvpart*{Department}
+    \printservice{school}
+
+    \cvpart*{Community}
     \printservice{discipline}
+\end{cvparts}
 
 \ifAPR % APR version only ------------------------------------------
 \sectionbreak
