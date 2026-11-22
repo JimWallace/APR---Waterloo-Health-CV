@@ -90,6 +90,11 @@ new export (matched to `scholar.bib` by DOI, else title and year) and writes `da
 either file by hand, and don't commit the raw export. It is a citation metric, not an award: no
 `icon`, no `awards.bib` entry, no extra APR colour. Only I supply exports or change the threshold.
 
+**Google Scholar figures** (the line at the top of PUBLICATIONS, both PDFs; the APR adds a
+sentence on reading them in HCI): from Jim's own profile (a screenshot or his message), with
+the date. Google Scholar can't be queried automatically, so only Jim supplies them; when the
+date is more than a year old, or an APR is due, ask him for new figures in the PR.
+
 **Acceptance rates and impact factors** (in the entry's `note`, after any text already there,
 joined with ". ")
 - Conference papers and PACM articles (CSCW, CHI PLAY, GROUP, ISS):
