@@ -105,8 +105,9 @@ def run(only: set[str] | None = None) -> dict:
         for e in rb.errors:
             err("E-syntax", e)
         records[name] = rb
-    check_records(records, (ROOT / "main.tex").read_text(encoding="utf-8"), err, warn)
-    check_awards(records["awards.bib"], bib, err)
+    main_src = (ROOT / "main.tex").read_text(encoding="utf-8")
+    check_records(records, main_src, err, warn)
+    check_awards(records["awards.bib"], bib, err, main_src)
     check_software(cats, by_key, err, warn)
     record_keys = {e.key for rb in records.values() for e in rb.entries}
     all_keys = Counter(e.key for e in bib.entries)
@@ -174,7 +175,7 @@ def run(only: set[str] | None = None) -> dict:
     # W: missing DOI on refereed work since 2010. `nodoi = {reason}` on an entry
     # records that the work has no DOI (e.g. a poster with no proceedings).
     for key, cs in printed_in.items():
-        if key in by_key and set(cs) & {"journal", "conference"}:
+        if key in by_key and set(cs) & {"journal", "conference", "abstracts"}:
             e = by_key[key][0]
             if (e.year or 0) >= 2010 and "doi" not in e.fields \
                     and "nodoi" not in e.fields \
@@ -412,8 +413,12 @@ def check_software(cats: dict, by_key: dict, err, warn) -> None:
              "run python3 scripts/software_stats.py")
 
 
-def check_awards(awards, bib, err) -> None:
+def check_awards(awards, bib, err, main_tex: str = "") -> None:
     """awards.bib: well-formed, and in step with the award badges on entries."""
+    # \printawards[level] lists: when main.tex prints awards by level (and has no plain
+    # \printawards), an award whose level no list names would silently not print.
+    award_levels = set(re.findall(r"^[^%\n]*\\printawards\[([^\]]*)\]", main_tex, re.M))
+    plain = re.search(r"^[^%\n]*\\printawards(?!\[)", main_tex, re.M)
     pubs = {e.key: e for e in bib.entries}
     badged = {k for k, e in pubs.items() if e.fields.get("icon") in AWARD_ICONS}
     named = {}
@@ -428,6 +433,15 @@ def check_awards(awards, bib, err) -> None:
             err("E-record", f"{where}: award '{e.key}' date '{f.get('date', '')}' should be a year (YYYY)", e.key)
         if f.get("count") and not f["count"].isdigit():
             err("E-record", f"{where}: award '{e.key}' count '{f['count']}' must be a whole number", e.key)
+        if award_levels and not plain:
+            named_levels = [x.strip() for x in f.get("level", "").split(",") if x.strip()]
+            if not named_levels:
+                err("E-record", f"{where}: award '{e.key}' has no level, so no \\printawards[level] "
+                    f"list prints it (main.tex prints {', '.join(sorted(award_levels))})", e.key)
+            for lv in named_levels:
+                if lv not in award_levels:
+                    err("E-record", f"{where}: award '{e.key}' has level '{lv}', which no "
+                        "\\printawards[level] in main.tex prints", e.key)
         w = f.get("work")
         if w:
             named[w] = e.key
