@@ -21,6 +21,15 @@ The rules (what counts as missing) are the CV's, from CLAUDE.md:
   date and position.
 - committees: the thesis title once the student has defended.
 - courses: enrolment, and Student Course Perceptions responses and scores.
+- the "so what?" facts (CLAUDE.md -> Entry detail; Jim, 2026-11-22):
+  - a paper with an award icon: the award's tier ("top 5% of submissions", "one of 30");
+  - a workshop or meetup Jim co-organized (note "Workshop proposal." / "Meetup."): how
+    many took part;
+  - chairing a conference or track (service.bib, activities.bib: a chair or convener role
+    with level organizing) held in the review period: attendance, and for general, program,
+    papers and technical program chairs the submissions;
+  - an editorial role (level editorial) in the review period: its load ("12 submissions").
+  Roles before the review period, and events still to come, are not checked.
 A gap Jim knows can't be filled goes in data/gaps.yaml (`key: field, field | reason`),
 which keeps it out of the review copy; only Jim adds lines there.
 """
@@ -31,7 +40,7 @@ import sys
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-from cvlib import ROOT, parse_bib, parse_categories, tex_escape  # noqa: E402
+from cvlib import ROOT, parse_bib, parse_categories, review_period, tex_escape  # noqa: E402
 
 OUT = Path("data") / "gaps.tex"
 HEADER = [
@@ -44,6 +53,14 @@ HEADER = [
 PAPERS = ("journal", "conference", "abstracts")
 METRIC = re.compile(r"Acceptance rate|Impact Factor", re.I)
 PENDING = re.compile(r"in press|just accepted", re.I)
+# the "so what?" facts (CLAUDE.md -> Entry detail)
+ATTENDANCE = re.compile(r"\b\d[\d,]*\s+(?:[\w-]+\s+){0,2}(?:attendees|participants|people|"
+                        r"researchers|students)\b|attendance", re.I)
+SUBMISSIONS = re.compile(r"submission", re.I)
+TIER = re.compile(r"\btop\s+\d|\bone of\b|\b\d[\d,]*\s+of\s+\d", re.I)
+ORGANIZED = re.compile(r"^\s*(?:Workshop proposal|Meetup)\.", re.I)
+CHAIR = re.compile(r"chair|convener", re.I)
+SELECTS = re.compile(r"general chair|program chair|papers chair|technical program", re.I)
 
 
 def load_lines(path: Path) -> dict[str, list[str]]:
@@ -81,6 +98,45 @@ def paper_gaps(e, metric: list[str] | None) -> list[str]:
         elif metric[0] == "unresolved":
             when = f", last looked for {metric[2]}" if len(metric) > 2 and metric[2] else ""
             gaps.append(f"acceptance rate or impact factor (unresolved{when})")
+    note = f.get("note", "")
+    if f.get("icon") and not TIER.search(note):
+        gaps.append("award tier")
+    if ORGANIZED.match(note) and not ATTENDANCE.search(note):
+        gaps.append("attendance")
+    return gaps
+
+
+def years_of(f: dict) -> tuple[int | None, int | None]:
+    """(first, last) year of a service record: its `years` if given, else its date; last is
+    None for an ongoing role (date = {2021/})."""
+    date = f.get("date", "")
+    found = [int(y) for y in re.findall(r"\d{4}", f.get("years", "") or date)]
+    if not found:
+        return None, None
+    if date.rstrip().endswith("/") and not f.get("years"):
+        return found[0], None
+    return found[0], found[-1]
+
+
+def service_gaps(e, period: tuple[int, int] | None) -> list[str]:
+    """Chairing an event in the review period: attendance (and submissions for the chairs
+    who select the program); an editorial role in the period: its load."""
+    f = e.fields
+    if not period:
+        return []
+    levels = {x.strip() for x in f.get("level", "").split(",")}
+    role, note = f.get("role", ""), f.get("note", "")
+    first, last = years_of(f)
+    gaps = []
+    if "organizing" in levels and CHAIR.search(role) and last is not None \
+            and period[0] <= last <= period[1]:
+        if not ATTENDANCE.search(note):
+            gaps.append("attendance")
+        if SELECTS.search(role) and not SUBMISSIONS.search(note):
+            gaps.append("submissions")
+    if "editorial" in levels and first is not None and first <= period[1] \
+            and (last is None or last >= period[0]) and not re.search(r"\d", note):
+        gaps.append("load")
     return gaps
 
 
@@ -111,7 +167,8 @@ FIELD_OF = {  # the name a gap prints as -> the word data/gaps.yaml uses for it
     "final publication details (in press)": "inpress", "DOI": "doi", "pages": "pages",
     "program": "program", "start year": "started", "date": "date",
     "thesis title": "title", "position": "position", "enrolment": "enrolment",
-    "SCP responses": "responses", "SCP scores": "scp",
+    "SCP responses": "responses", "SCP scores": "scp", "award tier": "tier",
+    "attendance": "attendance", "submissions": "submissions", "load": "load",
 }
 
 
@@ -140,6 +197,11 @@ def gaps(root: Path = ROOT) -> list[tuple[str, list[str]]]:
         if (root / name).exists():
             for e in parse_bib(root / name).entries:
                 add(e.key, rule(e))
+    period = review_period(root / "main.tex")
+    for name in ("service.bib", "activities.bib"):
+        if (root / name).exists():
+            for e in parse_bib(root / name).entries:
+                add(e.key, service_gaps(e, period))
     return out
 
 

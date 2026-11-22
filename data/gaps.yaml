@@ -3,5 +3,6 @@
 #
 # key: field, field | reason | date
 # fields: doi, pages, metric (acceptance rate or impact factor), inpress, program,
-#   started, date, title, position, enrolment, responses, scp
+#   started, date, title, position, enrolment, responses, scp, tier (an award's tier),
+#   attendance, submissions, load (an editorial role's load)
 # e.g.  hlth230w2020: responses, scp | no SCP survey that term | 2026-11-22

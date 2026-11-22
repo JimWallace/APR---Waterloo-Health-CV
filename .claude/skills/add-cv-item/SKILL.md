@@ -36,10 +36,15 @@ awards, grants and students is the source; cite it as "issue #N".
    session chairs, media, training, mentoring, leaves and student start years each have a
    place in `CLAUDE.md` → "Where non-publication items go"; a kind with no list yet gets its
    heading added to `main.tex` in the same commit.
-4. Run `python3 scripts/generate.py` and commit what it rewrites with the item. A new venue
+4. **Entry detail:** give the item the facts `CLAUDE.md` → "Entry detail" names for its kind
+   now, while the sources are fresh (attendance and submissions for a chair role, how many
+   took part in a workshop, an award's tier, an editorial load), from Jim's message, the
+   venue or Outlook; never estimate. `python3 scripts/gaps.py --list` shows what the entry
+   still lacks; ask Jim for it in the PR, or on the issue.
+5. Run `python3 scripts/generate.py` and commit what it rewrites with the item. A new venue
    or funder stops it: tag it as `automation/weekly-update.md` step f3 says, with the
    evidence in the PR's change table (Jim's word in the issue is evidence too).
-5. Branch `cv/issue-<N>-<slug>`, commit, run the `cv-verify` skill, push, open the PR with
+6. Branch `cv/issue-<N>-<slug>`, commit, run the `cv-verify` skill, push, open the PR with
    "Closes #N" and the label `cv-verify` chose, and reply on the issue with the PR link and
    any questions. If `gh pr create` fails, use the REST API as in
    `automation/weekly-update.md` step 7. The repo is public: no email text or private details.

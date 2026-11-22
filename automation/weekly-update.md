@@ -241,6 +241,29 @@ j. **New deployments to track** — look for work of Jim's that others now use a
    A colleague's mention of interest, a plan or a pending agreement is not a deployment yet:
    note it in your final message only.
 
+k. **Entry detail** (`CLAUDE.md` → Entry detail) — run `python3 scripts/gaps.py --list`.
+   For each gap there (review-period entries first), look for a source that states the fact:
+   - **Mail** (no date window; the event may be months old), with the entry's title or
+     acronym and year plus: `attendees`, `participants`, `registrations`, `registered`,
+     `attendance` (attendance); `submissions`, `accepted`, `acceptance rate`, `front matter`,
+     `welcome` (submissions, rates); `best paper`, `honorable mention`, `top` (award tiers);
+     `assigned`, `meta-reviews`, `papers to handle` (editorial loads). Prefer the
+     organizers' or chairs' own message after the event (a thank-you, a report, a financial
+     closing) to a count from before it; a pre-event count is not attendance.
+   - **Web**: the conference site, its proceedings or programme page, the venue's awards
+     page, and university news about it (the Games Institute's CHI PLAY 2023 article gave
+     that conference's submissions). The ACM Digital Library can't be fetched from Claude
+     sessions; when a fact is only in front matter or an editorial there, ask Jim.
+   Add a fact only as its source states it, with the source in a `%` comment above the
+   entry. Adding to a `note` is an addition; changing what it already says is a correction
+   (its own commit). Rerun `python3 scripts/generate.py`, which rewrites `data/gaps.tex`.
+   For each review-period gap still open, make sure an open `cv-item` issue asks for it:
+   search the open issues for the entry's key first, and add one only if none mentions it
+   (one per entry, labels `cv-item` and `apr-2027`; say what is missing, where it goes and
+   where Jim can find it, as in #152–#155). A gap Jim says can't be filled is his to add to
+   `data/gaps.yaml`; suggest the line in the PR. List the gaps filled and the issues opened
+   in the change table and the final message.
+
 ## 3. Triage
 
 For each item keep a one-line reason (it goes in the PR, or in your final message if private).
