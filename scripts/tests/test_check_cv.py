@@ -202,6 +202,70 @@ class ServiceRecords(unittest.TestCase):
         self.assertIn("YYYY/YYYY", errs[0][1])
 
 
+class GrantRecords(unittest.TestCase):
+    """grants.bib records every application: funded grants are complete, applications have a
+    status and the date they went in, and declines a decision date."""
+
+    FUNDED = ("@grant{funded, investigators = {\\me}, role = {PI}, agency = {NSERC}, "
+              "amount = {1000}, date = {2024/2026}, title = {A Grant}}\n")
+
+    def errors(self, grants_bib, main_tex=""):
+        records = {name: cvlib.parse_bib(self.write(name, "")) for name in check_cv.RECORD_FILES}
+        records["grants.bib"] = cvlib.parse_bib(self.write("grants.bib", grants_bib))
+        found = []
+        check_cv.check_records(records, main_tex, lambda code, msg, key=None: found.append((key, msg)),
+                               lambda *a, **k: None)
+        return found
+
+    def write(self, name, text):
+        p = self.dir / name
+        p.write_text(text, encoding="utf-8")
+        return p
+
+    def setUp(self):
+        self.dir = Path(tempfile.mkdtemp())
+
+    def tearDown(self):
+        shutil.rmtree(self.dir)
+
+    def test_a_funded_grant_passes(self):
+        self.assertEqual(self.errors(self.FUNDED), [])
+
+    def test_a_funded_grant_needs_its_amount(self):
+        errs = self.errors(self.FUNDED.replace("amount = {1000}, ", ""))
+        self.assertEqual([k for k, _ in errs], ["funded"])
+
+    def test_a_pending_application_needs_only_when_it_went_in(self):
+        self.assertEqual(self.errors("@grant{pending, investigators = {\\me}, agency = {CIHR}, "
+                                     "status = {Submitted}, submitted = {2026-09-09}}\n"), [])
+
+    def test_an_application_without_a_submission_date_is_an_error(self):
+        errs = self.errors("@grant{when, investigators = {\\me}, agency = {CIHR}, status = {Submitted}}\n")
+        self.assertEqual([k for k, _ in errs], ["when"])
+        self.assertIn("submitted", errs[0][1])
+
+    def test_a_printed_submitted_application_must_be_complete(self):
+        errs = self.errors("@grant{thin, investigators = {\\me}, agency = {CIHR}, "
+                           "status = {Submitted}, submitted = {2026-09}}\n",
+                           "\\printgrants[Submitted]\n")
+        self.assertEqual(sorted(m.split(" has no ")[1] for _, m in errs), ["amount", "date", "title"])
+
+    def test_a_decline_needs_its_decision_date(self):
+        errs = self.errors("@grant{no, investigators = {\\me}, agency = {NFRF}, "
+                           "status = {Declined}, submitted = {2025}}\n")
+        self.assertEqual([k for k, _ in errs], ["no"])
+        self.assertIn("decided", errs[0][1])
+        self.assertEqual(self.errors("@grant{no, investigators = {\\me}, agency = {NFRF}, "
+                                     "status = {Declined}, submitted = {2025}, decided = {2026-03}}\n"), [])
+
+    def test_an_unknown_status_or_bad_date_is_an_error(self):
+        errs = self.errors("@grant{odd, investigators = {\\me}, agency = {NFRF}, "
+                           "status = {Rejected}, submitted = {Sept 2025}, decided = {2026}}\n")
+        self.assertEqual(len(errs), 2)
+        self.assertTrue(any("status 'Rejected'" in m for _, m in errs))
+        self.assertTrue(any("submitted 'Sept 2025'" in m for _, m in errs))
+
+
 class CourseRecords(unittest.TestCase):
     """courses.bib: course, title, a term-start date, digits for enrolment, Item=score pairs."""
 
