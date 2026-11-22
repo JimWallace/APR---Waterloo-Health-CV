@@ -107,3 +107,6 @@ trainees:
     variants: ["Lee, Brigitte"]
   - name: Anna Zhelizniak
     variants: ["Zhelizniak, Anna"]
+  - name: Jagger Nast
+    variants: ["Nast, Jagger"]
+    level: undergrad
