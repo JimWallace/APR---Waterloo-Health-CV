@@ -171,7 +171,9 @@ joined with ". ")
   `status = {Submitted}` and `date` = the tenure applied for; it prints under "Submitted"
   (`\printgrants[Submitted]`, commented out in `main.tex` until the first one), and if it was
   submitted in the review period its key goes in `aprinclude`. The SPHS guidelines allow
-  listing a grant "in submission" one year and as funded the next. When it is funded, drop
+  listing a grant "in submission" one year and as funded the next. Each pending
+  application also has an open issue labelled `grant-application` (agency, program, date
+  only) until its decision; Jim fills in the details there. When it is funded, drop
   `status` and set the awarded amount and tenure. When it is declined, change nothing in
   the repo (a public PR deleting it would reveal the outcome): tell Jim privately, and he
   removes it.

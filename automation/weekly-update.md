@@ -69,6 +69,14 @@ c. **Outlook** — with the Microsoft 365 connector, search Jim's mail since the
      `funding decision`). A submission becomes a `status = {Submitted}` grant only with the
      title, amount and role from Jim or the application. A decline is private: change
      nothing, and tell Jim in your final message.
+     Each pending application is tracked as an open issue labelled `grant-application`
+     (`gh api 'repos/JimWallace/APR---Waterloo-Health-CV/issues?labels=grant-application&state=open'`).
+     For a new submission you find, open one: agency, program, competition and the date
+     it went in, nothing else (no title, team, amount or email text; the repo is public).
+     Once Jim has filled in its details, add its `@grant` entry with
+     `status = {Submitted}`. For an open one, look for its decision: if funded, update
+     the entry and close the issue; if declined, change nothing in the repo and tell Jim
+     privately, and he closes it.
    - Review panels and expert or advisory committees: `review panel`, `committee member`,
      `expert panel`, `Delphi`, `advisory board`.
    - External tenure, promotion and program reviews: `external referee`, `external
