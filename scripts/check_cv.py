@@ -147,7 +147,7 @@ def run(only: set[str] | None = None) -> dict:
         for k, n in Counter(ks).items():
             if n > 1:
                 warn("W-repeat", f"'{k}' is listed {n} times in \\addtocategory{{{c}}}", k)
-    unknown = set(cats) - set(PRINTED_CATEGORIES) - set(APR_CATEGORIES) - {"workshops", "thesis", UNPRINTED, "aprnoteaching"}
+    unknown = set(cats) - set(PRINTED_CATEGORIES) - set(APR_CATEGORIES) - {"workshops", "thesis", UNPRINTED}
     for c in sorted(unknown):
         warn("W-cat", f"category '{c}' is not printed or used for APR colours")
 
@@ -229,9 +229,6 @@ def run(only: set[str] | None = None) -> dict:
         also = set(cats.get("apralsoteaching", [])) | set(cats.get("aprteaching", []))
         include = set(cats.get("aprinclude", []))  # treated as dated in the review period
         excluded = set(cats.get("aprnone", []))
-        # aprnoteaching (main.tex): Jim's decision that a trainee's work is counted in the
-        # period but not as teaching (e.g. trainee work from long before it).
-        noteach = set(cats.get("aprnoteaching", []))
         for key, cs in printed_in.items():
             if key not in by_key or key in excluded:
                 continue
@@ -240,7 +237,7 @@ def run(only: set[str] | None = None) -> dict:
             if not in_period:
                 continue
             has_trainee = any(is_marked_trainee(a) for a in e.authors)
-            if has_trainee and key not in also and key not in noteach:
+            if has_trainee and key not in also:
                 warn("W-aprteach", f"'{key}' ({e.year}) has a trainee author but is not in apralsoteaching", key)
         # An entry whose main colour is service or award (a meetup: service, with
         # mentorship as teaching) is teaching by Jim's decision, not by a trainee.
