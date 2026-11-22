@@ -147,12 +147,41 @@ f. **Software stats** — run `python3 scripts/software_stats.py`. It clones the
    change table with the repositories as the source. If a clone fails, leave the file as it
    is and say so in the PR.
 
-f2. **Venue profile** — after adding or moving a journal article, run
-   `python3 scripts/venue_profile.py` and commit `data/venue-profile.tex` with the article
-   (`check_cv.py` warns until you do). A journal not yet in `data/venues.yaml` stops the
-   script: add it with its field from the journal's scope statement (health, hci or
-   multidisciplinary), and list it in the change table; when the field is unclear, ask in the
-   PR (`needs-review`).
+f2. **Generated files** — after every edit, run `python3 scripts/generate.py` and commit what
+   it rewrites with the change that caused it (`check_cv.py` warns W-generated until you do).
+   It rewrites the venue profile, the health-funder sentence, the counts the narratives
+   quote (`data/cv-numbers.tex`) and the citation-impact lines; the narratives print the
+   counts with `\cvnumber{…}`, so a new paper or grant updates them without touching
+   Jim's text. List each rewritten file in the change table with "scripts/generate.py" as
+   the source. A W-numbers warning (a number hard-coded in a narrative) is Jim's to fix:
+   suggest the `\cvnumber` in the PR (hard rule 3).
+
+f3. **Tag new venues and funders** — a journal article or `conference`/`abstracts` entry
+   whose venue isn't in `data/venues.yaml`, or a grant whose `agency` isn't in
+   `data/funders.yaml`, stops its generator (W-venues, W-funders). Propose the tag from
+   evidence; don't ask Jim every time. Give every new record a `source` (the URLs, or
+   "Jim, issue #N") and put the same evidence in the change table.
+   - **Venue `field`** (health, hci, computing; multidisciplinary for journals). Look up
+     (1) the venue's own scope statement (the journal's aims-and-scope page; for a
+     conference, its call for papers or the ACM DL series page) and (2) its OpenAlex source
+     (`https://api.openalex.org/sources?search=<name>&api_key=$OPENALEX_API_KEY`, the
+     `topic_share` field): the domain or field holding the largest share. Health: Health
+     Sciences, or Medicine, Nursing or Health Professions. HCI: the Human-Computer
+     Interaction subfield. **Auto-merge** when both sources are retrieved this run and agree,
+     and the top share is at least 50%. **needs-review** (a "Questions for Jim" line: "Is
+     <venue> a health venue? Scope says …; OpenAlex …") when they disagree, the top share is
+     under 50%, a source can't be reached (OpenAlex needs the API key; without it, one
+     source is not enough), or the venue would be the first of a new field. A spelling of a
+     listed venue goes in its `aka` or `match` (auto-merge, the entry itself as the source).
+   - **Funder `sector`** (who funds the work, not its topic). A new spelling of a listed
+     funder goes in its `agency` list (auto-merge). A new funder: **auto-merge** only when it
+     is a granting council or a health research charity whose own mandate page (cite it)
+     names its sector (CIHR and PHAC: health; NSERC: nse; SSHRC: ssh). A university's own
+     fund is `university` whatever its name ("UW CIHR RIF"); companies and
+     industry-partnership programs are `industry`. Anything else: `sector: unclassified`
+     (never printed, never blocks) and a question in the PR (`needs-review`).
+   - Changing an existing record's field or sector is a correction: its own commit, from
+     Jim, `needs-review`.
 
 g. **Software DOIs** — Jim's repositories get a Zenodo DOI when a release is archived. For
    each software entry under `\addtocategory{software}` in `main.tex` that has a GitHub URL
@@ -258,7 +287,9 @@ change is one of:
 - a review recognition, or a reviewing/PC/editorial role, stated in an official email or by Jim;
 - an acceptance rate for the paper's own track, stated in its decision letter, the program
   chairs' email, the front matter or the venue's site; a journal impact factor (new or
-  refreshed) stated on the publisher's or Clarivate's page; a `data/metrics.yaml` line.
+  refreshed) stated on the publisher's or Clarivate's page; a `data/metrics.yaml` line;
+- a new venue, venue spelling, funder or funder spelling tagged as step f3 allows
+  auto-merge, and the files `scripts/generate.py` rewrote.
 
 A rate or impact factor from a third-party compilation or aggregator site, or from a track
 you inferred, is `needs-review`.
