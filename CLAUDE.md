@@ -100,6 +100,15 @@ to `data/venue-profile.tex` from the `journal` category; never edit that file by
 multidisciplinary, from the journal's own scope statement; ask in the PR when it is unclear)
 and rerun the script, in the same commit as the article.
 
+**Deployment impact** (`data/impact.tex`, both PDFs): work used beyond its paper (a game
+in a touring exhibition, a classroom resource) gets a line under its entry, written by hand with
+a `% Source:` comment naming a public page from the organization that deployed it, an issue I
+wrote, or my email. Never a reach figure (players, downloads, schools) without a source that
+states it. The weekly job searches the `% Search:` names (`automation/weekly-update.md`, 2i)
+and looks for new works to track (2j); it adds a new one only in a `needs-review` PR, because
+which works are tracked is my call. `check_cv.py` fails on a key with no bib entry or one that
+another detail file already covers.
+
 **Google Scholar figures** (the line at the top of PUBLICATIONS, both PDFs; the APR adds a
 sentence on reading them in HCI): from Jim's own profile (a screenshot or his message), with
 the date. Google Scholar can't be queried automatically, so only Jim supplies them; when the
@@ -144,7 +153,8 @@ joined with ". ")
   `aprinclude` treats an entry as in the period (e.g. a 2027 paper accepted during it);
   `aprnone` turns highlighting off for one entry. Only I add keys to either.
 - If any author is my trainee (`*`) or a trainee presented (`\dag`), also add the key to
-  `apralsoteaching`.
+  `apralsoteaching`, unless I've listed it in `aprnoteaching` (counted in the period but not as
+  teaching, e.g. old trainee work; read only by `check_cv.py`). Only I add keys there.
 - Grants are highlighted when their `date` range overlaps the period; students when they are
   `status = {In progress}` or their `date` is in the period. Nothing to add by hand.
 - Awards are highlighted when their year is in the period. Other non-bib items use `\hlteaching[years]{…}`, `\hlresearch`, `\hlservice`, `\hlaward`.
