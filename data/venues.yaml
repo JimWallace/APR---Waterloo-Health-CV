@@ -9,6 +9,15 @@
 # field: health, hci or multidisciplinary, from the journal's own scope statement.
 # aka: other spellings of the journal field in scholar.bib (matched ignoring case,
 #      spaces and punctuation), in double quotes.
+# source: where the field comes from (the journal's scope page, an OpenAlex source, or
+#      "Jim, <date>"). Every venue added from 2026-11-22 on has one; see
+#      automation/weekly-update.md for the evidence a new venue needs.
+#
+# proceedings: the conference series of the `conference` and `abstracts` categories, so
+# scripts/cv_numbers.py can count work at health venues (\cvnumber{proceedings-health}).
+# They do not change the printed line. field: health, hci or computing; match: strings
+# that occur in the entry's booktitle, journal or series (ignoring case, spaces and
+# punctuation; the first series that matches wins, so put the narrower one first).
 journals:
   - name: ACM Transactions on Computing for Healthcare
     field: health
@@ -40,3 +49,78 @@ journals:
     aka: ["Proc. ACM Hum.-Comput. Interact."]
   - name: PLOS ONE
     field: multidisciplinary
+
+proceedings:
+  # Health venues (Jim, issue #144: "PervasiveHealth, ICHEC and Interactive Health are
+  # health venues").
+  - name: PervasiveHealth
+    field: health
+    match: ["PERVASIVEHEALTH", "Pervasive Computing Technologies for Healthcare"]
+    source: "Jim, 2026-11-22 (#144)"
+  - name: ICHEC
+    field: health
+    match: ["ICHEC"]
+    source: "Jim, 2026-11-22 (#144)"
+  - name: ACM Conference on Interactive Health
+    field: health
+    match: ["Conference on Interactive Health"]
+    source: "Jim, 2026-11-22 (#144)"
+  # HCI venues: ACM SIGCHI conferences and the HCI conferences of IEEE and others.
+  - name: CHI
+    field: hci
+    match: ["Human Factors in Computing Systems"]
+  - name: CSCW
+    field: hci
+    match: ["Computer Supported Cooperative Work"]
+  - name: DIS
+    field: hci
+    match: ["Designing Interactive Systems"]
+  - name: ISS and ITS
+    field: hci
+    match: ["Interactive Surfaces and Spaces", "Interactive Tabletops"]
+  - name: IEEE Tabletop
+    field: hci
+    match: ["Horizontal Interactive Human Computer Systems"]
+  - name: UIST
+    field: hci
+    match: ["User Interface Software"]
+  - name: Graphics Interface
+    field: hci
+    match: ["Graphics Interface"]
+  - name: PerDis
+    field: hci
+    match: ["Pervasive Displays"]
+  - name: OzCHI
+    field: hci
+    match: ["Australian Computer-Human Interaction"]
+  - name: AVI
+    field: hci
+    match: ["Advanced Visual Interfaces"]
+  - name: IEEE 3DUI
+    field: hci
+    match: ["3D User Interfaces"]
+  - name: IEEE VL/HCC
+    field: hci
+    match: ["Visual Languages and Human-Centric Computing"]
+  - name: UbiComp
+    field: hci
+    match: ["Pervasive and Ubiquitous Computing"]
+  - name: CUI
+    field: hci
+    match: ["Conversational User Interfaces"]
+  # Other computing venues.
+  - name: CollaborateCom
+    field: computing
+    match: ["Collaborative Computing: Networking"]
+  - name: UMAP
+    field: computing
+    match: ["User Modeling, Adaption"]
+  - name: AIED
+    field: computing
+    match: ["Artificial Intelligence in Education"]
+  - name: SIGDOC
+    field: computing
+    match: ["Design of Communication"]
+  - name: VS-Games
+    field: computing
+    match: ["Virtual Worlds and Games for Serious Applications"]

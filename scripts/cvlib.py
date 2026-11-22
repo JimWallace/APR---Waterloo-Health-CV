@@ -304,3 +304,62 @@ if __name__ == "__main__":
     # For workflows: python3 scripts/cvlib.py template.version  -> prints the value ("" if unset)
     import sys
     print(config_value(sys.argv[1]) if len(sys.argv) > 1 else "")
+
+
+# ---------------------------------------------------------------- tagged lists
+# data/venues.yaml and data/funders.yaml share one shape: top-level sections, each a
+# list of records with scalar fields and one-line ["a", "b"] lists. PyYAML if present;
+# otherwise this reader, so CI needs no installs.
+FIELDS = ["health", "hci", "computing", "multidisciplinary"]  # venues (data/venues.yaml)
+SECTORS = ["health", "nse", "ssh", "multidisciplinary", "government", "industry",
+           "university", "unclassified"]  # funders (data/funders.yaml)
+
+
+def load_tagged(path: Path) -> dict[str, list[dict]]:
+    """{section: [record, ...]} from a data/*.yaml file of tagged lists."""
+    if not path.exists():
+        return {}
+    text = path.read_text(encoding="utf-8")
+    try:
+        import yaml
+        return {k: list(v or []) for k, v in (yaml.safe_load(text) or {}).items()}
+    except ImportError:
+        pass
+    import json
+    out: dict[str, list[dict]] = {}
+    section = None
+    for ln in text.splitlines():
+        ln = re.sub(r"(^|\s+)#.*$", "", ln).rstrip()
+        if not ln:
+            continue
+        m = re.match(r"^(\w[\w-]*):\s*$", ln)
+        if m:
+            section = out.setdefault(m.group(1), [])
+            continue
+        m = re.match(r"\s*-\s+(\w+):\s*(.+)$", ln)
+        if m and section is not None:
+            section.append({})
+        if not m:
+            m = re.match(r"\s+(\w+):\s*(.+)$", ln)
+        if m and section:
+            val = m.group(2).strip()
+            section[-1][m.group(1)] = json.loads(val) if val.startswith("[") else val.strip("'\"")
+    return out
+
+
+def tex_escape(s: str) -> str:
+    return re.sub(r"(?<!\\)([&%#])", r"\\\1", s)
+
+
+def join_and(items: list[str]) -> str:
+    """a; a and b; a, b and c."""
+    items = list(items)
+    if not items:
+        return ""
+    return items[0] if len(items) == 1 else ", ".join(items[:-1]) + " and " + items[-1]
+
+
+def in_review_period(e: "Entry", key: str, period, include: set, exclude: set) -> bool:
+    """As the APR highlighting decides: by year, unless aprinclude or aprnone says otherwise."""
+    return bool(period) and key not in exclude and (
+        key in include or (e.year is not None and period[0] <= e.year <= period[1]))
