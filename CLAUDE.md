@@ -143,7 +143,8 @@ joined with ". ")
   `aprinclude` treats an entry as in the period (e.g. a 2027 paper accepted during it);
   `aprnone` turns highlighting off for one entry. Only I add keys to either.
 - If any author is my trainee (`*`) or a trainee presented (`\dag`), also add the key to
-  `apralsoteaching`.
+  `apralsoteaching`, unless I've listed it in `aprnoteaching` (counted in the period but not as
+  teaching, e.g. old trainee work; read only by `check_cv.py`). Only I add keys there.
 - Grants are highlighted when their `date` range overlaps the period; students when they are
   `status = {In progress}` or their `date` is in the period. Nothing to add by hand.
 - Awards are highlighted when their year is in the period. Other non-bib items use `\hlteaching[years]{…}`, `\hlresearch`, `\hlservice`, `\hlaward`.
