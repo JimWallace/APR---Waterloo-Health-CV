@@ -26,6 +26,9 @@ awards, grants and students is the source; cite it as "issue #N".
    `icon = {award}` on that entry when it is for a paper or talk) (fields in `template/uwhealthcv.dbx`, examples in each file). No
    highlighting to add: it follows the dates. Amounts, agencies, roles, dates, titles and
    students' positions come only from Jim's message; ask in the PR if any is missing.
+   `grants.bib` records every application, funded or not: a pending one has
+   `status = {Submitted}`, a declined one `{Declined}`, each with `submitted` and (once decided)
+   `decided` (`CLAUDE.md` → Grants); `python3 scripts/grant_report.py --missing` lists gaps.
    **Service:** add a `@service` entry to `service.bib` (`title`, `level`, `date`); reviewing,
    program committees, editorial and organizing roles go in `activities.bib` the same way.
    **Other items:** add to the right list in `main.tex` with the matching `\hl…[years]` macro.
