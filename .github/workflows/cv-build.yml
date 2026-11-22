@@ -1,5 +1,6 @@
 # Checks and compiles the CV on every PR and on main.
-# On main it also publishes the two PDFs to the "cv-latest" release:
+# On main it also publishes the two PDFs to the "cv-latest" release (and a PR from this
+# repository to the "cv-preview" prerelease):
 #   https://github.com/JimWallace/APR---Waterloo-Health-CV/releases/tag/cv-latest
 #
 # Errors fail the build, and so does any warning (check_cv.py, biber or LaTeX)
@@ -170,3 +171,32 @@ jobs:
             gh release create cv-latest --title "Latest CV" --notes "$notes" --target "$GITHUB_SHA"
           fi
           gh release upload cv-latest out/Wallace-CV.pdf out/Wallace-CV-APR.pdf --clobber
+
+  preview:
+    # A PR from this repository also puts its two PDFs on the "cv-preview" prerelease, so
+    # Jim (or a Claude session, which can't fetch build artifacts) can read them before
+    # merging. One prerelease, overwritten by the latest PR build; its notes name the PR.
+    if: github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name == github.repository
+    needs: [compile]
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/download-artifact@37930b1c2abaa49bbe596cd826c3c89aef350131 # v7.0.0
+        with:
+          name: cv-pdfs
+          path: out
+      - name: Update the cv-preview prerelease
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+          PR: ${{ github.event.pull_request.number }}
+          SHA: ${{ github.event.pull_request.head.sha }}
+        run: |
+          notes="Preview of PR #$PR, built from ${SHA::7} on $(date -u +%Y-%m-%d). Not the published CV: that is cv-latest."
+          if gh release view cv-preview >/dev/null 2>&1; then
+            gh release edit cv-preview --notes "$notes"
+          else
+            gh release create cv-preview --prerelease --title "Preview of an open PR" --notes "$notes" --target "$SHA"
+          fi
+          gh release upload cv-preview out/Wallace-CV.pdf out/Wallace-CV-APR.pdf --clobber
