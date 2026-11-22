@@ -14,7 +14,7 @@ LaTeX CV in the University of Waterloo Faculty of Health format. The repo has tw
 - **My CV** (everything else): content and my settings. `latexmkrc` puts `template/` on TeX's
   search path, so `main.tex` just says `\usepackage{uwhealthcv}`.
 
-One source, two PDFs:
+One source, two PDFs (and a review copy):
 
 - `main.tex` compiles to the plain Faculty of Health CV.
 - `apr.tex` compiles `main.tex` with the `apr` option: adds the "A Note on…" sections and colours
@@ -28,6 +28,11 @@ One source, two PDFs:
   and `committees.bib` the thesis committees I sit on (`@committee`).
   The fields are described in `template/uwhealthcv.dbx`. They print sorted, and the APR
   colours come from their dates, so there are no years to keep in step by hand.
+- `gaps.tex` compiles the APR version as a review copy for me only: missing data is marked
+  in orange (the template's `gaps` mode; a colour no APR highlight uses) so I can fill it in
+  before the CV goes out. CI builds it as `Wallace-CV-gaps.pdf` (PR artifact and
+  `cv-preview`, never `cv-latest`) and lists the gaps in the job summary. Never submit it,
+  and never put content in `gaps.tex`.
 - `apr-formatting.tex` holds my settings for the APR version (highlight strength and style).
 - My trainees are everyone in `supervision.bib` plus `data/trainees.yaml`, which adds the other
   trainees (undergraduates, RAs) and extra spellings. The checker flags a supervised student
@@ -90,15 +95,35 @@ new export (matched to `scholar.bib` by DOI, else title and year) and writes `da
 either file by hand, and don't commit the raw export. It is a citation metric, not an award: no
 `icon`, no `awards.bib` entry, no extra APR colour. Only I supply exports or change the threshold.
 
-**Venue profile** (`data/venues.yaml`, both PDFs): the line under the Google Scholar figures
-says how many journal articles are in health, HCI and multidisciplinary journals, naming the
-health and multidisciplinary ones (the APR adds the review period), so a health reader need
-not work out which venues are health research. `python3 scripts/venue_profile.py` writes it
-to `data/venue-profile.tex` from the `journal` category; never edit that file by hand.
-`check_cv.py` warns when it is out of step, or when a journal article's journal is not in
-`data/venues.yaml`: add the journal there with its `field` (health, hci or
-multidisciplinary, from the journal's own scope statement; ask in the PR when it is unclear)
-and rerun the script, in the same commit as the article.
+**Generated text and counts** (`python3 scripts/generate.py`; design in
+`docs/generated-content.md`). Run it after every edit and commit what it rewrites with the
+change; `check_cv.py` warns W-generated until you do. Never edit its output by hand:
+- `data/venue-profile.tex` (both PDFs): the line under the Google Scholar figures on how
+  many journal articles are in health, HCI and multidisciplinary journals, naming the health
+  and multidisciplinary ones (the APR adds the review period), so a health reader need not
+  work out which venues are health research. From the `journal` category and
+  `data/venues.yaml`, which also tags the proceedings series of `conference` and
+  `abstracts` (for the counts only; the printed line is journals).
+- `data/funders.tex` (APR): the sentence after "Health research funders also support the
+  work." in the funding note, from the funded grants in `grants.bib` whose agency
+  `data/funders.yaml` tags `health`.
+- `data/cv-numbers.tex`: the counts the narratives quote, printed with `\cvnumber{name}`
+  (`python3 scripts/cv_numbers.py --list` names them): review-period output and how much
+  trainees led, the SciVal totals, venue and funder counts. `check_cv.py` fails on an
+  undefined name and warns (W-numbers) when a narrative hard-codes one of these counts. A
+  count worth a name is one that changes as the record grows; fixed facts (an acceptance
+  rate, a grant's amount) and figures the repo doesn't hold (SciVal topic totals) stay typed.
+- `data/citation-impact.tex`, from `data/citation-impact.yaml` (below).
+- `data/gaps.tex`: what each entry is missing (`scripts/gaps.py` has the rules: DOI, pages,
+  acceptance rate or JIF, in-press details; students' program, start year, thesis title,
+  position; defended committees' titles; courses' enrolment and SCP), printed only in the
+  review copy (`gaps.tex`, above). A gap I accept as unfillable goes in `data/gaps.yaml`; only I add lines.
+A venue or agency missing from `data/venues.yaml` or `data/funders.yaml` stops its generator
+(W-venues, W-funders): add it with its `field` or `sector` and a `source`, from the evidence
+`automation/weekly-update.md` step f3 sets out, in the same commit as the entry that needs it;
+ask in the PR when the evidence is not enough. A funder's sector is who funds the work, not
+its topic. Changing an existing tag is a correction. Not generated: the software stats
+(`scripts/software_stats.py`, network) and a new SciVal import (Jim's export).
 
 **Deployment impact** (`data/impact.tex`, both PDFs): work used beyond its paper (a game
 in a touring exhibition, a classroom resource) gets a line under its entry, written by hand with
@@ -320,6 +345,8 @@ that is followed by a list; never use `\newpage` (use `\sectionbreak`).
   that no longer occurs fails until its line is deleted (`--prune-baseline`). Fix a new warning
   rather than adding it to the baseline: a PR that adds baseline lines cannot auto-merge.
 - `python3 scripts/check_cv.py --keys k1,k2` — the same, reporting only on the keys you touched.
+- `python3 scripts/generate.py` — rewrites every generated file (`--check` only reports);
+  `check_cv.py` runs the check.
 - `latexmk main.tex && latexmk apr.tex` (LuaLaTeX, set in `latexmkrc`) — if TeX is installed; CI compiles both anyway.
   Then `python3 scripts/warning_ratchet.py main apr` applies the same baseline to the LaTeX and
   biber warnings (CI does this too, on TeX Live 2026 like Overleaf, and reports what changed in

@@ -58,7 +58,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5.1.0
-      - name: Compile main.tex and apr.tex (TeX Live, latexmk + biber)
+      - name: Compile main.tex, apr.tex and the review copy gaps.tex (TeX Live, latexmk + biber)
         uses: xu-cheng/latex-action@6549dc21effb2730855a1281407ecfcececc6c1b # v4.1.0
         with:
           docker_image: ghcr.io/xu-cheng/texlive-debian:20261001@sha256:78ac2204b8df113aca0561e8f173ad5b89ee51e90795173d2fe9bcf0fbce162e # TeX Live 2026, 2026-10-01 snapshot
@@ -66,11 +66,18 @@ jobs:
           root_file: |
             main.tex
             apr.tex
+            gaps.tex
       - name: Name the PDFs
         run: |
           mkdir -p out
           cp main.pdf out/Wallace-CV.pdf
           cp apr.pdf  out/Wallace-CV-APR.pdf
+          cp gaps.pdf out/Wallace-CV-gaps.pdf
+      - name: Missing data (marked in orange in Wallace-CV-gaps.pdf)
+        run: |
+          { echo "### Missing data: $(python3 scripts/gaps.py --list | wc -l) entries"
+            echo "Marked in orange in Wallace-CV-gaps.pdf (the review copy; never published as the CV)."
+            echo '```'; python3 scripts/gaps.py --list; echo '```'; } >> "$GITHUB_STEP_SUMMARY"
       - uses: actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f # v6.0.0
         with:
           name: cv-pdfs
@@ -199,4 +206,4 @@ jobs:
           else
             gh release create cv-preview --prerelease --title "Preview of an open PR" --notes "$notes" --target "$SHA"
           fi
-          gh release upload cv-preview out/Wallace-CV.pdf out/Wallace-CV-APR.pdf --clobber
+          gh release upload cv-preview out/Wallace-CV.pdf out/Wallace-CV-APR.pdf out/Wallace-CV-gaps.pdf --clobber

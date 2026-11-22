@@ -1,0 +1,101 @@
+# The sector of each funder in grants.bib, for the health-funder sentence in "A Note on
+# Research Funding" (data/funders.tex, APR) and the funder counts in data/cv-numbers.tex.
+# scripts/funder_profile.py and scripts/cv_numbers.py read this file and grants.bib
+# (python3 scripts/generate.py runs both); never edit their output by hand. check_cv.py
+# warns when a grant's `agency` is not listed here, or when the output is out of step.
+#
+# name: the funder as the sentence prints it ("a <name> project", "three <name> grants").
+# sector: who funds the work, not its topic: health (health research funders: CIHR, PHAC,
+#      health charities), nse (NSERC), ssh (SSHRC), multidisciplinary (NFRF, CFI),
+#      government (other government departments and labs), industry (companies and
+#      industry-partnership programs), university (a university's own funds, whatever the
+#      topic), or unclassified (Jim hasn't said; never printed, listed in the PR).
+# agency: every spelling of grants.bib's `agency` that means this funder, in double quotes.
+# source: the evidence for the sector (the funder's mandate page, or "Jim, <date>").
+#      Every funder added from 2026-11-22 on has one; see automation/weekly-update.md.
+funders:
+  # Health research funders. The first five are those named in the APR funding note
+  # (PR #143, from grants.bib).
+  - name: Public Health Agency of Canada
+    sector: health
+    agency: ["PHAC"]
+  - name: Canadian Public Health Association
+    sector: health
+    agency: ["CPHA"]
+  - name: Canadian Immunization Research Network
+    sector: health
+    agency: ["CIRN"]
+  - name: CIHR
+    sector: health
+    agency: ["CIHR", "CIHR Project Grant"]
+  - name: ALS Canada--Brain Canada
+    sector: health
+    agency: ["ALS Canada--Brain Canada Discovery Grant", "ALS Canada--Brain Canada Discovery Grant (Development Grant)"]
+  - name: Breast Cancer Canada and AstraZeneca
+    sector: health
+    agency: ["Breast Cancer Canada and AstraZeneca Matched Research Awards (Advancing Progress in Survivorship)"]
+  # The tri-agency and federal programs.
+  - name: NSERC
+    sector: nse
+    agency: ["NSERC", "NSERC CREATE", "NSERC CRD", "NSERC Research Tools and Instruments"]
+  - name: SSHRC
+    sector: ssh
+    agency: ["SSHRC-IDG", "SSHRC Insight Grant", "SSHRC AI Sandpit"]
+  - name: New Frontiers in Research Fund
+    sector: multidisciplinary
+    agency: ["NFRF", "NFRF Exploration", "NFRF Transformation"]
+  - name: Canada Foundation for Innovation
+    sector: multidisciplinary
+    agency: ["CFI-JELF"]
+  - name: Global Water Futures
+    sector: nse
+    agency: ["Global Water Futures"]
+  - name: National Research Council Canada
+    sector: government
+    agency: ["National Research Council Canada"]
+  - name: Ontario Research Fund
+    sector: government
+    agency: ["ORF-RI"]
+  - name: Ontario Ministry of Children, Community and Social Services
+    sector: government
+    agency: ["Ontario Ministry of Children, Community and Social Services"]
+  # Industry and industry-partnership programs.
+  - name: Mitacs
+    sector: industry
+    agency: ["MITACS", "MITACS BSI", "MITACS Globalink"]
+  - name: Ontario Centres of Excellence
+    sector: industry
+    agency: ["OCE MSc PoP"]
+  - name: DynaCare
+    sector: industry
+    agency: ["DynaCare (Private)"]
+  - name: Google
+    sector: industry
+    agency: ["Google Cloud Credits", "Google Research Award"]
+  - name: Microsoft
+    sector: industry
+    agency: ["Microsoft Azure Credits", "Microsoft Research (Future of Work)"]
+  - name: Anthropic
+    sector: industry
+    agency: ["Anthropic User Wellbeing Research Grants"]
+  - name: Digital Science
+    sector: industry
+    agency: ["Digital Science Catalyst Grant"]
+  # University funds (Waterloo's own, including its CIHR and SSHRC institutional funds,
+  # and other universities').
+  - name: University of Waterloo
+    sector: university
+    agency: ["UW", "UW CIHR RIF", "UW HSS SSHRC", "UW Hallman URA", "UW Trailblazer", "UW IRPG-EU", "UW Arts Antagonism and Intimidation in Academia Seed Grant", "Games Institute", "Global Futures", "Propel CDPI"]
+  - name: City University of Hong Kong
+    sector: university
+    agency: ["CityUHK"]
+  # Not yet classified: Jim to say (listed in the PR).
+  - name: Graham Seed Fund
+    sector: unclassified
+    agency: ["Graham Seed Fund"]
+  - name: NAR Catalyst
+    sector: unclassified
+    agency: ["NAR Catalyst"]
+  - name: CIRTA
+    sector: unclassified
+    agency: ["CIRTA"]

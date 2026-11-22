@@ -47,6 +47,11 @@ Jim wrote; a student's `degree` must be one that `main.tex` prints with `\prints
 A grant with `status = {Declined}` or `{Withdrawn}` never prints and needs no colour; one with
 `status = {Submitted}` that went in (`submitted`) during the review period belongs in `aprinclude`.
 7. Formatting matches the neighbouring lines (table columns, `\cvitem` / `\item`, `$\times$` counts).
+7b. A new `data/venues.yaml` record's `field`, or `data/funders.yaml` record's `sector`, fits
+   the evidence in its `source` and the change table (`automation/weekly-update.md` step f3):
+   a venue is health only when its scope statement is health research; a funder's sector is
+   who funds the work, not the topic (a university's own fund is `university`). A venue
+   that also matches an existing `match` string, or that the evidence leaves open → QUESTIONS.
 8. Nothing inside `\ifAPR … \fi` narrative was changed.
 
 ## Output (exactly this shape)

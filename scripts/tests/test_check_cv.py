@@ -124,7 +124,8 @@ class Venues(unittest.TestCase):
         shutil.rmtree(self.root)
 
     def venue_warnings(self):
-        return [w for w in check_cv.run()["warnings"] if w["code"] == "W-venues"]
+        return [w for w in check_cv.run()["warnings"] if w["code"] == "W-venues"
+                or w["code"] == "W-generated" and "venue-profile" in w["msg"]]
 
     def test_the_profile_counts_fields_and_the_review_period(self):
         import venue_profile

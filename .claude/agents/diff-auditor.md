@@ -19,8 +19,14 @@ it. Your job is to catch changes nobody asked for. You never edit files.
    Rewritten existing entries are allowed only in a separate "corrections" commit
    (`git log origin/main..HEAD --stat`); otherwise QUESTIONS.
 4. Files: only `scholar.bib`, `grants.bib`, `supervision.bib`, `awards.bib`, `service.bib`,
-   `activities.bib`, `courses.bib`, `main.tex`, `data/metrics.yaml` and `data/trainees.yaml`
-   may change in an automated CV update. Removing a `data/metrics.yaml` line when the entry's
+   `activities.bib`, `courses.bib`, `main.tex`, `data/metrics.yaml`, `data/trainees.yaml`,
+   `data/venues.yaml`, `data/funders.yaml` and the files `python3 scripts/generate.py`
+   writes (`data/venue-profile.tex`, `data/funders.tex`, `data/cv-numbers.tex`,
+   `data/citation-impact.tex`) may change in an automated CV update. A generated file must
+   be exactly what the generator writes (`python3 scripts/generate.py --check` exits 0).
+   A new `data/venues.yaml` or `data/funders.yaml` record needs a `source` and a change-table
+   row citing the evidence `automation/weekly-update.md` step f3 asks for; a changed
+   `field` or `sector` on an existing record is a correction (QUESTIONS unless Jim asked). Removing a `data/metrics.yaml` line when the entry's
    figure is added to `scholar.bib` in the same diff is a direct replacement, not a deletion. Any other file (workflows, scripts, `.claude/`, `apr.tex`, `apr-formatting.tex`,
    anything under `template/`, other `.tex`) → FAIL. Changes to `data/trainees.yaml` → QUESTIONS (Jim confirms trainees).
 5. No edits inside `\ifAPR … \fi` narrative blocks.

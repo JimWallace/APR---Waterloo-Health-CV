@@ -1,7 +1,7 @@
 ---
 name: add-cv-item
 description: Add one item Jim reports (paper, talk, award, reviewing/PC role, grant, supervision, service) to the CV from an issue or chat message, verify it, and open a labelled PR.
-allowed-tools: Read, Grep, Glob, Edit, Write, Agent, WebFetch, WebSearch, Skill, Bash(python3 scripts/check_cv.py:*), Bash(python3 scripts/warning_ratchet.py:*), Bash(python3 scripts/fetch_candidates.py:*), Bash(git:*), Bash(gh pr:*), Bash(gh issue:*), Bash(gh label:*), Bash(gh api:*), Bash(curl:*), Bash(latexmk:*)
+allowed-tools: Read, Grep, Glob, Edit, Write, Agent, WebFetch, WebSearch, Skill, Bash(python3 scripts/check_cv.py:*), Bash(python3 scripts/generate.py:*), Bash(python3 scripts/warning_ratchet.py:*), Bash(python3 scripts/fetch_candidates.py:*), Bash(git:*), Bash(gh pr:*), Bash(gh issue:*), Bash(gh label:*), Bash(gh api:*), Bash(curl:*), Bash(latexmk:*)
 ---
 
 # Add a CV item
@@ -36,7 +36,10 @@ awards, grants and students is the source; cite it as "issue #N".
    session chairs, media, training, mentoring, leaves and student start years each have a
    place in `CLAUDE.md` → "Where non-publication items go"; a kind with no list yet gets its
    heading added to `main.tex` in the same commit.
-4. Branch `cv/issue-<N>-<slug>`, commit, run the `cv-verify` skill, push, open the PR with
+4. Run `python3 scripts/generate.py` and commit what it rewrites with the item. A new venue
+   or funder stops it: tag it as `automation/weekly-update.md` step f3 says, with the
+   evidence in the PR's change table (Jim's word in the issue is evidence too).
+5. Branch `cv/issue-<N>-<slug>`, commit, run the `cv-verify` skill, push, open the PR with
    "Closes #N" and the label `cv-verify` chose, and reply on the issue with the PR link and
    any questions. If `gh pr create` fails, use the REST API as in
    `automation/weekly-update.md` step 7. The repo is public: no email text or private details.

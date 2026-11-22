@@ -17,6 +17,7 @@
 *.soc
 main.pdf
 apr.pdf
+gaps.pdf
 
 __pycache__/
 template/example/*.pdf
