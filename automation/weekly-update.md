@@ -64,19 +64,37 @@ c. **Outlook** — with the Microsoft 365 connector, search Jim's mail since the
      `level = {trainee}` awards.
    - Nominations for Jim (teaching or supervision awards): `nomination`, `nominated`. Only
      once the nomination has been submitted.
-   - Submitted grant applications: `ResearchNet`, `compliance review`, `application
-     submitted`, `submitted the complete application`, and decisions (`notice of decision`,
-     `funding decision`). A submission becomes a `status = {Submitted}` grant only with the
-     title, amount and role from Jim or the application. A decline is private: change
-     nothing, and tell Jim in your final message.
-     Each pending application is tracked as an open issue labelled `grant-application`
-     (`gh api 'repos/JimWallace/APR---Waterloo-Health-CV/issues?labels=grant-application&state=open'`).
-     For a new submission you find, open one: agency, program, competition and the date
-     it went in, nothing else (no title, team, amount or email text; the repo is public).
-     Once Jim has filled in its details, add its `@grant` entry with
-     `status = {Submitted}`. For an open one, look for its decision: if funded, update
-     the entry and close the issue; if declined, change nothing in the repo and tell Jim
-     privately, and he closes it.
+   - Grant applications: `ResearchNet`, `compliance review`, `application submitted`,
+     `submitted the complete application`, `thank you for applying`, `your application`,
+     `application received`, `letter of intent`, `notice of intent`, `full application`,
+     `invited to submit`, `cover sheet`, and decisions (`notice of decision`, `funding
+     decision`, `notice of award`, `results`, `extension`). Applications reach Jim through
+     the agencies, the University's research offices (`uwcihr@`, `uwsshrc@`, `uwnserc@`,
+     `mitacs@`), foundations, companies and form receipts, and he is often a co-applicant on
+     someone else's team: those count too. (In 2025–26 they included CIHR, SSHRC, NSERC
+     CREATE and RTI, NFRF, Mitacs, ALS Canada–Brain Canada, Breast Cancer Canada,
+     Digital Science, Google, Microsoft Research and Anthropic.)
+     `grants.bib` is the record of **every** application Jim makes, funded or not, and the
+     ground truth for his reporting (`CLAUDE.md` → Grants). Keep it complete:
+     1. **New submission** you find: add its `@grant` at the end of `grants.bib` with
+        `status = {Submitted}`, `submitted` (the date it went in) and what the record states
+        (agency and program, team, role, title, amount, years). Open an issue labelled
+        `grant-application` (agency, program, competition, date) asking Jim for what's
+        missing; Jim can also open one with the "Grant application" issue form.
+     2. **Every run**, for each open `grant-application` issue: apply the details Jim has
+        given (in the issue or a comment) to its entry. A Submitted entry that went in during
+        the review period goes in `aprinclude`. Once every Submitted entry has its title,
+        amount and years, uncomment `\printgrants[Submitted]` in `main.tex`.
+     3. **Decisions**: search the mail for each Submitted entry's decision. Funded: drop
+        `status`, set the awarded amount and tenure from the notice of award, add `decided`,
+        and "Closes #N". Declined or withdrawn: `status = {Declined}` (or `{Withdrawn}`) and
+        `decided`, and "Closes #N". Jim decided (22 November 2026) that declines are
+        recorded in full, in this public repo; still quote no email text.
+     4. A funded change to an existing grant (an extension, a top-up, a new end date) is a
+        correction to its entry: its own commit, from the agency's letter.
+     5. In your final message, give the output of `python3 scripts/grant_report.py --missing`
+        (details still to collect) and any Submitted entry more than nine months old with no
+        decision found.
    - Review panels and expert or advisory committees: `review panel`, `committee member`,
      `expert panel`, `Delphi`, `advisory board`.
    - External tenure, promotion and program reviews: `external referee`, `external
@@ -140,6 +158,15 @@ g. **Software DOIs** — Jim's repositories get a Zenodo DOI when a release is a
    correction to an existing entry, so it gets its own commit. Leave other entries that cite
    the same repository (e.g. the `wallace2026interdisciplinary` report) for Jim to decide.
 
+h. **Citation figures** — never query Google Scholar (it can't be done reliably and isn't
+   allowed). Read the date on the Google Scholar line at the top of PUBLICATIONS in
+   `main.tex`, and `exported:` in `data/citation-impact.yaml` (SciVal). When either is more
+   than a year old, or it is October to December of an odd year (the APR is due at the end of
+   December), ask Jim in your final message for a new Google Scholar screenshot or SciVal
+   export. Update the Google Scholar line only from figures Jim gives (an issue, a comment or
+   an attached screenshot), with the date he took them, as its own commit
+   (`needs-review`); a SciVal export goes through `scripts/citation_impact.py`.
+
 ## 3. Triage
 
 For each item keep a one-line reason (it goes in the PR, or in your final message if private).
@@ -152,8 +179,8 @@ For each item keep a one-line reason (it goes in the PR, or in your final messag
   adding a new one.
 - **Final?** Add papers only on final acceptance. Conditional acceptances and revise-and-resubmit
   are not CV items yet: mention them only in your final message.
-- **Private — never in the repo, the PR or an issue** (the repo is public): rejections (grant
-  declines included), declined or pending invitations, nominations not yet submitted, media
+- **Private — never in the repo, the PR or an issue** (the repo is public): rejections (except
+  grant decisions, which `grants.bib` records: step 2c), declined or pending invitations, nominations not yet submitted, media
   interviews not yet published, the names of tenure and promotion candidates, reviewing assignments for specific papers, program committee
   discussions, anything about a student beyond the name and degree that goes on the CV, email
   text, and other people's contact details. Cite an email source only as, for example,
@@ -255,4 +282,5 @@ If nothing needs changing, open no PR.
 ## 8. Final message (private to Jim)
 
 Short: the PR link and its label (or "no changes"); items skipped and why, including private
-ones such as conditional acceptances; questions; any source that was unavailable.
+ones such as conditional acceptances; the grant details still to collect (step 2c); any request for new citation figures (step 2h); questions; any source that was
+unavailable.
