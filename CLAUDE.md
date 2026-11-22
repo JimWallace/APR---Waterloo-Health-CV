@@ -185,7 +185,7 @@ joined with ". ")
 - Mentoring outside formal supervision (an early-career workshop, a mentoring program) → a
   `@service` record with `mentorship` among its levels; it prints under GRADUATE STUDENT
   SUPERVISION → Other Mentorship (and in its other lists).
-- Kinds that have no list yet (media has one now). The first time one arrives, add its heading to `main.tex` where
+- Kinds that have no list yet (media and external reviews have one now). The first time one arrives, add its heading to `main.tex` where
   given here (with `\keepwithnext`), in the same commit, and say so in the PR:
   - Session chair, moderator, panelist, discussant → `activities.bib`, level `sessionchair`,
     "Session Chair, Moderator and Panelist:" after "Conference Organizing Committee:".
