@@ -147,6 +147,13 @@ f. **Software stats** — run `python3 scripts/software_stats.py`. It clones the
    change table with the repositories as the source. If a clone fails, leave the file as it
    is and say so in the PR.
 
+f2. **Venue profile** — after adding or moving a journal article, run
+   `python3 scripts/venue_profile.py` and commit `data/venue-profile.tex` with the article
+   (`check_cv.py` warns until you do). A journal not yet in `data/venues.yaml` stops the
+   script: add it with its field from the journal's scope statement (health, hci or
+   multidisciplinary), and list it in the change table; when the field is unclear, ask in the
+   PR (`needs-review`).
+
 g. **Software DOIs** — Jim's repositories get a Zenodo DOI when a release is archived. For
    each software entry under `\addtocategory{software}` in `main.tex` that has a GitHub URL
    and no `doi`, look the repository up on Zenodo

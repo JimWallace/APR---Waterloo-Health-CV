@@ -1,0 +1,42 @@
+# The field of each journal in the `journal` category of main.tex, for the line at the
+# top of PUBLICATIONS that says how many articles appear in health, HCI and
+# multidisciplinary journals (both PDFs; the APR adds the review period).
+# scripts/venue_profile.py reads this file and scholar.bib and writes
+# data/venue-profile.tex; never edit that file by hand. check_cv.py warns when a journal
+# article's journal is not listed here, or when data/venue-profile.tex is out of step.
+#
+# name: the journal's name as it prints in the line (TeX; & is escaped for you).
+# field: health, hci or multidisciplinary, from the journal's own scope statement.
+# aka: other spellings of the journal field in scholar.bib (matched ignoring case,
+#      spaces and punctuation), in double quotes.
+journals:
+  - name: ACM Transactions on Computing for Healthcare
+    field: health
+    aka: ["ACM Trans. Comput. Healthcare"]
+  - name: BMC Medical Informatics and Decision Making
+    field: health
+  - name: BMJ Innovations
+    field: health
+  - name: Human Factors in Healthcare
+    field: health
+  - name: JMIR Formative Research
+    field: health
+    aka: ["JMIR Form Res"]
+  - name: JMIR Public Health and Surveillance
+    field: health
+  - name: Social Science & Medicine
+    field: health
+  - name: ACM Transactions on Computer-Human Interaction
+    field: hci
+    aka: ["ACM Trans. Comput.-Hum. Interact."]
+  - name: Computer Supported Cooperative Work (CSCW)
+    field: hci
+  - name: International Journal of Human-Computer Interaction
+    field: hci
+  - name: Personal and Ubiquitous Computing
+    field: hci
+  - name: Proceedings of the ACM on Human-Computer Interaction
+    field: hci
+    aka: ["Proc. ACM Hum.-Comput. Interact."]
+  - name: PLOS ONE
+    field: multidisciplinary

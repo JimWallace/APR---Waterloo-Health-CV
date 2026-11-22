@@ -90,6 +90,16 @@ new export (matched to `scholar.bib` by DOI, else title and year) and writes `da
 either file by hand, and don't commit the raw export. It is a citation metric, not an award: no
 `icon`, no `awards.bib` entry, no extra APR colour. Only I supply exports or change the threshold.
 
+**Venue profile** (`data/venues.yaml`, both PDFs): the line under the Google Scholar figures
+says how many journal articles are in health, HCI and multidisciplinary journals, naming the
+health and multidisciplinary ones (the APR adds the review period), so a health reader need
+not work out which venues are health research. `python3 scripts/venue_profile.py` writes it
+to `data/venue-profile.tex` from the `journal` category; never edit that file by hand.
+`check_cv.py` warns when it is out of step, or when a journal article's journal is not in
+`data/venues.yaml`: add the journal there with its `field` (health, hci or
+multidisciplinary, from the journal's own scope statement; ask in the PR when it is unclear)
+and rerun the script, in the same commit as the article.
+
 **Google Scholar figures** (the line at the top of PUBLICATIONS, both PDFs; the APR adds a
 sentence on reading them in HCI): from Jim's own profile (a screenshot or his message), with
 the date. Google Scholar can't be queried automatically, so only Jim supplies them; when the

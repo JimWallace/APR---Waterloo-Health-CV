@@ -82,6 +82,89 @@ class Software(unittest.TestCase):
         self.assertIn("W-software", warnings)
 
 
+VENUES_YAML = """journals:
+  - name: Health Journal & Review
+    field: health
+    aka: ["Health J. Rev."]
+  - name: Another Health Journal
+    field: health
+  - name: Proceedings of HCI
+    field: hci
+  - name: PLOS ONE
+    field: multidisciplinary
+"""
+
+
+class Venues(unittest.TestCase):
+    """data/venues.yaml and the generated data/venue-profile.tex (check_venues)."""
+    def setUp(self):
+        self.root = Path(tempfile.mkdtemp())
+        (self.root / "data").mkdir()
+        shutil.copy(cvlib.ROOT / "data" / "trainees.yaml", self.root / "data" / "trainees.yaml")
+        for name in check_cv.RECORD_FILES:
+            (self.root / name).write_text("", encoding="utf-8")
+        (self.root / "main.tex").write_text(
+            "\\setreviewperiod{2025}{2026}\n\\DeclareBibliographyCategory{journal}\n"
+            "\\addtocategory{journal}{a2020, b2025, c2026, d2027, e2026}\n"
+            "\\addtocategory{aprinclude}{d2027}\n\\addtocategory{aprnone}{e2026}\n",
+            encoding="utf-8")
+        (self.root / "scholar.bib").write_text(
+            "@article{a2020, title = {A}, year = {2020}, journal = {Health J. Rev.}}\n"
+            "@article{b2025, title = {B}, year = {2025}, journal = {Another Health Journal}}\n"
+            "@article{c2026, title = {C}, year = {2026}, journal = {Proceedings of {HCI}}}\n"
+            "@article{d2027, title = {D}, year = {2027}, journal = {Plos one}}\n"
+            "@article{e2026, title = {E}, year = {2026}, journal = {Proceedings of HCI}}\n",
+            encoding="utf-8")
+        (self.root / "data" / "venues.yaml").write_text(VENUES_YAML, encoding="utf-8")
+        self.saved = check_cv.ROOT
+        check_cv.ROOT = self.root
+
+    def tearDown(self):
+        check_cv.ROOT = self.saved
+        shutil.rmtree(self.root)
+
+    def venue_warnings(self):
+        return [w for w in check_cv.run()["warnings"] if w["code"] == "W-venues"]
+
+    def test_the_profile_counts_fields_and_the_review_period(self):
+        import venue_profile
+        text, problems = venue_profile.build(self.root)
+        self.assertEqual(problems, [])
+        self.assertIn("Of the 5 refereed journal articles below, 2 are in health journals "
+                      r"(\emph{Another Health Journal} and \emph{Health Journal \& Review}), "
+                      r"2 in an HCI journal and 1 in a multidisciplinary journal (\emph{PLOS ONE}).",
+                      text)
+        # b2025 and c2026 by year, d2027 by aprinclude; e2026 is in aprnone
+        self.assertIn(r"\ifAPR Of the 3 in the review period (2025--2026), 1 is in a health journal.\fi",
+                      text)
+
+    def test_the_plain_reader_matches_pyyaml(self):
+        import venue_profile
+        got = venue_profile.load_venues(self.root / "data" / "venues.yaml")
+        try:
+            import yaml  # noqa: F401
+        except ImportError:
+            self.assertEqual(got[0], {"name": "Health Journal & Review", "field": "health",
+                                      "aka": ["Health J. Rev."]})
+        self.assertEqual([v["field"] for v in got], ["health", "health", "hci", "multidisciplinary"])
+
+    def test_a_stale_profile_warns_and_a_fresh_one_does_not(self):
+        self.assertEqual(len(self.venue_warnings()), 1)
+        import venue_profile
+        (self.root / "data" / "venue-profile.tex").write_text(venue_profile.build(self.root)[0],
+                                                              encoding="utf-8")
+        self.assertEqual(self.venue_warnings(), [])
+
+    def test_a_journal_with_no_field_warns(self):
+        with (self.root / "scholar.bib").open("a", encoding="utf-8") as f:
+            f.write("@article{f2026, title = {F}, year = {2026}, journal = {Unknown Journal}}\n")
+        main = (self.root / "main.tex").read_text(encoding="utf-8")
+        (self.root / "main.tex").write_text(main + "\\addtocategory{journal}{f2026}\n",
+                                            encoding="utf-8")
+        keys = {w["key"] for w in self.venue_warnings()}
+        self.assertEqual(keys, {"f2026"})
+
+
 class SoftwareSentence(unittest.TestCase):
     def test_sentence(self):
         import software_stats
