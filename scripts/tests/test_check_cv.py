@@ -327,11 +327,11 @@ class GrantRecords(unittest.TestCase):
         self.assertEqual([k for k, _ in errs], ["when"])
         self.assertIn("submitted", errs[0][1])
 
-    def test_a_printed_submitted_application_must_be_complete(self):
-        errs = self.errors("@grant{thin, investigators = {\\me}, agency = {CIHR}, "
-                           "status = {Submitted}, submitted = {2026-09}}\n",
-                           "\\printgrants[Submitted]\n")
-        self.assertEqual(sorted(m.split(" has no ")[1] for _, m in errs), ["amount", "date", "title"])
+    def test_a_printed_submitted_application_may_have_gaps(self):
+        # missing details print as blank cells (template v0.9.1)
+        self.assertEqual(self.errors("@grant{thin, investigators = {\\me}, agency = {CIHR}, "
+                                     "status = {Submitted}, submitted = {2026-09}}\n",
+                                     "\\printgrants[Submitted]\n"), [])
 
     def test_a_decline_needs_its_decision_date(self):
         errs = self.errors("@grant{no, investigators = {\\me}, agency = {NFRF}, "

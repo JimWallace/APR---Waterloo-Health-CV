@@ -276,7 +276,6 @@ RECORD_FILES = ["grants.bib", "supervision.bib", "awards.bib", "service.bib", "a
 GRANT_ROLES = {"PI", "Co-PI", "Co-I", "Co-A"}
 GRANT_STATUSES = {"Submitted", "Declined", "Withdrawn"}
 GRANT_DAY_RE = re.compile(r"^\d{4}(-\d{2}(-\d{2})?)?$")
-SUBMITTED_PRINTED_RE = re.compile(r"^[^%\n]*\\printgrants\[Submitted\]", re.M)
 DATE_RE = re.compile(r"^\d{4}(-\d{2})?(/\d{4}(-\d{2})?)?$")
 # Course evaluation scores: Item=score pairs, comma-separated, scores out of 5
 SCORES_RE = re.compile(r"^[^=,]*[^=,\s]=[0-5](\.\d+)?(\s*,\s*[^=,]*[^=,\s]=[0-5](\.\d+)?)*$")
@@ -294,15 +293,14 @@ def check_records(records: dict, main_tex: str, err, warn) -> None:
         status = f.get("status")
         # grants.bib records every application (Jim, 2026-11-22). A funded grant has no status
         # and needs every printed field. An application (Submitted, Declined, Withdrawn) needs
-        # the date it went in; the rest may wait for Jim (scripts/grant_report.py --missing),
-        # except that a Submitted one must be complete once \printgrants[Submitted] is on.
+        # the date it went in; the rest may wait for Jim (scripts/grant_report.py --missing).
+        # A Submitted one prints under \printgrants[Submitted] with blank cells for what is
+        # missing (template v0.9.1; Jim, 2026-11-22).
         if status is not None and status not in GRANT_STATUSES:
             err("E-record", f"{where}: grant '{e.key}' status '{status}' should be one of "
                 f"{', '.join(sorted(GRANT_STATUSES))} (or no status for a funded grant)", e.key)
         if status is None:
             needed = ("investigators", "agency", "amount", "date", "title")
-        elif status == "Submitted" and SUBMITTED_PRINTED_RE.search(main_tex):
-            needed = ("investigators", "agency", "amount", "date", "title", "submitted")
         else:
             needed = ("investigators", "agency", "submitted")
         for k in needed:

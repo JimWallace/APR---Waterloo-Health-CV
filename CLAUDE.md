@@ -188,8 +188,8 @@ joined with ". ")
   application from 2025 on has `submitted` (when it went in: YYYY, YYYY-MM or YYYY-MM-DD), and
   once decided, `decided`. Order in the file doesn't matter; applications sit at its end.
   - Awaiting a decision: `status = {Submitted}`, with whatever is known so far; it prints
-    under "Submitted" (`\printgrants[Submitted]`, commented out in `main.tex` until every
-    Submitted entry has its title, amount and years). If it went in during the review period,
+    under "Submitted" (`\printgrants[Submitted]`), with blank cells for the details still to
+    come (Jim, 2026-11-22). If it went in during the review period,
     its key goes in `aprinclude`. The SPHS guidelines allow listing a grant "in submission"
     one year and as funded the next.
   - Funded: drop `status`, set the awarded amount and tenure from the notice of award, add

@@ -83,8 +83,8 @@ c. **Outlook** — with the Microsoft 365 connector, search Jim's mail since the
         missing; Jim can also open one with the "Grant application" issue form.
      2. **Every run**, for each open `grant-application` issue: apply the details Jim has
         given (in the issue or a comment) to its entry. A Submitted entry that went in during
-        the review period goes in `aprinclude`. Once every Submitted entry has its title,
-        amount and years, uncomment `\printgrants[Submitted]` in `main.tex`.
+        the review period goes in `aprinclude`. Submitted entries print under "Submitted"
+        with blank cells for what is still missing, so filling those gaps is what to chase.
      3. **Decisions**: search the mail for each Submitted entry's decision. Funded: drop
         `status`, set the awarded amount and tenure from the notice of award, add `decided`,
         and "Closes #N". Declined or withdrawn: `status = {Declined}` (or `{Withdrawn}`) and
