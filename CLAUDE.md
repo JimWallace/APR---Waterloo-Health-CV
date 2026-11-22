@@ -94,8 +94,9 @@ either file by hand, and don't commit the raw export. It is a citation metric, n
 in a touring exhibition, a classroom resource) gets a line under its entry, written by hand with
 a `% Source:` comment naming a public page from the organization that deployed it, an issue I
 wrote, or my email. Never a reach figure (players, downloads, schools) without a source that
-states it. The weekly job searches the `% Search:` names (`automation/weekly-update.md`, 2h);
-which works are listed is my call. `check_cv.py` fails on a key with no bib entry or one that
+states it. The weekly job searches the `% Search:` names (`automation/weekly-update.md`, 2h)
+and looks for new works to track (2i); it adds a new one only in a `needs-review` PR, because
+which works are tracked is my call. `check_cv.py` fails on a key with no bib entry or one that
 another detail file already covers.
 
 **Acceptance rates and impact factors** (in the entry's `note`, after any text already there,
