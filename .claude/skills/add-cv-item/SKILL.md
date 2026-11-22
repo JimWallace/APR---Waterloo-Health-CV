@@ -22,13 +22,17 @@ awards, grants and students is the source; cite it as "issue #N".
    connector is available. If no figure exists or can be found, add a `data/metrics.yaml` line
    so `scripts/missing_metrics.py` retries it later.
 3. **Grants, students and awards:** add a `@grant` entry to `grants.bib`, a `@supervision`
-   entry to `supervision.bib` or an `@award` entry to `awards.bib` (with `work = {key}` and
+   entry to `supervision.bib` or an `@award` entry to `awards.bib` (with a `level`, and with `work = {key}` and
    `icon = {award}` on that entry when it is for a paper or talk) (fields in `template/uwhealthcv.dbx`, examples in each file). No
    highlighting to add: it follows the dates. Amounts, agencies, roles, dates, titles and
    students' positions come only from Jim's message; ask in the PR if any is missing.
    **Service:** add a `@service` entry to `service.bib` (`title`, `level`, `date`); reviewing,
    program committees, editorial and organizing roles go in `activities.bib` the same way.
    **Other items:** add to the right list in `main.tex` with the matching `\hl…[years]` macro.
+   Submitted grants, trainee scholarships, nominations, review panels, external reviews,
+   session chairs, media, training, mentoring, leaves and student start years each have a
+   place in `CLAUDE.md` → "Where non-publication items go"; a kind with no list yet gets its
+   heading added to `main.tex` in the same commit.
 4. Branch `cv/issue-<N>-<slug>`, commit, run the `cv-verify` skill, push, open the PR with
    "Closes #N" and the label `cv-verify` chose, and reply on the issue with the PR link and
    any questions. If `gh pr create` fails, use the REST API as in
