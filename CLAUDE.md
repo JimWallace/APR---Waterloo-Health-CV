@@ -185,7 +185,7 @@ joined with ". ")
 - Mentoring outside formal supervision (an early-career workshop, a mentoring program) → a
   `@service` record with `mentorship` among its levels; it prints under GRADUATE STUDENT
   SUPERVISION → Other Mentorship (and in its other lists).
-- Kinds that have no list yet. The first time one arrives, add its heading to `main.tex` where
+- Kinds that have no list yet (media has one now). The first time one arrives, add its heading to `main.tex` where
   given here (with `\keepwithnext`), in the same commit, and say so in the PR:
   - Session chair, moderator, panelist, discussant → `activities.bib`, level `sessionchair`,
     "Session Chair, Moderator and Panelist:" after "Conference Organizing Committee:".
@@ -194,10 +194,12 @@ joined with ". ")
   - External tenure, promotion and program reviews → `activities.bib`, level `externalreview`,
     "External Tenure, Promotion and Program Reviews:" after "Review Panels and Expert
     Committees:". Institution and year only, never the candidate's name.
-  - Media interviews and coverage → a `scholar.bib` `@online` entry (`title`, `organization` =
-    the outlet, `date`, `url`; Jim's role in `note`, e.g. "Interviewed"), category `media`,
-    printed as a `\cvpart{Media and Public Engagement}` at the end of PRESENTATION TO SCHOLARLY
-    GROUPS, key in `aprservice` (public service). Only pieces that have been published.
+  - Media interviews and coverage → a `scholar.bib` `@misc` entry like
+    `uwnews2021symptomcheckers` (`author` = the outlet or publisher in double braces,
+    `title`, `year`, `month`, `howpublished` = "Outlet, date. \url{…}", and what it covers or
+    Jim's role in `note`, e.g. "Interviewed"), category `media` ("Media and Public
+    Engagement", the last part of PRESENTATION TO SCHOLARLY GROUPS); in the review period, key
+    in `aprservice` (public service). Only pieces that have been published.
   - Professional development and training (EDI, teaching, research ethics, supervision
     courses) → `service.bib`, level `training`, under a new `\cvsection{PROFESSIONAL
     DEVELOPMENT AND TRAINING}` before AREAS OF TEACHING EXPERTISE. The SPHS guidelines invite
