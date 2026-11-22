@@ -254,6 +254,47 @@ class Generators(unittest.TestCase):
                          ["final publication details (in press)"])
         self.assertNotIn("p2025", found)  # presentations are not checked
 
+    def test_detail_gaps(self):
+        # the "so what?" facts (CLAUDE.md -> Entry detail)
+        import gaps
+        self.append("scholar.bib",
+                    "@inproceedings{aw2025, title = {A}, year = {2025}, doi = {10.1/a}, pages = {1--2}, "
+                    "icon = {award}, note = {\\textbf{Best Paper Award}. Acceptance rate: 20\\%}}\n"
+                    "@inproceedings{at2025, title = {B}, year = {2025}, doi = {10.1/b}, pages = {1--2}, "
+                    "icon = {award}, note = {\\textbf{Best Paper Award} (top 1\\% of submissions). "
+                    "Acceptance rate: 20\\%}}\n"
+                    "@inproceedings{mu2025, title = {C}, year = {2025}, doi = {10.1/c}, pages = {1--2}, "
+                    "note = {Meetup. Acceptance rate: 50\\%}}\n"
+                    "@inproceedings{ws2025, title = {D}, year = {2025}, doi = {10.1/d}, pages = {1--2}, "
+                    "note = {Workshop proposal. Acceptance rate: 23\\%. 111 participants in person}}\n")
+        self.append("main.tex", "\\addtocategory{conference}{aw2025, at2025, mu2025, ws2025}\n")
+        self.write("service.bib",
+                   "@service{gc2025, title = {T}, level = {discipline, organizing}, date = {2025}, "
+                   "role = {General Chair}}\n"
+                   "@service{gc2026, title = {T}, level = {organizing}, date = {2026}, role = {General Chair}, "
+                   "note = {About 130 attendees. Almost 300 submissions.}}\n"
+                   "@service{ecw2026, title = {T}, level = {organizing, mentorship}, date = {2026}, "
+                   "role = {Early Career Workshop Chair}, note = {For 15 early-career researchers.}}\n"
+                   "@service{tpc2027, title = {T}, level = {organizing}, date = {2026/2027}, years = {2027}, "
+                   "role = {Technical Program Chair}}\n"
+                   "@service{gc2023, title = {T}, level = {organizing}, date = {2023}, role = {General Chair}}\n"
+                   "@service{pc2025, title = {T}, level = {programcommittee}, date = {2025}}\n")
+        self.write("activities.bib",
+                   "@service{ae2024, title = {J}, level = {editorial}, date = {2024/}, role = {Associate Editor}}\n"
+                   "@service{ae2025, title = {J}, level = {editorial}, date = {2025}, note = {12 submissions}}\n"
+                   "@service{ae2020, title = {J}, level = {editorial}, date = {2019/2020}}\n")
+        found = dict(gaps.gaps(self.root))
+        self.assertIn("award tier", found["aw2025"])
+        self.assertNotIn("award tier", found.get("at2025", []))
+        self.assertIn("attendance", found["mu2025"])
+        self.assertNotIn("attendance", found.get("ws2025", []))
+        self.assertEqual(found["gc2025"], ["attendance", "submissions"])
+        for key in ("gc2026", "ecw2026", "tpc2027", "gc2023", "pc2025", "ae2025", "ae2020"):
+            self.assertNotIn(key, found)  # complete, still to come, before the period, or not a chair
+        self.assertEqual(found["ae2024"], ["load"])  # ongoing through the period
+        self.write("data/gaps.yaml", "gc2025: submissions | not published | 2026-11-22\n")
+        self.assertEqual(dict(gaps.gaps(self.root))["gc2025"], ["attendance"])
+
     def test_metrics_yaml_none_and_unresolved(self):
         import gaps
         self.write("data/metrics.yaml", "c2025: none | Extended abstract | 2026-01-01\n"

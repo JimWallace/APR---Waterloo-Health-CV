@@ -168,6 +168,10 @@ just for us, so that I can address any missing data in any entry before it goes 
   `generate.py` and `check_cv.py` like the other generated files. Today: 59 entries
   (unresolved acceptance rates, three in-press papers, old abstracts without DOIs, students'
   start years and programs, defended committees without titles, four courses without SCP).
+- Since 2026-11-22 it also checks the "so what?" facts (`CLAUDE.md` → Entry detail): an
+  award's tier, how many took part in a workshop or meetup, the attendance and submissions
+  of an event Jim chaired in the review period, and an editorial role's load. The weekly
+  run's step k fills what a source states and opens a `cv-item` issue for the rest.
 - A gap that can't be filled (a term with no SCP survey) goes in `data/gaps.yaml`, Jim's
   list, like `data/metrics.yaml`'s `none`.
 - CI builds `Wallace-CV-gaps.pdf` on every PR (artifact and the `cv-preview` prerelease,
