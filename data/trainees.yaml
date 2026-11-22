@@ -91,6 +91,9 @@ trainees:
     variants: ["Ugaya Mazza, Luka"]
   - name: Marina Wada
   - name: George Wang
+  - name: Talia Wang   # Spring 2021 research assistant (supervision.bib wang2021ra); not George Wang
+    variants: ["Wang, Talia"]
+    level: undergrad
   - name: Ariel Weingarten
     variants: ["Weingarten, Ariel"]
   - name: Pearl Wiafe
