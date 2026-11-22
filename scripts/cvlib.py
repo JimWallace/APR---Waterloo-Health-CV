@@ -32,7 +32,7 @@ def config_value(dotted: str, default: str = "") -> str:
 # Categories that main.tex actually prints with \printcategory.
 # (workshops and thesis exist but their \printcategory lines are commented out.)
 PRINTED_CATEGORIES = [
-    "journal", "conference", "technicalreports", "other",
+    "journal", "conference", "abstracts", "technicalreports", "other", "media",
     "patent", "software", "invited", "presentations",
 ]
 # APR colour categories (see template/aprcv.sty). These do not print anything themselves.

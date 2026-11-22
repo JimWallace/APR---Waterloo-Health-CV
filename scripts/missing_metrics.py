@@ -20,7 +20,7 @@ sys.path.insert(0, os.path.dirname(__file__))
 from cvlib import ROOT, parse_bib, parse_categories  # noqa: E402
 
 METRIC = re.compile(r"Acceptance rate|Impact Factor", re.I)
-CATEGORIES = ("journal", "conference")
+CATEGORIES = ("journal", "conference", "abstracts")
 
 
 def load_status(path):

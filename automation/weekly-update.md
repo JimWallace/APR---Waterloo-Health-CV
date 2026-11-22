@@ -51,18 +51,61 @@ c. **Outlook** — with the Microsoft 365 connector, search Jim's mail since the
    office, or Jim's own confirmation) states it outright. If the connector isn't available,
    skip this and say so in your final message.
 
+   **The rest of the record** (added November 2026, after comparing Jim's CV with SPHS full
+   professors'). Also search the same window for these, and file them as `CLAUDE.md` → "Where
+   non-publication items go" says. Every one of them is `needs-review`.
+   - Invited talks, keynotes, seminars, guest lectures, panels: `invite you to speak`,
+     `seminar`, `guest lecture`, `panelist`, `keynote`. The talk goes under `invited` once it
+     has happened.
+   - Session chair, moderator, discussant: `session chair`, `chair a session`, `moderator`.
+   - Trainee scholarships and awards: `scholarship`, `OGS`, `CGS`, `Vanier`, `award`, with
+     the names in `supervision.bib`. Only an award letter (or the student forwarding it)
+     counts, not an application. Scholarships go in the student's `note`; prizes are
+     `level = {trainee}` awards.
+   - Nominations for Jim (teaching or supervision awards): `nomination`, `nominated`. Only
+     once the nomination has been submitted.
+   - Submitted grant applications: `ResearchNet`, `compliance review`, `application
+     submitted`, `submitted the complete application`, and decisions (`notice of decision`,
+     `funding decision`). A submission becomes a `status = {Submitted}` grant only with the
+     title, amount and role from Jim or the application. A decline is private: change
+     nothing, and tell Jim in your final message.
+     Each pending application is tracked as an open issue labelled `grant-application`
+     (`gh api 'repos/JimWallace/APR---Waterloo-Health-CV/issues?labels=grant-application&state=open'`).
+     For a new submission you find, open one: agency, program, competition and the date
+     it went in, nothing else (no title, team, amount or email text; the repo is public).
+     Once Jim has filled in its details, add its `@grant` entry with
+     `status = {Submitted}`. For an open one, look for its decision: if funded, update
+     the entry and close the issue; if declined, change nothing in the repo and tell Jim
+     privately, and he closes it.
+   - Review panels and expert or advisory committees: `review panel`, `committee member`,
+     `expert panel`, `Delphi`, `advisory board`.
+   - External tenure, promotion and program reviews: `external referee`, `external
+     assessment`, `tenure and promotion`, `program review`. Institution and year only.
+   - Media: `interview`, `podcast`, `Waterloo News`, `Daily Bulletin`, `UW Current`,
+     `reporter`. Add a piece once it is published (find it on the outlet's site); an
+     interview that hasn't run yet is a note in your final message.
+   - Training and professional development: `certificate`, `training`, `completed`, `TCPS`,
+     `bias in peer review`, `equitable recruitment`, `CTE`.
+   - Undergraduate research students (URA, Hallman, Globalink, co-op, honours thesis,
+     independent study): add them only when Jim confirms the student and role (ask in the
+     PR, and never add a person to `data/trainees.yaml` yourself).
+
    **PCS reviewing.** Also search `precisionconference.com` in the same window. Links in PCS
    mail contain `/<venue code>/committee/` when Jim holds a committee role (associate chair,
    associate editor, program committee) and `/<venue code>/reviewer/` when he reviews as an
    external referee. Count the distinct submissions per venue and role, and compare with
    `activities.bib`: a venue and year missing from the referee or program committee lines is a
    new item (extend the line's years); a committee load that the entry's `note` doesn't give
-   yet goes in the PR as a question for Jim. Record counts only, never submission numbers,
+   yet goes in the PR as a question for Jim. **Backfill:** while a review-period line (any
+   level) still has no review count in its `note`, search PCS mail for that venue and year
+   with no date limit, count the distinct submissions, and propose the count in the PR
+   (`needs-review`). Do one or two venues per run. Record counts only, never submission numbers,
    titles or other people's names (see "Private" under step 3).
 
 d. **Calendar** — with the same connector, list Jim's calendar events in the same window.
-   Look for talks he gave (invited talks, keynotes, seminars, panels), thesis defences and
-   examinations he sat on, and committee or program-committee meetings that show a role.
+   Look for talks he gave (invited talks, keynotes, seminars, panels), sessions he chaired,
+   thesis defences and examinations he sat on, training he took, and committee or
+   program-committee meetings that show a role.
    A calendar entry alone shows that something was scheduled, not that it happened or what
    his role was: add an item only when a matching email or issue confirms it, or the event
    itself names him as speaker/examiner and its date has passed. Otherwise make it a
@@ -109,8 +152,9 @@ For each item keep a one-line reason (it goes in the PR, or in your final messag
   adding a new one.
 - **Final?** Add papers only on final acceptance. Conditional acceptances and revise-and-resubmit
   are not CV items yet: mention them only in your final message.
-- **Private — never in the repo, the PR or an issue** (the repo is public): rejections, declined
-  or pending invitations, reviewing assignments for specific papers, program committee
+- **Private — never in the repo, the PR or an issue** (the repo is public): rejections (grant
+  declines included), declined or pending invitations, nominations not yet submitted, media
+  interviews not yet published, the names of tenure and promotion candidates, reviewing assignments for specific papers, program committee
   discussions, anything about a student beyond the name and degree that goes on the CV, email
   text, and other people's contact details. Cite an email source only as, for example,
   "acceptance email from CHI 2027 PC chairs, 2026-11-20".
@@ -146,6 +190,11 @@ Follow `CLAUDE.md` → Conventions. In short:
   `supervision.bib` (see the comments at the top of each file). **Other awards** → an `@award` entry in
   `awards.bib`; for a paper or talk, also `icon = {award}` on that entry (see the top of
   `awards.bib`).
+- **The rest of the record** (step 2c): trainee awards and scholarships, nominations,
+  submitted grants, review panels, external reviews, session chairs, media, training,
+  mentoring, leaves and student start years, each as `CLAUDE.md` → "Where non-publication
+  items go" says. Each award needs a `level`. A kind with no list yet gets its heading
+  added to `main.tex` in the same commit.
 - Commit additions and corrections to existing entries separately.
 
 ## 5. Verify
@@ -181,8 +230,10 @@ A rate or impact factor from a third-party compilation or aggregator site, or fr
 you inferred, is `needs-review`.
 
 Everything else is `needs-review`, with a **Questions for Jim** section of one-line yes/no
-questions: corrections to existing entries, grants, supervision changes, awards other than
-review recognitions, possible new trainees, anything unverifiable.
+questions: corrections to existing entries, grants (submitted ones included), supervision
+changes (start years and scholarships included), awards other than review recognitions,
+nominations, review panels, external reviews, session chairs, media, training, possible
+new trainees, review-count backfills, anything unverifiable.
 
 ## 7. Open the PR (REST)
 
