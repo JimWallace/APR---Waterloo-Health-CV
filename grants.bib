@@ -5,6 +5,17 @@
 %
 % In the APR version a grant is highlighted when its tenure overlaps the
 % review period, so there are no years to type twice.
+%
+% This file is also the record of every grant application (Jim, 22 November
+% 2026): it is the ground truth for reporting (scripts/grant_report.py).
+% - Funded: no status, every printed field; `submitted` (when it went in,
+%   YYYY, YYYY-MM or YYYY-MM-DD) for applications from 2025 on.
+% - Awaiting a decision: status = {Submitted}, `submitted`, and whatever is
+%   known; \printgrants[Submitted] prints these once it is on in main.tex.
+% - Not funded: status = {Declined} (or {Withdrawn}), `submitted` and
+%   `decided`. Never printed; kept for reporting.
+% `amount` is awarded for a funded grant and requested otherwise; `date` is
+% the tenure (awarded or applied for). Applications are at the end of the file.
 
 @grant{mitacs2026adhd,
   investigators = {\me and Leah Zhang-Kennedy},
@@ -13,6 +24,7 @@
   amount        = {10000},
   date          = {2026/2027},
   title         = {Home-Based Training for Children with ADHD},
+  submitted     = {2026-11-20},
 }
 
 @grant{graham2026mentalhealth,
@@ -22,6 +34,7 @@
   amount        = {35000},
   date          = {2026/2027},
   title         = {AI Adoption for Community Mental Health},
+  submitted     = {2026},
 }
 
 @grant{nrc2026aging,
@@ -31,6 +44,7 @@
   amount        = {320966},
   date          = {2026/2028},
   title         = {Aging in Place},
+  submitted     = {2025-09},
 }
 
 @grant{uwarts2026community,
@@ -40,6 +54,7 @@
   amount        = {10000},
   date          = {2026/2027},
   title         = {Future of Community Health Care},
+  submitted     = {2026-01-15},
 }
 
 @grant{cihr2025gacd,
@@ -49,6 +64,7 @@
   amount        = {100000},
   date          = {2025/2026},
   title         = {GACD Priority Announcement},
+  submitted     = {2025-03},
 }
 
 @grant{google2025llm,
@@ -320,4 +336,232 @@
   amount        = {5000},
   date          = {2015},
   title         = {Hallman URF},
+}
+
+% ======================================================================
+% Applications: awaiting a decision (status = {Submitted}) or not funded
+% (status = {Declined}). Built 22 November 2026 from Jim's 2025 and 2026
+% grant folders (green funded, yellow submitted, red not funded) and his
+% mail. Missing details are listed by scripts/grant_report.py --missing.
+% ======================================================================
+
+% ---------------------------------------------------------------- Submitted
+@grant{cihr2026fallproject,
+  investigators = {\me},
+  role          = {PI},
+  agency        = {CIHR Project Grant},
+  status        = {Submitted},
+  submitted     = {2026-09-09},
+  note          = {Fall 2026 competition; Jim is the Nominated Principal Applicant. Working title (June 2026): AI Readiness as Service-Level Capacity: A Longitudinal Study of Early-Phase Generative AI Adoption in Community-Based Care. Team, final title, amount and years from Jim (issue 135).},
+}
+
+@grant{sshrc2026insight,
+  investigators = {\me and Karen Cochrane},
+  role          = {PI},
+  agency        = {SSHRC Insight Grant},
+  status        = {Submitted},
+  submitted     = {2026-09},
+  note          = {2026 competition; Karen Cochrane is co-applicant. Title, amount and years from Jim (issue 136).},
+}
+
+@grant{digitalscience2026catalyst,
+  investigators = {\me},
+  agency        = {Digital Science Catalyst Grant},
+  status        = {Submitted},
+  submitted     = {2026-09-28},
+  note          = {2026 Catalyst Grant. Team, role, title, amount and years from Jim (issue 139).},
+}
+
+@grant{anthropic2026wellbeing,
+  investigators = {\me},
+  role          = {PI},
+  agency        = {Anthropic User Wellbeing Research Grants},
+  title         = {Evaluating Model Guidance to Informal Peer Supporters},
+  status        = {Submitted},
+  submitted     = {2026-10},
+  note          = {Anthropic confirmed the application on 5 October 2026. Team, amount and years from Jim (issue 140).},
+}
+
+@grant{nserc2026create,
+  investigators = {Oliver Schneider and \me and Michael Barnett-Cowan},
+  agency        = {NSERC CREATE},
+  title         = {INTREPID},
+  status        = {Submitted},
+  submitted     = {2026},
+  note          = {Led by Oliver Schneider; the Faculty of Health committed \$8,000 a year (September 2026). Full team and its order, Jim's role, amount and years from Jim (issue 141).},
+}
+
+% ---------------------------------------------------------------- Declined
+@grant{alsbc2026bridge,
+  investigators = {James Tung and \me and Chris Ullrich and Lisa Pokrajac},
+  agency        = {ALS Canada--Brain Canada Discovery Grant (Development Grant)},
+  title         = {BRIDGE},
+  status        = {Declined},
+  submitted     = {2026-07-03},
+  decided       = {2026-11-13},
+  note          = {PI James Tung. Jim's role, the team's order and amount to confirm.},
+}
+
+@grant{cihr2026springproject,
+  investigators = {\me},
+  agency        = {CIHR Project Grant},
+  status        = {Declined},
+  submitted     = {2026},
+  decided       = {2026},
+  note          = {Spring 2026 competition. Team, role, title and amount from Jim.},
+}
+
+@grant{msr2026futurework,
+  investigators = {\me},
+  agency        = {Microsoft Research (Future of Work)},
+  status        = {Declined},
+  submitted     = {2026},
+  decided       = {2026},
+  note          = {Team, role, title and amount from Jim.},
+}
+
+@grant{nfrf2026loi,
+  investigators = {Cosmin Munteanu and \me},
+  agency        = {NFRF},
+  status        = {Declined},
+  submitted     = {2026},
+  decided       = {2026-08},
+  note          = {Letter of intent with Cosmin Munteanu's team, not invited to a full application (August 2026). Jim's folder: NFRF-I. Stream, full team, role and title from Jim.},
+}
+
+@grant{bcc2026survivorship,
+  investigators = {\me},
+  agency        = {Breast Cancer Canada and AstraZeneca Matched Research Awards (Advancing Progress in Survivorship)},
+  status        = {Declined},
+  submitted     = {2026-08},
+  decided       = {2026},
+  note          = {Letter of intent; Cayley MacArthur on the team. PI, team, role and title from Jim.},
+}
+
+@grant{cirta2026,
+  investigators = {\me},
+  agency        = {CIRTA},
+  status        = {Declined},
+  submitted     = {2026},
+  decided       = {2026},
+  note          = {Program, team, role, title and amount from Jim.},
+}
+
+@grant{cityuhk2026,
+  investigators = {\me},
+  agency        = {CityUHK},
+  status        = {Declined},
+  submitted     = {2026},
+  decided       = {2026},
+  note          = {Program, team, role, title and amount from Jim.},
+}
+
+@grant{nserc2025rti,
+  investigators = {\me},
+  agency        = {NSERC Research Tools and Instruments},
+  status        = {Declined},
+  submitted     = {2025},
+  decided       = {2026},
+  note          = {Computing equipment (Jim's folder: NSERC RTI - Computer). Role, title and amount from Jim.},
+}
+
+@grant{nfrf2025exploration,
+  investigators = {\me},
+  agency        = {NFRF Exploration},
+  status        = {Declined},
+  submitted     = {2025},
+  decided       = {2026},
+  note          = {Team, role, title and amount from Jim.},
+}
+
+@grant{cihr2025fallproject,
+  investigators = {\me},
+  agency        = {CIHR Project Grant},
+  status        = {Declined},
+  submitted     = {2025},
+  decided       = {2026},
+  note          = {Fall 2025 competition. Team, role, title and amount from Jim.},
+}
+
+@grant{nserc2025create,
+  investigators = {Oliver Schneider and \me},
+  agency        = {NSERC CREATE},
+  title         = {INTREPID},
+  status        = {Declined},
+  submitted     = {2025},
+  decided       = {2026},
+  note          = {Led by Oliver Schneider; Jim was invited as a collaborator (July 2025). Full team, role and amount from Jim.},
+}
+
+@grant{sshrc2025aisandpit,
+  investigators = {\me},
+  agency        = {SSHRC AI Sandpit},
+  status        = {Declined},
+  submitted     = {2025},
+  decided       = {2025},
+  note          = {Team, role, title and amount from Jim.},
+}
+
+@grant{alsbc2025discovery,
+  investigators = {\me},
+  agency        = {ALS Canada--Brain Canada Discovery Grant},
+  status        = {Declined},
+  submitted     = {2025},
+  decided       = {2025},
+  note          = {Team, role, title and amount from Jim.},
+}
+
+@grant{nfrf2025transformation,
+  investigators = {\me},
+  agency        = {NFRF Transformation},
+  status        = {Declined},
+  submitted     = {2025},
+  decided       = {2025},
+  note          = {Led by the University of Manitoba. Team, role, title and amount from Jim.},
+}
+
+@grant{google2025researchaward,
+  investigators = {\me},
+  agency        = {Google Research Award},
+  status        = {Declined},
+  submitted     = {2025},
+  decided       = {2025},
+  note          = {Team, role, title and amount from Jim.},
+}
+
+@grant{globalfutures2025gi,
+  investigators = {\me},
+  agency        = {Global Futures},
+  status        = {Declined},
+  submitted     = {2025},
+  decided       = {2025},
+  note          = {With the Games Institute (Jim's folder: Global Futures - GI). Team, role, title and amount from Jim.},
+}
+
+@grant{globalfutures2025uwin,
+  investigators = {\me},
+  agency        = {Global Futures},
+  status        = {Declined},
+  submitted     = {2025},
+  decided       = {2025},
+  note          = {With UWIN (Jim's folder: Global Futures - UWIN). Team, role, title and amount from Jim.},
+}
+
+@grant{globalfutures2025lennart,
+  investigators = {\me},
+  agency        = {Global Futures},
+  status        = {Declined},
+  submitted     = {2025},
+  decided       = {2025},
+  note          = {Jim's folder: Global Futures - Lennart. Team, role, title and amount from Jim.},
+}
+
+@grant{mccss2024boldsky,
+  investigators = {\me},
+  agency        = {Ontario Ministry of Children, Community and Social Services},
+  title         = {Bold Sky},
+  status        = {Declined},
+  submitted     = {2024-10},
+  decided       = {2025-06},
+  note          = {Bold Sky intimate partner violence prevention game, with Veen Wong and partners. Team, role and amount from Jim.},
 }
