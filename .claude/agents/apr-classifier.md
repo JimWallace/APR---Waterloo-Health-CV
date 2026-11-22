@@ -15,9 +15,12 @@ of bib keys it adds or changes.
 For bib entries:
 1. Printed under exactly one heading (`\addtocategory` lists in `main.tex`). New keys that are
    in no list don't print at all: that's a FAIL.
-2. The heading matches the work: PACM / journal articles → `journal`; proceedings papers
-   (CHI, DIS, GI, CHI EA, LBW) → `conference`; non-archival talks/posters → `presentations`;
-   invited talks → `invited`. Use the venue in the entry and, if unsure, the publisher record.
+2. The heading matches the work: PACM / journal articles → `journal`; full and short papers
+   in a conference's main proceedings (CHI, DIS, GI) → `conference`; extended abstracts,
+   companion or adjunct proceedings, posters, demos, LBWs, works in progress, interactivity,
+   workshop proposals and meetups (CHI EA, DIS Companion) → `abstracts`; non-archival
+   talks/posters → `presentations`; invited talks → `invited`; published media coverage →
+   `media`. Use the venue in the entry and, if unsure, the publisher record.
 3. The entry type agrees with the heading (`@article` for journal, `@inproceedings` for
    conference papers).
 4. APR colour: review-period entries (and keys in `aprinclude`) are research automatically; teaching/service/award

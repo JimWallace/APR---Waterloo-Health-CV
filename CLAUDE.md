@@ -99,6 +99,11 @@ and looks for new works to track (2i); it adds a new one only in a `needs-review
 which works are tracked is my call. `check_cv.py` fails on a key with no bib entry or one that
 another detail file already covers.
 
+**Google Scholar figures** (the line at the top of PUBLICATIONS, both PDFs; the APR adds a
+sentence on reading them in HCI): from Jim's own profile (a screenshot or his message), with
+the date. Google Scholar can't be queried automatically, so only Jim supplies them; when the
+date is more than a year old, or an APR is due, ask him for new figures in the PR.
+
 **Acceptance rates and impact factors** (in the entry's `note`, after any text already there,
 joined with ". ")
 - Conference papers and PACM articles (CSCW, CHI PLAY, GROUP, ISS):
@@ -119,8 +124,15 @@ joined with ". ")
 **Which heading** (`\addtocategory` in `main.tex`; each printed entry in exactly one of these)
 - `journal`: journal articles, including Proceedings of the ACM (PACM HCI, CSCW, CHI PLAY,
   GROUP, ISS) and JMIR etc.
-- `conference`: full and short papers in conference proceedings (CHI, DIS, GI, CHI EA, LBWs,
-  workshop papers published in proceedings).
+- `conference`: full and short papers (notes included) in a conference's main proceedings
+  (CHI, DIS, GI, UIST, ISS, workshop papers published as full papers). Prints as "Refereed
+  Conference Proceedings (Full and Short Papers)", prefix C.
+- `abstracts`: refereed work in extended abstracts, companion or adjunct proceedings, and
+  anything the venue calls a poster, demo, late-breaking work, work in progress,
+  interactivity, workshop proposal or meetup (CHI EA, DIS Companion, CSCW Companion, UbiComp
+  Adjunct, an ISS demo). Prints as "Refereed Conference Proceedings (Extended Abstracts,
+  Posters, Demos and Workshops)", prefix A. Peers' CVs keep abstracts apart from papers, and
+  so does this one (Jim, 2026-11-22). When a record could be either, ask in the PR.
 - `presentations`: self-initiated talks/posters without archival proceedings. `invited`: invited talks.
 - `technicalreports`, `other`, `patent`, `software` as named.
 - `unprinted`: entries I keep in `scholar.bib` but do not print. Listing a key here records
@@ -138,14 +150,28 @@ joined with ". ")
   Always give `[years]`.
 
 **Where non-publication items go**
-- Awards → ACADEMIC AWARDS AND DISTINCTIONS (newest first, `\hlaward[YYYY]{…}`).
 - Reviewing, PCs, editorial roles, organizing → a `@service` entry in `activities.bib` with `level`
-  grantreferee, journal, organizing, programcommittee or referee (the SCHOLARLY AND PROFESSIONAL
-  ACTIVITIES lists). A chair role that is also scholarship stays in `service.bib` with
+  editorial, panel, grantreferee, journal, organizing, programcommittee or referee (the SCHOLARLY
+  AND PROFESSIONAL ACTIVITIES lists). `editorial`: editor, associate editor, guest editor or
+  editorial board ("Editorial Responsibilities", listed first). `panel`: a seat on a review
+  panel or committee (NFRF, an NSERC evaluation group, a CIHR committee) or an expert,
+  advisory or Delphi panel ("Review Panels and Expert Committees"); ad hoc reviewing stays
+  grantreferee, journal or referee. A load goes in the entry's `note` ("12 submissions";
+  "38 reviews in 2025--26"). A chair role that is also scholarship stays in `service.bib` with
   `level = {discipline, organizing}`, so it prints in both sections. Only the ACM membership
   line of that section is still hand-written in `main.tex`.
 - Awards → an `@award` in `awards.bib` (`title` as it should print, `date` = the year,
-  `count` for "3 ×" lines). Order within a year follows the file.
+  `count` for "3 ×" lines, and `level`, which picks the list it prints in). Order within a
+  year follows the file. Levels (`\printawards[level]` in `main.tex`; `check_cv.py` fails on
+  an award with no printed level):
+  `research` (awards for Jim's work, paper awards included), `teaching` (teaching and
+  supervision awards, and nominations for them), `recognition` (review and service
+  recognitions), `trainee` (an award a student won for work Jim supervised; prints under
+  GRADUATE STUDENT SUPERVISION → Trainee Awards, key also in `apralsoteaching`). A
+  nomination is listed once it has been submitted, as "(nominee)" or "(nominated by …)" in
+  the title, and only with Jim's confirmation. A student's scholarship (CGS, OGS, Vanier) is
+  not an `@award`: it goes in that student's `@supervision` `note` ("Held an NSERC Canada
+  Graduate Scholarship, 2025--2026").
 - Service → a `@service` entry in `service.bib`: `title` as it prints, `level` (one of the
   `\printservice{…}` lists in `main.tex`: school, faculty, university, discipline) and
   `date = {2023/2025}` for the years served (`2021/` for an ongoing role: "2021 -- Present",
@@ -155,12 +181,47 @@ joined with ". ")
   scholarship goes in `apralsoresearch`.
 - Grants → a `@grant` entry in `grants.bib`. List investigators in the order given, with
   `\me` for me and `role` for my role; `amount` is digits only; `date = {2026/2028}` is the
-  tenure. Order in the file doesn't matter.
+  tenure. Order in the file doesn't matter. An application awaiting a decision has
+  `status = {Submitted}` and `date` = the tenure applied for; it prints under "Submitted"
+  (`\printgrants[Submitted]`, commented out in `main.tex` until the first one), and if it was
+  submitted in the review period its key goes in `aprinclude`. The SPHS guidelines allow
+  listing a grant "in submission" one year and as funded the next. Each pending
+  application also has an open issue labelled `grant-application` (agency, program, date
+  only) until its decision; Jim fills in the details there. When it is funded, drop
+  `status` and set the awarded amount and tenure. When it is declined, change nothing in
+  the repo (a public PR deleting it would reveal the outcome): tell Jim privately, and he
+  removes it.
 - Supervision → a `@supervision` entry in `supervision.bib`: `author = {Family, Given}`,
   `degree` (one of the `\printsupervision{…}` lists in `main.tex`), and `status = {In progress}`
   until they finish, then `date`, `title` and, when I know it, `position`. `program` is
-  the student's graduate program (Computer Science), printed after the name. External
+  the student's graduate program (Computer Science), printed after the name. `started` is
+  the year they began (printed "2019 -- 2022" or "In progress (since 2023)"), from Jim or an
+  official record only. Scholarships the student held go in `note` (see Awards). External
   examining stays as lines in `main.tex`.
+- Mentoring outside formal supervision (an early-career workshop, a mentoring program) → a
+  `@service` record with `mentorship` among its levels; it prints under GRADUATE STUDENT
+  SUPERVISION → Other Mentorship (and in its other lists).
+- Kinds that have no list yet (media and external reviews have one now). The first time one arrives, add its heading to `main.tex` where
+  given here (with `\keepwithnext`), in the same commit, and say so in the PR:
+  - Session chair, moderator, panelist, discussant → `activities.bib`, level `sessionchair`,
+    "Session Chair, Moderator and Panelist:" after "Conference Organizing Committee:".
+    Service to the profession, research second (`apralsoresearch`), as for program committees.
+    Peers list these as a sign of standing; the SPHS guidelines count them as service.
+  - External tenure, promotion and program reviews → `activities.bib`, level `externalreview`,
+    "External Tenure, Promotion and Program Reviews:" after "Review Panels and Expert
+    Committees:". Institution and year only, never the candidate's name.
+  - Media interviews and coverage → a `scholar.bib` `@misc` entry like
+    `uwnews2021symptomcheckers` (`author` = the outlet or publisher in double braces,
+    `title`, `year`, `month`, `howpublished` = "Outlet, date. \url{…}", and what it covers or
+    Jim's role in `note`, e.g. "Interviewed"), category `media` ("Media and Public
+    Engagement", the last part of PRESENTATION TO SCHOLARLY GROUPS); in the review period, key
+    in `aprservice` (public service). Only pieces that have been published.
+  - Professional development and training (EDI, teaching, research ethics, supervision
+    courses) → `service.bib`, level `training`, under a new `\cvsection{PROFESSIONAL
+    DEVELOPMENT AND TRAINING}` before AREAS OF TEACHING EXPERTISE. The SPHS guidelines invite
+    faculty to note EDI training.
+  - Leaves (sabbatical, parental, medical) → a row in the EMPLOYMENT HISTORY table, e.g.
+    "2025 -- 2026 & Sabbatical leave & University of Waterloo", with dates from Jim only.
 - Committees (students I don't supervise) → a `@committee` entry in `committees.bib`:
   `author = {Family, Given}`, `degree` (MASc and MMath count with MSc), `program`, `date` = the
   years served (`2024/2026`, or `2025/` while ongoing), `note` (`defended 2026`, `in progress`),
@@ -200,11 +261,11 @@ documents; neither is in this public repo.
   councils, keynotes, society awards and government or professional committees as evidence
   of scholarship, and says a service role such as chairing a curriculum committee or editing
   a journal "may also provide indirect evidence for scholarship or teaching". Jim's standing
-  decision: every `activities.bib` entry with level grantreferee, journal, programcommittee or
-  referee also goes in `apralsoresearch` (the second list in `main.tex`); add new ones there
+  decision: every `activities.bib` entry with level editorial, panel, grantreferee, journal,
+  programcommittee, referee or sessionchair also goes in `apralsoresearch` (the second list in `main.tex`); add new ones there
   in the same commit. Other second colours are Jim's call.
 - Workshops and meetups I co-organize at a conference (CHI EA proposals with a DOI) print
-  under `conference` like any paper; don't also add an `activities.bib` organizing entry,
+  under `abstracts`; don't also add an `activities.bib` organizing entry,
   which would list the same work twice. Jim's standing decision on their colours: a
   workshop proposal is scholarship with service second (its key in `apralsoservice`); a
   meetup is service, with teaching (mentorship) and research (its key in `aprservice`,
