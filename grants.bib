@@ -5,6 +5,17 @@
 %
 % In the APR version a grant is highlighted when its tenure overlaps the
 % review period, so there are no years to type twice.
+%
+% This file is also the record of every grant application (Jim, 22 November
+% 2026): it is the ground truth for reporting (scripts/grant_report.py).
+% - Funded: no status, every printed field; `submitted` (when it went in,
+%   YYYY, YYYY-MM or YYYY-MM-DD) for applications from 2025 on.
+% - Awaiting a decision: status = {Submitted}, `submitted`, and whatever is
+%   known; \printgrants[Submitted] prints these once it is on in main.tex.
+% - Not funded: status = {Declined} (or {Withdrawn}), `submitted` and
+%   `decided`. Never printed; kept for reporting.
+% `amount` is awarded for a funded grant and requested otherwise; `date` is
+% the tenure (awarded or applied for). Applications are at the end of the file.
 
 @grant{mitacs2026adhd,
   investigators = {\me and Leah Zhang-Kennedy},
@@ -13,6 +24,7 @@
   amount        = {10000},
   date          = {2026/2027},
   title         = {Home-Based Training for Children with ADHD},
+  submitted     = {2026-11-20},
 }
 
 @grant{graham2026mentalhealth,
@@ -31,6 +43,7 @@
   amount        = {320966},
   date          = {2026/2028},
   title         = {Aging in Place},
+  submitted     = {2025-09},
 }
 
 @grant{uwarts2026community,
@@ -40,6 +53,7 @@
   amount        = {10000},
   date          = {2026/2027},
   title         = {Future of Community Health Care},
+  submitted     = {2026-01-15},
 }
 
 @grant{cihr2025gacd,
@@ -49,6 +63,7 @@
   amount        = {100000},
   date          = {2025/2026},
   title         = {GACD Priority Announcement},
+  submitted     = {2025-03},
 }
 
 @grant{google2025llm,
