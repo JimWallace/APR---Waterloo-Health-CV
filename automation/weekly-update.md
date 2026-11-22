@@ -83,8 +83,8 @@ c. **Outlook** — with the Microsoft 365 connector, search Jim's mail since the
         missing; Jim can also open one with the "Grant application" issue form.
      2. **Every run**, for each open `grant-application` issue: apply the details Jim has
         given (in the issue or a comment) to its entry. A Submitted entry that went in during
-        the review period goes in `aprinclude`. Once every Submitted entry has its title,
-        amount and years, uncomment `\printgrants[Submitted]` in `main.tex`.
+        the review period goes in `aprinclude`. Submitted entries print under "Submitted"
+        with blank cells for what is still missing, so filling those gaps is what to chase.
      3. **Decisions**: search the mail for each Submitted entry's decision. Funded: drop
         `status`, set the awarded amount and tenure from the notice of award, add `decided`,
         and "Closes #N". Declined or withdrawn: `status = {Declined}` (or `{Withdrawn}`) and
@@ -146,6 +146,13 @@ f. **Software stats** — run `python3 scripts/software_stats.py`. It clones the
    ("Software stats YYYY-MM-DD"); the numbers come from the repositories, so list it in the
    change table with the repositories as the source. If a clone fails, leave the file as it
    is and say so in the PR.
+
+f2. **Venue profile** — after adding or moving a journal article, run
+   `python3 scripts/venue_profile.py` and commit `data/venue-profile.tex` with the article
+   (`check_cv.py` warns until you do). A journal not yet in `data/venues.yaml` stops the
+   script: add it with its field from the journal's scope statement (health, hci or
+   multidisciplinary), and list it in the change table; when the field is unclear, ask in the
+   PR (`needs-review`).
 
 g. **Software DOIs** — Jim's repositories get a Zenodo DOI when a release is archived. For
    each software entry under `\addtocategory{software}` in `main.tex` that has a GitHub URL
