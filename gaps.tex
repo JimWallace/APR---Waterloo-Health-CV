@@ -1,0 +1,10 @@
+% Review copy of the CV, for Jim only: the APR version with missing data marked in
+% orange (a colour none of the APR highlights use), so every gap can be filled before
+% the CV goes out. Never submit it. What counts as missing: scripts/gaps.py (written
+% to data/gaps.tex); gaps Jim accepts go in data/gaps.yaml. The template also marks a
+% grant's blank cells and an undefined \cvnumber. CI builds it as Wallace-CV-gaps.pdf
+% (the PR's artifact and the cv-preview prerelease, never cv-latest).
+% On Overleaf: Menu > Main document > gaps.tex, then Recompile.
+\PassOptionsToPackage{apr}{aprcv}
+\def\cvshowgaps{}
+\input{main}

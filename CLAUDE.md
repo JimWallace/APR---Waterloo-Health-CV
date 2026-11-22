@@ -14,7 +14,7 @@ LaTeX CV in the University of Waterloo Faculty of Health format. The repo has tw
 - **My CV** (everything else): content and my settings. `latexmkrc` puts `template/` on TeX's
   search path, so `main.tex` just says `\usepackage{uwhealthcv}`.
 
-One source, two PDFs:
+One source, two PDFs (and a review copy):
 
 - `main.tex` compiles to the plain Faculty of Health CV.
 - `apr.tex` compiles `main.tex` with the `apr` option: adds the "A Note on…" sections and colours
@@ -28,6 +28,11 @@ One source, two PDFs:
   and `committees.bib` the thesis committees I sit on (`@committee`).
   The fields are described in `template/uwhealthcv.dbx`. They print sorted, and the APR
   colours come from their dates, so there are no years to keep in step by hand.
+- `gaps.tex` compiles the APR version as a review copy for me only: missing data is marked
+  in orange (the template's `gaps` mode; a colour no APR highlight uses) so I can fill it in
+  before the CV goes out. CI builds it as `Wallace-CV-gaps.pdf` (PR artifact and
+  `cv-preview`, never `cv-latest`) and lists the gaps in the job summary. Never submit it,
+  and never put content in `gaps.tex`.
 - `apr-formatting.tex` holds my settings for the APR version (highlight strength and style).
 - My trainees are everyone in `supervision.bib` plus `data/trainees.yaml`, which adds the other
   trainees (undergraduates, RAs) and extra spellings. The checker flags a supervised student
@@ -109,6 +114,10 @@ change; `check_cv.py` warns W-generated until you do. Never edit its output by h
   count worth a name is one that changes as the record grows; fixed facts (an acceptance
   rate, a grant's amount) and figures the repo doesn't hold (SciVal topic totals) stay typed.
 - `data/citation-impact.tex`, from `data/citation-impact.yaml` (below).
+- `data/gaps.tex`: what each entry is missing (`scripts/gaps.py` has the rules: DOI, pages,
+  acceptance rate or JIF, in-press details; students' program, start year, thesis title,
+  position; defended committees' titles; courses' enrolment and SCP), printed only in the
+  review copy (`gaps.tex`, above). A gap I accept as unfillable goes in `data/gaps.yaml`; only I add lines.
 A venue or agency missing from `data/venues.yaml` or `data/funders.yaml` stops its generator
 (W-venues, W-funders): add it with its `field` or `sector` and a `source`, from the evidence
 `automation/weekly-update.md` step f3 sets out, in the same commit as the entry that needs it;

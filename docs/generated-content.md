@@ -151,3 +151,27 @@ What should move to the template repository, and in what order:
 - Funders I could not tag with confidence (`unclassified`, never printed): Graham Seed Fund,
   NAR Catalyst, CIRTA. Also check: Propel CDPI, Games Institute and Global Futures as
   `university`; Global Water Futures as `nse`.
+
+## Missing data: the review copy
+
+Jim, 2026-11-22: "make sure that missing data is obvious, maybe a different highlight colour
+just for us, so that I can address any missing data in any entry before it goes in."
+
+- `gaps.tex` compiles the APR version with the template's `gaps` mode (`\def\cvshowgaps{}`,
+  template v0.10.0). Missing data prints in orange, a colour none of the four APR highlights
+  use: an orange **Missing** tag and the list under the entry ("Missing: DOI, pages"), and
+  an orange box in a grant's blank amount, tenure, agency, title or role cell or for an
+  undefined `\cvnumber`. `main.pdf` and `apr.pdf` are unchanged: without the mode the
+  template prints none of it.
+- What counts as missing is the CV's rule, not the template's: `scripts/gaps.py` writes
+  `data/gaps.tex` (`\setentrygap{key}{…}`) from the records, so it stays in step through
+  `generate.py` and `check_cv.py` like the other generated files. Today: 59 entries
+  (unresolved acceptance rates, three in-press papers, old abstracts without DOIs, students'
+  start years and programs, defended committees without titles, four courses without SCP).
+- A gap that can't be filled (a term with no SCP survey) goes in `data/gaps.yaml`, Jim's
+  list, like `data/metrics.yaml`'s `none`.
+- CI builds `Wallace-CV-gaps.pdf` on every PR (artifact and the `cv-preview` prerelease,
+  never `cv-latest`) and lists the gaps in the job summary; the weekly PR says how many
+  entries have gaps and which it filled.
+- Until the template release with `gaps` mode reaches `template/`, `data/gaps.tex` defines
+  `\setentrygap` and `\cvgap` as no-ops, so the review copy builds but shows no marks.

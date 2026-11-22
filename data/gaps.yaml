@@ -1,0 +1,7 @@
+# Gaps Jim knows can't be filled, kept out of the review copy (gaps.tex ->
+# Wallace-CV-gaps.pdf). scripts/gaps.py reads this; only Jim adds lines.
+#
+# key: field, field | reason | date
+# fields: doi, pages, metric (acceptance rate or impact factor), inpress, program,
+#   started, date, title, position, enrolment, responses, scp
+# e.g.  hlth230w2020: responses, scp | no SCP survey that term | 2026-11-22

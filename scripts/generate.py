@@ -11,6 +11,7 @@ machine and CI can check it (check_cv.py calls check() and warns W-generated):
     data/funders.tex          scripts/funder_profile.py  data/funders.yaml, grants.bib
     data/cv-numbers.tex       scripts/cv_numbers.py      all of the above, data/citation-impact.yaml
     data/citation-impact.tex  scripts/citation_impact.py data/citation-impact.yaml
+    data/gaps.tex             scripts/gaps.py            the .bib files, data/metrics.yaml, data/gaps.yaml
 
 Left out: scripts/software_stats.py (clones repositories over the network; the weekly run
 calls it) and importing a SciVal export (python3 scripts/citation_impact.py EXPORT.csv,
@@ -26,6 +27,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 import citation_impact  # noqa: E402
 import cv_numbers  # noqa: E402
 import funder_profile  # noqa: E402
+import gaps  # noqa: E402
 import venue_profile  # noqa: E402
 from cvlib import ROOT  # noqa: E402
 
@@ -35,6 +37,7 @@ GENERATORS = [
     (funder_profile, Path("data") / "funders.yaml"),
     (cv_numbers, None),
     (citation_impact, Path("data") / "citation-impact.yaml"),
+    (gaps, None),
 ]
 
 

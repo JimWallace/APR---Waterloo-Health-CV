@@ -231,14 +231,68 @@ class Generators(unittest.TestCase):
     def test_stale_files_warn_until_regenerated(self):
         stale = {w["msg"].split(" ", 1)[0] for w in self.codes("W-generated")}
         self.assertEqual(stale, {"data/venue-profile.tex", "data/funders.tex",
-                                 "data/cv-numbers.tex", "data/citation-impact.tex"})
+                                 "data/cv-numbers.tex", "data/citation-impact.tex",
+                                 "data/gaps.tex"})
         self.regenerate()
         self.assertEqual(self.codes("W-generated"), [])
         # a new trainee-led paper changes the counts, so cv-numbers goes stale
         self.append("scholar.bib", "@misc{p2026, author = {Kim*, Bo}, title = {I}, year = {2026}}\n")
         self.append("main.tex", "\\addtocategory{presentations}{p2026}\n")
         stale = {w["msg"].split(" ", 1)[0] for w in self.codes("W-generated")}
-        self.assertEqual(stale, {"data/cv-numbers.tex"})
+        self.assertEqual(stale, {"data/cv-numbers.tex"})  # a misc entry has no gaps to list
+
+    # ---------------------------------------------------------------- gaps
+    def test_paper_gaps(self):
+        import gaps
+        found = dict(gaps.gaps(self.root))
+        # none of the test papers has a DOI, pages or a rate
+        self.assertEqual(found["j2025"], ["DOI", "pages", "acceptance rate or impact factor"])
+        self.append("scholar.bib", "@article{j2026, title = {J}, year = {2026}, doi = {10.1/j}, "
+                    "articleno = {3}, note = {In press. Journal Impact Factor (2025): 4.0}}\n")
+        self.append("main.tex", "\\addtocategory{journal}{j2026}\n")
+        self.assertEqual(dict(gaps.gaps(self.root))["j2026"],
+                         ["final publication details (in press)"])
+        self.assertNotIn("p2025", found)  # presentations are not checked
+
+    def test_metrics_yaml_none_and_unresolved(self):
+        import gaps
+        self.write("data/metrics.yaml", "c2025: none | Extended abstract | 2026-01-01\n"
+                   "c2026: unresolved | not found | 2026-02-02\n")
+        found = dict(gaps.gaps(self.root))
+        self.assertNotIn("acceptance rate or impact factor", found["c2025"])
+        self.assertIn("acceptance rate or impact factor (unresolved, last looked for 2026-02-02)",
+                      found["c2026"])
+
+    def test_record_gaps_and_accepted_gaps(self):
+        import gaps
+        self.write("supervision.bib",
+                   "@supervision{s1, author = {Kim, Bo}, degree = {PhD}, status = {In progress}}\n"
+                   "@supervision{s2, author = {Lee, Ann}, degree = {MSc}, program = {CS}, "
+                   "started = {2019}, date = {2021}, title = {T}}\n"
+                   "@supervision{s3, author = {Roe, Cy}, degree = {PDF}, started = {2020}, "
+                   "date = {2022}, title = {T}, position = {P}}\n")
+        self.write("committees.bib", "@committee{c1, author = {X, Y}, degree = {PhD}, date = {2024}, "
+                   "note = {defended 2025}}\n@committee{c2, degree = {PhD}, date = {2019}, count = {3}}\n")
+        self.write("courses.bib", "@course{k1, course = {HLTH 1}, date = {2026-01}, enrolment = {40}}\n")
+        found = dict(gaps.gaps(self.root))
+        self.assertEqual(found["s1"], ["program", "start year"])
+        self.assertEqual(found["s2"], ["position"])
+        self.assertNotIn("s3", found)  # a postdoc has no program
+        self.assertEqual(found["c1"], ["thesis title"])
+        self.assertNotIn("c2", found)
+        self.assertEqual(found["k1"], ["SCP responses", "SCP scores"])
+        self.write("data/gaps.yaml", "k1: responses, scp | no survey that term | 2026-11-22\n"
+                   "s1: started | not known\n")
+        found = dict(gaps.gaps(self.root))
+        self.assertNotIn("k1", found)
+        self.assertEqual(found["s1"], ["program"])
+
+    def test_the_gap_file_escapes_tex(self):
+        import gaps
+        self.write("courses.bib", "@course{k1, course = {HLTH 1}, date = {2026-01}}\n")
+        text, _ = gaps.build(self.root)
+        self.assertIn(r"\setentrygap{k1}{enrolment, SCP responses, SCP scores}", text)
+        self.assertIn(r"\providecommand\setentrygap[2]{}", text)
 
     def test_the_real_files_are_in_step(self):
         problems, stale = generate.check(cvlib.ROOT)

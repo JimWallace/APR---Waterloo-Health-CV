@@ -153,7 +153,9 @@ f2. **Generated files** — after every edit, run `python3 scripts/generate.py` 
    quote (`data/cv-numbers.tex`) and the citation-impact lines; the narratives print the
    counts with `\cvnumber{…}`, so a new paper or grant updates them without touching
    Jim's text. List each rewritten file in the change table with "scripts/generate.py" as
-   the source. A W-numbers warning (a number hard-coded in a narrative) is Jim's to fix:
+   the source. `data/gaps.tex` (the review copy's orange "Missing:" lines) is one of the
+   files it rewrites: say in the PR how many entries have gaps
+   (`python3 scripts/gaps.py --list`) and which this PR filled. A W-numbers warning (a number hard-coded in a narrative) is Jim's to fix:
    suggest the `\cvnumber` in the PR (hard rule 3).
 
 f3. **Tag new venues and funders** — a journal article or `conference`/`abstracts` entry
