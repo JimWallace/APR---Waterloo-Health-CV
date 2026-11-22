@@ -97,6 +97,18 @@ g. **Software DOIs** — Jim's repositories get a Zenodo DOI when a release is a
    correction to an existing entry, so it gets its own commit. Leave other entries that cite
    the same repository (e.g. the `wallace2026interdisciplinary` report) for Jim to decide.
 
+h. **Deployment impact** — `data/impact.tex` lists, in its `% Search:` comments, the names
+   of work that is used beyond its paper (Quantum Cats, …). For each name, search Jim's mail
+   (same window as 2c) and the web (news and outreach pages of the organizations using it:
+   IQC, museums, science centres, school boards). A new venue, programme, release or reach
+   figure goes on that entry's line only when an official page or message from the organization
+   deploying it states it outright; give it on the `% Source:` comment. Anything else (a partner
+   that is "interested", a figure from a colleague's email, plans) is a question for Jim.
+   Adding a line to the existing one is an addition; changing what it already says is a
+   correction (its own commit). Adding a new entry or search name to the file is Jim's call:
+   suggest it in the PR. Also check that the entry's URL still resolves to the work, and
+   report a dead or redirected link as a question.
+
 ## 3. Triage
 
 For each item keep a one-line reason (it goes in the PR, or in your final message if private).

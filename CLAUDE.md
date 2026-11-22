@@ -90,6 +90,14 @@ new export (matched to `scholar.bib` by DOI, else title and year) and writes `da
 either file by hand, and don't commit the raw export. It is a citation metric, not an award: no
 `icon`, no `awards.bib` entry, no extra APR colour. Only I supply exports or change the threshold.
 
+**Deployment impact** (`data/impact.tex`, both PDFs): work used beyond its paper (a game
+in a touring exhibition, a classroom resource) gets a line under its entry, written by hand with
+a `% Source:` comment naming a public page from the organization that deployed it, an issue I
+wrote, or my email. Never a reach figure (players, downloads, schools) without a source that
+states it. The weekly job searches the `% Search:` names (`automation/weekly-update.md`, 2h);
+which works are listed is my call. `check_cv.py` fails on a key with no bib entry or one that
+another detail file already covers.
+
 **Acceptance rates and impact factors** (in the entry's `note`, after any text already there,
 joined with ". ")
 - Conference papers and PACM articles (CSCW, CHI PLAY, GROUP, ISS):
