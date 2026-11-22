@@ -1,0 +1,30 @@
+name: Grant application
+description: Record a grant application (submitted, funded or not). The weekly update adds it to grants.bib, the record of every application.
+title: "Submitted grant: "
+labels: [grant-application]
+body:
+  - type: input
+    id: agency
+    attributes:
+      label: Agency and program
+      placeholder: "CIHR Project Grant, Fall 2026 competition"
+    validations:
+      required: true
+  - type: input
+    id: submitted
+    attributes:
+      label: When it went in
+      placeholder: "2026-09-09 (or 2026-09, or 2026)"
+    validations:
+      required: true
+  - type: textarea
+    id: details
+    attributes:
+      label: Details
+      description: >-
+        Whatever you have now; the rest can follow in a comment. Title; investigators in
+        order, with your role (PI, Co-PI, Co-I, Co-A); amount requested; years applied for.
+        When the decision comes: funded (amount and years awarded) or not, with the date.
+        Everything here is public, and grants.bib keeps declined applications too.
+    validations:
+      required: false

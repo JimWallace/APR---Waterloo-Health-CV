@@ -273,6 +273,9 @@ def run(only: set[str] | None = None) -> dict:
 RECORD_FILES = ["grants.bib", "supervision.bib", "awards.bib", "service.bib", "activities.bib", "courses.bib",
                 "committees.bib"]
 GRANT_ROLES = {"PI", "Co-PI", "Co-I", "Co-A"}
+GRANT_STATUSES = {"Submitted", "Declined", "Withdrawn"}
+GRANT_DAY_RE = re.compile(r"^\d{4}(-\d{2}(-\d{2})?)?$")
+SUBMITTED_PRINTED_RE = re.compile(r"^[^%\n]*\\printgrants\[Submitted\]", re.M)
 DATE_RE = re.compile(r"^\d{4}(-\d{2})?(/\d{4}(-\d{2})?)?$")
 # Course evaluation scores: Item=score pairs, comma-separated, scores out of 5
 SCORES_RE = re.compile(r"^[^=,]*[^=,\s]=[0-5](\.\d+)?(\s*,\s*[^=,]*[^=,\s]=[0-5](\.\d+)?)*$")
@@ -287,13 +290,34 @@ def check_records(records: dict, main_tex: str, err, warn) -> None:
         if e.type != "grant":
             err("E-record", f"{where}: '{e.key}' is @{e.type}; grants.bib holds @grant entries", e.key)
             continue
-        for k in ("investigators", "agency", "amount", "date", "title"):
+        status = f.get("status")
+        # grants.bib records every application (Jim, 2026-11-22). A funded grant has no status
+        # and needs every printed field. An application (Submitted, Declined, Withdrawn) needs
+        # the date it went in; the rest may wait for Jim (scripts/grant_report.py --missing),
+        # except that a Submitted one must be complete once \printgrants[Submitted] is on.
+        if status is not None and status not in GRANT_STATUSES:
+            err("E-record", f"{where}: grant '{e.key}' status '{status}' should be one of "
+                f"{', '.join(sorted(GRANT_STATUSES))} (or no status for a funded grant)", e.key)
+        if status is None:
+            needed = ("investigators", "agency", "amount", "date", "title")
+        elif status == "Submitted" and SUBMITTED_PRINTED_RE.search(main_tex):
+            needed = ("investigators", "agency", "amount", "date", "title", "submitted")
+        else:
+            needed = ("investigators", "agency", "submitted")
+        for k in needed:
             if not f.get(k):
                 err("E-record", f"{where}: grant '{e.key}' has no {k}", e.key)
+        for k in ("submitted", "decided"):
+            if f.get(k) and not GRANT_DAY_RE.match(f[k]):
+                err("E-record", f"{where}: grant '{e.key}' {k} '{f[k]}' should be YYYY, YYYY-MM "
+                    "or YYYY-MM-DD", e.key)
+        if status in ("Declined", "Withdrawn") and not f.get("decided"):
+            err("E-record", f"{where}: grant '{e.key}' is {status} but has no decided date "
+                "(YYYY, YYYY-MM or YYYY-MM-DD)", e.key)
         inv = [x.strip() for x in re.split(r"\s+and\s+", f.get("investigators", ""))]
         if inv.count("\\me") != 1:
             err("E-record", f"{where}: grant '{e.key}' must list \\me exactly once in investigators", e.key)
-        if f.get("role") not in GRANT_ROLES:
+        if (status is None or f.get("role")) and f.get("role") not in GRANT_ROLES:
             warn("W-record", f"{where}: grant '{e.key}' has role '{f.get('role')}', not one of "
                  f"{', '.join(sorted(GRANT_ROLES))}", e.key)
         if f.get("amount") and not f["amount"].isdigit():

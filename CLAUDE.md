@@ -170,18 +170,26 @@ joined with ". ")
   ("2017, 2019 -- 2021"); optional `role` prints after the years ("General Chair"). The lists
   sort newest first and are highlighted from the dates; a leadership role that is also
   scholarship goes in `apralsoresearch`.
-- Grants → a `@grant` entry in `grants.bib`. List investigators in the order given, with
-  `\me` for me and `role` for my role; `amount` is digits only; `date = {2026/2028}` is the
-  tenure. Order in the file doesn't matter. An application awaiting a decision has
-  `status = {Submitted}` and `date` = the tenure applied for; it prints under "Submitted"
-  (`\printgrants[Submitted]`, commented out in `main.tex` until the first one), and if it was
-  submitted in the review period its key goes in `aprinclude`. The SPHS guidelines allow
-  listing a grant "in submission" one year and as funded the next. Each pending
-  application also has an open issue labelled `grant-application` (agency, program, date
-  only) until its decision; Jim fills in the details there. When it is funded, drop
-  `status` and set the awarded amount and tenure. When it is declined, change nothing in
-  the repo (a public PR deleting it would reveal the outcome): tell Jim privately, and he
-  removes it.
+- Grants → a `@grant` entry in `grants.bib`, which is also **the record of every grant
+  application I make, funded or not: the ground truth for my reporting** (Jim, 2026-11-22;
+  declines are recorded in full, in public, by his decision). List investigators in the order
+  given, with `\me` for me and `role` for my role; `amount` is digits only (awarded if funded,
+  requested otherwise); `date = {2026/2028}` is the tenure (awarded, or applied for). Every
+  application from 2025 on has `submitted` (when it went in: YYYY, YYYY-MM or YYYY-MM-DD), and
+  once decided, `decided`. Order in the file doesn't matter; applications sit at its end.
+  - Awaiting a decision: `status = {Submitted}`, with whatever is known so far; it prints
+    under "Submitted" (`\printgrants[Submitted]`, commented out in `main.tex` until every
+    Submitted entry has its title, amount and years). If it went in during the review period,
+    its key goes in `aprinclude`. The SPHS guidelines allow listing a grant "in submission"
+    one year and as funded the next.
+  - Funded: drop `status`, set the awarded amount and tenure from the notice of award, add
+    `decided`.
+  - Not funded: `status = {Declined}` (or `{Withdrawn}`) and `decided`. These never print.
+  Each pending application also has an open issue labelled `grant-application` where Jim
+  gives the details; close it when the decision is recorded. `python3 scripts/grant_report.py`
+  reports on the record (`--period 2025 2026` for an APR, `--missing` for details still to
+  collect); `check_cv.py` checks statuses and dates. A change to an existing grant
+  (extension, top-up, new end date) is a correction: its own commit, from the agency's letter.
 - Supervision → a `@supervision` entry in `supervision.bib`: `author = {Family, Given}`,
   `degree` (one of the `\printsupervision{…}` lists in `main.tex`), and `status = {In progress}`
   until they finish, then `date`, `title` and, when I know it, `position`. `program` is
@@ -320,7 +328,8 @@ that is followed by a list; never use `\newpage` (use `\sectionbreak`).
 - Every PR body has a table of the changes (what, where, source).
 - `gh pr create` and other GraphQL-based `gh` commands can be blocked in Claude sessions;
   use the REST API (`gh api repos/JimWallace/APR---Waterloo-Health-CV/pulls …`).
-- The repo is public: never put email text, rejections, or private details in commits,
+- The repo is public: never put email text, rejections (other than grant decisions, which
+  `grants.bib` records by Jim's decision), or private details in commits,
   PRs or issues.
 
 ## Sources I use
