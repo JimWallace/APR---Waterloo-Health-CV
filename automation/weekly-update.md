@@ -167,6 +167,42 @@ h. **Citation figures** — never query Google Scholar (it can't be done reliabl
    an attached screenshot), with the date he took them, as its own commit
    (`needs-review`); a SciVal export goes through `scripts/citation_impact.py`.
 
+i. **Deployment impact** — `data/impact.tex` tracks, in its `% Search:` comments, work that
+   is used beyond its paper (Quantum Cats, …). For each name, search Jim's mail
+   (same window as 2c) and the web (news and outreach pages of the organizations using it:
+   IQC, museums, science centres, school boards). A new venue, programme, release or reach
+   figure goes on that entry's line only when an official page or message from the organization
+   deploying it states it outright; give it on the `% Source:` comment. Anything else (a partner
+   that is "interested", a figure from a colleague's email, plans) is a question for Jim.
+   Adding a line to the existing one is an addition; changing what it already says is a
+   correction (its own commit). Also check that the entry's URL still resolves to the work,
+   and report a dead or redirected link as a question.
+
+j. **New deployments to track** — look for work of Jim's that others now use and that
+   `data/impact.tex` doesn't track yet:
+   - **Mail** (same window as 2c): `exhibit`, `exhibition`, `museum`, `science centre`,
+     `outreach`, `classroom`, `curriculum`, `teachers`, `educator`, `deploy`, `deployment`,
+     `adopt`, `pilot`, `rollout`, `partners`, `permission to use`, `using your`, `port`,
+     `relaunch`, `licence`, `featured`, plus the title of each entry under
+     `\addtocategory{software}` in `main.tex`.
+   - **Web**: each software title and repository, and the titles of Jim's papers that
+     describe a system, game or toolkit, with words like museum, exhibition, classroom,
+     school, hospital, public health unit, deployed or adopted. On GitHub, forks or
+     dependents of his repositories by an organization (not an individual).
+   A candidate is real when an organization other than Jim's lab (a university institute, museum,
+   school board, health agency, company) uses or distributes the work, and a public page from
+   it or an official message says so. For each one:
+   - If the work has a `scholar.bib` entry, add a tracking block to `data/impact.tex`
+     (`% Search:`, `% Source:`, and a line only with what that source states), as for
+     Quantum Cats.
+   - If it doesn't (the game or tool itself was never listed), add its entry as `CLAUDE.md`
+     says for software, with authors only from a credits list, README or page you retrieved,
+     then the block.
+   - Always put it in "Questions for Jim" ("Track X? Its deployment line says …") and label
+     the PR `needs-review`: which works are tracked is Jim's call, so he confirms each new one.
+   A colleague's mention of interest, a plan or a pending agreement is not a deployment yet:
+   note it in your final message only.
+
 ## 3. Triage
 
 For each item keep a one-line reason (it goes in the PR, or in your final message if private).

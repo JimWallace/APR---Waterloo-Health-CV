@@ -109,6 +109,7 @@ def run(only: set[str] | None = None) -> dict:
     check_records(records, main_src, err, warn)
     check_awards(records["awards.bib"], bib, err, main_src)
     check_software(cats, by_key, err, warn)
+    check_impact(cats, by_key, err, warn)
     record_keys = {e.key for rb in records.values() for e in rb.entries}
     all_keys = Counter(e.key for e in bib.entries)
     for rb in records.values():
@@ -147,7 +148,7 @@ def run(only: set[str] | None = None) -> dict:
         for k, n in Counter(ks).items():
             if n > 1:
                 warn("W-repeat", f"'{k}' is listed {n} times in \\addtocategory{{{c}}}", k)
-    unknown = set(cats) - set(PRINTED_CATEGORIES) - set(APR_CATEGORIES) - {"workshops", "thesis", UNPRINTED}
+    unknown = set(cats) - set(PRINTED_CATEGORIES) - set(APR_CATEGORIES) - {"workshops", "thesis", UNPRINTED, "aprnoteaching"}
     for c in sorted(unknown):
         warn("W-cat", f"category '{c}' is not printed or used for APR colours")
 
@@ -229,6 +230,9 @@ def run(only: set[str] | None = None) -> dict:
         also = set(cats.get("apralsoteaching", [])) | set(cats.get("aprteaching", []))
         include = set(cats.get("aprinclude", []))  # treated as dated in the review period
         excluded = set(cats.get("aprnone", []))
+        # aprnoteaching (main.tex): Jim's decision that a trainee's work is counted in the
+        # period but not as teaching (e.g. trainee work from long before it).
+        noteach = set(cats.get("aprnoteaching", []))
         for key, cs in printed_in.items():
             if key not in by_key or key in excluded:
                 continue
@@ -237,7 +241,7 @@ def run(only: set[str] | None = None) -> dict:
             if not in_period:
                 continue
             has_trainee = any(is_marked_trainee(a) for a in e.authors)
-            if has_trainee and key not in also:
+            if has_trainee and key not in also and key not in noteach:
                 warn("W-aprteach", f"'{key}' ({e.year}) has a trainee author but is not in apralsoteaching", key)
         # An entry whose main colour is service or award (a meetup: service, with
         # mentorship as teaching) is teaching by Jim's decision, not by a trainee.
@@ -435,6 +439,43 @@ def check_software(cats: dict, by_key: dict, err, warn) -> None:
     if set(have) != set(keys):
         warn("W-software", "data/software-stats.tex does not match data/software.yaml; "
              "run python3 scripts/software_stats.py")
+
+
+def check_impact(cats: dict, by_key: dict, err, warn) -> None:
+    """data/impact.tex (hand-maintained deployment lines) names printed scholar.bib
+    entries, each once, with a source, and none that another detail file covers:
+    \\setentrydetail keeps only the last line for a key."""
+    path = ROOT / "data" / "impact.tex"
+    if not path.exists():
+        return
+    lines = path.read_text(encoding="utf-8").splitlines()
+    printed = {k for c, ks in cats.items() if c != UNPRINTED for k in ks}
+    other = set()
+    for name in ("software-stats.tex", "citation-impact.tex"):
+        f = ROOT / "data" / name
+        if f.exists():
+            other |= set(re.findall(r"^\\setentrydetail\{([^}]*)\}", f.read_text(encoding="utf-8"), re.M))
+    seen = set()
+    for i, line in enumerate(lines):
+        m = re.match(r"\\setentrydetail\{([^}]*)\}", line)
+        if not m:
+            continue
+        k = m.group(1)
+        if k not in by_key:
+            err("E-impact", f"data/impact.tex has a line for '{k}', which is not in scholar.bib", k)
+        elif k not in printed:
+            warn("W-impact", f"data/impact.tex has a line for '{k}', which is in no printed category", k)
+        if k in seen:
+            err("E-impact", f"data/impact.tex has more than one line for '{k}'", k)
+        if k in other:
+            err("E-impact", f"'{k}' has a line in data/impact.tex and in a generated detail file; "
+                "only one prints", k)
+        seen.add(k)
+        j = i - 1
+        while j >= 0 and lines[j].startswith("%") and not lines[j].startswith("% Source:"):
+            j -= 1
+        if j < 0 or not lines[j].startswith("% Source:"):
+            warn("W-impact", f"data/impact.tex: the line for '{k}' has no '% Source:' comment above it", k)
 
 
 def check_awards(awards, bib, err, main_tex: str = "") -> None:
