@@ -278,7 +278,7 @@ def run(only: set[str] | None = None) -> dict:
 RECORD_FILES = ["grants.bib", "supervision.bib", "awards.bib", "service.bib", "activities.bib", "courses.bib",
                 "committees.bib"]
 GRANT_ROLES = {"PI", "Co-PI", "Co-I", "Co-A"}
-GRANT_STATUSES = {"Submitted", "Declined", "Withdrawn"}
+GRANT_STATUSES = {"Submitted", "Rejected", "Withdrawn"}
 GRANT_DAY_RE = re.compile(r"^\d{4}(-\d{2}(-\d{2})?)?$")
 DATE_RE = re.compile(r"^\d{4}(-\d{2})?(/\d{4}(-\d{2})?)?$")
 # Course evaluation scores: Item=score pairs, comma-separated, scores out of 5
@@ -296,7 +296,7 @@ def check_records(records: dict, main_tex: str, err, warn) -> None:
             continue
         status = f.get("status")
         # grants.bib records every application (Jim, 2026-11-22). A funded grant has no status
-        # and needs every printed field. An application (Submitted, Declined, Withdrawn) needs
+        # and needs every printed field. An application (Submitted, Rejected, Withdrawn) needs
         # the date it went in; the rest may wait for Jim (scripts/grant_report.py --missing).
         # A Submitted one prints under \printgrants[Submitted] with blank cells for what is
         # missing (template v0.9.1; Jim, 2026-11-22).
@@ -314,7 +314,7 @@ def check_records(records: dict, main_tex: str, err, warn) -> None:
             if f.get(k) and not GRANT_DAY_RE.match(f[k]):
                 err("E-record", f"{where}: grant '{e.key}' {k} '{f[k]}' should be YYYY, YYYY-MM "
                     "or YYYY-MM-DD", e.key)
-        if status in ("Declined", "Withdrawn") and not f.get("decided"):
+        if status in ("Rejected", "Withdrawn") and not f.get("decided"):
             err("E-record", f"{where}: grant '{e.key}' is {status} but has no decided date "
                 "(YYYY, YYYY-MM or YYYY-MM-DD)", e.key)
         inv = [x.strip() for x in re.split(r"\s+and\s+", f.get("investigators", ""))]

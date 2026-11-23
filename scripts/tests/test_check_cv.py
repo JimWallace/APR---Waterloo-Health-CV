@@ -336,17 +336,17 @@ class GrantRecords(unittest.TestCase):
 
     def test_a_decline_needs_its_decision_date(self):
         errs = self.errors("@grant{no, investigators = {\\me}, agency = {NFRF}, "
-                           "status = {Declined}, submitted = {2025}}\n")
+                           "status = {Rejected}, submitted = {2025}}\n")
         self.assertEqual([k for k, _ in errs], ["no"])
         self.assertIn("decided", errs[0][1])
         self.assertEqual(self.errors("@grant{no, investigators = {\\me}, agency = {NFRF}, "
-                                     "status = {Declined}, submitted = {2025}, decided = {2026-03}}\n"), [])
+                                     "status = {Rejected}, submitted = {2025}, decided = {2026-03}}\n"), [])
 
     def test_an_unknown_status_or_bad_date_is_an_error(self):
         errs = self.errors("@grant{odd, investigators = {\\me}, agency = {NFRF}, "
-                           "status = {Rejected}, submitted = {Sept 2025}, decided = {2026}}\n")
+                           "status = {Declined}, submitted = {Sept 2025}, decided = {2026}}\n")
         self.assertEqual(len(errs), 2)
-        self.assertTrue(any("status 'Rejected'" in m for _, m in errs))
+        self.assertTrue(any("status 'Declined'" in m for _, m in errs))
         self.assertTrue(any("submitted 'Sept 2025'" in m for _, m in errs))
 
 

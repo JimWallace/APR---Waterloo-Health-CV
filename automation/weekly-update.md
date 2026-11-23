@@ -87,7 +87,7 @@ c. **Outlook** — with the Microsoft 365 connector, search Jim's mail since the
         with blank cells for what is still missing, so filling those gaps is what to chase.
      3. **Decisions**: search the mail for each Submitted entry's decision. Funded: drop
         `status`, set the awarded amount and tenure from the notice of award, add `decided`,
-        and "Closes #N". Declined or withdrawn: `status = {Declined}` (or `{Withdrawn}`) and
+        and "Closes #N". Rejected or withdrawn: `status = {Rejected}` (or `{Withdrawn}`) and
         `decided`, and "Closes #N". Jim decided (22 November 2026) that declines are
         recorded in full, in this public repo; still quote no email text.
      4. A funded change to an existing grant (an extension, a top-up, a new end date) is a

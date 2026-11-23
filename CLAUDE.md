@@ -252,7 +252,7 @@ joined with ". ")
     one year and as funded the next.
   - Funded: drop `status`, set the awarded amount and tenure from the notice of award, add
     `decided`.
-  - Not funded: `status = {Declined}` (or `{Withdrawn}`) and `decided`. These never print.
+  - Not funded: `status = {Rejected}` (or `{Withdrawn}`) and `decided`. These never print.
   Each pending application also has an open issue labelled `grant-application` where Jim
   gives the details; close it when the decision is recorded. `python3 scripts/grant_report.py`
   reports on the record (`--period 2025 2026` for an APR, `--missing` for details still to
