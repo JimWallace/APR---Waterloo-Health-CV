@@ -110,3 +110,41 @@ trainees:
   - name: Jagger Nast
     variants: ["Nast, Jagger"]
     level: undergrad
+  - name: Kaitlyn Li   # not Christina Li; MSc / GRA, Sept 2023 -- Jan 2024 (2023-24 APR)
+    variants: ["Li, Kaitlyn"]
+  - name: Shail Patel
+    level: undergrad   # undergraduate thesis, Sept 2016 -- Apr 2017 (2017 APR)
+    from: 2016
+    to: 2017
+  - name: Talia Wong
+    level: undergrad   # URA, May -- Aug 2021 (2021-22 APR)
+    from: 2021
+    to: 2021
+  - name: Atharva Gangal
+    level: undergrad   # URA, Sept -- Dec 2022 (2021-22 APR)
+    from: 2022
+    to: 2022
+  - name: Tianhao Yao
+    level: undergrad   # URA, Jan -- Apr 2023 (2023-24 APR)
+    from: 2023
+    to: 2023
+  - name: Ryan Lam
+    level: undergrad   # URA, Sept -- Dec 2023 (2023-24 APR)
+    from: 2023
+    to: 2023
+  - name: Wendy Xu
+    level: undergrad   # URA, May -- Aug 2024 (2023-24 APR)
+    from: 2024
+    to: 2024
+  - name: Ali Raza Zaidi
+    level: undergrad   # URA, May -- Aug 2024 (2023-24 APR)
+    from: 2024
+    to: 2024
+  - name: Abdullah Shahid
+    level: undergrad   # URA, May -- Aug 2024 (2023-24 APR)
+    from: 2024
+    to: 2024
+  - name: Rena Yang
+    level: undergrad   # URA, May -- Aug 2024 (2023-24 APR)
+    from: 2024
+    to: 2024
