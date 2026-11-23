@@ -89,15 +89,11 @@ funders:
   # and other universities').
   - name: University of Waterloo
     sector: university
-    agency: ["UW", "UW CIHR RIF", "UW HSS SSHRC", "UW Hallman URA", "UW Trailblazer", "UW IRPG-EU", "UW Arts Antagonism and Intimidation in Academia Seed Grant", "Games Institute", "Global Futures", "Propel CDPI", "UW/SSHRC Explore Grant"]
+    agency: ["UW", "UW CIHR RIF", "UW HSS SSHRC", "UW Hallman URA", "UW Trailblazer", "UW IRPG-EU", "UW Arts Antagonism and Intimidation in Academia Seed Grant", "Games Institute", "Global Futures", "Propel CDPI", "UW/SSHRC Explore Grant", "UW CRE-MSD Seed Grant"]
   - name: City University of Hong Kong
     sector: university
     agency: ["CityUHK"]
   # Not yet classified: Jim to say (listed in the PR).
-  - name: CRE-MSD
-    sector: unclassified
-    agency: ["UW CRE-MSD Seed Grant"]
-    source: "Centre of Research Expertise for the Prevention of Musculoskeletal Disorders, hosted at Waterloo; whether its seed grants count as university or government funds is Jim's call"
   - name: Graham Seed Fund
     sector: unclassified
     agency: ["Graham Seed Fund"]
