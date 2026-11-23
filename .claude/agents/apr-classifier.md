@@ -44,7 +44,7 @@ For edits to `main.tex` outside the category lists:
 For entries in `grants.bib` / `supervision.bib` / `awards.bib` / `service.bib` / `activities.bib`: the `date` (a grant's tenure, a student's
 completion) or `status = {In progress}` is what decides the colour, so check it matches what
 Jim wrote; a student's `degree` must be one that `main.tex` prints with `\printsupervision`.
-A grant with `status = {Declined}` or `{Withdrawn}` never prints and needs no colour; one with
+A grant with `status = {Rejected}` or `{Withdrawn}` never prints and needs no colour; one with
 `status = {Submitted}` that went in (`submitted`) during the review period belongs in `aprinclude`.
 7. Formatting matches the neighbouring lines (table columns, `\cvitem` / `\item`, `$\times$` counts).
 7b. A new `data/venues.yaml` record's `field`, or `data/funders.yaml` record's `sector`, fits

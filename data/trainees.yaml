@@ -112,6 +112,10 @@ trainees:
     level: undergrad
   - name: Kaitlyn Li   # not Christina Li; MSc / GRA, Sept 2023 -- Jan 2024 (2023-24 APR)
     variants: ["Li, Kaitlyn"]
+  - name: Kayla Vitasa   # MSW student, research assistant on Bold Sky (2026)
+    variants: ["Vitasa, Kayla"]
+  - name: Sarah Sleiman   # Bold Sky research team (2026); role to confirm
+    variants: ["Sleiman, Sarah"]
   - name: Shail Patel
     level: undergrad   # undergraduate thesis, Sept 2016 -- Apr 2017 (2017 APR)
     from: 2016

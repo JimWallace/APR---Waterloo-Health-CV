@@ -37,7 +37,7 @@ funders:
   # The tri-agency and federal programs.
   - name: NSERC
     sector: nse
-    agency: ["NSERC", "NSERC CREATE", "NSERC CRD", "NSERC Research Tools and Instruments"]
+    agency: ["NSERC", "NSERC CREATE", "NSERC CRD", "NSERC Research Tools and Instruments", "NSERC Engage"]
   - name: SSHRC
     sector: ssh
     agency: ["SSHRC-IDG", "SSHRC Insight Grant", "SSHRC AI Sandpit"]
@@ -59,6 +59,10 @@ funders:
   - name: Ontario Ministry of Children, Community and Social Services
     sector: government
     agency: ["Ontario Ministry of Children, Community and Social Services"]
+  - name: Ontario Early Researcher Awards
+    sector: government
+    agency: ["Ontario Early Researcher Award"]
+    source: "Ontario government program (https://www.ontario.ca/page/early-researcher-awards)"
   # Industry and industry-partnership programs.
   - name: Mitacs
     sector: industry
@@ -85,7 +89,7 @@ funders:
   # and other universities').
   - name: University of Waterloo
     sector: university
-    agency: ["UW", "UW CIHR RIF", "UW HSS SSHRC", "UW Hallman URA", "UW Trailblazer", "UW IRPG-EU", "UW Arts Antagonism and Intimidation in Academia Seed Grant", "Games Institute", "Global Futures", "Propel CDPI"]
+    agency: ["UW", "UW CIHR RIF", "UW HSS SSHRC", "UW Hallman URA", "UW Trailblazer", "UW IRPG-EU", "UW Arts Antagonism and Intimidation in Academia Seed Grant", "Games Institute", "Global Futures", "Propel CDPI", "UW/SSHRC Explore Grant", "UW CRE-MSD Seed Grant"]
   - name: City University of Hong Kong
     sector: university
     agency: ["CityUHK"]

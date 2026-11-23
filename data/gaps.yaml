@@ -6,3 +6,6 @@
 #   started, date, title, position, enrolment, responses, scp, tier (an award's tier),
 #   attendance, submissions, load (an editorial role's load)
 # e.g.  hlth230w2020: responses, scp | no SCP survey that term | 2026-11-22
+hlth620s2017a: responses, scp | one-student reading course, no SCP survey | 2026-11-23
+hlth620s2017b: responses, scp | one-student reading course, no SCP survey | 2026-11-23
+hlth620s2017c: responses, scp | one-student reading course, no SCP survey | 2026-11-23
