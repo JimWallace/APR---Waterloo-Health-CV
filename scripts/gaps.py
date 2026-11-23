@@ -18,8 +18,7 @@ The rules (what counts as missing) are the CV's, from CLAUDE.md:
   `none`; `unresolved` shows the date it was last looked for). Work in press or "Just
   Accepted" is missing its final details until the weekly run backfills them.
 - students (supervision.bib): program (not for postdocs) and start year; once finished, thesis title,
-  date and position. Undergraduate research assistants (degree RA) hold a term-length
-  appointment with no thesis, so they need neither a thesis title nor a start year.
+  date and position.
 - committees: the thesis title once the student has defended.
 - courses: enrolment, and Student Course Perceptions responses and scores.
 - the "so what?" facts (CLAUDE.md -> Entry detail; Jim, 2026-11-22):
@@ -143,13 +142,11 @@ def service_gaps(e, period: tuple[int, int] | None) -> list[str]:
 
 def student_gaps(e) -> list[str]:
     f = e.fields
-    ra = f.get("degree", "").upper() == "RA"
     gaps = [] if f.get("program") or f.get("degree", "").upper() == "PDF" else ["program"]
-    gaps += [] if f.get("started") or ra else ["start year"]
+    gaps += [] if f.get("started") else ["start year"]
     if f.get("status") != "In progress":
         gaps += [name for field, name in (("date", "date"), ("title", "thesis title"),
-                                          ("position", "position"))
-                 if not f.get(field) and not (ra and field == "title")]
+                                          ("position", "position")) if not f.get(field)]
     return gaps
 
 

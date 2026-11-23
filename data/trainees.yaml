@@ -91,9 +91,6 @@ trainees:
     variants: ["Ugaya Mazza, Luka"]
   - name: Marina Wada
   - name: George Wang
-  - name: Talia Wang   # Spring 2021 research assistant (supervision.bib wang2021ra); not George Wang
-    variants: ["Wang, Talia"]
-    level: undergrad
   - name: Ariel Weingarten
     variants: ["Weingarten, Ariel"]
   - name: Pearl Wiafe
@@ -113,3 +110,61 @@ trainees:
   - name: Jagger Nast
     variants: ["Nast, Jagger"]
     level: undergrad
+  - name: Kaitlyn Li   # not Christina Li; MSc / GRA, Sept 2023 -- Jan 2024 (2023-24 APR)
+    variants: ["Li, Kaitlyn"]
+  - name: Shail Patel
+    level: undergrad   # undergraduate thesis, Sept 2016 -- Apr 2017 (2017 APR)
+    from: 2016
+    to: 2017
+  - name: Talia Wong
+    level: undergrad   # URA, May -- Aug 2021 (2021-22 APR)
+    from: 2021
+    to: 2021
+  - name: Atharva Gangal
+    level: undergrad   # URA, Sept -- Dec 2022 (2021-22 APR)
+    from: 2022
+    to: 2022
+  - name: Tianhao Yao
+    level: undergrad   # URA, Jan -- Apr 2023 (2023-24 APR)
+    from: 2023
+    to: 2023
+  - name: Ryan Lam
+    level: undergrad   # URA, Sept -- Dec 2023 (2023-24 APR)
+    from: 2023
+    to: 2023
+  - name: Wendy Xu
+    level: undergrad   # URA, May -- Aug 2024 (2023-24 APR)
+    from: 2024
+    to: 2024
+  - name: Ali Raza Zaidi
+    level: undergrad   # URA, May -- Aug 2024 (2023-24 APR)
+    from: 2024
+    to: 2024
+  - name: Abdullah Shahid
+    level: undergrad   # URA, May -- Aug 2024 (2023-24 APR)
+    from: 2024
+    to: 2024
+  - name: Rena Yang
+    level: undergrad   # URA, May -- Aug 2024 (2023-24 APR)
+    from: 2024
+    to: 2024
+  - name: Nadeen Al-Janabi
+    level: undergrad   # honours thesis (HLTH 432A/B), 2025 -- 2026 (Jim; HLTH 432 forms)
+    from: 2025
+    to: 2026
+  - name: Colin Whaley
+    level: undergrad   # honours thesis (HLTH 432A/B), 2017 -- 2018 (Jim; HLTH 432 correspondence)
+    from: 2017
+    to: 2018
+  - name: Adam Baker
+    level: undergrad   # BIS honours thesis, 2015 -- 2016 (Jim; 2016 letter of evaluation)
+    from: 2015
+    to: 2016
+  - name: Claudia De Fazio
+    level: undergrad   # Engineering URA, Fall 2020 (Faculty of Engineering URA memo)
+    from: 2020
+    to: 2020
+  - name: Kritika Mehta
+    level: undergrad   # Engineering URA, Fall 2019 (Faculty of Engineering URA memo)
+    from: 2019
+    to: 2019
