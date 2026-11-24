@@ -22,7 +22,6 @@ The rules (what counts as missing) are the CV's, from CLAUDE.md:
 - committees: the thesis title once the student has defended.
 - courses: enrolment, and Student Course Perceptions responses and scores.
 - the "so what?" facts (CLAUDE.md -> Entry detail; Jim, 2026-11-22):
-  - a paper with an award icon: the award's tier ("top 5% of submissions", "one of 30");
   - a workshop or meetup Jim co-organized (note "Workshop proposal." / "Meetup."): how
     many took part;
   - chairing a conference or track (service.bib, activities.bib: a chair or convener role
@@ -57,7 +56,6 @@ PENDING = re.compile(r"in press|just accepted", re.I)
 ATTENDANCE = re.compile(r"\b\d[\d,]*\s+(?:[\w-]+\s+){0,2}(?:attendees|participants|people|"
                         r"researchers|students)\b|attendance", re.I)
 SUBMISSIONS = re.compile(r"submission", re.I)
-TIER = re.compile(r"\btop\s+\d|\bone of\b|\b\d[\d,]*\s+of\s+\d", re.I)
 ORGANIZED = re.compile(r"^\s*(?:Workshop proposal|Meetup)\.", re.I)
 CHAIR = re.compile(r"chair|convener", re.I)
 SELECTS = re.compile(r"general chair|program chair|papers chair|technical program", re.I)
@@ -99,8 +97,6 @@ def paper_gaps(e, metric: list[str] | None) -> list[str]:
             when = f", last looked for {metric[2]}" if len(metric) > 2 and metric[2] else ""
             gaps.append(f"acceptance rate or impact factor (unresolved{when})")
     note = f.get("note", "")
-    if f.get("icon") and not TIER.search(note):
-        gaps.append("award tier")
     if ORGANIZED.match(note) and not ATTENDANCE.search(note):
         gaps.append("attendance")
     return gaps
@@ -167,7 +163,7 @@ FIELD_OF = {  # the name a gap prints as -> the word data/gaps.yaml uses for it
     "final publication details (in press)": "inpress", "DOI": "doi", "pages": "pages",
     "program": "program", "start year": "started", "date": "date",
     "thesis title": "title", "position": "position", "enrolment": "enrolment",
-    "SCP responses": "responses", "SCP scores": "scp", "award tier": "tier",
+    "SCP responses": "responses", "SCP scores": "scp",
     "attendance": "attendance", "submissions": "submissions", "load": "load",
 }
 

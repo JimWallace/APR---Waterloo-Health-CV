@@ -87,8 +87,8 @@ of it. Not effort (hours, process), and nothing that changes no judgment; the CV
 enough. Each fact comes from a source the PR names (a record, a public page, Jim, his
 email), as the source states it ("about 230"); never estimate.
 - Papers: DOI, pages, and the acceptance rate for the paper's track or the JIF (below). A
-  paper award: its tier in the `note`, `\textbf{Best Paper Honourable Mention Award} (top 5\%
-  of submissions)`.
+  paper award is the award alone (the rosette and its bold `note`), with no tier: "Top x%"
+  is reserved for the SciVal citation figures (Jim, 2026-11-24).
 - Workshops and meetups Jim co-organizes: the acceptance rate and how many took part
   (`111 participants in person and 75 online`).
 - Chairing a conference or track (a chair or convener `role`, level `organizing`): the
