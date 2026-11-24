@@ -62,6 +62,13 @@ Slack, an official document **is a source**:
 
 Drop what is already on the CV in the same form. Anything else (a draft, a form, a
 reference letter, a document about another person's file) is not a CV source: skip it.
+Jim lets the task read every file in the folder (2026-11-24), including his tenure,
+promotion, reappointment and performance-review files and expense claims. Of those, only
+documents that record a CV fact from an official issuer count (an approval letter, a notice
+of award, an SCP report). Letters and assessments written about Jim (external referee
+letters, committee or chair evaluations) and financial records are never sources: classify
+them and move on, and never quote, cite or summarise them anywhere. A CV Jim submitted
+earlier counts only as `CLAUDE.md` says for his own CVs (the last source for a rate).
 
 ## 3. Edit, verify, label, open the PR
 
