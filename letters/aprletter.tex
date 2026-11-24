@@ -4,6 +4,8 @@
 %     <text>
 %   \aprclosing{Sincerely,}
 %   \aprenclosure{<what is enclosed>}   (optional)
+%   \aprheading{research|teaching|service}{<heading>}: a bold heading; in the APR
+%     version it carries the marker of that APR colour, as a key to the CV
 %   \end{aprletter}
 %
 % Read in the preamble of two kinds of document:
@@ -23,6 +25,7 @@
   \newenvironment{aprletter}[2]{\begin{letter}{#1}\opening{#2}}{\end{letter}}%
   \newcommand\aprclosing[1]{\closing{#1}}%
   \newcommand\aprenclosure[1]{\encl{#1}}%
+  \newcommand\aprheading[2]{\textbf{#2}}%
 }{%
   % #1: an image the size of the page, drawn behind the page being built
   \newcommand\apr@letterhead[1]{%
@@ -44,5 +47,8 @@
     \par\nobreak\noindent#1\par\nobreak\vspace{2\baselineskip}%
     {\setlength\parskip{0pt}\noindent\aprsignature\par}}%
   \newcommand\aprenclosure[1]{\par\noindent Encl: #1\par}%
+  % a section heading marked in the colour of its APR category (research,
+  % teaching or service), the same marker the CV's notes use (\aprsample)
+  \newcommand\aprheading[2]{\noindent\aprsample{#1}{}{\textbf{#2}}}%
 }
 \makeatother
