@@ -137,21 +137,33 @@ d2. **Slack** (added November 2026) — Jim's students talk to him, and share fo
    else (no token, `not_allowed_token_type`, `invalid_auth`), skip this step and say so in
    your final message.
    Search the same window as step 2c with `search.messages` (`query=<term> after:<YYYY-MM-DD>`,
-   `sort=timestamp`, `count=50`, paging when `paging.pages` > 1), for: `accepted`,
-   `camera ready`, `defence`, `defense`, `committee`, `award`, `nominate`, `scholarship`,
-   `OGS`, `CGS`, `grant`, `submitted`, `invited`, `talk`, `keynote`, `panel`, and the family
-   names in `supervision.bib` with status `In progress`.
-   Slack is a source of **leads only**, never of facts: students' plans, defences on the
-   horizon, applications and nominations under discussion. For each lead, look for the
-   official record (step 2c's mail, the venue, the agency, an issue) and file it from that
-   record as usual. A lead with no record yet is a one-line question for Jim in the PR
-   (`needs-review`), named by kind and student only ("Slack mentions a PhD defence for
-   <student>: is it on the CV?"). Drop anything already on the CV. Only a message Jim wrote
-   himself counts as his confirmation, as in an issue.
+   `sort=timestamp`, `count=50`, paging when `paging.pages` > 1). `after:` excludes the day
+   it names, so give the day before the window starts. Quote phrases (`"camera ready"`), or
+   Slack matches the words anywhere. The API allows about 20 searches a minute: wait at least
+   1.5 seconds between calls, and on `ratelimited` wait the `Retry-After` seconds and retry.
+   Terms: `accepted`, `"camera ready"`, `"camera-ready"`, `defence`, `defense`, `defend`,
+   `thesis`, `examiner`, `committee`, `award`, `nominate`, `scholarship`, `OGS`, `CGS`,
+   `grant`, `proposal`, `application`, `submitted`, `NOI`, `LOI`, `invited`, `talk`,
+   `keynote`, `panel`; and the given names of the students in `supervision.bib` with status
+   `In progress` (students are discussed by given name). Skip a name that is a common word or
+   shorter than four letters, and skip family names: both return mostly noise.
+   Slack is a source of **leads only**, never of facts, and that includes Jim's own messages:
+   nothing in Slack confirms an item or is cited as a source. Count only leads about Jim's own
+   record (his papers, students, committees, grants, awards, talks, roles); his token also
+   sees colleagues' channels, and their grants, students and plans are not leads. For each
+   lead, look for the official record (step 2c's mail, the venue, the agency, an issue) and
+   file it from that record as usual. Drop anything already on the CV. A lead with no record:
+   - about something that has already happened (a defence held, a paper accepted, a talk
+     given): a one-line question for Jim in the PR (`needs-review`) that does not name Slack
+     or any other source ("Is <student>'s PhD defence (2026) on the CV?");
+   - about something still to come or not yet submitted (an upcoming defence, an application
+     in preparation, a nomination being discussed), or naming someone you can't match to a
+     CV record: only in your private final message (step 8), never in the PR or an issue.
    Slack is private: DMs and group chats carry students' personal matters. Nothing from it
-   goes in the repo, the PR or an issue beyond what step 3 ("Private") allows: no message
-   text, channel or DM names, links, attachments or other people's names beyond the CV
-   item. Keep search output in the scratchpad, never in the working tree.
+   goes in the repo, the PR or an issue beyond those questions and what step 3 ("Private")
+   allows: no message text, channel or DM names, links, attachments, or other people's names
+   beyond the CV item, and never a mention that Slack was searched. Keep search output in the
+   scratchpad, never in the working tree.
 
 e. **Missing metrics** — run `python3 scripts/missing_metrics.py`. Take every entry under
    "Missing" (usually papers added since the last run) and the three oldest "Unresolved" ones,
@@ -405,5 +417,5 @@ If nothing needs changing, open no PR.
 ## 8. Final message (private to Jim)
 
 Short: the PR link and its label (or "no changes"); items skipped and why, including private
-ones such as conditional acceptances; the grant details still to collect (step 2c); any request for new citation figures (step 2h); questions; any source that was
+ones such as conditional acceptances; the grant details still to collect (step 2c); any request for new citation figures (step 2h); the private Slack leads (step 2d2); questions; any source that was
 unavailable.
