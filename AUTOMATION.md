@@ -50,7 +50,7 @@ Finder. Change the two paths at the top, then save this as
     <string>/bin/zsh</string><string>-lc</string>
     <string>
 REPO="$HOME/src/APR---Waterloo-Health-CV"
-DOCS="$HOME/Library/Mobile Documents/com~apple~CloudDocs/CV"
+DOCS="$HOME/Library/Mobile Documents/com~apple~CloudDocs/Annual Reports"
 cd "$REPO" &amp;&amp; claude -p "Follow automation/documents-update.md in this repository exactly. The documents folder is $DOCS (read-only). The local clone is $REPO. Don't merge the pull request yourself."   --add-dir "$DOCS"   --allowedTools "Bash(git:*)" "Bash(gh api:*)" "Bash(python3 scripts/*)" "Bash(find:*)" "Bash(ls:*)" Read Grep Glob Agent "Edit(./**)" "Write(./**)"   --disallowedTools "Edit(/$DOCS/**)" "Write(/$DOCS/**)"
     </string>
   </array>
