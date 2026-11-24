@@ -41,8 +41,10 @@ One source, two PDFs (and a review copy):
   review cycle; counts that grow with the record use `\cvnumber`. The APR version has no
   summary page of its own.
 - `external-input-letter.tex` is a second signed letter on the same letterhead, to the
-  Director, asking for expert opinion under the SPHS Addendum and for a written process for
-  it (Jim, 2026-11-24). It documents process, not people: it names no one and quotes only
+  Director and the APR Committee, setting out process issues in SPHS reviews (committee size,
+  expert opinion, ratings against the descriptors, feedback, disagreements), each with the
+  rule it rests on and a proposal, asking the Committee to discuss them, and asking for
+  expert opinion on my file (Jim, 2026-11-24). It documents process, not people: it names no one and quotes only
   public instruments (the Addendum, the MoA, the School Constitution). CI builds it as
   `Wallace-APR-external-input-letter.pdf`.
 - `apr-formatting.tex` holds my settings for the APR version (highlight strength and style).
