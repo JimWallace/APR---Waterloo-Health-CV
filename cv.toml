@@ -7,4 +7,4 @@
 #   sh scripts/update_template.sh <tag>      (or latest)
 # The "Template update" workflow does that weekly and opens a PR.
 repo = "JimWallace/waterloo-health-cv-template"
-version = "v0.11.0"            # the release in template/ now; the workflow updates it
+version = "v0.11.1"            # the release in template/ now; the workflow updates it
