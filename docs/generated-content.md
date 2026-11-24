@@ -109,6 +109,12 @@ Overleaf ignores one.
 
 ## 5. Co-author field mark
 
+**Decided against for this CV** (Jim, 24 November 2026). Many of the co-authors it would
+mark are SPHS colleagues who may sit on the APR committee, so the mark tells that audience
+little, and the venue-profile line and the health-funder sentence already make the
+interdisciplinary case in total. The template offers the mark (`\healthmark`, ‡, v0.12.0)
+for other CVs; the design below is kept for reference.
+
 **Feasible only as a list Jim keeps.** OpenAlex gives a co-author's institution but almost
 never their department; ORCID employment records sometimes name the department but are
 self-reported and often missing or out of date; neither says "primary appointment in a health
@@ -134,7 +140,8 @@ What should move to the template repository, and in what order:
    an undefined name gives a LaTeX warning as well as **??**, and the example shows one.
    `data/cv-numbers.tex` defines both with `\providecommand` until that release reaches this
    CV, so nothing here waits for it.
-2. **After Jim agrees the scope:** the co-author mark (question 5).
+2. **Done (v0.12.0):** the co-author mark, `\healthmark`, which this CV does not use
+   (question 5).
 3. **Once the generators have run a few weeks here:** port `generate.py`, `venue_profile.py`,
    `funder_profile.py`, `cv_numbers.py`, the tagging step and the tests to `starter/`, with
    fictional `venues.yaml` and `funders.yaml`, so other CVs get them. Their only
