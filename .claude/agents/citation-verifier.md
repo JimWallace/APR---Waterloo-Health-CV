@@ -27,7 +27,7 @@ A list of bib keys (and sometimes the PR diff). Read each entry from `scholar.bi
    - The publisher page (ACM DL, JMIR, Elsevier, Springer). If direct fetches are refused in
      your session, find the page with a web search and fetch the result link.
    `candidates.json` on the same branch is a starting point, not proof.
-2. Compare field by field. Ignore case, LaTeX markup (`\textbf`, braces), `*`, `{\dag}`, `{\healthmark}` and
+2. Compare field by field. Ignore case, LaTeX markup (`\textbf`, braces), `*`, `{\dag}` and
    en-dash vs hyphen in pages. Check:
    - **authors**: same people, same order, same count, names spelled as the record has them
      (initials vs full names is fine; a different person or order is not);

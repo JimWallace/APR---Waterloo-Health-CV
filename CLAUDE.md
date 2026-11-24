@@ -67,12 +67,6 @@ the source of truth; never force-push `main`.
 - Trainee: `*` straight after the family name — `Wong*, Veen` or `Veen Wong*`. Not on the given
   name (`Homaeian, L.*` loses the mark under `giveninits`).
 - Presenter of a talk or paper: `{\dag}` after the name (after `*` if both): `Gauthier*{\dag}, Robert P`.
-- Co-author whose primary appointment is in a health, clinical or public health unit:
-  `{\healthmark}` (‡, template v0.12.0) after the family name, before any `{\dag}`:
-  `Morita{\healthmark}, Plinio P.`, for everyone in `data/coauthors.yaml` and no one else
-  (`check_cv.py` warns W-coauthor). Only I add people to that list; propose one in the PR
-  with a faculty page or ORCID employment record that names the unit. The legend line under
-  PUBLICATIONS arrives with the first names.
 - A paper or talk that won an award: `icon = {award}` (the rosette in the margin; in the APR
   version it is filled pink when the entry is in the review period), the award in bold in
   `note`, e.g. `note = {\textbf{Best Paper Honourable Mention Award}}`, and an `@award` in

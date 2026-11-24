@@ -118,11 +118,12 @@ unit". So:
   a health, clinical or public health unit, as `data/trainees.yaml` is for trainees. Only Jim
   adds people. The weekly run may *propose* one in the PR, citing an ORCID employment record
   or a faculty page that names the unit, never adding it itself.
-- `check_cv.py` warns (W-coauthor) when a listed co-author appears without the mark, or the
-  mark appears on someone not listed, like the trainee check.
-- The mark is the template's `\healthmark` (‡, v0.12.0), written after the family name like
-  the trainee `*` and presenter `{\dag}`. Built 24 November 2026 with Jim's go-ahead. The
-  list starts empty; the legend line under PUBLICATIONS goes in with the first names.
+- `check_cv.py` warns when a listed co-author appears without the mark, like the trainee
+  check.
+- The template needs a new mark (Mentis uses one): an author suffix like the trainee `*` and
+  presenter `\dag`, for example `\healthmark` printing a small superscript (‡ is free), and a
+  line in the legend that explains `*` and `\dag`. That is a template feature (a new minor
+  version), so it waits for Jim's go-ahead on the symbol and the wording.
 
 ## The template
 
@@ -133,7 +134,7 @@ What should move to the template repository, and in what order:
    an undefined name gives a LaTeX warning as well as **??**, and the example shows one.
    `data/cv-numbers.tex` defines both with `\providecommand` until that release reaches this
    CV, so nothing here waits for it.
-2. **Done (v0.12.0):** the co-author mark (question 5), `\healthmark`.
+2. **After Jim agrees the scope:** the co-author mark (question 5).
 3. **Once the generators have run a few weeks here:** port `generate.py`, `venue_profile.py`,
    `funder_profile.py`, `cv_numbers.py`, the tagging step and the tests to `starter/`, with
    fictional `venues.yaml` and `funders.yaml`, so other CVs get them. Their only

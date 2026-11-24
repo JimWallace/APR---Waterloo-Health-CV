@@ -190,7 +190,6 @@ def review_period(tex_path: Path) -> tuple[int, int] | None:
 # ---------------------------------------------------------------- names
 def clean_name(raw: str) -> str:
     s = raw.replace("{\\dag}", "").replace("\\dag", "")
-    s = s.replace("{\\healthmark}", "").replace("\\healthmark", "")
     s = re.sub(r"\\textbf\{([^}]*)\}", r"\1", s)
     s = s.replace("*", "").replace("{", "").replace("}", "")
     return re.sub(r"\s+", " ", s).strip()
@@ -214,11 +213,6 @@ def is_presenter(raw: str) -> bool:
     return "\\dag" in raw
 
 
-def is_health_marked(raw: str) -> bool:
-    """A co-author whose primary appointment is in a health unit (data/coauthors.yaml)."""
-    return "\\healthmark" in raw
-
-
 def mark_in_given_name(raw: str) -> bool:
     """True for 'Family, G.*' style marks, which giveninits likely drops."""
     s = raw.replace("{\\dag}", "").replace("\\dag", "")
@@ -239,15 +233,14 @@ def norm_title(t: str) -> str:
     return norm(t)
 
 
-def load_roster(path: Path, section: str = "trainees") -> list[dict]:
-    """The people listed under `section` (trainees.yaml: trainees; coauthors.yaml: coauthors)."""
+def load_roster(path: Path) -> list[dict]:
     if not path.exists():
         return []
     text = path.read_text(encoding="utf-8")
     try:
         import yaml
         data = yaml.safe_load(text) or {}
-        return data.get(section, []) or []
+        return data.get("trainees", []) or []
     except ImportError:
         return _read_roster_plain(text)
 
@@ -262,7 +255,7 @@ def _read_roster_plain(text: str) -> list[dict]:
         if m:
             out.append({"name": m.group(1).strip().strip("'\"")})
             continue
-        m = re.match(r"\s+(variants|level|from|to|unit|source):\s*(.+)$", ln)
+        m = re.match(r"\s+(variants|level|from|to):\s*(.+)$", ln)
         if m and out:
             val = m.group(2).strip()
             out[-1][m.group(1)] = json.loads(val) if val.startswith("[") else val.strip("'\"")
