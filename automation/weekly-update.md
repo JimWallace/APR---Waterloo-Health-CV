@@ -246,7 +246,7 @@ k. **Entry detail** (`CLAUDE.md` → Entry detail) — run `python3 scripts/gaps
    - **Mail** (no date window; the event may be months old), with the entry's title or
      acronym and year plus: `attendees`, `participants`, `registrations`, `registered`,
      `attendance` (attendance); `submissions`, `accepted`, `acceptance rate`, `front matter`,
-     `welcome` (submissions, rates); `best paper`, `honorable mention`, `top` (award tiers);
+     `welcome` (submissions, rates);
      `assigned`, `meta-reviews`, `papers to handle` (editorial loads). Prefer the
      organizers' or chairs' own message after the event (a thank-you, a report, a financial
      closing) to a count from before it; a pre-event count is not attendance.

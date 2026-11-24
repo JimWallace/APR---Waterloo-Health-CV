@@ -111,7 +111,8 @@ def numbers(root: Path = ROOT) -> tuple[list[tuple[str, int, str]], list[str]]:
 
     exported, threshold, rows = scival(root)
     if exported:
-        cited = [r for r in rows if r[2] < exported]  # as citation_impact.py: too new otherwise
+        # as citation_impact.py: too new otherwise; the year is the CV's (scholar.bib)
+        cited = [r for r in rows if (bib[r[0]].year if r[0] in bib and bib[r[0]].year else r[2]) < exported]
         top = [r for r in cited if r[1] <= threshold]
         top_led = sum(1 for k, _, _ in top if k in bib and is_marked_trainee(first_author(bib[k])))
         out += [("scival-last-year", exported - 1, "the last publication year the SciVal counts include"),

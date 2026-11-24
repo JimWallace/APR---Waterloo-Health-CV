@@ -38,7 +38,7 @@ awards, grants and students is the source; cite it as "issue #N".
    heading added to `main.tex` in the same commit.
 4. **Entry detail:** give the item the facts `CLAUDE.md` → "Entry detail" names for its kind
    now, while the sources are fresh (attendance and submissions for a chair role, how many
-   took part in a workshop, an award's tier, an editorial load), from Jim's message, the
+   took part in a workshop, an editorial load), from Jim's message, the
    venue or Outlook; never estimate. `python3 scripts/gaps.py --list` shows what the entry
    still lacks; ask Jim for it in the PR, or on the issue.
 5. Run `python3 scripts/generate.py` and commit what it rewrites with the item. A new venue
