@@ -33,6 +33,13 @@ One source, two PDFs (and a review copy):
   before the CV goes out. CI builds it as `Wallace-CV-gaps.pdf` (PR artifact and
   `cv-preview`, never `cv-latest`) and lists the gaps in the job summary. Never submit it,
   and never put content in `gaps.tex`.
+- `cover-letter.tex` is the APR's executive summary as a letter on SPHS letterhead, which I
+  sign and put on top of the APR packet (Jim, 2026-11-24: a standard part of every APR). It
+  is a separate document (letter class, `letterhead/format.tex` and the two letterhead PDFs,
+  from github.com/JimWallace/UWaterloo-Letterhead), not part of the CV; CI builds it as
+  `Wallace-APR-cover-letter.pdf` (PR artifact and `cv-preview`). Its text is rewritten each
+  review cycle; counts that grow with the record use `\cvnumber`. The APR version has no
+  summary page of its own.
 - `apr-formatting.tex` holds my settings for the APR version (highlight strength and style).
 - My trainees are everyone in `supervision.bib` plus `data/trainees.yaml`, which adds the other
   trainees (undergraduates, RAs) and extra spellings. The checker flags a supervised student
