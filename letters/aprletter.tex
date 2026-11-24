@@ -1,0 +1,54 @@
+% The aprletter environment, which the letters in letters/ are written in:
+%
+%   \begin{aprletter}{<recipient, lines separated by \\>}{<salutation>}
+%     <text>
+%   \aprclosing{Sincerely,}
+%   \aprenclosure{<what is enclosed>}   (optional)
+%   \aprheading{research|teaching|service}{<heading>}: a bold heading; in the APR
+%     version it carries the marker of that APR colour, as a key to the CV
+%   \end{aprletter}
+%
+% Read in the preamble of two kinds of document:
+%  - a standalone letter (cover-letter.tex and the others: letter class, with
+%    letterhead/format.tex), where it is the letter class's letter, \opening and \closing,
+%    and the letterhead PDFs are laid over the first and last pages;
+%  - main.tex, so that the APR version can include letters in the CV itself
+%    (\ifAPR ... \input{letters/cover} ... \fi). There each letter starts a new page with
+%    1-inch margins and no running header, the letterhead (300 dpi images of the same
+%    PDFs, letterhead/*.png, so the CV stays PDF/A) behind its first and last pages, and
+%    the CV's own layout and header resume after it.
+\newcommand\aprsignature{Jim Wallace, PhD\\Professor\\School of Public Health Sciences\\Cheriton School of Computer Science (cross)\\University of Waterloo}
+\makeatletter
+\@ifclassloaded{letter}{%
+  \signature{\aprsignature}%
+  \date{}%
+  \newenvironment{aprletter}[2]{\begin{letter}{#1}\opening{#2}}{\end{letter}}%
+  \newcommand\aprclosing[1]{\closing{#1}}%
+  \newcommand\aprenclosure[1]{\encl{#1}}%
+  \newcommand\aprheading[2]{\textbf{#2}}%
+}{%
+  % #1: an image the size of the page, drawn behind the page being built
+  \newcommand\apr@letterhead[1]{%
+    \AddToHookNext{shipout/background}{%
+      \put(0,0){\raisebox{-\paperheight}{%
+        \ifcv@tagged\includegraphics[width=\paperwidth,height=\paperheight,artifact]{#1}%
+        \else\includegraphics[width=\paperwidth,height=\paperheight]{#1}\fi}}}}%
+  \newenvironment{aprletter}[2]{%
+    \newgeometry{margin=1in}% starts a new page
+    \pagestyle{empty}%
+    \apr@letterhead{letterhead/SPHS_letterhead_page_1.png}%
+    \setlength\parskip{0.6\baselineskip}%
+    \par\noindent\hfill\usvardate\today\par\medskip
+    \noindent#1\par\medskip
+    \noindent#2\par}%
+   {\par\restoregeometry}% ends the letter's last page; the group restores the page style
+  \newcommand\aprclosing[1]{%
+    \apr@letterhead{letterhead/SPHS_letterhead_page_2.png}%
+    \par\nobreak\noindent#1\par\nobreak\vspace{2\baselineskip}%
+    {\setlength\parskip{0pt}\noindent\aprsignature\par}}%
+  \newcommand\aprenclosure[1]{\par\noindent Encl: #1\par}%
+  % a section heading marked in the colour of its APR category (research,
+  % teaching or service), the same marker the CV's notes use (\aprsample)
+  \newcommand\aprheading[2]{\noindent\aprsample{#1}{}{\textbf{#2}}}%
+}
+\makeatother

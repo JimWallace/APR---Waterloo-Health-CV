@@ -8,6 +8,7 @@
 \usepackage{uwhealthcv}
 \usepackage{pgfplots}% the HLTH 230 grades figure (APR version)
 \pgfplotsset{compat=1.18}
+\input{letters/aprletter}% the letters the APR version includes (letters/)
 
 \addbibresource{scholar.bib}
 \addbibresource{grants.bib}
@@ -132,8 +133,11 @@
 
 \begin{document}
 
-% The APR's executive summary is a signed cover letter on SPHS letterhead:
-% cover-letter.tex (a separate PDF that goes on top of the APR packet).
+\ifAPR % APR version only: the cover letter (the executive summary) on SPHS letterhead,
+% before the CV; its text is letters/cover.tex (also cover-letter.tex on its own).
+\input{letters/cover}
+\setcounter{page}{1}% the CV's pages are numbered from its own first page
+\fi
 
 \noindent
 
@@ -573,7 +577,9 @@ I design, build and evaluate interactive technologies for health, working with t
 \textbf{Collaborative sensemaking:} how groups build shared understanding from information with shared and personal devices, the foundation of my lab's tools for qualitative health research.
 
 
-% The note on external input is now a separate letter: external-input-letter.tex.
+% The letter on process in SPHS reviews (letters/process.tex; external-input-letter.tex on
+% its own) is not in the APR packet yet (Jim, 2026-11-24). To add it after the CV:
+% \ifAPR\input{letters/process}\fi
 \end{document}
 
 
