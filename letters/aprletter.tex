@@ -5,7 +5,7 @@
 %   \aprclosing{Sincerely,}
 %   \aprenclosure{<what is enclosed>}   (optional)
 %   \aprheading{research|teaching|service}{<heading>}: a bold heading; in the APR
-%     version it is underlined in a tint of that APR colour, as a key to the CV
+%     version it carries the marker of that APR colour, as a key to the CV
 %   \end{aprletter}
 %
 % Read in the preamble of two kinds of document:
@@ -47,13 +47,8 @@
     \par\nobreak\noindent#1\par\nobreak\vspace{2\baselineskip}%
     {\setlength\parskip{0pt}\noindent\aprsignature\par}}%
   \newcommand\aprenclosure[1]{\par\noindent Encl: #1\par}%
-  % a bold section heading underlined with a thick rule in a tint of its APR
-  % category's colour (research, teaching or service), as a key to the CV's
-  % highlighting; the rule is drawn first, so the text sits on top of it
-  \newsavebox\apr@hbox
-  \newcommand\aprheading[2]{\par\noindent\sbox\apr@hbox{\textbf{#2}}%
-    \rlap{\ifcv@tagged\begin{picture}[artifact](0,0)\else\begin{picture}(0,0)\fi
-      \put(0,0){\color{APR#1Dot!45!white}\rule[-3.2pt]{\wd\apr@hbox}{2.6pt}}\end{picture}}%
-    \usebox\apr@hbox\par}%
+  % a section heading marked in the colour of its APR category (research,
+  % teaching or service), the same marker the CV's notes use (\aprsample)
+  \newcommand\aprheading[2]{\noindent\aprsample{#1}{}{\textbf{#2}}}%
 }
 \makeatother
