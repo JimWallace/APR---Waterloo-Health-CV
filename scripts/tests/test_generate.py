@@ -284,8 +284,9 @@ class Generators(unittest.TestCase):
                    "@service{ae2025, title = {J}, level = {editorial}, date = {2025}, note = {12 submissions}}\n"
                    "@service{ae2020, title = {J}, level = {editorial}, date = {2019/2020}}\n")
         found = dict(gaps.gaps(self.root))
-        self.assertIn("award tier", found["aw2025"])
-        self.assertNotIn("award tier", found.get("at2025", []))
+        # an award's rosette needs no tier: "Top x%" is the SciVal figures' (Jim, 2026-11-24)
+        self.assertNotIn("aw2025", found)
+        self.assertNotIn("at2025", found)
         self.assertIn("attendance", found["mu2025"])
         self.assertNotIn("attendance", found.get("ws2025", []))
         self.assertEqual(found["gc2025"], ["attendance", "submissions"])
