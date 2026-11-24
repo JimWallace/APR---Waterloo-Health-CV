@@ -410,5 +410,7 @@ that is followed by a list; never use `\newpage` (use `\sectionbreak`).
 - ORCID: `0000-0002-5162-0256` (on my Crossref records; the "CV sources" workflow searches Crossref by it,
   which matters when DBLP blocks automated access)
 - Google Scholar can't be queried automatically; don't try.
+- Slack (Games Institute workspace): leads only, never facts, through a user token in the
+  cloud environment (`automation/weekly-update.md`, step 2d2). Nothing from it goes in the repo.
 - The "CV sources" workflow saves DBLP/Crossref records on the `cv-sources` branch weekly
   (`git fetch origin cv-sources`); use them when your session can't reach those sites.
