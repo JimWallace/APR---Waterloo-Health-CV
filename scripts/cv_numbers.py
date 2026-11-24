@@ -40,7 +40,8 @@ HEADER = [
     r"\else\textbf{??}\fi}",
 ]
 # The review-period groups the supervision note counts ("4 of 5 journal articles, 9 of 11
-# conference papers and 15 of 18 presentations").
+# conference papers and 15 of 18 presentations"); the conference group is also counted
+# split into full papers and abstracts (below).
 GROUPS = {
     "journal": ["journal"],
     "conference": ["conference", "abstracts"],
@@ -108,6 +109,17 @@ def numbers(root: Path = ROOT) -> tuple[list[tuple[str, int, str]], list[str]]:
             total, led = total + len(keys), led + n_led
         out += [("review-works", total, f"journal, conference and presentation entries in {span}"),
                 ("review-works-trainee-first", led, "... of which a trainee is first author")]
+        # The conference group split as the CV's headings split it, so a narrative can keep
+        # full papers apart from extended abstracts, posters, demos and workshops.
+        for name, cat, label in (("fullpapers", "conference", "full and short conference papers"),
+                                 ("abstracts", "abstracts",
+                                  "extended abstracts, posters, demos and workshops")):
+            keys = [k for k in dict.fromkeys(cats.get(cat, []))
+                    if k in bib and in_review_period(bib[k], k, period, include, exclude)]
+            out += [(f"review-{name}", len(keys), f"{label} in {span}"),
+                    (f"review-{name}-trainee-first",
+                     sum(1 for k in keys if is_marked_trainee(first_author(bib[k]))),
+                     "... of which a trainee is first author")]
 
     exported, threshold, rows = scival(root)
     if exported:
