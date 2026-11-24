@@ -429,6 +429,62 @@ class SupervisedTrainees(unittest.TestCase):
         self.assertEqual(drift, [])
 
 
+
+class HealthCoauthors(unittest.TestCase):
+    r"""W-coauthor: data/coauthors.yaml and the \healthmark on scholar.bib authors."""
+    BIB = r"""
+@inproceedings{marked2020, title = {A}, year = {2020}, doi = {10.1/a},
+  author = {Morita{\healthmark}, Plinio P. and \textbf{James R. Wallace}}}
+@inproceedings{variant2020, title = {B}, year = {2020}, doi = {10.1/b},
+  author = {Plinio Morita{\healthmark}{\dag} and \textbf{James R. Wallace}}}
+@inproceedings{missing2020, title = {C}, year = {2020}, doi = {10.1/c},
+  author = {Morita, Plinio P. and \textbf{James R. Wallace}}}
+@inproceedings{stray2020, title = {D}, year = {2020}, doi = {10.1/d},
+  author = {Smith{\healthmark}, Ann and \textbf{James R. Wallace}}}
+"""
+    COAUTHORS = """coauthors:
+  - name: Plinio P. Morita
+    variants: ["Morita, Plinio P.", "Plinio Morita"]
+    unit: School of Public Health Sciences, University of Waterloo
+    source: https://example.org/profile  # a comment
+"""
+
+    def setUp(self):
+        self.root = Path(tempfile.mkdtemp())
+        (self.root / "data").mkdir()
+        shutil.copy(cvlib.ROOT / "data" / "trainees.yaml", self.root / "data" / "trainees.yaml")
+        (self.root / "data" / "coauthors.yaml").write_text(self.COAUTHORS, encoding="utf-8")
+        for name in check_cv.RECORD_FILES:
+            (self.root / name).write_text("", encoding="utf-8")
+        (self.root / "main.tex").write_text(
+            "\\DeclareBibliographyCategory{conference}\n"
+            "\\addtocategory{conference}{marked2020, variant2020, missing2020, stray2020}\n", encoding="utf-8")
+        (self.root / "scholar.bib").write_text(self.BIB, encoding="utf-8")
+        self.saved = check_cv.ROOT
+        check_cv.ROOT = self.root
+
+    def tearDown(self):
+        check_cv.ROOT = self.saved
+        shutil.rmtree(self.root)
+
+    def test_unmarked_and_unlisted_names_warn(self):
+        r = check_cv.run()
+        self.assertEqual({w["key"] for w in r["warnings"] if w["code"] == "W-coauthor"},
+                         {"missing2020", "stray2020"})
+
+    def test_the_mark_is_not_part_of_the_name(self):
+        self.assertEqual(cvlib.name_parts(r"Morita{\healthmark}, Plinio P."), ("Morita", "Plinio P."))
+        self.assertTrue(cvlib.is_health_marked(r"Plinio Morita{\healthmark}{\dag}"))
+        self.assertFalse(cvlib.is_marked_trainee(r"Morita{\healthmark}, Plinio P."))
+
+    def test_the_plain_reader_matches_yaml(self):
+        people = cvlib._read_roster_plain(self.COAUTHORS)
+        self.assertEqual(people[0]["variants"], ["Morita, Plinio P.", "Plinio Morita"])
+        self.assertEqual(people[0]["source"], "https://example.org/profile")
+
+    def test_the_real_list_loads(self):
+        cvlib.load_roster(cvlib.ROOT / "data" / "coauthors.yaml", "coauthors")
+
 class TitlesAndNames(unittest.TestCase):
     """E-myname (one written form of my name) and W-titlecase (unbraced capitalised title words)."""
     BIB = r"""

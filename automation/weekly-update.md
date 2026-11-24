@@ -290,7 +290,8 @@ For each item keep a one-line reason (it goes in the PR, or in your final messag
 Follow `CLAUDE.md` → Conventions. In short:
 - **Bib entries** from the retrieved record (Crossref record from `cv-sources` first, then the
   publisher page): key `familyYYYYfirstword`, `\textbf{James R. Wallace}`, `*` only for people
-  in `data/trainees.yaml`, `doi` when there is one, `note = {In press}` when not yet published.
+  in `data/trainees.yaml`, `{\healthmark}` after the family name of each co-author in
+  `data/coauthors.yaml`, `doi` when there is one, `note = {In press}` when not yet published.
   Add the key to exactly one heading, and to `apralsoteaching` if a trainee is an author and the
   entry is in the review period. A workshop proposal or meetup Jim co-organized
   (a CHI EA record: `CLAUDE.md` → "Teaching, research or service" says how to recognise one)

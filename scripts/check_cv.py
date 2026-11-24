@@ -23,7 +23,7 @@ from collections import Counter
 
 sys.path.insert(0, os.path.dirname(__file__))
 from cvlib import (APR_CATEGORIES, KNOWN_TYPES, PRINTED_CATEGORIES, ROOT, add_supervised,  # noqa: E402
-                   clean_name, is_marked_trainee, load_roster, mark_in_given_name,
+                   clean_name, is_health_marked, is_marked_trainee, load_roster, mark_in_given_name,
                    name_parts, norm, parse_bib, parse_categories, review_period,
                    roster_index)
 from warning_ratchet import (BASELINE_REL, check_cv_line, compare, read_baseline,  # noqa: E402
@@ -205,6 +205,20 @@ def run(only: set[str] | None = None) -> dict:
                     hint = f" (close to roster name '{near[0]}': typo, or add it as a variant)" if near else \
                         " (not in data/trainees.yaml or supervision.bib: a new trainee, or not a trainee?)"
                     warn("W-roster", f"'{e.key}': trainee '{clean_name(a)}'{hint}", e.key)
+
+    # Health co-author marks: everyone in data/coauthors.yaml carries \healthmark,
+    # and nobody else does. Only Jim adds people to that list.
+    cidx = roster_index(load_roster(ROOT / "data" / "coauthors.yaml", "coauthors"))
+    for e in bib.entries:
+        for a in e.authors:
+            fam, giv = name_parts(a)
+            listed = norm(fam + giv) in cidx or norm(clean_name(a)) in cidx
+            if listed and not is_health_marked(a):
+                warn("W-coauthor", f"'{e.key}': '{clean_name(a)}' is in data/coauthors.yaml (primary "
+                     "appointment in a health unit) but has no mark; write Family{\\healthmark}, Given", e.key)
+            elif is_health_marked(a) and not listed:
+                warn("W-coauthor", f"'{e.key}': '{clean_name(a)}' is marked \\healthmark but is not in "
+                     "data/coauthors.yaml (a spelling to add as a variant, or not a health co-author?)", e.key)
 
     # My name: always \textbf{James R. Wallace}. Inside \textbf the whole name is one literal,
     # so a surname-first form ("Wallace, James R.") prints surname-first.

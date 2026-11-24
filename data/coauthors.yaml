@@ -1,0 +1,18 @@
+# Co-authors whose primary appointment is in a health, clinical or public
+# health unit. Each is marked \healthmark (a double dagger, template v0.12.0)
+# after the family name in scholar.bib, like the trainee * and presenter
+# {\dag}: Morita{\healthmark}, Plinio P. The mark shows a reader outside HCI
+# which collaborators are in health (issue #144, question 5).
+#
+# check_cv.py warns (W-coauthor) when a listed co-author appears without the
+# mark, or the mark appears on someone not listed. Fields per person:
+#   name: as it should be matched
+#   variants: other spellings used in scholar.bib
+#   unit: the primary appointment (school or department, institution)
+#   source: the public page that names the unit
+#
+# Only I add people here. Automated runs may propose one in a PR, citing a
+# faculty page or ORCID employment record that names the unit, but never add
+# them.
+
+coauthors: []
