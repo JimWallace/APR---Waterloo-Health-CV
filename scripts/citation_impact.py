@@ -10,7 +10,7 @@ few figures the CV uses (the raw export, with abstracts and Scopus ids, is not
 kept in this public repository). Outputs it cannot match are listed on stdout.
 
 Regenerating writes data/citation-impact.tex: one \\setentrydetail{key}{...}
-line (template) for every entry whose field-weighted citation percentile is
+line, and a \\setentrytag{key}{Top N%} margin tag, for every entry whose field-weighted citation percentile is
 within the threshold in the YAML file, printed under the entry in both PDFs.
 Work published in the export's year (the year scholar.bib gives it) is left out
 (too new to be cited):
@@ -147,6 +147,8 @@ def build(root: Path = ROOT) -> tuple[str, list[str]]:
             indexed = f", indexed as {year}" if year != cv_year else ""
             lines.append(f"\\setentrydetail{{{key}}}{{\\textbf{{Top {top}\\% most cited in its field}} "
                          f"(field-weighted citation impact {fwci}; SciVal, {when}{indexed})}}")
+            # the short form in the margin, under the entry's marker (template)
+            lines.append(f"\\setentrytag{{{key}}}{{Top {top}\\%}}")
     return "\n".join(lines) + "\n", []
 
 
