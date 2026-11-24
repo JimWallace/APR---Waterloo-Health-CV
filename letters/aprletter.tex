@@ -38,8 +38,12 @@
     \pagestyle{empty}%
     \apr@letterhead{letterhead/SPHS_letterhead_page_1.png}%
     \setlength\parskip{0.6\baselineskip}%
-    \par\noindent\hfill\usvardate\today\par\medskip
-    \noindent#1\par\medskip
+    % the standalone letter's spacing (letter class with letterhead/format.tex):
+    % room below the letterhead, then 1em + 2\parskip after the date and
+    % 2\parskip after the recipient
+    \vspace*{2\baselineskip}%
+    \par\noindent\hfill\usvardate\today\par\vspace{\dimexpr1em+2\parskip\relax}%
+    \noindent#1\par\vspace{2\parskip}%
     \noindent#2\par}%
    {\par\restoregeometry}% ends the letter's last page; the group restores the page style
   \newcommand\aprclosing[1]{%
