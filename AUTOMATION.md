@@ -4,6 +4,7 @@
 |---|---|---|
 | Sundays 18:07 (Toronto) | `CV sources` workflow | Fetches DBLP, OpenAlex and Crossref records and saves them on the `cv-sources` branch, so Claude can check entries even where it can't reach those sites. |
 | Weekly (your scheduled Claude task) | `automation/weekly-update.md` | Claude adds new papers and DOIs, open `cv-item` issues and items from your Outlook mail and calendar, with leads from Slack (acceptances, review recognitions, PC roles, talks, session chairs, trainee scholarships, nominations, submitted grants, review panels, external reviews, media, training…), fills in missing acceptance rates and journal impact factors (`scripts/missing_metrics.py`, refreshing impact factors each summer), has sub-agents verify every change (plus `chizen-figures` for figures), and opens one PR on a `cv/` branch. It also follows up last week's PRs: answer its questions in a PR comment and the next run applies them. |
+| Weekly, Monday 9:00 (a task on your Mac) | `automation/documents-update.md` | Claude reads the documents added to your iCloud CV folder that week (notices of award, award letters, SCP reports, decision letters, committee paperwork), read-only, adds what they record and opens a `cv/documents-` PR. It runs on the Mac because iCloud can't be reached from the cloud; if the Mac was asleep, it runs when it wakes. |
 | Every PR | `CV build` | Deterministic checks (`scripts/check_cv.py`), compiles both PDFs, fails on any error and on any warning not in `scripts/warnings-baseline.txt` (see `scripts/warning_ratchet.py`), reports what changed in the PDF text, blocks PRs labelled `needs-review`. A PR that adds lines to the baseline or changes the checks fails the `ratchet` job, so you merge it by hand. |
 | `CV build` passes | `CV auto-merge` | Merges PRs you open (including ones Claude opens for you in a chat) automatically. Merges the weekly job's `cv/` PRs only if they're labelled `auto-merge`. Draft PRs and `needs-review` PRs never merge. |
 | Every push to `main` | `CV build` → release | Latest PDFs at Releases → `cv-latest` (Wallace-CV.pdf, Wallace-CV-APR.pdf). |
@@ -31,6 +32,40 @@ For the Slack step (step 2d2), its cloud environment also needs a Slack **user**
 (`xoxp-…`, scopes `search:read`, `channels:history`, `groups:history`, `im:history`,
 `mpim:history`, `users:read`, `files:read`) under Network secrets; without one the step is
 skipped. Slack gives leads only; the CV entries still come from official records.
+
+## The documents task (on your Mac)
+
+`automation/documents-update.md` runs in Claude Code on your Mac, in your local clone of this
+repo, and reads your iCloud CV folder in place. It needs Claude Code (`claude`), `gh` signed in
+to GitHub with push access, `git` and `python3`, and the folder set to **Keep Downloaded** in
+Finder. Change the two paths at the top, then save this as
+`~/Library/LaunchAgents/ca.uwaterloo.cv-documents.plist`:
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0"><dict>
+  <key>Label</key><string>ca.uwaterloo.cv-documents</string>
+  <key>ProgramArguments</key><array>
+    <string>/bin/zsh</string><string>-lc</string>
+    <string>
+REPO="$HOME/src/APR---Waterloo-Health-CV"
+DOCS="$HOME/Library/Mobile Documents/com~apple~CloudDocs/CV"
+cd "$REPO" &amp;&amp; claude -p "Follow automation/documents-update.md in this repository exactly. The documents folder is $DOCS (read-only). The local clone is $REPO. Don't merge the pull request yourself."   --add-dir "$DOCS"   --allowedTools "Bash(git:*)" "Bash(gh api:*)" "Bash(python3 scripts/*)" "Bash(find:*)" "Bash(ls:*)" Read Grep Glob Agent "Edit(./**)" "Write(./**)"   --disallowedTools "Edit(/$DOCS/**)" "Write(/$DOCS/**)"
+    </string>
+  </array>
+  <key>StartCalendarInterval</key><dict>
+    <key>Weekday</key><integer>1</integer><key>Hour</key><integer>9</integer><key>Minute</key><integer>0</integer>
+  </dict>
+  <key>StandardOutPath</key><string>/tmp/cv-documents.log</string>
+  <key>StandardErrorPath</key><string>/tmp/cv-documents.log</string>
+</dict></plist>
+```
+
+Then `launchctl load ~/Library/LaunchAgents/ca.uwaterloo.cv-documents.plist`. To run it now:
+`launchctl start ca.uwaterloo.cv-documents`. Its final message is in `/tmp/cv-documents.log`.
+`--add-dir` lets Claude read the folder; the `--disallowedTools` rules forbid writing to it,
+and with `-p` any command not in `--allowedTools` is refused rather than asked about.
 
 ## One-time setup
 
