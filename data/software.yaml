@@ -41,8 +41,3 @@ wallace2026waterloo:
     - ACM-Reference-Format.*          # vendored ACM biblatex style
   test_paths: '(^|/)tests?(/|$)|test_'
 
-wallace2026sphssalary:
-  repo: https://github.com/JimWallace/SPHS-Salary-Analysis
-  exclude_paths:
-    - '* 2.*'                         # accidental duplicate copies ("name 2.py")
-  test_paths: '(^|/)tests?(/|$)|test_'
