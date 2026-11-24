@@ -129,6 +129,30 @@ d. **Calendar** — with the same connector, list Jim's calendar events in the s
    itself names him as speaker/examiner and its date has passed. Otherwise make it a
    question for Jim. Meeting content, attendees and private appointments stay private.
 
+d2. **Slack** (added November 2026) — Jim's students talk to him, and share forms, in the
+   Games Institute Slack. A Slack user token for Jim sits in the cloud environment as a
+   Network secret: the proxy adds it to requests to `slack.com`, so call the Web API with no
+   `Authorization` header and never print, log or ask for the token. Check it first with
+   `curl -s https://slack.com/api/auth.test`: `ok` with `user` set means it works; anything
+   else (no token, `not_allowed_token_type`, `invalid_auth`), skip this step and say so in
+   your final message.
+   Search the same window as step 2c with `search.messages` (`query=<term> after:<YYYY-MM-DD>`,
+   `sort=timestamp`, `count=50`, paging when `paging.pages` > 1), for: `accepted`,
+   `camera ready`, `defence`, `defense`, `committee`, `award`, `nominate`, `scholarship`,
+   `OGS`, `CGS`, `grant`, `submitted`, `invited`, `talk`, `keynote`, `panel`, and the family
+   names in `supervision.bib` with status `In progress`.
+   Slack is a source of **leads only**, never of facts: students' plans, defences on the
+   horizon, applications and nominations under discussion. For each lead, look for the
+   official record (step 2c's mail, the venue, the agency, an issue) and file it from that
+   record as usual. A lead with no record yet is a one-line question for Jim in the PR
+   (`needs-review`), named by kind and student only ("Slack mentions a PhD defence for
+   <student>: is it on the CV?"). Drop anything already on the CV. Only a message Jim wrote
+   himself counts as his confirmation, as in an issue.
+   Slack is private: DMs and group chats carry students' personal matters. Nothing from it
+   goes in the repo, the PR or an issue beyond what step 3 ("Private") allows: no message
+   text, channel or DM names, links, attachments or other people's names beyond the CV
+   item. Keep search output in the scratchpad, never in the working tree.
+
 e. **Missing metrics** — run `python3 scripts/missing_metrics.py`. Take every entry under
    "Missing" (usually papers added since the last run) and the three oldest "Unresolved" ones,
    and look up the acceptance rate or impact factor as `CLAUDE.md` → "Acceptance rates and
