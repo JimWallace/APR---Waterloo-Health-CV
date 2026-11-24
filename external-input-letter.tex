@@ -1,79 +1,17 @@
-% Letter to the Director and the APR Committee on process in the School's annual performance
-% reviews, on SPHS letterhead, signed by Jim and enclosed with the APR (after cover-letter.tex).
-% It began as the CV's "A Note on External Input for Interdisciplinary Work" and was widened to
-% several process issues for the Committee to discuss (Jim, 2026-11-24). It documents process,
-% not individuals: it names no one, refers to no individual review, and quotes only public
-% instruments. Compile on its own (Overleaf: Menu > Main document > external-input-letter.tex).
-%
-% Sources: Memorandum of Agreement 13.5.1(d), 13.5.3, 13.5.6(a) and (c), 13.5.7, 13.5.10(a), 13.3.3(d)
-% (texts from Jim, chat, 2026-11-24, and his own documents); SPHS Addendum to the Faculty of
-% Health Performance Evaluation Guidelines (2025--26): "Research and Scholarship",
-% "Recognition of multidisciplinarity", "Approach to performance assessment", "Use of
-% collective indicators" and "Importance of Feedback" (wording as Jim quotes it); SPHS
-% Constitution s. 3.1.6 as amended in November 2026 (School vote results, 13 November 2026);
-% Faculty of Health Performance Review Guidelines, "Anomaly Adjustments" (from the version
-% circulated with the revisions proposed for Fall 2026; Jim, 2026-11-24);
-% Report of the FRC Working Group on Faculty Performance (8 January 2026); CRA, "Hiring and
-% Promotion Guidance for Computing Researchers" (September 2025); Wallace (2026),
-% doi:10.5281/zenodo.24397928 (findings as its README states them).
-% Research on groups: the five references at the end; each record checked against Crossref
-% (2026-11-24); claims from the abstracts where available (Stasser & Titus 1985; Latane 1981;
-% Lu et al. 2012); Stasser, Taylor & Hanna 1989 and Noelle-Neumann 1974 as commonly summarized.
+% external-input-letter.tex: the standalone letter on SPHS letterhead. Its text is letters/process.tex
+% (see that file's header); the APR version of the CV includes the same text.
 \documentclass[12pt]{letter}
 \usepackage[T1]{fontenc}
 \usepackage{enumitem}
-\setlist[enumerate]{leftmargin=1.75em, itemsep=2pt, topsep=4pt, parsep=0pt, label=(\alph*)}
 
 % Letterhead (letterhead/format.tex, from github.com/JimWallace/UWaterloo-Letterhead)
 \newcommand{\FirstPagePDF}{letterhead/SPHS_letterhead_page_1.pdf}
 \newcommand{\LastPagePDF}{letterhead/SPHS_letterhead_page_2.pdf}
 \input{letterhead/format}
 
-\signature{Jim Wallace, PhD\\Professor\\School of Public Health Sciences\\University of Waterloo}
-\date{}
+
+\input{letters/aprletter}
 
 \begin{document}
-\begin{letter}{%
-The Director and the Annual Performance Review Committee\\
-School of Public Health Sciences\\
-University of Waterloo}
-\opening{Dear Director and Members of the Committee,}
-
-\textbf{Re: Process in the School's annual performance reviews}
-
-I write to ask that the Committee discuss, before it begins this cycle's reviews, six features of how the School conducts annual performance reviews. Each concerns process and affects every member; none concerns an individual review. For each, I note what the Memorandum of Agreement (MoA) or the SPHS Addendum provides and propose a step the School could take. I also ask, for my own file, that expert opinion be obtained under the Addendum (item~2).
-
-\textbf{1. The size of the committee.} The MoA provides that, in a department of more than 15 full-time equivalent regular faculty positions, the Members ``shall elect an advisory committee of no more than five Members to assist the Chair'' (MoA 13.5.6(c)). School Council has amended Section 3.1.6 of the School Constitution to provide a committee of five, ``as per the MoA 13.5.6(c),'' but the committee for this cycle was elected with ten. The limit matters for more than form. The influence a group exerts on an individual grows with the number of people exerting it (Lat\'an\'e, 1981), so in a larger committee the norms most of its members share carry more weight; members who perceive their view to be in the minority are less likely to voice it (Noelle-Neumann, 1974); and groups discuss the information their members hold in common and neglect information that only one member holds (Stasser \& Titus, 1985), an effect a meta-analysis of 65 studies confirms (Lu, Yuan, \& McLeod, 2012) and that is stronger in larger groups (Stasser, Taylor, \& Hanna, 1989). In a performance review, the member who knows the norms of a minority discipline is the one holding that unshared information. A larger committee therefore makes it more likely that the norms of the School's majority disciplines are applied to everyone, and less likely that expert opinion, once obtained, is heard. \emph{Proposal:} that the Committee consider how this cycle's review can meet the MoA's limit, and that it record how it will weigh expert opinion when it obtains it.
-
-\textbf{2. Disciplinary expertise and expert opinion.} The Addendum recognizes that the School is multidisciplinary and that ``performance indicators should be interpreted in a manner consistent with these various disciplinary perspectives and traditions''; it notes that ``for some disciplines (e.g., engineering and computer science), peer-reviewed conference proceedings are also regarded as important.'' It provides the means: ``Where assessment of quality and impact cannot be readily evaluated because of inadequate domain expertise, the Director shall have the discretion to obtain expert opinion, in confidence, from faculty members of the School, or elsewhere in the University, who hold regular appointments in a relevant disciplinary area.'' The Addendum places this responsibility on the Director. It does not make expert opinion depend on a member's request: a request may be sufficient to prompt it, but it is not necessary. Nor does the Addendum say when expert opinion will be considered, how an expert is chosen, what the expert receives, or how the committee uses the advice. Without a defined process, whether a member's work is read by someone in their own field depends on whether the member knows that expert opinion can be obtained, and feels able to ask; and a member who does ask is left to collate the evidence, analyze it and plead their case, which is not equitable. The Computing Research Association gives the same advice for computing: when a candidate's field has norms that differ from those of the unit, the unit should document how it will evaluate the candidate against the criteria of that field (\emph{Hiring and Promotion Guidance for Computing Researchers}, 2025). \emph{Proposal:} a defined, equitable and transparent process, added to the Addendum (which MoA 13.5.1(d) requires to be posted and publicly accessible), that
-\begin{enumerate}
-    \item has the Director determine, for every member's file and not only on request, whether the committee has the expertise to assess its quality and impact, and obtain expert opinion where it does not, with any member also able to request it;
-    \item draws the expert, as the Addendum provides, from faculty with regular appointments in the relevant area, with no conflict of interest with the member;
-    \item gives the expert the member's file, the Addendum and the Faculty's rating descriptors;
-    \item records in the member's file the Director's decision, whether expert opinion was obtained and, if so, how the committee took it into account.
-\end{enumerate}
-\emph{My request:} my research is in human--computer interaction (HCI), a computing discipline whose norms for publication, authorship, funding and service differ from those of health informatics and much of public health, and no member of the committee works in HCI. I ask that expert opinion be obtained on my 2025--2026 file from a faculty member who holds a regular appointment in HCI, for example in the Cheriton School of Computer Science, where I am cross-appointed; who publishes regularly in HCI venues, in particular those of ACM SIGCHI; and who can comment on both publication and service in those communities. I can suggest names, and will disclose any relationship I have with each. I also ask that your decision on this request, and your reasons, be recorded in my performance review.
-
-\textbf{3. Ratings on each member's record, against the descriptors.} The MoA gives the Chair ``the responsibility for annual performance evaluations of all Members in the Department'' (MoA 13.5.6(a)) and sets out the ratings and their descriptions (MoA 13.5.3). The Dean ``may modify the ratings for a Member or Members of a Department, if necessary, to maintain consistency of standards across the Faculty,'' and ``shall inform the Chair in writing of the final individual and overall ratings, together with reasons for any changes'' (MoA 13.5.7). Nothing in these provisions sets a unit average or a distribution of ratings. The University's FRC Working Group on Faculty Performance (January 2026) found practices ``lacking clarity on how the full spectrum of the FPR scores available (MoA Article 13.5.3) is to be interpreted and applied.'' \emph{Proposal:} that the Committee confirm that each rating is set on the member's own record against the descriptions in MoA 13.5.3 and the Addendum, using the full scale, and that no unit average or expected distribution is used in setting ratings.
-
-\textbf{4. Feedback that addresses quality and impact.} The Addendum requires that the indicators used ``must have face validity to enable individual faculty members, the review committee, the Director and other stakeholders to assess quality/excellence, innovation/creativity, and impact,'' and asks that written feedback be ``honest, concise, and constructive,'' noting that ``it may be useful to include specific examples of excellence or areas of challenge.'' Feedback that only counts outputs would not meet this standard, and would not show how disciplinary norms (item~2) were applied. \emph{Proposal:} that comments on the evaluation form address quality, innovation and impact in each area, with examples, and say how the norms of the member's discipline were taken into account.
-
-\textbf{5. Disagreements.} The MoA provides that ``a Member who disagrees with her/his performance evaluation should proceed first to the Department Chair, and then, if not resolved, to the Dean of the Faculty for disposition'' (MoA 13.5.10(a)). It does not set a timeline, and the School has no written procedure for it. Where the MoA provides for changes to ratings, it requires written reasons (MoA 13.5.7). \emph{Proposal:} a written procedure, with a timeline that allows a disagreement to be resolved within the cycle, and a written response with reasons at each step.
-
-\textbf{6. Salary anomalies.} The MoA establishes an annual Anomalies Fund in each Faculty ``to correct individual salary anomalies'' (MoA 13.3.3(d)), and the Faculty of Health Performance Review Guidelines provide that these adjustments ``are determined by the Dean based upon recommendations of the Chair/Directors.'' Identifying anomalies in the School is therefore part of the Director's role, but the School has no written procedure for it. In practice a member must find an anomaly in the public salary disclosures, analyze it and make the case, the same burden as in item~2, and one that falls hardest on members who already feel least able to ask. \emph{Proposal:} that the Director review the salaries of all members each year, by rank and by years since appointment or promotion, identify possible anomalies and recommend adjustments to the Dean, and report to the School, without names, how many were identified and recommended.
-
-\textbf{Why these matter.} Each item matters most to members whose work follows the norms of another discipline, interdisciplinary and cross-appointed faculty most of all, who are the most likely to be assessed against criteria that do not fit their field. Each proposal also moves the work of making the case from the individual member, who would otherwise have to collate the evidence, analyze it and plead for its fair reading, to the process itself, where it belongs. Salary is one place where the effect would show, because merit increases accumulate in it. My 2026 analysis of the University's public salary disclosures for SPHS from 2011 to 2025 (doi:10.5281/zenodo.24397928) finds that about 80\% of the person-years of faculty affiliated with the Master of Health Informatics program fall below the School's same-year median salary, against about 41\% for other SPHS faculty, and estimates their salary growth at about \$1,595 a year slower. The analysis is descriptive: public data cannot identify the mechanism behind the gap, and the report recommends a faculty-level equity audit that links salary outcomes to rank, workload and performance reviews.
-
-I ask that these items be placed on the Committee's agenda before it begins this cycle's reviews, and I would be glad to help draft the procedures proposed here.
-
-{\small
-\par\medskip\noindent\textbf{References}\par\smallskip
-\noindent Lat\'an\'e, B. (1981). The psychology of social impact. \emph{American Psychologist}, 36(4), 343--356. https://doi.org/10.1037/0003-066X.36.4.343\par
-\noindent Lu, L., Yuan, Y. C., \& McLeod, P. L. (2012). Twenty-five years of hidden profiles in group decision making: A meta-analysis. \emph{Personality and Social Psychology Review}, 16(1), 54--75. https://doi.org/10.1177/1088868311417243\par
-\noindent Noelle-Neumann, E. (1974). The spiral of silence: A theory of public opinion. \emph{Journal of Communication}, 24(2), 43--51. https://doi.org/10.1111/j.1460-2466.1974.tb00367.x\par
-\noindent Stasser, G., Taylor, L. A., \& Hanna, C. (1989). Information sampling in structured and unstructured discussions of three- and six-person groups. \emph{Journal of Personality and Social Psychology}, 57(1), 67--78. https://doi.org/10.1037/0022-3514.57.1.67\par
-\noindent Stasser, G., \& Titus, W. (1985). Pooling of unshared information in group decision making: Biased information sampling during discussion. \emph{Journal of Personality and Social Psychology}, 48(6), 1467--1478. https://doi.org/10.1037/0022-3514.48.6.1467\par
-}
-\closing{Sincerely,}
-\end{letter}
+\input{letters/process}
 \end{document}
