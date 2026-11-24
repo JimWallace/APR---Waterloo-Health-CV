@@ -277,7 +277,7 @@ def run(only: set[str] | None = None) -> dict:
 
 RECORD_FILES = ["grants.bib", "supervision.bib", "awards.bib", "service.bib", "activities.bib", "courses.bib",
                 "committees.bib"]
-GRANT_ROLES = {"PI", "Co-PI", "Co-I", "Co-A"}
+GRANT_ROLES = {"PI", "Co-PI", "Co-I", "Co-A", "Collaborator"}  # Collaborator: a named NSERC role (CREATE)
 GRANT_STATUSES = {"Submitted", "Rejected", "Withdrawn"}
 GRANT_DAY_RE = re.compile(r"^\d{4}(-\d{2}(-\d{2})?)?$")
 DATE_RE = re.compile(r"^\d{4}(-\d{2})?(/\d{4}(-\d{2})?)?$")
