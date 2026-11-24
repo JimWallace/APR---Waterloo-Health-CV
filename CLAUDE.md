@@ -41,10 +41,17 @@ One source, two PDFs (and a review copy):
   review cycle; counts that grow with the record use `\cvnumber`. The APR version has no
   summary page of its own.
 - `external-input-letter.tex` is a second signed letter on the same letterhead, to the
-  Director, asking for expert opinion under the SPHS Addendum and for a written process for
-  it (Jim, 2026-11-24). It documents process, not people: it names no one and quotes only
+  Director and the APR Committee, setting out process issues in SPHS reviews (committee size,
+  expert opinion, ratings against the descriptors, feedback, disagreements, salary anomalies), each with the
+  rule it rests on and a proposal, asking the Committee to discuss them, and asking for
+  expert opinion on my file (Jim, 2026-11-24). It documents process, not people: it names no one and quotes only
   public instruments (the Addendum, the MoA, the School Constitution). CI builds it as
   `Wallace-APR-external-input-letter.pdf`.
+- `salary-anomaly-letter.tex` is a third letter on the same letterhead, to the Dean, asking
+  that I be considered for an anomaly adjustment (MoA 13.3.3(d)); the Director referred my
+  case to the Dean (Jim, 2026-11-24). Its figures come from my own analysis of the public
+  salary disclosures (8 October 2026), as that report states them. CI builds it as
+  `Wallace-salary-anomaly-letter.pdf`.
 - `apr-formatting.tex` holds my settings for the APR version (highlight strength and style).
 - My trainees are everyone in `supervision.bib` plus `data/trainees.yaml`, which adds the other
   trainees (undergraduates, RAs) and extra spellings. The checker flags a supervised student
