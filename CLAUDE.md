@@ -90,7 +90,12 @@ letters, notes, award, service and activity titles. That means -our and -re (hon
 behaviour, centre), defence, licence (noun), practise (verb), doubled l (modelling,
 labelled, travelled), enrolment, and -ize / -yze (recognize, analyze), as Canadian Oxford
 and Canadian Press have it. Titles of published works, theses, journals, conferences and
-grants, and text quoted from a document, keep their owners' spelling.
+grants, and text quoted from a document, keep their owners' spelling. `check_cv.py` warns
+W-spelling on an American spelling in main.tex, letters/, data/impact.tex and the fields I
+write (notes; award, service and activity titles and roles; students' positions); it skips
+comments, URLs, `\emph{…}` titles and ``quotations''. A name that keeps its own spelling in
+prose goes in its `SPELLING_ALLOW` list (my call). It can't tell practice from practise or
+licence from license, so those stay with the reviewers.
 
 **Bib entries** (`scholar.bib`)
 - Key: `familyYYYYfirstword` in lower case, e.g. `wong2026ipvprevention`. Keys must be unique:

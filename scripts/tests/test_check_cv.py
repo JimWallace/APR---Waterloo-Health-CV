@@ -472,3 +472,62 @@ class TitlesAndNames(unittest.TestCase):
                          ["LLMs", "COVID"])
         self.assertEqual(check_cv.unbraced_capitalised_words(r"{LLM} Co-Located Edit{B}lind 3d"), [])
         self.assertEqual(check_cv.unbraced_capitalised_words("Freehand 3D Interaction"), ["3D"])
+
+
+class CanadianSpellingTest(unittest.TestCase):
+    """W-spelling: Canadian and only Canadian English in Jim's prose (Jim, 2026-11-25)."""
+
+    def words(self, text):
+        return [(w, fix) for _, w, fix in check_cv.american_spellings(check_cv.tex_prose(text))]
+
+    def test_american_spellings_are_found_with_the_canadian_form(self):
+        self.assertEqual(self.words("Best Paper Honorable Mention; the Games Center; PhD Defense Chair"),
+                         [("Honorable", "Honourable"), ("Center", "Centre"), ("Defense", "Defence")])
+        self.assertEqual(self.words("we analysed and recognised behavior"),
+                         [("analysed", "analyzed"), ("recognised", "recognized"), ("behavior", "behaviour")])
+        self.assertEqual(self.words("modeling, labeled, enrollment, gray, catalog, programme"),
+                         [("modeling", "modelling"), ("labeled", "labelled"), ("enrollment", "enrolment"),
+                          ("gray", "grey"), ("catalog", "catalogue"), ("programme", "program")])
+
+    def test_canadian_spellings_pass(self):
+        self.assertEqual(self.words("Honourable Mention, behaviour, centre, defence, modelling, labelled, "
+                                    "enrolment, grey, catalogue, program, recognized, analyzed, practise, "
+                                    "honorary, rigorous, humorous, analyses, analysis"), [])
+
+    def test_what_is_not_prose_is_skipped(self):
+        tex = (r"\begin{center}\centering %  honor in a comment" "\n"
+               r"\emph{Computers in Human Behavior} and \emph{Behavior Research Methods}" "\n"
+               r"``a color quoted from the Addendum'' \url{https://x.org/honorable-mention}" "\n"
+               r"\extlink{https://chi.acm.org/best-paper-and-honorable-mention}{(CHI Awards)}")
+        self.assertEqual(self.words(tex), [])
+
+    def test_offsets_keep_their_line(self):
+        prose = check_cv.tex_prose("line one\n% favor\nline three has a color\n")
+        (off, word, _), = check_cv.american_spellings(prose)
+        self.assertEqual((word, prose.count("\n", 0, off) + 1), ("color", 3))
+
+    def test_check_reads_the_prose_files_and_jims_fields(self):
+        root = Path(tempfile.mkdtemp())
+        self.addCleanup(shutil.rmtree, root)
+        (root / "letters").mkdir()
+        (root / "data").mkdir()
+        (root / "main.tex").write_text("Fine text.\nThe Note on Service: a labor of love.\n", encoding="utf-8")
+        (root / "letters" / "cover.tex").write_text(r"\emph{Behavior}. Organised well." "\n", encoding="utf-8")
+        (root / "awards.bib").write_text(
+            "@award{a2020, title = {Best Paper Honorable Mention}, date = {2020}}\n", encoding="utf-8")
+        awards = cvlib.parse_bib(root / "awards.bib")
+        (root / "supervision.bib").write_text(
+            "@supervision{s2020, author = {Doe, Jo}, title = {Modeling Arm Fatigue}, position = {Labor analyst}}\n",
+            encoding="utf-8")
+        supervision = cvlib.parse_bib(root / "supervision.bib")
+        out = []
+        check_cv.check_spelling({"awards.bib": awards.entries, "supervision.bib": supervision.entries},
+                                lambda code, msg, key=None: out.append(msg), root)
+        joined = "\n".join(out)
+        self.assertIn("main.tex:2: 'labor'", joined)
+        self.assertIn("cover.tex:1: 'Organised'", joined)
+        self.assertIn("'a2020' title: 'Honorable'", joined)
+        self.assertIn("'s2020' position: 'Labor'", joined)
+        self.assertNotIn("Modeling", joined)  # thesis titles keep their own spelling
+        self.assertNotIn("'Behavior'", joined)  # \emph{} titles of works are skipped
+        self.assertEqual(len(out), 4)
