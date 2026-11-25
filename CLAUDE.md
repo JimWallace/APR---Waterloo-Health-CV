@@ -153,8 +153,8 @@ change; `check_cv.py` warns W-generated until you do. Never edit its output by h
   work out which venues are health research. From the `journal` category and
   `data/venues.yaml`, which also tags the proceedings series of `conference` and
   `abstracts` (for the counts only; the printed line is journals).
-- `data/funders.tex` (APR): the sentence after "Health research funders also support the
-  work." in the funding note, from the funded grants in `grants.bib` whose agency
+- `data/funders.tex` (APR): the sentence after the bold lead-in on health research
+  agencies in the funding note, from the funded grants in `grants.bib` whose agency
   `data/funders.yaml` tags `health`.
 - `data/cv-numbers.tex`: the counts the narratives quote, printed with `\cvnumber{name}`
   (`python3 scripts/cv_numbers.py --list` names them): review-period output and how much
@@ -190,6 +190,10 @@ date is more than a year old, or an APR is due, ask him for new figures in the P
 
 **Acceptance rates and impact factors** (in the entry's `note`, after any text already there,
 joined with ". ")
+- What prints (Jim, 2026-11-25): Journal Impact Factors never print, and an acceptance
+  rate prints only when it is under 30%. Record every figure in `note` as below anyway: a
+  source map in `main.tex` drops the rest from the printed entry, and `scripts/gaps.py`
+  reads the record.
 - Conference papers and PACM articles (CSCW, CHI PLAY, GROUP, ISS):
   `Acceptance rate: 25.6\% (64/250)`. Give the counts when the source states them, otherwise
   just the percentage. Use the rate for the paper's own track (full papers, notes, Late-Breaking
