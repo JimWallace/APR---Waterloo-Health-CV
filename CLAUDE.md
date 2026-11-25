@@ -415,6 +415,19 @@ that is followed by a list; never use `\newpage` (use `\sectionbreak`).
   the verifiers: run it whenever a change touches a figure or its data. Data figures are
   pgfplots reading `data/*.csv`. Tables are not reviewed: their layout (underlined headings,
   alignment) is required by the Faculty of Health (AHS) format.
+- `consistency-reviewer` and `repetition-reviewer` (`.claude/agents/`) read the rendered
+  text of `apr.pdf` and the letters (or the sources, without TeX). The first checks that a
+  fact reads the same everywhere (entries, narratives, letters, generated lines) and that
+  new items follow the house form; the second finds things said twice (a work under two
+  headings or in two files, narratives restating each other, letters copying the CV).
+  Both are verifiers in `cv-verify`. Only what a PR adds counts toward their verdict;
+  untouched content goes under "Elsewhere" and never blocks. They propose; removing or
+  rewriting content stays my call (hard rules 2 and 3). CI's `review` job (`cv-build.yml`)
+  runs both on every PR except `cv/` branches (whose session already ran them) and posts
+  one comment; a FAIL labels the PR `needs-review`. `cv-audit.yml` runs both over the
+  whole CV on 1 December of APR years and files an issue. Both need the
+  `CLAUDE_CODE_OAUTH_TOKEN` secret and skip without it. A kind of finding that recurs and
+  is mechanical belongs in `check_cv.py` instead.
 
 ## Pull requests
 

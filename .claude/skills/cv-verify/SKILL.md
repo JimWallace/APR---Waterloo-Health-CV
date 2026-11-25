@@ -1,6 +1,6 @@
 ---
 name: cv-verify
-description: Verify CV changes with the deterministic checker and independent verifier sub-agents (four, plus `chizen-figures` when figures change), then decide the PR label. Use after any edit to scholar.bib or main.tex, or with "full" to audit every bib entry.
+description: Verify CV changes with the deterministic checker and independent verifier sub-agents (six, plus `chizen-figures` when figures change), then decide the PR label. Use after any edit to scholar.bib or main.tex, or with "full" to audit every bib entry.
 allowed-tools: Read, Grep, Glob, Edit, Agent, Bash(python3 scripts/check_cv.py:*), Bash(python3 scripts/warning_ratchet.py:*), Bash(git diff:*), Bash(git log:*), Bash(git status:*), Bash(git fetch:*), Bash(git show:*), Bash(curl:*)
 ---
 
@@ -29,6 +29,11 @@ because they check from scratch.
 - `trainee-checker` — keys
 - `apr-classifier` — keys + diff (skip in `full` mode)
 - `diff-auditor` — your draft change table (skip in `full` mode)
+- `consistency-reviewer` and `repetition-reviewer` — the word `diff` (they run
+  `git diff origin/main...HEAD` themselves), or `full`; plus the rendered text if you have
+  it. With `latexmk`, compile `apr.tex` and the three letters, run `pdftotext -layout` on
+  each into your scratchpad and pass the paths. Without TeX, pass nothing: they read the
+  sources. In `full` mode run one of each over the whole CV, not in batches.
 - `chizen-figures` — the changed figure files, when the diff touches `figures/` or `data/*.csv`, or adds a figure anywhere else. In `full` mode, give it `all`.
 
 If those agent types aren't available in your session, start general-purpose sub-agents
@@ -40,6 +45,12 @@ on the `cv-sources` branch (`git fetch origin cv-sources`).
 - FIX rows that come with a retrieved source URL: apply exactly that fix, then re-run step 2
   and re-run only the verifier that raised it, on only those keys. At most two rounds.
 - A FIX without a source, or verifiers disagreeing: don't apply it; it becomes a question.
+- `consistency-reviewer` / `repetition-reviewer` FAIL: fix the lines your change added
+  (match the house form; drop the duplicate you added), then re-run that reviewer once. A
+  fix that would change existing content, a narrative or a letter is never applied: it
+  becomes a question. Their "Elsewhere" rows don't affect the label; list them in the PR
+  under **Noticed elsewhere** (collapsed), and their "Could be a check_cv.py rule" lines
+  under it, so recurring kinds become deterministic checks.
 - In `full` mode, corrections to existing entries go in one commit titled
   "Corrections from full audit" and the PR is always `needs-review`.
 

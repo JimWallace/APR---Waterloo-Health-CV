@@ -362,7 +362,8 @@ Follow `CLAUDE.md` → Conventions. In short:
 Follow `.claude/skills/cv-verify/SKILL.md` (read it as a file if the skill isn't loaded).
 Launch the verifiers in parallel in one message, giving them only the keys, the diff and
 your change table — not your reasoning:
-`citation-verifier`, `trainee-checker`, `apr-classifier`, `diff-auditor`, and
+`citation-verifier`, `trainee-checker`, `apr-classifier`, `diff-auditor`,
+`consistency-reviewer`, `repetition-reviewer`, and
 `chizen-figures` (with the changed files) when the diff touches `figures/` or `data/*.csv`, or adds a figure anywhere else.
 If those agent types aren't available in your session, start general-purpose sub-agents
 instead, each with the full text of the matching `.claude/agents/<name>.md` (below its
