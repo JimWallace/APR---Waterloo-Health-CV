@@ -4,9 +4,9 @@
 % (github.com/JimWallace/CHI-Zen): sans-serif, left and bottom axes only, light
 % y grid, legend under the x label, Waterloo palette, and each series with its
 % own line style and marker so it reads in black and white.
-\definecolor{GradeMean}{RGB}{0,127,138}%    Waterloo AHS (Health) dark
-\definecolor{GradeMedian}{RGB}{172,97,0}%   Waterloo Arts dark
-\definecolor{GradeMode}{RGB}{87,6,140}%     Waterloo Engineering dark
+\definecolor{AHSDark}{RGB}{0,127,138}%      Waterloo AHS (Health) dark
+\definecolor{ArtsDark}{RGB}{172,97,0}%      Waterloo Arts dark
+\definecolor{EngineeringDark}{RGB}{87,6,140}%Waterloo Engineering dark
 \begin{center}
 \begin{tikzpicture}[cv/alt={Line chart of HLTH 230 final course grades (mean, median
     and mode, y-axis 50 to 100\%) for 18 Winter and Spring terms from Winter 2017 to
@@ -43,12 +43,12 @@
   % terms I taught: full-height shading where mine = 1
   \addplot[ybar, bar width=1, draw=none, fill=black!8, forget plot]
     table[x expr=\coordindex, y expr=104*\thisrow{mine}] {data/hlth230-grades.csv};
-  \addplot[GradeMean, thick, solid, mark=*, mark size=1.5pt]
+  \addplot[AHSDark, thick, solid, mark=*, mark size=1.5pt]
     table[x expr=\coordindex, y=mean] {data/hlth230-grades.csv};
-  \addplot[GradeMedian, thick, dashed, mark=square*, mark size=1.5pt,
+  \addplot[ArtsDark, thick, dashed, mark=square*, mark size=1.5pt,
       mark options={solid}]
     table[x expr=\coordindex, y=median] {data/hlth230-grades.csv};
-  \addplot[GradeMode, thick, dotted, mark=triangle*, mark size=2pt,
+  \addplot[EngineeringDark, thick, dotted, mark=triangle*, mark size=2pt,
       mark options={solid}]
     table[x expr=\coordindex, y=mode] {data/hlth230-grades.csv};
   \legend{Mean, Median, Mode}
