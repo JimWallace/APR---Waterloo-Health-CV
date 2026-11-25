@@ -6,6 +6,10 @@ allowed-tools: Read, Grep, Glob, Edit, Agent, Bash(python3 scripts/check_cv.py:*
 
 # Verify CV changes
 
+Run this before every push to a PR branch: CI runs only the deterministic checks and the
+builds, never these agents, so the session that submits the PR is responsible for them
+(Jim, 2026-11-25). Before an APR is submitted, run it with `full`.
+
 Arguments: none (verify the current branch against `origin/main`), or `full` (audit every entry).
 
 ## 1. Scope
