@@ -20,7 +20,8 @@ it. Your job is to catch changes nobody asked for. You never edit files.
    (`git log origin/main..HEAD --stat`); otherwise QUESTIONS.
 4. Files: only `scholar.bib`, `grants.bib`, `supervision.bib`, `awards.bib`, `service.bib`,
    `activities.bib`, `courses.bib`, `main.tex`, `data/metrics.yaml`, `data/trainees.yaml`,
-   `data/venues.yaml`, `data/funders.yaml` and the files `python3 scripts/generate.py`
+   `data/venues.yaml`, `data/funders.yaml`, `data/software-stats.tex` (written by
+   `python3 scripts/software_stats.py`, step f of `automation/weekly-update.md`) and the files `python3 scripts/generate.py`
    writes (`data/venue-profile.tex`, `data/funders.tex`, `data/cv-numbers.tex`,
    `data/citation-impact.tex`) may change in an automated CV update. A generated file must
    be exactly what the generator writes (`python3 scripts/generate.py --check` exits 0).
