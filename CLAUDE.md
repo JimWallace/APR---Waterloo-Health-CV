@@ -56,8 +56,8 @@ One source, two PDFs (and a review copy):
 - `salary-anomaly-letter.tex` is a third letter on the same letterhead, to the Dean, asking
   that I be considered for an anomaly adjustment (MoA 13.3.3(d)); the Director referred my
   case to the Dean (Jim, 2026-11-24). Its figures come from my own analysis of the public
-  salary disclosures (8 October 2026), as that report states them. CI builds it as
-  `Wallace-salary-anomaly-letter.pdf`.
+  salary disclosures (8 October 2026), as that report states them. CI does not build it
+  (Jim, 2026-11-25); compile it locally when it is needed.
 - `apr-formatting.tex` holds my settings for the APR version (highlight strength and style).
 - My trainees are everyone in `supervision.bib` plus `data/trainees.yaml`, which adds the other
   trainees (undergraduates, RAs) and extra spellings. The checker flags a supervised student
