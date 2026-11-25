@@ -472,3 +472,145 @@ class TitlesAndNames(unittest.TestCase):
                          ["LLMs", "COVID"])
         self.assertEqual(check_cv.unbraced_capitalised_words(r"{LLM} Co-Located Edit{B}lind 3d"), [])
         self.assertEqual(check_cv.unbraced_capitalised_words("Freehand 3D Interaction"), ["3D"])
+
+
+class CanadianSpellingTest(unittest.TestCase):
+    """W-spelling: Canadian and only Canadian English in Jim's prose (Jim, 2026-11-25)."""
+
+    def words(self, text):
+        return [(w, fix) for _, w, fix in check_cv.american_spellings(check_cv.tex_prose(text))]
+
+    def test_american_spellings_are_found_with_the_canadian_form(self):
+        self.assertEqual(self.words("Best Paper Honorable Mention; the Games Center; PhD Defense Chair"),
+                         [("Honorable", "Honourable"), ("Center", "Centre"), ("Defense", "Defence")])
+        self.assertEqual(self.words("we analysed and recognised behavior"),
+                         [("analysed", "analyzed"), ("recognised", "recognized"), ("behavior", "behaviour")])
+        self.assertEqual(self.words("modeling, labeled, enrollment, gray, catalog, programme"),
+                         [("modeling", "modelling"), ("labeled", "labelled"), ("enrollment", "enrolment"),
+                          ("gray", "grey"), ("catalog", "catalogue"), ("programme", "program")])
+
+    def test_canadian_spellings_pass(self):
+        self.assertEqual(self.words("Honourable Mention, behaviour, centre, defence, modelling, labelled, "
+                                    "enrolment, grey, catalogue, program, recognized, analyzed, practise, "
+                                    "honorary, rigorous, humorous, analyses, analysis"), [])
+
+    def test_what_is_not_prose_is_skipped(self):
+        tex = (r"\begin{center}\centering %  honor in a comment" "\n"
+               r"\emph{Computers in Human Behavior} and \emph{Behavior Research Methods}" "\n"
+               r"``a color quoted from the Addendum'' \url{https://x.org/honorable-mention}" "\n"
+               r"\extlink{https://chi.acm.org/best-paper-and-honorable-mention}{(CHI Awards)}")
+        self.assertEqual(self.words(tex), [])
+
+    def test_offsets_keep_their_line(self):
+        prose = check_cv.tex_prose("line one\n% favor\nline three has a color\n")
+        (off, word, _), = check_cv.american_spellings(prose)
+        self.assertEqual((word, prose.count("\n", 0, off) + 1), ("color", 3))
+
+    def test_check_reads_the_prose_files_and_jims_fields(self):
+        root = Path(tempfile.mkdtemp())
+        self.addCleanup(shutil.rmtree, root)
+        (root / "letters").mkdir()
+        (root / "data").mkdir()
+        (root / "main.tex").write_text("Fine text.\nThe Note on Service: a labor of love.\n", encoding="utf-8")
+        (root / "letters" / "cover.tex").write_text(r"\emph{Behavior}. Organised well." "\n", encoding="utf-8")
+        (root / "awards.bib").write_text(
+            "@award{a2020, title = {Best Paper Honorable Mention}, date = {2020}}\n", encoding="utf-8")
+        awards = cvlib.parse_bib(root / "awards.bib")
+        (root / "supervision.bib").write_text(
+            "@supervision{s2020, author = {Doe, Jo}, title = {Modeling Arm Fatigue}, position = {Labor analyst}}\n",
+            encoding="utf-8")
+        supervision = cvlib.parse_bib(root / "supervision.bib")
+        out = []
+        check_cv.check_spelling({"awards.bib": awards.entries, "supervision.bib": supervision.entries},
+                                lambda code, msg, key=None: out.append(msg), root)
+        joined = "\n".join(out)
+        self.assertIn("main.tex:2: 'labor'", joined)
+        self.assertIn("cover.tex:1: 'Organised'", joined)
+        self.assertIn("'a2020' title: 'Honorable'", joined)
+        self.assertIn("'s2020' position: 'Labor'", joined)
+        self.assertNotIn("Modeling", joined)  # thesis titles keep their own spelling
+        self.assertNotIn("'Behavior'", joined)  # \emph{} titles of works are skipped
+        self.assertEqual(len(out), 4)
+
+
+class FieldTest(unittest.TestCase):
+    """E-dupfield (a field given twice) and W-doiurl (url that is only the DOI)."""
+
+    def run_on(self, bib_text):
+        root = Path(tempfile.mkdtemp())
+        self.addCleanup(shutil.rmtree, root)
+        (root / "x.bib").write_text(bib_text, encoding="utf-8")
+        entries = cvlib.parse_bib(root / "x.bib").entries
+        errs, warns = [], []
+        check_cv.check_fields({"x.bib": entries}, lambda c, m, k=None: errs.append((c, k)),
+                              lambda c, m, k=None: warns.append((c, k)))
+        return errs, warns
+
+    def test_a_field_given_twice_is_an_error(self):
+        errs, _ = self.run_on("@inproceedings{a2025, title = {A}, note = {Poster presentation},\n"
+                              "  icon = {x}, note = {\\textbf{Award}}}\n")
+        self.assertEqual(errs, [("E-dupfield", "a2025")])
+
+    def test_distinct_fields_and_commented_lines_pass(self):
+        errs, _ = self.run_on("@inproceedings{b2025, title = {B},\n% note = {old}\n  note = {New}}\n")
+        self.assertEqual(errs, [])
+
+    def test_a_url_that_is_the_doi_warns(self):
+        _, warns = self.run_on("@article{c2025, doi = {10.1145/ABC}, url = {https://doi.org/10.1145/abc}}\n"
+                               "@article{d2025, doi = {10.1/x}, url = {http://dx.doi.org/10.1/x}}\n")
+        self.assertEqual(warns, [("W-doiurl", "c2025"), ("W-doiurl", "d2025")])
+
+    def test_a_different_url_passes(self):
+        _, warns = self.run_on("@article{e2025, doi = {10.1/x}, url = {https://example.org/paper}}\n"
+                               "@misc{f2025, url = {https://doi.org/10.1/y}}\n")
+        self.assertEqual(warns, [])
+
+    def test_the_parser_still_keeps_one_value(self):
+        root = Path(tempfile.mkdtemp())
+        self.addCleanup(shutil.rmtree, root)
+        (root / "g.bib").write_text("@misc{g, note = {one}, note = {two}}\n", encoding="utf-8")
+        e, = cvlib.parse_bib(root / "g.bib").entries
+        self.assertEqual((e.fields["note"], e.dup_fields), ("two", ["note"]))
+
+
+class SameTitleTest(unittest.TestCase):
+    """W-sametitle: one title printed in two publication lists (Jim, 2026-11-25)."""
+
+    BIB = r"""
+@inproceedings{demo2025, title = {{DeTAILS}: Deep Thematic Analysis}, year = {2025}}
+@inproceedings{paper2026, title = {DeTAILS: deep thematic analysis.}, year = {2026}}
+@misc{talk2025, title = {DeTAILS: Deep Thematic Analysis}, year = {2025}}
+@article{other2024, title = {Something Else}, year = {2024}}
+@misc{gone2024, title = {Something Else}, year = {2024}}
+"""
+    CATS = {"abstracts": ["demo2025"], "conference": ["paper2026", "other2024"],
+            "presentations": ["talk2025"], "unprinted": ["gone2024"]}
+
+    def run_on(self, allowed):
+        root = Path(tempfile.mkdtemp())
+        self.addCleanup(shutil.rmtree, root)
+        (root / "s.bib").write_text(self.BIB, encoding="utf-8")
+        out = []
+        check_cv.check_same_titles(cvlib.parse_bib(root / "s.bib").entries, self.CATS,
+                                   lambda c, m, k=None: out.append((c, k, m)), allowed)
+        return out
+
+    def test_the_same_title_in_two_publication_lists_warns(self):
+        out = self.run_on([])
+        self.assertEqual([(c, k) for c, k, _ in out], [("W-sametitle", "demo2025")])
+        self.assertIn("'paper2026' (conference)", out[0][2])
+
+    def test_talks_of_papers_and_unprinted_entries_pass(self):
+        # talk2025 is a presentation of the work; gone2024 does not print.
+        self.assertNotIn("talk2025", self.run_on([])[0][2])
+
+    def test_a_group_jim_confirmed_passes(self):
+        self.assertEqual(self.run_on([{"demo2025", "paper2026"}]), [])
+
+    def test_the_allowlist_reader(self):
+        root = Path(tempfile.mkdtemp())
+        self.addCleanup(shutil.rmtree, root)
+        p = root / "same-title.yaml"
+        p.write_text("# comment\n- [a2025, b2026]  # Jim, 2026-11-25\n- [c, d, e]\n", encoding="utf-8")
+        self.assertEqual(check_cv.read_same_title_groups(p), [{"a2025", "b2026"}, {"c", "d", "e"}])
+        self.assertEqual(check_cv.read_same_title_groups(root / "missing.yaml"), [])

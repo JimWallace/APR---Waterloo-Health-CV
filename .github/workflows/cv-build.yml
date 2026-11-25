@@ -192,7 +192,9 @@ jobs:
         run: |
           sudo apt-get update -qq && sudo apt-get install -y -qq poppler-utils >/dev/null
           mkdir -p .review/text
-          for f in Wallace-CV-APR Wallace-APR-cover-letter Wallace-APR-external-input-letter Wallace-salary-anomaly-letter; do
+          for f in Wallace-CV-APR Wallace-APR-cover-letter Wallace-APR-external-input-letter; do
+            # A document CI no longer builds is skipped, not an error.
+            [ -f ".review/pdf/$f.pdf" ] || { echo "::notice::$f.pdf was not built; not reviewed."; continue; }
             pdftotext -layout -enc UTF-8 ".review/pdf/$f.pdf" ".review/text/$f.txt"
           done
           ls -l .review/text
@@ -211,10 +213,8 @@ jobs:
             full text of the matching .claude/agents/<name>.md (below its front matter) as its
             instructions. Give each only these inputs, and none of your own views:
               - mode: `diff` (they run `git diff origin/main...HEAD` themselves);
-              - rendered text: .review/text/Wallace-CV-APR.txt (the APR version of the CV),
-                .review/text/Wallace-APR-cover-letter.txt,
-                .review/text/Wallace-APR-external-input-letter.txt,
-                .review/text/Wallace-salary-anomaly-letter.txt.
+              - rendered text: every file in .review/text/ (the APR version of the CV and
+                the APR letters).
             When both have reported, write the file .review/review.md and nothing else:
             line 1 `CONSISTENCY: <its VERDICT>`, line 2 `REPETITION: <its VERDICT>`, a blank
             line, then `### Consistency` and its report verbatim, then `### Repetition` and

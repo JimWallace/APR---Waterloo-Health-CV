@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """Deterministic checks on scholar.bib, grants.bib, supervision.bib, awards.bib, service.bib,
-activities.bib, courses.bib, committees.bib and the category lists in main.tex.
+activities.bib, courses.bib, committees.bib and the category lists in main.tex, and Canadian
+spelling in the prose (main.tex, letters/, data/impact.tex and the fields Jim writes).
 
 Errors change what the PDF says (a paper silently dropped or printed twice)
 and fail CI. Warnings are worth a look; the ones accepted so far are listed in
@@ -24,7 +25,7 @@ from collections import Counter
 sys.path.insert(0, os.path.dirname(__file__))
 from cvlib import (APR_CATEGORIES, KNOWN_TYPES, PRINTED_CATEGORIES, ROOT, add_supervised,  # noqa: E402
                    clean_name, is_marked_trainee, load_roster, mark_in_given_name,
-                   name_parts, norm, parse_bib, parse_categories, review_period,
+                   name_parts, norm, norm_title, parse_bib, parse_categories, review_period,
                    roster_index)
 from warning_ratchet import (BASELINE_REL, check_cv_line, compare, read_baseline,  # noqa: E402
                              write_baseline)
@@ -111,6 +112,11 @@ def run(only: set[str] | None = None) -> dict:
     check_software(cats, by_key, err, warn)
     check_generated(main_src, err, warn)
     check_impact(cats, by_key, err, warn)
+    check_same_titles(bib.entries, cats, warn, read_same_title_groups(ROOT / SAME_TITLE_REL))
+    check_fields({"scholar.bib": bib.entries,
+                  **{n: rb.entries for n, rb in records.items()}}, err, warn)
+    check_spelling({"scholar.bib": bib.entries,
+                    **{n: rb.entries for n, rb in records.items()}}, warn)
     record_keys = {e.key for rb in records.values() for e in rb.entries}
     all_keys = Counter(e.key for e in bib.entries)
     for rb in records.values():
@@ -283,6 +289,166 @@ GRANT_DAY_RE = re.compile(r"^\d{4}(-\d{2}(-\d{2})?)?$")
 DATE_RE = re.compile(r"^\d{4}(-\d{2})?(/\d{4}(-\d{2})?)?$")
 # Course evaluation scores: Item=score pairs, comma-separated, scores out of 5
 SCORES_RE = re.compile(r"^[^=,]*[^=,\s]=[0-5](\.\d+)?(\s*,\s*[^=,]*[^=,\s]=[0-5](\.\d+)?)*$")
+
+
+DOI_URL_RE = re.compile(r"^https?://(?:dx\.)?doi\.org/(.+)$", re.I)
+
+
+def check_fields(bibs: dict, err, warn) -> None:
+    """Fields biber would drop or print twice: a field given twice in one entry (biber keeps
+    one copy, so the other never prints) and a `url` that is only the entry's DOI as a link
+    (the DOI already prints, so it shows twice)."""
+    for name, entries in bibs.items():
+        for e in entries:
+            for f in sorted(set(e.dup_fields)):
+                err("E-dupfield", f"{name}:{e.line}: '{e.key}' gives `{f}` more than once; biber "
+                    "keeps only one, so the other never prints. Merge them into one field", e.key)
+            m = DOI_URL_RE.match(e.fields.get("url", "").strip())
+            doi = e.fields.get("doi", "").strip()
+            if m and doi and m.group(1).strip().lower() == doi.lower():
+                warn("W-doiurl", f"{name}: '{e.key}' has `url` = https://doi.org/{doi}, so the DOI "
+                     "prints twice; remove the `url` line", e.key)
+
+
+# Publications that would be counted twice: the same title printed in two publication lists.
+# A talk, poster or software release of a published work (presentations, invited, software,
+# media) is listed on purpose and not checked here.
+PUBLICATION_CATEGORIES = ["journal", "conference", "abstracts", "technicalreports", "other", "patent"]
+SAME_TITLE_REL = "data/same-title.yaml"
+
+
+def read_same_title_groups(path) -> list[set[str]]:
+    """Groups like `- [key1, key2]  # who decided` (a plain reader: no YAML library needed)."""
+    groups = []
+    if path.exists():
+        for ln in path.read_text(encoding="utf-8").splitlines():
+            m = re.match(r"\s*-\s*\[([^\]]*)\]", ln)
+            if m:
+                groups.append({k.strip() for k in m.group(1).split(",") if k.strip()})
+    return groups
+
+
+def check_same_titles(entries, cats: dict, warn, allowed: list[set[str]]) -> None:
+    where = {}
+    for c in PUBLICATION_CATEGORIES:
+        for k in cats.get(c, []):
+            where.setdefault(k, c)
+    by_title: dict[str, list] = {}
+    for e in entries:
+        if e.key in where:
+            t = norm_title(e.fields.get("title", ""))
+            if t:
+                by_title.setdefault(t, []).append(e.key)
+    for keys in by_title.values():
+        if len(keys) < 2 or any(set(keys) <= g for g in allowed):
+            continue
+        listed = ", ".join(f"'{k}' ({where[k]})" for k in keys)
+        warn("W-sametitle", f"{listed} have the same title and all print as publications, so the "
+             f"work may be counted twice. Print one, or, if they are separate works, Jim adds them "
+             f"to {SAME_TITLE_REL}", keys[0])
+
+
+# --- Canadian English (Jim, 2026-11-25: "Canadian and only Canadian English everywhere") --------
+# American spellings in the prose Jim writes. Canadian Oxford / Canadian Press: -our, -re,
+# defence, doubled l, enrolment, catalogue, grey, program, and -ize / -yze. Titles of published
+# works, theses, journals, conferences and grants keep their owners' spelling, so only these
+# are read: main.tex, letters/*.tex and data/impact.tex (minus comments, LaTeX commands, URLs,
+# \emph{...} titles and ``quotations''), every `note`, and the titles, roles and positions in
+# awards.bib, service.bib, activities.bib and supervision.bib (positions only).
+_OUR = (r"honor|color|behavior|favor|labor|neighbor|rigor|humor|endeavor|vigor|flavor|rumor|"
+        r"harbor|savior|armor|odor|parlor|valor|candor|clamor|splendor|tumor|vapor")
+_OUR_SUFFIX = r"s|ed|ing|able|ably|al|ally|ist|ists|ite|ites|ful|less|hood|hoods|er|ers|ism"
+_IZE_STEMS = (r"recogn|organ|real|emphas|priorit|summar|util|minim|maxim|optim|character|categor|"
+              r"standard|special|final|visual|apolog|critic|mobil|operational|conceptual|"
+              r"contextual|digit|hospital|institutional|legitim|memor|normal|personal|random|"
+              r"scrutin|stabil|symbol|synthes|theor|general|global|harmon|ideal|immun|"
+              r"international|local|marginal|modern|monet|neutral|polar|popular|privat|"
+              r"revolution|sanit|sensit|social|steril|subsid|systemat|trivial|urban|colon|custom|"
+              r"democrat|energ|human|jeopard|mechan|moral|author|civil|capital|commercial|"
+              r"computer|familiar|hypothes|industrial|patron|rational|regular|spiritual|sympath|"
+              r"vocal|western|catego|central|decentral|formal|individual|incentiv|"
+              r"maximal|minimal|prioritis|professional|strateg|valor|vital|weapon")
+_DOUBLE_L = (r"model|travel|label|cancel|counsel|fuel|signal|total|marvel|level|quarrel|tunnel|"
+             r"jewel|channel|dial|equal|rival|shovel|funnel|panel|pedal|duel|refuel")
+AMERICAN = [
+    (re.compile(rf"\b({_OUR})({_OUR_SUFFIX})?\b", re.I), lambda m: m.group(1)[:-2] + "our" + (m.group(2) or "")),
+    (re.compile(r"\b(cent|theat|fib|lit|meag|somb|calib|spect|lust)er(s|ed|ing)?\b", re.I),
+     lambda m: m.group(1) + ("r" if m.group(2) in ("ed", "ing") else "re") + (m.group(2) or "")),
+    (re.compile(r"\b(defen|offen|preten)se(s|less)?\b", re.I), lambda m: m.group(1) + "ce" + (m.group(2) or "")),
+    (re.compile(rf"\b({_DOUBLE_L})(ed|ing|er|ers)\b", re.I), lambda m: m.group(1) + "l" + m.group(2)),
+    (re.compile(r"\b(enroll|fulfill|install|skill|will)(ment|ments|ful)\b", re.I),
+     lambda m: m.group(1)[:-1] + m.group(2)),
+    (re.compile(r"\benrolls?\b", re.I), lambda m: m.group(0).replace("enroll", "enrol").replace("Enroll", "Enrol")),
+    (re.compile(r"\b(gray)(s|er|est|ish)?\b", re.I), lambda m: m.group(1)[:-2] + "ey" + (m.group(2) or "")),
+    (re.compile(r"\b(catalog|dialog|analog)(s|ed|ing)?\b", re.I), lambda m: m.group(1) + "ue" + (m.group(2) or "")),
+    (re.compile(r"\bprogrammes?\b", re.I), lambda m: m.group(0).replace("programme", "program")),
+    (re.compile(rf"\b({_IZE_STEMS})is(e|es|ed|ing|ation|ations|er|ers)\b", re.I),
+     lambda m: m.group(1) + "iz" + m.group(2)),
+    (re.compile(r"\b(anal|paral|catal)ys(e|ed|ing)\b", re.I), lambda m: m.group(1) + "yz" + m.group(2)),
+]
+# Names that keep their own spelling wherever they appear in prose. Jim decides what goes here.
+SPELLING_ALLOW = [
+    "Computers in Human Behavior",
+]
+_TEX_SKIP = [
+    re.compile(r"``.*?''", re.S),                       # quotations
+    re.compile(r"\\(?:emph|textit)\{[^{}]*\}"),          # titles of works
+    re.compile(r"\\(?:url|href|extlink|cite\w*|ref|label|input|include|includegraphics|usepackage|"
+               r"addtocategory|DeclareBibliographyCategory|cvnumber|setcvnumber|color|textcolor|"
+               r"definecolor|begin|end|printcategory|printservice|printawards|printgrants|"
+               r"printsupervision|setreviewperiod|setentrydetail|setentrytag|hl\w*)"
+               r"(?:\[[^\]]*\])?\{[^{}]*\}"),             # a command's first argument
+    re.compile(r"https?://\S+"),
+    re.compile(r"\\[A-Za-z@]+"),                          # command names (\centering)
+]
+
+
+def american_spellings(text: str) -> list[tuple[int, str, str]]:
+    """(offset, word, Canadian spelling) for each American spelling in text."""
+    for phrase in SPELLING_ALLOW:
+        text = text.replace(phrase, " " * len(phrase))
+    found = []
+    for rx, fix in AMERICAN:
+        for m in rx.finditer(text):
+            word = m.group(0)
+            if word.lower() == "analog":
+                continue  # analog(ue) circuitry is spelt "analog" in Canada too
+            found.append((m.start(), word, fix(m)))
+    return sorted(found)
+
+
+def tex_prose(tex: str) -> str:
+    """tex with everything that isn't Jim's prose blanked (newlines kept, so offsets keep their line)."""
+    tex = "\n".join(re.sub(r"(?<!\\)%.*", lambda m: " " * len(m.group()), ln) for ln in tex.split("\n"))
+    for rx in _TEX_SKIP:
+        tex = rx.sub(lambda m: re.sub(r"[^\n]", " ", m.group()), tex)
+    return tex
+
+
+SPELLING_FIELDS = {"scholar.bib": ("note",), "awards.bib": ("title", "note"),
+                   "service.bib": ("title", "role", "note"), "activities.bib": ("title", "role", "note"),
+                   "supervision.bib": ("note", "position"), "grants.bib": ("note",),
+                   "committees.bib": ("note",), "courses.bib": ("note",)}
+
+
+def check_spelling(bibs: dict, warn, root=None) -> None:
+    root = root or ROOT
+    files = [root / "main.tex", root / "data" / "impact.tex", *sorted((root / "letters").glob("*.tex"))]
+    for path in files:
+        if not path.exists():
+            continue
+        prose = tex_prose(path.read_text(encoding="utf-8"))
+        for off, word, fix in american_spellings(prose):
+            line = prose.count("\n", 0, off) + 1
+            warn("W-spelling", f"{path.relative_to(root)}:{line}: '{word}' is American; Canadian "
+                 f"English is '{fix}'")
+    for name, fields in SPELLING_FIELDS.items():
+        for e in bibs.get(name, []):
+            for f in fields:
+                val = e.fields.get(f, "")
+                for _, word, fix in american_spellings(tex_prose(val)):
+                    warn("W-spelling", f"{name}: '{e.key}' {f}: '{word}' is American; Canadian "
+                         f"English is '{fix}'", e.key)
 
 
 def check_records(records: dict, main_tex: str, err, warn) -> None:

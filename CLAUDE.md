@@ -85,6 +85,18 @@ the source of truth; never force-push `main`.
 
 ## Conventions
 
+**Canadian English everywhere** (Jim, 2026-11-25) in everything I write: narratives,
+letters, notes, award, service and activity titles. That means -our and -re (honour,
+behaviour, centre), defence, licence (noun), practise (verb), doubled l (modelling,
+labelled, travelled), enrolment, and -ize / -yze (recognize, analyze), as Canadian Oxford
+and Canadian Press have it. Titles of published works, theses, journals, conferences and
+grants, and text quoted from a document, keep their owners' spelling. `check_cv.py` warns
+W-spelling on an American spelling in main.tex, letters/, data/impact.tex and the fields I
+write (notes; award, service and activity titles and roles; students' positions); it skips
+comments, URLs, `\emph{…}` titles and ``quotations''. A name that keeps its own spelling in
+prose goes in its `SPELLING_ALLOW` list (my call). It can't tell practice from practise or
+licence from license, so those stay with the reviewers.
+
 **Bib entries** (`scholar.bib`)
 - Key: `familyYYYYfirstword` in lower case, e.g. `wong2026ipvprevention`. Keys must be unique:
   `python3 scripts/check_cv.py` fails on duplicates (biber silently drops the second copy).
@@ -97,6 +109,12 @@ the source of truth; never force-push `main`.
   `note`, e.g. `note = {\textbf{Best Paper Honourable Mention Award}}`, and an `@award` in
   `awards.bib` with `work = {<that key>}`. The checker fails if either half is missing. If a
   trainee won it, add the award's key to `apralsoteaching` too.
+- Each field once per entry (`check_cv.py` fails on a repeat, E-dupfield: biber prints only one
+  copy), and no `url` that is just the DOI's doi.org link (W-doiurl: the DOI would print twice).
+- One work, one publication entry: `check_cv.py` warns (W-sametitle) when two entries with the
+  same title both print as publications (journal, conference, abstracts, technical reports,
+  other, patent). A talk or software release of a paper is fine. Separate works that share a
+  title go in `data/same-title.yaml`; only I add groups there.
 - Include `doi` whenever one exists; ACM entries use `@inproceedings` (conference proceedings)
   or `@article` (PACM / journals) as the ACM DL export does.
 - Accepted-but-unpublished work: add `note = {In press}` (the Faculty of Health format's term) and no DOI; the weekly run backfills
@@ -222,6 +240,15 @@ joined with ". ")
   Posters, Demos and Workshops)", prefix A. Peers' CVs keep abstracts apart from papers, and
   so does this one (Jim, 2026-11-22). When a record could be either, ask in the PR.
 - `presentations`: self-initiated talks/posters without archival proceedings. `invited`: invited talks.
+  My students' MMath and PhD seminars go here too (Jim, 2026-11-25), under the name the
+  School announces them by (CS: "Master's Thesis Presentation", "PhD Seminar"):
+  `@inproceedings`, `author` = the student (`*{\dag}`) and me, `title` as announced,
+  `booktitle = {Master's Thesis Presentation, David R. Cheriton School of Computer
+  Science}`, `address`, `month`, `year`, `nodoi = {Departmental seminar}`, and a
+  `% Source:` line with the event page (like `sharma2025details`); in the review period,
+  key in `apralsoteaching`. Only once it has happened; the weekly job finds them
+  (`automation/weekly-update.md` step 2c). Seminars where I am only the reader or a
+  committee member are not my presentations.
 - `technicalreports`, `other`, `patent`, `software` as named.
 - `unprinted`: entries I keep in `scholar.bib` but do not print. Listing a key here records
   that decision, so `check_cv.py` stops warning that it does not appear. Only I add keys.

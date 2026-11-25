@@ -55,6 +55,7 @@ class Entry:
     fields: dict[str, str]
     line: int
     raw: str
+    dup_fields: list[str] = field(default_factory=list)  # names given more than once (biber keeps one)
 
     @property
     def year(self) -> int | None:
@@ -98,7 +99,7 @@ def _read_balanced(text: str, i: int, open_ch: str, close_ch: str) -> int:
     return -1
 
 
-def _parse_fields(body: str) -> dict[str, str]:
+def _parse_fields(body: str, dupes: list[str] | None = None) -> dict[str, str]:
     fields: dict[str, str] = {}
     # Whole-line % comments inside an entry (e.g. "% pages = {--},") are
     # skipped by biber; without this the reader stopped at the first one and
@@ -140,6 +141,8 @@ def _parse_fields(body: str) -> dict[str, str]:
             m2 = re.compile(r"[^,}\s]+").match(body, i)
             val = m2.group() if m2 else ""
             i = m2.end() if m2 else i + 1
+        if name in fields and dupes is not None:
+            dupes.append(name)
         fields[name] = re.sub(r"\s+", " ", val).strip()
     return fields
 
@@ -163,7 +166,9 @@ def parse_bib(path: Path) -> Bib:
             bib.errors.append(f"{path.name}:{line}: entry @{m.group(1)} has no citation key")
             continue
         key = km.group(1)
-        bib.entries.append(Entry(key, etype, _parse_fields(inner[km.end():]), line, text[m.start():end]))
+        dupes: list[str] = []
+        fields = _parse_fields(inner[km.end():], dupes)
+        bib.entries.append(Entry(key, etype, fields, line, text[m.start():end], dupes))
     return bib
 
 

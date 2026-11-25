@@ -57,6 +57,15 @@ c. **Outlook** — with the Microsoft 365 connector, search Jim's mail since the
    - Invited talks, keynotes, seminars, guest lectures, panels: `invite you to speak`,
      `seminar`, `guest lecture`, `panelist`, `keynote`. The talk goes under `invited` once it
      has happened.
+   - Students' MMath and PhD seminars (Jim, 2026-11-25): the weekly "SCS Newsletter" and
+     "[Math-seminars] Next week's Math Faculty seminars" list each seminar with its
+     supervisor. Search `"Supervisor: Professor Jim Wallace"`, `"Supervisors: Professors"
+     Wallace`, `"MMath Seminar"`, `"PhD Seminar"`, `"Master's Thesis Presentation"`. A
+     seminar by a student in `supervision.bib` goes under `presentations` as `CLAUDE.md` →
+     "Which heading" says, once its date has passed; one still to come is a note in your final
+     message. Cite the public event page (cs.uwaterloo.ca/events/…) in the change table, not
+     the email. A student not on the roster is a question ("Is X your trainee?"); a listing
+     naming Jim as reader or committee member is not his presentation, so skip it.
    - Session chair, moderator, discussant: `session chair`, `chair a session`, `moderator`.
    - Trainee scholarships and awards: `scholarship`, `OGS`, `CGS`, `Vanier`, `award`, with
      the names in `supervision.bib`. Only an award letter (or the student forwarding it)
