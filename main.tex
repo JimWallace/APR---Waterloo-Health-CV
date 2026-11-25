@@ -79,6 +79,28 @@
 % Where work has been deployed or used beyond the paper (hand-maintained, with a
 % source for each line; see the header of data/impact.tex).
 \ifdefined\setentrydetail\input{data/impact}\fi
+% Publication metrics in the printed entries (Jim, 2026-11-25): Journal Impact
+% Factors never print, and an acceptance rate prints only when it is under 30%.
+% scholar.bib keeps every figure (the record, which scripts/gaps.py and the
+% weekly run read); these maps only drop them from the printed note. To print
+% one again, delete its step.
+\DeclareSourcemap{
+  \maps[datatype=bibtex]{
+    \map[overwrite]{
+      \step[fieldsource=note,
+            match=\regexp{(\A|\.\s*)Journal\s+Impact\s+Factor\s*\(\d{4}\):\s*[\d.]+},
+            replace={}]
+      \step[fieldsource=note,
+            match=\regexp{(\A|\.\s*)Acceptance\s+rate:\s*(\$\\sim\$\s*)?([3-9]\d|\d{3,})(\.\d+)?\\\%(\s*\([^)]*\))?},
+            replace={}]
+      \step[fieldsource=note, match=\regexp{\A\.\s*}, replace={}]
+    }
+    \map{
+      \step[fieldsource=note, match=\regexp{\A\s*\Z}, final]
+      \step[fieldset=note, null]
+    }
+  }
+}
 
 
 \DeclareBibliographyCategory{presentations}
@@ -308,7 +330,7 @@ Citation counts depend on the database and the field. Google Scholar indexes the
 % The APR explains HCI's venues in "A Note on Evaluating Human-Computer Interaction
 % Research"; the plain CV carries this short version (wording from that note).
 \ifAPR\else
-In human--computer interaction, the primary archival venues for full papers are selective ACM conferences, which function as top journals do in other fields; many now publish their papers as journal articles in the Proceedings of the ACM (PACM). Acceptance rates and Journal Impact Factors are given under each entry where available.
+In human--computer interaction, the primary archival venues for full papers are selective ACM conferences, which function as top journals do in other fields; many now publish their papers as journal articles in the Proceedings of the ACM (PACM). Acceptance rates are given under the entries from the most selective venues and tracks (below 30\%).
 \fi
 
 \begin{cvparts}

@@ -190,6 +190,10 @@ date is more than a year old, or an APR is due, ask him for new figures in the P
 
 **Acceptance rates and impact factors** (in the entry's `note`, after any text already there,
 joined with ". ")
+- What prints (Jim, 2026-11-25): Journal Impact Factors never print, and an acceptance
+  rate prints only when it is under 30%. Record every figure in `note` as below anyway: a
+  source map in `main.tex` drops the rest from the printed entry, and `scripts/gaps.py`
+  reads the record.
 - Conference papers and PACM articles (CSCW, CHI PLAY, GROUP, ISS):
   `Acceptance rate: 25.6\% (64/250)`. Give the counts when the source states them, otherwise
   just the percentage. Use the rate for the paper's own track (full papers, notes, Late-Breaking
