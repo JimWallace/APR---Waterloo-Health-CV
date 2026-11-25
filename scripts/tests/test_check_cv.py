@@ -571,3 +571,46 @@ class FieldTest(unittest.TestCase):
         (root / "g.bib").write_text("@misc{g, note = {one}, note = {two}}\n", encoding="utf-8")
         e, = cvlib.parse_bib(root / "g.bib").entries
         self.assertEqual((e.fields["note"], e.dup_fields), ("two", ["note"]))
+
+
+class SameTitleTest(unittest.TestCase):
+    """W-sametitle: one title printed in two publication lists (Jim, 2026-11-25)."""
+
+    BIB = r"""
+@inproceedings{demo2025, title = {{DeTAILS}: Deep Thematic Analysis}, year = {2025}}
+@inproceedings{paper2026, title = {DeTAILS: deep thematic analysis.}, year = {2026}}
+@misc{talk2025, title = {DeTAILS: Deep Thematic Analysis}, year = {2025}}
+@article{other2024, title = {Something Else}, year = {2024}}
+@misc{gone2024, title = {Something Else}, year = {2024}}
+"""
+    CATS = {"abstracts": ["demo2025"], "conference": ["paper2026", "other2024"],
+            "presentations": ["talk2025"], "unprinted": ["gone2024"]}
+
+    def run_on(self, allowed):
+        root = Path(tempfile.mkdtemp())
+        self.addCleanup(shutil.rmtree, root)
+        (root / "s.bib").write_text(self.BIB, encoding="utf-8")
+        out = []
+        check_cv.check_same_titles(cvlib.parse_bib(root / "s.bib").entries, self.CATS,
+                                   lambda c, m, k=None: out.append((c, k, m)), allowed)
+        return out
+
+    def test_the_same_title_in_two_publication_lists_warns(self):
+        out = self.run_on([])
+        self.assertEqual([(c, k) for c, k, _ in out], [("W-sametitle", "demo2025")])
+        self.assertIn("'paper2026' (conference)", out[0][2])
+
+    def test_talks_of_papers_and_unprinted_entries_pass(self):
+        # talk2025 is a presentation of the work; gone2024 does not print.
+        self.assertNotIn("talk2025", self.run_on([])[0][2])
+
+    def test_a_group_jim_confirmed_passes(self):
+        self.assertEqual(self.run_on([{"demo2025", "paper2026"}]), [])
+
+    def test_the_allowlist_reader(self):
+        root = Path(tempfile.mkdtemp())
+        self.addCleanup(shutil.rmtree, root)
+        p = root / "same-title.yaml"
+        p.write_text("# comment\n- [a2025, b2026]  # Jim, 2026-11-25\n- [c, d, e]\n", encoding="utf-8")
+        self.assertEqual(check_cv.read_same_title_groups(p), [{"a2025", "b2026"}, {"c", "d", "e"}])
+        self.assertEqual(check_cv.read_same_title_groups(root / "missing.yaml"), [])

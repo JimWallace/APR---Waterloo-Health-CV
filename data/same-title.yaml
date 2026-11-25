@@ -1,0 +1,3 @@
+# Printed publications that share a title but are separate works, so check_cv.py
+# does not warn (W-sametitle). Jim's call only: one group per line, with who decided and when.
+- [Sharma2025, sharma2026details]  # CUI 2025 interactivity demo and GI 2026 full paper (Jim, 2026-11-25)

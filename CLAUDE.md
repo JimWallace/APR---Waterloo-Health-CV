@@ -111,6 +111,10 @@ licence from license, so those stay with the reviewers.
   trainee won it, add the award's key to `apralsoteaching` too.
 - Each field once per entry (`check_cv.py` fails on a repeat, E-dupfield: biber prints only one
   copy), and no `url` that is just the DOI's doi.org link (W-doiurl: the DOI would print twice).
+- One work, one publication entry: `check_cv.py` warns (W-sametitle) when two entries with the
+  same title both print as publications (journal, conference, abstracts, technical reports,
+  other, patent). A talk or software release of a paper is fine. Separate works that share a
+  title go in `data/same-title.yaml`; only I add groups there.
 - Include `doi` whenever one exists; ACM entries use `@inproceedings` (conference proceedings)
   or `@article` (PACM / journals) as the ACM DL export does.
 - Accepted-but-unpublished work: add `note = {In press}` (the Faculty of Health format's term) and no DOI; the weekly run backfills

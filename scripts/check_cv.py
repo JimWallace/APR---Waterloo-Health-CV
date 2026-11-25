@@ -25,7 +25,7 @@ from collections import Counter
 sys.path.insert(0, os.path.dirname(__file__))
 from cvlib import (APR_CATEGORIES, KNOWN_TYPES, PRINTED_CATEGORIES, ROOT, add_supervised,  # noqa: E402
                    clean_name, is_marked_trainee, load_roster, mark_in_given_name,
-                   name_parts, norm, parse_bib, parse_categories, review_period,
+                   name_parts, norm, norm_title, parse_bib, parse_categories, review_period,
                    roster_index)
 from warning_ratchet import (BASELINE_REL, check_cv_line, compare, read_baseline,  # noqa: E402
                              write_baseline)
@@ -112,6 +112,7 @@ def run(only: set[str] | None = None) -> dict:
     check_software(cats, by_key, err, warn)
     check_generated(main_src, err, warn)
     check_impact(cats, by_key, err, warn)
+    check_same_titles(bib.entries, cats, warn, read_same_title_groups(ROOT / SAME_TITLE_REL))
     check_fields({"scholar.bib": bib.entries,
                   **{n: rb.entries for n, rb in records.items()}}, err, warn)
     check_spelling({"scholar.bib": bib.entries,
@@ -307,6 +308,44 @@ def check_fields(bibs: dict, err, warn) -> None:
             if m and doi and m.group(1).strip().lower() == doi.lower():
                 warn("W-doiurl", f"{name}: '{e.key}' has `url` = https://doi.org/{doi}, so the DOI "
                      "prints twice; remove the `url` line", e.key)
+
+
+# Publications that would be counted twice: the same title printed in two publication lists.
+# A talk, poster or software release of a published work (presentations, invited, software,
+# media) is listed on purpose and not checked here.
+PUBLICATION_CATEGORIES = ["journal", "conference", "abstracts", "technicalreports", "other", "patent"]
+SAME_TITLE_REL = "data/same-title.yaml"
+
+
+def read_same_title_groups(path) -> list[set[str]]:
+    """Groups like `- [key1, key2]  # who decided` (a plain reader: no YAML library needed)."""
+    groups = []
+    if path.exists():
+        for ln in path.read_text(encoding="utf-8").splitlines():
+            m = re.match(r"\s*-\s*\[([^\]]*)\]", ln)
+            if m:
+                groups.append({k.strip() for k in m.group(1).split(",") if k.strip()})
+    return groups
+
+
+def check_same_titles(entries, cats: dict, warn, allowed: list[set[str]]) -> None:
+    where = {}
+    for c in PUBLICATION_CATEGORIES:
+        for k in cats.get(c, []):
+            where.setdefault(k, c)
+    by_title: dict[str, list] = {}
+    for e in entries:
+        if e.key in where:
+            t = norm_title(e.fields.get("title", ""))
+            if t:
+                by_title.setdefault(t, []).append(e.key)
+    for keys in by_title.values():
+        if len(keys) < 2 or any(set(keys) <= g for g in allowed):
+            continue
+        listed = ", ".join(f"'{k}' ({where[k]})" for k in keys)
+        warn("W-sametitle", f"{listed} have the same title and all print as publications, so the "
+             f"work may be counted twice. Print one, or, if they are separate works, Jim adds them "
+             f"to {SAME_TITLE_REL}", keys[0])
 
 
 # --- Canadian English (Jim, 2026-11-25: "Canadian and only Canadian English everywhere") --------
