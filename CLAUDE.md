@@ -222,6 +222,13 @@ joined with ". ")
   Posters, Demos and Workshops)", prefix A. Peers' CVs keep abstracts apart from papers, and
   so does this one (Jim, 2026-11-22). When a record could be either, ask in the PR.
 - `presentations`: self-initiated talks/posters without archival proceedings. `invited`: invited talks.
+  My students' MMath and PhD seminars go here too (Jim, 2026-11-25): `@inproceedings`,
+  `author` = the student (`*{\dag}`) and me, `title` as announced, `booktitle = {MMath
+  Seminar, David R. Cheriton School of Computer Science}` (or `PhD Seminar`, or the
+  student's own school), `address`, `month`, `year`, and `nodoi = {Departmental seminar}`;
+  key in `apralsoteaching`. Only once it has happened; from the School's announcement (the
+  weekly job finds them, `automation/weekly-update.md` step 2c). Seminars where I am only
+  the reader or a committee member are not my presentations.
 - `technicalreports`, `other`, `patent`, `software` as named.
 - `unprinted`: entries I keep in `scholar.bib` but do not print. Listing a key here records
   that decision, so `check_cv.py` stops warning that it does not appear. Only I add keys.
