@@ -85,6 +85,13 @@ the source of truth; never force-push `main`.
 
 ## Conventions
 
+**Canadian English everywhere** (Jim, 2026-11-25) in everything I write: narratives,
+letters, notes, award, service and activity titles. That means -our and -re (honour,
+behaviour, centre), defence, licence (noun), practise (verb), doubled l (modelling,
+labelled, travelled), enrolment, and -ize / -yze (recognize, analyze), as Canadian Oxford
+and Canadian Press have it. Titles of published works, theses, journals, conferences and
+grants, and text quoted from a document, keep their owners' spelling.
+
 **Bib entries** (`scholar.bib`)
 - Key: `familyYYYYfirstword` in lower case, e.g. `wong2026ipvprevention`. Keys must be unique:
   `python3 scripts/check_cv.py` fails on duplicates (biber silently drops the second copy).
