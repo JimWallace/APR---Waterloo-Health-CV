@@ -69,7 +69,6 @@ jobs:
             gaps.tex
             cover-letter.tex
             external-input-letter.tex
-            salary-anomaly-letter.tex
       - name: Name the PDFs
         run: |
           mkdir -p out
@@ -78,7 +77,6 @@ jobs:
           cp gaps.pdf out/Wallace-CV-gaps.pdf
           cp cover-letter.pdf out/Wallace-APR-cover-letter.pdf
           cp external-input-letter.pdf out/Wallace-APR-external-input-letter.pdf
-          cp salary-anomaly-letter.pdf out/Wallace-salary-anomaly-letter.pdf
       - name: Missing data (marked in orange in Wallace-CV-gaps.pdf)
         run: |
           { echo "### Missing data: $(python3 scripts/gaps.py --list | wc -l) entries"
@@ -333,4 +331,7 @@ jobs:
           else
             gh release create cv-preview --prerelease --title "Preview of an open PR" --notes "$notes" --target "$SHA"
           fi
-          gh release upload cv-preview out/Wallace-CV.pdf out/Wallace-CV-APR.pdf out/Wallace-CV-gaps.pdf out/Wallace-APR-cover-letter.pdf out/Wallace-APR-external-input-letter.pdf out/Wallace-salary-anomaly-letter.pdf --clobber
+          gh release upload cv-preview out/Wallace-CV.pdf out/Wallace-CV-APR.pdf out/Wallace-CV-gaps.pdf out/Wallace-APR-cover-letter.pdf out/Wallace-APR-external-input-letter.pdf --clobber
+          # The salary anomaly letter is no longer built (Jim, 2026-11-25); remove the copy
+          # earlier builds uploaded. A no-op once it is gone.
+          gh release delete-asset cv-preview Wallace-salary-anomaly-letter.pdf --yes 2>/dev/null || true
