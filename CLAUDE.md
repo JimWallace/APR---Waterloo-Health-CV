@@ -449,12 +449,13 @@ that is followed by a list; never use `\newpage` (use `\sectionbreak`).
   headings or in two files, narratives restating each other, letters copying the CV).
   Both are verifiers in `cv-verify`. Only what a PR adds counts toward their verdict;
   untouched content goes under "Elsewhere" and never blocks. They propose; removing or
-  rewriting content stays my call (hard rules 2 and 3). CI's `review` job (`cv-build.yml`)
-  runs both on every PR except `cv/` branches (whose session already ran them) and posts
-  one comment; a FAIL labels the PR `needs-review`. `cv-audit.yml` runs both over the
-  whole CV on 1 December of APR years and files an issue. Both need the
-  `CLAUDE_CODE_OAUTH_TOKEN` secret and skip without it. A kind of finding that recurs and
+  rewriting content stays my call (hard rules 2 and 3). A kind of finding that recurs and
   is mechanical belongs in `check_cv.py` instead.
+- **The verifiers run in the submitter's session, not in CI** (Jim, 2026-11-25). The agent
+  definitions live in `.claude/agents/`; whoever opens or updates a PR (a chat session, the
+  weekly job) runs `cv-verify` before every push, and the PR body gives each verifier's
+  verdict. CI runs only the deterministic checks and the builds. Before an APR goes in, run
+  `cv-verify full` (every verifier over the whole CV and the letters).
 
 ## Pull requests
 
@@ -465,7 +466,8 @@ that is followed by a list; never use `\newpage` (use `\sectionbreak`).
 - Any other PR opened under Jim's GitHub account — including one you open for him in a
   chat — merges automatically once CI passes. Open it as a draft, or label it
   `needs-review`, if he should look first.
-- Every PR body has a table of the changes (what, where, source).
+- Every PR body has a table of the changes (what, where, source), and one line per verifier
+  with its verdict from the `cv-verify` run on the pushed commit (see Checks).
 - `gh pr create` and other GraphQL-based `gh` commands can be blocked in Claude sessions;
   use the REST API (`gh api repos/JimWallace/APR---Waterloo-Health-CV/pulls …`).
 - The repo is public: never put email text, rejections (other than grant decisions, which

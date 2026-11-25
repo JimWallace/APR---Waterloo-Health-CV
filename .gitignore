@@ -1,7 +1,5 @@
 # Working files from the weekly update
 .cv-work/
-# Rendered text for the CI reviewers (cv-build.yml review job, cv-audit.yml)
-.review/
 
 # LaTeX build output (Overleaf and CI build their own)
 *.aux
