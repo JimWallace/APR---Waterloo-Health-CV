@@ -153,8 +153,8 @@ change; `check_cv.py` warns W-generated until you do. Never edit its output by h
   work out which venues are health research. From the `journal` category and
   `data/venues.yaml`, which also tags the proceedings series of `conference` and
   `abstracts` (for the counts only; the printed line is journals).
-- `data/funders.tex` (APR): the sentence after "Health research funders also support the
-  work." in the funding note, from the funded grants in `grants.bib` whose agency
+- `data/funders.tex` (APR): the sentence after the bold lead-in on health research
+  agencies in the funding note, from the funded grants in `grants.bib` whose agency
   `data/funders.yaml` tags `health`.
 - `data/cv-numbers.tex`: the counts the narratives quote, printed with `\cvnumber{name}`
   (`python3 scripts/cv_numbers.py --list` names them): review-period output and how much

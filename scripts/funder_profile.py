@@ -6,7 +6,7 @@
 
 Reads every funded grant in grants.bib (no `status`), the sector of its agency in
 data/funders.yaml, and Jim's role, and writes the sentence that follows the bold lead
-"Health research funders also support the work." in main.tex:
+on health research agencies in the funding note of main.tex:
 
     I was PI of a Public Health Agency of Canada project (2017) and Co-PI of a Canadian
     Public Health Association project (2017--18), and a co-investigator or co-applicant
