@@ -109,6 +109,8 @@ licence from license, so those stay with the reviewers.
   `note`, e.g. `note = {\textbf{Best Paper Honourable Mention Award}}`, and an `@award` in
   `awards.bib` with `work = {<that key>}`. The checker fails if either half is missing. If a
   trainee won it, add the award's key to `apralsoteaching` too.
+- Each field once per entry (`check_cv.py` fails on a repeat, E-dupfield: biber prints only one
+  copy), and no `url` that is just the DOI's doi.org link (W-doiurl: the DOI would print twice).
 - Include `doi` whenever one exists; ACM entries use `@inproceedings` (conference proceedings)
   or `@article` (PACM / journals) as the ACM DL export does.
 - Accepted-but-unpublished work: add `note = {In press}` (the Faculty of Health format's term) and no DOI; the weekly run backfills

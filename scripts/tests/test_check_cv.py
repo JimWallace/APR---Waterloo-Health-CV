@@ -531,3 +531,43 @@ class CanadianSpellingTest(unittest.TestCase):
         self.assertNotIn("Modeling", joined)  # thesis titles keep their own spelling
         self.assertNotIn("'Behavior'", joined)  # \emph{} titles of works are skipped
         self.assertEqual(len(out), 4)
+
+
+class FieldTest(unittest.TestCase):
+    """E-dupfield (a field given twice) and W-doiurl (url that is only the DOI)."""
+
+    def run_on(self, bib_text):
+        root = Path(tempfile.mkdtemp())
+        self.addCleanup(shutil.rmtree, root)
+        (root / "x.bib").write_text(bib_text, encoding="utf-8")
+        entries = cvlib.parse_bib(root / "x.bib").entries
+        errs, warns = [], []
+        check_cv.check_fields({"x.bib": entries}, lambda c, m, k=None: errs.append((c, k)),
+                              lambda c, m, k=None: warns.append((c, k)))
+        return errs, warns
+
+    def test_a_field_given_twice_is_an_error(self):
+        errs, _ = self.run_on("@inproceedings{a2025, title = {A}, note = {Poster presentation},\n"
+                              "  icon = {x}, note = {\\textbf{Award}}}\n")
+        self.assertEqual(errs, [("E-dupfield", "a2025")])
+
+    def test_distinct_fields_and_commented_lines_pass(self):
+        errs, _ = self.run_on("@inproceedings{b2025, title = {B},\n% note = {old}\n  note = {New}}\n")
+        self.assertEqual(errs, [])
+
+    def test_a_url_that_is_the_doi_warns(self):
+        _, warns = self.run_on("@article{c2025, doi = {10.1145/ABC}, url = {https://doi.org/10.1145/abc}}\n"
+                               "@article{d2025, doi = {10.1/x}, url = {http://dx.doi.org/10.1/x}}\n")
+        self.assertEqual(warns, [("W-doiurl", "c2025"), ("W-doiurl", "d2025")])
+
+    def test_a_different_url_passes(self):
+        _, warns = self.run_on("@article{e2025, doi = {10.1/x}, url = {https://example.org/paper}}\n"
+                               "@misc{f2025, url = {https://doi.org/10.1/y}}\n")
+        self.assertEqual(warns, [])
+
+    def test_the_parser_still_keeps_one_value(self):
+        root = Path(tempfile.mkdtemp())
+        self.addCleanup(shutil.rmtree, root)
+        (root / "g.bib").write_text("@misc{g, note = {one}, note = {two}}\n", encoding="utf-8")
+        e, = cvlib.parse_bib(root / "g.bib").entries
+        self.assertEqual((e.fields["note"], e.dup_fields), ("two", ["note"]))

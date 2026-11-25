@@ -112,6 +112,8 @@ def run(only: set[str] | None = None) -> dict:
     check_software(cats, by_key, err, warn)
     check_generated(main_src, err, warn)
     check_impact(cats, by_key, err, warn)
+    check_fields({"scholar.bib": bib.entries,
+                  **{n: rb.entries for n, rb in records.items()}}, err, warn)
     check_spelling({"scholar.bib": bib.entries,
                     **{n: rb.entries for n, rb in records.items()}}, warn)
     record_keys = {e.key for rb in records.values() for e in rb.entries}
@@ -286,6 +288,25 @@ GRANT_DAY_RE = re.compile(r"^\d{4}(-\d{2}(-\d{2})?)?$")
 DATE_RE = re.compile(r"^\d{4}(-\d{2})?(/\d{4}(-\d{2})?)?$")
 # Course evaluation scores: Item=score pairs, comma-separated, scores out of 5
 SCORES_RE = re.compile(r"^[^=,]*[^=,\s]=[0-5](\.\d+)?(\s*,\s*[^=,]*[^=,\s]=[0-5](\.\d+)?)*$")
+
+
+DOI_URL_RE = re.compile(r"^https?://(?:dx\.)?doi\.org/(.+)$", re.I)
+
+
+def check_fields(bibs: dict, err, warn) -> None:
+    """Fields biber would drop or print twice: a field given twice in one entry (biber keeps
+    one copy, so the other never prints) and a `url` that is only the entry's DOI as a link
+    (the DOI already prints, so it shows twice)."""
+    for name, entries in bibs.items():
+        for e in entries:
+            for f in sorted(set(e.dup_fields)):
+                err("E-dupfield", f"{name}:{e.line}: '{e.key}' gives `{f}` more than once; biber "
+                    "keeps only one, so the other never prints. Merge them into one field", e.key)
+            m = DOI_URL_RE.match(e.fields.get("url", "").strip())
+            doi = e.fields.get("doi", "").strip()
+            if m and doi and m.group(1).strip().lower() == doi.lower():
+                warn("W-doiurl", f"{name}: '{e.key}' has `url` = https://doi.org/{doi}, so the DOI "
+                     "prints twice; remove the `url` line", e.key)
 
 
 # --- Canadian English (Jim, 2026-11-25: "Canadian and only Canadian English everywhere") --------
