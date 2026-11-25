@@ -9,6 +9,7 @@
 \usepackage{pgfplots}% the HLTH 230 grades figure (APR version)
 \pgfplotsset{compat=1.18}
 \input{letters/aprletter}% the letters the APR version includes (letters/)
+\usepackage{pdfpages}% the supporting documents after the CV (APR version)
 
 \addbibresource{scholar.bib}
 \addbibresource{grants.bib}
@@ -619,9 +620,14 @@ I design, build and evaluate interactive technologies for health, working with t
 \textbf{Collaborative sensemaking:} how groups build shared understanding from information with shared and personal devices, the foundation of my lab's tools for qualitative health research.
 
 
-% The letter on process in SPHS reviews (letters/process.tex; external-input-letter.tex on
-% its own) follows the CV in the APR packet (Jim, 2026-11-25).
-\ifAPR\input{letters/process}\fi
+% Supporting documents after the CV in the APR packet, as the raw PDFs (Jim, 2026-11-25):
+% the NFRF letter, then the cross-appointment memos. The process letter is not part of the
+% packet (external-input-letter.tex, sent on its own). A file that is missing is skipped.
+\ifAPR
+  \IfFileExists{appendix/nfrf-letter.pdf}{\includepdf[pages=-]{appendix/nfrf-letter.pdf}}{}
+  \IfFileExists{appendix/cross-appointment-memo-1.pdf}{\includepdf[pages=-]{appendix/cross-appointment-memo-1.pdf}}{}
+  \IfFileExists{appendix/cross-appointment-memo-2.pdf}{\includepdf[pages=-]{appendix/cross-appointment-memo-2.pdf}}{}
+\fi
 \end{document}
 
 

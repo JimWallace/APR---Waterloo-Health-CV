@@ -43,8 +43,10 @@ One source, two PDFs (and a review copy):
   written in the `aprletter` environment (`letters/aprletter.tex`). The standalone
   `cover-letter.tex`, `external-input-letter.tex` and `salary-anomaly-letter.tex` only wrap
   them; edit the text in `letters/`. The APR version (`apr.tex`) includes the cover letter
-  before the CV and the process letter after it, on the same letterhead (300 dpi images in
-  `letterhead/*.png`, so the CV stays PDF/A), so `apr.pdf` is the whole packet. The salary
+  before the CV, on the same letterhead (300 dpi images in `letterhead/*.png`, so the CV
+  stays PDF/A), and after the CV the supporting documents as raw PDFs from `appendix/`
+  (`nfrf-letter.pdf`, then `cross-appointment-memo-1.pdf`, `-2.pdf`), so `apr.pdf` is the
+  whole packet. The process letter is not part of the packet (Jim, 2026-11-25). The salary
   letter is not part of the APR. Letters use plain `itemize`/`enumerate`, not the CV markup.
 - `external-input-letter.tex` is a second signed letter on the same letterhead, to the
   Director and the APR Committee, setting out process issues in SPHS reviews (committee size,
