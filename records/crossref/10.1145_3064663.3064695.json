@@ -1,0 +1,257 @@
+{
+ "indexed": {
+  "date-parts": [
+   [
+    2026,
+    10,
+    20
+   ]
+  ],
+  "date-time": "2026-10-20T16:30:51Z",
+  "timestamp": 1792513851735,
+  "version": "4.5.0"
+ },
+ "publisher-location": "New York, NY, USA",
+ "reference-count": 27,
+ "publisher": "ACM",
+ "license": [
+  {
+   "start": {
+    "date-parts": [
+     [
+      2017,
+      6,
+      10
+     ]
+    ],
+    "date-time": "2017-06-10T00:00:00Z",
+    "timestamp": 1497052800000
+   },
+   "content-version": "vor",
+   "delay-in-days": 0,
+   "URL": "https://www.acm.org/publications/policies/copyright_policy#Background"
+  }
+ ],
+ "funder": [
+  {
+   "DOI": "10.13039/100006785",
+   "name": "Google",
+   "doi-asserted-by": "publisher",
+   "id": [
+    {
+     "id": "10.13039/100006785",
+     "id-type": "DOI",
+     "asserted-by": "publisher"
+    }
+   ]
+  },
+  {
+   "DOI": "10.13039/501100000038",
+   "name": "Natural Sciences and Engineering Research Council of Canada",
+   "doi-asserted-by": "publisher",
+   "id": [
+    {
+     "id": "10.13039/501100000038",
+     "id-type": "DOI",
+     "asserted-by": "publisher"
+    }
+   ]
+  }
+ ],
+ "content-domain": {
+  "domain": [
+   "dl.acm.org"
+  ],
+  "crossmark-restriction": true
+ },
+ "short-container-title": [],
+ "published-print": {
+  "date-parts": [
+   [
+    2017,
+    6,
+    10
+   ]
+  ]
+ },
+ "DOI": "10.1145/3064663.3064695",
+ "type": "proceedings-article",
+ "created": {
+  "date-parts": [
+   [
+    2017,
+    6,
+    8
+   ]
+  ],
+  "date-time": "2017-06-08T14:42:54Z",
+  "timestamp": 1496932974000
+ },
+ "page": "1111-1122",
+ "update-policy": "https://doi.org/10.1145/crossmark-policy",
+ "source": "Crossref",
+ "is-referenced-by-count": 23,
+ "title": [
+  "Exploring At-Your-Side Gestural Interaction for Ubiquitous Environments"
+ ],
+ "prefix": "10.1145",
+ "author": [
+  {
+   "given": "Shaishav",
+   "family": "Siddhpuria",
+   "sequence": "first",
+   "affiliation": [
+    {
+     "name": "University of Waterloo, Waterloo, ON, Canada"
+    }
+   ],
+   "role": [
+    {
+     "vocabulary": "crossref",
+     "role": "author"
+    }
+   ]
+  },
+  {
+   "given": "Keiko",
+   "family": "Katsuragawa",
+   "sequence": "additional",
+   "affiliation": [
+    {
+     "name": "University of Waterloo, Waterloo, ON, Canada"
+    }
+   ],
+   "role": [
+    {
+     "vocabulary": "crossref",
+     "role": "author"
+    }
+   ]
+  },
+  {
+   "given": "James R.",
+   "family": "Wallace",
+   "sequence": "additional",
+   "affiliation": [
+    {
+     "name": "University of Waterloo, Waterloo, ON, Canada"
+    }
+   ],
+   "role": [
+    {
+     "vocabulary": "crossref",
+     "role": "author"
+    }
+   ]
+  },
+  {
+   "given": "Edward",
+   "family": "Lank",
+   "sequence": "additional",
+   "affiliation": [
+    {
+     "name": "University of Waterloo &amp; University of Lille, Waterloo, ON, Canada"
+    }
+   ],
+   "role": [
+    {
+     "vocabulary": "crossref",
+     "role": "author"
+    }
+   ]
+  }
+ ],
+ "member": "320",
+ "published-online": {
+  "date-parts": [
+   [
+    2017,
+    6,
+    10
+   ]
+  ]
+ },
+ "event": {
+  "name": "DIS '17: Designing Interactive Systems Conference 2017",
+  "location": "Edinburgh United Kingdom",
+  "acronym": "DIS '17",
+  "sponsor": [
+   "SIGCHI ACM Special Interest Group on Computer-Human Interaction"
+  ]
+ },
+ "container-title": [
+  "Proceedings of the 2017 Conference on Designing Interactive Systems"
+ ],
+ "original-title": [],
+ "link": [
+  {
+   "URL": "https://dl.acm.org/doi/10.1145/3064663.3064695",
+   "content-type": "unspecified",
+   "content-version": "vor",
+   "intended-application": "text-mining"
+  },
+  {
+   "URL": "https://dl.acm.org/doi/pdf/10.1145/3064663.3064695",
+   "content-type": "unspecified",
+   "content-version": "vor",
+   "intended-application": "similarity-checking"
+  }
+ ],
+ "deposited": {
+  "date-parts": [
+   [
+    2025,
+    6,
+    18
+   ]
+  ],
+  "date-time": "2025-06-18T03:36:18Z",
+  "timestamp": 1750217778000
+ },
+ "score": 1,
+ "resource": {
+  "primary": {
+   "URL": "https://dl.acm.org/doi/10.1145/3064663.3064695"
+  }
+ },
+ "subtitle": [],
+ "short-title": [],
+ "issued": {
+  "date-parts": [
+   [
+    2017,
+    6,
+    10
+   ]
+  ]
+ },
+ "references-count": 27,
+ "alternative-id": [
+  "10.1145/3064663.3064695",
+  "10.1145/3064663"
+ ],
+ "URL": "https://doi.org/10.1145/3064663.3064695",
+ "relation": {},
+ "subject": [],
+ "published": {
+  "date-parts": [
+   [
+    2017,
+    6,
+    10
+   ]
+  ]
+ },
+ "assertion": [
+  {
+   "value": "2017-06-10",
+   "order": 2,
+   "name": "published",
+   "label": "Published",
+   "group": {
+    "name": "publication_history",
+    "label": "Publication History"
+   }
+  }
+ ]
+}

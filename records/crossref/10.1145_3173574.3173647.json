@@ -1,0 +1,233 @@
+{
+ "indexed": {
+  "date-parts": [
+   [
+    2026,
+    10,
+    10
+   ]
+  ],
+  "date-time": "2026-10-10T06:07:50Z",
+  "timestamp": 1791612470950,
+  "version": "4.3.4"
+ },
+ "publisher-location": "New York, NY, USA",
+ "reference-count": 43,
+ "publisher": "ACM",
+ "license": [
+  {
+   "start": {
+    "date-parts": [
+     [
+      2018,
+      4,
+      19
+     ]
+    ],
+    "date-time": "2018-04-19T00:00:00Z",
+    "timestamp": 1524096000000
+   },
+   "content-version": "vor",
+   "delay-in-days": 0,
+   "URL": "https://www.acm.org/publications/policies/copyright_policy#Background"
+  }
+ ],
+ "content-domain": {
+  "domain": [
+   "dl.acm.org"
+  ],
+  "crossmark-restriction": true
+ },
+ "short-container-title": [],
+ "published-print": {
+  "date-parts": [
+   [
+    2018,
+    4,
+    19
+   ]
+  ]
+ },
+ "DOI": "10.1145/3173574.3173647",
+ "type": "proceedings-article",
+ "created": {
+  "date-parts": [
+   [
+    2018,
+    4,
+    20
+   ]
+  ],
+  "date-time": "2018-04-20T11:43:11Z",
+  "timestamp": 1524224591000
+ },
+ "page": "1-13",
+ "update-policy": "https://doi.org/10.1145/crossmark-policy",
+ "source": "Crossref",
+ "is-referenced-by-count": 27,
+ "title": [
+  "Group vs Individual"
+ ],
+ "prefix": "10.1145",
+ "author": [
+  {
+   "given": "Leila",
+   "family": "Homaeian",
+   "sequence": "first",
+   "affiliation": [
+    {
+     "name": "University of Waterloo, Waterloo, ON, Canada"
+    }
+   ],
+   "role": [
+    {
+     "vocabulary": "crossref",
+     "role": "author"
+    }
+   ]
+  },
+  {
+   "given": "Nippun",
+   "family": "Goyal",
+   "sequence": "additional",
+   "affiliation": [
+    {
+     "name": "University of Waterloo, Waterloo, ON, Canada"
+    }
+   ],
+   "role": [
+    {
+     "vocabulary": "crossref",
+     "role": "author"
+    }
+   ]
+  },
+  {
+   "given": "James R.",
+   "family": "Wallace",
+   "sequence": "additional",
+   "affiliation": [
+    {
+     "name": "University of Waterloo, Waterloo, ON, Canada"
+    }
+   ],
+   "role": [
+    {
+     "vocabulary": "crossref",
+     "role": "author"
+    }
+   ]
+  },
+  {
+   "given": "Stacey D.",
+   "family": "Scott",
+   "sequence": "additional",
+   "affiliation": [
+    {
+     "name": "University of Waterloo &amp; University of Guelph, Guelph, ON, Canada"
+    }
+   ],
+   "role": [
+    {
+     "vocabulary": "crossref",
+     "role": "author"
+    }
+   ]
+  }
+ ],
+ "member": "320",
+ "published-online": {
+  "date-parts": [
+   [
+    2018,
+    4,
+    19
+   ]
+  ]
+ },
+ "event": {
+  "name": "CHI '18: CHI Conference on Human Factors in Computing Systems",
+  "location": "Montreal QC Canada",
+  "acronym": "CHI '18",
+  "sponsor": [
+   "SIGCHI ACM Special Interest Group on Computer-Human Interaction"
+  ]
+ },
+ "container-title": [
+  "Proceedings of the 2018 CHI Conference on Human Factors in Computing Systems"
+ ],
+ "original-title": [],
+ "link": [
+  {
+   "URL": "https://dl.acm.org/doi/10.1145/3173574.3173647",
+   "content-type": "unspecified",
+   "content-version": "vor",
+   "intended-application": "text-mining"
+  },
+  {
+   "URL": "https://dl.acm.org/doi/pdf/10.1145/3173574.3173647",
+   "content-type": "unspecified",
+   "content-version": "vor",
+   "intended-application": "similarity-checking"
+  }
+ ],
+ "deposited": {
+  "date-parts": [
+   [
+    2026,
+    9,
+    21
+   ]
+  ],
+  "date-time": "2026-09-21T14:26:52Z",
+  "timestamp": 1790000812000
+ },
+ "score": 1,
+ "resource": {
+  "primary": {
+   "URL": "https://dl.acm.org/doi/10.1145/3173574.3173647"
+  }
+ },
+ "subtitle": [
+  "Impact of TOUCH and TILT Cross-Device Interactions on Mixed-Focus Collaboration"
+ ],
+ "short-title": [],
+ "issued": {
+  "date-parts": [
+   [
+    2018,
+    4,
+    19
+   ]
+  ]
+ },
+ "references-count": 43,
+ "alternative-id": [
+  "10.1145/3173574.3173647",
+  "10.1145/3173574"
+ ],
+ "URL": "https://doi.org/10.1145/3173574.3173647",
+ "relation": {},
+ "subject": [],
+ "published": {
+  "date-parts": [
+   [
+    2018,
+    4,
+    19
+   ]
+  ]
+ },
+ "assertion": [
+  {
+   "value": "2018-04-19",
+   "order": 3,
+   "name": "published",
+   "label": "Published",
+   "group": {
+    "name": "publication_history",
+    "label": "Publication History"
+   }
+  }
+ ]
+}

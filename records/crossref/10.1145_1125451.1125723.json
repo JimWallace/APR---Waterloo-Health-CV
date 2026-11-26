@@ -1,0 +1,234 @@
+{
+ "indexed": {
+  "date-parts": [
+   [
+    2026,
+    4,
+    3
+   ]
+  ],
+  "date-time": "2026-04-03T15:38:26Z",
+  "timestamp": 1775230706398,
+  "version": "3.50.1"
+ },
+ "publisher-location": "New York, NY, USA",
+ "reference-count": 7,
+ "publisher": "ACM",
+ "license": [
+  {
+   "start": {
+    "date-parts": [
+     [
+      2006,
+      4,
+      21
+     ]
+    ],
+    "date-time": "2006-04-21T00:00:00Z",
+    "timestamp": 1145577600000
+   },
+   "content-version": "vor",
+   "delay-in-days": 0,
+   "URL": "https://www.acm.org/publications/policies/copyright_policy#Background"
+  }
+ ],
+ "content-domain": {
+  "domain": [
+   "dl.acm.org"
+  ],
+  "crossmark-restriction": true
+ },
+ "short-container-title": [],
+ "published-print": {
+  "date-parts": [
+   [
+    2006,
+    4,
+    21
+   ]
+  ]
+ },
+ "DOI": "10.1145/1125451.1125723",
+ "type": "proceedings-article",
+ "created": {
+  "date-parts": [
+   [
+    2006,
+    5,
+    8
+   ]
+  ],
+  "date-time": "2006-05-08T21:40:43Z",
+  "timestamp": 1147124443000
+ },
+ "page": "1481-1486",
+ "update-policy": "https://doi.org/10.1145/crossmark-policy",
+ "source": "Crossref",
+ "is-referenced-by-count": 6,
+ "title": [
+  "My MDE"
+ ],
+ "prefix": "10.1145",
+ "author": [
+  {
+   "given": "Vicki",
+   "family": "Ha",
+   "sequence": "first",
+   "affiliation": [
+    {
+     "name": "Dalhousie University, Halifax, NS, Canada"
+    }
+   ],
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ]
+  },
+  {
+   "given": "Jim",
+   "family": "Wallace",
+   "sequence": "additional",
+   "affiliation": [
+    {
+     "name": "Dalhousie University, Halifax, NS, Canada"
+    }
+   ],
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ]
+  },
+  {
+   "given": "Ryder",
+   "family": "Ziola",
+   "sequence": "additional",
+   "affiliation": [
+    {
+     "name": "Dalhousie University, Halifax, NS, Canada"
+    }
+   ],
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ]
+  },
+  {
+   "given": "Kori",
+   "family": "Inkpen",
+   "sequence": "additional",
+   "affiliation": [
+    {
+     "name": "Dalhousie University, Halifax, NS, Canada"
+    }
+   ],
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ]
+  }
+ ],
+ "member": "320",
+ "published-online": {
+  "date-parts": [
+   [
+    2006,
+    4,
+    21
+   ]
+  ]
+ },
+ "event": {
+  "name": "CHI06: CHI 2006 Conference on Human Factors in Computing Systems",
+  "location": "Montréal Québec Canada",
+  "acronym": "CHI06",
+  "sponsor": [
+   "ACM Association for Computing Machinery",
+   "SIGCHI ACM Special Interest Group on Computer-Human Interaction"
+  ]
+ },
+ "container-title": [
+  "CHI '06 Extended Abstracts on Human Factors in Computing Systems"
+ ],
+ "original-title": [],
+ "link": [
+  {
+   "URL": "https://dl.acm.org/doi/10.1145/1125451.1125723",
+   "content-type": "unspecified",
+   "content-version": "vor",
+   "intended-application": "text-mining"
+  },
+  {
+   "URL": "https://dl.acm.org/doi/pdf/10.1145/1125451.1125723",
+   "content-type": "unspecified",
+   "content-version": "vor",
+   "intended-application": "similarity-checking"
+  }
+ ],
+ "deposited": {
+  "date-parts": [
+   [
+    2025,
+    6,
+    18
+   ]
+  ],
+  "date-time": "2025-06-18T15:14:14Z",
+  "timestamp": 1750259654000
+ },
+ "score": 1,
+ "resource": {
+  "primary": {
+   "URL": "https://dl.acm.org/doi/10.1145/1125451.1125723"
+  }
+ },
+ "subtitle": [
+  "configuring virtual workspaces in multi-display environments"
+ ],
+ "short-title": [],
+ "issued": {
+  "date-parts": [
+   [
+    2006,
+    4,
+    21
+   ]
+  ]
+ },
+ "references-count": 7,
+ "alternative-id": [
+  "10.1145/1125451.1125723",
+  "10.1145/1125451"
+ ],
+ "URL": "https://doi.org/10.1145/1125451.1125723",
+ "relation": {},
+ "subject": [],
+ "published": {
+  "date-parts": [
+   [
+    2006,
+    4,
+    21
+   ]
+  ]
+ },
+ "assertion": [
+  {
+   "value": "2006-04-21",
+   "order": 2,
+   "name": "published",
+   "label": "Published",
+   "group": {
+    "name": "publication_history",
+    "label": "Publication History"
+   }
+  }
+ ]
+}

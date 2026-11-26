@@ -1,0 +1,209 @@
+{
+ "indexed": {
+  "date-parts": [
+   [
+    2025,
+    6,
+    19
+   ]
+  ],
+  "date-time": "2025-06-19T04:10:45Z",
+  "timestamp": 1750306245522,
+  "version": "3.41.0"
+ },
+ "publisher-location": "New York, NY, USA",
+ "reference-count": 24,
+ "publisher": "ACM",
+ "license": [
+  {
+   "start": {
+    "date-parts": [
+     [
+      2016,
+      11,
+      6
+     ]
+    ],
+    "date-time": "2016-11-06T00:00:00Z",
+    "timestamp": 1478390400000
+   },
+   "content-version": "vor",
+   "delay-in-days": 0,
+   "URL": "https://www.acm.org/publications/policies/copyright_policy#Background"
+  }
+ ],
+ "funder": [
+  {
+   "name": "SSHRC"
+  },
+  {
+   "name": "The Mike and Ophelia Lazaridis IQC"
+  }
+ ],
+ "content-domain": {
+  "domain": [
+   "dl.acm.org"
+  ],
+  "crossmark-restriction": true
+ },
+ "short-container-title": [],
+ "published-print": {
+  "date-parts": [
+   [
+    2016,
+    11,
+    6
+   ]
+  ]
+ },
+ "DOI": "10.1145/2992154.2992156",
+ "type": "proceedings-article",
+ "created": {
+  "date-parts": [
+   [
+    2016,
+    11,
+    29
+   ]
+  ],
+  "date-time": "2016-11-29T16:28:42Z",
+  "timestamp": 1480436922000
+ },
+ "page": "297-306",
+ "update-policy": "https://doi.org/10.1145/crossmark-policy",
+ "source": "Crossref",
+ "is-referenced-by-count": 2,
+ "title": [
+  "Felines, Foragers, and Physicists"
+ ],
+ "prefix": "10.1145",
+ "author": [
+  {
+   "given": "Victor",
+   "family": "Cheung",
+   "sequence": "first",
+   "affiliation": [
+    {
+     "name": "University of Waterloo, Waterloo, ON, Canada"
+    }
+   ],
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ]
+  },
+  {
+   "given": "James R.",
+   "family": "Wallace",
+   "sequence": "additional",
+   "affiliation": [
+    {
+     "name": "University of Waterloo, Waterloo, ON, Canada"
+    }
+   ],
+   "role": [
+    {
+     "role": "author",
+     "vocabulary": "crossref"
+    }
+   ]
+  }
+ ],
+ "member": "320",
+ "published-online": {
+  "date-parts": [
+   [
+    2016,
+    11,
+    6
+   ]
+  ]
+ },
+ "event": {
+  "name": "ISS '16: 2016 ACM International Conference on Interactive Surfaces and Spaces",
+  "sponsor": [
+   "SIGCHI ACM Special Interest Group on Computer-Human Interaction"
+  ],
+  "location": "Niagara Falls Ontario Canada",
+  "acronym": "ISS '16"
+ },
+ "container-title": [
+  "Proceedings of the 2016 ACM International Conference on Interactive Surfaces and Spaces"
+ ],
+ "original-title": [],
+ "link": [
+  {
+   "URL": "https://dl.acm.org/doi/10.1145/2992154.2992156",
+   "content-type": "unspecified",
+   "content-version": "vor",
+   "intended-application": "text-mining"
+  },
+  {
+   "URL": "https://dl.acm.org/doi/pdf/10.1145/2992154.2992156",
+   "content-type": "unspecified",
+   "content-version": "vor",
+   "intended-application": "similarity-checking"
+  }
+ ],
+ "deposited": {
+  "date-parts": [
+   [
+    2025,
+    6,
+    18
+   ]
+  ],
+  "date-time": "2025-06-18T04:23:43Z",
+  "timestamp": 1750220623000
+ },
+ "score": 1,
+ "resource": {
+  "primary": {
+   "URL": "https://dl.acm.org/doi/10.1145/2992154.2992156"
+  }
+ },
+ "subtitle": [
+  "Supporting Scientific Outreach with Multi-Surface and Multi-Space Games"
+ ],
+ "short-title": [],
+ "issued": {
+  "date-parts": [
+   [
+    2016,
+    11,
+    6
+   ]
+  ]
+ },
+ "references-count": 24,
+ "alternative-id": [
+  "10.1145/2992154.2992156",
+  "10.1145/2992154"
+ ],
+ "URL": "https://doi.org/10.1145/2992154.2992156",
+ "relation": {},
+ "subject": [],
+ "published": {
+  "date-parts": [
+   [
+    2016,
+    11,
+    6
+   ]
+  ]
+ },
+ "assertion": [
+  {
+   "value": "2016-11-06",
+   "order": 2,
+   "name": "published",
+   "label": "Published",
+   "group": {
+    "name": "publication_history",
+    "label": "Publication History"
+   }
+  }
+ ]
+}

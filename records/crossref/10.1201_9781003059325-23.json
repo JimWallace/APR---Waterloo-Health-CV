@@ -1,0 +1,153 @@
+{
+ "indexed": {
+  "date-parts": [
+   [
+    2026,
+    11,
+    14
+   ]
+  ],
+  "date-time": "2026-11-14T09:15:50Z",
+  "timestamp": 1794647750944,
+  "version": "4.9.1"
+ },
+ "edition-number": "1",
+ "reference-count": 1,
+ "publisher": "A K Peters/CRC Press",
+ "isbn-type": [
+  {
+   "value": "9781003059325",
+   "type": "electronic"
+  }
+ ],
+ "content-domain": {
+  "domain": [],
+  "crossmark-restriction": false
+ },
+ "short-container-title": [],
+ "published-print": {
+  "date-parts": [
+   [
+    2020,
+    11,
+    25
+   ]
+  ]
+ },
+ "DOI": "10.1201/9781003059325-23",
+ "type": "book-chapter",
+ "created": {
+  "date-parts": [
+   [
+    2020,
+    10,
+    29
+   ]
+  ],
+  "date-time": "2020-10-29T21:21:47Z",
+  "timestamp": 1604006507000
+ },
+ "page": "175-182",
+ "source": "Crossref",
+ "is-referenced-by-count": 1,
+ "title": [
+  "The Effect of Interior Bezel Presence and Width on Magnitude Judgement"
+ ],
+ "prefix": "10.1201",
+ "author": [
+  {
+   "given": "James R.",
+   "family": "Wallace",
+   "sequence": "first",
+   "affiliation": [],
+   "role": [
+    {
+     "vocabulary": "crossref",
+     "role": "author"
+    }
+   ]
+  },
+  {
+   "given": "Daniel",
+   "family": "Vogel",
+   "sequence": "additional",
+   "affiliation": [],
+   "role": [
+    {
+     "vocabulary": "crossref",
+     "role": "author"
+    }
+   ]
+  },
+  {
+   "given": "Edward",
+   "family": "Lank",
+   "sequence": "additional",
+   "affiliation": [],
+   "role": [
+    {
+     "vocabulary": "crossref",
+     "role": "author"
+    }
+   ]
+  }
+ ],
+ "member": "301",
+ "container-title": [
+  "Graphics Interface 2014"
+ ],
+ "original-title": [],
+ "language": "en",
+ "deposited": {
+  "date-parts": [
+   [
+    2021,
+    4,
+    2
+   ]
+  ],
+  "date-time": "2021-04-02T13:37:25Z",
+  "timestamp": 1617370645000
+ },
+ "score": 1,
+ "resource": {
+  "primary": {
+   "URL": "https://www.taylorfrancis.com/books/9781000106985/chapters/10.1201/9781003059325-23"
+  }
+ },
+ "subtitle": [],
+ "short-title": [],
+ "issued": {
+  "date-parts": [
+   [
+    2020,
+    11,
+    25
+   ]
+  ]
+ },
+ "ISBN": [
+  "9781003059325"
+ ],
+ "references-count": 1,
+ "URL": "https://doi.org/10.1201/9781003059325-23",
+ "relation": {
+  "is-part-of": [
+   {
+    "id-type": "doi",
+    "id": "https://doi.org/10.1201/9781003059325",
+    "asserted-by": "object"
+   }
+  ]
+ },
+ "subject": [],
+ "published": {
+  "date-parts": [
+   [
+    2020,
+    11,
+    25
+   ]
+  ]
+ }
+}

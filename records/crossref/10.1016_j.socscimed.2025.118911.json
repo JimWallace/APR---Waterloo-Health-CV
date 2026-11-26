@@ -1,0 +1,435 @@
+{
+ "indexed": {
+  "date-parts": [
+   [
+    2026,
+    10,
+    17
+   ]
+  ],
+  "date-time": "2026-10-17T09:52:16Z",
+  "timestamp": 1792230736957,
+  "version": "4.4.0"
+ },
+ "reference-count": 61,
+ "publisher": "Elsevier BV",
+ "license": [
+  {
+   "start": {
+    "date-parts": [
+     [
+      2026,
+      2,
+      1
+     ]
+    ],
+    "date-time": "2026-02-01T00:00:00Z",
+    "timestamp": 1769904000000
+   },
+   "content-version": "tdm",
+   "delay-in-days": 0,
+   "URL": "https://www.elsevier.com/tdm/userlicense/1.0/"
+  },
+  {
+   "start": {
+    "date-parts": [
+     [
+      2026,
+      2,
+      1
+     ]
+    ],
+    "date-time": "2026-02-01T00:00:00Z",
+    "timestamp": 1769904000000
+   },
+   "content-version": "tdm",
+   "delay-in-days": 0,
+   "URL": "https://www.elsevier.com/legal/tdmrep-license"
+  },
+  {
+   "start": {
+    "date-parts": [
+     [
+      2026,
+      2,
+      1
+     ]
+    ],
+    "date-time": "2026-02-01T00:00:00Z",
+    "timestamp": 1769904000000
+   },
+   "content-version": "stm-asf",
+   "delay-in-days": 0,
+   "URL": "https://doi.org/10.15223/policy-017"
+  },
+  {
+   "start": {
+    "date-parts": [
+     [
+      2026,
+      2,
+      1
+     ]
+    ],
+    "date-time": "2026-02-01T00:00:00Z",
+    "timestamp": 1769904000000
+   },
+   "content-version": "stm-asf",
+   "delay-in-days": 0,
+   "URL": "https://doi.org/10.15223/policy-037"
+  },
+  {
+   "start": {
+    "date-parts": [
+     [
+      2026,
+      2,
+      1
+     ]
+    ],
+    "date-time": "2026-02-01T00:00:00Z",
+    "timestamp": 1769904000000
+   },
+   "content-version": "stm-asf",
+   "delay-in-days": 0,
+   "URL": "https://doi.org/10.15223/policy-012"
+  },
+  {
+   "start": {
+    "date-parts": [
+     [
+      2026,
+      2,
+      1
+     ]
+    ],
+    "date-time": "2026-02-01T00:00:00Z",
+    "timestamp": 1769904000000
+   },
+   "content-version": "stm-asf",
+   "delay-in-days": 0,
+   "URL": "https://doi.org/10.15223/policy-029"
+  },
+  {
+   "start": {
+    "date-parts": [
+     [
+      2026,
+      2,
+      1
+     ]
+    ],
+    "date-time": "2026-02-01T00:00:00Z",
+    "timestamp": 1769904000000
+   },
+   "content-version": "stm-asf",
+   "delay-in-days": 0,
+   "URL": "https://doi.org/10.15223/policy-004"
+  }
+ ],
+ "funder": [
+  {
+   "DOI": "10.13039/501100000024",
+   "name": "Canadian Institutes of Health Research",
+   "doi-asserted-by": "publisher",
+   "award": [
+    "151944"
+   ],
+   "award-info": [
+    {
+     "award-number": [
+      "151944"
+     ]
+    }
+   ],
+   "id": [
+    {
+     "id": "10.13039/501100000024",
+     "id-type": "DOI",
+     "asserted-by": "publisher"
+    }
+   ]
+  },
+  {
+   "DOI": "10.13039/501100012395",
+   "name": "Canadian Immunization Research Network",
+   "doi-asserted-by": "publisher",
+   "id": [
+    {
+     "id": "10.13039/501100012395",
+     "id-type": "DOI",
+     "asserted-by": "publisher"
+    }
+   ]
+  }
+ ],
+ "content-domain": {
+  "domain": [
+   "elsevier.com",
+   "sciencedirect.com"
+  ],
+  "crossmark-restriction": true
+ },
+ "short-container-title": [
+  "Social Science &amp; Medicine"
+ ],
+ "published-print": {
+  "date-parts": [
+   [
+    2026,
+    2
+   ]
+  ]
+ },
+ "DOI": "10.1016/j.socscimed.2025.118911",
+ "type": "journal-article",
+ "created": {
+  "date-parts": [
+   [
+    2025,
+    12,
+    25
+   ]
+  ],
+  "date-time": "2025-12-25T07:17:08Z",
+  "timestamp": 1766647028000
+ },
+ "page": "118911",
+ "update-policy": "https://doi.org/10.1016/elsevier_cm_policy",
+ "source": "Crossref",
+ "is-referenced-by-count": 2,
+ "special_numbering": "C",
+ "title": [
+  "Investigating attributes of stigma towards individuals who did not receive a COVID-19 vaccine: An analysis of user comment threads on Reddit conducted by the Canadian Immunization Research Network (CIRN)"
+ ],
+ "prefix": "10.1016",
+ "volume": "391",
+ "author": [
+  {
+   "ORCID": "https://orcid.org/0000-0001-9987-3845",
+   "authenticated-orcid": false,
+   "given": "Bobbi",
+   "family": "Rotolo",
+   "sequence": "first",
+   "affiliation": [],
+   "role": [
+    {
+     "vocabulary": "crossref",
+     "role": "author"
+    }
+   ]
+  },
+  {
+   "ORCID": "https://orcid.org/0009-0003-7296-8440",
+   "authenticated-orcid": false,
+   "given": "Natasha Janak",
+   "family": "Sanghadia",
+   "sequence": "additional",
+   "affiliation": [],
+   "role": [
+    {
+     "vocabulary": "crossref",
+     "role": "author"
+    }
+   ]
+  },
+  {
+   "given": "Ève",
+   "family": "Dubé",
+   "sequence": "additional",
+   "affiliation": [],
+   "role": [
+    {
+     "vocabulary": "crossref",
+     "role": "author"
+    }
+   ]
+  },
+  {
+   "ORCID": "https://orcid.org/0000-0002-5162-0256",
+   "authenticated-orcid": false,
+   "given": "James R.",
+   "family": "Wallace",
+   "sequence": "additional",
+   "affiliation": [],
+   "role": [
+    {
+     "vocabulary": "crossref",
+     "role": "author"
+    }
+   ]
+  },
+  {
+   "ORCID": "https://orcid.org/0000-0002-6326-8122",
+   "authenticated-orcid": false,
+   "given": "Janice E.",
+   "family": "Graham",
+   "sequence": "additional",
+   "affiliation": [],
+   "role": [
+    {
+     "vocabulary": "crossref",
+     "role": "author"
+    }
+   ]
+  },
+  {
+   "ORCID": "https://orcid.org/0009-0007-1133-2384",
+   "authenticated-orcid": false,
+   "given": "Christine",
+   "family": "Huel",
+   "sequence": "additional",
+   "affiliation": [],
+   "role": [
+    {
+     "vocabulary": "crossref",
+     "role": "author"
+    }
+   ]
+  },
+  {
+   "ORCID": "https://orcid.org/0000-0003-4675-4433",
+   "authenticated-orcid": false,
+   "given": "Shannon E.",
+   "family": "MacDonald",
+   "sequence": "additional",
+   "affiliation": [],
+   "role": [
+    {
+     "vocabulary": "crossref",
+     "role": "author"
+    }
+   ]
+  },
+  {
+   "ORCID": "https://orcid.org/0000-0002-4241-7424",
+   "authenticated-orcid": false,
+   "given": "Terra",
+   "family": "Manca",
+   "sequence": "additional",
+   "affiliation": [],
+   "role": [
+    {
+     "vocabulary": "crossref",
+     "role": "author"
+    }
+   ]
+  },
+  {
+   "given": "Samantha B.",
+   "family": "Meyer",
+   "sequence": "additional",
+   "affiliation": [],
+   "role": [
+    {
+     "vocabulary": "crossref",
+     "role": "author"
+    }
+   ]
+  }
+ ],
+ "member": "78",
+ "container-title": [
+  "Social Science &amp; Medicine"
+ ],
+ "original-title": [],
+ "language": "en",
+ "link": [
+  {
+   "URL": "https://api.elsevier.com/content/article/PII:S0277953625012420?httpAccept=text/xml",
+   "content-type": "text/xml",
+   "content-version": "vor",
+   "intended-application": "text-mining"
+  },
+  {
+   "URL": "https://api.elsevier.com/content/article/PII:S0277953625012420?httpAccept=text/plain",
+   "content-type": "text/plain",
+   "content-version": "vor",
+   "intended-application": "text-mining"
+  }
+ ],
+ "deposited": {
+  "date-parts": [
+   [
+    2026,
+    6,
+    18
+   ]
+  ],
+  "date-time": "2026-06-18T08:35:35Z",
+  "timestamp": 1781771735000
+ },
+ "score": 1,
+ "resource": {
+  "primary": {
+   "URL": "https://linkinghub.elsevier.com/retrieve/pii/S0277953625012420"
+  }
+ },
+ "subtitle": [],
+ "short-title": [],
+ "issued": {
+  "date-parts": [
+   [
+    2026,
+    2
+   ]
+  ]
+ },
+ "references-count": 61,
+ "alternative-id": [
+  "S0277953625012420"
+ ],
+ "URL": "https://doi.org/10.1016/j.socscimed.2025.118911",
+ "relation": {},
+ "ISSN": [
+  "0277-9536"
+ ],
+ "issn-type": [
+  {
+   "value": "0277-9536",
+   "type": "print"
+  }
+ ],
+ "subject": [],
+ "published": {
+  "date-parts": [
+   [
+    2026,
+    2
+   ]
+  ]
+ },
+ "assertion": [
+  {
+   "value": "Elsevier",
+   "name": "publisher",
+   "label": "This article is maintained by"
+  },
+  {
+   "value": "Investigating attributes of stigma towards individuals who did not receive a COVID-19 vaccine: An analysis of user comment threads on Reddit conducted by the Canadian Immunization Research Network (CIRN)",
+   "name": "articletitle",
+   "label": "Article Title"
+  },
+  {
+   "value": "Social Science & Medicine",
+   "name": "journaltitle",
+   "label": "Journal Title"
+  },
+  {
+   "value": "https://doi.org/10.1016/j.socscimed.2025.118911",
+   "name": "articlelink",
+   "label": "CrossRef DOI link to publisher maintained version"
+  },
+  {
+   "value": "article",
+   "name": "content_type",
+   "label": "Content Type"
+  },
+  {
+   "value": "© 2026 Elsevier Ltd. All rights are reserved, including those for text and data mining, AI training, and similar technologies.",
+   "name": "copyright",
+   "label": "Copyright"
+  }
+ ],
+ "article-number": "118911"
+}

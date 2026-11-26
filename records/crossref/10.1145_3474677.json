@@ -1,0 +1,290 @@
+{
+ "indexed": {
+  "date-parts": [
+   [
+    2026,
+    10,
+    8
+   ]
+  ],
+  "date-time": "2026-10-08T20:27:21Z",
+  "timestamp": 1791491241863,
+  "version": "4.3.4"
+ },
+ "reference-count": 77,
+ "publisher": "Association for Computing Machinery (ACM)",
+ "issue": "CHI PLAY",
+ "license": [
+  {
+   "start": {
+    "date-parts": [
+     [
+      2021,
+      10,
+      5
+     ]
+    ],
+    "date-time": "2021-10-05T00:00:00Z",
+    "timestamp": 1633392000000
+   },
+   "content-version": "vor",
+   "delay-in-days": 0,
+   "URL": "https://www.acm.org/publications/policies/copyright_policy#Background"
+  }
+ ],
+ "funder": [
+  {
+   "DOI": "10.13039/501100000038",
+   "name": "NSERC",
+   "doi-asserted-by": "crossref",
+   "award": [
+    "2015-06585"
+   ],
+   "award-info": [
+    {
+     "award-number": [
+      "2015-06585"
+     ]
+    }
+   ],
+   "id": [
+    {
+     "id": "10.13039/501100000038",
+     "id-type": "DOI",
+     "asserted-by": "crossref"
+    }
+   ]
+  }
+ ],
+ "content-domain": {
+  "domain": [
+   "dl.acm.org"
+  ],
+  "crossmark-restriction": true
+ },
+ "short-container-title": [
+  "Proc. ACM Hum.-Comput. Interact."
+ ],
+ "published-print": {
+  "date-parts": [
+   [
+    2021,
+    10,
+    5
+   ]
+  ]
+ },
+ "abstract": "<jats:p>Human-Computer Interaction researchers have explored how online communities can be leveraged for peer support, but general disinterest and a lack of engagement have emerged as substantial barriers to their use in practice. To address this gap, we designed Merlynne, a serious game that seeks to motivate individuals to support peers through Cognitive Behavioural Therapy (CBT). Our game explored use of the Proteus Effect - a phenomenon where players adopt characteristics of their in-game avatar - to motivate peer support through stereotyped 'helpful' and 'unhelpful' avatars. We then conducted a mixed-methods, exploratory study to investigate its design. We found that our game successfully motivated players to offer peer support, despite the substantial emotional labour required by CBT. However, we were not able to replicate the Proteus Effect, and did not find differences in that support based on a player's avatar. In reflecting on our findings, we discuss design challenges and considerations for the use of serious games to motivate participation in mental health support, including: fatigue, a player's need for self-expression and to relate to those they are supporting, and ludonarrative dissonance.</jats:p>",
+ "DOI": "10.1145/3474677",
+ "type": "journal-article",
+ "created": {
+  "date-parts": [
+   [
+    2021,
+    10,
+    6
+   ]
+  ],
+  "date-time": "2021-10-06T22:59:48Z",
+  "timestamp": 1633561188000
+ },
+ "page": "1-23",
+ "update-policy": "https://doi.org/10.1145/crossmark-policy",
+ "source": "Crossref",
+ "is-referenced-by-count": 11,
+ "title": [
+  "Merlynne"
+ ],
+ "prefix": "10.1145",
+ "volume": "5",
+ "author": [
+  {
+   "given": "Tina",
+   "family": "Chan",
+   "sequence": "first",
+   "affiliation": [
+    {
+     "name": "University of Waterloo, Waterloo, ON, Canada"
+    }
+   ],
+   "role": [
+    {
+     "vocabulary": "crossref",
+     "role": "author"
+    }
+   ]
+  },
+  {
+   "given": "Robert P.",
+   "family": "Gauthier",
+   "sequence": "additional",
+   "affiliation": [
+    {
+     "name": "University of Waterloo, Waterloo, ON, Canada"
+    }
+   ],
+   "role": [
+    {
+     "vocabulary": "crossref",
+     "role": "author"
+    }
+   ]
+  },
+  {
+   "given": "Ally",
+   "family": "Suarez",
+   "sequence": "additional",
+   "affiliation": [
+    {
+     "name": "University of Waterloo, Waterloo, ON, Canada"
+    }
+   ],
+   "role": [
+    {
+     "vocabulary": "crossref",
+     "role": "author"
+    }
+   ]
+  },
+  {
+   "given": "Nicholas F.",
+   "family": "Sia",
+   "sequence": "additional",
+   "affiliation": [
+    {
+     "name": "University of Waterloo, Waterloo, ON, Canada"
+    }
+   ],
+   "role": [
+    {
+     "vocabulary": "crossref",
+     "role": "author"
+    }
+   ]
+  },
+  {
+   "given": "James R.",
+   "family": "Wallace",
+   "sequence": "additional",
+   "affiliation": [
+    {
+     "name": "University of Waterloo, Waterloo, ON, Canada"
+    }
+   ],
+   "role": [
+    {
+     "vocabulary": "crossref",
+     "role": "author"
+    }
+   ]
+  }
+ ],
+ "member": "320",
+ "published-online": {
+  "date-parts": [
+   [
+    2021,
+    10,
+    6
+   ]
+  ]
+ },
+ "container-title": [
+  "Proceedings of the ACM on Human-Computer Interaction"
+ ],
+ "original-title": [],
+ "language": "en",
+ "link": [
+  {
+   "URL": "https://dl.acm.org/doi/10.1145/3474677",
+   "content-type": "unspecified",
+   "content-version": "vor",
+   "intended-application": "text-mining"
+  },
+  {
+   "URL": "https://dl.acm.org/doi/pdf/10.1145/3474677",
+   "content-type": "unspecified",
+   "content-version": "vor",
+   "intended-application": "similarity-checking"
+  }
+ ],
+ "deposited": {
+  "date-parts": [
+   [
+    2025,
+    6,
+    17
+   ]
+  ],
+  "date-time": "2025-06-17T20:18:42Z",
+  "timestamp": 1750191522000
+ },
+ "score": 1,
+ "resource": {
+  "primary": {
+   "URL": "https://dl.acm.org/doi/10.1145/3474677"
+  }
+ },
+ "subtitle": [
+  "Motivating Peer-to-Peer Cognitive Behavioral Therapy with a Serious Game"
+ ],
+ "short-title": [],
+ "issued": {
+  "date-parts": [
+   [
+    2021,
+    10,
+    5
+   ]
+  ]
+ },
+ "references-count": 77,
+ "journal-issue": {
+  "issue": "CHI PLAY",
+  "published-print": {
+   "date-parts": [
+    [
+     2021,
+     10,
+     5
+    ]
+   ]
+  }
+ },
+ "alternative-id": [
+  "10.1145/3474677"
+ ],
+ "URL": "https://doi.org/10.1145/3474677",
+ "relation": {},
+ "ISSN": [
+  "2573-0142"
+ ],
+ "issn-type": [
+  {
+   "value": "2573-0142",
+   "type": "electronic"
+  }
+ ],
+ "subject": [],
+ "published": {
+  "date-parts": [
+   [
+    2021,
+    10,
+    5
+   ]
+  ]
+ },
+ "assertion": [
+  {
+   "value": "2021-10-06",
+   "order": 2,
+   "name": "published",
+   "label": "Published",
+   "group": {
+    "name": "publication_history",
+    "label": "Publication History"
+   }
+  }
+ ]
+}

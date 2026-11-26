@@ -1,0 +1,362 @@
+{
+ "indexed": {
+  "date-parts": [
+   [
+    2026,
+    9,
+    16
+   ]
+  ],
+  "date-time": "2026-09-16T18:45:47Z",
+  "timestamp": 1789584347524,
+  "version": "build-2803163510"
+ },
+ "reference-count": 53,
+ "publisher": "Public Library of Science (PLoS)",
+ "issue": "10",
+ "license": [
+  {
+   "start": {
+    "date-parts": [
+     [
+      2023,
+      10,
+      10
+     ]
+    ],
+    "date-time": "2023-10-10T00:00:00Z",
+    "timestamp": 1696896000000
+   },
+   "content-version": "vor",
+   "delay-in-days": 0,
+   "URL": "http://creativecommons.org/licenses/by/4.0/"
+  }
+ ],
+ "funder": [
+  {
+   "DOI": "10.13039/501100000024",
+   "name": "Canadian Institutes of Health Research",
+   "doi-asserted-by": "publisher",
+   "award": [
+    "EG7-179465"
+   ],
+   "award-info": [
+    {
+     "award-number": [
+      "EG7-179465"
+     ]
+    }
+   ],
+   "id": [
+    {
+     "id": "10.13039/501100000024",
+     "id-type": "DOI",
+     "asserted-by": "publisher"
+    }
+   ]
+  }
+ ],
+ "content-domain": {
+  "domain": [
+   "www.plosone.org"
+  ],
+  "crossmark-restriction": false
+ },
+ "short-container-title": [
+  "PLoS ONE"
+ ],
+ "abstract": "<jats:sec id=\"sec001\"><jats:title>Background</jats:title><jats:p>The COVID-19 pandemic has revealed gaps in global health systems, especially in the low- and middle-income countries (LMICs). Evidence shows that patients with non-communicable diseases (NCDs) are at higher risk of contracting COVID-19 and suffering direct and indirect health consequences. Considering the future challenges such as environmental disasters and pandemics to the LMICs health systems, digital health interventions (DHI) are well poised to strengthen health care resilience. This study aims to implement and evaluate a comprehensive package of DHIs of integrated COVID-NCD care to manage NCDs in primary care facilities in rural Pakistan.</jats:p></jats:sec><jats:sec id=\"sec002\"><jats:title>Methods</jats:title><jats:p>The study is designed as a pragmatic, parallel two-arm, multi-centre, mix-methods cluster randomised controlled trial. We will randomise 30 primary care facilities in three districts of Punjab, where basic hypertension and diabetes diagnosis and treatment are provided, with a ratio of 1:1 between intervention and control. In each facility, we will recruit 50 patients who have uncontrolled hypertension. The intervention arm will receive training on an integrated COVID-NCD guideline, and will use a smartphone app-based telemedicine platform where patients can communicate with health providers and peer-supporters, along with a remote training and supervision system. Usual care will be provided in the control arm. Patients will be followed up for 10 months. Our primary indicator is systolic blood pressure measured at 10 months. A process evaluation guided by implementation science frameworks will be conducted to explore implementation questions. A cost-effectiveness evaluation will be conducted to inform future scale up in Pakistan and other LMICs.</jats:p></jats:sec><jats:sec id=\"sec003\"><jats:title>Discussion</jats:title><jats:p>Our study is one of the first randomised controlled trials to evaluate the effectiveness of DHIs to manage NCDs to strengthen health system resilience in LMICs. We will also evaluate the implementation process and cost-effectiveness to inform future scale-up in similar resource constrained settings.</jats:p></jats:sec><jats:sec id=\"sec004\"><jats:title>Trial registration</jats:title><jats:p>ClinicalTrials.gov Identifier—<jats:ext-link xmlns:xlink=\"http://www.w3.org/1999/xlink\" ext-link-type=\"uri\" xlink:href=\"https://clinicaltrials.gov/ct2/show/NCT05699369\" xlink:type=\"simple\">NCT05699369</jats:ext-link>.</jats:p></jats:sec>",
+ "DOI": "10.1371/journal.pone.0282543",
+ "type": "journal-article",
+ "created": {
+  "date-parts": [
+   [
+    2023,
+    10,
+    10
+   ]
+  ],
+  "date-time": "2023-10-10T17:30:06Z",
+  "timestamp": 1696959006000
+ },
+ "page": "e0282543",
+ "update-policy": "https://doi.org/10.1371/journal.pone.corrections_policy",
+ "source": "Crossref",
+ "is-referenced-by-count": 6,
+ "title": [
+  "Protocol for a pragmatic cluster randomised controlled trial to evaluate the effectiveness of digital health interventions in improving non-communicable disease management during the pandemic in rural Pakistan"
+ ],
+ "prefix": "10.1371",
+ "volume": "18",
+ "author": [
+  {
+   "ORCID": "https://orcid.org/0000-0002-3076-2650",
+   "authenticated-orcid": true,
+   "given": "Xiaolin",
+   "family": "Wei",
+   "sequence": "first",
+   "affiliation": [],
+   "role": [
+    {
+     "vocabulary": "crossref",
+     "role": "author"
+    }
+   ]
+  },
+  {
+   "given": "Nida",
+   "family": "Khan",
+   "sequence": "additional",
+   "affiliation": [],
+   "role": [
+    {
+     "vocabulary": "crossref",
+     "role": "author"
+    }
+   ]
+  },
+  {
+   "given": "Hammad",
+   "family": "Durrani",
+   "sequence": "additional",
+   "affiliation": [],
+   "role": [
+    {
+     "vocabulary": "crossref",
+     "role": "author"
+    }
+   ]
+  },
+  {
+   "given": "Naila",
+   "family": "Muzaffar",
+   "sequence": "additional",
+   "affiliation": [],
+   "role": [
+    {
+     "vocabulary": "crossref",
+     "role": "author"
+    }
+   ]
+  },
+  {
+   "given": "Victoria",
+   "family": "Haldane",
+   "sequence": "additional",
+   "affiliation": [],
+   "role": [
+    {
+     "vocabulary": "crossref",
+     "role": "author"
+    }
+   ]
+  },
+  {
+   "given": "John D.",
+   "family": "Walley",
+   "sequence": "additional",
+   "affiliation": [],
+   "role": [
+    {
+     "vocabulary": "crossref",
+     "role": "author"
+    }
+   ]
+  },
+  {
+   "given": "Kevin",
+   "family": "Thorpe",
+   "sequence": "additional",
+   "affiliation": [],
+   "role": [
+    {
+     "vocabulary": "crossref",
+     "role": "author"
+    }
+   ]
+  },
+  {
+   "given": "Erjia",
+   "family": "Ge",
+   "sequence": "additional",
+   "affiliation": [],
+   "role": [
+    {
+     "vocabulary": "crossref",
+     "role": "author"
+    }
+   ]
+  },
+  {
+   "given": "Shiliang",
+   "family": "Ge",
+   "sequence": "additional",
+   "affiliation": [],
+   "role": [
+    {
+     "vocabulary": "crossref",
+     "role": "author"
+    }
+   ]
+  },
+  {
+   "given": "Warren",
+   "family": "Dodd",
+   "sequence": "additional",
+   "affiliation": [],
+   "role": [
+    {
+     "vocabulary": "crossref",
+     "role": "author"
+    }
+   ]
+  },
+  {
+   "given": "James",
+   "family": "Wallace",
+   "sequence": "additional",
+   "affiliation": [],
+   "role": [
+    {
+     "vocabulary": "crossref",
+     "role": "author"
+    }
+   ]
+  },
+  {
+   "given": "Garry",
+   "family": "Aslanyan",
+   "sequence": "additional",
+   "affiliation": [],
+   "role": [
+    {
+     "vocabulary": "crossref",
+     "role": "author"
+    }
+   ]
+  },
+  {
+   "given": "Audrey",
+   "family": "Laporte",
+   "sequence": "additional",
+   "affiliation": [],
+   "role": [
+    {
+     "vocabulary": "crossref",
+     "role": "author"
+    }
+   ]
+  },
+  {
+   "given": "Muhammad Amir",
+   "family": "Khan",
+   "sequence": "additional",
+   "affiliation": [],
+   "role": [
+    {
+     "vocabulary": "crossref",
+     "role": "author"
+    }
+   ]
+  }
+ ],
+ "member": "340",
+ "published-online": {
+  "date-parts": [
+   [
+    2023,
+    10,
+    10
+   ]
+  ]
+ },
+ "container-title": [
+  "PLOS ONE"
+ ],
+ "original-title": [],
+ "language": "en",
+ "link": [
+  {
+   "URL": "https://dx.plos.org/10.1371/journal.pone.0282543",
+   "content-type": "unspecified",
+   "content-version": "vor",
+   "intended-application": "similarity-checking"
+  }
+ ],
+ "deposited": {
+  "date-parts": [
+   [
+    2023,
+    12,
+    23
+   ]
+  ],
+  "date-time": "2023-12-23T17:07:05Z",
+  "timestamp": 1703351225000
+ },
+ "score": 1,
+ "resource": {
+  "primary": {
+   "URL": "https://dx.plos.org/10.1371/journal.pone.0282543"
+  }
+ },
+ "subtitle": [],
+ "editor": [
+  {
+   "given": "Sampson",
+   "family": "Twumasi-Ankrah",
+   "sequence": "first",
+   "affiliation": [],
+   "role": [
+    {
+     "vocabulary": "crossref",
+     "role": "editor"
+    }
+   ]
+  }
+ ],
+ "short-title": [],
+ "issued": {
+  "date-parts": [
+   [
+    2023,
+    10,
+    10
+   ]
+  ]
+ },
+ "references-count": 53,
+ "journal-issue": {
+  "issue": "10",
+  "published-online": {
+   "date-parts": [
+    [
+     2023,
+     10,
+     10
+    ]
+   ]
+  }
+ },
+ "URL": "https://doi.org/10.1371/journal.pone.0282543",
+ "relation": {},
+ "ISSN": [
+  "1932-6203"
+ ],
+ "issn-type": [
+  {
+   "value": "1932-6203",
+   "type": "electronic"
+  }
+ ],
+ "subject": [],
+ "published": {
+  "date-parts": [
+   [
+    2023,
+    10,
+    10
+   ]
+  ]
+ }
+}

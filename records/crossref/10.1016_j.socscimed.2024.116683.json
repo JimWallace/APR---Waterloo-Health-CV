@@ -1,0 +1,279 @@
+{
+ "indexed": {
+  "date-parts": [
+   [
+    2026,
+    11,
+    13
+   ]
+  ],
+  "date-time": "2026-11-13T10:50:42Z",
+  "timestamp": 1794567042674,
+  "version": "4.9.1"
+ },
+ "reference-count": 105,
+ "publisher": "Elsevier BV",
+ "license": [
+  {
+   "start": {
+    "date-parts": [
+     [
+      2024,
+      3,
+      1
+     ]
+    ],
+    "date-time": "2024-03-01T00:00:00Z",
+    "timestamp": 1709251200000
+   },
+   "content-version": "tdm",
+   "delay-in-days": 0,
+   "URL": "https://www.elsevier.com/tdm/userlicense/1.0/"
+  },
+  {
+   "start": {
+    "date-parts": [
+     [
+      2024,
+      3,
+      1
+     ]
+    ],
+    "date-time": "2024-03-01T00:00:00Z",
+    "timestamp": 1709251200000
+   },
+   "content-version": "tdm",
+   "delay-in-days": 0,
+   "URL": "https://www.elsevier.com/legal/tdmrep-license"
+  },
+  {
+   "start": {
+    "date-parts": [
+     [
+      2024,
+      2,
+      12
+     ]
+    ],
+    "date-time": "2024-02-12T00:00:00Z",
+    "timestamp": 1707696000000
+   },
+   "content-version": "vor",
+   "delay-in-days": 0,
+   "URL": "http://creativecommons.org/licenses/by/4.0/"
+  }
+ ],
+ "content-domain": {
+  "domain": [
+   "elsevier.com",
+   "sciencedirect.com"
+  ],
+  "crossmark-restriction": true
+ },
+ "short-container-title": [
+  "Social Science &amp; Medicine"
+ ],
+ "published-print": {
+  "date-parts": [
+   [
+    2024,
+    3
+   ]
+  ]
+ },
+ "DOI": "10.1016/j.socscimed.2024.116683",
+ "type": "journal-article",
+ "created": {
+  "date-parts": [
+   [
+    2024,
+    2,
+    10
+   ]
+  ],
+  "date-time": "2024-02-10T02:56:58Z",
+  "timestamp": 1707533818000
+ },
+ "page": "116683",
+ "update-policy": "https://doi.org/10.1016/elsevier_cm_policy",
+ "source": "Crossref",
+ "is-referenced-by-count": 11,
+ "special_numbering": "C",
+ "title": [
+  "“The machine doesn't judge”: Counternarratives on surveillance among people accessing a safer opioid supply via biometric machines"
+ ],
+ "prefix": "10.1016",
+ "volume": "345",
+ "author": [
+  {
+   "ORCID": "https://orcid.org/0000-0003-3368-7681",
+   "authenticated-orcid": false,
+   "given": "Geoff",
+   "family": "Bardwell",
+   "sequence": "first",
+   "affiliation": [],
+   "role": [
+    {
+     "vocabulary": "crossref",
+     "role": "author"
+    }
+   ]
+  },
+  {
+   "given": "Andrew",
+   "family": "Ivsins",
+   "sequence": "additional",
+   "affiliation": [],
+   "role": [
+    {
+     "vocabulary": "crossref",
+     "role": "author"
+    }
+   ]
+  },
+  {
+   "ORCID": "https://orcid.org/0000-0002-5162-0256",
+   "authenticated-orcid": false,
+   "given": "James R.",
+   "family": "Wallace",
+   "sequence": "additional",
+   "affiliation": [],
+   "role": [
+    {
+     "vocabulary": "crossref",
+     "role": "author"
+    }
+   ]
+  },
+  {
+   "ORCID": "https://orcid.org/0000-0002-2727-3485",
+   "authenticated-orcid": false,
+   "given": "Manal",
+   "family": "Mansoor",
+   "sequence": "additional",
+   "affiliation": [],
+   "role": [
+    {
+     "vocabulary": "crossref",
+     "role": "author"
+    }
+   ]
+  },
+  {
+   "given": "Thomas",
+   "family": "Kerr",
+   "sequence": "additional",
+   "affiliation": [],
+   "role": [
+    {
+     "vocabulary": "crossref",
+     "role": "author"
+    }
+   ]
+  }
+ ],
+ "member": "78",
+ "container-title": [
+  "Social Science &amp; Medicine"
+ ],
+ "original-title": [],
+ "language": "en",
+ "link": [
+  {
+   "URL": "https://api.elsevier.com/content/article/PII:S0277953624001278?httpAccept=text/xml",
+   "content-type": "text/xml",
+   "content-version": "vor",
+   "intended-application": "text-mining"
+  },
+  {
+   "URL": "https://api.elsevier.com/content/article/PII:S0277953624001278?httpAccept=text/plain",
+   "content-type": "text/plain",
+   "content-version": "vor",
+   "intended-application": "text-mining"
+  }
+ ],
+ "deposited": {
+  "date-parts": [
+   [
+    2025,
+    2,
+    22
+   ]
+  ],
+  "date-time": "2025-02-22T06:03:01Z",
+  "timestamp": 1740204181000
+ },
+ "score": 1,
+ "resource": {
+  "primary": {
+   "URL": "https://linkinghub.elsevier.com/retrieve/pii/S0277953624001278"
+  }
+ },
+ "subtitle": [],
+ "short-title": [],
+ "issued": {
+  "date-parts": [
+   [
+    2024,
+    3
+   ]
+  ]
+ },
+ "references-count": 105,
+ "alternative-id": [
+  "S0277953624001278"
+ ],
+ "URL": "https://doi.org/10.1016/j.socscimed.2024.116683",
+ "relation": {},
+ "ISSN": [
+  "0277-9536"
+ ],
+ "issn-type": [
+  {
+   "value": "0277-9536",
+   "type": "print"
+  }
+ ],
+ "subject": [],
+ "published": {
+  "date-parts": [
+   [
+    2024,
+    3
+   ]
+  ]
+ },
+ "assertion": [
+  {
+   "value": "Elsevier",
+   "name": "publisher",
+   "label": "This article is maintained by"
+  },
+  {
+   "value": "“The machine doesn't judge”: Counternarratives on surveillance among people accessing a safer opioid supply via biometric machines",
+   "name": "articletitle",
+   "label": "Article Title"
+  },
+  {
+   "value": "Social Science & Medicine",
+   "name": "journaltitle",
+   "label": "Journal Title"
+  },
+  {
+   "value": "https://doi.org/10.1016/j.socscimed.2024.116683",
+   "name": "articlelink",
+   "label": "CrossRef DOI link to publisher maintained version"
+  },
+  {
+   "value": "article",
+   "name": "content_type",
+   "label": "Content Type"
+  },
+  {
+   "value": "© 2024 The Authors. Published by Elsevier Ltd.",
+   "name": "copyright",
+   "label": "Copyright"
+  }
+ ],
+ "article-number": "116683"
+}

@@ -1,0 +1,223 @@
+{
+ "indexed": {
+  "date-parts": [
+   [
+    2026,
+    7,
+    17
+   ]
+  ],
+  "date-time": "2026-07-17T17:14:40Z",
+  "timestamp": 1784308480514,
+  "version": "3.55.0"
+ },
+ "reference-count": 7,
+ "publisher": "IEEE",
+ "license": [
+  {
+   "start": {
+    "date-parts": [
+     [
+      2019,
+      9,
+      1
+     ]
+    ],
+    "date-time": "2019-09-01T00:00:00Z",
+    "timestamp": 1567296000000
+   },
+   "content-version": "vor",
+   "delay-in-days": 0,
+   "URL": "https://ieeexplore.ieee.org/Xplorehelp/downloads/license-information/IEEE.html"
+  },
+  {
+   "start": {
+    "date-parts": [
+     [
+      2019,
+      9,
+      1
+     ]
+    ],
+    "date-time": "2019-09-01T00:00:00Z",
+    "timestamp": 1567296000000
+   },
+   "content-version": "stm-asf",
+   "delay-in-days": 0,
+   "URL": "https://doi.org/10.15223/policy-029"
+  },
+  {
+   "start": {
+    "date-parts": [
+     [
+      2019,
+      9,
+      1
+     ]
+    ],
+    "date-time": "2019-09-01T00:00:00Z",
+    "timestamp": 1567296000000
+   },
+   "content-version": "stm-asf",
+   "delay-in-days": 0,
+   "URL": "https://doi.org/10.15223/policy-037"
+  }
+ ],
+ "content-domain": {
+  "domain": [],
+  "crossmark-restriction": false
+ },
+ "short-container-title": [],
+ "published-print": {
+  "date-parts": [
+   [
+    2019,
+    9
+   ]
+  ]
+ },
+ "DOI": "10.1109/vs-games.2019.8864526",
+ "type": "proceedings-article",
+ "created": {
+  "date-parts": [
+   [
+    2019,
+    10,
+    15
+   ]
+  ],
+  "date-time": "2019-10-15T00:06:34Z",
+  "timestamp": 1571097994000
+ },
+ "page": "1-4",
+ "source": "Crossref",
+ "is-referenced-by-count": 8,
+ "title": [
+  "Scalebridge: Design and Evaluation of Adaptive Difficulty Proportional Reasoning Game for Children"
+ ],
+ "prefix": "10.1109",
+ "author": [
+  {
+   "given": "Liudmila",
+   "family": "Tahai",
+   "sequence": "first",
+   "affiliation": [],
+   "role": [
+    {
+     "vocabulary": "crossref",
+     "role": "author"
+    }
+   ]
+  },
+  {
+   "given": "James R.",
+   "family": "Wallace",
+   "sequence": "additional",
+   "affiliation": [],
+   "role": [
+    {
+     "vocabulary": "crossref",
+     "role": "author"
+    }
+   ]
+  },
+  {
+   "given": "Christian",
+   "family": "Eckhardt",
+   "sequence": "additional",
+   "affiliation": [],
+   "role": [
+    {
+     "vocabulary": "crossref",
+     "role": "author"
+    }
+   ]
+  },
+  {
+   "given": "Krzysztof",
+   "family": "Pietroszek",
+   "sequence": "additional",
+   "affiliation": [],
+   "role": [
+    {
+     "vocabulary": "crossref",
+     "role": "author"
+    }
+   ]
+  }
+ ],
+ "member": "263",
+ "event": {
+  "name": "2019 11th International Conference on Virtual Worlds and Games for Serious Applications (VS-Games)",
+  "location": "Vienna, Austria",
+  "start": {
+   "date-parts": [
+    [
+     2019,
+     9,
+     4
+    ]
+   ]
+  },
+  "end": {
+   "date-parts": [
+    [
+     2019,
+     9,
+     6
+    ]
+   ]
+  }
+ },
+ "container-title": [
+  "2019 11th International Conference on Virtual Worlds and Games for Serious Applications (VS-Games)"
+ ],
+ "original-title": [],
+ "link": [
+  {
+   "URL": "http://xplorestaging.ieee.org/ielx7/8856154/8864508/08864526.pdf?arnumber=8864526",
+   "content-type": "unspecified",
+   "content-version": "vor",
+   "intended-application": "similarity-checking"
+  }
+ ],
+ "deposited": {
+  "date-parts": [
+   [
+    2022,
+    7,
+    15
+   ]
+  ],
+  "date-time": "2022-07-15T03:11:14Z",
+  "timestamp": 1657854674000
+ },
+ "score": 1,
+ "resource": {
+  "primary": {
+   "URL": "https://ieeexplore.ieee.org/document/8864526/"
+  }
+ },
+ "subtitle": [],
+ "short-title": [],
+ "issued": {
+  "date-parts": [
+   [
+    2019,
+    9
+   ]
+  ]
+ },
+ "references-count": 7,
+ "URL": "https://doi.org/10.1109/vs-games.2019.8864526",
+ "relation": {},
+ "subject": [],
+ "published": {
+  "date-parts": [
+   [
+    2019,
+    9
+   ]
+  ]
+ }
+}

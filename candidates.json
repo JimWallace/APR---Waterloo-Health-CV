@@ -1,0 +1,65 @@
+{
+  "generated": "2026-11-26T11:05:48+00:00",
+  "since": 2025,
+  "resolved": {
+    "openalex_author_id": "A5083325500"
+  },
+  "records_seen": 33,
+  "new": [
+    {
+      "source": "openalex",
+      "source_id": "https://openalex.org/W4409527642",
+      "type": "conference-abstract",
+      "title": "Abstract P3151: Association Between Life’s Essential 8 and Cardiovascular Disease by Depression Status",
+      "authors": [
+        "Khalid S. Al Khairy",
+        "James R. Wallace",
+        "Jee Won Park"
+      ],
+      "venue": "Circulation",
+      "year": 2025,
+      "doi": "10.1161/cir.151.suppl_1.p3151",
+      "urls": [
+        "https://doi.org/10.1161/cir.151.suppl_1.p3151",
+        "https://doi.org/10.1161/cir.151.suppl_1.p3151"
+      ],
+      "also_in": []
+    }
+  ],
+  "doi_backfill": [
+    {
+      "key": "li2026glimpse",
+      "title": "``{A} Glimpse, Not a Gaze'': Using Generative {AI} to Balance Privacy and Awareness in Inter-generational Caregiving",
+      "candidates": [
+        {
+          "source": "openalex",
+          "source_id": "https://openalex.org/W7163529311",
+          "type": "preprint",
+          "title": "\"A Glimpse, Not a Gaze\": Using Generative AI to Balance Privacy and Awareness in Inter-generational Caregiving",
+          "authors": [
+            "Zixi Christina Li",
+            "Keiko Katsuragawa",
+            "James R. Wallace"
+          ],
+          "venue": "arXiv",
+          "year": 2026,
+          "doi": "10.48550/arxiv.2606.05055",
+          "urls": [
+            "https://doi.org/10.48550/arxiv.2606.05055",
+            "https://arxiv.org/abs/2606.05055"
+          ]
+        }
+      ]
+    }
+  ],
+  "source_errors": [
+    {
+      "source": "dblp",
+      "error": "ParseError('syntax error: line 1, column 0')"
+    },
+    {
+      "source": "crossref",
+      "error": "4 DOI(s) not found: 10.48550/arxiv.2606.05055, 10.5281/zenodo.24382143, 10.5281/zenodo.24396647, 10.5281/zenodo.24397928"
+    }
+  ]
+}

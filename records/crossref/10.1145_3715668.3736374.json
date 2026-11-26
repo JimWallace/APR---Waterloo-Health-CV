@@ -1,0 +1,267 @@
+{
+ "indexed": {
+  "date-parts": [
+   [
+    2026,
+    9,
+    28
+   ]
+  ],
+  "date-time": "2026-09-28T19:15:52Z",
+  "timestamp": 1790622952701,
+  "version": "4.1.0"
+ },
+ "publisher-location": "New York, NY, USA",
+ "reference-count": 23,
+ "publisher": "ACM",
+ "funder": [
+  {
+   "DOI": "10.13039/501100000038",
+   "name": "Natural Sciences and Engineering Research Council of Canada",
+   "doi-asserted-by": "publisher",
+   "award": [
+    "PGS D-578592–2023"
+   ],
+   "award-info": [
+    {
+     "award-number": [
+      "PGS D-578592–2023"
+     ]
+    }
+   ],
+   "id": [
+    {
+     "id": "10.13039/501100000038",
+     "id-type": "DOI",
+     "asserted-by": "publisher"
+    }
+   ]
+  },
+  {
+   "name": "NSERC Discovery Grant",
+   "award": [
+    "RGPIN-2022-03268"
+   ],
+   "award-info": [
+    {
+     "award-number": [
+      "RGPIN-2022-03268"
+     ]
+    }
+   ]
+  }
+ ],
+ "content-domain": {
+  "domain": [
+   "dl.acm.org"
+  ],
+  "crossmark-restriction": true
+ },
+ "short-container-title": [],
+ "published-print": {
+  "date-parts": [
+   [
+    2025,
+    7,
+    5
+   ]
+  ]
+ },
+ "DOI": "10.1145/3715668.3736374",
+ "type": "proceedings-article",
+ "created": {
+  "date-parts": [
+   [
+    2025,
+    7,
+    5
+   ]
+  ],
+  "date-time": "2025-07-05T08:10:41Z",
+  "timestamp": 1751703041000
+ },
+ "page": "456-460",
+ "update-policy": "https://doi.org/10.1145/crossmark-policy",
+ "source": "Crossref",
+ "is-referenced-by-count": 2,
+ "title": [
+  "Bold Sky: Co-Designing an Intimate Partner Violence Prevention Game"
+ ],
+ "prefix": "10.1145",
+ "author": [
+  {
+   "ORCID": "https://orcid.org/0000-0003-2036-535X",
+   "authenticated-orcid": false,
+   "given": "Veen",
+   "family": "Wong",
+   "sequence": "first",
+   "affiliation": [
+    {
+     "name": "School of Public Health Sciences, University of Waterloo, Waterloo, Ontario, Canada"
+    }
+   ],
+   "role": [
+    {
+     "vocabulary": "crossref",
+     "role": "author"
+    }
+   ]
+  },
+  {
+   "ORCID": "https://orcid.org/0009-0007-8872-1839",
+   "authenticated-orcid": false,
+   "given": "Chris",
+   "family": "McNab",
+   "sequence": "additional",
+   "affiliation": [
+    {
+     "name": "School of Social Work, Renison University College, University of Waterloo, Waterloo, Ontario, Canada"
+    }
+   ],
+   "role": [
+    {
+     "vocabulary": "crossref",
+     "role": "author"
+    }
+   ]
+  },
+  {
+   "ORCID": "https://orcid.org/0009-0002-2138-1888",
+   "authenticated-orcid": false,
+   "given": "Laura",
+   "family": "Wallace Jarvis",
+   "sequence": "additional",
+   "affiliation": [
+    {
+     "name": "School of Social Work, Renison University College, University of Waterloo, Waterloo, Ontario, Canada"
+    }
+   ],
+   "role": [
+    {
+     "vocabulary": "crossref",
+     "role": "author"
+    }
+   ]
+  },
+  {
+   "ORCID": "https://orcid.org/0000-0003-4374-3237",
+   "authenticated-orcid": false,
+   "given": "Cayley",
+   "family": "MacArthur",
+   "sequence": "additional",
+   "affiliation": [
+    {
+     "name": "Stratford School of Interaction Design and Business, University of Waterloo, Waterloo, Ontario, Canada"
+    }
+   ],
+   "role": [
+    {
+     "vocabulary": "crossref",
+     "role": "author"
+    }
+   ]
+  },
+  {
+   "ORCID": "https://orcid.org/0000-0002-5162-0256",
+   "authenticated-orcid": false,
+   "given": "James R",
+   "family": "Wallace",
+   "sequence": "additional",
+   "affiliation": [
+    {
+     "name": "School of Public Health Sciences, University of Waterloo, Waterloo, Ontario, Canada"
+    }
+   ],
+   "role": [
+    {
+     "vocabulary": "crossref",
+     "role": "author"
+    }
+   ]
+  }
+ ],
+ "member": "320",
+ "published-online": {
+  "date-parts": [
+   [
+    2025,
+    7,
+    5
+   ]
+  ]
+ },
+ "event": {
+  "name": "DIS '25: Designing Interactive Systems Conference",
+  "location": "Funchal Portugal",
+  "acronym": "DIS '25"
+ },
+ "container-title": [
+  "Companion Publication of the 2025 ACM Designing Interactive Systems Conference"
+ ],
+ "original-title": [],
+ "link": [
+  {
+   "URL": "https://dl.acm.org/doi/pdf/10.1145/3715668.3736374",
+   "content-type": "unspecified",
+   "content-version": "vor",
+   "intended-application": "similarity-checking"
+  }
+ ],
+ "deposited": {
+  "date-parts": [
+   [
+    2025,
+    7,
+    5
+   ]
+  ],
+  "date-time": "2025-07-05T08:11:26Z",
+  "timestamp": 1751703086000
+ },
+ "score": 1,
+ "resource": {
+  "primary": {
+   "URL": "https://dl.acm.org/doi/10.1145/3715668.3736374"
+  }
+ },
+ "subtitle": [],
+ "short-title": [],
+ "issued": {
+  "date-parts": [
+   [
+    2025,
+    7,
+    5
+   ]
+  ]
+ },
+ "references-count": 23,
+ "alternative-id": [
+  "10.1145/3715668.3736374",
+  "10.1145/3715668"
+ ],
+ "URL": "https://doi.org/10.1145/3715668.3736374",
+ "relation": {},
+ "subject": [],
+ "published": {
+  "date-parts": [
+   [
+    2025,
+    7,
+    5
+   ]
+  ]
+ },
+ "assertion": [
+  {
+   "value": "2025-07-05",
+   "order": 3,
+   "name": "published",
+   "label": "Published",
+   "group": {
+    "name": "publication_history",
+    "label": "Publication History"
+   }
+  }
+ ]
+}

@@ -1,0 +1,261 @@
+{
+ "indexed": {
+  "date-parts": [
+   [
+    2026,
+    9,
+    27
+   ]
+  ],
+  "date-time": "2026-09-27T13:51:03Z",
+  "timestamp": 1790517063004,
+  "version": "4.1.0"
+ },
+ "publisher-location": "New York, NY, USA",
+ "reference-count": 20,
+ "publisher": "ACM",
+ "license": [
+  {
+   "start": {
+    "date-parts": [
+     [
+      2016,
+      6,
+      7
+     ]
+    ],
+    "date-time": "2016-06-07T00:00:00Z",
+    "timestamp": 1465257600000
+   },
+   "content-version": "vor",
+   "delay-in-days": 0,
+   "URL": "https://www.acm.org/publications/policies/copyright_policy#Background"
+  }
+ ],
+ "funder": [
+  {
+   "DOI": "10.13039/501100000038",
+   "name": "Natural Sciences and Engineering Research Council of Canada",
+   "doi-asserted-by": "publisher",
+   "id": [
+    {
+     "id": "10.13039/501100000038",
+     "id-type": "DOI",
+     "asserted-by": "publisher"
+    }
+   ]
+  },
+  {
+   "DOI": "10.13039/100006785",
+   "name": "Google",
+   "doi-asserted-by": "publisher",
+   "id": [
+    {
+     "id": "10.13039/100006785",
+     "id-type": "DOI",
+     "asserted-by": "publisher"
+    }
+   ]
+  }
+ ],
+ "content-domain": {
+  "domain": [
+   "dl.acm.org"
+  ],
+  "crossmark-restriction": true
+ },
+ "short-container-title": [],
+ "published-print": {
+  "date-parts": [
+   [
+    2016,
+    6,
+    7
+   ]
+  ]
+ },
+ "DOI": "10.1145/2909132.2909263",
+ "type": "proceedings-article",
+ "created": {
+  "date-parts": [
+   [
+    2016,
+    5,
+    25
+   ]
+  ],
+  "date-time": "2016-05-25T20:14:10Z",
+  "timestamp": 1464207250000
+ },
+ "page": "128-135",
+ "update-policy": "https://doi.org/10.1145/crossmark-policy",
+ "source": "Crossref",
+ "is-referenced-by-count": 32,
+ "title": [
+  "Watchpoint"
+ ],
+ "prefix": "10.1145",
+ "author": [
+  {
+   "given": "Keiko",
+   "family": "Katsuragawa",
+   "sequence": "first",
+   "affiliation": [
+    {
+     "name": "Cheriton School of Computer, Science, University of Waterloo, Waterloo, Ontario, Canada"
+    }
+   ],
+   "role": [
+    {
+     "vocabulary": "crossref",
+     "role": "author"
+    }
+   ]
+  },
+  {
+   "given": "Krzysztof",
+   "family": "Pietroszek",
+   "sequence": "additional",
+   "affiliation": [
+    {
+     "name": "California State University, Monterey Bay, Seaside, California, USA"
+    }
+   ],
+   "role": [
+    {
+     "vocabulary": "crossref",
+     "role": "author"
+    }
+   ]
+  },
+  {
+   "given": "James R.",
+   "family": "Wallace",
+   "sequence": "additional",
+   "affiliation": [
+    {
+     "name": "School of Public Health and Health, Systems, University of Waterloo, Waterloo, Ontario, Canada and Cheriton School of Computer, Science, University of Waterloo, Waterloo, Ontario, Canada"
+    }
+   ],
+   "role": [
+    {
+     "vocabulary": "crossref",
+     "role": "author"
+    }
+   ]
+  },
+  {
+   "given": "Edward",
+   "family": "Lank",
+   "sequence": "additional",
+   "affiliation": [
+    {
+     "name": "Cheriton School of Computer, Science, University of Waterloo, Waterloo, Ontario, Canada"
+    }
+   ],
+   "role": [
+    {
+     "vocabulary": "crossref",
+     "role": "author"
+    }
+   ]
+  }
+ ],
+ "member": "320",
+ "published-online": {
+  "date-parts": [
+   [
+    2016,
+    6,
+    7
+   ]
+  ]
+ },
+ "event": {
+  "name": "AVI '16: International Working Conference on Advanced Visual Interfaces",
+  "location": "Bari Italy",
+  "acronym": "AVI '16",
+  "sponsor": [
+   "SIGWEB ACM Special Interest Group on Hypertext, Hypermedia, and Web",
+   "SIGMM ACM Special Interest Group on Multimedia",
+   "SIGCHI ACM Special Interest Group on Computer-Human Interaction"
+  ]
+ },
+ "container-title": [
+  "Proceedings of the International Working Conference on Advanced Visual Interfaces"
+ ],
+ "original-title": [],
+ "link": [
+  {
+   "URL": "https://dl.acm.org/doi/10.1145/2909132.2909263",
+   "content-type": "unspecified",
+   "content-version": "vor",
+   "intended-application": "text-mining"
+  },
+  {
+   "URL": "https://dl.acm.org/doi/pdf/10.1145/2909132.2909263",
+   "content-type": "unspecified",
+   "content-version": "vor",
+   "intended-application": "similarity-checking"
+  }
+ ],
+ "deposited": {
+  "date-parts": [
+   [
+    2025,
+    6,
+    18
+   ]
+  ],
+  "date-time": "2025-06-18T04:55:48Z",
+  "timestamp": 1750222548000
+ },
+ "score": 1,
+ "resource": {
+  "primary": {
+   "URL": "https://dl.acm.org/doi/10.1145/2909132.2909263"
+  }
+ },
+ "subtitle": [
+  "Freehand Pointing with a Smartwatch in a Ubiquitous Display Environment"
+ ],
+ "short-title": [],
+ "issued": {
+  "date-parts": [
+   [
+    2016,
+    6,
+    7
+   ]
+  ]
+ },
+ "references-count": 20,
+ "alternative-id": [
+  "10.1145/2909132.2909263",
+  "10.1145/2909132"
+ ],
+ "URL": "https://doi.org/10.1145/2909132.2909263",
+ "relation": {},
+ "subject": [],
+ "published": {
+  "date-parts": [
+   [
+    2016,
+    6,
+    7
+   ]
+  ]
+ },
+ "assertion": [
+  {
+   "value": "2016-06-07",
+   "order": 2,
+   "name": "published",
+   "label": "Published",
+   "group": {
+    "name": "publication_history",
+    "label": "Publication History"
+   }
+  }
+ ]
+}

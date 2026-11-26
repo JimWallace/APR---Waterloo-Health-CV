@@ -1,0 +1,204 @@
+{
+ "indexed": {
+  "date-parts": [
+   [
+    2026,
+    9,
+    22
+   ]
+  ],
+  "date-time": "2026-09-22T08:04:23Z",
+  "timestamp": 1790064263804,
+  "version": "4.0.1"
+ },
+ "publisher-location": "New York, NY, USA",
+ "reference-count": 15,
+ "publisher": "ACM",
+ "license": [
+  {
+   "start": {
+    "date-parts": [
+     [
+      2018,
+      4,
+      20
+     ]
+    ],
+    "date-time": "2018-04-20T00:00:00Z",
+    "timestamp": 1524182400000
+   },
+   "content-version": "vor",
+   "delay-in-days": 0,
+   "URL": "https://www.acm.org/publications/policies/copyright_policy#Background"
+  }
+ ],
+ "funder": [
+  {
+   "name": "Natural Sciences and Engineering Council of Canada"
+  }
+ ],
+ "content-domain": {
+  "domain": [
+   "dl.acm.org"
+  ],
+  "crossmark-restriction": true
+ },
+ "short-container-title": [],
+ "published-print": {
+  "date-parts": [
+   [
+    2018,
+    4,
+    20
+   ]
+  ]
+ },
+ "DOI": "10.1145/3170427.3188497",
+ "type": "proceedings-article",
+ "created": {
+  "date-parts": [
+   [
+    2018,
+    4,
+    20
+   ]
+  ],
+  "date-time": "2018-04-20T16:09:06Z",
+  "timestamp": 1524240546000
+ },
+ "page": "1-5",
+ "update-policy": "https://doi.org/10.1145/crossmark-policy",
+ "source": "Crossref",
+ "is-referenced-by-count": 5,
+ "title": [
+  "Changing Peer Support Attitudes with Avatar-based Gamification"
+ ],
+ "prefix": "10.1145",
+ "author": [
+  {
+   "given": "Long Ting",
+   "family": "Chan",
+   "sequence": "first",
+   "affiliation": [
+    {
+     "name": "University of Waterloo, Waterloo, ON, Canada"
+    }
+   ],
+   "role": [
+    {
+     "vocabulary": "crossref",
+     "role": "author"
+    }
+   ]
+  },
+  {
+   "given": "James R.",
+   "family": "Wallace",
+   "sequence": "additional",
+   "affiliation": [
+    {
+     "name": "University of Waterloo, Waterloo, ON, Canada"
+    }
+   ],
+   "role": [
+    {
+     "vocabulary": "crossref",
+     "role": "author"
+    }
+   ]
+  }
+ ],
+ "member": "320",
+ "published-online": {
+  "date-parts": [
+   [
+    2018,
+    4,
+    20
+   ]
+  ]
+ },
+ "event": {
+  "name": "CHI '18: CHI Conference on Human Factors in Computing Systems",
+  "location": "Montreal QC Canada",
+  "acronym": "CHI '18",
+  "sponsor": [
+   "SIGCHI ACM Special Interest Group on Computer-Human Interaction"
+  ]
+ },
+ "container-title": [
+  "Extended Abstracts of the 2018 CHI Conference on Human Factors in Computing Systems"
+ ],
+ "original-title": [],
+ "link": [
+  {
+   "URL": "https://dl.acm.org/doi/10.1145/3170427.3188497",
+   "content-type": "unspecified",
+   "content-version": "vor",
+   "intended-application": "text-mining"
+  },
+  {
+   "URL": "https://dl.acm.org/doi/pdf/10.1145/3170427.3188497",
+   "content-type": "unspecified",
+   "content-version": "vor",
+   "intended-application": "similarity-checking"
+  }
+ ],
+ "deposited": {
+  "date-parts": [
+   [
+    2025,
+    6,
+    18
+   ]
+  ],
+  "date-time": "2025-06-18T03:02:51Z",
+  "timestamp": 1750215771000
+ },
+ "score": 1,
+ "resource": {
+  "primary": {
+   "URL": "https://dl.acm.org/doi/10.1145/3170427.3188497"
+  }
+ },
+ "subtitle": [],
+ "short-title": [],
+ "issued": {
+  "date-parts": [
+   [
+    2018,
+    4,
+    20
+   ]
+  ]
+ },
+ "references-count": 15,
+ "alternative-id": [
+  "10.1145/3170427.3188497",
+  "10.1145/3170427"
+ ],
+ "URL": "https://doi.org/10.1145/3170427.3188497",
+ "relation": {},
+ "subject": [],
+ "published": {
+  "date-parts": [
+   [
+    2018,
+    4,
+    20
+   ]
+  ]
+ },
+ "assertion": [
+  {
+   "value": "2018-04-20",
+   "order": 3,
+   "name": "published",
+   "label": "Published",
+   "group": {
+    "name": "publication_history",
+    "label": "Publication History"
+   }
+  }
+ ]
+}

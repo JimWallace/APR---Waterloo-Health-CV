@@ -1,0 +1,212 @@
+{
+ "indexed": {
+  "date-parts": [
+   [
+    2026,
+    11,
+    11
+   ]
+  ],
+  "date-time": "2026-11-11T20:24:38Z",
+  "timestamp": 1794428678951,
+  "version": "4.9.1"
+ },
+ "publisher-location": "New York, NY, USA",
+ "reference-count": 62,
+ "publisher": "ACM",
+ "license": [
+  {
+   "start": {
+    "date-parts": [
+     [
+      2026,
+      6,
+      9
+     ]
+    ],
+    "date-time": "2026-06-09T00:00:00Z",
+    "timestamp": 1780963200000
+   },
+   "content-version": "vor",
+   "delay-in-days": 0,
+   "URL": "https://creativecommons.org/licenses/by/4.0/legalcode"
+  }
+ ],
+ "content-domain": {
+  "domain": [
+   "dl.acm.org"
+  ],
+  "crossmark-restriction": true
+ },
+ "short-container-title": [],
+ "published-print": {
+  "date-parts": [
+   [
+    2026,
+    6,
+    9
+   ]
+  ]
+ },
+ "DOI": "10.1145/3831423.3831432",
+ "type": "proceedings-article",
+ "created": {
+  "date-parts": [
+   [
+    2026,
+    10,
+    16
+   ]
+  ],
+  "date-time": "2026-10-16T18:05:43Z",
+  "timestamp": 1792173943000
+ },
+ "page": "1-16",
+ "update-policy": "https://doi.org/10.1145/crossmark-policy",
+ "source": "Crossref",
+ "is-referenced-by-count": 0,
+ "title": [
+  "Pragmatica: A VR Tool for Autonomous Practice During Language Therapy"
+ ],
+ "prefix": "10.1145",
+ "author": [
+  {
+   "ORCID": "https://orcid.org/0009-0002-0722-0295",
+   "authenticated-orcid": false,
+   "given": "Karthik",
+   "family": "Prasad",
+   "sequence": "first",
+   "affiliation": [
+    {
+     "name": "University of Waterloo, Waterloo, Ontario, Canada"
+    }
+   ],
+   "role": [
+    {
+     "vocabulary": "crossref",
+     "role": "author"
+    }
+   ]
+  },
+  {
+   "ORCID": "https://orcid.org/0000-0002-6240-8445",
+   "authenticated-orcid": false,
+   "given": "Oliver",
+   "family": "Schneider",
+   "sequence": "additional",
+   "affiliation": [
+    {
+     "name": "University of Waterloo, Waterloo, Ontario, Canada"
+    }
+   ],
+   "role": [
+    {
+     "vocabulary": "crossref",
+     "role": "author"
+    }
+   ]
+  },
+  {
+   "ORCID": "https://orcid.org/0000-0002-5162-0256",
+   "authenticated-orcid": false,
+   "given": "James R",
+   "family": "Wallace",
+   "sequence": "additional",
+   "affiliation": [
+    {
+     "name": "School of Public Health Sciences, University of Waterloo, Waterloo, Ontario, Canada"
+    }
+   ],
+   "role": [
+    {
+     "vocabulary": "crossref",
+     "role": "author"
+    }
+   ]
+  }
+ ],
+ "member": "320",
+ "published-online": {
+  "date-parts": [
+   [
+    2026,
+    10,
+    16
+   ]
+  ]
+ },
+ "event": {
+  "name": "GI 2026: Graphics Interface 2026",
+  "location": "Waterloo Canada",
+  "acronym": "GI 2026"
+ },
+ "container-title": [
+  "Proceedings of the 52nd Graphics Interface Conference"
+ ],
+ "original-title": [],
+ "link": [
+  {
+   "URL": "https://dl.acm.org/doi/pdf/10.1145/3831423.3831432",
+   "content-type": "unspecified",
+   "content-version": "vor",
+   "intended-application": "similarity-checking"
+  }
+ ],
+ "deposited": {
+  "date-parts": [
+   [
+    2026,
+    11,
+    11
+   ]
+  ],
+  "date-time": "2026-11-11T20:12:01Z",
+  "timestamp": 1794427921000
+ },
+ "score": 1,
+ "resource": {
+  "primary": {
+   "URL": "https://dl.acm.org/doi/10.1145/3831423.3831432"
+  }
+ },
+ "subtitle": [],
+ "short-title": [],
+ "issued": {
+  "date-parts": [
+   [
+    2026,
+    6,
+    9
+   ]
+  ]
+ },
+ "references-count": 62,
+ "alternative-id": [
+  "10.1145/3831423.3831432",
+  "10.1145/3831423"
+ ],
+ "URL": "https://doi.org/10.1145/3831423.3831432",
+ "relation": {},
+ "subject": [],
+ "published": {
+  "date-parts": [
+   [
+    2026,
+    6,
+    9
+   ]
+  ]
+ },
+ "assertion": [
+  {
+   "value": "2026-10-16",
+   "order": 3,
+   "name": "published",
+   "label": "Published",
+   "group": {
+    "name": "publication_history",
+    "label": "Publication History"
+   }
+  }
+ ]
+}

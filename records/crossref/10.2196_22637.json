@@ -1,0 +1,209 @@
+{
+ "indexed": {
+  "date-parts": [
+   [
+    2026,
+    10,
+    6
+   ]
+  ],
+  "date-time": "2026-10-06T22:24:51Z",
+  "timestamp": 1791325491270,
+  "version": "4.3.1"
+ },
+ "reference-count": 39,
+ "publisher": "JMIR Publications Inc.",
+ "issue": "1",
+ "content-domain": {
+  "domain": [],
+  "crossmark-restriction": false
+ },
+ "short-container-title": [
+  "JMIR Public Health Surveill"
+ ],
+ "abstract": "<jats:sec>\n                    <jats:title>Background</jats:title>\n                    <jats:p>Young adults often browse the internet for self-triage and diagnosis. More sophisticated digital platforms such as symptom checkers have recently become pervasive; however, little is known about their use.</jats:p>\n                  </jats:sec>\n                  <jats:sec>\n                    <jats:title>Objective</jats:title>\n                    <jats:p>The aim of this study was to understand young adults’ (18-34 years old) perspectives on the use of the Google search engine versus a symptom checker, as well as to identify the barriers and enablers for using a symptom checker for self-triage and self-diagnosis.</jats:p>\n                  </jats:sec>\n                  <jats:sec>\n                    <jats:title>Methods</jats:title>\n                    <jats:p>A qualitative descriptive case study research design was used. Semistructured interviews were conducted with 24 young adults enrolled in a university in Ontario, Canada. All participants were given a clinical vignette and were asked to use a symptom checker (WebMD Symptom Checker or Babylon Health) while thinking out loud, and were asked questions regarding their experience. Interviews were audio-recorded, transcribed, and imported into the NVivo software program. Inductive thematic analysis was conducted independently by two researchers.</jats:p>\n                  </jats:sec>\n                  <jats:sec>\n                    <jats:title>Results</jats:title>\n                    <jats:p>Using the Google search engine was perceived to be faster and more customizable (ie, ability to enter symptoms freely in the search engine) than a symptom checker; however, a symptom checker was perceived to be useful for a more personalized assessment. After having used a symptom checker, most of the participants believed that the platform needed improvement in the areas of accuracy, security and privacy, and medical jargon used. Given these limitations, most participants believed that symptom checkers could be more useful for self-triage than for self-diagnosis. Interestingly, more than half of the participants were not aware of symptom checkers prior to this study and most believed that this lack of awareness about the existence of symptom checkers hindered their use.</jats:p>\n                  </jats:sec>\n                  <jats:sec>\n                    <jats:title>Conclusions</jats:title>\n                    <jats:p>Awareness related to the existence of symptom checkers and their integration into the health care system are required to maximize benefits related to these platforms. Addressing the barriers identified in this study is likely to increase the acceptance and use of symptom checkers by young adults.</jats:p>\n                  </jats:sec>",
+ "DOI": "10.2196/22637",
+ "type": "journal-article",
+ "created": {
+  "date-parts": [
+   [
+    2020,
+    11,
+    27
+   ]
+  ],
+  "date-time": "2020-11-27T09:03:03Z",
+  "timestamp": 1606467783000
+ },
+ "page": "e22637",
+ "source": "Crossref",
+ "is-referenced-by-count": 64,
+ "title": [
+  "Young Adults’ Perspectives on the Use of Symptom Checkers for Self-Triage and Self-Diagnosis: Qualitative Study"
+ ],
+ "prefix": "10.2196",
+ "volume": "7",
+ "author": [
+  {
+   "ORCID": "https://orcid.org/0000-0001-8115-1940",
+   "authenticated-orcid": false,
+   "given": "Stephanie",
+   "family": "Aboueid",
+   "sequence": "first",
+   "affiliation": [],
+   "role": [
+    {
+     "vocabulary": "crossref",
+     "role": "author"
+    }
+   ]
+  },
+  {
+   "ORCID": "https://orcid.org/0000-0002-2098-2828",
+   "authenticated-orcid": false,
+   "given": "Samantha",
+   "family": "Meyer",
+   "sequence": "additional",
+   "affiliation": [],
+   "role": [
+    {
+     "vocabulary": "crossref",
+     "role": "author"
+    }
+   ]
+  },
+  {
+   "ORCID": "https://orcid.org/0000-0002-5162-0256",
+   "authenticated-orcid": false,
+   "given": "James R",
+   "family": "Wallace",
+   "sequence": "additional",
+   "affiliation": [],
+   "role": [
+    {
+     "vocabulary": "crossref",
+     "role": "author"
+    }
+   ]
+  },
+  {
+   "ORCID": "https://orcid.org/0000-0003-1941-3545",
+   "authenticated-orcid": false,
+   "given": "Shreya",
+   "family": "Mahajan",
+   "sequence": "additional",
+   "affiliation": [],
+   "role": [
+    {
+     "vocabulary": "crossref",
+     "role": "author"
+    }
+   ]
+  },
+  {
+   "ORCID": "https://orcid.org/0000-0001-6745-0493",
+   "authenticated-orcid": false,
+   "given": "Ashok",
+   "family": "Chaurasia",
+   "sequence": "additional",
+   "affiliation": [],
+   "role": [
+    {
+     "vocabulary": "crossref",
+     "role": "author"
+    }
+   ]
+  }
+ ],
+ "member": "1010",
+ "published-online": {
+  "date-parts": [
+   [
+    2021,
+    1,
+    6
+   ]
+  ]
+ },
+ "container-title": [
+  "JMIR Public Health and Surveillance"
+ ],
+ "original-title": [],
+ "language": "en",
+ "link": [
+  {
+   "URL": "https://publichealth.jmir.org/2021/1/e22637",
+   "content-type": "unspecified",
+   "content-version": "vor",
+   "intended-application": "similarity-checking"
+  }
+ ],
+ "deposited": {
+  "date-parts": [
+   [
+    2026,
+    6,
+    30
+   ]
+  ],
+  "date-time": "2026-06-30T17:31:25Z",
+  "timestamp": 1782840685000
+ },
+ "score": 1,
+ "resource": {
+  "primary": {
+   "URL": "https://publichealth.jmir.org/2021/1/e22637"
+  }
+ },
+ "subtitle": [],
+ "short-title": [],
+ "issued": {
+  "date-parts": [
+   [
+    2021,
+    1,
+    6
+   ]
+  ]
+ },
+ "references-count": 39,
+ "journal-issue": {
+  "issue": "1",
+  "published-online": {
+   "date-parts": [
+    [
+     2021
+    ]
+   ]
+  }
+ },
+ "URL": "https://doi.org/10.2196/22637",
+ "relation": {
+  "has-preprint": [
+   {
+    "id-type": "doi",
+    "id": "10.2196/preprints.22637",
+    "asserted-by": "object"
+   }
+  ]
+ },
+ "ISSN": [
+  "2369-2960"
+ ],
+ "issn-type": [
+  {
+   "value": "2369-2960",
+   "type": "electronic"
+  }
+ ],
+ "subject": [],
+ "published": {
+  "date-parts": [
+   [
+    2021,
+    1,
+    6
+   ]
+  ]
+ }
+}

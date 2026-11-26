@@ -1,0 +1,283 @@
+{
+ "indexed": {
+  "date-parts": [
+   [
+    2026,
+    5,
+    29
+   ]
+  ],
+  "date-time": "2026-05-29T18:02:22Z",
+  "timestamp": 1780077742653,
+  "version": "3.54.0"
+ },
+ "reference-count": 25,
+ "publisher": "BMJ",
+ "issue": "2",
+ "license": [
+  {
+   "start": {
+    "date-parts": [
+     [
+      2021,
+      1,
+      29
+     ]
+    ],
+    "date-time": "2021-01-29T00:00:00Z",
+    "timestamp": 1611878400000
+   },
+   "content-version": "tdm",
+   "delay-in-days": 0,
+   "URL": "https://bmj.com/coronavirus/usage"
+  }
+ ],
+ "content-domain": {
+  "domain": [
+   "bmj.com"
+  ],
+  "crossmark-restriction": true
+ },
+ "short-container-title": [
+  "BMJ Innov"
+ ],
+ "accepted": {
+  "date-parts": [
+   [
+    2021,
+    1,
+    16
+   ]
+  ]
+ },
+ "published-print": {
+  "date-parts": [
+   [
+    2021,
+    4
+   ]
+  ]
+ },
+ "abstract": "<jats:sec>\n                    <jats:title>Objective</jats:title>\n                    <jats:p>Symptom checkers are potentially beneficial tools during pandemics. To increase the use of the platform, perspectives of end users must be gathered. Our objectives were to understand the perspectives and experiences of young adults related to the use of symptom checkers for assessing COVID-19-related symptoms and to identify areas for improvement.</jats:p>\n                  </jats:sec>\n                  <jats:sec>\n                    <jats:title>Methods</jats:title>\n                    <jats:p>We conducted semistructured qualitative interviews with 22 young adults (18–34 years of age) at a university in Ontario, Canada. Interviews were audio-recorded, transcribed, and analysed using inductive thematic analysis.</jats:p>\n                  </jats:sec>\n                  <jats:sec>\n                    <jats:title>Results</jats:title>\n                    <jats:p>We identified six main themes related to the decision of using a symptom checker for COVID-19 symptoms: (1) presence of symptoms or a combination of symptoms, (2) knowledge about COVID-19 symptoms, (3) fear of seeking in-person healthcare services, (4) awareness about symptom checkers, (5) paranoia and (6) curiosity. Participants who used symptom checkers shared by governmental entities reported an overall positive experience. Individuals who used non-credible sources reported suboptimal experiences due to lack of perceived credibility. Five main areas for improvement were identified: (1) information about the creators of the platform, (2) explanation of symptoms, (3) personalised experience, (4) language options, and (5) option to get tested.</jats:p>\n                  </jats:sec>\n                  <jats:sec>\n                    <jats:title>Conclusions</jats:title>\n                    <jats:p>This study suggests an increased acceptance of symptom checkers due to the perceived risks of infection associated with seeking in-person healthcare services. Symptom checkers have the potential to reduce the burden on healthcare systems and health professionals, especially during pandemics; however, these platforms could be improved to increase use.</jats:p>\n                  </jats:sec>",
+ "DOI": "10.1136/bmjinnov-2020-000498",
+ "type": "journal-article",
+ "created": {
+  "date-parts": [
+   [
+    2021,
+    1,
+    29
+   ]
+  ],
+  "date-time": "2021-01-29T13:25:47Z",
+  "timestamp": 1611926747000
+ },
+ "page": "253-260",
+ "update-policy": "https://doi.org/10.1136/crossmarkpolicy",
+ "source": "Crossref",
+ "is-referenced-by-count": 18,
+ "title": [
+  "Use of symptom checkers for COVID-19-related symptoms among university students: a qualitative study"
+ ],
+ "prefix": "10.1136",
+ "volume": "7",
+ "author": [
+  {
+   "given": "Stephanie",
+   "family": "Aboueid",
+   "sequence": "first",
+   "affiliation": [
+    {
+     "name": "Public Health and Health Systems, Faculty of Applied Health Sciences, University of Waterloo, Waterloo, Ontario, Canada"
+    }
+   ],
+   "role": [
+    {
+     "vocabulary": "crossref",
+     "role": "author"
+    }
+   ]
+  },
+  {
+   "given": "Samantha B",
+   "family": "Meyer",
+   "sequence": "additional",
+   "affiliation": [
+    {
+     "name": "Public Health and Health Systems, Faculty of Applied Health Sciences, University of Waterloo, Waterloo, Ontario, Canada"
+    }
+   ],
+   "role": [
+    {
+     "vocabulary": "crossref",
+     "role": "author"
+    }
+   ]
+  },
+  {
+   "given": "James R",
+   "family": "Wallace",
+   "sequence": "additional",
+   "affiliation": [
+    {
+     "name": "Public Health and Health Systems, Faculty of Applied Health Sciences, University of Waterloo, Waterloo, Ontario, Canada"
+    }
+   ],
+   "role": [
+    {
+     "vocabulary": "crossref",
+     "role": "author"
+    }
+   ]
+  },
+  {
+   "given": "Shreya",
+   "family": "Mahajan",
+   "sequence": "additional",
+   "affiliation": [
+    {
+     "name": "Public Health and Health Systems, Faculty of Applied Health Sciences, University of Waterloo, Waterloo, Ontario, Canada"
+    }
+   ],
+   "role": [
+    {
+     "vocabulary": "crossref",
+     "role": "author"
+    }
+   ]
+  },
+  {
+   "given": "Teeyaa",
+   "family": "Nur",
+   "sequence": "additional",
+   "affiliation": [
+    {
+     "name": "Public Health and Health Systems, Faculty of Applied Health Sciences, University of Waterloo, Waterloo, Ontario, Canada"
+    }
+   ],
+   "role": [
+    {
+     "vocabulary": "crossref",
+     "role": "author"
+    }
+   ]
+  },
+  {
+   "given": "Ashok",
+   "family": "Chaurasia",
+   "sequence": "additional",
+   "affiliation": [
+    {
+     "name": "Public Health and Health Systems, Faculty of Applied Health Sciences, University of Waterloo, Waterloo, Ontario, Canada"
+    }
+   ],
+   "role": [
+    {
+     "vocabulary": "crossref",
+     "role": "author"
+    }
+   ]
+  }
+ ],
+ "member": "239",
+ "published-online": {
+  "date-parts": [
+   [
+    2021,
+    1,
+    29
+   ]
+  ]
+ },
+ "container-title": [
+  "BMJ Innovations"
+ ],
+ "original-title": [],
+ "language": "en",
+ "link": [
+  {
+   "URL": "https://syndication.highwire.org/content/doi/10.1136/bmjinnov-2020-000498",
+   "content-type": "unspecified",
+   "content-version": "vor",
+   "intended-application": "similarity-checking"
+  }
+ ],
+ "deposited": {
+  "date-parts": [
+   [
+    2026,
+    5,
+    29
+   ]
+  ],
+  "date-time": "2026-05-29T17:12:23Z",
+  "timestamp": 1780074743000
+ },
+ "score": 1,
+ "resource": {
+  "primary": {
+   "URL": "https://innovations.bmj.com/lookup/doi/10.1136/bmjinnov-2020-000498"
+  }
+ },
+ "subtitle": [],
+ "short-title": [],
+ "issued": {
+  "date-parts": [
+   [
+    2021,
+    1,
+    29
+   ]
+  ]
+ },
+ "references-count": 25,
+ "journal-issue": {
+  "issue": "2",
+  "published-online": {
+   "date-parts": [
+    [
+     2021,
+     4,
+     19
+    ]
+   ]
+  },
+  "published-print": {
+   "date-parts": [
+    [
+     2021,
+     4
+    ]
+   ]
+  }
+ },
+ "alternative-id": [
+  "10.1136/bmjinnov-2020-000498"
+ ],
+ "URL": "https://doi.org/10.1136/bmjinnov-2020-000498",
+ "relation": {},
+ "ISSN": [
+  "2055-8074",
+  "2055-642X"
+ ],
+ "issn-type": [
+  {
+   "value": "2055-8074",
+   "type": "print"
+  },
+  {
+   "value": "2055-642X",
+   "type": "electronic"
+  }
+ ],
+ "subject": [],
+ "published": {
+  "date-parts": [
+   [
+    2021,
+    1,
+    29
+   ]
+  ]
+ }
+}

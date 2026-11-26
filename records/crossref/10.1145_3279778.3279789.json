@@ -1,0 +1,249 @@
+{
+ "indexed": {
+  "date-parts": [
+   [
+    2026,
+    10,
+    7
+   ]
+  ],
+  "date-time": "2026-10-07T04:33:27Z",
+  "timestamp": 1791347607190,
+  "version": "4.3.1"
+ },
+ "publisher-location": "New York, NY, USA",
+ "reference-count": 57,
+ "publisher": "ACM",
+ "license": [
+  {
+   "start": {
+    "date-parts": [
+     [
+      2018,
+      11,
+      19
+     ]
+    ],
+    "date-time": "2018-11-19T00:00:00Z",
+    "timestamp": 1542585600000
+   },
+   "content-version": "vor",
+   "delay-in-days": 0,
+   "URL": "https://www.acm.org/publications/policies/copyright_policy#Background"
+  }
+ ],
+ "content-domain": {
+  "domain": [
+   "dl.acm.org"
+  ],
+  "crossmark-restriction": true
+ },
+ "short-container-title": [],
+ "published-print": {
+  "date-parts": [
+   [
+    2018,
+    11,
+    19
+   ]
+  ]
+ },
+ "DOI": "10.1145/3279778.3279789",
+ "type": "proceedings-article",
+ "created": {
+  "date-parts": [
+   [
+    2018,
+    11,
+    21
+   ]
+  ],
+  "date-time": "2018-11-21T13:51:49Z",
+  "timestamp": 1542808309000
+ },
+ "page": "19-32",
+ "update-policy": "https://doi.org/10.1145/crossmark-policy",
+ "source": "Crossref",
+ "is-referenced-by-count": 18,
+ "title": [
+  "Increasing Passersby Engagement with Public Large Interactive Displays"
+ ],
+ "prefix": "10.1145",
+ "author": [
+  {
+   "given": "Mojgan",
+   "family": "Ghare",
+   "sequence": "first",
+   "affiliation": [
+    {
+     "name": "University of Waterloo, Waterloo, ON, Canada"
+    }
+   ],
+   "role": [
+    {
+     "vocabulary": "crossref",
+     "role": "author"
+    }
+   ]
+  },
+  {
+   "given": "Marvin",
+   "family": "Pafla",
+   "sequence": "additional",
+   "affiliation": [
+    {
+     "name": "University of Guelph &amp; University of Waterloo, Guelph, ON, Canada"
+    }
+   ],
+   "role": [
+    {
+     "vocabulary": "crossref",
+     "role": "author"
+    }
+   ]
+  },
+  {
+   "given": "Caroline",
+   "family": "Wong",
+   "sequence": "additional",
+   "affiliation": [
+    {
+     "name": "University of Waterloo, Waterloo, ON, Canada"
+    }
+   ],
+   "role": [
+    {
+     "vocabulary": "crossref",
+     "role": "author"
+    }
+   ]
+  },
+  {
+   "given": "James R.",
+   "family": "Wallace",
+   "sequence": "additional",
+   "affiliation": [
+    {
+     "name": "University of Waterloo, Waterloo, ON, Canada"
+    }
+   ],
+   "role": [
+    {
+     "vocabulary": "crossref",
+     "role": "author"
+    }
+   ]
+  },
+  {
+   "given": "Stacey D.",
+   "family": "Scott",
+   "sequence": "additional",
+   "affiliation": [
+    {
+     "name": "University of Guelph &amp; University of Waterloo, Guelph &amp; Waterloo, ON, Canada"
+    }
+   ],
+   "role": [
+    {
+     "vocabulary": "crossref",
+     "role": "author"
+    }
+   ]
+  }
+ ],
+ "member": "320",
+ "published-online": {
+  "date-parts": [
+   [
+    2018,
+    11,
+    19
+   ]
+  ]
+ },
+ "event": {
+  "name": "ISS '18: 2018 ACM International Conference on Interactive Surfaces and Spaces",
+  "location": "Tokyo Japan",
+  "acronym": "ISS '18",
+  "sponsor": [
+   "SIGCHI ACM Special Interest Group on Computer-Human Interaction"
+  ]
+ },
+ "container-title": [
+  "Proceedings of the 2018 ACM International Conference on Interactive Surfaces and Spaces"
+ ],
+ "original-title": [],
+ "link": [
+  {
+   "URL": "https://dl.acm.org/doi/10.1145/3279778.3279789",
+   "content-type": "unspecified",
+   "content-version": "vor",
+   "intended-application": "text-mining"
+  },
+  {
+   "URL": "https://dl.acm.org/doi/pdf/10.1145/3279778.3279789",
+   "content-type": "unspecified",
+   "content-version": "vor",
+   "intended-application": "similarity-checking"
+  }
+ ],
+ "deposited": {
+  "date-parts": [
+   [
+    2025,
+    6,
+    18
+   ]
+  ],
+  "date-time": "2025-06-18T00:58:01Z",
+  "timestamp": 1750208281000
+ },
+ "score": 1,
+ "resource": {
+  "primary": {
+   "URL": "https://dl.acm.org/doi/10.1145/3279778.3279789"
+  }
+ },
+ "subtitle": [
+  "A Study of Proxemics and Conation"
+ ],
+ "short-title": [],
+ "issued": {
+  "date-parts": [
+   [
+    2018,
+    11,
+    19
+   ]
+  ]
+ },
+ "references-count": 57,
+ "alternative-id": [
+  "10.1145/3279778.3279789",
+  "10.1145/3279778"
+ ],
+ "URL": "https://doi.org/10.1145/3279778.3279789",
+ "relation": {},
+ "subject": [],
+ "published": {
+  "date-parts": [
+   [
+    2018,
+    11,
+    19
+   ]
+  ]
+ },
+ "assertion": [
+  {
+   "value": "2018-11-19",
+   "order": 2,
+   "name": "published",
+   "label": "Published",
+   "group": {
+    "name": "publication_history",
+    "label": "Publication History"
+   }
+  }
+ ]
+}

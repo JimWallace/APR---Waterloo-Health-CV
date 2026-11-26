@@ -1,0 +1,499 @@
+{
+ "fetched": "2026-11-26T11:05:48+00:00",
+ "dois": {
+  "10.1007/978-3-642-03354-4_37": {
+   "keys": [
+    "inkpen2008groupbanter"
+   ],
+   "file": "crossref/10.1007_978-3-642-03354-4_37.json"
+  },
+  "10.1007/978-3-642-21869-9_27": {
+   "keys": [
+    "martinez2011modellingb"
+   ],
+   "file": "crossref/10.1007_978-3-642-21869-9_27.json"
+  },
+  "10.1007/978-3-642-22362-4_18": {
+   "keys": [
+    "martinez2011modelling"
+   ],
+   "file": "crossref/10.1007_978-3-642-22362-4_18.json"
+  },
+  "10.1007/s00779-009-0241-8": {
+   "keys": [
+    "wallace2009investigating"
+   ],
+   "file": "crossref/10.1007_s00779-009-0241-8.json"
+  },
+  "10.1007/s10606-011-9149-8": {
+   "keys": [
+    "wallace2011investigating"
+   ],
+   "file": "crossref/10.1007_s10606-011-9149-8.json"
+  },
+  "10.1016/j.hfh.2022.100025": {
+   "keys": [
+    "wada2022designing"
+   ],
+   "file": "crossref/10.1016_j.hfh.2022.100025.json"
+  },
+  "10.1016/j.socscimed.2024.116683": {
+   "keys": [
+    "BARDWELL2024116683"
+   ],
+   "file": "crossref/10.1016_j.socscimed.2024.116683.json"
+  },
+  "10.1016/j.socscimed.2025.118911": {
+   "keys": [
+    "rotolo2026investigating"
+   ],
+   "file": "crossref/10.1016_j.socscimed.2025.118911.json"
+  },
+  "10.1080/10447310609526173": {
+   "keys": [
+    "inkpen2006left"
+   ],
+   "file": "crossref/10.1080_10447310609526173.json"
+  },
+  "10.1109/3dui.2017.7893335": {
+   "keys": [
+    "pietroszek2017watchcasting"
+   ],
+   "file": "crossref/10.1109_3dui.2017.7893335.json"
+  },
+  "10.1109/tabletop.2008.4660184": {
+   "keys": [
+    "wallace2008contextual"
+   ],
+   "file": "crossref/10.1109_tabletop.2008.4660184.json"
+  },
+  "10.1109/vlhcc.2019.8818895": {
+   "keys": [
+    "selwyn2019co"
+   ],
+   "file": "crossref/10.1109_vlhcc.2019.8818895.json"
+  },
+  "10.1109/vs-games.2019.8864526": {
+   "keys": [
+    "tahai2019scalebridge"
+   ],
+   "file": "crossref/10.1109_vs-games.2019.8864526.json"
+  },
+  "10.1136/bmjinnov-2020-000498": {
+   "keys": [
+    "aboueid2021use"
+   ],
+   "file": "crossref/10.1136_bmjinnov-2020-000498.json"
+  },
+  "10.1145/1125451.1125723": {
+   "keys": [
+    "ha2006my"
+   ],
+   "file": "crossref/10.1145_1125451.1125723.json"
+  },
+  "10.1145/1125451.1125724": {
+   "keys": [
+    "wallace2006swordfishchiea"
+   ],
+   "file": "crossref/10.1145_1125451.1125724.json"
+  },
+  "10.1145/1460563.1460588": {
+   "keys": [
+    "wallace2008comparing"
+   ],
+   "file": "crossref/10.1145_1460563.1460588.json"
+  },
+  "10.1145/1753326.1753418": {
+   "keys": [
+    "haller2010nice"
+   ],
+   "file": "crossref/10.1145_1753326.1753418.json"
+  },
+  "10.1145/1878450.1878455": {
+   "keys": [
+    "kelly2010solar"
+   ],
+   "file": "crossref/10.1145_1878450.1878455.json"
+  },
+  "10.1145/2141512.2141585": {
+   "keys": [
+    "wallace2012exploring"
+   ],
+   "file": "crossref/10.1145_2141512.2141585.json"
+  },
+  "10.1145/2141512.2141613": {
+   "keys": [
+    "wallace2012using"
+   ],
+   "file": "crossref/10.1145_2141512.2141613.json"
+  },
+  "10.1145/2470654.2466458": {
+   "keys": [
+    "wallace2013collaborative"
+   ],
+   "file": "crossref/10.1145_2470654.2466458.json"
+  },
+  "10.1145/2611009.2611019": {
+   "keys": [
+    "wallace2014bezelsearch"
+   ],
+   "file": "crossref/10.1145_2611009.2611019.json"
+  },
+  "10.1145/2685553.2685564": {
+   "keys": [
+    "scott2015local"
+   ],
+   "file": "crossref/10.1145_2685553.2685564.json"
+  },
+  "10.1145/2686612.2686629": {
+   "keys": [
+    "pietroszek2014smartcasting"
+   ],
+   "file": "crossref/10.1145_2686612.2686629.json"
+  },
+  "10.1145/2800835.2807957": {
+   "keys": [
+    "pietroszek20153d"
+   ],
+   "file": "crossref/10.1145_2800835.2807957.json"
+  },
+  "10.1145/2807442.2807471": {
+   "keys": [
+    "pietroszek2015tiltcasting"
+   ],
+   "file": "crossref/10.1145_2807442.2807471.json"
+  },
+  "10.1145/2817721.2817723": {
+   "keys": [
+    "huijbregts2015talkingtiles"
+   ],
+   "file": "crossref/10.1145_2817721.2817723.json"
+  },
+  "10.1145/2858036.2858118": {
+   "keys": [
+    "wallace2016creating"
+   ],
+   "file": "crossref/10.1145_2858036.2858118.json"
+  },
+  "10.1145/2909132.2909263": {
+   "keys": [
+    "katsuragawa2016watchpoint"
+   ],
+   "file": "crossref/10.1145_2909132.2909263.json"
+  },
+  "10.1145/2909132.2909273": {
+   "keys": [
+    "katsuragawa2016gestural"
+   ],
+   "file": "crossref/10.1145_2909132.2909273.json"
+  },
+  "10.1145/2992154.2992156": {
+   "keys": [
+    "cheung2016felines"
+   ],
+   "file": "crossref/10.1145_2992154.2992156.json"
+  },
+  "10.1145/2992154.2996359": {
+   "keys": [
+    "anslow2016collaboration"
+   ],
+   "file": "crossref/10.1145_2992154.2996359.json"
+  },
+  "10.1145/2992154.2996869": {
+   "keys": [
+    "cheung2016quantum"
+   ],
+   "file": "crossref/10.1145_2992154.2996869.json"
+  },
+  "10.1145/3025453.3025500": {
+   "keys": [
+    "wallace2017subtle"
+   ],
+   "file": "crossref/10.1145_3025453.3025500.json"
+  },
+  "10.1145/3064663.3064695": {
+   "keys": [
+    "siddhpuria2017exploring"
+   ],
+   "file": "crossref/10.1145_3064663.3064695.json"
+  },
+  "10.1145/3132272.3132282": {
+   "keys": [
+    "homaeian2017investigating"
+   ],
+   "file": "crossref/10.1145_3132272.3132282.json"
+  },
+  "10.1145/3132272.3135085": {
+   "keys": [
+    "wallace2017disappearing"
+   ],
+   "file": "crossref/10.1145_3132272.3135085.json"
+  },
+  "10.1145/3134741": {
+   "keys": [
+    "wallace2017technologies"
+   ],
+   "file": "crossref/10.1145_3134741.json"
+  },
+  "10.1145/3170427.3188496": {
+   "keys": [
+    "bomfim2018pirate"
+   ],
+   "file": "crossref/10.1145_3170427.3188496.json"
+  },
+  "10.1145/3170427.3188497": {
+   "keys": [
+    "chan2018changing"
+   ],
+   "file": "crossref/10.1145_3170427.3188497.json"
+  },
+  "10.1145/3173574.3173647": {
+   "keys": [
+    "homaeian2018group"
+   ],
+   "file": "crossref/10.1145_3173574.3173647.json"
+  },
+  "10.1145/3205873.3205890": {
+   "keys": [
+    "liu2018applying"
+   ],
+   "file": "crossref/10.1145_3205873.3205890.json"
+  },
+  "10.1145/3279778.3279789": {
+   "keys": [
+    "ghare2018increasing"
+   ],
+   "file": "crossref/10.1145_3279778.3279789.json"
+  },
+  "10.1145/3279778.3279912": {
+   "keys": [
+    "chan2018smartsurveys"
+   ],
+   "file": "crossref/10.1145_3279778.3279912.json"
+  },
+  "10.1145/3313831.3376801": {
+   "keys": [
+    "bomfim2020food"
+   ],
+   "file": "crossref/10.1145_3313831.3376801.json"
+  },
+  "10.1145/3334480.3375216": {
+   "keys": [
+    "chan2020post"
+   ],
+   "file": "crossref/10.1145_3334480.3375216.json"
+  },
+  "10.1145/3449102": {
+   "keys": [
+    "homaeian2021joint"
+   ],
+   "file": "crossref/10.1145_3449102.json"
+  },
+  "10.1145/3474674": {
+   "keys": [
+    "reetz2021nature"
+   ],
+   "file": "crossref/10.1145_3474674.json"
+  },
+  "10.1145/3474677": {
+   "keys": [
+    "chan2021merlynne"
+   ],
+   "file": "crossref/10.1145_3474677.json"
+  },
+  "10.1145/3491102.3502076": {
+   "keys": [
+    "gauthier2022will"
+   ],
+   "file": "crossref/10.1145_3491102.3502076.json"
+  },
+  "10.1145/3492844": {
+   "keys": [
+    "gauthier2022computational"
+   ],
+   "file": "crossref/10.1145_3492844.json"
+  },
+  "10.1145/3555192": {
+   "keys": [
+    "homaeian2022handoff"
+   ],
+   "file": "crossref/10.1145_3555192.json"
+  },
+  "10.1145/3565482": {
+   "keys": [
+    "bomfim2022design"
+   ],
+   "file": "crossref/10.1145_3565482.json"
+  },
+  "10.1145/3567552": {
+   "keys": [
+    "gauthier2023agency"
+   ],
+   "file": "crossref/10.1145_3567552.json"
+  },
+  "10.1145/3643834.3661626": {
+   "keys": [
+    "Woo2024"
+   ],
+   "file": "crossref/10.1145_3643834.3661626.json"
+  },
+  "10.1145/3701187": {
+   "keys": [
+    "homaeian2025"
+   ],
+   "file": "crossref/10.1145_3701187.json"
+  },
+  "10.1145/3706599.3706714": {
+   "keys": [
+    "CHI2025Workshop"
+   ],
+   "file": "crossref/10.1145_3706599.3706714.json"
+  },
+  "10.1145/3706599.3720051": {
+   "keys": [
+    "wong2025praise"
+   ],
+   "file": "crossref/10.1145_3706599.3720051.json"
+  },
+  "10.1145/3715668.3736374": {
+   "keys": [
+    "Wong2025DIS"
+   ],
+   "file": "crossref/10.1145_3715668.3736374.json"
+  },
+  "10.1145/3719160.3735657": {
+   "keys": [
+    "Sharma2025"
+   ],
+   "file": "crossref/10.1145_3719160.3735657.json"
+  },
+  "10.1145/3772363.3778795": {
+   "keys": [
+    "avellino2026meetup"
+   ],
+   "file": "crossref/10.1145_3772363.3778795.json"
+  },
+  "10.1145/3786995.3786997": {
+   "keys": [
+    "kaur2025transformers"
+   ],
+   "file": "crossref/10.1145_3786995.3786997.json"
+  },
+  "10.1145/3802974.3809411": {
+   "keys": [
+    "AttentionGo"
+   ],
+   "file": "crossref/10.1145_3802974.3809411.json"
+  },
+  "10.1145/3810242": {
+   "keys": [
+    "Wong2026IPV"
+   ],
+   "file": "crossref/10.1145_3810242.json"
+  },
+  "10.1145/3822595": {
+   "keys": [
+    "Homaeian2026"
+   ],
+   "file": "crossref/10.1145_3822595.json"
+  },
+  "10.1145/3831423.3831432": {
+   "keys": [
+    "prasad2026pragmatica"
+   ],
+   "file": "crossref/10.1145_3831423.3831432.json"
+  },
+  "10.1145/3831423.3831435": {
+   "keys": [
+    "ugayamazza2026agency"
+   ],
+   "file": "crossref/10.1145_3831423.3831435.json"
+  },
+  "10.1145/3831423.3831448": {
+   "keys": [
+    "wong2026ipvprevention"
+   ],
+   "file": "crossref/10.1145_3831423.3831448.json"
+  },
+  "10.1145/3831423.3831451": {
+   "keys": [
+    "sharma2026details"
+   ],
+   "file": "crossref/10.1145_3831423.3831451.json"
+  },
+  "10.1161/cir.151.suppl_1.p3151": {
+   "keys": [],
+   "file": "crossref/10.1161_cir.151.suppl_1.p3151.json"
+  },
+  "10.1186/s12911-016-0256-9": {
+   "keys": [
+    "lee2016web"
+   ],
+   "file": "crossref/10.1186_s12911-016-0256-9.json"
+  },
+  "10.1201/9781003059325-23": {
+   "keys": [
+    "wallace2014effect"
+   ],
+   "file": "crossref/10.1201_9781003059325-23.json"
+  },
+  "10.1371/journal.pone.0259547": {
+   "keys": [
+    "aboueid2021latent"
+   ],
+   "file": "crossref/10.1371_journal.pone.0259547.json"
+  },
+  "10.1371/journal.pone.0282543": {
+   "keys": [
+    "wei2023protocol"
+   ],
+   "file": "crossref/10.1371_journal.pone.0282543.json"
+  },
+  "10.2196/22637": {
+   "keys": [
+    "aboueid2021young"
+   ],
+   "file": "crossref/10.2196_22637.json"
+  },
+  "10.2196/formative.9922": {
+   "keys": [
+    "mcmurray2018s"
+   ],
+   "file": "crossref/10.2196_formative.9922.json"
+  },
+  "10.4108/eai.20-5-2019.2283463": {
+   "keys": [
+    "chen2019design"
+   ],
+   "file": "crossref/10.4108_eai.20-5-2019.2283463.json"
+  },
+  "10.48550/arxiv.2606.05055": {
+   "keys": [
+    "li2026glimpse"
+   ],
+   "file": null,
+   "error": "<HTTPError 404: 'Not Found'>"
+  },
+  "10.5281/zenodo.24382143": {
+   "keys": [
+    "wallace_chickadee"
+   ],
+   "file": null,
+   "error": "<HTTPError 404: 'Not Found'>"
+  },
+  "10.5281/zenodo.24396647": {
+   "keys": [
+    "wallace2026waterloo"
+   ],
+   "file": null,
+   "error": "<HTTPError 404: 'Not Found'>"
+  },
+  "10.5281/zenodo.24397928": {
+   "keys": [
+    "wallace2026interdisciplinary"
+   ],
+   "file": null,
+   "error": "<HTTPError 404: 'Not Found'>"
+  }
+ }
+}

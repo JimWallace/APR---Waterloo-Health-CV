@@ -1,0 +1,313 @@
+{
+ "indexed": {
+  "date-parts": [
+   [
+    2026,
+    10,
+    6
+   ]
+  ],
+  "date-time": "2026-10-06T22:56:10Z",
+  "timestamp": 1791327370111,
+  "version": "4.3.1"
+ },
+ "publisher-location": "New York, NY, USA",
+ "reference-count": 37,
+ "publisher": "ACM",
+ "license": [
+  {
+   "start": {
+    "date-parts": [
+     [
+      2010,
+      4,
+      10
+     ]
+    ],
+    "date-time": "2010-04-10T00:00:00Z",
+    "timestamp": 1270857600000
+   },
+   "content-version": "vor",
+   "delay-in-days": 0,
+   "URL": "https://www.acm.org/publications/policies/copyright_policy#Background"
+  }
+ ],
+ "content-domain": {
+  "domain": [
+   "dl.acm.org"
+  ],
+  "crossmark-restriction": true
+ },
+ "short-container-title": [],
+ "published-print": {
+  "date-parts": [
+   [
+    2010,
+    4,
+    10
+   ]
+  ]
+ },
+ "DOI": "10.1145/1753326.1753418",
+ "type": "proceedings-article",
+ "created": {
+  "date-parts": [
+   [
+    2010,
+    4,
+    12
+   ]
+  ],
+  "date-time": "2010-04-12T18:13:40Z",
+  "timestamp": 1271096020000
+ },
+ "page": "609-618",
+ "update-policy": "https://doi.org/10.1145/crossmark-policy",
+ "source": "Crossref",
+ "is-referenced-by-count": 77,
+ "title": [
+  "The NiCE Discussion Room"
+ ],
+ "prefix": "10.1145",
+ "author": [
+  {
+   "given": "Michael",
+   "family": "Haller",
+   "sequence": "first",
+   "affiliation": [
+    {
+     "name": "Upper Austria University of Applied Sciences, Hagenberg, Austria"
+    }
+   ],
+   "role": [
+    {
+     "vocabulary": "crossref",
+     "role": "author"
+    }
+   ]
+  },
+  {
+   "given": "Jakob",
+   "family": "Leitner",
+   "sequence": "additional",
+   "affiliation": [
+    {
+     "name": "Upper Austria University of Applied Sciences, Hagenberg, Austria"
+    }
+   ],
+   "role": [
+    {
+     "vocabulary": "crossref",
+     "role": "author"
+    }
+   ]
+  },
+  {
+   "given": "Thomas",
+   "family": "Seifried",
+   "sequence": "additional",
+   "affiliation": [
+    {
+     "name": "Upper Austria University of Applied Sciences, Hagenberg, Austria"
+    }
+   ],
+   "role": [
+    {
+     "vocabulary": "crossref",
+     "role": "author"
+    }
+   ]
+  },
+  {
+   "given": "James R.",
+   "family": "Wallace",
+   "sequence": "additional",
+   "affiliation": [
+    {
+     "name": "University of Waterloo, Waterloo, ON, Canada"
+    }
+   ],
+   "role": [
+    {
+     "vocabulary": "crossref",
+     "role": "author"
+    }
+   ]
+  },
+  {
+   "given": "Stacey D.",
+   "family": "Scott",
+   "sequence": "additional",
+   "affiliation": [
+    {
+     "name": "University of Waterloo, Waterloo, ON, Canada"
+    }
+   ],
+   "role": [
+    {
+     "vocabulary": "crossref",
+     "role": "author"
+    }
+   ]
+  },
+  {
+   "given": "Christoph",
+   "family": "Richter",
+   "sequence": "additional",
+   "affiliation": [
+    {
+     "name": "Upper Austria University of Applied Sciences, Hagenberg, Austria"
+    }
+   ],
+   "role": [
+    {
+     "vocabulary": "crossref",
+     "role": "author"
+    }
+   ]
+  },
+  {
+   "given": "Peter",
+   "family": "Brandl",
+   "sequence": "additional",
+   "affiliation": [
+    {
+     "name": "Upper Austria University of Applied Sciences, Hagenberg, Austria"
+    }
+   ],
+   "role": [
+    {
+     "vocabulary": "crossref",
+     "role": "author"
+    }
+   ]
+  },
+  {
+   "given": "Adam",
+   "family": "Gokcezade",
+   "sequence": "additional",
+   "affiliation": [
+    {
+     "name": "Upper Austria University of Applied Sciences, Hagenberg, Austria"
+    }
+   ],
+   "role": [
+    {
+     "vocabulary": "crossref",
+     "role": "author"
+    }
+   ]
+  },
+  {
+   "given": "Seth",
+   "family": "Hunter",
+   "sequence": "additional",
+   "affiliation": [
+    {
+     "name": "MIT Media Lab, Cambridge, MA, USA"
+    }
+   ],
+   "role": [
+    {
+     "vocabulary": "crossref",
+     "role": "author"
+    }
+   ]
+  }
+ ],
+ "member": "320",
+ "published-online": {
+  "date-parts": [
+   [
+    2010,
+    4,
+    10
+   ]
+  ]
+ },
+ "event": {
+  "name": "CHI '10: CHI Conference on Human Factors in Computing Systems",
+  "location": "Atlanta Georgia USA",
+  "acronym": "CHI '10",
+  "sponsor": [
+   "SIGCHI ACM Special Interest Group on Computer-Human Interaction"
+  ]
+ },
+ "container-title": [
+  "Proceedings of the SIGCHI Conference on Human Factors in Computing Systems"
+ ],
+ "original-title": [],
+ "link": [
+  {
+   "URL": "https://dl.acm.org/doi/10.1145/1753326.1753418",
+   "content-type": "unspecified",
+   "content-version": "vor",
+   "intended-application": "text-mining"
+  },
+  {
+   "URL": "https://dl.acm.org/doi/pdf/10.1145/1753326.1753418",
+   "content-type": "unspecified",
+   "content-version": "vor",
+   "intended-application": "similarity-checking"
+  }
+ ],
+ "deposited": {
+  "date-parts": [
+   [
+    2025,
+    6,
+    18
+   ]
+  ],
+  "date-time": "2025-06-18T11:23:27Z",
+  "timestamp": 1750245807000
+ },
+ "score": 1,
+ "resource": {
+  "primary": {
+   "URL": "https://dl.acm.org/doi/10.1145/1753326.1753418"
+  }
+ },
+ "subtitle": [
+  "Integrating Paper and Digital Media to Support Co-Located Group Meetings"
+ ],
+ "short-title": [],
+ "issued": {
+  "date-parts": [
+   [
+    2010,
+    4,
+    10
+   ]
+  ]
+ },
+ "references-count": 37,
+ "alternative-id": [
+  "10.1145/1753326.1753418",
+  "10.1145/1753326"
+ ],
+ "URL": "https://doi.org/10.1145/1753326.1753418",
+ "relation": {},
+ "subject": [],
+ "published": {
+  "date-parts": [
+   [
+    2010,
+    4,
+    10
+   ]
+  ]
+ },
+ "assertion": [
+  {
+   "value": "2010-04-10",
+   "order": 2,
+   "name": "published",
+   "label": "Published",
+   "group": {
+    "name": "publication_history",
+    "label": "Publication History"
+   }
+  }
+ ]
+}

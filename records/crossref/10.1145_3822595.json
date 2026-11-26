@@ -1,0 +1,265 @@
+{
+ "indexed": {
+  "date-parts": [
+   [
+    2026,
+    6,
+    26
+   ]
+  ],
+  "date-time": "2026-06-26T13:50:12Z",
+  "timestamp": 1782481812990,
+  "version": "3.54.5"
+ },
+ "reference-count": 71,
+ "publisher": "Association for Computing Machinery (ACM)",
+ "content-domain": {
+  "domain": [
+   "dl.acm.org"
+  ],
+  "crossmark-restriction": true
+ },
+ "short-container-title": [
+  "ACM Trans. Comput. Healthcare"
+ ],
+ "abstract": "<jats:p>Many older adults prefer to independently live in their homes and communities for as long as possible, with their adult children often playing a key role as informal helpers. While the HCI community has explored how technology can support aging in place, there is concern that it may threaten the independence of aging parents and adult children. In this work, we performed semi-structured interviews with aging parents and adult children to explore their communication habits and boundary setting preferences and practices. Through a reflexive thematic analysis, we contextualized boundary setting as a relational and negotiated practice. Our findings reveal that boundaries were sometimes redefined to enable the provision of care, navigate family dynamics, and adapt to parents’ changing needs. We provide design considerations to enable flexible boundary setting in aging in place technologies that encourage meaningful connections between older adults and their adult children. We also reflect on when technology design meant to support boundary setting can potentially hinder caregiving.</jats:p>",
+ "DOI": "10.1145/3822595",
+ "type": "journal-article",
+ "created": {
+  "date-parts": [
+   [
+    2026,
+    6,
+    26
+   ]
+  ],
+  "date-time": "2026-06-26T13:13:31Z",
+  "timestamp": 1782479611000
+ },
+ "update-policy": "https://doi.org/10.1145/crossmark-policy",
+ "source": "Crossref",
+ "is-referenced-by-count": 0,
+ "title": [
+  "(Re-) Defining Boundaries in Informal Care: An Interview Study on the Perspectives of Aging Parents and Adult Children"
+ ],
+ "prefix": "10.1145",
+ "author": [
+  {
+   "ORCID": "https://orcid.org/0000-0001-8190-0067",
+   "authenticated-orcid": false,
+   "given": "Leila",
+   "family": "Homaeian",
+   "sequence": "first",
+   "affiliation": [
+    {
+     "name": "University of Waterloo, Canada"
+    }
+   ],
+   "role": [
+    {
+     "vocabulary": "crossref",
+     "role": "author"
+    }
+   ]
+  },
+  {
+   "ORCID": "https://orcid.org/0009-0003-9059-4622",
+   "authenticated-orcid": false,
+   "given": "Michelle",
+   "family": "Ma",
+   "sequence": "additional",
+   "affiliation": [
+    {
+     "name": "University of Waterloo, Canada"
+    }
+   ],
+   "role": [
+    {
+     "vocabulary": "crossref",
+     "role": "author"
+    }
+   ]
+  },
+  {
+   "ORCID": "https://orcid.org/0009-0008-3064-9536",
+   "authenticated-orcid": false,
+   "given": "Vanessa",
+   "family": "Duong",
+   "sequence": "additional",
+   "affiliation": [
+    {
+     "name": "University of Waterloo, Canada"
+    }
+   ],
+   "role": [
+    {
+     "vocabulary": "crossref",
+     "role": "author"
+    }
+   ]
+  },
+  {
+   "ORCID": "https://orcid.org/0009-0006-4924-5780",
+   "authenticated-orcid": false,
+   "given": "Zixi Christina",
+   "family": "Li",
+   "sequence": "additional",
+   "affiliation": [
+    {
+     "name": "University of Waterloo, Canada"
+    }
+   ],
+   "role": [
+    {
+     "vocabulary": "crossref",
+     "role": "author"
+    }
+   ]
+  },
+  {
+   "ORCID": "https://orcid.org/0000-0002-9642-9666",
+   "authenticated-orcid": false,
+   "given": "Keiko",
+   "family": "Katsuragawa",
+   "sequence": "additional",
+   "affiliation": [
+    {
+     "name": "National Research Council Canada University of Waterloo, Canada"
+    }
+   ],
+   "role": [
+    {
+     "vocabulary": "crossref",
+     "role": "author"
+    }
+   ]
+  },
+  {
+   "ORCID": "https://orcid.org/0000-0002-5162-0256",
+   "authenticated-orcid": false,
+   "given": "James R.",
+   "family": "Wallace",
+   "sequence": "additional",
+   "affiliation": [
+    {
+     "name": "University of Waterloo, Canada"
+    }
+   ],
+   "role": [
+    {
+     "vocabulary": "crossref",
+     "role": "author"
+    }
+   ]
+  }
+ ],
+ "member": "320",
+ "published-online": {
+  "date-parts": [
+   [
+    2026,
+    6,
+    26
+   ]
+  ]
+ },
+ "container-title": [
+  "ACM Transactions on Computing for Healthcare"
+ ],
+ "original-title": [],
+ "language": "en",
+ "link": [
+  {
+   "URL": "https://dl.acm.org/doi/pdf/10.1145/3822595",
+   "content-type": "unspecified",
+   "content-version": "vor",
+   "intended-application": "similarity-checking"
+  }
+ ],
+ "deposited": {
+  "date-parts": [
+   [
+    2026,
+    6,
+    26
+   ]
+  ],
+  "date-time": "2026-06-26T13:13:42Z",
+  "timestamp": 1782479622000
+ },
+ "score": 1,
+ "resource": {
+  "primary": {
+   "URL": "https://dl.acm.org/doi/10.1145/3822595"
+  }
+ },
+ "subtitle": [],
+ "short-title": [],
+ "issued": {
+  "date-parts": [
+   [
+    2026,
+    6,
+    26
+   ]
+  ]
+ },
+ "references-count": 71,
+ "alternative-id": [
+  "10.1145/3822595"
+ ],
+ "URL": "https://doi.org/10.1145/3822595",
+ "relation": {},
+ "ISSN": [
+  "2637-8051"
+ ],
+ "issn-type": [
+  {
+   "value": "2637-8051",
+   "type": "electronic"
+  }
+ ],
+ "subject": [],
+ "published": {
+  "date-parts": [
+   [
+    2026,
+    6,
+    26
+   ]
+  ]
+ },
+ "assertion": [
+  {
+   "value": "2025-06-08",
+   "order": 0,
+   "name": "received",
+   "label": "Received",
+   "group": {
+    "name": "publication_history",
+    "label": "Publication History"
+   }
+  },
+  {
+   "value": "2026-04-07",
+   "order": 2,
+   "name": "accepted",
+   "label": "Accepted",
+   "group": {
+    "name": "publication_history",
+    "label": "Publication History"
+   }
+  },
+  {
+   "value": "2026-06-26",
+   "order": 3,
+   "name": "published",
+   "label": "Published",
+   "group": {
+    "name": "publication_history",
+    "label": "Publication History"
+   }
+  }
+ ],
+ "article-number": "3822595"
+}

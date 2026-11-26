@@ -1,0 +1,258 @@
+{
+ "indexed": {
+  "date-parts": [
+   [
+    2026,
+    9,
+    28
+   ]
+  ],
+  "date-time": "2026-09-28T19:13:42Z",
+  "timestamp": 1790622822383,
+  "version": "4.1.0"
+ },
+ "reference-count": 32,
+ "publisher": "Association for Computing Machinery (ACM)",
+ "issue": "CSCW",
+ "license": [
+  {
+   "start": {
+    "date-parts": [
+     [
+      2017,
+      12,
+      6
+     ]
+    ],
+    "date-time": "2017-12-06T00:00:00Z",
+    "timestamp": 1512518400000
+   },
+   "content-version": "vor",
+   "delay-in-days": 0,
+   "URL": "https://www.acm.org/publications/policies/copyright_policy#Background"
+  }
+ ],
+ "funder": [
+  {
+   "DOI": "10.13039/501100000038",
+   "name": "Natural Sciences and Engineering Research Council of Canada",
+   "doi-asserted-by": "crossref",
+   "award": [
+    "RGPIN-2015-06585"
+   ],
+   "award-info": [
+    {
+     "award-number": [
+      "RGPIN-2015-06585"
+     ]
+    }
+   ],
+   "id": [
+    {
+     "id": "10.13039/501100000038",
+     "id-type": "DOI",
+     "asserted-by": "crossref"
+    }
+   ]
+  }
+ ],
+ "content-domain": {
+  "domain": [
+   "dl.acm.org"
+  ],
+  "crossmark-restriction": true
+ },
+ "short-container-title": [
+  "Proc. ACM Hum.-Comput. Interact."
+ ],
+ "published-print": {
+  "date-parts": [
+   [
+    2017,
+    12,
+    6
+   ]
+  ]
+ },
+ "abstract": "<jats:p>The field of Computer Supported Cooperative Work has constantly evolved to meet the changing needs of individuals at home, at work, and online. To understand how these changes impacted CSCW research, we systematically reviewed 1209 papers and notes published at the ACM Conference on Computer Supported Cooperative Work between 1990 and 2015. When considered with results from two previous literature reviews, covering 1990 - 1998 and 1998 - 2004 respectively, our analysis provides perspective on 25 years of groupware research. We show that the field has responded to, not anticipated, changes in the computing landscape, long-term trends away from 'systems' and explanatory research, and a lack of bibliographic research that synthesizes findings. Finally, we discuss implications of these trends for CSCW research: how results are synthesized across the field, what kinds of research we value, and how multi-device ecologies are studied.</jats:p>",
+ "DOI": "10.1145/3134741",
+ "type": "journal-article",
+ "created": {
+  "date-parts": [
+   [
+    2017,
+    12,
+    6
+   ]
+  ],
+  "date-time": "2017-12-06T21:23:15Z",
+  "timestamp": 1512595395000
+ },
+ "page": "1-18",
+ "update-policy": "https://doi.org/10.1145/crossmark-policy",
+ "source": "Crossref",
+ "is-referenced-by-count": 39,
+ "title": [
+  "Technologies, Methods, and Values"
+ ],
+ "prefix": "10.1145",
+ "volume": "1",
+ "author": [
+  {
+   "given": "James R.",
+   "family": "Wallace",
+   "sequence": "first",
+   "affiliation": [
+    {
+     "name": "University of Waterloo, Waterloo, ON, Canada"
+    }
+   ],
+   "role": [
+    {
+     "vocabulary": "crossref",
+     "role": "author"
+    }
+   ]
+  },
+  {
+   "given": "Saba",
+   "family": "Oji",
+   "sequence": "additional",
+   "affiliation": [
+    {
+     "name": "University of Waterloo, Waterloo, ON, Canada"
+    }
+   ],
+   "role": [
+    {
+     "vocabulary": "crossref",
+     "role": "author"
+    }
+   ]
+  },
+  {
+   "given": "Craig",
+   "family": "Anslow",
+   "sequence": "additional",
+   "affiliation": [
+    {
+     "name": "Victoria University of Wellington, Wellington, New Zealand"
+    }
+   ],
+   "role": [
+    {
+     "vocabulary": "crossref",
+     "role": "author"
+    }
+   ]
+  }
+ ],
+ "member": "320",
+ "published-online": {
+  "date-parts": [
+   [
+    2017,
+    12,
+    6
+   ]
+  ]
+ },
+ "container-title": [
+  "Proceedings of the ACM on Human-Computer Interaction"
+ ],
+ "original-title": [],
+ "language": "en",
+ "link": [
+  {
+   "URL": "https://dl.acm.org/doi/10.1145/3134741",
+   "content-type": "unspecified",
+   "content-version": "vor",
+   "intended-application": "text-mining"
+  },
+  {
+   "URL": "https://dl.acm.org/doi/pdf/10.1145/3134741",
+   "content-type": "unspecified",
+   "content-version": "vor",
+   "intended-application": "similarity-checking"
+  }
+ ],
+ "deposited": {
+  "date-parts": [
+   [
+    2025,
+    6,
+    18
+   ]
+  ],
+  "date-time": "2025-06-18T02:11:24Z",
+  "timestamp": 1750212684000
+ },
+ "score": 1,
+ "resource": {
+  "primary": {
+   "URL": "https://dl.acm.org/doi/10.1145/3134741"
+  }
+ },
+ "subtitle": [
+  "Changes in Empirical Research at CSCW 1990 - 2015"
+ ],
+ "short-title": [],
+ "issued": {
+  "date-parts": [
+   [
+    2017,
+    12,
+    6
+   ]
+  ]
+ },
+ "references-count": 32,
+ "journal-issue": {
+  "issue": "CSCW",
+  "published-print": {
+   "date-parts": [
+    [
+     2017,
+     12,
+     6
+    ]
+   ]
+  }
+ },
+ "alternative-id": [
+  "10.1145/3134741"
+ ],
+ "URL": "https://doi.org/10.1145/3134741",
+ "relation": {},
+ "ISSN": [
+  "2573-0142"
+ ],
+ "issn-type": [
+  {
+   "value": "2573-0142",
+   "type": "electronic"
+  }
+ ],
+ "subject": [],
+ "published": {
+  "date-parts": [
+   [
+    2017,
+    12,
+    6
+   ]
+  ]
+ },
+ "assertion": [
+  {
+   "value": "2017-12-06",
+   "order": 2,
+   "name": "published",
+   "label": "Published",
+   "group": {
+    "name": "publication_history",
+    "label": "Publication History"
+   }
+  }
+ ]
+}
